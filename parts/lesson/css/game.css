@@ -12,10 +12,12 @@ html.in-card,html.in-card body,html.in-card .stage-root,html.in-card .stage{back
 html.in-card .stage>img.bg-winter,html.in-card .stage>canvas.snowfall{display:none}
 html.in-card .bubble{background:#fff}
 html.in-card .bubble-tail path{fill:#fff}
-/* on the card there is no snow for Swiftee to stand on: she and her bubble sit level with the board, not at its foot
-   (the measuring room, the hero screens and the summary place her themselves) */
-html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .swiftee{top:332px!important}
-html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .bubble{bottom:370px!important}
+/* on the card there is no snow for Swiftee to stand on: she stands on the dune in the card's print, level with the
+   board, not at its foot, and she and her bubble sit 36px further left, so the pair is centred between the card's
+   edge and the ice panel (the card is 50px wider than the stage on each side; the longest bubble now clears the
+   panel too). The measuring room, the hero screens and the summary place her themselves */
+html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .swiftee{left:34px!important;top:332px!important}
+html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .bubble{left:51px!important;bottom:370px!important}
 .stage button{font-family:inherit}
 .w{opacity:0;transition:none}
 .w.on{opacity:1;transition:opacity .18s ease,color .25s ease}

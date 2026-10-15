@@ -81,7 +81,8 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       // from fishing 1 (opts.arrive) Swiftee flies in first; a jump (?dev=1) starts at once
       JOURNEY.onBegin((opts) => {
         if (opts && opts.card) document.documentElement.classList.add('in-card'); // on fishing 2's card (css/game.css)
-        if (opts && opts.arrive) this.arrive(() => this.start()); else { this.setState({ arriving: false }); this.start(); }
+        // (if a ?dev=1 jump has started the lesson during the flight, it stays on its screen)
+        if (opts && opts.arrive) this.arrive(() => { if (!this.state.started) this.start(); }); else { this.setState({ arriving: false }); this.start(); }
       });
       JOURNEY.onDispose(() => this.leave());
       // ready once the page's pictures are in (the background, the ice panel, Swiftee)

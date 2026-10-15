@@ -1545,27 +1545,30 @@ class Game {
     }
   }
 
-  // The lesson card's print (drawn about the card's centre): the lake, as a soft one-colour print on the cream, behind
-  // the lesson. The sandy floor runs along the bottom and rises into a bank on the left, which Swiftee stands on
-  // (the lesson puts her there: css/game.css html.in-card); seaweed sways in the corners, bubble trails rise up both
-  // sides, and fish cross the open water at the top left and the right.
+  // The lesson card's print (drawn about the card's centre): the lake floor, as a soft one-colour print on the cream
+  // behind the lesson. A sandy floor runs along the bottom in two long, low swells and rises into a rounded dune at
+  // the left, which Swiftee stands on (the lesson puts her there: css/game.css html.in-card); kelp grows at the
+  // dune's foot and in the strip right of the lesson's ice panel, a trail of bubbles rising from each; a school of
+  // three fish crosses the open water above her bubble and one swims back along the top right. Everything keeps
+  // clear of the card's corners and of the panel (x -149..621, y -280..268 here), so nothing is cut off or half hidden.
   drawCardPrint(ctx, r) {
     const C = r.card, w = C.w, h = C.h, L = -w / 2, R = w / 2, B = h / 2;
-    const ink = 'rgba(43, 123, 214, 0.17)', wash = 'rgba(43, 123, 214, 0.07)', leaf = 'rgba(43, 123, 214, 0.12)';
+    const ink = 'rgba(43, 123, 214, 0.18)', soft = 'rgba(43, 123, 214, 0.11)', wash = 'rgba(43, 123, 214, 0.07)';
+    const FLOOR = 318, CREST = 190; // the floor line, and the top of the dune's bell, whose sides pass y 199 (her feet) at L+160 and L+270
     ctx.save();
     ctx.beginPath();
     ctx.roundRect(L + 5, -B + 5, w - 10, h - 10, C.radius - 4);
     ctx.clip();
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    // the floor and the bank
+    // the floor and the dune, one smooth outline
     ctx.beginPath();
     ctx.moveTo(L - 10, B + 20);
-    ctx.lineTo(L - 10, 296);
-    ctx.bezierCurveTo(L + 30, 290, L + 56, 196, L + 118, 194);
-    ctx.lineTo(L + 392, 196);
-    ctx.bezierCurveTo(L + 462, 198, L + 496, 310, L + 560, 318);
-    for (let x = L + 560; x < R + 10; x += 70) ctx.quadraticCurveTo(x + 35, 326, x + 70, 318);
+    ctx.lineTo(L - 10, FLOOR);
+    ctx.bezierCurveTo(L + 70, FLOOR, L + 90, CREST, L + 215, CREST);
+    ctx.bezierCurveTo(L + 340, CREST, L + 360, FLOOR, L + 440, FLOOR);
+    ctx.bezierCurveTo(L + 680, FLOOR, L + 760, FLOOR + 9, L + 940, FLOOR + 9);
+    ctx.bezierCurveTo(L + 1120, FLOOR + 9, L + 1200, FLOOR, R + 10, FLOOR);
     ctx.lineTo(R + 10, B + 20);
     ctx.closePath();
     ctx.fillStyle = wash;
@@ -1573,49 +1576,45 @@ class Game {
     ctx.lineWidth = 3;
     ctx.strokeStyle = ink;
     ctx.stroke();
-    // ripples of light on the floor
-    ctx.lineWidth = 2.5;
-    for (const [x0, y, len] of [[L + 620, 352, 90], [L + 760, 366, 60], [L + 900, 350, 110], [L + 1060, 364, 70], [L + 1200, 348, 80], [L + 40, 350, 60], [L + 150, 364, 80], [L + 300, 352, 70]]) {
+    // kelp: a swaying stem rooted where it stands, with leaves either side pointing up and out
+    const kelp = (x, base, height, dir, leaves) => {
+      const p = [[x, base], [x + 24 * dir, base - height * 0.35], [x - 16 * dir, base - height * 0.7], [x + 8 * dir, base - height]];
+      const at = (t) => { const u = 1 - t, k = [u * u * u, 3 * u * u * t, 3 * u * t * t, t * t * t]; return [0, 1].map((i) => k[0] * p[0][i] + k[1] * p[1][i] + k[2] * p[2][i] + k[3] * p[3][i]); };
       ctx.beginPath();
-      ctx.moveTo(x0, y);
-      ctx.quadraticCurveTo(x0 + len / 2, y - 6, x0 + len, y);
-      ctx.stroke();
-    }
-    // seaweed in the corners: a swaying stem with leaves either side
-    const seaweed = (x, height, dir) => {
-      ctx.beginPath();
-      ctx.moveTo(x, B + 6);
-      ctx.bezierCurveTo(x + 20 * dir, B - height * 0.35, x - 16 * dir, B - height * 0.65, x + 10 * dir, B - height);
-      ctx.lineWidth = 4;
+      ctx.moveTo(p[0][0], p[0][1]);
+      ctx.bezierCurveTo(p[1][0], p[1][1], p[2][0], p[2][1], p[3][0], p[3][1]);
+      ctx.lineWidth = 3.5;
       ctx.strokeStyle = ink;
       ctx.stroke();
-      for (let i = 1; i <= 3; i += 1) {
-        const side = i % 2 ? dir : -dir, ly = B - height * (i / 4) + 8;
+      ctx.fillStyle = soft;
+      for (let i = 0; i < leaves; i += 1) {
+        const t = 0.9 - i * 0.2, side = i % 2 ? -dir : dir, [px, py] = at(t), [qx, qy] = at(t + 0.04);
+        const a = Math.atan2(qy - py, qx - px) + side * 0.8; // the leaf leans out from the stem's direction here
         ctx.beginPath();
-        ctx.ellipse(x + side * 15, ly, 15, 6, side * -0.45, 0, TAU);
-        ctx.fillStyle = leaf;
+        ctx.ellipse(px + Math.cos(a) * 12, py + Math.sin(a) * 12, 13, 5.5, a, 0, TAU);
         ctx.fill();
       }
     };
-    seaweed(L + 34, 170, 1);
-    seaweed(L + 66, 118, -1);
-    seaweed(R - 38, 176, -1);
-    seaweed(R - 72, 112, 1);
-    // bubble trails up both sides, and a few loose at the top
-    const bubbles = [[-654, 250, 6], [-666, 170, 9], [-650, 96, 5], [-664, 12, 11], [-648, -74, 7], [-660, -164, 12], [-646, -254, 6], [-658, -338, 9],
-      [658, 240, 7], [670, 160, 10], [654, 84, 5], [668, 4, 12], [652, -86, 6], [666, -176, 9], [650, -262, 11], [664, -346, 6],
-      [-200, -372, 8], [60, -382, 5], [240, -368, 10], [420, -378, 6], [-560, -238, 5], [-544, -258, 4]];
-    for (const [x, y, rad] of bubbles) {
-      ctx.beginPath();
-      ctx.arc(x, y, rad, 0, TAU);
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = ink;
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(x - rad * 0.36, y - rad * 0.36, rad * 0.22, 0, TAU);
-      ctx.fillStyle = ink;
-      ctx.fill();
-    }
+    kelp(L + 40, 299, 150, 1, 4); // on the dune's slope
+    kelp(L + 70, 271, 84, -1, 3);
+    kelp(R - 40, FLOOR, 160, 1, 4); // right of the panel
+    // bubbles: a trail rising from each kelp, growing and swaying a little as it goes
+    const trail = (x, y0, n, dir) => {
+      for (let i = 0, y = y0; i < n; i += 1, y -= 52 + i * 8) {
+        const rad = 4 + i * 1.3, bx = x + Math.sin(i * 1.9) * 9 * dir;
+        ctx.beginPath();
+        ctx.arc(bx, y, rad, 0, TAU);
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = ink;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(bx - rad * 0.35, y - rad * 0.35, rad * 0.24, 0, TAU);
+        ctx.fillStyle = ink;
+        ctx.fill();
+      }
+    };
+    trail(L + 46, 120, 7, 1);
+    trail(R - 36, 130, 7, -1);
     // fish
     const fish = (x, y, dir, k) => {
       ctx.save();
@@ -1635,9 +1634,10 @@ class Game {
       ctx.fill();
       ctx.restore();
     };
-    fish(-470, -296, 1, 1.1);
-    fish(-586, -210, 1, 0.65);
-    fish(664, -60, -1, 0.8);
+    fish(L + 340, -262, 1, 1.25); // a school over Swiftee
+    fish(L + 236, -318, 1, 0.95);
+    fish(L + 222, -222, 1, 0.72);
+    fish(R - 150, -342, -1, 0.9); // and one along the top right
     ctx.restore();
   }
 

@@ -333,7 +333,8 @@
       status.hide();
       veil.close();
       audio.resume();
-      tell(g, 'begin', { arrive: true, card: true });
+      // (a ?dev=1 jump to a lesson screen skips Swiftee's flight in: its start() would land on screen 1 after the jump)
+      tell(g, 'begin', { arrive: dev.lessonScreen == null, card: true });
       g.el.classList.add('in');
       try { g.el.focus({ preventScroll: true }); g.el.contentWindow.focus(); } catch (e) { /* file:// */ }
       announce('part', { part: g.id, number: g.index + 1, of: PARTS.length, inset: true });
