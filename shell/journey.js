@@ -38,8 +38,8 @@
   // times in ms
   const T = {
     coverLeave: 900,     // the cover zooms away (css .leaving), then is hidden
-    takeOff: 420,        // a part ends: Swiftee takes off in it this long before its scene starts to dissolve
-    dissolve: 1300,      // the ending part's scene dissolves into the next one's (css .part.leaving / .arriving)
+    takeOff: 150,        // a part ends: a breath on its empty lake before the cross-fade
+    dissolve: 450,       // the two lakes cross-fade (the giant wave carries Popo between them: the games' waveAway / waveIn)
     veil: 350,           // the frosted "Getting ready…" veil fades in or out (css .veil)
     waitNote: 400,       // waiting longer than this for the next part shows "Getting ready…"
     preloadAfter: 2500,  // a part has begun: this long after, the next one starts loading behind it
@@ -367,7 +367,6 @@
     const prev = J.current;
     J.phase = 'switching';
     audio.resume();
-    flurry.start();
     await wait(reduced ? 0 : T.takeOff);
     if (next.status !== 'ready') {
       veil.open();
@@ -378,6 +377,8 @@
     }
     if (J.phase !== 'switching') return; // (a dev jump took over)
     begin(next, Object.assign({ arrive: true, dissolve: true }, opts || {}));
+    // the giant wave has just carried Popo out of fishing 1's lake and is about to bring him into fishing 2's (the
+    // games' waveAway / waveIn), so the two empty lakes simply cross-fade
     next.el.classList.add('arriving');
     audio.fade(prev.id, T.dissolve);
     prev.el.classList.add('leaving'); // on top of the next part, fading away
@@ -385,7 +386,6 @@
     await wait(reduced ? 350 : T.dissolve);
     next.el.classList.remove('arriving');
     if (J.current === next) dispose(prev);
-    flurry.stop();
   }
   // fishing 2 has shut its iris on "The End": the front page comes back over it, ready to play again
   function end(f) {
@@ -484,67 +484,6 @@
     close() { this.el.classList.remove('on'); },
     hide() { this.close(); },
   };
-  // The flurry: a little snow, with a few sparkles, blowing across the window while one scene dissolves into the
-  // next, so the two winter scenes read as one place.
-  const flurry = {
-    el: $('flurry'),
-    start() {
-      if (reduced) return;
-      const el = this.el;
-      clearTimeout(this.off);
-      this.fit();
-      if (!this.flakes) this.flakes = Array.from({ length: 70 }, () => this.flake(true));
-      el.classList.add('on');
-      if (!this.running) { this.running = true; this.last = 0; requestAnimationFrame((t) => this.frame(t)); }
-    },
-    stop() {
-      this.el.classList.remove('on');
-      clearTimeout(this.off);
-      this.off = setTimeout(() => { this.running = false; this.flakes = null; }, 700);
-    },
-    fit() {
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
-      this.w = window.innerWidth; this.h = window.innerHeight; this.dpr = dpr;
-      this.el.width = Math.round(this.w * dpr); this.el.height = Math.round(this.h * dpr);
-    },
-    flake(anywhere) {
-      const r = 1.4 + Math.random() * 3.4;
-      return { x: Math.random() * (this.w + 240) - 240, y: anywhere ? Math.random() * this.h : -10, r: r,
-        vx: 60 + Math.random() * 120 + r * 14, vy: 40 + Math.random() * 60 + r * 10, a: 0.6 + Math.random() * 0.35,
-        ph: Math.random() * 6.3, star: Math.random() < 0.12 };
-    },
-    frame(now) {
-      if (!this.running) return;
-      requestAnimationFrame((t) => this.frame(t));
-      const dt = Math.min(0.05, (now - (this.last || now)) / 1000);
-      this.last = now;
-      const c = this.el.getContext('2d');
-      c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-      c.clearRect(0, 0, this.w, this.h);
-      for (let i = 0; i < this.flakes.length; i++) {
-        const f = this.flakes[i];
-        f.x += f.vx * dt; f.y += f.vy * dt;
-        if (f.y > this.h + 10 || f.x > this.w + 20) this.flakes[i] = this.flake(false);
-        const x = f.x + Math.sin(now / 700 + f.ph) * 6;
-        c.globalAlpha = f.a;
-        if (f.star) { // a glint of gold among the snow
-          const s = f.r * 2.2 * (0.75 + 0.25 * Math.sin(now / 180 + f.ph));
-          c.fillStyle = '#ffd166';
-          c.beginPath();
-          c.moveTo(x, f.y - s); c.lineTo(x + s * 0.25, f.y - s * 0.25); c.lineTo(x + s, f.y); c.lineTo(x + s * 0.25, f.y + s * 0.25);
-          c.lineTo(x, f.y + s); c.lineTo(x - s * 0.25, f.y + s * 0.25); c.lineTo(x - s, f.y); c.lineTo(x - s * 0.25, f.y - s * 0.25);
-          c.closePath(); c.fill();
-        } else {
-          c.fillStyle = '#ffffff';
-          c.shadowColor = 'rgba(70,110,170,.35)'; c.shadowBlur = 2;
-          c.beginPath(); c.arc(x, f.y, f.r, 0, Math.PI * 2); c.fill();
-          c.shadowBlur = 0;
-        }
-      }
-      c.globalAlpha = 1;
-    },
-  };
-  addEventListener('resize', () => { if (flurry.running) flurry.fit(); });
 
 
   // ---------- ?dev=1: one panel that jumps to any screen of the journey ----------

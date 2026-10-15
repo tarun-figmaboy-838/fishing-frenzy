@@ -77,6 +77,7 @@ if (journey) {
   // In the journey the front page (index.html at the root) has the banner and Play: this game loads
   // behind the lesson, says how far it has got and when it is ready, and starts when the shell says.
   ui.el.start.hidden = true;
+  ui.el.start.style.display = 'none'; // for good: the screen's own CSS would show it through `hidden`, and its fade-out would flash it
   journey.onBegin((opts) => {
     document.getElementById('stage').classList.remove('booting');
     game.arriving = !!(opts && opts.arrive); // from the part before, with Swiftee flying in (sequences.js opening)

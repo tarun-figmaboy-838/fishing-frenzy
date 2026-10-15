@@ -1050,6 +1050,7 @@ class Game {
   // Water lapping over the bottom of the raft, following the same waves, so the raft sits in
   // the water rather than on top of it. Fades out at both ends into the painted surface.
   drawRaftWater(ctx) {
+    if (this.popo.dip < -30) return; // up on the giant wave: no water laps the raft's deck
     const colour = this.surfaceColor();
     if (!colour) return;
     const popo = this.popo;
@@ -1067,7 +1068,7 @@ class Game {
     const t = this.fx.t;
     const amp = this.water.ok ? (this.fx.reduced ? 0.35 : 1) : 0;
     const lap = this.fx.reduced ? 0.4 : 1.6;
-    const edge = (x) => this.waterline - surfaceWave(x, t) * amp + lap * Math.sin(x * 0.08 + t * 2.6) - top;
+    const edge = (x) => this.waterline - (this.wave ? this.wave.lift(x) : 0) - surfaceWave(x, t) * amp + lap * Math.sin(x * 0.08 + t * 2.6) - top;
     g.beginPath();
     g.moveTo(0, h);
     for (let x = 0; x <= w; x += 5) g.lineTo(x, edge(x0 + x));
@@ -1170,6 +1171,7 @@ class Game {
     }
     if (this.ambient.some((f) => f.gone)) this.ambient = this.ambient.filter((f) => !f.gone);
     for (const f of this.ambient) f.update(dt, this.area);
+    this.updateLessonBubbles(dt);
     const hookOut = this.popo.line.mode === 'flight' || this.popo.line.mode === 'attached';
     for (const f of state.fish) f.gaze = hookOut ? this.popo.line.hook : null;
     if (this.popo.line.mode === 'attached' && state.selectedFish) {
@@ -1196,6 +1198,7 @@ class Game {
       this.syncWaterCanvas();
       const drawn = this.water.render({
         from: current, to: next, mix: k, time: this.fx.t, waterline: this.waterline,
+        hump: this.wave ? this.wave.hump() : null, // the giant wave lifts the lake (shared/wave.js)
         plants: this.fx.plantsFor(index), wiggles: this.plantWiggle, amplitude: this.fx.reduced ? 0.35 : 1,
       });
       if (drawn) {
@@ -1423,6 +1426,44 @@ class Game {
   // more shadow fish, for the lake behind the lesson's card (the next level brings the number back)
   stirShadows(n) {
     this.ambient = refreshShadows(this.ambient, n, this.area);
+  }
+  // Bubbles for the lake behind the lesson's card: while the card is open, small bubbles rise from the sand across
+  // the dived camera's view (world x 400..1272), swaying, and fade out near the surface. The last ones rise out
+  // after the card has gone.
+  updateLessonBubbles(dt) {
+    const B = this.lessonBubbles || (this.lessonBubbles = []);
+    if (this.lessonOpen && !this.fx.reduced) {
+      this.bubbleDue = (this.bubbleDue || 0) - dt;
+      while (this.bubbleDue <= 0) {
+        this.bubbleDue += 0.09 + Math.random() * 0.16;
+        const r = 2.5 + Math.random() * 5.5;
+        B.push({ x: 400 + Math.random() * 872, y: PopoGame.SEABED_Y + 6 + Math.random() * 30, r, vy: 46 + r * 7 + Math.random() * 20, ph: Math.random() * TAU, sway: 6 + Math.random() * 10, t: 0 });
+      }
+    }
+    for (const b of B) { b.t += dt; b.y -= b.vy * dt; }
+    this.lessonBubbles = B.filter((b) => b.y > 430);
+  }
+  drawLessonBubbles(ctx) {
+    const B = this.lessonBubbles;
+    if (!B || !B.length) return;
+    ctx.save();
+    ctx.lineWidth = 1.6;
+    for (const b of B) {
+      const x = b.x + Math.sin(b.t * 2.4 + b.ph) * b.sway, a = Math.min(1, (b.y - 430) / 90) * Math.min(1, b.t * 3);
+      ctx.globalAlpha = a * 0.55;
+      ctx.beginPath();
+      ctx.arc(x, b.y, b.r, 0, TAU);
+      ctx.strokeStyle = 'rgba(230, 250, 255, 0.9)';
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(200, 240, 255, 0.18)';
+      ctx.fill();
+      ctx.globalAlpha = a * 0.8;
+      ctx.beginPath();
+      ctx.arc(x - b.r * 0.35, b.y - b.r * 0.35, Math.max(0.6, b.r * 0.25), 0, TAU);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+    }
+    ctx.restore();
   }
 
   // ---------- the lesson's card (the journey, shell/journey.js) ----------
@@ -2113,6 +2154,7 @@ class Game {
     this.drawPenguin(ctx);
     this.fx.drawWater(ctx, offset, state.fish);
     for (const f of this.ambient) f.draw(ctx);
+    this.drawLessonBubbles(ctx);
     if (this.shadow) this.shadow.draw(ctx);
     this.drawSpeedLines(ctx);
     // a hooked fish goes between the hook and the line: the line runs over it to its lips and
@@ -2133,7 +2175,9 @@ class Game {
       this.popo.drawLine(ctx);
     }
     this.drawHandRipple(ctx);
+    if (this.wave) this.wave.draw(ctx); // the giant wave (waveIn): its water under Popo...
     this.popo.draw(ctx);
+    if (this.wave) this.wave.drawFront(ctx); // ...and its foam and spray over him
     this.drawBucketFish(ctx);
     this.drawConfetti(ctx);
     this.drawWhy(ctx);

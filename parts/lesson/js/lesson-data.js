@@ -294,7 +294,7 @@ const LESSON = {
         { id: 'a', t: '4 cm', fb: 'BC is a leg. In an isosceles trapezium, both legs are equal.' },
         { id: 'b', t: '5 cm', ok: true },
         { id: 'c', t: '6 cm', fb: '6 cm is the top base AB. BC is a leg, like AD.' },
-        { id: 'd', t: '10 cm', fb: '10 cm is the bottom base CD. BC is a leg, like AD.' }
+        { id: 'd', t: '8 cm', fb: 'BC is a leg. In an isosceles trapezium, both legs are equal.' } // (8, not 10: four short answers sit level; its feedback is the recorded line 4 cm has)
       ] },
     // Swiftee flies to centre stage and speaks once she has landed, she says goodbye, and screen 44 follows by itself
     { id: 'end', end: 1, hero: 1, voiceDelay: 1100, autoNext: 700,

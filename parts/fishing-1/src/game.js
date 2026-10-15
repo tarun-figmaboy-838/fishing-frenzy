@@ -294,8 +294,9 @@ class Game {
     this.audio.play('complete');
     const detail = { shapes: [...state.discovered] };
     window.dispatchEvent(new CustomEvent('popo:complete', { detail }));
-    // in the journey the lesson follows straight on (from inside this tap on Next), as Swiftee flies off to it
-    if (this.embedded) { window.Journey.finish(detail); PopoGame.swifteeDeparts(this); return; }
+    // in the journey (from inside this tap on Next): Swiftee flies off to the lesson and the giant wave carries Popo
+    // away to the next lake; the journey moves on once it has passed (waveAway)
+    if (this.embedded) { PopoGame.waveAway(this, detail); return; }
     if (window.parent !== window) window.parent.postMessage({ type: 'popo:complete', ...detail }, '*');
     this.backToTitle();
   }
@@ -869,6 +870,7 @@ class Game {
   // Water lapping over the bottom of the raft, following the same waves, so the raft sits in
   // the water rather than on top of it. Fades out at both ends into the painted surface.
   drawRaftWater(ctx) {
+    if (this.popo.dip < -30) return; // up on the giant wave: no water laps the raft's deck
     const colour = this.surfaceColor();
     if (!colour) return;
     const popo = this.popo;
@@ -886,7 +888,7 @@ class Game {
     const t = this.fx.t;
     const amp = this.water.ok ? (this.fx.reduced ? 0.35 : 1) : 0;
     const lap = this.fx.reduced ? 0.4 : 1.6;
-    const edge = (x) => this.waterline - surfaceWave(x, t) * amp + lap * Math.sin(x * 0.08 + t * 2.6) - top;
+    const edge = (x) => this.waterline - (this.wave ? this.wave.lift(x) : 0) - surfaceWave(x, t) * amp + lap * Math.sin(x * 0.08 + t * 2.6) - top;
     g.beginPath();
     g.moveTo(0, h);
     for (let x = 0; x <= w; x += 5) g.lineTo(x, edge(x0 + x));
@@ -1034,6 +1036,7 @@ class Game {
       this.syncWaterCanvas();
       const drawn = this.water.render({
         from: current, to: next, mix: k, time: this.fx.t, waterline: this.waterline,
+        hump: this.wave ? this.wave.hump() : null, // the giant wave lifts the lake (shared/wave.js)
         plants: this.fx.plantsFor(index), amplitude: this.fx.reduced ? 0.35 : 1,
       });
       if (drawn) {
@@ -1222,7 +1225,9 @@ class Game {
     } else {
       this.popo.drawLine(ctx);
     }
+    if (this.wave) this.wave.draw(ctx); // the giant wave (waveAway): its water under Popo...
     this.popo.draw(ctx);
+    if (this.wave) this.wave.drawFront(ctx); // ...and its foam and spray over him
     this.drawMark(ctx);
     this.drawRaftWater(ctx);
     if (this.swiftee) this.swiftee.draw(ctx);

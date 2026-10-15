@@ -480,6 +480,63 @@ async function fishSaysHello(game, token) {
 // G0: Swiftee flies in from the lesson over the empty lake, welcomes the learner and flies off; then
 // Popo rows in to his spot. Level 1's fish swim in; the first time, Swiftee swoops back to remind the
 // learner how the rod works and flies off again; then the fishing begins.
+// The journey's opening: the giant wave that swept Popo out of the first lake (fishing 1's waveAway) rolls in from
+// the left with him riding its crest. As the crest passes his spot he stays behind on its back, which carries him down
+// to the water as the wave moves on. Then the ta-da, and a fish says hello. The wave itself: ../shared/wave.js.
+async function waveIn(game, token) {
+  const { popo, fx, audio } = game;
+  const wave = new PopoGame.Wave(game);
+  const home = popo.placement('fishing', 'idle'), bow = home.raftRightX, mid = (home.raftLeftX + bow) / 2;
+  let dropped = -1, landed = false;
+  popo.idle();
+  game.wave = wave;
+  try {
+    wave.sound(audio);
+    await clock.tween(wave.ms, token, (t) => {
+      wave.set(t);
+      if (wave.rise > 0.1 && Math.random() < 0.7) fx.ripple(wave.faceX() + 20 + Math.random() * 160, game.waterline + 4, 0.6 + Math.random() * 0.6); // the lake stirs at its foot
+      const seat = wave.seat();
+      if (dropped < 0) { // riding the crest
+        popo.travelShift = seat.x - mid;
+        popo.dip = seat.y - game.waterline + Math.sin(t * 30) * 5;
+        popo.tilt = -0.26 + Math.sin(t * 24) * 0.06;
+        if (seat.x >= mid) { dropped = t; audio.play('woah'); }
+      } else { // left on the back of the wave, which lowers him to the water as it rolls on
+        const r = Math.min(1, ((t - dropped) * wave.ms) / 700);
+        popo.travelShift = (1 - r) * Math.sin(r * Math.PI) * 40;
+        popo.dip = Math.min(0, wave.backTop(mid) - game.waterline + 30 * r);
+        popo.tilt = -0.26 * (1 - r) + Math.sin(r * Math.PI * 2) * 0.1 * (1 - r);
+        if (!landed && popo.dip > -12) {
+          landed = true;
+          audio.play('skid');
+          fx.splash(bow, game.waterline, true);
+          fx.splash(home.raftLeftX, game.waterline, true);
+        }
+      }
+      if (popo.dip < -40 && Math.random() < 0.35) fx.splash(mid + popo.travelShift - 80, game.waterline + popo.dip + 60, false);
+    });
+  } catch (e) {
+    swallow(e);
+  } finally {
+    game.wave = null;
+    popo.travelShift = 0;
+    popo.dip = 0;
+    popo.tilt = 0;
+  }
+  // ta-da: a poof, and he has his fishing rod ready
+  const head = popo.headTop();
+  game.poof = { x: head.x + 30, y: head.y + 120, t: 0 };
+  audio.play('poof');
+  await clock.wait(130, token);
+  audio.play('tada');
+  fx.sparkle(popo.headTop().x + 40, popo.headTop().y + 50, 18);
+  await clock.wait(380, token);
+  // a happy hop, and a fish leaps up to say hello
+  game.storyCue('hop');
+  await fishSaysHello(game, token);
+  await clock.wait(250, token);
+}
+
 async function opening(game) {
   const token = newToken();
   try {
@@ -489,11 +546,11 @@ async function opening(game) {
     game.ui.setInstruction('');
     game.popo.travelShift = OFFSTAGE; // Popo is still on his way
     if (game.lessonFirst) {
-      // the journey: Popo rows in, the trapezium lesson plays in the card that rises from the shell, and then
-      // Swiftee swoops in with her welcome (she has just flown out of the lesson, to the right)
-      await clock.wait(500, token);
-      await popoArrives(game, token);
-      await clock.wait(500, token);
+      // the journey: the giant wave brings Popo in and sets him down, the trapezium lesson plays in the card that
+      // rises from the shell, and then Swiftee swoops in with her welcome (she has just flown out of the lesson)
+      await clock.wait(60, token);
+      await waveIn(game, token);
+      await clock.wait(400, token);
       await lessonCard(game, token);
       await welcome(game, token);
     } else {
@@ -599,7 +656,7 @@ async function lessonCard(game, token, { instant = false } = {}) {
     await until(() => game.lessonFinished);
     game.cardOpen(false);
     audio.hush(false);
-    await clock.wait(450, token); // the lesson's frame fades out first
+    await clock.wait(220, token); // the lesson's frame (Swiftee already gone from it) is fading out as the card starts to close
     audio.play('shimmer');
     fx.sparkle(px, py - 8, 6);
     game.hideRecall(); // the card shrinks into a bubble, which floats up and pops, and the camera comes back up

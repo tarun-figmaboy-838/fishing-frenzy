@@ -70,13 +70,11 @@ body{font-family:'Fredoka','Arial Rounded MT Bold','Nunito',system-ui,-apple-sys
 /* ---------- between two parts ----------
    The ending part's frame stays on top and dissolves away, drifting a little closer as if the camera flew on through
    it, over the next part, which settles into place; Swiftee flies out of the one and into the other (in the parts
-   themselves). A little snow blows across meanwhile (.flurry). */
-.part.leaving{visibility:visible;pointer-events:none;z-index:3;animation:partOut 1.3s cubic-bezier(.45,0,.35,1) both}
-.part.arriving{animation:partIn 1.3s cubic-bezier(.2,.7,.3,1) both}
-@keyframes partOut{from{opacity:1;transform:none}to{opacity:0;transform:scale(1.06)}}
-@keyframes partIn{from{transform:scale(.97)}to{transform:none}}
-.flurry{position:fixed;inset:0;width:100%;height:100%;z-index:35;pointer-events:none;opacity:0;transition:opacity .6s ease}
-.flurry.on{opacity:1;transition-duration:.35s}
+   themselves). */
+.part.leaving{visibility:visible;pointer-events:none;z-index:3;animation:partOut .45s ease both}
+.part.arriving{animation:partIn .45s ease both}
+@keyframes partOut{from{opacity:1}to{opacity:0}}
+@keyframes partIn{from{opacity:.999}to{opacity:1}}
 /* only while the next part is still loading: a frosted veil with "Getting ready…" */
 .veil{position:fixed;inset:0;z-index:40;visibility:hidden;opacity:0;pointer-events:none;overflow:hidden;
   background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.92) 0%,rgba(234,247,255,.9) 40%,rgba(159,209,245,.88) 100%);

@@ -553,26 +553,47 @@ svg[data-lencol] .edge{transition:stroke .4s ease}
    the 147 px tall art, drawn at the button's 74 px). Dark text on the yellow (white would barely show), white on the
    green. Hover lifts, a press
    pushes them down; a right answer turns green, a wrong one grey (never red) ---------- */
-.stage .opt.crys{position:relative;padding:0 22px;cursor:pointer;min-height:68px;
-  border:0 solid transparent;border-radius:999px;border-image:url(../assets/images/pill-primary.webp) 0 75 0 140 fill/0 38px 0 70px stretch;
+/* ---------- the yellow jelly pill (the answer buttons, check 4's labels and a right slot): drawn in CSS - a white rim
+   on a thin amber line, a yellow-to-orange gloss with a darker lip at the bottom, and two highlights - so it is one
+   seamless shape at any width. (It used to be a 9-slice of pill-primary.webp, whose stretched middle met its caps on
+   fractional pixels and showed as lines, squaring the pill off.) The colour tokens: --pill-top/--pill-bottom for
+   the body, --pill-line for the amber line ---------- */
+.stage .opt.crys{position:relative;isolation:isolate;padding:0 24px;cursor:pointer;min-height:68px;
+  --pill-line:#e3901a;border:3px solid #fff;border-radius:999px;
+  background:linear-gradient(180deg,#ffe066 0%,#ffcb33 40%,#ffa71f 74%,#f58c12 100%);
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -6px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55);
   color:#4a2300;font-family:'Baloo 2','Noto Sans Math',system-ui,sans-serif;font-weight:700;font-size:32px;line-height:1.05;letter-spacing:.4px;
   /* deep brown on the yellow, with a soft light edge below so it reads as pressed into the pill */
-  text-shadow:0 1.5px 0 rgba(255,244,200,.75);display:flex;align-items:center;justify-content:center;text-align:center;
+  text-shadow:0 1.5px 0 rgba(255,244,200,.75);display:flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;
   filter:drop-shadow(0 6px 8px rgba(120,60,0,.22));
   transition:transform .12s ease,filter .12s ease,opacity .3s ease}
-/* the pill art is the whole button: no box background, border or shadow in any state (older .opt rules set them) */
-.stage .opt.crys,.stage .opt.crys:hover,.stage .opt.crys:active,.stage .opt.crys:disabled,.stage .opt.crys.good,.stage .opt.crys.bad{background:none!important;box-shadow:none!important}
-.stage .opt.crys:hover:not(:disabled){transform:translateY(-3px);filter:brightness(1.05) drop-shadow(0 9px 10px rgba(120,60,0,.26))}
-.stage .opt.crys:active:not(:disabled){transform:translateY(4px);transition-duration:.06s;filter:drop-shadow(0 2px 3px rgba(120,60,0,.2))}
+/* the gloss: a soft highlight across the top left and a small one beside it, under the text */
+.stage .opt.crys::before,.stage .opt.crys::after,.stage .lab::before,.stage .lab::after{content:'';display:block;position:absolute;z-index:-1;
+  margin:0;opacity:1;border-radius:50%;background:rgba(255,255,255,.72);pointer-events:none}
+.stage .opt.crys::before,.stage .lab::before{left:13%;top:9%;width:26%;height:24%}
+.stage .opt.crys::after,.stage .lab::after{left:44%;top:12%;width:8%;height:15%}
+.stage .opt.crys:hover:not(:disabled){transform:translateY(-3px);border-color:#fff;
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -6px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55);
+  filter:brightness(1.05) drop-shadow(0 9px 10px rgba(120,60,0,.26))}
+.stage .opt.crys:active:not(:disabled){transform:translateY(4px);transition-duration:.06s;border-color:#fff;
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -3px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55);
+  filter:drop-shadow(0 2px 3px rgba(120,60,0,.2))}
 .stage .opt.crys:focus-visible{outline:4px solid #fff;outline-offset:4px}
-.stage .opt.crys.good{border-image-source:url(../assets/images/pill-success.webp);
+/* a right answer: the pill turns green */
+.stage .opt.crys.good{--pill-line:#2f9617;border-color:#fff;
+  background:linear-gradient(180deg,#b9f591 0%,#82e35c 40%,#4dc930 74%,#35ad1c 100%);
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -6px 0 rgba(20,110,10,.35),inset 0 2px 0 rgba(255,255,255,.5);
   color:#fff;text-shadow:-2px -2px 0 #155a0c,2px -2px 0 #155a0c,-2px 2px 0 #155a0c,2px 2px 0 #155a0c,0 -2px 0 #155a0c,0 2px 0 #155a0c,-2px 0 0 #155a0c,2px 0 0 #155a0c,0 3.5px 0 #155a0c;
   filter:drop-shadow(0 0 10px rgba(80,200,60,.55)) drop-shadow(0 6px 8px rgba(20,90,10,.25));animation:optGood .6s ease-out both;opacity:1}
 /* a wrong pick: the pill and its text turn grey and give a little shake */
-.stage .opt.crys.bad,.stage .opts-in .opt.crys.bad,.stage .soft-wrong .opt.crys.bad{cursor:not-allowed;color:#4a2300;
+.stage .opt.crys.bad,.stage .opts-in .opt.crys.bad,.stage .soft-wrong .opt.crys.bad{cursor:not-allowed;color:#4a2300;border-color:#fff;
+  background:linear-gradient(180deg,#ffe066 0%,#ffcb33 40%,#ffa71f 74%,#f58c12 100%);
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -6px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55);
   filter:grayscale(1) opacity(.7);animation:shake .45s ease both;opacity:1}
 /* answered: the answers not picked fade back */
-.stage .opt.crys:disabled:not(.good):not(.bad){opacity:.5;filter:grayscale(1);cursor:not-allowed;transform:none}
+.stage .opt.crys:disabled:not(.good):not(.bad){opacity:.5;filter:grayscale(1);cursor:not-allowed;transform:none;color:#4a2300;border-color:#fff;
+  background:linear-gradient(180deg,#ffe066 0%,#ffcb33 40%,#ffa71f 74%,#f58c12 100%);
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -6px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55)}
 @keyframes optGood{0%{transform:scale(1)}45%{transform:scale(1.07)}100%{transform:scale(1)}}
 @media (prefers-reduced-motion: reduce){.stage .opt.crys{transition:none}.stage .opt.crys.good,.stage .opt.crys.bad{animation:none}}
 /* check 1's shape cards: white cards on a blue 3D base */
@@ -626,22 +647,30 @@ svg[data-lencol] .edge{transition:stroke .4s ease}
 /* check 4 (screen 41): the shapes, boxes and labels drawn larger as one group, filling the ice card (CONFIG.q4) */
 .q4-wrap{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:876px 345px;transform:translate(0,4px) scale(1.12)} /* (translate = CONFIG.q4.ty) */
 
-.stage .lab::before{display:none}
-/* ---------- screen 41, game look: the labels are the UI kit's yellow pills (as the answer buttons; 9-slice for the
-   56 px label: left 140 / right 75 of the 147 px art) to pick up and drop; a right drop turns its box into the green
-   pill; the drop boxes are dashed blue targets ---------- */
-.stage .lab{justify-content:center;padding:0 12px;border:0 solid transparent;border-radius:999px;cursor:grab;
-  border-image:url(../assets/images/pill-primary.webp) 0 75 0 140 fill/0 29px 0 53px stretch;background:none;box-shadow:none;
+/* ---------- screen 41, game look: the labels are the same CSS jelly pills as the answer buttons (above), to pick up
+   and drop; a right drop turns its box into the green pill; the drop boxes are dashed blue targets ---------- */
+.stage .lab{justify-content:center;padding:0 16px;isolation:isolate;--pill-line:#e3901a;border:3px solid #fff;border-radius:999px;cursor:grab;
+  background:linear-gradient(180deg,#ffe066 0%,#ffcb33 40%,#ffa71f 74%,#f58c12 100%);
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -5px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55);
   color:#4a2300;font-family:'Baloo 2','Noto Sans Math',system-ui,sans-serif;font-weight:700;font-size:26px;letter-spacing:.4px;
   text-shadow:0 1.5px 0 rgba(255,244,200,.75);filter:drop-shadow(0 5px 7px rgba(120,60,0,.22))}
-.stage .lab:hover{box-shadow:none;filter:brightness(1.05) drop-shadow(0 7px 9px rgba(120,60,0,.26))}
-.stage .lab.sel{transform:translateY(-3px) scale(1.04);box-shadow:none;filter:drop-shadow(0 0 7px rgba(255,170,0,.95)) drop-shadow(0 5px 7px rgba(120,60,0,.22))}
-.stage .lab.drag{cursor:grabbing;transform:scale(1.08) rotate(-2deg);box-shadow:none;filter:drop-shadow(0 16px 14px rgba(120,60,0,.3))}
-.stage .lab.lock{width:276px;border-image:none;background:transparent;box-shadow:none;filter:none;color:#fff;
+.stage .lab:hover{border-color:#fff;box-shadow:0 0 0 2px var(--pill-line),inset 0 -5px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55);
+  filter:brightness(1.05) drop-shadow(0 7px 9px rgba(120,60,0,.26))}
+.stage .lab.sel{transform:translateY(-3px) scale(1.04);border-color:#fff;
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -5px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55);
+  filter:drop-shadow(0 0 7px rgba(255,170,0,.95)) drop-shadow(0 5px 7px rgba(120,60,0,.22))}
+.stage .lab.drag{cursor:grabbing;transform:scale(1.08) rotate(-2deg);border-color:#fff;
+  box-shadow:0 0 0 2px var(--pill-line),inset 0 -5px 0 rgba(205,100,0,.38),inset 0 2px 0 rgba(255,255,255,.55);
+  filter:drop-shadow(0 16px 14px rgba(120,60,0,.3))}
+/* dropped right: the label is just white text on its slot's green pill */
+.stage .lab.lock{width:276px;background:transparent;border-color:transparent;box-shadow:none;filter:none;color:#fff;
   text-shadow:-2px -2px 0 #155a0c,2px -2px 0 #155a0c,-2px 2px 0 #155a0c,2px 2px 0 #155a0c,0 3px 0 #155a0c;padding:0 10px}
+.stage .lab.lock::before,.stage .lab.lock::after{display:none}
 .stage .slot{border:3px dashed #5b9ee6;border-radius:18px;background:rgba(232,243,255,.75);box-shadow:none}
 .stage .slot.hot{border-color:#ff7a00;border-style:solid;background:rgba(255,240,224,.95);box-shadow:0 0 0 5px rgba(255,122,0,.2)}
-.stage .slot.filled.ok{border:3px solid transparent;border-radius:999px;border-image:url(../assets/images/pill-success.webp) 0 75 0 140 fill/0 33px 0 61px stretch;background:none;box-shadow:none}
+.stage .slot.filled.ok{border:3px solid #fff;border-radius:999px;
+  background:linear-gradient(180deg,#b9f591 0%,#82e35c 40%,#4dc930 74%,#35ad1c 100%);
+  box-shadow:0 0 0 2px #2f9617,inset 0 -5px 0 rgba(20,110,10,.35),inset 0 2px 0 rgba(255,255,255,.5)}
 .q4-strip{display:none}
 .q4-card{box-shadow:0 5px 0 #b9d3ee,0 10px 18px rgba(18,59,99,.12)}
 .q4-link{background:#5b9ee6;opacity:.9}

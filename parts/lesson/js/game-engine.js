@@ -110,8 +110,11 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   handOff() {
     if (!JOURNEY || this.handedOff) return;
     this.handedOff = true;
-    JOURNEY.finish({ results: Object.assign({}, this.state.results) });
+    // Swiftee takes off from the card first; the journey hears the lesson is over once she is off it (the card then
+    // closes behind her, and she swoops into fishing 2 with her welcome)
     this.depart();
+    const results = Object.assign({}, this.state.results), flight = Motion.reduced ? 0 : 1150;
+    setTimeout(() => JOURNEY.finish({ results }), flight);
   }
   // In the journey, Swiftee carries the learner between the parts. Arriving from fishing 1 (where she flew off over
   // Popo, out of the top left) she flies in from the top left and lands on her spot, and the lesson begins.

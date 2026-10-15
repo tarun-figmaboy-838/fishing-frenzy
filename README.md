@@ -42,8 +42,14 @@ the front page instead.
 - **Loading.** The first part loads behind the front page. While a part plays, the next one loads behind it,
   unseen, and begins the moment it is called. If one hasn't arrived yet, a frosted "Getting ready…" waits for it,
   with Try again if it fails.
-- **From fishing 1 to fishing 2**, Swiftee flies off ("Let's find out!") and the two lakes dissolve into each
-  other with a little snow blowing across. Popo rows in, and the lesson's card rises from the shell.
+- **From fishing 1 to fishing 2**, Swiftee flies off ("Let's find out!") and a giant wave swells up out of the
+  lake behind Popo, lifts his raft onto its crest and carries him off to the right (`waveAway` in fishing 1's
+  `src/sequences.js`). The two empty lakes cross-fade, and the wave rolls into fishing 2 from the left with Popo
+  riding it, leaving him on its back, which lowers him onto his spot as it moves on (`waveIn`). Then the shell opens
+  and the lesson's card rises. The wave is the lake itself: each game's
+  water pass (`src/water.js`, `uHump`/`uLean`) lifts the painted surface into a travelling hump with a long back, a
+  steep front and a crest leaning forward, filled with the lake's own water, lit and foaming in the shader;
+  `parts/shared/wave.js` steers it (swelling up, sinking back, where Popo rides) and adds the spray, fizz and splash.
 - **The lesson in the card.** Fishing 2 draws the shell, the bubble and the card (on its curtain canvas, in screen
   space, while its camera dives into the water behind), and tells the shell where the card's panel is. The shell
   lays the lesson's frame exactly there, see-through, so the lesson plays on the card with no winter scene of its

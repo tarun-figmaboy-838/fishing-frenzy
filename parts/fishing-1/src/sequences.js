@@ -768,8 +768,7 @@ async function swifteeArrives(game, line, token) {
 // In the journey, after Next: "Let's find out!" - Swiftee twirls and flies off over Popo's head, up and out of the
 // top left, to the lesson (where she flies in from the top left). The journey dissolves the lake into the lesson
 // as she goes.
-async function swifteeDeparts(game) {
-  const token = newToken();
+async function swifteeDeparts(game, token = newToken()) { // (waveAway shares its token, so the two run together)
   const bird = game.swiftee;
   if (!bird) return;
   const from = { x: bird.x, y: bird.y };
@@ -792,5 +791,55 @@ async function swifteeDeparts(game) {
   }
 }
 
-Object.assign(PopoGame, { mouthOf, correctCatch, wrongCatch, travelTo, tutorial, opening, discovery, finale, swifteeDeparts });
+// Next in the journey: Swiftee flies off to the lesson, and the giant wave swells up out of the lake behind Popo, lifts
+// his raft up its face onto its crest and carries him off to the right, to the next lake (fishing 2 brings him in on
+// it: waveIn). The journey moves on once the wave has gone. The wave itself: ../shared/wave.js.
+async function waveAway(game, detail) {
+  const token = newToken();
+  const { popo, fx, audio } = game;
+  const out = (x) => 1 - (1 - x) ** 3;
+  swifteeDeparts(game, token);
+  const wave = new PopoGame.Wave(game);
+  const home = popo.placement('fishing', 'idle'), bow = home.raftRightX, mid = (home.raftLeftX + bow) / 2;
+  let hitAt = -1, gone = false;
+  game.wave = wave;
+  try {
+    await clock.wait(game.fx.reduced ? 100 : 350, token);
+    wave.sound(audio);
+    await clock.tween(wave.ms, token, (t) => {
+      wave.set(t);
+      if (wave.rise > 0.1 && Math.random() < 0.7) fx.ripple(wave.faceX() + 20 + Math.random() * 160, game.waterline + 4, 0.6 + Math.random() * 0.6); // the lake stirs at its foot
+      if (hitAt < 0 && wave.faceX() >= home.raftLeftX - 60) { // the face reaches the raft
+        hitAt = t;
+        audio.play('woah');
+        fx.splash(bow, game.waterline, true);
+        fx.splash(home.raftLeftX, game.waterline, true);
+      }
+      if (!gone && wave.gone) { // the wave has left the stage with Popo: the journey moves on
+        gone = true;
+        game.wave = null;
+        popo.travelShift = 2600;
+        if (window.Journey) window.Journey.finish(detail);
+        return;
+      }
+      if (hitAt >= 0) {
+        const lift = out(Math.min(1, ((t - hitAt) * wave.ms) / 560)); // up the face onto the crest in half a second...
+        const seat = wave.seat();
+        popo.dip = (seat.y - game.waterline) * lift;
+        popo.tilt = -0.38 * lift + Math.sin(t * 40) * 0.05 * lift;
+        popo.travelShift = (seat.x - mid) * lift; // ...and away with it
+        if (Math.random() < 0.5) fx.splash(mid + popo.travelShift - 60, game.waterline + popo.dip + 50, false);
+      }
+    });
+  } catch (e) {
+    swallow(e);
+  } finally {
+    game.wave = null;
+    popo.travelShift = 2600; // gone with the wave
+    popo.dip = 0;
+    popo.tilt = 0;
+  }
+  if (!gone && window.Journey && isCurrent(token)) window.Journey.finish(detail);
+}
+Object.assign(PopoGame, { mouthOf, correctCatch, wrongCatch, travelTo, tutorial, opening, discovery, finale, swifteeDeparts, waveAway });
 })(window.PopoGame = window.PopoGame || {});

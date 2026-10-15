@@ -46,7 +46,6 @@ SHELL = '''() => { const T = window.FishingFrenzy;
            frames: document.querySelectorAll('iframe.part').length, live: document.querySelectorAll('iframe.part.live').length,
            cover: !document.getElementById('cover').hidden, veil: document.getElementById('veil').className,
            leaving: [...document.querySelectorAll('iframe.part.leaving')].map(f => f.title),
-           flurry: document.getElementById('flurry').classList.contains('on'),
            ctx: T.audio.ctx ? T.audio.ctx.state : null, inset: T.inset,
            insetIn: !!document.querySelector('iframe.part.inset.in'),
            insetRect: (() => { const e = document.querySelector('iframe.part.inset'); if (!e) return null; const r = e.getBoundingClientRect(); return [r.left, r.top, r.width, r.height]; })() }; }'''
@@ -208,8 +207,8 @@ def journey(p, engine):
     page.wait_for_timeout(300)
     page.screenshot(path=str(SHOTS / f'{tag}-4a-swiftee-takes-off.png'))
     st = until(shell, lambda s: s['leaving'] and s['live'] == 2, 5, 'the lake dissolves into fishing 2')
-    check(st['current'] == 'fishing-2' and st['flurry'] and 'on' not in st['veil'],
-          f'{tag}: Next on fishing 1: Swiftee flies off and its lake dissolves into fishing 2\'s (no veil)', ', '.join(st['leaving']))
+    check(st['current'] == 'fishing-2' and 'on' not in st['veil'],
+          f'{tag}: Next on fishing 1: Swiftee flies off, the giant wave carries Popo away and its lake cross-fades into fishing 2\'s (no veil)', ', '.join(st['leaving']))
     page.wait_for_timeout(600)
     page.screenshot(path=str(SHOTS / f'{tag}-4b-dissolve.png'))
 
