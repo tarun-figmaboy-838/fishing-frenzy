@@ -48,13 +48,14 @@ const CONFIG = {
   // fallback before the first screen is fitted
   fit: { cx: 876, cy: 346, w: 714, h: 474, padX: 62, padTop: 58, padBottom: 52, maxScale: 1.5 },
   lessonZoom: { scale: 1.3, tx: -56.5, ty: -88.6 },
-  // Measuring Kit layout (screens 16 and 23): board scale and offset that put the shape in the slab
-  measureRoom: { scale: 1.25, tx: -171.25, ty: -26.5 },
+  // Measuring Kit layout (screens 16 and 23): board scale and offset that put the shape large on the slab (which fills
+  // the stage, index.html), right of Swiftee, with room above and below its corners for the protractor
+  measureRoom: { scale: 1.6, tx: -257, ty: -122 },
   // layout 'focus' (screen 7): bubble hold and fade after the line, the shape's move to centre, wait before the hand
   focus: { holdMs: 3000, fadeMs: 350, moveMs: 700, handMs: 5000 },
   // screen 16 measuring walk: her size on the shape, fallback home spot and size, walk time per cm measured,
   // pause between sides, stroll speed to and from the shape (px per ms)
-  walker: { size: 135, homeX: 199, homeY: 639, homeSize: 259, msPerCm: 380, pauseMs: 550, strollPxPerMs: 0.42,
+  walker: { size: 150, homeX: 183, homeY: 631, homeSize: 259, msPerCm: 380, pauseMs: 550, strollPxPerMs: 0.42,
     tips: [[488, 272], [484, 281], [494, 273], [489, 270], [486, 278], [483, 279], [491, 281], [489, 281]] }, // tape exit per walk frame (@2x cell px)
   // screen 23 protractor walk (js/angle-walker.js): scale = stage px per kit board unit (sized so the protractor
   // covers the drawn angle); homeK = her home size

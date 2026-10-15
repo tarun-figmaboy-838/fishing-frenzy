@@ -200,17 +200,19 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .bubble{le
 .stage.scene .bubble{left:87px!important;top:auto!important;bottom:290px!important;max-width:380px;transform-origin:126px 100%}
 .stage.scene .bubble.manual{max-width:420px}
 .stage.scene .bubble .bubble-tail{left:120px;top:100%;margin-top:-1px;transform:none}
-/* measuring room (screens 16 and 23): the measuring slab replaces the ice panel and Swiftee stands small
-   in its bottom-left corner */
+/* measuring room (screens 16 and 23): the measuring slab replaces the ice panel. It fills the stage (index.html puts
+   it at 50,30 1180x659, its rim ~23px), with the shape large on it (CONFIG.measureRoom) and Swiftee standing full
+   size in its bottom-left corner */
 .slab-img{opacity:0;transition:opacity .45s ease}
 .stage.scene .panel-img{transition:opacity .45s ease}
 .stage.scene.measure-room .panel-img{opacity:0}
 .stage.scene.measure-room .slab-img{opacity:1}
-/* measuring screens: Swiftee stands large on the left of the slab (the walkers start and end at this size) */
-.stage.scene.measure-room .swiftee{left:138px!important;top:396px!important;transform-origin:0 0;transform:scale(.86);animation:none!important;
+/* measuring screens: Swiftee stands on the left of the slab, her feet on its ledge (the walkers start and end at her
+   size and place here, read from the page) */
+.stage.scene.measure-room .swiftee{left:53px!important;top:404px!important;transform-origin:0 0;transform:scale(1);animation:none!important;
   transition:opacity .2s ease,left .6s cubic-bezier(.22,.8,.3,1),top .6s cubic-bezier(.22,.8,.3,1),transform .6s cubic-bezier(.22,.8,.3,1)}
-.stage.scene.measure-room .bubble{left:146px!important;top:auto!important;bottom:300px!important;max-width:340px;transform-origin:60px 100%}
-.stage.scene.measure-room .bubble .bubble-tail{left:52px;top:100%;margin-top:-1px;transform:none}
+.stage.scene.measure-room .bubble{left:63px!important;top:auto!important;bottom:288px!important;max-width:340px;transform-origin:122px 100%}
+.stage.scene.measure-room .bubble .bubble-tail{left:122px;top:100%;margin-top:-1px;transform:none}
 @media (prefers-reduced-motion: reduce){.slab-img,.stage.scene .panel-img,.stage.scene.measure-room .swiftee{transition:none}}
 .stage.scene .opt{transition:transform .12s ease}
 /* screen 16: home Swiftee fades out while the walker measures the sides */
