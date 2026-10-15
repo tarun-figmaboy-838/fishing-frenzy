@@ -1,0 +1,311 @@
+"""The whole journey in real browsers: python3 tests/journey.py [chromium|webkit|all|phones]
+
+Serves the repo over HTTP and plays the journey through its real taps (Python Playwright, with its Chromium and
+WebKit: pip install playwright && playwright install chromium webkit):
+
+  front page   the banner and Play; the first part loads behind it
+  fishing 1    Popo's opening and a real catch in the first level; then its end (the mystery fish's question,
+               Swiftee's "Let's find out!") and Next
+  -> lesson    on camera, with no tap of its own: Swiftee flies off the lake, the lake dissolves into the lesson
+               (both scenes on screen at once) and she flies into it; screens 1 to 5 move on by themselves (there is no Next,
+               Back or screen list), the voice plays through the journey's <audio> and AudioContext; then its last
+               check, a wrong answer and the right one
+  -> fishing 2 with no tap: the lesson dissolves into the lake as Swiftee flies out of it; her welcome, a real catch, its end ("The End") and Next
+  front page   again, with fishing 1 loaded behind it for Play again; and Play again starts it
+
+Checks that one part plays at a time, that the next part loads while the one before it plays, that every part
+plays through the journey's one unlocked AudioContext, that each step is announced to a hosting page, and that
+no frame logs an error. `phones` takes the front page and fishing 1 at phone sizes (screenshots only).
+Screenshots go to /tmp/fishing-frenzy-journey (or $TA_SHOTS).
+"""
+import functools
+import http.server
+import os
+import sys
+import threading
+import time
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+
+ROOT = Path(__file__).resolve().parents[1]
+SHOTS = Path(os.environ.get('TA_SHOTS', '/tmp/fishing-frenzy-journey'))
+
+# every frame keeps its own uncaught errors, and the journey's announcements
+INIT = '''window.__errs = [];
+addEventListener('error', (e) => { if (e.message) window.__errs.push(location.pathname + ': ' + e.message); });
+addEventListener('unhandledrejection', (e) => window.__errs.push(location.pathname + ': rejected ' + (e.reason && e.reason.message || e.reason)));
+if (window.top === window) { window.__said = []; for (const k of ['part', 'finished', 'complete'])
+  addEventListener('fishing-frenzy:' + k, (e) => window.__said.push([k, e.detail])); }'''
+
+SHELL = '''() => { const T = window.FishingFrenzy;
+  return { phase: T.phase, current: T.current, f1: T.status('fishing-1'), lesson: T.status('lesson'), f2: T.status('fishing-2'),
+           frames: document.querySelectorAll('iframe.part').length, live: document.querySelectorAll('iframe.part.live').length,
+           cover: !document.getElementById('cover').hidden, veil: document.getElementById('veil').className,
+           leaving: [...document.querySelectorAll('iframe.part.leaving')].map(f => f.title),
+           flurry: document.getElementById('flurry').classList.contains('on'),
+           ctx: T.audio.ctx ? T.audio.ctx.state : null }; }'''
+
+FISH = '''() => { const d = window.popoDebug; if (!d) return null; const s = d.state;
+  return { phase: s.phase, caught: s.collected.length, next: !document.getElementById('btn-next').hidden,
+           shared: !!d.game.audio.ctx && d.game.audio.ctx === parent.FishingFrenzy.audio.ctx }; }'''
+
+# a fish to tap, in client px (the part's frame fills the window): one to catch (right) or not
+PICK1 = '''(right) => { const d = window.popoDebug, s = d.state, k = d.game.stage.scale, c = document.getElementById('stage').getBoundingClientRect();
+  const f = s.fish.find(f => !f.gone && !f.offstage && !f.escaping && f.x > 140 && f.x < 1530 && PopoGame.matchesTarget(f.key, s.target) === right);
+  return f ? [f.x * k + c.left, f.y * k + c.top] : null; }'''
+PICK2 = '''(right) => { const d = window.popoDebug, s = d.state, k = d.game.stage.scale, c = document.getElementById('stage').getBoundingClientRect();
+  const f = s.fish.find(f => !f.gone && !f.offstage && !f.escaping && f.x > 140 && f.x < 1530 && f.correct === right);
+  return f ? [f.x * k + c.left, f.y * k + c.top] : null; }'''
+
+LESSON = '''() => { const e = window.lessonDebug; if (!e) return null; const a = parent.FishingFrenzy.audio;
+  return { step: e.state.step, of: e.steps().length, started: e.state.started, done: e.state.done, line: e.state.line,
+           shared: !!e.actx && e.actx === a.ctx, voice: a.el.paused ? '' : a.el.currentSrc,
+           nav: document.querySelectorAll('[data-qa="nav-next"], [data-qa="nav-back"], [data-qa="screens"]').length }; }'''
+
+passed = []
+
+
+def check(ok, what, detail=''):
+    print(('PASS ' if ok else 'FAIL ') + what + (f' -- {detail}' if detail else ''), flush=True)
+    if not ok:
+        raise SystemExit(1)
+    passed.append(what)
+
+
+def serve():
+    handler = functools.partial(Quiet, directory=str(ROOT))
+    srv = http.server.ThreadingHTTPServer(('127.0.0.1', 0), handler)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    return srv, f'http://127.0.0.1:{srv.server_address[1]}/'
+
+
+class Quiet(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, *args):
+        pass
+
+
+def until(fn, cond, timeout, what):
+    end = time.time() + timeout
+    last = None
+    while time.time() < end:
+        try:
+            last = fn()
+        except Exception as e:  # a frame being swapped
+            last = f'({e.__class__.__name__})'
+        if not isinstance(last, str) and last is not None and cond(last):
+            return last
+        time.sleep(0.15)
+    raise SystemExit(f'FAIL timed out: {what}; last {last}')
+
+
+def part(page, name):
+    for f in page.frames:
+        if f'/parts/{name}/' in f.url:
+            return f
+    return None
+
+
+def tap(page, frame, pick, right=True, timeout=40):
+    end = time.time() + timeout
+    while time.time() < end:
+        pt = frame.evaluate(pick, right)
+        if pt:
+            page.mouse.click(*pt)
+            return True
+        time.sleep(0.1)
+    return False
+
+
+def catch_one(page, frame, pick, label):
+    for _ in range(6):  # a fish can swim out from under the tap: try again
+        st = until(lambda: frame.evaluate(FISH), lambda s: s['phase'] == 'ready', 120, f'{label} ready to fish')
+        if not tap(page, frame, pick):
+            continue
+        try:
+            until(lambda: frame.evaluate(FISH), lambda s: s['caught'] > st['caught'], 25, 'the catch')
+            return
+        except SystemExit:
+            pass
+    raise SystemExit(f'FAIL {label}: no catch landed')
+
+
+def errors_in(page):
+    out = []
+    for f in page.frames:
+        try:
+            out += f.evaluate('() => window.__errs || []')
+        except Exception:
+            pass
+    return out
+
+
+def launch(p, engine):
+    """The engine Playwright expects, or else the newest of that engine already installed on this machine."""
+    try:
+        return getattr(p, engine).launch()
+    except Exception:
+        import glob
+        builds = sorted(glob.glob(os.path.expanduser(f'~/Library/Caches/ms-playwright/{engine}-*/pw_run.sh')) +
+                        glob.glob(os.path.expanduser(f'~/.cache/ms-playwright/{engine}-*/pw_run.sh')))
+        if not builds:
+            raise
+        return getattr(p, engine).launch(executable_path=builds[-1])
+
+
+def journey(p, engine):
+    SHOTS.mkdir(parents=True, exist_ok=True)
+    srv, url = serve()
+    browser = launch(p, engine)
+    ctx = browser.new_context(viewport={'width': 1280, 'height': 720})
+    ctx.add_init_script(INIT)
+    page = ctx.new_page()
+    console = []
+    page.on('console', lambda m: console.append(m.text) if m.type == 'error' else None)
+    page.on('pageerror', lambda e: console.append(str(e)))
+    shell = lambda: page.evaluate(SHELL)
+    tag = engine
+
+    page.goto(url + '?debug')
+    st = until(shell, lambda s: s['f1'] == 'ready', 60, 'fishing 1 loads behind the front page')
+    check(st['cover'] and st['frames'] == 1 and st['live'] == 0, f'{tag}: the front page shows; fishing 1 has loaded, unseen, behind it')
+    page.wait_for_timeout(2600)  # the cover's entrance (title, Play)
+    page.screenshot(path=str(SHOTS / f'{tag}-1-front-page.png'))
+
+    # ---------- Play -> fishing 1 ----------
+    page.click('#play', force=True)
+    st = until(shell, lambda s: s['current'] == 'fishing-1' and not s['cover'], 10, 'Play starts fishing 1')
+    check(st['ctx'] == 'running', f'{tag}: Play starts fishing 1 and unlocks the sound', st['ctx'])
+    f1 = part(page, 'fishing-1')
+    fs = until(lambda: f1.evaluate(FISH), lambda s: s['phase'] != 'intro', 10, 'fishing 1 begins')
+    check(fs['shared'], f'{tag}: fishing 1 plays through the journey\'s AudioContext')
+    page.wait_for_timeout(3500)
+    page.screenshot(path=str(SHOTS / f'{tag}-2-fishing-1.png'))
+    catch_one(page, f1, PICK1, f'{tag}: fishing 1')
+    check(True, f'{tag}: fishing 1: a real catch lands in the bucket')
+    st = until(shell, lambda s: s['lesson'] in ('loading', 'ready'), 15, 'the lesson starts loading')
+    check(True, f'{tag}: the lesson loads behind fishing 1 while it plays', st['lesson'])
+
+    # its end: the mystery fish's question, Swiftee's "Let's find out!" and Next
+    f1.evaluate('() => PopoGame.finale(window.popoDebug.game)')
+    until(lambda: f1.evaluate(FISH), lambda s: s['next'], 40, 'fishing 1 shows Next')
+    page.screenshot(path=str(SHOTS / f'{tag}-3-fishing-1-end.png'))
+    f1.locator('#btn-next').click()
+    page.wait_for_timeout(300)
+    page.screenshot(path=str(SHOTS / f'{tag}-4a-swiftee-takes-off.png'))
+    st = until(shell, lambda s: s['leaving'] and s['live'] == 2, 5, 'the lake dissolves into the lesson')
+    check(st['current'] == 'lesson' and st['flurry'] and 'on' not in st['veil'],
+          f'{tag}: Next on fishing 1: Swiftee flies off and the lake dissolves into the lesson (no veil)', ', '.join(st['leaving']))
+    page.wait_for_timeout(450)
+    page.screenshot(path=str(SHOTS / f'{tag}-4b-dissolve.png'))
+    page.wait_for_timeout(900)
+    page.screenshot(path=str(SHOTS / f'{tag}-4c-swiftee-arrives.png'))
+
+    # ---------- -> the lesson ----------
+    st = until(shell, lambda s: s['current'] == 'lesson' and not s['leaving'], 30, 'the lesson begins')
+    st = until(shell, lambda s: s['f1'] is None, 5, 'fishing 1 is removed')
+    check(st['live'] == 1, f'{tag}: the lesson begins with no tap of its own; fishing 1 is gone')
+    lf = part(page, 'lesson')
+    ls = until(lambda: lf.evaluate(LESSON), lambda s: s['started'] and s['line'], 15, 'the lesson speaks')
+    check(ls['of'] == 42 and ls['nav'] == 0, f'{tag}: the lesson has 42 screens and no Next, Back or screen list', f"{ls['of']} screens, {ls['nav']} buttons")
+    check('Remember we learnt' in ls['line'], f'{tag}: screen 1 opens with Swiftee\'s first line', ls['line'])
+    check(ls['shared'], f'{tag}: the lesson plays through the journey\'s AudioContext')
+    if engine == 'chromium':
+        v = until(lambda: lf.evaluate(LESSON), lambda s: 'parts/lesson/assets/vo/' in s['voice'], 10, 'the voice-over plays')
+        check(True, f'{tag}: the voice-over plays in the journey\'s unlocked <audio>', v['voice'].split('/')[-1])
+    page.wait_for_timeout(1500)
+    page.screenshot(path=str(SHOTS / f'{tag}-5-lesson.png'))
+    ls = until(lambda: lf.evaluate(LESSON), lambda s: s['step'] >= 4, 90, 'the lesson moves on by itself')
+    check(True, f'{tag}: screens 1-5 move on by themselves', f"now screen {ls['step'] + 1}")
+
+    # the last check: a wrong answer, then the right one; the lesson then hands over by itself
+    lf.evaluate('() => window.lessonDebug.jumpTo(41)')
+    lf.locator('[data-qa="opt-a"]').wait_for(state='visible', timeout=40000)
+    page.wait_for_timeout(1200)
+    lf.locator('[data-qa="opt-a"]').click()
+    page.wait_for_timeout(2500)
+    ls = lf.evaluate(LESSON)
+    check(ls['step'] == 41 and not ls['done'], f'{tag}: a wrong answer on the last check keeps the lesson there')
+    lf.locator('[data-qa="opt-b"]').click()
+    page.wait_for_timeout(1200)
+    page.screenshot(path=str(SHOTS / f'{tag}-6-lesson-last-check.png'))
+
+    # ---------- -> fishing 2 ----------
+    st = until(shell, lambda s: s['phase'] == 'switching', 60, 'the lesson hands over to fishing 2')
+    page.wait_for_timeout(250)
+    page.screenshot(path=str(SHOTS / f'{tag}-7a-swiftee-takes-off.png'))
+    st = until(shell, lambda s: s['current'] == 'fishing-2' and s['leaving'], 5, 'the lesson dissolves into the lake')
+    check(True, f'{tag}: after the last check the lesson hands over by itself: Swiftee flies out and it dissolves into the lake', ', '.join(st['leaving']))
+    page.wait_for_timeout(500)
+    page.screenshot(path=str(SHOTS / f'{tag}-7b-dissolve.png'))
+    res = page.evaluate('() => FishingFrenzy.results')
+    check(res.get('lesson', {}).get('results', {}).get('cfu5') is False, f'{tag}: the lesson reports its checks (the last one missed first time)')
+    until(shell, lambda s: s['lesson'] is None and s['live'] == 1, 5, 'the lesson is removed')
+    f2 = part(page, 'fishing-2')
+    fs = until(lambda: f2.evaluate(FISH), lambda s: s['phase'] != 'intro', 10, 'fishing 2 begins')
+    check(fs['shared'], f'{tag}: fishing 2 plays through the journey\'s AudioContext')
+    page.wait_for_timeout(2500)
+    page.screenshot(path=str(SHOTS / f'{tag}-7c-fishing-2-welcome.png'))
+    catch_one(page, f2, PICK2, f'{tag}: fishing 2')
+    check(True, f'{tag}: fishing 2: a real catch lands in the bucket')
+
+    # its end, as its dev panel's Finale: the celebration, the big catch, "The End" and Next
+    f2.evaluate('''() => { const g = window.popoDebug.game, s = window.popoDebug.state, L = PopoGame.LEVELS;
+      g.reset(); g.startLevel(L.length - 1); g.play(); s.levelCaught = L[L.length - 1].catches; PopoGame.finishLevel(g); }''')
+    until(lambda: f2.evaluate(FISH), lambda s: s['next'], 150, 'fishing 2 shows Next at The End')
+    page.screenshot(path=str(SHOTS / f'{tag}-8-the-end.png'))
+    st = until(shell, lambda s: s['f1'] == 'ready', 60, 'fishing 1 loads again for Play again')
+    check(True, f'{tag}: fishing 1 is loaded again behind fishing 2, for Play again')
+    f2.locator('#btn-next').click()
+
+    # ---------- the front page again ----------
+    st = until(shell, lambda s: s['phase'] == 'cover' and s['cover'], 15, 'the front page comes back')
+    st = until(shell, lambda s: s['f2'] is None, 5, 'fishing 2 is removed')
+    check(st['frames'] == 1 and st['live'] == 0, f'{tag}: the journey ends on the front page, ready to play again')
+    said = page.evaluate('() => window.__said.map(([k, d]) => k + ":" + (d.part || ""))')
+    check(said == ['part:fishing-1', 'finished:fishing-1', 'part:lesson', 'finished:lesson', 'part:fishing-2', 'finished:fishing-2', 'complete:'],
+          f'{tag}: every step is announced in order', ', '.join(said))
+    page.wait_for_timeout(2600)
+    page.screenshot(path=str(SHOTS / f'{tag}-9-front-page-again.png'))
+    page.click('#play', force=True)
+    until(shell, lambda s: s['current'] == 'fishing-1' and not s['cover'], 10, 'Play again')
+    check(True, f'{tag}: Play again starts fishing 1 at once')
+
+    errs = errors_in(page) + console
+    check(not errs, f'{tag}: no errors in any frame', '; '.join(errs[:4]))
+    browser.close()
+    srv.shutdown()
+
+
+def phones(p):
+    SHOTS.mkdir(parents=True, exist_ok=True)
+    srv, url = serve()
+    browser = launch(p, 'chromium')
+    for name, size in [('phone-landscape', (844, 390)), ('phone-portrait', (390, 844)), ('tablet', (1024, 768))]:
+        ctx = browser.new_context(viewport={'width': size[0], 'height': size[1]}, is_mobile=True, has_touch=True, device_scale_factor=2)
+        ctx.add_init_script(INIT)
+        page = ctx.new_page()
+        page.goto(url)
+        until(lambda: page.evaluate(SHELL), lambda s: s['f1'] == 'ready', 60, 'fishing 1 loads')
+        page.wait_for_timeout(2600)
+        page.screenshot(path=str(SHOTS / f'{name}-front-page.png'))
+        page.tap('#play', force=True)
+        until(lambda: page.evaluate(SHELL), lambda s: s['current'] == 'fishing-1', 10, 'Play')
+        page.wait_for_timeout(4000)
+        page.screenshot(path=str(SHOTS / f'{name}-fishing-1.png'))
+        errs = errors_in(page)
+        check(not errs, f'{name}: front page and fishing 1 with no errors', '; '.join(errs[:3]))
+        ctx.close()
+    browser.close()
+    srv.shutdown()
+
+
+if __name__ == '__main__':
+    which = sys.argv[1] if len(sys.argv) > 1 else 'chromium'
+    with sync_playwright() as p:
+        if which in ('chromium', 'all'):
+            journey(p, 'chromium')
+        if which in ('webkit', 'all'):
+            journey(p, 'webkit')
+        if which in ('phones', 'all'):
+            phones(p)
+    print(f'ALL PASSED ({len(passed)} checks); screenshots in {SHOTS}')

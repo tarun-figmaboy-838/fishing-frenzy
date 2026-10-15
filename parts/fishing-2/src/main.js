@@ -1,0 +1,115 @@
+(function (PopoGame) {
+'use strict';
+if (window.Journey && window.Journey.leaving) return; // opened on its own: on the way to the journey's front page
+const journey = window.Journey && window.Journey.embedded ? window.Journey : null;
+const { assets, loadLocalData, loadTitle, loadCoreAssets, AudioEngine, Game, Stage, state, PHASE, UI } = PopoGame;
+
+const stage = new Stage(document.getElementById('stage'), document.getElementById('world'));
+const ui = new UI(stage);
+const audio = new AudioEngine();
+const game = new Game({ stage, ui, audio });
+
+// On a phone or tablet, Play also goes full screen in landscape where the browser allows it.
+function fullScreen() {
+  const el = document.documentElement;
+  const request = el.requestFullscreen || el.webkitRequestFullscreen;
+  if (!request || document.fullscreenElement || !window.matchMedia('(pointer: coarse)').matches) return;
+  Promise.resolve(request.call(el, { navigationUI: 'hide' }))
+    .then(() => screen.orientation && screen.orientation.lock && screen.orientation.lock('landscape'))
+    .catch(() => { /* not allowed here: the game still fits the screen */ });
+}
+
+ui.on('play', () => { fullScreen(); game.pressPlay(); });
+ui.on('playHover', (on) => game.onPlayHover(on));
+ui.on('playPress', () => game.onPlayPress());
+ui.on('fishTap', (fish, point) => game.onFishTap(fish, point));
+document.getElementById('stage').addEventListener('pointerdown', (e) => {
+  if (e.target.closest('button, .hud, .overlay')) return;
+  const point = stage.toStage(e.clientX, e.clientY);
+  if (game.onCharacterTap(point)) return; // Swiftee twirls, a fish peeks out of the bucket
+  if (game.skipDialogue()) return;
+  game.onWaterTap(point);
+});
+ui.on('pause', () => { audio.play('ui'); game.togglePause(); });
+ui.on('resume', () => { audio.play('ui'); game.togglePause(); });
+ui.on('restart', () => { audio.play('ui'); game.restart(); });
+ui.on('sound', () => { game.toggleSound(); audio.play('ui'); });
+ui.on('next', () => { audio.play('ui'); game.next(); });
+
+try {
+  if (localStorage.getItem('popo-muted') === '1') {
+    state.muted = true;
+    audio.setMuted(true);
+    ui.setSound(true);
+  }
+} catch (e) { /* storage may be unavailable */ }
+
+window.addEventListener('pagehide', (event) => { if (!event.persisted) game.dispose(); });
+window.addEventListener('resize', () => game.resize());
+// Safari ignores user-scalable=no, so pinch zoom is stopped here
+document.addEventListener('gesturestart', (e) => e.preventDefault());
+window.addEventListener('orientationchange', () => setTimeout(() => game.resize(), 150));
+// Browsers (Brave and Safari especially) can suspend audio when the tab loses focus or the
+// device sleeps; the next tap or key press brings it back.
+const wakeAudio = () => { if (!state.paused && !document.hidden) audio.resume(); };
+for (const type of ['pointerdown', 'touchend', 'keydown']) document.addEventListener(type, wakeAudio, true);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) audio.suspend();
+  else if (!state.paused) audio.resume();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && state.phase !== PHASE.INTRO) game.togglePause();
+});
+game.resize();
+
+const params = new URLSearchParams(location.search);
+if (params.has('debug') || params.get('dev') === '1') {
+  window.popoDebug = { state, game };
+}
+
+// The speech bubbles are measured in the game's font, so it should be in before the story starts
+// (but a slow font never holds the game up for long).
+const fontReady = () => (document.fonts && document.fonts.load
+  ? Promise.race([document.fonts.load('600 20px Fredoka').catch(() => {}), new Promise((r) => setTimeout(r, 3000))])
+  : Promise.resolve());
+
+if (journey) {
+  // In the journey the front page (index.html at the root) has the banner and Play: this game loads
+  // behind the lesson, says how far it has got and when it is ready, and starts when the shell says.
+  ui.el.start.hidden = true;
+  journey.onBegin((opts) => {
+    document.getElementById('stage').classList.remove('booting');
+    game.arriving = !!(opts && opts.arrive); // from the lesson, with Swiftee (sequences.js opening)
+    game.start();
+  });
+  journey.onDispose(() => { game.dispose(); audio.release(); });
+  loadLocalData()
+    .then(() => loadCoreAssets((k) => journey.progress(k)))
+    .then(() => Promise.all([audio.prepareVoices(PopoGame.VOICE_DATA), fontReady()]))
+    .then(() => {
+      game.popo.rowTint(); // decode the paddling frames now, not on the first stroke
+      assets.ready = true;
+      journey.ready();
+    })
+    .catch((err) => journey.failed(err && err.message));
+} else {
+// The title comes first and plays while the rest arrives under a loading bar; a tap on Play
+// before then is kept, and the game begins the moment everything is in.
+ui.setLoading(0);
+loadTitle()
+  .then(() => {
+    ui.showTitle();
+    game.showIdleScene();
+    return loadCoreAssets((k) => ui.setLoading(k));
+  })
+  .then(() => Promise.all([audio.prepareVoices(PopoGame.VOICE_DATA), fontReady()]))
+  .then(() => {
+    game.popo.rowTint(); // decode the paddling frames now, not on the first stroke
+    assets.ready = true;
+    ui.setLoading(1);
+    ui.loaded();
+    if (game.playQueued) game.pressPlay();
+  })
+  .catch(() => ui.loadFailed());
+}
+})(window.PopoGame = window.PopoGame || {});

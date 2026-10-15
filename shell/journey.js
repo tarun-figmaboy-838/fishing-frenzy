@@ -1,0 +1,601 @@
+// =====================================================================
+// FISHING FRENZY - the journey (index.html at the root).
+// One front page (the Fishing Frenzy banner, alive, and Play: shell/front-page.js), then three parts, one after another, each a whole
+// game in its own frame (parts/*/index.html; each loads shell/bridge.js):
+//   1. fishing-1  Popo's shape fishing: triangles, pentagons, hexagons, quadrilaterals. Then a fish he has never
+//                 seen leaps out ("What kind of fish was that?") and Swiftee flies in: "Let's find out!" - Next
+//   2. lesson     Swiftee's trapezium lesson ("Remember we learnt about quadrilaterals earlier."): what makes a
+//                 trapezium, its bases and legs, its types, its angles, a recap and five checks
+//   3. fishing-2  Swiftee flies in from the lesson ("Great job! You know all about trapeziums!") and Popo
+//                 catches trapezium fish in five levels, to "The End" - Next
+// and then the front page again, ready to play again.
+//
+// Sound: browsers allow it only after a tap. The Play tap unlocks one AudioContext, one <audio> element and the
+// speech voice in this page, and every part plays through them (bridge.js), so no part needs a tap of its own.
+// Loading: while a part plays, the next one loads behind it, unseen, and begins the moment it is called.
+// Between two parts Swiftee carries the learner across, on camera: she flies off in the part that ends (out of the
+// top left of the lake; out of the right of the lesson), the next part begins underneath and the two scenes
+// dissolve into each other with a little snow blowing across, and she flies in on the other side (into the lesson
+// from the top left; into the lake from the right). Only if the next part has not loaded yet does a frosted veil
+// say "Getting ready…" until it has.
+//
+// URL options: ?start=lesson or ?start=fishing-2 begins the first journey there; ?dev=1 adds one panel that jumps
+// to any screen of the journey (each part's own jumps, the lesson's 42 screens, the front page); ?debug passes on
+// to the parts (window.popoDebug in the fishing games). Every step is announced as a window event
+// ('fishing-frenzy:part', ':finished', ':complete') and posted to a page that hosts the journey in a frame.
+// =====================================================================
+(function () {
+  'use strict';
+
+  const PARTS = [
+    { id: 'fishing-1', src: 'parts/fishing-1/index.html', title: "Popo's shape fishing" },
+    { id: 'lesson', src: 'parts/lesson/index.html', title: "Swiftee's trapezium lesson" },
+    { id: 'fishing-2', src: 'parts/fishing-2/index.html', title: "Popo's trapezium fishing" },
+  ];
+  // times in ms
+  const T = {
+    coverLeave: 900,     // the cover zooms away (css .leaving), then is hidden
+    takeOff: 420,        // a part ends: Swiftee takes off in it this long before its scene starts to dissolve
+    dissolve: 1300,      // the ending part's scene dissolves into the next one's (css .part.leaving / .arriving)
+    veil: 350,           // the frosted "Getting ready…" veil fades in or out (css .veil)
+    waitNote: 400,       // waiting longer than this for the next part shows "Getting ready…"
+    preloadAfter: 2500,  // a part has begun: this long after, the next one starts loading behind it
+    stall: 45000,        // no word from a loading part for this long: Try again
+    backIn: 250,         // the journey's end: the front page comes back this long after fishing 2's iris shuts
+  };
+  const params = new URLSearchParams(location.search);
+  const DEV = params.get('dev') === '1';
+  const reduced = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const $ = (id) => document.getElementById(id);
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  // ---------- sound: unlocked once, by the Play tap, and shared by every part ----------
+  // 60 ms of silence: playing it inside the tap unlocks the <audio> element for every clip after it
+  const SILENT = 'data:audio/wav;base64,UklGRgQCAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YeABAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA=';
+  const audio = {
+    ctx: null,
+    outs: new Map(),
+    el: (() => { try { const a = new Audio(); a.preload = 'auto'; return a; } catch (e) { return null; } })(),
+    // the fishing games' Sound button keeps its choice here; the journey's own few sounds follow it
+    muted() { try { return localStorage.getItem('popo-muted') === '1'; } catch (e) { return false; } },
+    // inside a tap (Play, or a dev jump)
+    unlock() {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) { /* older WebKit */ }
+      if (AC && !this.ctx) { try { this.ctx = new AC(); } catch (e) { this.ctx = null; } }
+      if (this.ctx) {
+        try { this.ctx.resume(); } catch (e) { /* resumes later */ }
+        try {
+          const src = this.ctx.createBufferSource();
+          src.buffer = this.ctx.createBuffer(1, 1, 22050);
+          src.connect(this.ctx.destination);
+          src.start(0);
+        } catch (e) { /* nothing to play */ }
+      }
+      const el = this.el;
+      if (el && !this.elUnlocked && el.paused) { // (never over a voice clip that is playing)
+        this.elUnlocked = true;
+        try {
+          el.src = SILENT;
+          const p = el.play();
+          // refused: the next tap tries again (an abort means a voice clip took over, so it is unlocked)
+          if (p && p.then) p.then(() => { if (el.src === SILENT) el.pause(); }, (err) => { if (err && err.name === 'NotAllowedError') this.elUnlocked = false; });
+        } catch (e) { this.elUnlocked = false; }
+      }
+      const s = window.speechSynthesis;
+      if (s && !this.speechUnlocked && typeof SpeechSynthesisUtterance !== 'undefined') {
+        this.speechUnlocked = true;
+        try { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; s.speak(u); } catch (e) { /* no voice */ }
+      }
+    },
+    resume() { if (this.ctx && this.ctx.state !== 'running') { try { this.ctx.resume(); } catch (e) { /* later */ } } },
+    // what the parts ask for (bridge.js)
+    context() { return this.ctx; },
+    output(part) {
+      if (!this.ctx) return null;
+      let g = this.outs.get(part);
+      if (!g) { g = this.ctx.createGain(); g.connect(this.ctx.destination); this.outs.set(part, g); }
+      return g;
+    },
+    voiceElement() { return this.el; },
+    speech() {
+      return window.speechSynthesis && typeof SpeechSynthesisUtterance !== 'undefined'
+        ? { synth: window.speechSynthesis, Utterance: SpeechSynthesisUtterance } : null;
+    },
+    // a part's scene dissolves away: its sound fades with it
+    fade(part, ms) {
+      const g = this.outs.get(part);
+      if (g) { try { g.gain.setTargetAtTime(0, this.ctx.currentTime, Math.max(0.05, ms / 3000)); } catch (e) { /* closed */ } }
+    },
+    // a part leaves: its sound fades out and is cut off; the lesson's voice stops
+    release(part) {
+      const g = this.outs.get(part);
+      if (g) {
+        this.outs.delete(part);
+        try { g.gain.setTargetAtTime(0, this.ctx.currentTime, 0.08); } catch (e) { /* closed */ }
+        setTimeout(() => { try { g.disconnect(); } catch (e) { /* gone */ } }, 600);
+      }
+      if (part === 'lesson') {
+        const el = this.el;
+        if (el) { try { el.pause(); } catch (e) { /* idle */ } el.onended = el.onerror = el.onplaying = null; }
+        try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* no voice */ }
+      }
+    },
+    // the front page's sounds, as fishing 2's title plays them (its audio.js: bloop on hover; splashSmall and cheer on Play)
+    tone(o) {
+      const c = this.ctx, start = o.t != null ? o.t : c.currentTime, dur = o.dur || 0.2;
+      const osc = c.createOscillator(), g = c.createGain();
+      osc.type = o.type || 'sine';
+      osc.frequency.setValueAtTime(o.freq, start);
+      if (o.to) osc.frequency.exponentialRampToValueAtTime(o.to, start + dur);
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.linearRampToValueAtTime(o.gain || 0.2, start + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+      osc.connect(g); g.connect(c.destination);
+      osc.start(start); osc.stop(start + dur + 0.05);
+    },
+    noise(o) {
+      const c = this.ctx, start = c.currentTime, dur = o.dur || 0.3;
+      if (!this.noiseBuf) {
+        this.noiseBuf = c.createBuffer(1, c.sampleRate * 2, c.sampleRate);
+        const d = this.noiseBuf.getChannelData(0);
+        for (let i = 0; i < d.length; i += 1) d[i] = Math.random() * 2 - 1;
+      }
+      const src = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+      src.buffer = this.noiseBuf;
+      f.type = o.type || 'lowpass';
+      f.frequency.setValueAtTime(o.freq || 1000, start);
+      if (o.to) f.frequency.exponentialRampToValueAtTime(o.to, start + dur);
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.linearRampToValueAtTime(o.gain || 0.3, start + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+      src.connect(f); f.connect(g); g.connect(c.destination);
+      src.start(start); src.stop(start + dur + 0.05);
+    },
+    play(kind) {
+      if (!this.ctx || this.muted()) return;
+      try {
+        const now = this.ctx.currentTime;
+        if (kind === 'bloop') { this.tone({ freq: 420, to: 980, dur: 0.12, gain: 0.09 }); this.tone({ freq: 620, to: 1300, t: now + 0.08, dur: 0.09, gain: 0.05 }); }
+        if (kind === 'splash') { this.noise({ dur: 0.26, type: 'lowpass', freq: 1800, to: 500, gain: 0.3 }); this.tone({ freq: 900, to: 320, dur: 0.14, gain: 0.1 }); }
+        if (kind === 'cheer') [523.25, 659.25, 783.99].forEach((n, i) => this.tone({ freq: n, t: now + i * 0.07, type: 'triangle', dur: 0.16, gain: 0.08 }));
+      } catch (e) { /* no sound */ }
+    },
+  };
+
+  // ---------- the parts' frames ----------
+  const frames = new Map(); // part id -> { id, index, el, status: loading | ready | failed, progress, waiters }
+  function partUrl(p) {
+    const u = new URL(p.src, location.href);
+    u.searchParams.set('embed', '1');
+    ['dev', 'debug'].forEach((k) => { if (params.has(k)) u.searchParams.set(k, params.get(k) || '1'); });
+    return u.href;
+  }
+  // start loading part `index` behind everything (once)
+  function load(index) {
+    const p = PARTS[index];
+    let f = frames.get(p.id);
+    if (f) return f;
+    const el = document.createElement('iframe');
+    el.className = 'part';
+    el.title = p.title;
+    el.setAttribute('allow', 'autoplay; fullscreen');
+    el.setAttribute('aria-hidden', 'true');
+    el.tabIndex = -1;
+    f = { id: p.id, index, el, status: 'loading', progress: 0, waiters: [], heard: Date.now() };
+    frames.set(p.id, f);
+    el.src = partUrl(p);
+    $('parts').appendChild(el);
+    f.watch = setInterval(() => { if (f.status === 'loading' && Date.now() - f.heard > T.stall) fail(f, 'no answer'); }, 2000);
+    return f;
+  }
+  // fn(frame) once the part is ready (a retried part passes its new frame)
+  function when(f, fn) { if (f.status === 'ready') fn(f); else f.waiters.push(fn); }
+  function ready(f) {
+    if (f.status === 'ready') return;
+    f.status = 'ready'; f.progress = 1;
+    clearInterval(f.watch);
+    f.waiters.splice(0).forEach((fn) => fn(f));
+    status.update();
+    dev.update();
+  }
+  function fail(f, why) {
+    if (f.status !== 'loading') return;
+    f.status = 'failed'; f.why = why;
+    clearInterval(f.watch);
+    status.update();
+  }
+  function retry(f) {
+    const waiters = f.waiters.splice(0);
+    drop(f);
+    const g = load(f.index);
+    g.waiters.push(...waiters);
+    status.swap(f, g);
+  }
+  function drop(f) {
+    clearInterval(f.watch);
+    if (frames.get(f.id) === f) frames.delete(f.id);
+    f.el.remove();
+    dev.forget(f);
+  }
+  // the shell -> a part: begin or dispose (direct where its page can be reached, else a message)
+  function tell(f, type, opts) {
+    try {
+      const J = f.el.contentWindow && f.el.contentWindow.Journey;
+      if (J && J['_' + type]) { J['_' + type](opts); return; }
+    } catch (e) { /* file://: messages only */ }
+    try { f.el.contentWindow.postMessage({ journey: true, type, opts }, '*'); } catch (e) { /* gone */ }
+  }
+  // a part -> the shell (bridge.js): ready, progress, failed, finish
+  function fromPart(id, type, detail, win) {
+    const f = frames.get(id);
+    if (!f || (win && win !== f.el.contentWindow)) return;
+    f.heard = Date.now();
+    try {
+      if (type === 'ready') ready(f);
+      else if (type === 'progress') { f.progress = Math.max(f.progress, Math.min(1, +detail || 0)); status.update(); }
+      else if (type === 'failed') fail(f, detail);
+      else if (type === 'finish') finish(f, detail);
+    } catch (err) { console.error(err); }
+  }
+  window.addEventListener('message', (e) => {
+    const m = e.data;
+    if (m && m.journey === true && m.part) fromPart(m.part, m.type, m.detail, e.source);
+  });
+
+  // ---------- the journey ----------
+  const J = {
+    phase: 'cover', // cover | starting | playing | switching | ending
+    current: null,
+    first: Math.max(0, PARTS.findIndex((p) => p.id === params.get('start'))),
+    runs: 0,
+    results: {},
+  };
+  function announce(kind, detail) {
+    try { window.dispatchEvent(new CustomEvent('fishing-frenzy:' + kind, { detail })); } catch (e) { /* old browser */ }
+    if (window.parent !== window) {
+      try { window.parent.postMessage(Object.assign({ type: 'fishing-frenzy:' + kind }, detail), '*'); } catch (e) { /* gone */ }
+    }
+  }
+  // Part f plays: f shows and begins, and the one after it starts loading behind it. The one before it goes at once,
+  // unless the two scenes are to dissolve into each other (opts.dissolve: switchTo removes it). opts.arrive: f follows
+  // the part before it, so Swiftee flies in.
+  function begin(f, opts) {
+    opts = opts || {};
+    const prev = J.current;
+    J.current = f;
+    J.phase = 'playing';
+    if (prev && prev !== f && !opts.dissolve) dispose(prev);
+    audio.resume();
+    f.el.classList.add('live');
+    f.el.removeAttribute('aria-hidden');
+    f.el.tabIndex = 0;
+    tell(f, 'begin', { arrive: !!opts.arrive });
+    try { f.el.focus({ preventScroll: true }); f.el.contentWindow.focus(); } catch (e) { /* file:// */ }
+    announce('part', { part: f.id, number: f.index + 1, of: PARTS.length });
+    dev.update();
+    // after the last part, the first again (Play again)
+    const next = (f.index + 1) % PARTS.length;
+    setTimeout(() => { if (J.current === f) load(next); }, T.preloadAfter);
+  }
+  function dispose(f) {
+    tell(f, 'dispose');
+    audio.release(f.id);
+    f.el.classList.remove('live');
+    setTimeout(() => {
+      drop(f);
+      if (DEV) setTimeout(() => load(f.index), 1500); // the dev panel keeps every part's screens
+    }, 80);
+  }
+  function finish(f, detail) {
+    if (f !== J.current || J.phase !== 'playing') return;
+    J.results[f.id] = detail || {};
+    announce('finished', { part: f.id, detail: detail || {} });
+    if (f.index === PARTS.length - 1) end(f);
+    else switchTo(load(f.index + 1));
+  }
+  // One part to the next, on camera: Swiftee takes off in the part that ends (it starts that itself as it finishes),
+  // the next part begins underneath (with Swiftee flying in), and the ending part's scene dissolves into it, with a
+  // little snow blowing across. If the next part hasn't loaded yet, a frosted veil says so until it has.
+  async function switchTo(next) {
+    const prev = J.current;
+    J.phase = 'switching';
+    audio.resume();
+    flurry.start();
+    await wait(reduced ? 0 : T.takeOff);
+    if (next.status !== 'ready') {
+      veil.open();
+      const note = setTimeout(() => status.show(next, 'veil'), T.waitNote);
+      next = await new Promise((r) => when(next, r));
+      clearTimeout(note);
+      status.hide();
+    }
+    if (J.phase !== 'switching') return; // (a dev jump took over)
+    begin(next, { arrive: true, dissolve: true });
+    next.el.classList.add('arriving');
+    audio.fade(prev.id, T.dissolve);
+    prev.el.classList.add('leaving'); // on top of the next part, fading away
+    veil.close();
+    await wait(reduced ? 350 : T.dissolve);
+    next.el.classList.remove('arriving');
+    if (J.current === next) dispose(prev);
+    flurry.stop();
+  }
+  // fishing 2 has shut its iris on "The End": the front page comes back over it, ready to play again
+  function end(f) {
+    J.phase = 'ending';
+    announce('complete', { results: J.results });
+    setTimeout(() => {
+      if (J.phase !== 'ending') return;
+      J.current = null;
+      showCover(true);
+      setTimeout(() => dispose(f), 800);
+    }, T.backIn);
+  }
+
+  // ---------- the front page: the Fishing Frenzy title (shell/front-page.js) ----------
+  function showCover(back) {
+    J.phase = 'cover';
+    FrontPage.show(back);
+    dev.update();
+  }
+  function hideCover(animated) {
+    if (!FrontPage.shown) return;
+    if (animated) { FrontPage.leave(); return; }
+    FrontPage.app.hidden = true;
+    FrontPage.running = false;
+  }
+  // on a phone or tablet, Play also goes full screen in landscape where the browser allows it
+  function fullScreen() {
+    const el = document.documentElement, request = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!request || document.fullscreenElement || !(window.matchMedia && matchMedia('(pointer: coarse)').matches)) return;
+    try {
+      Promise.resolve(request.call(el, { navigationUI: 'hide' }))
+        .then(() => screen.orientation && screen.orientation.lock && screen.orientation.lock('landscape'))
+        .catch(() => { /* not allowed here: every part still fits the screen */ });
+    } catch (e) { /* not allowed here */ }
+  }
+  function play() {
+    if (J.phase !== 'cover') return;
+    audio.unlock(); // inside the tap
+    fullScreen();
+    J.phase = 'starting';
+    J.runs += 1;
+    if (J.runs > 1) J.results = {};
+    const f = load(J.runs === 1 ? J.first : 0);
+    if (f.status !== 'ready') {
+      FrontPage.waiting(true);
+      status.show(f, 'cover');
+    }
+    when(f, (g) => {
+      if (J.phase !== 'starting') return;
+      status.hide();
+      // the title fades away over fishing 1, which begins beneath it (as fishing 2's title fades into its game)
+      begin(g);
+      hideCover(true);
+    });
+  }
+  FrontPage.init({ onPlay: play, sound: (kind) => audio.play(kind) });
+  document.addEventListener('gesturestart', (e) => e.preventDefault()); // Safari: no pinch zoom
+  // Brave and Safari can suspend audio when the tab loses focus; a tap on the page brings it back
+  ['pointerdown', 'touchend', 'keydown'].forEach((t) => document.addEventListener(t, () => audio.resume(), true));
+
+  // ---------- "Getting ready…": on the front page after an early Play, or on the veil ----------
+  const status = {
+    f: null, where: null,
+    show(f, where) { this.f = f; this.where = where; this.update(); },
+    hide() { this.f = null; this.update(); },
+    swap(from, to) { if (this.f === from) { this.f = to; } this.update(); },
+    update() {
+      const f = this.f;
+      [['cover', $('cover-status')], ['veil', $('veil-status')]].forEach(([where, el]) => {
+        const on = !!f && this.where === where;
+        el.hidden = !on;
+        if (!on) return;
+        const failed = f.status === 'failed';
+        el.querySelector('.status-text').textContent = failed ? 'Could not load the game.' : 'Getting ready…';
+        const bar = el.querySelector('.bar');
+        bar.hidden = failed;
+        bar.classList.toggle('unknown', !(f.progress > 0));
+        bar.style.setProperty('--p', f.progress);
+        el.querySelector('.retry').hidden = !failed;
+      });
+    },
+  };
+  document.querySelectorAll('.status .retry').forEach((b) => b.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (status.f && status.f.status === 'failed') retry(status.f);
+  }));
+
+  // ---------- between two parts ----------
+  // The frosted veil: only while the next part is still loading ("Getting ready…" on it).
+  const veil = {
+    el: $('veil'),
+    open() { this.el.classList.add('on'); },
+    close() { this.el.classList.remove('on'); },
+    hide() { this.close(); },
+  };
+  // The flurry: a little snow, with a few sparkles, blowing across the window while one scene dissolves into the
+  // next, so the two winter scenes read as one place.
+  const flurry = {
+    el: $('flurry'),
+    start() {
+      if (reduced) return;
+      const el = this.el;
+      clearTimeout(this.off);
+      this.fit();
+      if (!this.flakes) this.flakes = Array.from({ length: 70 }, () => this.flake(true));
+      el.classList.add('on');
+      if (!this.running) { this.running = true; this.last = 0; requestAnimationFrame((t) => this.frame(t)); }
+    },
+    stop() {
+      this.el.classList.remove('on');
+      clearTimeout(this.off);
+      this.off = setTimeout(() => { this.running = false; this.flakes = null; }, 700);
+    },
+    fit() {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      this.w = window.innerWidth; this.h = window.innerHeight; this.dpr = dpr;
+      this.el.width = Math.round(this.w * dpr); this.el.height = Math.round(this.h * dpr);
+    },
+    flake(anywhere) {
+      const r = 1.4 + Math.random() * 3.4;
+      return { x: Math.random() * (this.w + 240) - 240, y: anywhere ? Math.random() * this.h : -10, r: r,
+        vx: 60 + Math.random() * 120 + r * 14, vy: 40 + Math.random() * 60 + r * 10, a: 0.6 + Math.random() * 0.35,
+        ph: Math.random() * 6.3, star: Math.random() < 0.12 };
+    },
+    frame(now) {
+      if (!this.running) return;
+      requestAnimationFrame((t) => this.frame(t));
+      const dt = Math.min(0.05, (now - (this.last || now)) / 1000);
+      this.last = now;
+      const c = this.el.getContext('2d');
+      c.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      c.clearRect(0, 0, this.w, this.h);
+      for (let i = 0; i < this.flakes.length; i++) {
+        const f = this.flakes[i];
+        f.x += f.vx * dt; f.y += f.vy * dt;
+        if (f.y > this.h + 10 || f.x > this.w + 20) this.flakes[i] = this.flake(false);
+        const x = f.x + Math.sin(now / 700 + f.ph) * 6;
+        c.globalAlpha = f.a;
+        if (f.star) { // a glint of gold among the snow
+          const s = f.r * 2.2 * (0.75 + 0.25 * Math.sin(now / 180 + f.ph));
+          c.fillStyle = '#ffd166';
+          c.beginPath();
+          c.moveTo(x, f.y - s); c.lineTo(x + s * 0.25, f.y - s * 0.25); c.lineTo(x + s, f.y); c.lineTo(x + s * 0.25, f.y + s * 0.25);
+          c.lineTo(x, f.y + s); c.lineTo(x - s * 0.25, f.y + s * 0.25); c.lineTo(x - s, f.y); c.lineTo(x - s * 0.25, f.y - s * 0.25);
+          c.closePath(); c.fill();
+        } else {
+          c.fillStyle = '#ffffff';
+          c.shadowColor = 'rgba(70,110,170,.35)'; c.shadowBlur = 2;
+          c.beginPath(); c.arc(x, f.y, f.r, 0, Math.PI * 2); c.fill();
+          c.shadowBlur = 0;
+        }
+      }
+      c.globalAlpha = 1;
+    },
+  };
+  addEventListener('resize', () => { if (flurry.running) flurry.fit(); });
+
+
+  // ---------- ?dev=1: one panel that jumps to any screen of the journey ----------
+  const dev = {
+    lists: new Map(), // part id -> { f, list: [{ label, run }] } (from each part's own jumps, bridge.js devScreens)
+    el: null,
+    register(id, list, win) {
+      const f = frames.get(id);
+      if (!DEV || !f || (win && win !== f.el.contentWindow)) return;
+      this.lists.set(id, { f, list: list || [] });
+      this.render();
+    },
+    forget(f) { const e = this.lists.get(f.id); if (e && e.f === f) this.lists.delete(f.id); this.update(); },
+    // jump to screen `i` of part `index` (inside the tap, so sound is unlocked too)
+    jump(index, i) {
+      audio.unlock();
+      const f = load(index);
+      J.phase = 'starting';
+      status.hide();
+      when(f, (g) => {
+        veil.hide();
+        hideCover(false);
+        if (J.current !== g) begin(g);
+        J.phase = 'playing';
+        const e = this.lists.get(g.id);
+        if (e && e.list[i]) setTimeout(() => { try { e.list[i].run(); } catch (err) { console.error(err); } }, 120);
+      });
+    },
+    frontPage() {
+      const f = J.current;
+      J.current = null;
+      veil.hide();
+      showCover(false);
+      if (f) dispose(f);
+    },
+    build() {
+      if (!DEV) return;
+      const css = document.createElement('style');
+      css.textContent = `
+.dev{position:fixed;left:8px;bottom:8px;z-index:90;max-width:min(620px,calc(100vw - 16px));max-height:calc(100vh - 16px);overflow:auto;
+  padding:6px;border-radius:10px;background:rgba(10,20,40,.88);font:600 12px/1.2 system-ui,sans-serif;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.dev.folded .dev-body{display:none}
+.dev-tag{display:inline-block;padding:5px 8px;border-radius:6px;color:#ffd23f;cursor:pointer;background:none;border:0;font:inherit;font-weight:800}
+.dev-part{margin-top:6px}
+.dev-part h3{margin:4px 2px;font:800 12px/1.2 system-ui,sans-serif;color:#9fd1f5;display:flex;gap:8px;align-items:center}
+.dev-part h3 small{font-weight:600;color:#aab}
+.dev-part.now h3{color:#ffd23f}
+.dev-btns{display:flex;flex-wrap:wrap;gap:4px}
+.dev button.j{font:inherit;padding:5px 7px;border:0;border-radius:6px;background:#2f4f7f;color:#fff;cursor:pointer;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+.dev button.j:hover{background:#3f6aa8}
+.dev button.j.front{background:#7a4f10}`;
+      document.head.appendChild(css);
+      const el = this.el = document.createElement('div');
+      el.className = 'dev folded';
+      el.setAttribute('aria-label', 'Developer screen jumps');
+      el.innerHTML = '<button class="dev-tag" type="button" title="Fold or unfold (`)">DEV · screens</button><div class="dev-body"></div>';
+      el.querySelector('.dev-tag').addEventListener('click', () => el.classList.toggle('folded'));
+      document.body.appendChild(el);
+      document.addEventListener('keydown', (e) => { if (e.key === '`' && !e.metaKey && !e.ctrlKey && !e.altKey) el.classList.toggle('folded'); });
+      // every part loads now, so every list is here from the start
+      PARTS.forEach((p, i) => load(i));
+      this.render();
+    },
+    render() {
+      if (!this.el) return;
+      const body = this.el.querySelector('.dev-body');
+      body.innerHTML = '';
+      const front = document.createElement('div');
+      front.className = 'dev-part';
+      front.innerHTML = '<div class="dev-btns"><button class="j front" type="button">Front page</button></div>';
+      front.querySelector('button').addEventListener('click', () => this.frontPage());
+      body.appendChild(front);
+      PARTS.forEach((p, index) => {
+        const sec = document.createElement('div');
+        sec.className = 'dev-part';
+        sec.dataset.part = p.id;
+        const h = document.createElement('h3');
+        h.innerHTML = (index + 1) + ' · ' + p.title + ' <small></small>';
+        sec.appendChild(h);
+        const btns = document.createElement('div');
+        btns.className = 'dev-btns';
+        const e = this.lists.get(p.id);
+        const list = e ? e.list : [];
+        if (!list.length) btns.innerHTML = '<small style="color:#aab;padding:2px">loading…</small>';
+        list.forEach((s, i) => {
+          const b = document.createElement('button');
+          b.type = 'button'; b.className = 'j'; b.textContent = s.label; b.title = s.label;
+          b.addEventListener('click', (ev) => { ev.stopPropagation(); this.jump(index, i); });
+          btns.appendChild(b);
+        });
+        sec.appendChild(btns);
+        body.appendChild(sec);
+      });
+      this.update();
+    },
+    update() {
+      if (!this.el) return;
+      this.el.querySelectorAll('.dev-part[data-part]').forEach((sec) => {
+        const f = frames.get(sec.dataset.part);
+        sec.classList.toggle('now', !!J.current && J.current.id === sec.dataset.part);
+        sec.querySelector('small').textContent = !f ? '' : J.current === f ? 'playing' : f.status;
+      });
+    },
+  };
+
+  // what the parts reach (bridge.js), and what tests and a hosting page may read
+  window.FishingFrenzy = {
+    parts: PARTS.map((p) => p.id),
+    audio,
+    fromPart,
+    devScreens: (id, list, win) => dev.register(id, list, win),
+    get phase() { return J.phase; },
+    get current() { return J.current ? J.current.id : null; },
+    get results() { return J.results; },
+    frame: (id) => (frames.get(id) || {}).el || null,
+    status: (id) => (frames.get(id) || {}).status || null,
+  };
+
+  // the front page shows at once; the first part loads behind it
+  showCover(false);
+  dev.build();
+  load(J.first);
+})();

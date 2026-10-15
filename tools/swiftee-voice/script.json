@@ -1,0 +1,115 @@
+[
+  {
+    "id": "sw01",
+    "game": "fishing-1",
+    "line": "Let's find *out!*",
+    "spoken": "Let's find out!",
+    "devanagari": "लेट्स फाइंड आउट!"
+  },
+  {
+    "id": "sw02",
+    "game": "fishing-2",
+    "line": "*Great* job!",
+    "spoken": "Great job!",
+    "devanagari": "ग्रेट जॉब!"
+  },
+  {
+    "id": "sw03",
+    "game": "fishing-2",
+    "line": "You know all about *trapeziums!*",
+    "spoken": "You know all about trapeziums!",
+    "devanagari": "यू नो ऑल अबाउट ट्रेपीज़ियम्स!"
+  },
+  {
+    "id": "sw04",
+    "game": "fishing-2",
+    "line": "Now, let's help Popo catch some *fish!*",
+    "spoken": "Now, let's help Popo catch some fish!",
+    "devanagari": "नाउ लेट्स हेल्प पोपो कैच सम फिश!"
+  },
+  {
+    "id": "sw05",
+    "game": "fishing-2",
+    "line": "Use the fishing rod to *aim*…",
+    "spoken": "Use the fishing rod to aim...",
+    "devanagari": "यूज़ द फिशिंग रॉड टू एम..."
+  },
+  {
+    "id": "sw06",
+    "game": "fishing-2",
+    "line": "…and drop the hook on the *correct* fish.",
+    "spoken": "And drop the hook on the correct fish.",
+    "devanagari": "एंड ड्रॉप द हुक ऑन द करेक्ट फिश।"
+  },
+  {
+    "id": "sw07",
+    "game": "fishing-2",
+    "line": "Look! These two sides are *parallel!*",
+    "spoken": "Look! These two sides are parallel!",
+    "devanagari": "लुक! दीज़ टू साइड्स आर पैरेलल!"
+  },
+  {
+    "id": "sw08",
+    "game": "fishing-2",
+    "line": "*Remember,*",
+    "spoken": "Remember,",
+    "devanagari": "रिमेंबर,"
+  },
+  {
+    "id": "sw09",
+    "game": "fishing-2",
+    "line": "angles on the same *leg* of a trapezium…",
+    "spoken": "Angles on the same leg of a trapezium...",
+    "devanagari": "एंगल्स ऑन द सेम लेग ऑफ अ ट्रेपीजियम..."
+  },
+  {
+    "id": "sw10",
+    "game": "fishing-2",
+    "line": "add up to *180°!*",
+    "spoken": "Add up to one hundred and eighty degrees!",
+    "devanagari": "ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज़!"
+  },
+  {
+    "id": "sw11",
+    "game": "fishing-2",
+    "line": "Yay! Shape *detective!*",
+    "spoken": "Yay! Shape detective!",
+    "devanagari": "ये! शेप डिटेक्टिव!",
+    "note": "Also tried as \"Yaaay!\" (याय, \"yaai\"); ये is the usual Devanagari for \"yay\" and is closer to it, so it stays."
+  },
+  {
+    "id": "sw12",
+    "game": "fishing-2",
+    "line": "Look at the marked *angles!*",
+    "spoken": "Look at the marked angles!",
+    "devanagari": "लुक एट द मार्क्ड एंगल्स!"
+  },
+  {
+    "id": "sw13",
+    "game": "fishing-2",
+    "line": "You *did* it!",
+    "spoken": "You did it!",
+    "devanagari": "यू डिड इट!"
+  },
+  {
+    "id": "sw14",
+    "game": "fishing-2",
+    "line": "*Eek!*",
+    "spoken": "Eek!",
+    "devanagari": "ईक!"
+  },
+  {
+    "id": "sw15",
+    "game": "fishing-2",
+    "line": "Good catch, *Popo!*",
+    "spoken": "Good catch, Popo!",
+    "devanagari": "गुड कैच, पोपो!"
+  },
+  {
+    "id": "sw16",
+    "game": "fishing-2",
+    "line": "Hee hee *hee!*",
+    "spoken": "Hee hee hee!",
+    "devanagari": "ही ही ही!"
+  }
+]

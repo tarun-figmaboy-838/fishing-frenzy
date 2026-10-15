@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0b4fb8">
+<title>Fishing Frenzy</title>
+<meta name="description" content="Fish for shapes with Popo the polar bear, learn all about trapeziums with Swiftee the bird, then catch trapezium fish across a frozen lake. A voiced maths adventure for young learners.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fishing Frenzy">
+<meta property="og:description" content="Fish for shapes with Popo, learn all about trapeziums with Swiftee, then catch trapezium fish across a frozen lake.">
+<meta property="og:image" content="shell/images/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fishing Frenzy">
+<link rel="icon" type="image/png" sizes="48x48" href="shell/images/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="shell/images/icon-192.png">
+<link rel="apple-touch-icon" href="shell/images/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<!-- the banner first: it is the whole front page -->
+<link rel="preload" as="image" href="shell/images/banner.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&amp;display=swap">
+<link rel="stylesheet" href="shell/journey.css">
+</head>
+<body>
+<!-- Fishing Frenzy: this front page, then the three parts in turn (shell/journey.js), each a whole game in its own
+     frame: parts/fishing-1 (Popo's shape fishing), parts/lesson (Swiftee's trapezium lesson), parts/fishing-2
+     (Popo's trapezium fishing). -->
+<div id="parts" class="parts"></div>
+
+<!-- the front page: the Fishing Frenzy banner, alive (shell/front-page.js), laid out as the fishing games lay out
+     their stage, so it fades into fishing 1 lake into lake -->
+<section id="cover" class="front booting" aria-labelledby="journey-title">
+<div id="cover-stage" class="front-stage">
+<h1 id="journey-title" class="sr-only">Fishing Frenzy</h1>
+<canvas id="cover-water" class="layer" aria-hidden="true"></canvas>
+<canvas id="cover-world" class="layer" aria-hidden="true"></canvas>
+<button id="play" class="play-hit" data-qa="play" type="button" aria-label="Play"></button>
+<div id="cover-rotate" class="rotate-hint" hidden>Rotate your device for the best experience</div>
+<div id="cover-status" class="cover-status status" role="status" aria-live="polite" hidden><span class="status-text">Getting ready…</span><span class="bar unknown"><i></i></span><button class="retry" type="button" hidden>Try again</button></div>
+</div>
+</section>
+
+<!-- between two parts: snow blowing across as one scene dissolves into the next; and, only while the next part is
+     still loading, a frosted veil that says so -->
+<canvas id="flurry" class="flurry" aria-hidden="true"></canvas>
+<div id="veil" class="veil" aria-hidden="true">
+<div id="veil-status" class="veil-status status" role="status" aria-live="polite" hidden><span class="status-text">Getting ready…</span><span class="bar unknown"><i></i></span><button class="retry" type="button" hidden>Try again</button></div>
+</div>
+
+<noscript><p style="position:fixed;inset:auto 0 24px;text-align:center;font:700 20px system-ui;color:#fff">Fishing Frenzy needs JavaScript to play.</p></noscript>
+<!-- the front page's water and effects: the fishing games' own (copied unchanged from parts/fishing-2/src) -->
+<script>window.PopoGame = { STAGE_W: 1672, STAGE_H: 941, SEABED_Y: 805 };</script>
+<script src="shell/title/water.js"></script>
+<script src="shell/title/effects.js"></script>
+<script src="shell/front-page.js"></script>
+<script src="shell/journey.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "Fishing Frenzy",
+  "short_name": "Fishing Frenzy",
+  "description": "Fish for shapes with Popo, learn all about trapeziums with Swiftee, then catch trapezium fish across a frozen lake.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#063a8f",
+  "theme_color": "#0b4fb8",
+  "icons": [
+    {
+      "src": "shell/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "shell/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

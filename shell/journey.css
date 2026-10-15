@@ -1,0 +1,87 @@
+/* =====================================================================
+   FISHING FRENZY - the journey's page (index.html): one front page, then the three parts in turn, each in its own
+   frame filling the window; between two parts one scene dissolves into the next as Swiftee flies across.
+   ===================================================================== */
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#063a8f;overscroll-behavior:none;touch-action:none;
+  -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+body{font-family:'Fredoka','Arial Rounded MT Bold','Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;color:#fff}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+[hidden]{display:none!important}
+
+/* ---------- the parts: each a full-window frame. One plays; the next loads, unseen, behind it ---------- */
+.part{position:fixed;left:0;top:0;width:100%;height:100%;border:0;display:block;background:#063a8f;
+  visibility:hidden;pointer-events:none;z-index:1}
+.part.live{visibility:visible;pointer-events:auto;z-index:2}
+
+/* ---------- the front page: the Fishing Frenzy title (shell/front-page.js) ----------
+   Laid out as the fishing games lay out their stage (their styles.css .app / .stage): the 1672 x 941 painting fitted
+   to the window on the games' blue, clear of a phone's notch and home bar, and turned sideways on a phone or tablet
+   held upright. 1em is 10 painting px. */
+.front{position:fixed;inset:0;z-index:30;display:grid;place-items:center;
+  padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);
+  background:radial-gradient(circle at 50% 30%,#0f55c4,#052a70 80%);font-family:'Fredoka','Arial Rounded MT Bold','Nunito',system-ui,sans-serif;color:#fff8ec}
+.front.rotated{right:auto;bottom:auto;padding:0;transform-origin:0 0;transform:rotate(90deg) translateY(-100%)}
+.front-stage{position:relative;overflow:hidden;width:min(100vw,calc(100vh * 1672 / 941));height:min(100vh,calc(100vw * 941 / 1672));
+  font-size:var(--em,min(calc(100vw / 167.2),calc(100vh / 94.1)));border-radius:.6em;box-shadow:0 2em 6em rgba(0,0,0,.35)}
+.front-stage .layer{position:absolute;inset:0;display:block}
+/* nothing shows until the banner has arrived (a moment on the games' blue) */
+.front.booting .front-stage .layer{visibility:hidden}
+/* the button is drawn on the canvas; this is the tap and keyboard target laid over it (front-page.js) */
+.play-hit{position:absolute;left:0;top:0;padding:0;border:0;border-radius:50%;background:transparent;cursor:pointer;touch-action:manipulation}
+.play-hit:focus{outline:none}
+.play-hit:focus-visible{box-shadow:0 0 0 .4em #fff,0 0 0 .8em #f08a1d}
+.play-hit:disabled{cursor:default}
+/* Play: the title fades over the game beneath (as fishing 2's title fades into its game); at the journey's end it
+   fades back in over fishing 2's closed iris */
+.front.leaving{opacity:0;transition:opacity .7s ease;pointer-events:none}
+.front.back{animation:frontIn .7s ease-out both}
+@keyframes frontIn{from{opacity:0}to{opacity:1}}
+/* a phone held upright: fishing 1's own hint, the same pill as it shows next */
+.rotate-hint{position:fixed;left:50%;bottom:4vh;transform:translateX(-50%);padding:.6em 1.2em;border-radius:999px;background:rgba(8,36,84,.85);
+  color:#ffe8bd;font:500 14px/1.3 'Fredoka','Arial Rounded MT Bold',system-ui,sans-serif;pointer-events:none;white-space:nowrap}
+/* Play pressed before fishing 1 has arrived: a card along the bottom says so (as fishing 2's loader) */
+.cover-status{position:absolute;left:50%;bottom:2.2em;translate:-50% 0;display:flex;align-items:center;gap:1.2em;padding:.9em 2em .9em 1.6em;
+  border-radius:999px;background:rgba(8,36,84,.72);border:.3em solid rgba(255,248,236,.85);box-shadow:0 .5em 0 rgba(0,0,0,.2);
+  font:600 2.2em/1 'Fredoka','Arial Rounded MT Bold',system-ui,sans-serif;color:#fff8ec;text-shadow:0 .08em 0 rgba(0,0,0,.35);white-space:nowrap;
+  animation:statusIn .3s ease-out both}
+.cover-status .bar{width:6em;height:.6em}
+.cover-status .retry{font-size:.8em}
+@keyframes statusIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ---------- the loading bar and Try again (front page and veil) ---------- */
+.bar{position:relative;width:120px;height:12px;border-radius:999px;background:rgba(255,255,255,.28);overflow:hidden}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--p,0) * 100%);min-width:12px;border-radius:999px;
+  background:linear-gradient(90deg,#ffd166,#ff9f1c);transition:width .3s ease}
+.bar.unknown i{width:36%;animation:barRun 1.1s ease-in-out infinite}
+@keyframes barRun{from{left:-36%}to{left:100%}}
+.retry{font:700 18px/1 'Fredoka','Arial Rounded MT Bold',system-ui,sans-serif;color:#4a2300;background:linear-gradient(180deg,#ffd27a,#f39a2e);border:2px solid #fff;
+  border-radius:999px;padding:8px 16px;cursor:pointer;box-shadow:0 3px 0 #c76a10}
+.retry:active{transform:translateY(2px);box-shadow:0 1px 0 #c76a10}
+.retry:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+/* ---------- between two parts ----------
+   The ending part's frame stays on top and dissolves away, drifting a little closer as if the camera flew on through
+   it, over the next part, which settles into place; Swiftee flies out of the one and into the other (in the parts
+   themselves). A little snow blows across meanwhile (.flurry). */
+.part.leaving{visibility:visible;pointer-events:none;z-index:3;animation:partOut 1.3s cubic-bezier(.45,0,.35,1) both}
+.part.arriving{animation:partIn 1.3s cubic-bezier(.2,.7,.3,1) both}
+@keyframes partOut{from{opacity:1;transform:none}to{opacity:0;transform:scale(1.06)}}
+@keyframes partIn{from{transform:scale(.97)}to{transform:none}}
+.flurry{position:fixed;inset:0;width:100%;height:100%;z-index:35;pointer-events:none;opacity:0;transition:opacity .6s ease}
+.flurry.on{opacity:1;transition-duration:.35s}
+/* only while the next part is still loading: a frosted veil with "Getting ready…" */
+.veil{position:fixed;inset:0;z-index:40;visibility:hidden;opacity:0;pointer-events:none;overflow:hidden;
+  background:radial-gradient(circle at 50% 42%,rgba(255,255,255,.92) 0%,rgba(234,247,255,.9) 40%,rgba(159,209,245,.88) 100%);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:opacity .35s ease,visibility 0s .35s}
+.veil.on{visibility:visible;opacity:1;pointer-events:auto;transition:opacity .35s ease,visibility 0s}
+.veil-status{position:absolute;left:50%;bottom:12%;translate:-50% 0;display:flex;align-items:center;gap:12px;padding:10px 20px;border-radius:999px;
+  background:rgba(8,36,84,.72);border:2px solid rgba(255,248,236,.85);font:600 22px/1 'Fredoka','Arial Rounded MT Bold',system-ui,sans-serif;color:#fff8ec;white-space:nowrap;
+  animation:statusIn .3s ease-out both}
+
+@media (prefers-reduced-motion:reduce){
+  .part.leaving{animation:partFade .35s ease both}
+  .part.arriving{animation:none}
+  .bar.unknown i{animation:none;left:32%}
+}
+@keyframes partFade{from{opacity:1}to{opacity:0}}

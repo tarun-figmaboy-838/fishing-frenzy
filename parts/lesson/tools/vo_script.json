@@ -1,0 +1,1348 @@
+[
+  {
+    "id": "vo001",
+    "line": "Remember we learnt about quadrilaterals earlier.",
+    "spoken": "Remember we learnt about quadrilaterals earlier.",
+    "devanagari": "रिमेंबर वी लर्न्ट अबाउट क्वाड्रिलैटरल्स अर्लियर।"
+  },
+  {
+    "id": "vo002",
+    "line": "Any polygon with 4 sides is called a quadrilateral.",
+    "spoken": "Any polygon with four sides is called a quadrilateral.",
+    "devanagari": "एनी पॉलीगन विद फोर साइड्स इज कॉल्ड ए क्वाड्रिलेट्रल।"
+  },
+  {
+    "id": "vo003",
+    "line": "We can call it quadrilateral ABCD.",
+    "spoken": "We can call it quadrilateral, A, B, C, D.",
+    "devanagari": "वी कैन कॉल इट क्वाड्रिलैटरल, ए, बी, सी, डी।"
+  },
+  {
+    "id": "vo004",
+    "line": "This is a special type of quadrilateral.",
+    "spoken": "This is a special type of quadrilateral.",
+    "devanagari": "दिस इज अ स्पेशल टाइप ऑफ क्वाड्रिलेट्रल।"
+  },
+  {
+    "id": "vo005",
+    "line": "Let's see what makes it special.",
+    "spoken": "Let's see what makes it special.",
+    "devanagari": "लेट्स सी वॉट मेक्स इट स्पेशल।"
+  },
+  {
+    "id": "vo006",
+    "line": "These two sides look like they will meet.",
+    "spoken": "These two sides look like they will meet.",
+    "devanagari": "दीज़ टू साइड्स लुक लाइक दे विल मीट।"
+  },
+  {
+    "id": "vo007",
+    "line": "Let's extend them.",
+    "spoken": "Let's extend them.",
+    "devanagari": "लेट्स एक्सटेंड देम।"
+  },
+  {
+    "id": "vo008",
+    "line": "Woah! The sides meet.",
+    "spoken": "Whoa! The sides meet.",
+    "devanagari": "वोह! द साइड्स मीट।"
+  },
+  {
+    "id": "vo009",
+    "line": "Let's check the other pair of sides.",
+    "spoken": "Let's check the other pair of sides.",
+    "devanagari": "लेट्स चेक द अदर पेयर ऑफ साइड्स।"
+  },
+  {
+    "id": "vo010",
+    "line": "This pair of sides does not meet.",
+    "spoken": "This pair of sides does not meet.",
+    "devanagari": "दिस पेयर ऑफ़ साइड्स डज़ नॉट मीट।"
+  },
+  {
+    "id": "vo011",
+    "line": "This means the sides are parallel to each other.",
+    "spoken": "This means the sides are parallel to each other.",
+    "devanagari": "दिस मीन्स द साइड्स आर पैरेलल टू ईच अदर।"
+  },
+  {
+    "id": "vo012",
+    "line": "A B is parallel to C D.",
+    "spoken": "A B is parallel to C D.",
+    "devanagari": "ए बी इज़ पैरेलल टू सी डी।"
+  },
+  {
+    "id": "vo013",
+    "line": "So this quadrilateral has one pair of parallel sides.",
+    "spoken": "So this quadrilateral has one pair of parallel sides.",
+    "devanagari": "सो दिस क्वाड्रिलैटरल हैज वन पेयर ऑफ पैरेलल साइड्स।"
+  },
+  {
+    "id": "vo014",
+    "line": "We call this a trapezium.",
+    "spoken": "We call this a trapezium.",
+    "devanagari": "वी कॉल दिस ए ट्रैपीजियम।"
+  },
+  {
+    "id": "vo015",
+    "line": "A quadrilateral with at least one pair of parallel sides is called a trapezium.",
+    "spoken": "A quadrilateral with at least one pair of parallel sides is called a trapezium.",
+    "devanagari": "ए क्वॉड्रीलैटरल विद एट लीस्ट वन पेयर ऑफ पैरेलल साइड्स इज कॉल्ड ए ट्रेपीजियम।"
+  },
+  {
+    "id": "vo016",
+    "line": "The parallel sides are called bases.",
+    "spoken": "The parallel sides are called bases.",
+    "devanagari": "द पैरेलल साइड्स आर कॉल्ड बेसिस।"
+  },
+  {
+    "id": "vo017",
+    "line": "The other two sides are called legs.",
+    "spoken": "The other two sides are called legs.",
+    "devanagari": "द अदर टू साइड्स आर कॉल्ड लेग्स।"
+  },
+  {
+    "id": "vo018",
+    "line": "Let's measure the sides of this trapezium.",
+    "spoken": "Let's measure the sides of this trapezium.",
+    "devanagari": "लेट्स मेजर द साइड्स ऑफ दिस ट्रेपीजियम।"
+  },
+  {
+    "id": "vo019",
+    "line": "Woah! All the sides of this trapezium are of different lengths.",
+    "spoken": "Whoa! All the sides of this trapezium are of different lengths.",
+    "devanagari": "वो! ऑल द साइड्स ऑफ दिस ट्रेपीजियम आर ऑफ डिफरेंट लेंग्थ्स।"
+  },
+  {
+    "id": "vo020",
+    "line": "This type of trapezium which has sides of different lengths is called a scalene trapezium.",
+    "spoken": "This type of trapezium which has sides of different lengths is called a scalene trapezium.",
+    "devanagari": "दिस टाइप ऑफ ट्रैपीज़ियम व्हिच हैज़ साइड्स ऑफ डिफरेंट लेंग्थ्स इज़ कॉल्ड अ स्केलीन ट्रैपीज़ियम।"
+  },
+  {
+    "id": "vo021",
+    "line": "Look! Its legs are of different length too.",
+    "spoken": "Look! Its legs are of different length too.",
+    "devanagari": "लुक! इट्स लेग्स आर ऑफ डिफरेंट लेंथ टू."
+  },
+  {
+    "id": "vo022",
+    "line": "What if the legs were the same length?",
+    "spoken": "What if the legs were the same length?",
+    "devanagari": "वॉट इफ़ द लेग्स वर द सेम लेंथ?"
+  },
+  {
+    "id": "vo023",
+    "line": "Let's find out.",
+    "spoken": "Let's find out.",
+    "devanagari": "लेट्स फाइंड आउट।"
+  },
+  {
+    "id": "vo024",
+    "line": "Let's change its shape a little.",
+    "spoken": "Let's change its shape a little.",
+    "devanagari": "लेट्स चेंज इट्स शेप अ लिटिल।"
+  },
+  {
+    "id": "vo025",
+    "line": "Drag vertex A so that both the legs are of equal length.",
+    "spoken": "Drag vertex A so that both the legs are of equal length.",
+    "devanagari": "ड्रैग वर्टेक्स ए सो दैट बोथ द लेग्स आर ऑफ इक्वल लेंथ।"
+  },
+  {
+    "id": "vo026",
+    "line": "AD is 5.1 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point one centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज फाइव पॉइंट वन सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ इग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo027",
+    "line": "AD is 5.2 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point two centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ फाइव पॉइंट टू सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo028",
+    "line": "AD is 5.3 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point three centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ फाइव पॉइंट थ्री सेंटीमीटर्स। कीप ड्रैगिंग ए अनटिल इट शोज़ एक्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo029",
+    "line": "AD is 5.4 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point four centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ फाइव पॉइंट फोर सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo030",
+    "line": "AD is 5.5 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point five centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ फाइव पॉइंट फाइव सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo031",
+    "line": "AD is 5.6 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point six centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज फाइव पॉइंट सिक्स सेंटीमीटर्स। कीप ड्रैगिंग ए अनटिल इट शोज़ एग्जैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo032",
+    "line": "AD is 5.7 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point seven centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज फाइव पॉइंट सेवन सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज एक्जैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo033",
+    "line": "AD is 5.8 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point eight centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज फाइव पॉइंट एइट सेंटीमीटर्स। कीप ड्रैगिंग ए अनटिल इट शोज एग्जेक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo034",
+    "line": "AD is 5.9 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is five point nine centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज फाइव पॉइंट नाइन सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज एग्जैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo035",
+    "line": "AD is 6 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ इग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo036",
+    "line": "AD is 6.1 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point one centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स पॉइंट वन सेंटीमीटर। कीप ड्रैगिंग ए अंटिल इट शोज़ इग्ज़ैक्टली फाइव सेंटीमीटर।"
+  },
+  {
+    "id": "vo037",
+    "line": "AD is 6.2 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point two centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज सिक्स पॉइंट टू सेंटीमीटर। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्जैक्टली फाइव सेंटीमीटर।"
+  },
+  {
+    "id": "vo038",
+    "line": "AD is 6.3 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point three centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स पॉइंट थ्री सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo039",
+    "line": "AD is 6.4 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point four centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स पॉइंट फोर सेंटीमीटर्स। कीप ड्रैगिंग ए अनटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo040",
+    "line": "AD is 6.5 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point five centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स पॉइंट फाइव सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्जैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo041",
+    "line": "AD is 6.6 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point six centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स पॉइंट सिक्स सेंटीमीटर। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर।"
+  },
+  {
+    "id": "vo042",
+    "line": "AD is 6.7 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point seven centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स पॉइंट सेवन सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo043",
+    "line": "AD is 6.8 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point eight centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स पॉइंट एइट सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्जैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo044",
+    "line": "AD is 6.9 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is six point nine centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सिक्स पॉइंट नाइन सेंटीमीटर्स। कीप ड्रैगिंग ए अनटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo045",
+    "line": "AD is 7 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is seven centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सेवन सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एक्जेक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo046",
+    "line": "AD is 7.1 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is seven point one centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज सेवन पॉइंट वन सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज एग्जेक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo047",
+    "line": "AD is 7.2 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is seven point two centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज सेवन पॉइंट टू सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज एग्जैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo048",
+    "line": "AD is 7.3 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is seven point three centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सेवन पॉइंट थ्री सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo049",
+    "line": "AD is 7.4 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is seven point four centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सेवन पॉइंट फोर सेंटीमीटर्स. कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स."
+  },
+  {
+    "id": "vo050",
+    "line": "AD is 7.5 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is seven point five centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज़ सेवन पॉइंट फाइव सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo051",
+    "line": "AD is 7.6 cm. Keep dragging A until it shows exactly 5 cm.",
+    "spoken": "A D is seven point six centimetres. Keep dragging A until it shows exactly five centimetres.",
+    "devanagari": "ए डी इज सेवन पॉइंट सिक्स सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज एक्जेक्टली फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo052",
+    "line": "Perfect! Both legs are equal.",
+    "spoken": "Perfect! Both legs are equal.",
+    "devanagari": "परफेक्ट! बोथ लेग्स आर इक्वल।"
+  },
+  {
+    "id": "vo053",
+    "line": "Drag point A along the top side.",
+    "spoken": "Drag point A along the top side.",
+    "devanagari": "ड्रैग पॉइंट ए अलॉन्ग द टॉप साइड।"
+  },
+  {
+    "id": "vo054",
+    "line": "A trapezium where legs are of same length is called an isosceles trapezium.",
+    "spoken": "A trapezium where legs are of same length is called an isosceles trapezium.",
+    "devanagari": "ए ट्रेपीजियम वेयर लेग्स आर ऑफ सेम लेंथ इज कॉल्ड एन आइसोसिलीज ट्रेपीजियम।"
+  },
+  {
+    "id": "vo055",
+    "line": "We know all about the sides of a trapezium.",
+    "spoken": "We know all about the sides of a trapezium.",
+    "devanagari": "वी नो ऑल अबाउट द साइड्स ऑफ अ ट्रेपीजियम।"
+  },
+  {
+    "id": "vo056",
+    "line": "Let's measure its angles.",
+    "spoken": "Let's measure its angles.",
+    "devanagari": "लेट्स मेज़र इट्स एंगल्स।"
+  },
+  {
+    "id": "vo057",
+    "line": "Did you notice something?",
+    "spoken": "Did you notice something?",
+    "devanagari": "डिड यू नोटिस समथिंग?"
+  },
+  {
+    "id": "vo058",
+    "line": "∠A and ∠D add up to 180°.",
+    "spoken": "Angle A and angle D add up to one hundred and eighty degrees.",
+    "devanagari": "एंगल ए एंड एंगल डी ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज़।"
+  },
+  {
+    "id": "vo059",
+    "line": "That means they are supplementary angles.",
+    "spoken": "That means they are supplementary angles.",
+    "devanagari": "दैट मीन्स दे आर सप्लीमेंट्री एंगल्स।"
+  },
+  {
+    "id": "vo060",
+    "line": "What about ∠B and ∠C?",
+    "spoken": "What about angle B and angle C?",
+    "devanagari": "वाट अबाउट एंगल बी एंड एंगल सी?"
+  },
+  {
+    "id": "vo061",
+    "line": "Not quite. Try again.",
+    "spoken": "Not quite. Try again.",
+    "devanagari": "नॉट क्वाइट। ट्राई अगेन।"
+  },
+  {
+    "id": "vo062",
+    "line": "360° is the sum of all four angles. Try again.",
+    "spoken": "Three hundred and sixty degrees is the sum of all four angles. Try again.",
+    "devanagari": "थ्री हंड्रेड एंड सिक्सटी डिग्रीज़ इज़ द सम ऑफ़ ऑल फ़ोर एंगल्स. ट्राय अगेन."
+  },
+  {
+    "id": "vo063",
+    "line": "Correct! ∠B and ∠C are supplementary angles too.",
+    "spoken": "Correct! Angle B and angle C are supplementary angles too.",
+    "devanagari": "करेक्ट! एंगल बी एंड एंगल सी आर सप्लीमेंट्री एंगल्स टू."
+  },
+  {
+    "id": "vo064",
+    "line": "What if we change the shape of this trapezium?",
+    "spoken": "What if we change the shape of this trapezium?",
+    "devanagari": "वॉट इफ़ वी चेंज द शेप ऑफ़ दिस ट्रेपीज़ियम?"
+  },
+  {
+    "id": "vo065",
+    "line": "Drag any vertex to change the angles. Notice the sum of angles.",
+    "spoken": "Drag any vertex to change the angles. Notice the sum of angles.",
+    "devanagari": "ड्रैग एनी वर्टेक्स टू चेंज द एंगल्स। नोटिस द सम ऑफ एंगल्स।"
+  },
+  {
+    "id": "vo066",
+    "line": "Drag any corner and watch the two sums.",
+    "spoken": "Drag any corner and watch the two sums.",
+    "devanagari": "ड्रैग एनी कॉर्नर एंड वॉच द टू सम्स।"
+  },
+  {
+    "id": "vo067",
+    "line": "No matter the shape, the angles always add up to 180°.",
+    "spoken": "No matter the shape, the angles always add up to one hundred and eighty degrees.",
+    "devanagari": "नो मैटर द शेप, द एंगल्स ऑलवेज ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज़।"
+  },
+  {
+    "id": "vo068",
+    "line": "So in any trapezium, angles on the same leg always add up to 180°.",
+    "spoken": "So in any trapezium, angles on the same leg always add up to one hundred and eighty degrees.",
+    "devanagari": "सो इन एनी ट्रेपीज़ियम, एंगल्स ऑन द सेम लेग ऑलवेज ऐड अप टू वन हंड्रेड एंड एइटी डिग्रीज़।"
+  },
+  {
+    "id": "vo069",
+    "line": "What if we make one of the angles 90°?",
+    "spoken": "What if we make one of the angles ninety degrees?",
+    "devanagari": "वॉट इफ़ वी मेक वन ऑफ़ द एंगल्स नाइन्टी डिग्रीज़?"
+  },
+  {
+    "id": "vo070",
+    "line": "Drag any vertex to make any angle 90°.",
+    "spoken": "Drag any vertex to make any angle ninety degrees.",
+    "devanagari": "ड्रैग एनी वर्टेक्स टू मेक एनी एंगल नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo071",
+    "line": "∠A is",
+    "spoken": "Angle A is",
+    "part": 1,
+    "devanagari": "एंगल ए इज"
+  },
+  {
+    "id": "vo072",
+    "line": "∠B is",
+    "spoken": "Angle B is",
+    "part": 1,
+    "devanagari": "एंगल बी इज"
+  },
+  {
+    "id": "vo073",
+    "line": "∠C is",
+    "spoken": "Angle C is",
+    "part": 1,
+    "devanagari": "एंगल सी इज"
+  },
+  {
+    "id": "vo074",
+    "line": "∠D is",
+    "spoken": "Angle D is",
+    "part": 1,
+    "devanagari": "एंगल डी इज"
+  },
+  {
+    "id": "vo075",
+    "line": "39° now. Keep dragging until it shows 90°.",
+    "spoken": "Thirty-nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "थर्टी नाइन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo076",
+    "line": "40° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फ़ॉर्टी डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo077",
+    "line": "41° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फ़ोरटी-वन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo078",
+    "line": "42° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-two degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फ़ोर्टी-टू डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo079",
+    "line": "43° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-three degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फोर्टी थ्री डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo080",
+    "line": "44° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-four degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फोर्टी-फोर डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo081",
+    "line": "45° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फोर्टी-फाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo082",
+    "line": "46° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-six degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फ़ोर्टी सिक्स डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo083",
+    "line": "47° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-seven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फोर्टी सेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo084",
+    "line": "48° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-eight degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फोर्टी-एट डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइनटी डिग्रीज़।"
+  },
+  {
+    "id": "vo085",
+    "line": "49° now. Keep dragging until it shows 90°.",
+    "spoken": "Forty-nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फोर्टी नाइन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo086",
+    "line": "50° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फिफ्टी डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo087",
+    "line": "51° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फिफ्टी-वन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo088",
+    "line": "52° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-two degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फ़िफ़्टी-टू डिग्रीज़ नाओ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo089",
+    "line": "53° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-three degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फिफ्टी-थ्री डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo090",
+    "line": "54° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-four degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फ़िफ़्टी-फ़ोर डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo091",
+    "line": "55° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फ़िफ़्टी फ़ाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo092",
+    "line": "56° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-six degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फिफ्टी-सिक्स डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo093",
+    "line": "57° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-seven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फ़िफ़्टी-सेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo094",
+    "line": "58° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-eight degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फिफ्टी-एट डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo095",
+    "line": "59° now. Keep dragging until it shows 90°.",
+    "spoken": "Fifty-nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "फिफ़्टी नाइन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइनटी डिग्रीज़।"
+  },
+  {
+    "id": "vo096",
+    "line": "60° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्सटी डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo097",
+    "line": "61° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्सटी-वन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo098",
+    "line": "62° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-two degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्स्टी-टू डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo099",
+    "line": "63° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-three degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्सटी-थ्री डिग्रीज़ नाउ. कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़."
+  },
+  {
+    "id": "vo100",
+    "line": "64° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-four degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्सटी फोर डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo101",
+    "line": "65° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्सटी-फाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo102",
+    "line": "66° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-six degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्सटी सिक्स डिग्रीज़ नाउ। कीप ड्रैगिंग अनटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo103",
+    "line": "67° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-seven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक़्स्टी सेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo104",
+    "line": "68° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-eight degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्सटी एट डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo105",
+    "line": "69° now. Keep dragging until it shows 90°.",
+    "spoken": "Sixty-nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सिक्सटी-नाइन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo106",
+    "line": "70° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सवेंटी डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo107",
+    "line": "71° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सेवेन्टी-वन डिग्रीज़ नाउ। कीप ड्रैगिंग अन्टिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo108",
+    "line": "72° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-two degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सेवेन्टी टू डिग्रीज नाउ। कीप ड्रैगिंग अंटिल इट शोज नाइन्टी डिग्रीज।"
+  },
+  {
+    "id": "vo109",
+    "line": "73° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-three degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सेवेंटी थ्री डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo110",
+    "line": "74° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-four degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सेवेंटी फोर डिग्रीस नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीस।"
+  },
+  {
+    "id": "vo111",
+    "line": "75° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सेवेंटी-फाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo112",
+    "line": "76° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-six degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सेवनटी सिक्स डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोस नाइंटी डिग्रीज़।"
+  },
+  {
+    "id": "vo113",
+    "line": "77° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-seven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सेवेंटी-सेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo114",
+    "line": "78° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-eight degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सवेंटी-एट डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo115",
+    "line": "79° now. Keep dragging until it shows 90°.",
+    "spoken": "Seventy-nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "सेवेन्टी-नाइन डिग्रीज़ नाउ। कीप ड्रैगिंग अन्टिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo116",
+    "line": "80° now. Keep dragging until it shows 90°.",
+    "spoken": "Eighty degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "एटी डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइंटी डिग्रीज़।"
+  },
+  {
+    "id": "vo117",
+    "line": "81° now. Keep dragging until it shows 90°.",
+    "spoken": "Eighty-one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "एटी-वन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo118",
+    "line": "82° now. Keep dragging until it shows 90°.",
+    "spoken": "Eighty-two degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "एटी टू डिग्रीज़ नाउ. कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़."
+  },
+  {
+    "id": "vo119",
+    "line": "83° now. Keep dragging until it shows 90°.",
+    "spoken": "Eighty-three degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "एटी-थ्री डिग्रीज़ नाउ. कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़."
+  },
+  {
+    "id": "vo120",
+    "line": "84° now. Keep dragging until it shows 90°.",
+    "spoken": "Eighty-four degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "एटी-फोर डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo121",
+    "line": "85° now. Keep dragging until it shows 90°.",
+    "spoken": "Eighty-five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "एटी फाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo122",
+    "line": "95° now. Keep dragging until it shows 90°.",
+    "spoken": "Ninety-five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "नाइन्टी फाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अन्टिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo123",
+    "line": "96° now. Keep dragging until it shows 90°.",
+    "spoken": "Ninety-six degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "नाइन्टी-सिक्स डिग्रीज़ नाउ। कीप ड्रैगिंग अन्टिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo124",
+    "line": "97° now. Keep dragging until it shows 90°.",
+    "spoken": "Ninety-seven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "नाइनटी-सेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइनटी डिग्रीज़।"
+  },
+  {
+    "id": "vo125",
+    "line": "98° now. Keep dragging until it shows 90°.",
+    "spoken": "Ninety-eight degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "नाइनटी-ऐट डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइनटी डिग्रीज़।"
+  },
+  {
+    "id": "vo126",
+    "line": "99° now. Keep dragging until it shows 90°.",
+    "spoken": "Ninety-nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "नाइन्टी-नाइन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo127",
+    "line": "100° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo128",
+    "line": "101° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड वन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo129",
+    "line": "102° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and two degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड टू डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo130",
+    "line": "103° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and three degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थ्री डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइनटी डिग्रीज़।"
+  },
+  {
+    "id": "vo131",
+    "line": "104° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and four degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड फोर डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo132",
+    "line": "105° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड फाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo133",
+    "line": "106° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and six degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड सिक्स डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo134",
+    "line": "107° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and seven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड सेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo135",
+    "line": "108° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and eight degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड एट डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo136",
+    "line": "109° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड नाइन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo137",
+    "line": "110° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and ten degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड टेन डिग्रीज नाउ। कीप ड्रैगिंग अंटिल इट शोज नाइन्टी डिग्रीज।"
+  },
+  {
+    "id": "vo138",
+    "line": "111° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and eleven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड इलेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo139",
+    "line": "112° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twelve degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेल्व डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo140",
+    "line": "113° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirteen degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टीन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo141",
+    "line": "114° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and fourteen degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड फोर्टीन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo142",
+    "line": "115° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and fifteen degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड फिफ्टीन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo143",
+    "line": "116° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and sixteen degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड सिक्सटीन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइंटी डिग्रीज़।"
+  },
+  {
+    "id": "vo144",
+    "line": "117° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and seventeen degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड सेवेन्टीन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo145",
+    "line": "118° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and eighteen degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड एटीन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo146",
+    "line": "119° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and nineteen degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड नाइनटीन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइनटी डिग्रीज़।"
+  },
+  {
+    "id": "vo147",
+    "line": "120° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo148",
+    "line": "121° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी-वन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo149",
+    "line": "122° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-two degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी-टू डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo150",
+    "line": "123° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-three degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी-थ्री डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइंटी डिग्रीज़।"
+  },
+  {
+    "id": "vo151",
+    "line": "124° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-four degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन् हंड्रेड एंड ट्वेंटी-फोर डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo152",
+    "line": "125° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी-फाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo153",
+    "line": "126° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-six degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी-सिक्स डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइंटी डिग्रीज़।"
+  },
+  {
+    "id": "vo154",
+    "line": "127° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-seven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी-सेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo155",
+    "line": "128° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-eight degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी-एट डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo156",
+    "line": "129° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and twenty-nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड ट्वेंटी-नाइन डिग्रीज नाउ। कीप ड्रैगिंग अंटिल इट शोज नाइन्टी डिग्रीज।"
+  },
+  {
+    "id": "vo157",
+    "line": "130° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo158",
+    "line": "131° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी-वन डिग्रीज़ नाओ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo159",
+    "line": "132° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-two degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी टू डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo160",
+    "line": "133° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-three degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी-थ्री डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo161",
+    "line": "134° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-four degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी फोर डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo162",
+    "line": "135° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-five degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी-फाइव डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo163",
+    "line": "136° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-six degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी-सिक्स डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo164",
+    "line": "137° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-seven degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी-सेवन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइंटी डिग्रीज़।"
+  },
+  {
+    "id": "vo165",
+    "line": "138° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-eight degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी-एट डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइनटी डिग्रीज़।"
+  },
+  {
+    "id": "vo166",
+    "line": "139° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and thirty-nine degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड थर्टी-नाइन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo167",
+    "line": "140° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and forty degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड फार्टी डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo168",
+    "line": "141° now. Keep dragging until it shows 90°.",
+    "spoken": "One hundred and forty-one degrees now. Keep dragging until it shows ninety degrees.",
+    "part": 1,
+    "devanagari": "वन हंड्रेड एंड फार्टी वन डिग्रीज़ नाउ। कीप ड्रैगिंग अंटिल इट शोज़ नाइन्टी डिग्रीज़।"
+  },
+  {
+    "id": "vo169",
+    "line": "Great job!",
+    "spoken": "Great job!",
+    "devanagari": "ग्रेट जॉब!"
+  },
+  {
+    "id": "vo170",
+    "line": "Drag a corner slowly and stop when an angle shows 90°.",
+    "spoken": "Drag a corner slowly and stop when an angle shows ninety degrees.",
+    "devanagari": "ड्रैग अ कॉर्नर स्लोली एंड स्टॉप व्हेन एन एंगल शोज़ नाइन्टी डिग्रीज़"
+  },
+  {
+    "id": "vo171",
+    "line": "Woah! We got another right angle.",
+    "spoken": "Whoa! ... We got another right angle.",
+    "devanagari": "वो! ... वी गॉट अनदर राइट एंगल।"
+  },
+  {
+    "id": "vo172",
+    "line": "A trapezium with two adjacent right angles is called a right angled trapezium.",
+    "spoken": "A trapezium with two adjacent right angles is called a right angled trapezium.",
+    "devanagari": "ए ट्रैपीज़ियम विद टू एडजेसेंट राइट एंगल्स इज़ कॉल्ड ए राइट एंगल्ड ट्रैपीज़ियम।"
+  },
+  {
+    "id": "vo206",
+    "line": "Can you tap the two right angles?",
+    "spoken": "Can you tap the two right angles?",
+    "devanagari": "कैन यू टैप द टू राइट एंगल्स?"
+  },
+  {
+    "id": "vo173",
+    "line": "That angle is not 90°. Look for the square corners.",
+    "spoken": "That angle is not ninety degrees. Look for the square corners.",
+    "devanagari": "दैट एंगल इज नॉट नाइन्टी डिग्रीज। लुक फॉर द स्क्वायर कॉर्नर्स।"
+  },
+  {
+    "id": "vo174",
+    "line": "Great job! Now you know all about trapeziums.",
+    "spoken": "Great job! Now you know all about trapeziums.",
+    "devanagari": "ग्रेट जॉब! नाउ यू नो ऑल अबाउट ट्रेपीजियम्स।"
+  },
+  {
+    "id": "vo175",
+    "line": "Let's recall what we learnt today.",
+    "spoken": "Let's recall what we learnt today.",
+    "devanagari": "लेट्स रिकॉल वॉट वी लर्न्ट टुडे।"
+  },
+  {
+    "id": "vo207",
+    "line": "A trapezium is a quadrilateral with at least one pair of parallel sides.",
+    "spoken": "A trapezium is a quadrilateral with at least one pair of parallel sides.",
+    "devanagari": "ए ट्रेपेज़ियम इज़ ए क्वॉड्रीलैटरल विद एट लीस्ट वन पेयर ऑफ़ पैरेलल साइड्स।"
+  },
+  {
+    "id": "vo177",
+    "line": "The parallel sides are called the bases.",
+    "spoken": "The parallel sides are called the bases.",
+    "devanagari": "द पैरेलल साइड्स आर कॉल्ड द बेसेस।"
+  },
+  {
+    "id": "vo178",
+    "line": "The other two sides are called the legs.",
+    "spoken": "The other two sides are called the legs.",
+    "devanagari": "द अदर टू साइड्स आर कॉल्ड द लेग्स।"
+  },
+  {
+    "id": "vo179",
+    "line": "A scalene trapezium has sides of different lengths.",
+    "spoken": "A scalene trapezium has sides of different lengths.",
+    "devanagari": "ए स्केलीन ट्रेपेजियम हैज साइड्स ऑफ डिफरेंट लेंग्थ्स."
+  },
+  {
+    "id": "vo180",
+    "line": "An isosceles trapezium has legs of the same length.",
+    "spoken": "An isosceles trapezium has legs of the same length.",
+    "devanagari": "ऐन आइसोसेलीज़ ट्रपीज़ियम हैज़ लेग्स ऑफ़ द सेम लेंथ।"
+  },
+  {
+    "id": "vo182",
+    "line": "Angles on the same leg add up to 180°.",
+    "spoken": "Angles on the same leg add up to one hundred and eighty degrees.",
+    "devanagari": "एंगल्स ऑन द सेम लेग ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज।"
+  },
+  {
+    "id": "vo183",
+    "line": "Two angles that add up to 180° are supplementary.",
+    "spoken": "Two angles that add up to one hundred and eighty degrees are supplementary.",
+    "devanagari": "टू एंगल्स दैट ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज़ आर सप्लीमेंट्री।"
+  },
+  {
+    "id": "vo181",
+    "line": "A right trapezium has two adjacent right angles.",
+    "spoken": "A right trapezium has two adjacent right angles.",
+    "devanagari": "ए राइट ट्रेपीजियम हैज टू एडजसेंट राइट एंगल्स।"
+  },
+  {
+    "id": "vo184",
+    "line": "Wonderful! You remember everything about trapeziums!",
+    "spoken": "Wonderful! You remember everything about trapeziums!",
+    "devanagari": "वंडरफुल! यू रिमेंबर एवरीथिंग अबाउट ट्रेपीज़ियम्स!"
+  },
+  {
+    "id": "vo185",
+    "line": "Which of these quadrilaterals is a trapezium?",
+    "spoken": "Which of these quadrilaterals is a trapezium?",
+    "devanagari": "विच ऑफ दीज़ क्वाड्रिलैटरल्स इज़ ए ट्रेपीजियम?"
+  },
+  {
+    "id": "vo186",
+    "line": "Look at each side of this shape. No two sides are parallel, so it is not a trapezium.",
+    "spoken": "Look at each side of this shape. No two sides are parallel, so it is not a trapezium.",
+    "devanagari": "लुक एट ईच साइड ऑफ दिस शेप। नो टू साइड्स आर पैरेलल, सो इट इज नॉट अ ट्रेपेज़ियम।"
+  },
+  {
+    "id": "vo187",
+    "line": "This shape has no parallel sides at all.",
+    "spoken": "This shape has no parallel sides at all.",
+    "devanagari": "दिस शेप हैज नो पैरेलल साइड्स एट ऑल।"
+  },
+  {
+    "id": "vo208",
+    "line": "Correct! It has one pair of parallel sides, so it is a trapezium.",
+    "spoken": "Correct! It has one pair of parallel sides, so it is a trapezium.",
+    "devanagari": "करेक्ट! इट हैज वन पेयर ऑफ पैरेलल साइड्स, सो इट इज अ ट्रेपीजियम।"
+  },
+  {
+    "id": "vo189",
+    "line": "Which type of trapezium is this?",
+    "spoken": "Which type of trapezium is this?",
+    "devanagari": "विच टाइप ऑफ ट्रेपीजियम इज दिस?"
+  },
+  {
+    "id": "vo190",
+    "line": "Look at the little marks on the legs. They tell us the legs are equal.",
+    "spoken": "Look at the little marks on the legs. They tell us the legs are equal.",
+    "devanagari": "लुक एट द लिटिल मार्क्स ऑन द लेग्स। दे टेल अस द लेग्स आर इक्वल।"
+  },
+  {
+    "id": "vo191",
+    "line": "There are no right angles in this shape. Look at the legs instead.",
+    "spoken": "There are no right angles in this shape. Look at the legs instead.",
+    "devanagari": "देयर आर नो राइट एंगल्स इन दिस शेप। लुक एट द लेग्स इंस्टेड।"
+  },
+  {
+    "id": "vo192",
+    "line": "Right! The marks show its legs are equal, so it is an isosceles trapezium.",
+    "spoken": "Right! The marks show its legs are equal, so it is an isosceles trapezium.",
+    "devanagari": "राइट! द मार्क्स शो इट्स लेग्स आर इक्वल, सो इट इज एन आइसोसिलीस ट्रेपीजियम।"
+  },
+  {
+    "id": "vo193",
+    "line": "In this trapezium, ∠A = 120°. What is the value of ∠D?",
+    "spoken": "In this trapezium, angle A equals one hundred and twenty degrees. What is the value of angle D?",
+    "devanagari": "इन दिस ट्रेपीजियम एंगल ए इक्वल्स वन हंड्रेड एंड ट्वेंटी डिग्रीज़ वाट इज द वैल्यू ऑफ एंगल डी?"
+  },
+  {
+    "id": "vo194",
+    "line": "Correct! 120° + 60° = 180°.",
+    "spoken": "Correct! One hundred and twenty degrees, plus sixty degrees, equals one hundred and eighty degrees.",
+    "devanagari": "करेक्ट! वन हंड्रेड एंड ट्वेंटी डिग्रीज़, प्लस सिक्स्टी डिग्रीज़, इक्वल्स वन हंड्रेड एंड एटी डिग्रीज़।"
+  },
+  {
+    "id": "vo195",
+    "line": "Drag the labels to their correct place.",
+    "spoken": "Drag the labels to their correct place.",
+    "devanagari": "ड्रैग द लेबल्स टू देयर करेक्ट प्लेस।"
+  },
+  {
+    "id": "vo196",
+    "line": "Try again! Look closely at the shapes.",
+    "spoken": "Try again! Look closely at the shapes.",
+    "devanagari": "ट्राई अगेन! लुक क्लोजली एट द शेप्स."
+  },
+  {
+    "id": "vo197",
+    "line": "Watch the glowing clue. Which shape has that mark?",
+    "spoken": "Watch the glowing clue. Which shape has that mark?",
+    "devanagari": "वॉच द ग्लोइंग क्लू। विच शेप हैज दैट मार्क?"
+  },
+  {
+    "id": "vo198",
+    "line": "Some labels went back. Look for the marks: equal legs, right angles, or neither.",
+    "spoken": "Some labels went back. Look for the marks: equal legs, right angles, or neither.",
+    "devanagari": "सम लेबल्स वेंट बैक। लुक फॉर द मार्क्स: इक्वल लेग्स, राइट एंगल्स, ऑर नाइदर।"
+  },
+  {
+    "id": "vo199",
+    "line": "Brilliant! You labelled all three trapeziums.",
+    "spoken": "Brilliant! You labelled all three trapeziums.",
+    "devanagari": "ब्रिलियंट! यू लेबल्ड ऑल थ्री ट्रैपीजियम्स।"
+  },
+  {
+    "id": "vo200",
+    "line": "In an isosceles trapezium, AB = 6 cm, CD = 10 cm and AD = 5 cm. What is the length of BC?",
+    "spoken": "In an isosceles trapezium, A B equals six centimetres, C D equals ten centimetres, and A D equals five centimetres. What is the length of B C?",
+    "devanagari": "इन एन आइसोसिलीस ट्रेपीजियम, ए बी इक्वल्स सिक्स सेंटीमीटर्स, सी डी इक्वल्स टेन सेंटीमीटर्स, एंड ए डी इक्वल्स फाइव सेंटीमीटर्स। व्हाट इज द लेंथ ऑफ बी सी?"
+  },
+  {
+    "id": "vo201",
+    "line": "BC is a leg. In an isosceles trapezium, both legs are equal.",
+    "spoken": "B C is a leg. In an isosceles trapezium, both legs are equal.",
+    "devanagari": "बी सी इज़ ए लैग। इन ऐन आइसोसेलीस ट्रैपीजियम, बोथ लैग्स आर इक्वल।"
+  },
+  {
+    "id": "vo202",
+    "line": "6 cm is the top base AB. BC is a leg, like AD.",
+    "spoken": "Six centimetres is the top base A B. B C is a leg, like A D.",
+    "devanagari": "सिक्स सेंटीमीटर इज द टॉप बेस ए बी। बी सी इज अ लेग, लाइक ए डी।"
+  },
+  {
+    "id": "vo203",
+    "line": "10 cm is the bottom base CD. BC is a leg, like AD.",
+    "spoken": "Ten centimetres is the bottom base C D. B C is a leg, like A D.",
+    "devanagari": "टेन सेंटीमीटर्स इज द बॉटम बेस सी डी. बी सी इज अ लेग, लाइक ए डी."
+  },
+  {
+    "id": "vo204",
+    "line": "Yes! In an isosceles trapezium the legs are equal, so BC = 5 cm.",
+    "spoken": "Yes! In an isosceles trapezium the legs are equal, so B C equals five centimetres.",
+    "devanagari": "येस! इन एन आइसोसेलीज़ ट्रेपीज़ियम द लेग्स आर इक्वल, सो बी सी इक्वल्स फाइव सेंटीमीटर्स।"
+  },
+  {
+    "id": "vo205",
+    "line": "Amazing work! You know all about trapeziums now.",
+    "spoken": "Amazing work! You know all about trapeziums now.",
+    "devanagari": "अमेजिंग वर्क! यू नो ऑल अबाउट ट्रेपीजियम्स नाउ।"
+  },
+  {
+    "id": "vo209",
+    "line": "Bye for now! See you on our next snowy adventure!",
+    "spoken": "Bye for now! See you on our next snowy adventure!",
+    "devanagari": "बाय फॉर नाउ! सी यू ऑन आवर नेक्स्ट स्नोवी एडवेंचर!"
+  },
+  {
+    "id": "vo210",
+    "line": "The End!",
+    "spoken": "The End!",
+    "devanagari": "द एंड!"
+  }
+]

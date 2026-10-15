@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swiftee winter animation review</title>
+<style>
+body{margin:24px;background:#e7f2fc;color:#123b63;font:16px system-ui}h1{font-size:24px}
+header{position:sticky;top:0;background:#e7f2cf;padding:12px;z-index:1;border-radius:12px}
+button,select,input{font:inherit;margin:4px;padding:6px}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+figure{margin:0;background:white;border-radius:12px;padding:8px;text-align:center}canvas{width:100%;height:auto}figcaption{font-size:13px}
+</style>
+<h1>Swiftee · winter animation review</h1>
+<header><button id="play">Play all</button><label>Frame progress <input id="frame" type="range" min="0" max="100" value="0"></label>
+<label>Resolution <select id="scale"><option>1x</option><option>2x</option></select></label><span id="status">Loading…</span></header>
+<main></main>
+<script src="../js/swiftee-manifest.js"></script><script src="../js/scarf-anchors.js"></script><script src="../js/scarf-occlusion.js"></script><script src="../js/winter-scarf.js"></script>
+<script>
+const assets = new Map(), cards = [];
+const load = url => {
+  if (!assets.has(url)) assets.set(url, new Promise((resolve, reject) => {
+    const im = new Image(); im.onload = () => resolve(im); im.onerror = () => reject(new Error(url)); im.src = url;
+  }));
+  return assets.get(url);
+};
+let running = false, tick = 0, generation = 0;
+async function setup() {
+  const run = ++generation; running = false; document.querySelector('#play').textContent = 'Play all';
+  const scale = document.querySelector('#scale').value;
+  document.querySelector('main').replaceChildren(); cards.length = 0;
+  const entries = Object.entries(SWIFTEE_MANIFEST.scales[scale].sheets);
+  entries.push(['protractor',{cell:896,cols:4,frames:8,image:'../../assets/images/swiftee-protractor.webp'}]);
+  for (const [name, s] of entries) {
+    const figure = document.createElement('figure'), cv = document.createElement('canvas'), label = document.createElement('figcaption');
+    cv.width = cv.height = 256; label.textContent = name; figure.append(cv,label); document.querySelector('main').append(figure);
+    const pages = s.pages || [{image:s.image,first:0,frames:s.frames,cols:s.cols}];
+    const loaded = await Promise.all(pages.map(async p => ({...p,im:await load(name === 'protractor' ? '../assets/images/swiftee-protractor.webp' : '../swiftee-assets/'+p.image)})));
+    if (run !== generation) return;
+    cards.push({name,s,pages:loaded,ctx:cv.getContext('2d'),label});
+  }
+  document.querySelector('#status').textContent = cards.length + ' clips loaded'; render();
+}
+function render() {
+  for (const c of cards) {
+    const fps = (SWIFTEE_MANIFEST.animations[c.name] || {}).fps || 20;
+    const pingpong = (SWIFTEE_MANIFEST.animations[c.name] || {}).pingpong;
+    const length = pingpong ? Math.max(1,c.s.frames*2-2) : c.s.frames;
+    let f = running ? Math.floor(tick*fps/1000)%length : Math.round(+document.querySelector('#frame').value/100*(c.s.frames-1));
+    if (f >= c.s.frames) f = length-f;
+    const p = c.pages.find(p => f >= p.first && f < p.first+p.frames), i=f-p.first, cell=c.s.cell;
+    c.ctx.clearRect(0,0,256,256);
+    WinterScarf.frame(c.ctx,p.im,(i%p.cols)*cell,Math.floor(i/p.cols)*cell,cell,c.name,f,0,0,256,256);
+    c.label.textContent=c.name+' · '+(f+1)+'/'+c.s.frames;
+  }
+}
+document.querySelector('#play').onclick=()=>{running=!running; document.querySelector('#play').textContent=running?'Pause all':'Play all';};
+document.querySelector('#frame').oninput=()=>{running=false;document.querySelector('#play').textContent='Play all';render();};
+document.querySelector('#scale').onchange=()=>setup().catch(e=>document.querySelector('#status').textContent=e.message);
+let last=0;function loop(now){if(running&&!document.hidden){tick+=Math.min(100,now-last);render();}last=now;requestAnimationFrame(loop)}
+setup().catch(e=>document.querySelector('#status').textContent=e.message);requestAnimationFrame(loop);
+</script>
+</html>

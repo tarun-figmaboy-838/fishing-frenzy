@@ -1,0 +1,11 @@
+# not part of the game a player loads
+drafts/
+tests/
+tools/
+shell/images/source/
+parts/lesson/qa/
+parts/lesson/tools/
+*.md
+.DS_Store
+.env
+.env.*
