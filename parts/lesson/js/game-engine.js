@@ -4,9 +4,10 @@
 // index.html binds to the values returned by renderVals().
 // =====================================================================
 // the lesson's vocabulary: shown in orange in Swiftee's bubble (a word, cleaned of punctuation, in lower case)
-// Inside the journey (shell/bridge.js, index.html at the root) the lesson sits between the two fishing games:
-// the journey's front page comes before it, so it has none of its own; it stops after the last check (its
-// goodbye and "The End" would cut into the fishing that follows); and Next on that check hands over.
+// Inside the journey (shell/bridge.js, index.html at the root) the lesson plays on the card that rises from the
+// seashell at the start of fishing 2, in its own frame laid over the card: the journey's front page comes before
+// it, so it has none of its own; it stops after the last check (its goodbye and "The End" would cut into the
+// fishing that follows), and that check done, it hands over and the card closes.
 // (Without a page - the headless test - there is no journey.)
 const JOURNEY = typeof window !== 'undefined' && window.Journey && window.Journey.embedded ? window.Journey : null;
 const KEY_WORDS = /^(polygon|quadrilaterals?|trapeziums?|parallel|bases?|legs?|sides?|scalene|isosceles|right|angled|adjacent|angles?|supplementary|vertex|vertices|equal|same|different|meet|180°|90°)$/;
@@ -78,7 +79,10 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       if (JOURNEY.params.get('dev') === '1') JOURNEY.devScreens(this.steps().map((x, i) => ({ label: (i + 1) + ' ' + this.screenName(x), run: () => this.jumpTo(i) })));
       // the journey's Play has been tapped by the time the shell begins the lesson
       // from fishing 1 (opts.arrive) Swiftee flies in first; a jump (?dev=1) starts at once
-      JOURNEY.onBegin((opts) => { if (opts && opts.arrive) this.arrive(() => this.start()); else { this.setState({ arriving: false }); this.start(); } });
+      JOURNEY.onBegin((opts) => {
+        if (opts && opts.card) document.documentElement.classList.add('in-card'); // on fishing 2's card (css/game.css)
+        if (opts && opts.arrive) this.arrive(() => this.start()); else { this.setState({ arriving: false }); this.start(); }
+      });
       JOURNEY.onDispose(() => this.leave());
       // ready once the page's pictures are in (the background, the ice panel, Swiftee)
       const ready = () => JOURNEY.ready();

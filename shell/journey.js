@@ -1,25 +1,28 @@
 // =====================================================================
 // FISHING FRENZY - the journey (index.html at the root).
-// One front page (the Fishing Frenzy banner, alive, and Play: shell/front-page.js), then three parts, one after another, each a whole
+// One front page (the Fishing Frenzy banner, alive, and Play: shell/front-page.js), then the parts, each a whole
 // game in its own frame (parts/*/index.html; each loads shell/bridge.js):
 //   1. fishing-1  Popo's shape fishing: triangles, pentagons, hexagons, quadrilaterals. Then a fish he has never
 //                 seen leaps out ("What kind of fish was that?") and Swiftee flies in: "Let's find out!" - Next
-//   2. lesson     Swiftee's trapezium lesson ("Remember we learnt about quadrilaterals earlier."): what makes a
-//                 trapezium, its bases and legs, its types, its angles, a recap and five checks
-//   3. fishing-2  Swiftee flies in from the lesson ("Great job! You know all about trapeziums!") and Popo
-//                 catches trapezium fish in five levels, to "The End" - Next
+//   2. fishing-2  Popo rows in, and the seashell on the sand rattles and opens: its pearl blows a bubble up, out
+//                 springs a big card, and the trapezium lesson plays inside it (parts/lesson: what makes a trapezium,
+//                 its bases and legs, its types, its angles, a recap and five checks). The lesson is a part of its
+//                 own, in its own frame, which the shell lays over the card. Then the card closes, Swiftee swoops in
+//                 ("Great job! You know all about trapeziums!") and Popo catches trapezium fish in five levels, to
+//                 "The End" - Next
 // and then the front page again, ready to play again.
 //
 // Sound: browsers allow it only after a tap. The Play tap unlocks one AudioContext, one <audio> element and the
 // speech voice in this page, and every part plays through them (bridge.js), so no part needs a tap of its own.
-// Loading: while a part plays, the next one loads behind it, unseen, and begins the moment it is called.
+// Loading: while a part plays, the others load behind it, unseen, and begin the moment they are called.
 // Between two parts Swiftee carries the learner across, on camera: she flies off in the part that ends (out of the
 // top left of the lake; out of the right of the lesson), the next part begins underneath and the two scenes
 // dissolve into each other with a little snow blowing across, and she flies in on the other side (into the lesson
 // from the top left; into the lake from the right). Only if the next part has not loaded yet does a frosted veil
 // say "Getting ready…" until it has.
 //
-// URL options: ?start=lesson or ?start=fishing-2 begins the first journey there; ?dev=1 adds one panel that jumps
+// URL options: ?start=fishing-2 begins the first journey there (Popo rows in, the lesson's card rises), ?start=lesson
+// straight at the lesson's open card; ?dev=1 adds one panel that jumps
 // to any screen of the journey (each part's own jumps, the lesson's 42 screens, the front page); ?debug passes on
 // to the parts (window.popoDebug in the fishing games). Every step is announced as a window event
 // ('fishing-frenzy:part', ':finished', ':complete') and posted to a page that hosts the journey in a frame.
@@ -29,7 +32,7 @@
 
   const PARTS = [
     { id: 'fishing-1', src: 'parts/fishing-1/index.html', title: "Popo's shape fishing" },
-    { id: 'lesson', src: 'parts/lesson/index.html', title: "Swiftee's trapezium lesson" },
+    { id: 'lesson', src: 'parts/lesson/index.html', title: "Swiftee's trapezium lesson", inset: true }, // inside fishing 2's card
     { id: 'fishing-2', src: 'parts/fishing-2/index.html', title: "Popo's trapezium fishing" },
   ];
   // times in ms
@@ -47,6 +50,7 @@
   const DEV = params.get('dev') === '1';
   const reduced = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   const $ = (id) => document.getElementById(id);
+  const idx = (id) => PARTS.findIndex((p) => p.id === id);
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
   // ---------- sound: unlocked once, by the Play tap, and shared by every part ----------
@@ -182,7 +186,7 @@
     el.setAttribute('allow', 'autoplay; fullscreen');
     el.setAttribute('aria-hidden', 'true');
     el.tabIndex = -1;
-    f = { id: p.id, index, el, status: 'loading', progress: 0, waiters: [], heard: Date.now() };
+    f = { id: p.id, index, el, inset: !!p.inset, status: 'loading', progress: 0, waiters: [], heard: Date.now() };
     frames.set(p.id, f);
     el.src = partUrl(p);
     $('parts').appendChild(el);
@@ -210,6 +214,7 @@
     drop(f);
     const g = load(f.index);
     g.waiters.push(...waiters);
+    if (J.inset === f) { J.inset = g; g.el.classList.add('inset'); g.el.style.cssText = f.el.style.cssText; }
     status.swap(f, g);
   }
   function drop(f) {
@@ -236,6 +241,8 @@
       else if (type === 'progress') { f.progress = Math.max(f.progress, Math.min(1, +detail || 0)); status.update(); }
       else if (type === 'failed') fail(f, detail);
       else if (type === 'finish') finish(f, detail);
+      else if (type === 'card') card(f, detail);
+      else if (type === 'devScreens') dev.register(id, (detail || []).map((label, i) => ({ label, run: () => tell(f, 'command', { name: 'devJump', args: i }) })), win); // (from disk: by message)
     } catch (err) { console.error(err); }
   }
   window.addEventListener('message', (e) => {
@@ -246,8 +253,8 @@
   // ---------- the journey ----------
   const J = {
     phase: 'cover', // cover | starting | playing | switching | ending
-    current: null,
-    first: Math.max(0, PARTS.findIndex((p) => p.id === params.get('start'))),
+    current: null, // the part playing
+    inset: null, // the lesson, while it plays inside fishing 2's card
     runs: 0,
     results: {},
   };
@@ -257,9 +264,9 @@
       try { window.parent.postMessage(Object.assign({ type: 'fishing-frenzy:' + kind }, detail), '*'); } catch (e) { /* gone */ }
     }
   }
-  // Part f plays: f shows and begins, and the one after it starts loading behind it. The one before it goes at once,
-  // unless the two scenes are to dissolve into each other (opts.dissolve: switchTo removes it). opts.arrive: f follows
-  // the part before it, so Swiftee flies in.
+  // Part f plays: f shows and begins, and the other parts load behind it. The one before it goes at once, unless the
+  // two scenes are to dissolve into each other (opts.dissolve: switchTo removes it). opts.arrive: f follows the part
+  // before it, so Swiftee flies in; opts.lesson: fishing 2 opens with the lesson's card; opts.lessonNow: straight to it.
   function begin(f, opts) {
     opts = opts || {};
     const prev = J.current;
@@ -270,34 +277,92 @@
     f.el.classList.add('live');
     f.el.removeAttribute('aria-hidden');
     f.el.tabIndex = 0;
-    tell(f, 'begin', { arrive: !!opts.arrive });
+    tell(f, 'begin', { arrive: !!opts.arrive, lesson: !!opts.lesson, lessonNow: !!opts.lessonNow });
     try { f.el.focus({ preventScroll: true }); f.el.contentWindow.focus(); } catch (e) { /* file:// */ }
     announce('part', { part: f.id, number: f.index + 1, of: PARTS.length });
     dev.update();
-    // after the last part, the first again (Play again)
-    const next = (f.index + 1) % PARTS.length;
-    setTimeout(() => { if (J.current === f) load(next); }, T.preloadAfter);
+    // the other parts load behind it, in order: fishing 2 and the lesson while fishing 1 plays, fishing 1 again while
+    // fishing 2 plays (for Play again); the lesson not again once it has played, unless the dev panel needs it
+    PARTS.forEach((p, i) => {
+      if (i === f.index) return;
+      setTimeout(() => { if (J.current === f && !frames.has(p.id) && !(p.inset && J.results[p.id] && !DEV)) load(i); }, T.preloadAfter + i * 1200);
+    });
   }
   function dispose(f) {
+    if (J.inset && !f.inset) hideLesson(); // the lesson in its card goes with the game it sits in
     tell(f, 'dispose');
     audio.release(f.id);
-    f.el.classList.remove('live');
+    f.el.classList.remove('live', 'in');
     setTimeout(() => {
       drop(f);
       if (DEV) setTimeout(() => load(f.index), 1500); // the dev panel keeps every part's screens
     }, 80);
   }
   function finish(f, detail) {
+    if (f.inset) { lessonFinished(f, detail); return; }
     if (f !== J.current || J.phase !== 'playing') return;
     J.results[f.id] = detail || {};
     announce('finished', { part: f.id, detail: detail || {} });
-    if (f.index === PARTS.length - 1) end(f);
-    else switchTo(load(f.index + 1));
+    if (f.id === 'fishing-1') switchTo(load(idx('fishing-2')), { lesson: true });
+    else end(f);
+  }
+
+  // ---------- the lesson, inside fishing 2's card ----------
+  // fishing 2: the lesson's card is up at rect (CSS px; its frame fills the window, so the page's too), or gone
+  function card(f, rect) {
+    if (f !== J.current) return;
+    if (rect) showLesson(rect); else hideLesson();
+  }
+  function placeInset(L, rect) {
+    const s = L.el.style;
+    s.left = rect.x + 'px'; s.top = rect.y + 'px'; s.width = rect.w + 'px'; s.height = rect.h + 'px'; s.borderRadius = rect.radius + 'px';
+  }
+  // The lesson's frame goes over the card and the lesson begins, once it has loaded (a frosted "Getting ready…"
+  // waits for it otherwise). Called again when the window changes: the card has moved, and the frame follows it.
+  function showLesson(rect) {
+    const L = load(idx('lesson'));
+    L.el.classList.add('inset');
+    L.el.removeAttribute('aria-hidden');
+    L.el.tabIndex = 0;
+    placeInset(L, rect);
+    if (J.inset === L) return;
+    J.inset = L;
+    if (L.status !== 'ready') { veil.open(); status.show(L, 'veil'); }
+    when(L, (g) => {
+      if (J.inset !== g) return;
+      status.hide();
+      veil.close();
+      audio.resume();
+      tell(g, 'begin', { arrive: true, card: true });
+      g.el.classList.add('in');
+      try { g.el.focus({ preventScroll: true }); g.el.contentWindow.focus(); } catch (e) { /* file:// */ }
+      announce('part', { part: g.id, number: g.index + 1, of: PARTS.length, inset: true });
+      dev.update();
+      dev.lessonShown(g);
+    });
+  }
+  // the lesson fades out of the card; its frame goes once it has
+  function hideLesson() {
+    const L = J.inset;
+    if (!L) return;
+    J.inset = null;
+    L.el.classList.remove('in');
+    status.hide();
+    veil.close();
+    setTimeout(() => dispose(L), 450);
+  }
+  // the lesson is over (its last check done, Swiftee flown out): fishing 2 closes the card and carries on
+  function lessonFinished(f, detail) {
+    if (f !== J.inset) return;
+    J.results[f.id] = detail || {};
+    announce('finished', { part: f.id, detail: detail || {} });
+    if (J.current && J.current.id === 'fishing-2') tell(J.current, 'command', { name: 'lessonDone' });
+    hideLesson();
   }
   // One part to the next, on camera: Swiftee takes off in the part that ends (it starts that itself as it finishes),
   // the next part begins underneath (with Swiftee flying in), and the ending part's scene dissolves into it, with a
   // little snow blowing across. If the next part hasn't loaded yet, a frosted veil says so until it has.
-  async function switchTo(next) {
+  async function switchTo(next, opts) {
     const prev = J.current;
     J.phase = 'switching';
     audio.resume();
@@ -311,7 +376,7 @@
       status.hide();
     }
     if (J.phase !== 'switching') return; // (a dev jump took over)
-    begin(next, { arrive: true, dissolve: true });
+    begin(next, Object.assign({ arrive: true, dissolve: true }, opts || {}));
     next.el.classList.add('arriving');
     audio.fade(prev.id, T.dissolve);
     prev.el.classList.add('leaving'); // on top of the next part, fading away
@@ -362,7 +427,10 @@
     J.phase = 'starting';
     J.runs += 1;
     if (J.runs > 1) J.results = {};
-    const f = load(J.runs === 1 ? J.first : 0);
+    // ?start: the first journey may begin at fishing 2 (Popo rows in and the lesson's card rises), or straight at the
+    // lesson's open card
+    const start = J.runs === 1 ? params.get('start') : null;
+    const f = load(start === 'fishing-2' || start === 'lesson' ? idx('fishing-2') : 0);
     if (f.status !== 'ready') {
       FrontPage.waiting(true);
       status.show(f, 'cover');
@@ -371,7 +439,7 @@
       if (J.phase !== 'starting') return;
       status.hide();
       // the title fades away over fishing 1, which begins beneath it (as fishing 2's title fades into its game)
-      begin(g);
+      begin(g, start === 'lesson' ? { lessonNow: true } : start === 'fishing-2' ? { lesson: true } : {});
       hideCover(true);
     });
   }
@@ -486,11 +554,12 @@
       const f = frames.get(id);
       if (!DEV || !f || (win && win !== f.el.contentWindow)) return;
       this.lists.set(id, { f, list: list || [] });
-      this.render();
+      this.renderPart(id);
     },
-    forget(f) { const e = this.lists.get(f.id); if (e && e.f === f) this.lists.delete(f.id); this.update(); },
+    forget(f) { const e = this.lists.get(f.id); if (e && e.f === f) { this.lists.delete(f.id); this.renderPart(f.id); } this.update(); },
     // jump to screen `i` of part `index` (inside the tap, so sound is unlocked too)
     jump(index, i) {
+      if (PARTS[index].inset) { this.jumpLesson(i); return; }
       audio.unlock();
       const f = load(index);
       J.phase = 'starting';
@@ -503,6 +572,28 @@
         const e = this.lists.get(g.id);
         if (e && e.list[i]) setTimeout(() => { try { e.list[i].run(); } catch (err) { console.error(err); } }, 120);
       });
+    },
+    // a lesson screen: the lesson plays in fishing 2's card, so fishing 2 goes straight to its open card (lessonNow),
+    // the lesson shows in it, and then the screen
+    jumpLesson(i) {
+      audio.unlock();
+      this.lessonScreen = i;
+      if (J.inset && J.inset.status === 'ready' && J.inset.el.classList.contains('in')) { this.lessonShown(J.inset); return; }
+      const f = load(idx('fishing-2'));
+      J.phase = 'starting';
+      status.hide();
+      when(f, (g) => {
+        veil.hide();
+        hideCover(false);
+        if (J.current !== g) begin(g, { lessonNow: true }); else tell(g, 'command', { name: 'lessonNow' });
+        J.phase = 'playing';
+      });
+    },
+    lessonShown(g) {
+      const i = this.lessonScreen, e = this.lists.get(g.id);
+      this.lessonScreen = null;
+      if (i == null || !e || !e.list[i]) return;
+      setTimeout(() => { try { e.list[i].run(); } catch (err) { console.error(err); } }, 150);
     },
     frontPage() {
       const f = J.current;
@@ -526,7 +617,7 @@
 .dev-btns{display:flex;flex-wrap:wrap;gap:4px}
 .dev button.j{font:inherit;padding:5px 7px;border:0;border-radius:6px;background:#2f4f7f;color:#fff;cursor:pointer;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
 .dev button.j:hover{background:#3f6aa8}
-.dev button.j.front{background:#7a4f10}`;
+.dev button.j.home{background:#7a4f10}`;
       document.head.appendChild(css);
       const el = this.el = document.createElement('div');
       el.className = 'dev folded';
@@ -539,13 +630,14 @@
       PARTS.forEach((p, i) => load(i));
       this.render();
     },
+    // the panel's skeleton once (Front page, then a section per part); each part's buttons on their own, as its
+    // screens come in (so a part reloading never rebuilds the others' buttons under a tap)
     render() {
       if (!this.el) return;
       const body = this.el.querySelector('.dev-body');
-      body.innerHTML = '';
       const front = document.createElement('div');
       front.className = 'dev-part';
-      front.innerHTML = '<div class="dev-btns"><button class="j front" type="button">Front page</button></div>';
+      front.innerHTML = '<div class="dev-btns"><button class="j home" type="button">Front page</button></div>';
       front.querySelector('button').addEventListener('click', () => this.frontPage());
       body.appendChild(front);
       PARTS.forEach((p, index) => {
@@ -557,26 +649,31 @@
         sec.appendChild(h);
         const btns = document.createElement('div');
         btns.className = 'dev-btns';
-        const e = this.lists.get(p.id);
-        const list = e ? e.list : [];
-        if (!list.length) btns.innerHTML = '<small style="color:#aab;padding:2px">loading…</small>';
-        list.forEach((s, i) => {
-          const b = document.createElement('button');
-          b.type = 'button'; b.className = 'j'; b.textContent = s.label; b.title = s.label;
-          b.addEventListener('click', (ev) => { ev.stopPropagation(); this.jump(index, i); });
-          btns.appendChild(b);
-        });
         sec.appendChild(btns);
         body.appendChild(sec);
+        this.renderPart(p.id);
       });
       this.update();
+    },
+    renderPart(id) {
+      const btns = this.el && this.el.querySelector('.dev-part[data-part="' + id + '"] .dev-btns');
+      if (!btns) return;
+      const index = idx(id), e = this.lists.get(id), list = e ? e.list : [];
+      btns.innerHTML = '';
+      if (!list.length) { btns.innerHTML = '<small style="color:#aab;padding:2px">loading…</small>'; return; }
+      list.forEach((s, i) => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = 'j'; b.textContent = s.label; b.title = s.label;
+        b.addEventListener('click', (ev) => { ev.stopPropagation(); this.jump(index, i); });
+        btns.appendChild(b);
+      });
     },
     update() {
       if (!this.el) return;
       this.el.querySelectorAll('.dev-part[data-part]').forEach((sec) => {
         const f = frames.get(sec.dataset.part);
-        sec.classList.toggle('now', !!J.current && J.current.id === sec.dataset.part);
-        sec.querySelector('small').textContent = !f ? '' : J.current === f ? 'playing' : f.status;
+        sec.classList.toggle('now', (!!J.current && J.current.id === sec.dataset.part) || (!!J.inset && J.inset.id === sec.dataset.part));
+        sec.querySelector('small').textContent = !f ? '' : J.current === f ? 'playing' : J.inset === f ? 'in the card' : f.status;
       });
     },
   };
@@ -589,13 +686,16 @@
     devScreens: (id, list, win) => dev.register(id, list, win),
     get phase() { return J.phase; },
     get current() { return J.current ? J.current.id : null; },
+    get inset() { return J.inset ? J.inset.id : null; },
     get results() { return J.results; },
     frame: (id) => (frames.get(id) || {}).el || null,
     status: (id) => (frames.get(id) || {}).status || null,
   };
 
-  // the front page shows at once; the first part loads behind it
+  // the front page shows at once; the first part loads behind it (with ?start, fishing 2, and the lesson for its card)
   showCover(false);
   dev.build();
-  load(J.first);
+  const startAt = params.get('start');
+  load(startAt === 'fishing-2' || startAt === 'lesson' ? idx('fishing-2') : 0);
+  if (startAt === 'fishing-2' || startAt === 'lesson') setTimeout(() => load(idx('lesson')), 800);
 })();

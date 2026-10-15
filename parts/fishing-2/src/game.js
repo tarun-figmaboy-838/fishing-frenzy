@@ -1,6 +1,6 @@
 (function (PopoGame) {
 'use strict';
-const { assets, preloadBackground, clock, ease, drawShell, drawPearlLight, pearlPoint, Effects, WaterScene, surfaceWave, PAN_OVERLAP, refreshShadows, ShapeFish, ShadowFish, PALETTE, PLACES, FISH, LEVELS, RECALL, STORY, geometry, Popo, correctCatch, wrongCatch, finishLevel, closeCurtain, opening, mouthOf, Cancelled, STAGE_W, STAGE_H, swimArea, raftAnchor, state, PHASE, resetProgress, newToken, isCurrent } = PopoGame;
+const { assets, preloadBackground, clock, ease, drawShell, drawPearlLight, pearlPoint, Effects, WaterScene, surfaceWave, PAN_OVERLAP, refreshShadows, ShapeFish, ShadowFish, PALETTE, PLACES, FISH, LEVELS, RECALL, STORY, geometry, Popo, correctCatch, wrongCatch, finishLevel, closeCurtain, opening, lessonNow, mouthOf, Cancelled, STAGE_W, STAGE_H, swimArea, raftAnchor, state, PHASE, resetProgress, newToken, isCurrent } = PopoGame;
 
 const HINT_DELAY = 4;
 const TAU = Math.PI * 2;
@@ -14,7 +14,14 @@ const shuffle = (list) => list.map((x) => [Math.random(), x]).sort((a, b) => a[0
 // its shape, its straight line and its sum go, the shape's scale and the wedges' radius), the shell
 // on the sand below it, the two flying wedges' colours, and when each angle step starts after
 // "leg" (seconds): the leg, each corner's other side, wedge, number and pulse, the leg again.
-const RECALL_CARD = { x: 836, y: 533, w: 900, h: 500, scale: 44, title: -192, shape: [-170, -4], line: [250, 74], sum: 190, sector: 52 };
+const RECALL_CARD = { x: 836, y: 533, w: 900, h: 500, scale: 44, title: -192, shape: [-170, -4], line: [250, 74], sum: 190, sector: 52, radius: 30, stroke: 4.5 };
+// The lesson's card (the journey, shell/journey.js): the whole trapezium lesson plays inside it, in the lesson's own
+// frame, which the shell lays over the card's middle (frame: the lesson's stage, 1280 x 720, at 1:1, an even margin
+// round it). A plain cream card with a faint print of the game's motifs (drawCardPrint). It is drawn on the curtain
+// canvas, in screen space: the camera dives into the water behind it (dive), so only the lake's depths show round it,
+// with the shell on the sand just under its bottom edge.
+const LESSON_CARD = { x: 836, y: 415, w: 1380, h: 800, radius: 30, stroke: 4.5, frame: { w: 1280, h: 720, radius: 18 } };
+const DIVE_ZOOM = 1.85; // the camera, into the water: the surface out of view above, the sand along the bottom
 const PEARL = { x: 836, y: 929, size: 1.12 };
 const RECALL_PIECES = ['#ffb347', '#ff8f3a'];
 // The bubble the card arrives and leaves in: its size, how big it swells on the pearl before it
@@ -196,6 +203,8 @@ class Game {
     this.ui.hideHand();
     this.ui.clearHits();
     this.handFish = null;
+    if (this.lessonOpen) this.cardOpen(false); // (a restart or a dev jump while the lesson is in the card)
+    this.lessonFinished = false;
     const muted = state.muted;
     resetProgress();
     state.muted = muted;
@@ -651,7 +660,7 @@ class Game {
   }
 
   togglePause() {
-    if (state.phase === PHASE.INTRO || state.phase === PHASE.COMPLETE) return;
+    if (state.phase === PHASE.INTRO || state.phase === PHASE.COMPLETE || this.lessonOpen) return; // (the lesson has no pause)
     state.paused = !state.paused;
     this.ui.showPause(state.paused);
     this.ui.el.hud.inert = state.paused; // nothing behind the pause card can be pressed
@@ -678,6 +687,7 @@ class Game {
     if (this.handFish && !this.handFish.gone) this.ui.moveHand(...this.handPoint());
     this.ui.showRotateHint(this.stage.portrait);
     this.syncWaterCanvas();
+    if (this.lessonOpen) this.cardOpen(true); // the card has moved with the window: the lesson's frame follows
   }
 
   // The painting is STAGE_W pixels wide, so the water pass never renders more pixels than
@@ -1243,7 +1253,8 @@ class Game {
   // follows Swiftee's lines, each step starting on the word that names it (recallStep). Everything
   // on it comes from the lesson's own shape: its name, its parallel sides, and for each of the two
   // chosen corners the two sides that meet there, the angle between them and its size.
-  showRecall() {
+  // opts.lesson: the card for the lesson (LESSON_CARD, nothing drawn on it) instead of the angle recall's
+  showRecall(opts = {}) {
     const { body, corners, names } = RECALL;
     const shape = geometry.classify(body);
     const marks = geometry.layoutMarks(body, RECALL_CARD.scale, ['parallel'], {});
@@ -1291,6 +1302,7 @@ class Game {
     });
     const side = (i) => [names[i], names[(i + 1) % n]].sort().join('');
     this.recall = {
+      card: opts.lesson ? LESSON_CARD : RECALL_CARD, lesson: !!opts.lesson,
       t: 0, fired: new Set(), motes: [], pops: [], spawning: false, leaving: false, cardOut: 0,
       shell: { open: 0, rock: 0, squash: 0, leak: 0, pearl: 1, alpha: 0 },
       dim: 0, glow: 0, emerge: 0, flash: 0, beam: 0,
@@ -1359,7 +1371,8 @@ class Game {
       m.x += m.vx * dt;
       m.y += m.vy * dt;
     }
-    r.motes = r.motes.filter((m) => m.life < 1.3 && m.y > RECALL_CARD.y + RECALL_CARD.h / 2);
+    const under = this.worldOf({ x: 0, y: r.card.y + r.card.h / 2 }).y; // (the lesson's card is in screen space)
+    r.motes = r.motes.filter((m) => m.life < 1.3 && m.y > under);
     if (r.leaving) r.cardOut = Math.min(1, r.cardOut + dt / 1.6);
     // the bubble pops: arriving in the middle, and leaving near the surface
     const burst = (x, y, radius) => {
@@ -1369,10 +1382,11 @@ class Game {
         const speed = 90 + Math.random() * 160;
         r.pops.push({ x: x + Math.cos(a) * radius, y: y + Math.sin(a) * radius, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed - 40, r: 4 + Math.random() * 9, life: 0 });
       }
-      this.fx.sparkle(x, y - radius * 0.5, 10);
+      const w = this.worldOf({ x, y: y - radius * 0.5 }); // (the sparkles are in the world, which the camera may have zoomed)
+      this.fx.sparkle(w.x, w.y, 10);
     };
-    if (r.emerge >= BUBBLE.pop) once('pop', 0, () => burst(RECALL_CARD.x, RECALL_CARD.y, BUBBLE.radius));
-    if (r.cardOut >= 0.85) once('popOut', 0, () => burst(RECALL_CARD.x, BUBBLE.surface, BUBBLE.radius * 0.65));
+    if (r.emerge >= BUBBLE.pop) once('pop', 0, () => burst(r.card.x, r.card.y, BUBBLE.radius));
+    if (r.cardOut >= 0.85) once('popOut', 0, () => burst(r.card.x, BUBBLE.surface, BUBBLE.radius * 0.65));
     for (const p of r.pops) {
       p.life += dt / 0.9;
       p.x += p.vx * dt;
@@ -1384,7 +1398,64 @@ class Game {
   }
 
   pearlAt() {
+    const [x, y] = pearlPoint(PEARL.x, PEARL.y, PEARL.size);
+    if (this.recall && this.recall.lesson) { const s = this.screenOf({ x, y }); return [s.x, s.y]; } // (the lesson's card, on the curtain)
+    return [x, y];
+  }
+  pearlWorld() {
     return pearlPoint(PEARL.x, PEARL.y, PEARL.size);
+  }
+  // The camera (updateComic) zooms the scene canvases about (camera.x, camera.y); the curtain canvas above them is
+  // not zoomed. A world point as it shows on the screen, and back.
+  screenOf(p) {
+    const c = this.camera, z = c.on ? c.zoom : 1;
+    return { x: c.x + (p.x - c.x) * z, y: c.y + (p.y - c.y) * z };
+  }
+  worldOf(p) {
+    const c = this.camera, z = c.on ? c.zoom : 1;
+    return { x: c.x + (p.x - c.x) / z, y: c.y + (p.y - c.y) / z };
+  }
+  // the lesson's card is up: the camera dives into the water (k 0..1), the surface out of view above and the sand,
+  // with the shell, along the bottom
+  dive(k) {
+    Object.assign(this.camera, { x: STAGE_W / 2, y: STAGE_H, to: this.fx.reduced ? 1 : 1 + (DIVE_ZOOM - 1) * Math.max(0, Math.min(1, k)) });
+  }
+  // more shadow fish, for the lake behind the lesson's card (the next level brings the number back)
+  stirShadows(n) {
+    this.ambient = refreshShadows(this.ambient, n, this.area);
+  }
+
+  // ---------- the lesson's card (the journey, shell/journey.js) ----------
+  // Where the card is on the page (CSS px of this frame), for the shell to lay the lesson's frame over it: inside the
+  // card's outline, with its rounded corners
+  cardRect() {
+    const r = this.recall;
+    if (!r || !r.lesson) return null;
+    const C = r.card, F = C.frame, k = this.stage.scale, b = this.stage.root.getBoundingClientRect();
+    return { x: b.left + (C.x - F.w / 2) * k, y: b.top + (C.y - F.h / 2) * k, w: F.w * k, h: F.h * k, radius: F.radius * k };
+  }
+  // the card is up (the shell shows the lesson in it), or about to go
+  cardOpen(open) {
+    this.lessonOpen = open;
+    if (window.Journey && window.Journey.embedded) window.Journey.card(open ? this.cardRect() : null);
+  }
+  // the shell: the lesson is over
+  lessonDone() { this.lessonFinished = true; }
+  // the journey's ?start=lesson, and a ?dev=1 jump to a lesson screen: straight to the lesson's open card, Popo on
+  // his raft, and the rest of the opening after it
+  lessonCardNow() {
+    if (state.phase === PHASE.INTRO) {
+      this.audio.init();
+      this.audio.resume();
+      this.audio.startMusic();
+      this.ui.hideStart();
+      this.ui.showHud();
+    }
+    this.reset();
+    this.applyScene();
+    this.ui.setHitsEnabled(false);
+    lessonNow(this);
+    this.showIdleScene();
   }
 
   hideRecall() {
@@ -1397,7 +1468,7 @@ class Game {
     const r = this.recall;
     if (!r) return;
     if (r.dim > 0) {
-      const { x, y } = RECALL_CARD;
+      const { x, y } = this.worldOf({ x: r.card.x, y: r.card.y });
       const dim = ctx.createRadialGradient(x, y, 300, x, y, 1100);
       dim.addColorStop(0, `rgba(4, 14, 40, ${0.46 * r.dim})`);
       dim.addColorStop(1, `rgba(4, 14, 40, ${0.62 * r.dim})`);
@@ -1434,10 +1505,10 @@ class Game {
   drawRecall(ctx) {
     const r = this.recall;
     if (!r) return;
-    const C = RECALL_CARD;
+    const C = r.card;
     const at = (start, length = 0.35) => Math.max(0, Math.min(1, (r.t - start) / length));
     const still = this.fx.reduced;
-    const [sx, sy] = pearlPoint(PEARL.x, PEARL.y, PEARL.size);
+    const [sx, sy] = this.pearlAt();
     if (r.beam > 0) this.drawPearlBeam(ctx, r, sx, sy, C.y + C.h / 2, 1, 1);
     const b = this.recallBubble(r, sx, sy);
     if (b.card > 0) {
@@ -1447,7 +1518,7 @@ class Game {
       ctx.lineJoin = 'round';
       ctx.lineCap = 'round';
       ctx.beginPath();
-      ctx.roundRect(-C.w / 2, -C.h / 2, C.w, C.h, 30);
+      ctx.roundRect(-C.w / 2, -C.h / 2, C.w, C.h, C.radius);
       ctx.fillStyle = 'rgba(0, 20, 60, 0.22)';
       ctx.save();
       ctx.translate(0, 9);
@@ -1455,14 +1526,15 @@ class Game {
       ctx.restore();
       ctx.fillStyle = '#fff8e8';
       ctx.fill();
-      ctx.lineWidth = 4.5;
+      ctx.lineWidth = C.stroke;
       ctx.strokeStyle = '#3b1d00';
       ctx.stroke();
       if (r.flash > 0) {
         ctx.fillStyle = `rgba(255, 250, 235, ${0.7 * r.flash})`;
         ctx.fill();
       }
-      if (r.t >= r.shape) this.drawLesson(ctx, r, at, still);
+      if (r.lesson) this.drawCardPrint(ctx, r);
+      else if (r.t >= r.shape) this.drawLesson(ctx, r, at, still);
       ctx.restore();
     }
     if (b.radius > 0) drawBubble(ctx, b.x, b.y, b.radius, r.t, still);
@@ -1473,10 +1545,106 @@ class Game {
     }
   }
 
+  // The lesson card's print (drawn about the card's centre): the lake, as a soft one-colour print on the cream, behind
+  // the lesson. The sandy floor runs along the bottom and rises into a bank on the left, which Swiftee stands on
+  // (the lesson puts her there: css/game.css html.in-card); seaweed sways in the corners, bubble trails rise up both
+  // sides, and fish cross the open water at the top left and the right.
+  drawCardPrint(ctx, r) {
+    const C = r.card, w = C.w, h = C.h, L = -w / 2, R = w / 2, B = h / 2;
+    const ink = 'rgba(43, 123, 214, 0.17)', wash = 'rgba(43, 123, 214, 0.07)', leaf = 'rgba(43, 123, 214, 0.12)';
+    ctx.save();
+    ctx.beginPath();
+    ctx.roundRect(L + 5, -B + 5, w - 10, h - 10, C.radius - 4);
+    ctx.clip();
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    // the floor and the bank
+    ctx.beginPath();
+    ctx.moveTo(L - 10, B + 20);
+    ctx.lineTo(L - 10, 296);
+    ctx.bezierCurveTo(L + 30, 290, L + 56, 196, L + 118, 194);
+    ctx.lineTo(L + 392, 196);
+    ctx.bezierCurveTo(L + 462, 198, L + 496, 310, L + 560, 318);
+    for (let x = L + 560; x < R + 10; x += 70) ctx.quadraticCurveTo(x + 35, 326, x + 70, 318);
+    ctx.lineTo(R + 10, B + 20);
+    ctx.closePath();
+    ctx.fillStyle = wash;
+    ctx.fill();
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = ink;
+    ctx.stroke();
+    // ripples of light on the floor
+    ctx.lineWidth = 2.5;
+    for (const [x0, y, len] of [[L + 620, 352, 90], [L + 760, 366, 60], [L + 900, 350, 110], [L + 1060, 364, 70], [L + 1200, 348, 80], [L + 40, 350, 60], [L + 150, 364, 80], [L + 300, 352, 70]]) {
+      ctx.beginPath();
+      ctx.moveTo(x0, y);
+      ctx.quadraticCurveTo(x0 + len / 2, y - 6, x0 + len, y);
+      ctx.stroke();
+    }
+    // seaweed in the corners: a swaying stem with leaves either side
+    const seaweed = (x, height, dir) => {
+      ctx.beginPath();
+      ctx.moveTo(x, B + 6);
+      ctx.bezierCurveTo(x + 20 * dir, B - height * 0.35, x - 16 * dir, B - height * 0.65, x + 10 * dir, B - height);
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = ink;
+      ctx.stroke();
+      for (let i = 1; i <= 3; i += 1) {
+        const side = i % 2 ? dir : -dir, ly = B - height * (i / 4) + 8;
+        ctx.beginPath();
+        ctx.ellipse(x + side * 15, ly, 15, 6, side * -0.45, 0, TAU);
+        ctx.fillStyle = leaf;
+        ctx.fill();
+      }
+    };
+    seaweed(L + 34, 170, 1);
+    seaweed(L + 66, 118, -1);
+    seaweed(R - 38, 176, -1);
+    seaweed(R - 72, 112, 1);
+    // bubble trails up both sides, and a few loose at the top
+    const bubbles = [[-654, 250, 6], [-666, 170, 9], [-650, 96, 5], [-664, 12, 11], [-648, -74, 7], [-660, -164, 12], [-646, -254, 6], [-658, -338, 9],
+      [658, 240, 7], [670, 160, 10], [654, 84, 5], [668, 4, 12], [652, -86, 6], [666, -176, 9], [650, -262, 11], [664, -346, 6],
+      [-200, -372, 8], [60, -382, 5], [240, -368, 10], [420, -378, 6], [-560, -238, 5], [-544, -258, 4]];
+    for (const [x, y, rad] of bubbles) {
+      ctx.beginPath();
+      ctx.arc(x, y, rad, 0, TAU);
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = ink;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x - rad * 0.36, y - rad * 0.36, rad * 0.22, 0, TAU);
+      ctx.fillStyle = ink;
+      ctx.fill();
+    }
+    // fish
+    const fish = (x, y, dir, k) => {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(dir * k, k);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 26, 12, 0, 0, TAU);
+      ctx.moveTo(-22, 0);
+      ctx.lineTo(-40, -13);
+      ctx.lineTo(-40, 13);
+      ctx.closePath();
+      ctx.fillStyle = ink;
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(12, -3, 2.8, 0, TAU);
+      ctx.fillStyle = 'rgba(255, 248, 232, 0.95)';
+      ctx.fill();
+      ctx.restore();
+    };
+    fish(-470, -296, 1, 1.1);
+    fish(-586, -210, 1, 0.65);
+    fish(664, -60, -1, 0.8);
+    ctx.restore();
+  }
+
   // Where the bubble and the card are: rising from the pearl and popping at the middle (emerge),
   // then, leaving, closing round the card and floating up to pop near the surface (cardOut).
   recallBubble(r, sx, sy) {
-    const C = RECALL_CARD;
+    const C = r.card;
     const still = this.fx.reduced;
     const small = (BUBBLE.radius * 1.55) / C.w; // the card's size inside the bubble
     if (r.cardOut > 0) {
@@ -1517,7 +1685,7 @@ class Game {
   // The pearl's beam: up from the pearl, then open into a cone whose top is the card's bottom edge,
   // tinted like the inside of a shell, with bands of light rippling up it as through water.
   drawPearlBeam(ctx, r, sx, sy, bottom, rise, open) {
-    const C = RECALL_CARD;
+    const C = r.card;
     const top = sy + (bottom - sy) * ease.out(rise);
     const half = 16 + (C.w / 2 - 16) * open;
     const wave = (k) => (this.fx.reduced ? 0 : Math.sin(r.t * 2.2 + k * 9) * 6 * open);
@@ -1975,7 +2143,7 @@ class Game {
     this.drawPearlScene(ctx);
     if (this.swiftee) this.swiftee.draw(ctx);
     this.drawPoof(ctx);
-    this.drawRecall(ctx);
+    if (!(this.recall && this.recall.lesson)) this.drawRecall(ctx); // (the lesson's card is on the curtain, above)
     this.fx.drawFront(ctx);
     this.drawVignette(ctx);
     if (this.titleFade > 0) this.drawTitle(ctx, this.titleFade);
@@ -2742,11 +2910,13 @@ class Game {
   // The iris and "The End" are drawn on the curtain layer, above the scene. The scene slides under
   // it (panScene), so the circle always shows the live game.
   drawCurtain() {
-    const busy = this.iris || this.ending;
+    const lesson = this.recall && this.recall.lesson;
+    const busy = this.iris || this.ending || lesson;
     if (!busy && !this.curtainShown) return;
     const ctx = this.stage.beginCurtain();
     ctx.clearRect(0, 0, STAGE_W, STAGE_H);
     this.curtainShown = Boolean(busy);
+    if (lesson) this.drawRecall(ctx); // the lesson's card, its bubble and the pearl's beam: in screen space, while the camera dives into the water
     if (this.iris) this.drawIris(ctx);
     if (this.ending) this.drawEnding(ctx);
   }

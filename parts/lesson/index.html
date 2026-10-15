@@ -35,9 +35,9 @@
 <body>
 <!-- game markup: the {{bindings}} come from renderVals() in js/game-engine.js -->
 <x-dc>
-<div style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #8fd0fb">
+<div class="stage-root" style="position: relative; width: 1920px; height: 1080px; overflow: hidden">
 <div class="stage {{sceneCls}}" style="position: absolute; left: 0px; top: 0px; width: 1280px; height: 720px; transform: scale(1.5); transform-origin: 0 0" onPointerDown="{{rootDown}}" onPointerMove="{{rootMove}}" onPointerUp="{{rootUp}}" onPointerCancel="{{rootCancel}}">
-<img src="assets/images/winter-background.webp" alt="" style="position: absolute; left: 0px; top: 0px; width: 1280px; height: 720px; object-fit: cover; pointer-events: none">
+<img class="bg-winter" src="assets/images/winter-background.webp" alt="" style="position: absolute; left: 0px; top: 0px; width: 1280px; height: 720px; object-fit: cover; pointer-events: none">
 <canvas class="snowfall" width="1280" height="720" aria-hidden="true" style="position: absolute; left: 0px; top: 0px; width: 1280px; height: 720px; pointer-events: none"></canvas>
 <img class="panel-img" src="assets/images/ice-panel.webp" alt="" style="position: absolute; left: 108px; top: 78px; width: 1064px; height: 561px; pointer-events: none">
 <img class="slab-img" src="assets/images/measure-slab.webp" alt="" style="position: absolute; left: 135px; top: 76px; width: 1010px; height: 564px; pointer-events: none">

@@ -2,7 +2,20 @@
    this sheet holds the looks and the small state transitions. */
 body{margin:0}
 a{color:#123b63}a:hover{color:#0b2742}
+.stage-root{background:#8fd0fb}
 .stage{position:relative;width:1280px;height:720px;overflow:hidden;font-family:'Nunito','Noto Sans Math',system-ui,sans-serif;color:#123b63;user-select:none;-webkit-user-select:none;touch-action:none;background:#8fd0fb}
+/* ---------- in the journey's card (html.in-card): the lesson plays on fishing 2's cream card, which rises from the
+   seashell, instead of in its winter scene. No sky, hills, cabin or snow: the page is see-through, so the card the
+   fishing game draws shows through under Swiftee, her bubble and the shapes; the bubble is white to stand off the
+   cream ---------- */
+html.in-card,html.in-card body,html.in-card .stage-root,html.in-card .stage{background:transparent}
+html.in-card .stage>img.bg-winter,html.in-card .stage>canvas.snowfall{display:none}
+html.in-card .bubble{background:#fff}
+html.in-card .bubble-tail path{fill:#fff}
+/* on the card there is no snow for Swiftee to stand on: she and her bubble sit level with the board, not at its foot
+   (the measuring room, the hero screens and the summary place her themselves) */
+html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .swiftee{top:332px!important}
+html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .bubble{bottom:370px!important}
 .stage button{font-family:inherit}
 .w{opacity:0;transition:none}
 .w.on{opacity:1;transition:opacity .18s ease,color .25s ease}

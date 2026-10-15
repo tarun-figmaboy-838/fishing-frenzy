@@ -1,13 +1,15 @@
 # Fishing Frenzy
 
-A voiced maths adventure for young learners, in three parts that play as one journey:
+A voiced maths adventure for young learners, in three parts that play as one journey on one lake:
 
 1. **Popo's shape fishing** (`parts/fishing-1`): Popo the polar bear catches triangles, pentagons, hexagons and
    quadrilaterals. Then a fish he has never seen leaps out of the lake ("What kind of fish was that?") and Swiftee
    the bird flies in: "Let's find out!"
-2. **Swiftee's trapezium lesson** (`parts/lesson`): 42 screens. What makes a trapezium, its bases and legs, its
-   types, its angles, a recap and five checks.
-3. **Popo's trapezium fishing** (`parts/fishing-2`): Swiftee flies in from the lesson ("Great job! You know all
+2. **Swiftee's trapezium lesson** (`parts/lesson`), inside the lake: Popo rows in, the seashell on the sand rattles
+   and opens, its pearl blows a bubble up and out springs a big card. The camera dives into the water, and the
+   lesson plays on the card (42 screens: what makes a trapezium, its bases and legs, its types, its angles, a recap
+   and five checks) while the water moves and shadow fish swim behind it.
+3. **Popo's trapezium fishing** (`parts/fishing-2`): the card closes, Swiftee swoops in ("Great job! You know all
    about trapeziums!") and Popo catches trapezium fish across five levels, ending on "The End".
 
 Then the journey is back on the front page, ready to play again.
@@ -21,14 +23,15 @@ Static files, no build step.
   browsers revalidate every file on each visit (a quick "not modified" when nothing changed), and `.vercelignore`
   leaves the drafts, tools, tests and docs out of the deployment.
 - **From disk:** double-clicking `index.html` works, but browsers treat local files as separate sites. The journey
-  then falls back to messages between its frames: each part needs its own first tap for sound, and the lake's
-  rolling-water effect is drawn flat. Serve it over HTTP for the real thing.
+  then falls back to messages between its frames (the `?dev=1` panel included): each part needs its own first tap
+  for sound, and the lake's rolling-water effect is drawn flat. Serve it over HTTP for the real thing.
 
 ## How the journey fits together
 
-`index.html` is the journey's page (the shell). It shows the front page, then plays each part as a whole game in
-its own full-window frame (`parts/*/index.html`). Every part loads `shell/bridge.js` first, which connects it to
-the shell. A part opened on its own sends you to the front page instead.
+`index.html` is the journey's page (the shell). It shows the front page, then plays each game as a whole in its
+own full-window frame (`parts/*/index.html`), and lays the lesson's frame over the card that fishing 2 draws.
+Every part loads `shell/bridge.js` first, which connects it to the shell. A part opened on its own sends you to
+the front page instead.
 
 - **The front page** is the Fishing Frenzy banner, alive (`shell/front-page.js`): the lake rolls under the fishing
   games' own water effect, bubbles drift, the fish's splash rises and the Play button floats. It's laid out exactly
@@ -39,14 +42,16 @@ the shell. A part opened on its own sends you to the front page instead.
 - **Loading.** The first part loads behind the front page. While a part plays, the next one loads behind it,
   unseen, and begins the moment it is called. If one hasn't arrived yet, a frosted "Getting ready…" waits for it,
   with Try again if it fails.
-- **Between parts**, Swiftee carries the learner across on camera:
-  - She flies off in the part that ends: up over Popo and out of the top left of the lake, or out to the right of
-    the lesson.
-  - The next part begins underneath, and the two scenes dissolve into each other with a little snow blowing across.
-  - She flies in on the other side: into the lesson from the top left, or into the lake from the right.
+- **From fishing 1 to fishing 2**, Swiftee flies off ("Let's find out!") and the two lakes dissolve into each
+  other with a little snow blowing across. Popo rows in, and the lesson's card rises from the shell.
+- **The lesson in the card.** Fishing 2 draws the shell, the bubble and the card (on its curtain canvas, in screen
+  space, while its camera dives into the water behind), and tells the shell where the card's panel is. The shell
+  lays the lesson's frame exactly there, see-through, so the lesson plays on the card with no winter scene of its
+  own. When its last check is done, Swiftee flies out of
+  the card to the right, the frame fades, the card shrinks into its bubble and floats away, the shell closes, the
+  camera comes back up, and Swiftee swoops in from the right.
 - **The lesson moves on by itself.** It has no Next, Back or screen list. A finished screen moves on once its voice
-  and animations are over. A screen that asks for something (a drag, a tap, an answer) waits until it's done. After
-  the last check it hands over to fishing 2.
+  and animations are over. A screen that asks for something (a drag, a tap, an answer) waits until it's done.
 - **The end.** Fishing 2 closes its cartoon iris on "The End", Next is tapped, and the front page fades back in.
   Fishing 1 has already loaded again behind it, so Play again starts at once.
 
@@ -90,9 +95,11 @@ This repository ships the playable game.
 ## Options for testing
 
 - `?dev=1`: one panel (bottom left) that jumps to any screen of the journey: the front page, each fishing game's
-  own jumps (levels, a right or wrong catch, rowing on, the ending), and all 42 lesson screens. The backtick key
-  folds it away. In dev mode every part loads at once, so every list is there.
-- `?start=lesson` or `?start=fishing-2`: the first journey begins at that part, after Play.
+  own jumps (levels, a right or wrong catch, rowing on, the ending), and all 42 lesson screens (a lesson screen
+  opens fishing 2's card straight away with the lesson at that screen). The backtick key folds it away. In dev mode
+  every part loads at once, so every list is there.
+- `?start=fishing-2`: the first journey begins at fishing 2 (Popo rows in and the lesson's card rises);
+  `?start=lesson`: straight at the lesson's open card.
 - `?debug`: exposes `window.popoDebug` in the fishing games and `window.lessonDebug` in the lesson.
 
 ## For a page that hosts the journey
@@ -103,13 +110,16 @@ lesson's checks right first time, the catches), and `fishing-frenzy:complete` (w
 
 ## Tests
 
-- `python3 tests/journey.py [chromium|webkit|phones|all]` plays the whole journey through real taps over HTTP. It
-  checks:
+- `python3 tests/journey.py [chromium|webkit|phones|dev|all]` plays the whole journey through real taps over
+  HTTP. It checks:
   - a real catch in both fishing games;
-  - both hand-overs, with no tap and no veil;
-  - the lesson moving on by itself, and its last check with a wrong answer first;
+  - the hand-over from fishing 1, with no tap and no veil; the shell, the card, and the lesson's frame sitting
+    exactly on the card's panel, see-through, with the camera under the water and shadow fish swimming;
+  - the lesson moving on by itself, and its last check with a wrong answer first; the card closing and the camera
+    coming back up;
   - every part playing through the shared, unlocked sound;
   - the end and Play again;
+  - `dev`: the jump panel, `?start=lesson`, and the lesson's frame following the card when the window changes;
   - that no frame logs an error.
 
   Needs Python Playwright with Chromium and WebKit.

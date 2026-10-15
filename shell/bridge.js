@@ -10,6 +10,8 @@
 //   Journey.onBegin(fn)     the shell starts the part (the player has already tapped Play); fn(opts), where
 //                           opts.arrive means it follows the part before it: Swiftee flies in
 //   Journey.onDispose(fn)   the shell is about to remove the part: stop every sound and loop
+//   Journey.onCommand(fn)   the shell's word while the part plays: fn(name, args)
+//   Journey.card(rect)      fishing 2: the lesson's card is up at rect (CSS px of its frame), or gone (null)
 //   Journey.devScreens(l)   with ?dev=1: the part's screens, for the journey's one jump panel
 //
 // Sound: the front page's Play tap unlocks one AudioContext, one <audio> and the speech voice in the
@@ -37,7 +39,7 @@
     return;
   }
 
-  var handlers = { begin: [], dispose: [] };
+  var handlers = { begin: [], dispose: [], command: [] };
   var begun = false;
   var beginOpts = null;
   var disposed = false;
@@ -53,6 +55,14 @@
   }
   // opts.arrive: the part follows the one before it, with Swiftee flying in (the lesson, fishing 2)
   function begin(opts) { if (begun || disposed) return; begun = true; beginOpts = opts || {}; run('begin', beginOpts); }
+  var devList = [];
+  function command(o) {
+    if (disposed) return;
+    if (o && o.name === 'devJump') { var jump = devList[o.args]; if (jump) { try { jump.run(); } catch (err) { console.error(err); } } return; }
+    for (var i = 0; i < handlers.command.length; i++) {
+      try { handlers.command[i](o && o.name, o && o.args); } catch (err) { console.error(err); }
+    }
+  }
   function dispose() { if (disposed) return; disposed = true; handlers.begin = []; run('dispose'); }
   // the shell's messages, for when its document can't be reached (file://)
   window.addEventListener('message', function (e) {
@@ -60,6 +70,7 @@
     if (!m || m.journey !== true || e.source !== window.parent) return;
     if (m.type === 'begin') begin(m.opts);
     else if (m.type === 'dispose') dispose();
+    else if (m.type === 'command') command(m.opts);
   });
   // the context exists from the Play tap on; the <audio> element and the speech voice from the start (Play unlocks them)
   var audio = function () { return host && host.audio ? host.audio : null; };
@@ -73,13 +84,21 @@
     progress: function (k) { send('progress', k); },
     failed: function (msg) { send('failed', String(msg || '')); },
     finish: function (detail) { send('finish', detail || {}); },
-    // ?dev=1: this part's screens, [{ label, run }], for the journey's one jump panel
-    devScreens: function (list) { if (host && host.devScreens) host.devScreens(part, list, window); },
+    // ?dev=1: this part's screens, [{ label, run }], for the journey's one jump panel (where the shell's page can't be
+    // reached - file:// - their labels go by message, and the panel's taps come back as devJump commands)
+    devScreens: function (list) {
+      devList = list || [];
+      if (host && host.devScreens) { host.devScreens(part, devList, window); return; }
+      send('devScreens', devList.map(function (s) { return s.label; }));
+    },
     onBegin: function (fn) { if (begun) fn(beginOpts); else handlers.begin.push(fn); },
     onDispose: function (fn) { handlers.dispose.push(fn); },
+    onCommand: function (fn) { handlers.command.push(fn); },
+    card: function (rect) { send('card', rect); },
     // called by the shell
     _begin: begin,
     _dispose: dispose,
+    _command: command,
     // the shell's unlocked sound (null if there is none: then the part uses its own)
     audioContext: function () { var a = audio(); return a ? a.context() : null; },
     audioOut: function () { var a = audio(); return a ? a.output(part) : null; },

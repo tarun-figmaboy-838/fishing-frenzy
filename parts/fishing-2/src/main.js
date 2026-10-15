@@ -79,8 +79,15 @@ if (journey) {
   ui.el.start.hidden = true;
   journey.onBegin((opts) => {
     document.getElementById('stage').classList.remove('booting');
-    game.arriving = !!(opts && opts.arrive); // from the lesson, with Swiftee (sequences.js opening)
+    game.arriving = !!(opts && opts.arrive); // from the part before, with Swiftee flying in (sequences.js opening)
+    game.lessonFirst = !!(opts && opts.lesson); // the trapezium lesson first, in the card that rises from the shell
+    if (opts && opts.lessonNow) { game.lessonCardNow(); return; } // ?start=lesson: straight to the open card
     game.start();
+  });
+  // the shell, while the game plays: the lesson in the card is over; or (a ?dev=1 jump) straight to the card
+  journey.onCommand((name) => {
+    if (name === 'lessonDone') game.lessonDone();
+    else if (name === 'lessonNow') game.lessonCardNow();
   });
   journey.onDispose(() => { game.dispose(); audio.release(); });
   loadLocalData()

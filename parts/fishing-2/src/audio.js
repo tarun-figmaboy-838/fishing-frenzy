@@ -158,6 +158,13 @@ class AudioEngine {
     this.master.disconnect();
   }
 
+  // the lesson plays in the card (the journey): the music sits well under its voice, then comes back
+  hush(on) {
+    if (!this.ctx) return;
+    this.music.gain.cancelScheduledValues(this.ctx.currentTime);
+    this.music.gain.setTargetAtTime(on ? 0.1 : 0.5, this.ctx.currentTime, 0.4);
+  }
+
   setMuted(muted) {
     this.muted = muted;
     if (this.master) this.master.gain.setTargetAtTime(muted ? 0 : 1, this.ctx.currentTime, 0.02);

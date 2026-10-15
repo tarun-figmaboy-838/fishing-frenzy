@@ -60,6 +60,13 @@ body{font-family:'Fredoka','Arial Rounded MT Bold','Nunito',system-ui,-apple-sys
 .retry:active{transform:translateY(2px);box-shadow:0 1px 0 #c76a10}
 .retry:focus-visible{outline:3px solid #fff;outline-offset:3px}
 
+/* ---------- the lesson, inside fishing 2's card ----------
+   Its frame is laid over the card the fishing game draws (shell/journey.js card), inside the card's outline and with
+   its rounded corners; see-through, so the card shows under the lesson. It fades in once the card has sprung out of
+   its bubble, and out before the card leaves. */
+.part.inset{left:auto;top:auto;width:auto;height:auto;z-index:4;background:transparent;visibility:visible;pointer-events:none;opacity:0;overflow:hidden;transition:opacity .4s ease}
+.part.inset.in{opacity:1;pointer-events:auto}
+
 /* ---------- between two parts ----------
    The ending part's frame stays on top and dissolves away, drifting a little closer as if the camera flew on through
    it, over the next part, which settles into place; Swiftee flies out of the one and into the other (in the parts

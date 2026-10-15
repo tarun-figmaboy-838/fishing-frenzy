@@ -5,6 +5,9 @@ const { clock, ease, Cancelled, state, PHASE, newToken, isCurrent, Fish, Swiftee
 // Where Swiftee hovers to explain the recall card: in the sky between Popo's rod and the card,
 // low enough that her bubble fits beside her above it.
 const RECALL_PERCH = { x: 560, y: 228 };
+// the lesson's card (lessonCard): the lake dims this much round it (of the angle recall's full dim), so the water and
+// the shadow fish still show
+const LESSON_DIM = 0.55;
 
 // The hook hangs this far below the line's end.
 // the line ends at the lip; the hooked fish is drawn over the hook, so it sits inside the mouth
@@ -485,17 +488,156 @@ async function opening(game) {
     state.fish = [];
     game.ui.setInstruction('');
     game.popo.travelShift = OFFSTAGE; // Popo is still on his way
-    // straight after the lesson (the journey), Swiftee has just flown out of it to the right: a moment on the
-    // empty lake before she swoops back in from the right
-    await clock.wait(game.arriving ? 1300 : 500, token);
-    await swifteeArrives(game, STORY.welcome, token);
-    await clock.wait(300, token);
-    await swifteeLeaves(game, token);
-    await clock.wait(250, token);
-    await popoArrives(game, token);
-    await clock.wait(300, token);
+    if (game.lessonFirst) {
+      // the journey: Popo rows in, the trapezium lesson plays in the card that rises from the shell, and then
+      // Swiftee swoops in with her welcome (she has just flown out of the lesson, to the right)
+      await clock.wait(500, token);
+      await popoArrives(game, token);
+      await clock.wait(500, token);
+      await lessonCard(game, token);
+      await welcome(game, token);
+    } else {
+      // straight after the lesson (the journey), Swiftee has just flown out of it to the right: a moment on the
+      // empty lake before she swoops back in from the right
+      await clock.wait(game.arriving ? 1300 : 500, token);
+      await welcome(game, token);
+      await popoArrives(game, token);
+      await clock.wait(300, token);
+    }
     game.startLevel(0);
     if (!game.controlsLearned()) await remind(game, token);
+    game.play();
+    game.speakInstruction();
+  } catch (e) {
+    swallow(e);
+  }
+}
+
+// Swiftee swoops in with her welcome and flies off again
+async function welcome(game, token) {
+  await swifteeArrives(game, STORY.welcome, token);
+  await clock.wait(300, token);
+  await swifteeLeaves(game, token);
+  await clock.wait(250, token);
+}
+
+// The journey: the trapezium lesson, inside the recall's card. The shell on the sand rattles and opens, the pearl
+// blows the bubble up and out springs the card, as big as the lake allows; the journey's shell (shell/journey.js)
+// then lays the lesson's own frame over the card and the lesson plays there, on the cream card instead of its
+// winter scene. When the lesson is over (its last check done, Swiftee flown out to the right), the card shrinks
+// back into its bubble, which floats up and pops; the shell closes and the lake brightens. The buttons are away
+// meanwhile: the lesson has no pause, and the card reaches up under them. instant: straight to the open card
+// (?start=lesson, a ?dev=1 jump).
+async function lessonCard(game, token, { instant = false } = {}) {
+  const { popo, audio, fx } = game;
+  const quick = fx.reduced;
+  state.phase = PHASE.RECALL;
+  game.ui.setInstruction('');
+  game.ui.el.hud.hidden = true;
+  game.lessonFinished = false;
+  const r = game.showRecall({ lesson: true });
+  const { shell } = r;
+  const until = async (done) => {
+    while (!done()) await clock.wait(50, token);
+  };
+  const [px, py] = game.pearlWorld();
+  game.stirShadows(5); // a few more shadow fish, for the water behind the card
+  try {
+    if (instant) {
+      Object.assign(shell, { alpha: 1, open: 1 });
+      Object.assign(r, { dim: LESSON_DIM, emerge: 1, beam: 0.35, glow: 0.4 });
+      game.dive(1);
+    } else {
+      audio.play('bubbles');
+      await clock.tween(350, token, (t) => { shell.alpha = t; });
+      game.mark = { char: '!', t: 0, colour: '#ffd23f' };
+      audio.play('boing');
+      for (let i = 0; i < 2; i += 1) {
+        audio.play('rattle');
+        fx.puff(px + (i ? 34 : -34), py - 6, i ? 1 : -1, 2, false); // a few bubbles escape
+        await clock.tween(quick ? 220 : 340, token, (t) => {
+          shell.rock = quick ? 0 : 0.08 * Math.sin(t * Math.PI * 2) * (i ? -1 : 1);
+          shell.leak = 0.35 + 0.3 * (i + t);
+          popo.tilt = 0.025 * Math.sin(t * Math.PI * 2) * (1 - t);
+        });
+      }
+      shell.rock = 0;
+      popo.tilt = 0;
+      await clock.tween(quick ? 60 : 150, token, (t) => { shell.squash = Math.sin((t * Math.PI) / 2); });
+      audio.play('shellOpen');
+      await clock.tween(quick ? 350 : 900, token, (t) => {
+        shell.squash = 1 - t;
+        shell.open = quick ? t : ease.outBack(t);
+        shell.leak = 1 - t;
+        r.glow = 0.6 * t;
+      });
+      audio.play('shimmer');
+      await clock.tween(quick ? 350 : 1000, token, (t) => {
+        shell.pearl = 1 + 0.16 * Math.sin(t * Math.PI);
+        r.glow = 0.6 + 0.4 * t;
+        r.dim = ease.inOut(t) * LESSON_DIM;
+      });
+      // the pearl blows the card up in a bubble, which pops in the middle of the screen, while the camera dives
+      // into the water after it
+      audio.play('rise');
+      r.spawning = true;
+      await clock.tween(quick ? 600 : 2700, token, (t) => {
+        r.emerge = t;
+        r.beam = Math.min(1, t * 2);
+        game.dive(ease.inOut(Math.min(1, t * 1.25)));
+      });
+      r.spawning = false;
+      audio.play('land');
+      await clock.tween(800, token, (t) => {
+        r.flash = 1 - t;
+        r.beam = 1 - 0.65 * t; // it keeps projecting, softly, while the lesson plays
+        r.glow = 1 - 0.6 * t;
+      });
+    }
+    audio.hush(true); // the music sits well under the lesson's voice
+    game.cardOpen(true);
+    await until(() => game.lessonFinished);
+    game.cardOpen(false);
+    audio.hush(false);
+    await clock.wait(450, token); // the lesson's frame fades out first
+    audio.play('shimmer');
+    fx.sparkle(px, py - 8, 6);
+    game.hideRecall(); // the card shrinks into a bubble, which floats up and pops, and the camera comes back up
+    audio.play('bubbles');
+    await clock.tween(quick ? 600 : 1600, token, (t) => game.dive(1 - ease.inOut(t)));
+    await clock.tween(500, token, (t) => {
+      r.beam = 0.35 * (1 - t);
+      r.glow = 0.4 * (1 - t);
+    });
+    audio.play('click');
+    await clock.tween(quick ? 350 : 750, token, (t) => {
+      shell.open = 1 - ease.inOut(t);
+      r.dim = LESSON_DIM * (1 - t);
+    });
+    await clock.tween(400, token, (t) => { shell.alpha = 1 - t; });
+  } finally {
+    popo.tilt = 0;
+    game.dive(0);
+    game.ui.el.hud.hidden = false;
+    if (game.lessonOpen) game.cardOpen(false);
+    if (game.recall === r) game.recall = null;
+  }
+}
+
+// ?start=lesson, or a ?dev=1 jump to a lesson screen: Popo already on his raft, the card open at once, then the rest
+// of the opening
+async function lessonNow(game) {
+  const token = newToken();
+  try {
+    state.phase = PHASE.TUTORIAL;
+    game.ui.setHitsEnabled(false);
+    state.fish = [];
+    game.ui.setInstruction('');
+    game.popo.travelShift = 0;
+    game.lessonFirst = true;
+    await lessonCard(game, token, { instant: true });
+    await welcome(game, token);
+    game.startLevel(0);
     game.play();
     game.speakInstruction();
   } catch (e) {
@@ -1277,5 +1419,5 @@ async function swifteeLeaves(game, token) {
   }
 }
 
-Object.assign(PopoGame, { mouthOf, correctCatch, wrongCatch, opening, finishLevel, closeCurtain });
+Object.assign(PopoGame, { mouthOf, correctCatch, wrongCatch, opening, lessonNow, finishLevel, closeCurtain });
 })(window.PopoGame = window.PopoGame || {});
