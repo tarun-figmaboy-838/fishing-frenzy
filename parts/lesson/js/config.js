@@ -47,6 +47,9 @@ const CONFIG = {
   // the most it may grow. A screen with noZoom keeps the plain layout (answers round the shape); lessonZoom is the
   // fallback before the first screen is fitted
   fit: { cx: 876, cy: 346, w: 714, h: 474, padX: 62, padTop: 58, padBottom: 52, maxScale: 1.5 },
+  // in the journey's card, on a 'plate' screen (no Swiftee, no ice panel: her line is a plate at the top), the shape
+  // is fitted big in the middle of the card, under the plate and above the name plates (game-engine isPlate / fitFor)
+  fitPlate: { cx: 640, cy: 378, w: 1040, h: 450, padX: 70, padTop: 60, padBottom: 56, maxScale: 2.1, chipTop: 606 },
   lessonZoom: { scale: 1.3, tx: -56.5, ty: -88.6 },
   // Measuring Kit layout (screens 16 and 23): board scale and offset that put the shape large on the slab (which fills
   // the stage, index.html), right of Swiftee, with room above and below its corners for the protractor

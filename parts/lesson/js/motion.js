@@ -704,7 +704,7 @@
     suppAt(T, S) {
       const P = window.__trapP && window.__trapP(), e = $('.eAB')[0];
       if (!G || !P || !e) return;
-      const ns = 'http://www.w3.org/2000/svg', R = 38 / ((window.__boardS && window.__boardS()) || 1), COL = { A: '#ff7a00', B: '#1fcf66', C: '#12a4ff', D: '#ffb800' };
+      const ns = 'http://www.w3.org/2000/svg', R = 38 / ((window.__boardS && window.__boardS()) || 1), COL = { A: '#ff7a00', B: '#1fcf66', C: '#9b5de5', D: '#ffb800' };
       const nb = { A: 'B', B: 'A', C: 'D', D: 'C' }, unit = (p, q) => { const L = Math.hypot(q.x - p.x, q.y - p.y) || 1; return { x: (q.x - p.x) / L, y: (q.y - p.y) / L }; };
       const t = P[T], s = P[S], dT = unit(t, P[nb[T]]), dS = unit(s, P[nb[S]]), up = unit(s, t);
       const wedge = (u, v, col) => { const c = u.x * v.y - u.y * v.x, g = document.createElementNS(ns, 'path');

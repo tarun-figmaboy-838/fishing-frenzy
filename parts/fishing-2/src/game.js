@@ -20,7 +20,7 @@ const RECALL_CARD = { x: 836, y: 533, w: 900, h: 500, scale: 44, title: -192, sh
 // round it). A plain cream card with a faint print of the game's motifs (drawCardPrint). It is drawn on the curtain
 // canvas, in screen space: the camera dives into the water behind it (dive), so only the lake's depths show round it,
 // with the shell on the sand just under its bottom edge.
-const LESSON_CARD = { x: 836, y: 415, w: 1380, h: 800, radius: 30, stroke: 4.5, frame: { w: 1280, h: 720, radius: 18 } };
+const LESSON_CARD = { x: 836, y: 470, w: 1380, h: 800, radius: 30, stroke: 4.5, frame: { w: 1280, h: 720, radius: 18 } }; // (centred on the stage)
 const DIVE_ZOOM = 1.85; // the camera, into the water: the surface out of view above, the sand along the bottom
 const PEARL = { x: 836, y: 929, size: 1.12 };
 const RECALL_PIECES = ['#ffb347', '#ff8f3a'];
@@ -1517,8 +1517,11 @@ class Game {
       ctx.fillRect(0, 0, STAGE_W, STAGE_H);
     }
     if (r.shell.alpha <= 0) return;
+    const push = r.shell.push; // the giant wave sweeping the shell away (sequences.js waveIn)
+    if (push) { ctx.save(); ctx.translate(PEARL.x + push.x, PEARL.y + push.y); ctx.rotate(push.rot); ctx.translate(-PEARL.x, -PEARL.y); }
     drawShell(ctx, PEARL.x, PEARL.y, PEARL.size, r.shell);
     drawPearlLight(ctx, PEARL.x, PEARL.y, PEARL.size, r.glow * r.shell.alpha * Math.min(1, r.shell.open * 2), r.t, this.fx.reduced);
+    if (push) ctx.restore();
     if (r.motes.length) {
       ctx.save();
       ctx.globalCompositeOperation = 'lighter';

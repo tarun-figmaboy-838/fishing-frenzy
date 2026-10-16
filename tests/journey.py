@@ -53,7 +53,7 @@ SHELL = '''() => { const T = window.FishingFrenzy;
 FISH = '''() => { const d = window.popoDebug; if (!d) return null; const s = d.state, g = d.game;
   return { phase: s.phase, caught: s.collected.length, next: !document.getElementById('btn-next').hidden,
            shared: !!g.audio.ctx && g.audio.ctx === parent.FishingFrenzy.audio.ctx,
-           popoHome: !g.popo.travelShift, card: !!(g.recall && g.recall.lesson), lessonOpen: !!g.lessonOpen,
+           popoHome: !g.popo.travelShift, card: !!(g.recall && g.recall.lesson && (g.lessonOpen || (g.recall.emerge > 0 && !g.recall.cardOut))), lessonOpen: !!g.lessonOpen,
            cardRect: (() => { const r = g.cardRect && g.cardRect(); return r ? [r.x, r.y, r.w, r.h] : null; })(),
            hud: document.getElementById('hud').hidden, swiftee: !!g.swiftee,
            zoom: g.camera ? g.camera.zoom : 1, shadows: (g.ambient || []).length }; }'''
@@ -218,8 +218,8 @@ def journey(p, engine):
     f2 = part(page, 'fishing-2')
     fs = until(lambda: f2.evaluate(FISH), lambda s: s['shared'], 10, 'fishing 2 sound')
     check(fs['shared'], f'{tag}: fishing 2 plays through the journey\'s AudioContext')
-    fs = until(lambda: f2.evaluate(FISH), lambda s: s['popoHome'] and s['card'], 40, 'Popo rows in and the shell starts')
-    check(fs['phase'] == 'recall' and fs['hud'], f'{tag}: Popo rows in, then the seashell sequence starts (the buttons step aside)')
+    fs = until(lambda: f2.evaluate(FISH), lambda s: s['card'], 40, 'the shell opens and the card rises')
+    check(fs['phase'] == 'recall' and fs['hud'] and not fs['popoHome'], f'{tag}: the seashell opens on the empty lake and the card rises (Popo is still away on the wave; the buttons step aside)')
     page.wait_for_timeout(2200)
     page.screenshot(path=str(SHOTS / f'{tag}-5a-shell-opens.png'))
     page.wait_for_timeout(2600)
@@ -263,9 +263,11 @@ def journey(p, engine):
     fs = until(lambda: f2.evaluate(FISH), lambda s: not s['card'], 20, 'the card closes')
     page.wait_for_timeout(300)
     page.screenshot(path=str(SHOTS / f'{tag}-6c-card-closes.png'))
-    check(not fs['lessonOpen'] and not fs['hud'], f'{tag}: the card shrinks away and the shell closes; the buttons come back')
+    check(not fs['lessonOpen'], f'{tag}: the card shrinks away into its bubble')
     fs = until(lambda: f2.evaluate(FISH), lambda s: s['zoom'] < 1.05, 10, 'the camera comes back up')
     check(True, f'{tag}: the camera comes back up to the surface', f"zoom {fs['zoom']:.2f}")
+    fs = until(lambda: f2.evaluate(FISH), lambda s: s['popoHome'], 25, 'the wave brings Popo in')
+    check(not fs['hud'], f'{tag}: the giant wave rolls in with Popo riding it, sweeps the shell away and sets him down; the buttons are back')
     until(shell, lambda s: s['lesson'] is None and s['inset'] is None, 5, 'the lesson\'s frame is gone')
     fs = until(lambda: f2.evaluate(FISH), lambda s: s['swiftee'], 20, 'Swiftee swoops in')
     check(True, f'{tag}: Swiftee swoops back in with her welcome')

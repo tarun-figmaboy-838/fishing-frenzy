@@ -112,8 +112,9 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     this.handedOff = true;
     // Swiftee takes off from the card first; the journey hears the lesson is over once she is off it (the card then
     // closes behind her, and she swoops into fishing 2 with her welcome)
-    this.depart();
-    const results = Object.assign({}, this.state.results), flight = Motion.reduced ? 0 : 1150;
+    const plate = this.isPlate(this.cur()); // (no Swiftee on a plate screen: nothing to fly off, so no wait)
+    if (!plate) this.depart();
+    const results = Object.assign({}, this.state.results), flight = Motion.reduced || plate ? 0 : 1150;
     setTimeout(() => JOURNEY.finish({ results }), flight);
   }
   // In the journey, Swiftee carries the learner between the parts. Arriving from fishing 1 (where she flew off over
@@ -132,6 +133,19 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
         .to(sw, { rotation: 0, scale: 1, duration: 1.15, ease: 'power2.out' }, 0)
         .call(() => this.sfx('pop'), null, 1.0);
     });
+  }
+  // Mid-lesson, where Swiftee comes back after screens without her (the journey's plate screens): she swoops in from
+  // the left and lands softly where the screen puts her
+  swifteeIn() {
+    const sw = typeof document !== 'undefined' && document.querySelector('.stage .swiftee'), G = window.gsap;
+    if (!sw || !G || Motion.reduced) return;
+    sw.classList.add('flying'); // (no CSS transition smooths the flight)
+    G.set(sw, { x: -460, y: -150, rotation: -10, scale: 0.8 });
+    this.sfx('whoosh');
+    G.timeline({ onComplete: () => { G.set(sw, { clearProps: 'transform' }); sw.classList.remove('flying'); } })
+      .to(sw, { x: 0, duration: 0.95, ease: 'power2.out' }, 0)
+      .to(sw, { y: 0, duration: 0.95, ease: 'back.out(1.2)' }, 0)
+      .to(sw, { rotation: 0, scale: 1, duration: 0.95, ease: 'power2.out' }, 0);
   }
   // ...and after the last check she takes off and flies out to the right, to the lake (fishing 2), where she swoops
   // back in from the right
@@ -980,6 +994,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     const was = this.cur();
     if (this.state.started && st.noBoard && was && !was.noBoard && !was.cfu && !was.end && !was.summary && !was.room) Motion.boardGhost(); // (before clear(), with the board still as it was)
     this.fromHero = !!(was && was.hero && !was.end && fwd); // screen 37: Swiftee is already centre stage, from screen 36
+    this.fromPlate = !!(was && this.isPlate(was)); // the journey: Swiftee was off this screen; where she is back, she flies in
     Motion.clear();
     this.q = null;
     this.cancelSpeech();
@@ -1176,8 +1191,21 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   // Lesson screens: the zoom that makes this screen's shape fill the ice panel. Fitted once per screen (goTo) from the
   // shape it opens with, widened to all the screen can do to it - a drag's corner range, a morph's frames, the point
   // where extended legs meet - and padded for the letters and labels round it. The board glides between fits.
+  // In the journey's card, a screen without Swiftee: her line is an instruction plate at the top and the shape has the
+  // card to itself. She stays where she does something: the opening (she flies in and recalls), the measuring rooms
+  // (she measures), the hero screens and the summary (css/game.css .plate)
+  isPlate(st) {
+    return !!(st && typeof document !== 'undefined' && document.documentElement.classList.contains('in-card') && !st.hero && !st.summary && st.room !== 'measure' && st.id !== 'intro');
+  }
+  // the box the shape is fitted to: the ice panel, or the plate screen's middle of the card
+  fitBase(st) { return this.isPlate(st || this.cur()) ? CONFIG.fitPlate : CONFIG.fit; }
   fitFor(st, P) {
-    const F = Object.assign({}, CONFIG.fit, st.fitBox || {}), L = CONFIG.limits; // fitBox: a screen's own area (e.g. between a question and its answers)
+    const base = this.fitBase(st), box = Object.assign({}, st.fitBox || {});
+    if (base !== CONFIG.fit) { // a screen's own box is placed about the panel: move it with the shape
+      if (box.cx != null) box.cx += base.cx - CONFIG.fit.cx;
+      if (box.cy != null) box.cy += base.cy - CONFIG.fit.cy;
+    }
+    const F = Object.assign({}, base, box), L = CONFIG.limits; // fitBox: a screen's own area (e.g. between a question and its answers)
     let x0 = Math.min(P.A.x, P.D.x), x1 = Math.max(P.B.x, P.C.x), y0 = Math.min(P.A.y, P.B.y), y1 = Math.max(P.C.y, P.D.y);
     const dragRoom = /^drag/.test(st.task || '') && !st.fitShape; // room for every corner position (fitShape: the shape itself)
     if (dragRoom) { x0 = Math.min(x0, L.minX + 30); x1 = Math.max(x1, L.maxX - 30); }
@@ -1192,13 +1220,13 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   }
   // how far the extended bases may run (board px): to the ice panel's inner edges, whatever the zoom
   extBounds() {
-    const F = CONFIG.fit, a = this.stageToBoard({ x: F.cx - F.w / 2, y: 0 }), b = this.stageToBoard({ x: F.cx + F.w / 2, y: 0 });
+    const F = this.fitBase(), a = this.stageToBoard({ x: F.cx - F.w / 2, y: 0 }), b = this.stageToBoard({ x: F.cx + F.w / 2, y: 0 });
     return { l: a.x, r: b.x };
   }
   // How much the shape may grow about its centre (a pop or a zoom-in) and still stay inside the ice card, with its
   // corner letters and labels: the largest scale, never below 1
   popRoom() {
-    const P = this.state.P, F = CONFIG.fit, st = this.cur();
+    const st = this.cur(), P = this.state.P, F = this.fitBase(st);
     if (!P || st.room === 'measure' || st.noZoom) return 1.04;
     const pad = 46, xs = [P.A.x, P.B.x, P.C.x, P.D.x], ys = [P.A.y, P.B.y, P.C.y, P.D.y];
     const cx = xs.reduce((a, b) => a + b) / 4, cy = ys.reduce((a, b) => a + b) / 4, c = this.boardToStage({ x: cx, y: cy }), k = this.boardMap().s;
@@ -1372,6 +1400,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     if (st.letterIn) { Motion.lettersReset(); Motion.fadeOut('.tag.snum'); const tok = this.stepTok; this.tm(() => { if (tok === this.stepTok) this.setState({ numsGone: true }); }, 450); }
     if (st.entryPop) Motion.entryPop();
     if (st.hero && !st.finale) Motion.heroIn(); // (on 44 she is already centre stage)
+    if (st.room === 'measure' && this.fromPlate) this.swifteeIn(); // back from a plate screen: a swoop onto the slab, not a pop
     if (st.enterFx && Motion[st.enterFx]) Motion[st.enterFx]();
     if (st.summary && window.Summary) Summary.enter(this); // screen 37: set up the summary layer
   }
@@ -1460,7 +1489,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     const end = () => { if (live()) this.finishTask(); };
     if (!aw || Motion.reduced || verts.some((v) => !v)) { this.sfx('pop'); Motion.anglesIn(); this.tm(end, 2600); return; }
     aw.start({
-      verts: verts, home: this.homeBody(), homeEl: document.querySelector('.stage .swiftee'), colors: ['#ff7a00', '#1fcf66', '#12a4ff', '#ffb800'],
+      verts: verts, home: this.homeBody(), homeEl: document.querySelector('.stage .swiftee'), colors: ['#ff7a00', '#1fcf66', '#9b5de5', '#ffb800'],
       labelAt: (i) => { const lab = document.querySelector('.stage .tag.alab.l' + keys[i]); return lab && this.elToStage(lab); }, // where each count-up runs
       onReading: (i) => {
         if (!live()) return;
@@ -2206,6 +2235,8 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     // scene: the ice panel on the right, Swiftee and her bubble on the left; the measuring room, summary and
     // hero screens rearrange it in CSS
     const tf = (c) => 'translate(' + c.tx + 'px, ' + c.ty + 'px) scale(' + c.scale + ')';
+    // a plate screen (the journey's card): everything laid out about the panel's centre moves to the card's
+    const plate = this.isPlate(st), pdx = plate ? CONFIG.fitPlate.cx - CONFIG.fit.cx : 0, pdy = plate ? CONFIG.fitPlate.cy - CONFIG.fit.cy : 0;
     return {
       rootMove: (e) => this.rootMove(e),
       rootUp: (e) => this.rootUp(e),
@@ -2229,12 +2260,12 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       wordSize: wi > 15 || (s.line || '').length > 80 ? 22 : 24, // long lines get the smaller size
       c1: c1, hasOpts: hasOpts, opts: opts,
       // qFocus: the shape centred in the panel with the answers in a row under it; otherwise the usual right column
-      optTop: st.qFocus && s.qc ? CONFIG.qFocus.optTop : st.optTop || 376, optLeft: st.qFocus && s.qc ? CONFIG.qFocus.cx - CONFIG.qFocus.optW / 2 : CONFIG.scene.chipLeft + 8,
+      optTop: (st.qFocus && s.qc ? CONFIG.qFocus.optTop : st.optTop || 376) + pdy, optLeft: (st.qFocus && s.qc ? CONFIG.qFocus.cx - CONFIG.qFocus.optW / 2 : CONFIG.scene.chipLeft + 8) + pdx,
       optW: st.qFocus && s.qc ? CONFIG.qFocus.optW : 504, optCls: fadeV + (st.qFocus ? ' opts-in' : st.optsAfter ? ' opts-in quick' : '') + (st.softWrong ? ' soft-wrong' : ''),
-      qx: CONFIG.qFocus.cx - 305, qy: s.qc ? CONFIG.qFocus.shapeTop : CONFIG.qFocus.shapeTop0, chipTop: st.chipTop || CONFIG.scene.chipTop, chipLeft: CONFIG.scene.chipLeft,
+      qx: CONFIG.qFocus.cx - 305 + pdx, qy: (s.qc ? CONFIG.qFocus.shapeTop : CONFIG.qFocus.shapeTop0) + pdy, chipTop: st.chipTop ? st.chipTop + pdy : plate ? CONFIG.fitPlate.chipTop : CONFIG.scene.chipTop, chipLeft: CONFIG.scene.chipLeft + pdx,
       celebrate: st.id === 'wellDone',
       labs: labs, slots: slots,
-      sceneCls: 'scene' + (st.noPanel ? ' nopanel' : '') + (st.hero ? ' hero' : '') + (st.hero && st.end ? ' endhero' : '') + (st.summary ? ' summary' : '') + (st.room === 'measure' ? ' measure-room' : ''), // hero (screens 36, 43-44): Swiftee centre stage, no board
+      sceneCls: 'scene' + (plate ? ' plate' : '') + (st.noPanel ? ' nopanel' : '') + (st.hero ? ' hero' : '') + (st.hero && st.end ? ' endhero' : '') + (st.summary ? ' summary' : '') + (st.room === 'measure' ? ' measure-room' : ''), // hero (screens 36, 43-44): Swiftee centre stage, no board
       boardZ: this.boardMap().s || 1, // the board's zoom: angle values keep one size on screen (css .tag.alab)
       boardTf: st.room === 'measure' ? tf(CONFIG.measureRoom) : !st.noZoom ? tf(this.fit || CONFIG.lessonZoom) : 'translate(' + CONFIG.scene.boardX + 'px, ' + (st.boardShiftY || 0) + 'px)',
       // focusing: a part is being named, so the rest of the shape steps back

@@ -48,18 +48,18 @@ the front page instead.
   and no rowing on between rounds; then the mystery fish, Swiftee's "Let's find out!" and Next.
 - **From fishing 1 to fishing 2**, Swiftee flies off ("Let's find out!") and a giant wave swells up out of the
   lake behind Popo, lifts his raft onto its crest and carries him off to the right (`waveAway` in fishing 1's
-  `src/sequences.js`). The two empty lakes cross-fade, and the wave rolls into fishing 2 from the left with Popo
-  riding it, leaving him on its back, which lowers him onto his spot as it moves on (`waveIn`). Then the shell opens
-  and the lesson's card rises. The wave is the lake itself: each game's
-  water pass (`src/water.js`, `uHump`/`uLean`) lifts the painted surface into a travelling hump with a long back, a
-  steep front and a crest leaning forward, filled with the lake's own water, lit and foaming in the shader;
-  `parts/shared/wave.js` steers it (swelling up, sinking back, where Popo rides) and adds the spray, fizz and splash.
+  `src/sequences.js`). The two empty lakes cross-fade. In fishing 2 the seashell opens on the empty lake and the
+  lesson's card rises from it; when the lesson is over the card shrinks away, the wave rolls in from the left with
+  Popo riding it, sweeps the shell off the sand and sets Popo down on his spot (`waveIn`), and Swiftee swoops in
+  with her welcome. The wave is the lake itself: each game's water pass (`src/water.js`, `uHump`/`uLean`) lifts the
+  painted surface into a travelling hump, steered by `parts/shared/wave.js`.
 - **The lesson in the card.** Fishing 2 draws the shell, the bubble and the card (on its curtain canvas, in screen
-  space, while its camera dives into the water behind), and tells the shell where the card's panel is. The shell
-  lays the lesson's frame exactly there, see-through, so the lesson plays on the card with no winter scene of its
-  own. When its last check is done, Swiftee flies out of
-  the card to the right, the frame fades, the card shrinks into its bubble and floats away, the shell closes, the
-  camera comes back up, and Swiftee swoops in from the right.
+  space, centred on the stage), the shell hides behind the card while the lesson plays, and the journey lays the
+  lesson's own frame exactly over the card. Inside, Swiftee appears only where she does something: the opening
+  (she flies in and recalls), the two measuring screens, the hero screens and the summary. Every other screen is a
+  "plate" screen: no Swiftee and no ice panel, her line on a navy instruction plate across the top and the shape
+  big in the middle of the card (`isPlate`, `CONFIG.fitPlate`, css `.plate`). The shape's fill is ice-blue, angle C
+  purple, and a named side glows softly instead of carrying a solid band.
 - **The lesson moves on by itself.** It has no Next, Back or screen list. A finished screen moves on once its voice
   and animations are over. A screen that asks for something (a drag, a tap, an answer) waits until it's done.
 - **The end.** Fishing 2 closes its cartoon iris on "The End", Next is tapped, and the front page fades back in.

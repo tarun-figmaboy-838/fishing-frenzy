@@ -38,8 +38,8 @@
   };
   // the lesson's colours: pink bases, purple legs, lilac fill, orange parallel arrows; one colour per angle
   const INK = { base: '#1f6bff', leg: '#00c4a7', fill: 'rgba(255,246,214,0.95)', chev: '#ff7a00', navy: '#123b63' };
-  const ANG = { A: '#ff7a00', B: '#1fcf66', C: '#12a4ff', D: '#ffb800' };
-  const TXT = { A: '#e0560a', B: '#128a44', C: '#0a72c4', D: '#a87200' }; // angle values, as on the lesson's board
+  const ANG = { A: '#ff7a00', B: '#1fcf66', C: '#9b5de5', D: '#ffb800' };
+  const TXT = { A: '#e0560a', B: '#128a44', C: '#6a35b8', D: '#a87200' }; // angle values, as on the lesson's board
   // Swiftee's two spots: 'peek' over the card's top edge, 'middle' standing on the snow between the albums. y = offset in stage px from her
   // CSS position, s = scale of her 259 px box, hide = how far she sinks to be out of sight
   const SPOT = { peek: { y: 0, s: 218 / 259, hide: 154 }, middle: { y: 186, s: 300 / 259, hide: 300 } };

@@ -16,8 +16,8 @@ html.in-card .bubble-tail path{fill:#fff}
    board, not at its foot, and she and her bubble sit 36px further left, so the pair is centred between the card's
    edge and the ice panel (the card is 50px wider than the stage on each side; the longest bubble now clears the
    panel too). The measuring room, the hero screens and the summary place her themselves */
-html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .swiftee{left:34px!important;top:332px!important}
-html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .bubble{left:51px!important;bottom:370px!important}
+html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate) .swiftee{left:34px!important;top:332px!important}
+html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate) .bubble{left:51px!important;bottom:370px!important}
 .stage button{font-family:inherit}
 .w{opacity:0;transition:none}
 .w.on{opacity:1;transition:opacity .18s ease,color .25s ease}
@@ -49,7 +49,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .bubble{le
 /* angle values and side lengths are plain text, no box: a thin white outline keeps them readable over lines and fills.
    An angle's value is written in its angle's colour (darker, to read on the cream fill), so each number points at its angle */
 .alab,.mtag{background:none;box-shadow:none;padding:0;border:0;border-radius:0;font-family:'Nunito','Noto Sans Math',system-ui,sans-serif;font-size:21px;font-weight:900;color:#123b63;text-shadow:0 0 3px #fff,0 0 3px #fff,2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff}
-.alab.lA{color:#e0560a}.alab.lB{color:#128a44}.alab.lC{color:#0a72c4}.alab.lD{color:#a87200}
+.alab.lA{color:#e0560a}.alab.lB{color:#128a44}.alab.lC{color:#6a35b8}.alab.lD{color:#a87200}
 /* angle values on the board keep one size on screen at any zoom, like their arcs (--bz: the board's zoom, set by the
    engine), with the white outline in em so it shrinks with them */
 .tag.alab{font-size:calc(21px / var(--bz, 1));text-shadow:0 0 .14em #fff,0 0 .14em #fff,.095em 0 0 #fff,-.095em 0 0 #fff,0 .095em 0 #fff,0 -.095em 0 #fff,.07em .07em 0 #fff,-.07em -.07em 0 #fff,.07em -.07em 0 #fff,-.07em .07em 0 #fff}
@@ -257,7 +257,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .bubble{le
 @keyframes xlegIn{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion: reduce){.xleg{animation:none}.trace{transition:none}}
 /* glow round the finished outline (screen 1) */
-.outline-settle{opacity:0;filter:drop-shadow(0 0 7px rgba(31,107,255,.55))} /* GSAP fades it in and out */
+.outline-settle{opacity:0} /* GSAP fades it in and out: a crisp flash of the finished outline, no glow */
 /* screen 2 side numbers: plain bold numerals; GSAP brings them in (Motion.sideNums) */
 .tag.snum{background:none;box-shadow:none;padding:0;font-family:'Nunito','Noto Sans Math',system-ui,sans-serif;font-weight:900;font-size:26px;color:#123b63}
 
@@ -277,11 +277,11 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary) .bubble{le
 /* screen 29 sum boxes: outlined in their pair's colours (A + D orange / yellow, B + C purple / blue) */
 .tag.sum.sumL,.tag.sum.sumR{background:#fffaf0;color:#123b63;font-weight:900;border-radius:14px;box-shadow:0 3px 0 rgba(0,0,0,.06)}
 .tag.sum.sumL{border:2px solid #ff7a00;border-bottom-color:#ffb800;border-right-color:#ffb800}
-.tag.sum.sumR{border:2px solid #1fcf66;border-bottom-color:#12a4ff;border-right-color:#12a4ff}
+.tag.sum.sumR{border:2px solid #1fcf66;border-bottom-color:#9b5de5;border-right-color:#9b5de5}
 /* screen 35: the 90° labels in the right-angled corners */
 .tag.r90{color:#123b63}
 /* a 90° value wears its angle's colour, like every other angle value (screen 34 shows the same corners) */
-.tag.r90.r90A{color:#e0560a}.tag.r90.r90B{color:#128a44}.tag.r90.r90C{color:#0a72c4}.tag.r90.r90D{color:#a87200}
+.tag.r90.r90A{color:#e0560a}.tag.r90.r90B{color:#128a44}.tag.r90.r90C{color:#6a35b8}.tag.r90.r90D{color:#a87200}
 .r90pre .rmark,.r90pre .tag.r90{opacity:0;animation:none} /* hidden from the first frame until GSAP reveals them */
 /* check 3 (screen 40): parts start hidden until GSAP reveals them (Motion.q3*); the hint sits under the shape;
    a wrong answer is warm orange, not red */
@@ -494,6 +494,24 @@ svg[data-lencol] .edge{transition:stroke .4s ease}
 .w-h{visibility:hidden}
 
 
+
+/* ---------- plate screens (the journey's card, game-engine isPlate): no Swiftee and no ice panel - a card on a card
+   looked odd - her line is an instruction plate across the top (the fishing games' navy HUD plate, white text, key
+   words gold) and the shape has the card to itself, big in the middle (CONFIG.fitPlate) ---------- */
+/* she drifts off (back and down a little) as a plate screen comes, rather than vanishing */
+.stage.scene.plate .swiftee{opacity:0!important;pointer-events:none;transform:translate(-70px,36px) scale(.9)!important;transition:opacity .45s ease,transform .45s ease!important}
+.swiftee.flying{transition:none!important}
+.stage.scene.plate .panel-img{opacity:0!important}
+.stage.scene.plate .bubble{left:0!important;right:0!important;margin:0 auto;top:22px!important;bottom:auto!important;transform-origin:50% 0;
+  min-width:0;max-width:1060px;padding:15px 34px 16px;border-radius:18px;background:rgba(8,36,84,.8)!important;border:2px solid rgba(255,214,140,.45);
+  box-shadow:0 8px 24px rgba(0,20,60,.3),inset 0 1px 0 rgba(255,255,255,.1);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.stage.scene.plate .bubble.manual{max-width:1060px}
+.stage.scene.plate .bubble .bubble-tail{display:none}
+.stage.scene.plate .bubble-text{font-size:27px!important;color:#fff8ec;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.stage.scene.plate .w.cur{color:#ffe08a}
+.stage.scene.plate .w.key{color:#ffb454}
+/* check 4's labels, boxes and shapes were laid out about the panel's centre: they move with the shape */
+.stage.scene.plate .q4-wrap{transform:translate(-236px,4px) scale(1.12)}
 /* ---------- fun and festive touches ---------- */
 /* the measuring room's lengths land with the stamp (game-engine measureLeg), not the plain CSS pop */
 .stage.measure-room .tag.mtag{animation:none}
@@ -618,12 +636,16 @@ svg[data-lencol] .edge{transition:stroke .4s ease}
 /* ---------- focus: the part Swiftee names is unmistakable. A gold highlighter sweeps along a named side, a named
    corner pings, a named angle glows, and the rest of the shape steps back until she moves on ---------- */
 /* the named side's highlight: a crisp yellow marker band under the side, drawn along it as the side is named */
-.hl{opacity:0;pointer-events:none;stroke:#ffd43b}
-.hl.on{opacity:.85;stroke-width:16px;stroke-dasharray:100 100;animation:hlSweep .6s ease-out both}
+/* the named side's highlight: a soft gold glow under the side, swept along it as the side is named */
+.hl{opacity:0;pointer-events:none;stroke:#ffc53d;filter:blur(5px)}
+.hl.on{opacity:.8;stroke-width:22px;stroke-dasharray:100 100;animation:hlSweep .6s ease-out both}
 @keyframes hlSweep{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
 /* a named point: the dot grows gold (engine) with a soft gold glow */
 .vdot.on{filter:drop-shadow(0 0 5px rgba(255,184,0,.95))}
 .wedge,.arc,.shape-fill{transition:opacity .3s ease}
+/* the shape's fill: ice blue (the lake's own light blue) on the cream card and the ice panel; cream on the blue measuring slab */
+.shape-fill{fill:#bfe9fb}
+.stage.scene.measure-room .shape-fill{fill:rgba(255,246,214,.92)}
 .focusing .edge:not(.emph):not(.lit){opacity:.35}
 .wedge.emph{stroke:#ffd43b;stroke-width:5px;paint-order:stroke}
 @media (prefers-reduced-motion: reduce){.hl.on{animation:none;stroke-dasharray:none}}
