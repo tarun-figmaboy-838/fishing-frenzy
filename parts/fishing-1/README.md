@@ -1,5 +1,7 @@
 # Popo's Shape Fishing
 
+> **In Fishing Frenzy** this game is the warm-up before the trapezium lesson: one catch from a school of the target's fish (no distractors, no instruction panel or narration, no "Great catch!"), a brisker cast and reel, no rowing on to the other lakes, then the story's mystery fish, Swiftee's "Let's find out!" and Next, where the giant wave carries Popo to fishing 2 (`currentChallenge`, `nextChallenge` and `speakInstruction` in `src/game.js`, `correctCatch` and `waveAway` in `src/sequences.js`).
+
 > **In Fishing Frenzy** this game is part 1 of the journey (the repository's README). It runs inside the journey's page, which shows the front page (the Fishing Frenzy banner) and plays the lesson after this game's Next. So its own title banner is in `drafts/banners/shape-fish-adventure/`, and Swiftee wears the lesson's scarf and speaks in the lesson's voice. Its source artwork, build tools and standalone tests stay in the original repository, `ice-age-fishing`.
 
 A small browser game for early shape recognition. Popo the polar bear rows across four icy

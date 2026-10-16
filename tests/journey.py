@@ -199,8 +199,7 @@ def journey(p, engine):
     st = until(shell, lambda s: s['lesson'] in ('loading', 'ready'), 15, 'the lesson starts loading')
     check(True, f'{tag}: the lesson loads behind fishing 1 while it plays', st['lesson'])
 
-    # its end: the mystery fish's question, Swiftee's "Let's find out!" and Next
-    f1.evaluate('() => PopoGame.finale(window.popoDebug.game)')
+    # its end, straight after the one catch: the mystery fish's question, Swiftee's "Let's find out!" and Next
     until(lambda: f1.evaluate(FISH), lambda s: s['next'], 40, 'fishing 1 shows Next')
     page.screenshot(path=str(SHOTS / f'{tag}-3-fishing-1-end.png'))
     f1.locator('#btn-next').click()

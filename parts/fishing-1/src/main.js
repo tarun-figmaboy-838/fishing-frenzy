@@ -57,6 +57,7 @@ if (journey) {
   // In the journey the front page (index.html at the root) has the banner and Play: this game loads
   // behind it, says when it is ready, and starts the moment the shell tells it to.
   ui.el.start.hidden = true;
+  ui.el.instruction.style.visibility = 'hidden'; // the journey's warm-up has nothing to read: one catch, then the story
   ui.el.start.style.display = 'none'; // for good: the screen's own CSS would show it through `hidden`, and its fade-out would flash it
   journey.onBegin(() => game.start());
   journey.onDispose(() => { game.dispose(); audio.release(); });

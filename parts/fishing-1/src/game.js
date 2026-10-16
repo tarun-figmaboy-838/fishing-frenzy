@@ -180,7 +180,14 @@ class Game {
   }
 
   currentChallenge() {
-    return LOCATIONS[state.locationIndex].challenges[state.challengeIndex];
+    const ch = LOCATIONS[state.locationIndex].challenges[state.challengeIndex];
+    // in the journey this game is a quick warm-up before the lesson: one catch, from a school of the target's fish only
+    // (no distractors, so no wrong catch and nothing to read), and the story's mystery fish follows straight on
+    if (this.embedded) {
+      if (!this.journeyChallenge || this.journeyChallenge.base !== ch) this.journeyChallenge = Object.assign({}, ch, { base: ch, all: false, others: [], distractorCount: 0 });
+      return this.journeyChallenge;
+    }
+    return ch;
   }
 
   spawnChallengeFish() {
@@ -259,7 +266,7 @@ class Game {
 
   // Reads the instruction aloud (when it has a recording) for children who can't read it yet.
   speakInstruction() {
-    if (!this.dialogue) this.audio.speak('narrator', this.challengeText());
+    if (!this.dialogue && !this.embedded) this.audio.speak('narrator', this.challengeText()); // (the journey has no instruction to read)
   }
 
   nextChallenge() {
@@ -267,7 +274,7 @@ class Game {
     state.challengeIndex += 1;
     if (state.challengeIndex < loc.challenges.length) {
       this.setupChallenge();
-    } else if (state.locationIndex + 1 < LOCATIONS.length) {
+    } else if (!this.embedded && state.locationIndex + 1 < LOCATIONS.length) { // (the journey rows on to no other lake)
       travelTo(this, state.locationIndex + 1);
     } else if (STORY.ending) {
       discovery(this);

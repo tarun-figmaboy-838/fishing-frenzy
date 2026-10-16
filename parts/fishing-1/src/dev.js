@@ -70,7 +70,7 @@ const JUMPS = [
 // In the journey these jumps go to its one panel (?dev=1 on index.html at the root), beside every other screen of
 // the journey; there is no title to jump to here (the journey's front page is its own button there).
 if (window.Journey && window.Journey.embedded) {
-  window.Journey.devScreens(JUMPS.filter(([label]) => label !== 'Title').map(([label, run]) => ({ label, run: () => { if (game()) run(); } })));
+  window.Journey.devScreens(JUMPS.filter(([label]) => label !== 'Title' && label !== 'Row on').map(([label, run]) => ({ label, run: () => { if (game()) run(); } })));
   return;
 }
 

@@ -29,7 +29,7 @@ function swallow(e) {
 async function castTo(game, fish, token) {
   const { popo, fx, audio } = game;
   popo.playFrames('casting', ['lift', 'up', 'back'], 110);
-  await clock.wait(340, token);
+  await clock.wait(240, token);
   audio.play('whoosh');
   popo.playFrames('casting', ['swing', 'follow', 'hold'], 120);
   const from = popo.hookPosition();
@@ -39,7 +39,7 @@ async function castTo(game, fish, token) {
   const target = mouthOf(fish);
   const apexY = Math.min(from.y, target.y) - 150;
   let splashed = false;
-  await clock.tween(560, token, (t) => {
+  await clock.tween(420, token, (t) => {
     const k = ease.out(t);
     const x = from.x + (target.x - from.x) * k;
     const y = (1 - k) * (1 - k) * from.y + 2 * (1 - k) * k * apexY + k * k * target.y;
@@ -70,12 +70,12 @@ async function correctCatch(game, fish) {
     fish.wiggle();
     audio.play('fishTap');
     ui.setHitsEnabled(false);
-    await clock.wait(330, token);
+    await clock.wait(200, token);
     await castTo(game, fish, token);
 
     fish.wiggle();
     audio.play('hooked');
-    await clock.wait(380, token);
+    await clock.wait(220, token);
 
     state.phase = PHASE.REELING;
     audio.play('reel');
@@ -83,7 +83,7 @@ async function correctCatch(game, fish) {
     const start = { x: fish.x, y: fish.y };
     const surface = { x: popo.raftRight().x + 70, y: game.waterline - 14 };
     fish.dir = -1;
-    await clock.tween(950, token, (t) => {
+    await clock.tween(640, token, (t) => {
       const k = ease.inOut(t);
       fish.x = start.x + (surface.x - start.x) * k;
       fish.y = start.y + (surface.y - start.y) * k;
@@ -96,7 +96,7 @@ async function correctCatch(game, fish) {
     popo.setPose('casting', 'up', 140);
     const bucket = popo.bucketPoint();
     const peak = { x: (surface.x + bucket.x) / 2, y: Math.min(surface.y, bucket.y) - 170 };
-    await clock.tween(680, token, (t) => {
+    await clock.tween(470, token, (t) => {
       const k = ease.inOut(t);
       fish.x = (1 - k) * (1 - k) * surface.x + 2 * (1 - k) * k * peak.x + k * k * bucket.x;
       fish.y = (1 - k) * (1 - k) * surface.y + 2 * (1 - k) * k * peak.y + k * k * bucket.y;
@@ -123,7 +123,8 @@ async function correctCatch(game, fish) {
       game.cheer();
       clock.wait(380, token).then(() => game.storyCue('hop')).catch(() => {});
     }
-    await game.say(STORY.catch, token);
+    if (!game.embedded) await game.say(STORY.catch, token); // (in the journey the cheer is enough: straight on)
+    else await clock.wait(350, token);
     game.afterCatch();
   } catch (e) {
     swallow(e);
@@ -626,7 +627,7 @@ async function opening(game) {
     state.fish = [];
     game.ui.setInstruction('');
     await popoArrives(game, token);
-    for (const line of STORY.intro) await game.say(line, token);
+    if (!game.embedded) for (const line of STORY.intro) await game.say(line, token); // (the journey's warm-up has no narration: one catch, then the story)
     game.fishIn();
     await clock.wait(400, token);
     tutorial(game);
