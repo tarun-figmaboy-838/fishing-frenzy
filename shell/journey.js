@@ -179,7 +179,8 @@
   function load(index) {
     const p = PARTS[index];
     let f = frames.get(p.id);
-    if (f) return f;
+    if (f && !f.going) return f;
+    if (f) drop(f); // on its way out (hideLesson, dispose): a fresh frame takes its place at once, so nothing reuses a frame that is being torn down
     const el = document.createElement('iframe');
     el.className = 'part';
     el.title = p.title;
@@ -289,6 +290,7 @@
     });
   }
   function dispose(f) {
+    f.going = true;
     if (J.inset && !f.inset) hideLesson(); // the lesson in its card goes with the game it sits in
     tell(f, 'dispose');
     audio.release(f.id);
@@ -347,6 +349,7 @@
     const L = J.inset;
     if (!L) return;
     J.inset = null;
+    L.going = true; // (a card opened again before the fade is out gets a fresh frame: load)
     L.el.classList.remove('in');
     status.hide();
     veil.close();
