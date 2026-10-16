@@ -2248,7 +2248,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       g: G.g, tags: G.tags,
       words: words,
       // a line with its own breaks keeps exactly those lines: the bubble widens instead of wrapping again
-      bubCls: s.bub + ((s.line || '').indexOf('\n') >= 0 ? ' manual' : ''),
+      bubCls: s.bub + ((s.line || '').indexOf('\n') >= 0 ? ' manual' : '') + ((s.line || '').replace(/\s+/g, ' ').length > 64 ? ' long' : ''), // long: a plate screen sets it smaller to keep one line
       // lesson steps share one board, so it only fades in when it first appears; each check fades in fresh
       fadeCls: fadeV,
       birdCls: 'bird', // Swiftee's expressions are driven by pose() (js/swiftee.js), not by re-rendering
