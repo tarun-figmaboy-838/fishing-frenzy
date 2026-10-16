@@ -627,7 +627,7 @@ async function opening(game) {
     state.fish = [];
     game.ui.setInstruction('');
     await popoArrives(game, token);
-    if (!game.embedded) for (const line of STORY.intro) await game.say(line, token); // (the journey's warm-up has no narration: one catch, then the story)
+    for (const line of STORY.intro) await game.say(line, token);
     game.fishIn();
     await clock.wait(400, token);
     tutorial(game);

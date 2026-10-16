@@ -266,7 +266,7 @@ class Game {
 
   // Reads the instruction aloud (when it has a recording) for children who can't read it yet.
   speakInstruction() {
-    if (!this.dialogue && !this.embedded) this.audio.speak('narrator', this.challengeText()); // (the journey has no instruction to read)
+    if (!this.dialogue) this.audio.speak('narrator', this.challengeText());
   }
 
   nextChallenge() {
