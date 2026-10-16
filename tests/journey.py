@@ -194,12 +194,13 @@ def journey(p, engine):
     check(fs['shared'], f'{tag}: fishing 1 plays through the journey\'s AudioContext')
     page.wait_for_timeout(3500)
     page.screenshot(path=str(SHOTS / f'{tag}-2-fishing-1.png'))
-    catch_one(page, f1, PICK1, f'{tag}: fishing 1')
-    check(True, f'{tag}: fishing 1: a real catch lands in the bucket')
+    for n in range(4):  # four shapes, one catch each, on the same lake (no rowing on)
+        catch_one(page, f1, PICK1, f'{tag}: fishing 1 round {n + 1}')
+    check(True, f'{tag}: fishing 1: a catch of each of the four shapes lands in the bucket')
     st = until(shell, lambda s: s['lesson'] in ('loading', 'ready'), 15, 'the lesson starts loading')
     check(True, f'{tag}: the lesson loads behind fishing 1 while it plays', st['lesson'])
 
-    # its end, straight after the one catch: the mystery fish's question, Swiftee's "Let's find out!" and Next
+    # its end, straight after the fourth catch: the mystery fish's question, Swiftee's "Let's find out!" and Next
     until(lambda: f1.evaluate(FISH), lambda s: s['next'], 40, 'fishing 1 shows Next')
     page.screenshot(path=str(SHOTS / f'{tag}-3-fishing-1-end.png'))
     f1.locator('#btn-next').click()

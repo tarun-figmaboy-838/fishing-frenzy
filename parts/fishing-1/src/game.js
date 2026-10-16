@@ -163,6 +163,7 @@ class Game {
   applyLocation() {
     const loc = LOCATIONS[state.locationIndex];
     this.setWaterline(loc.waterline);
+    this.scene = loc.background; // what is drawn (the journey's rounds advance locationIndex without changing the lake)
     this.fx.setLocation(loc.background);
     if (state.locationIndex + 1 < LOCATIONS.length) preloadBackground(LOCATIONS[state.locationIndex + 1].background);
   }
@@ -181,10 +182,10 @@ class Game {
 
   currentChallenge() {
     const ch = LOCATIONS[state.locationIndex].challenges[state.challengeIndex];
-    // in the journey this game is a quick warm-up before the lesson: one catch, from a school of the target's fish only
-    // (no distractors, so no wrong catch and nothing to read), and the story's mystery fish follows straight on
+    // in the journey this game is a quick warm-up before the lesson: each lake's shape is one round, won by one catch
+    // (the other shapes still swim, and a wrong tap still gets Popo's Whoopsie), on one lake, with no rowing between
     if (this.embedded) {
-      if (!this.journeyChallenge || this.journeyChallenge.base !== ch) this.journeyChallenge = Object.assign({}, ch, { base: ch, all: false, others: [], distractorCount: 0 });
+      if (!this.journeyChallenge || this.journeyChallenge.base !== ch) this.journeyChallenge = Object.assign({}, ch, { base: ch, all: false });
       return this.journeyChallenge;
     }
     return ch;
@@ -274,7 +275,9 @@ class Game {
     state.challengeIndex += 1;
     if (state.challengeIndex < loc.challenges.length) {
       this.setupChallenge();
-    } else if (!this.embedded && state.locationIndex + 1 < LOCATIONS.length) { // (the journey rows on to no other lake)
+    } else if (this.embedded && state.locationIndex + 1 < LOCATIONS.length) {
+      PopoGame.nextRound(this); // the journey: the next shape's school on this same lake, no rowing on
+    } else if (state.locationIndex + 1 < LOCATIONS.length) {
       travelTo(this, state.locationIndex + 1);
     } else if (STORY.ending) {
       discovery(this);
@@ -854,7 +857,7 @@ class Game {
 
   // Average colour of the painted water just below the surface, for the water over the raft.
   surfaceColor() {
-    const index = LOCATIONS[state.locationIndex].background;
+    const index = this.scene != null ? this.scene : LOCATIONS[state.locationIndex].background;
     if (this.surfaceColors[index]) return this.surfaceColors[index];
     const img = assets.backgrounds[index];
     if (!img) return null;
@@ -1034,7 +1037,7 @@ class Game {
   // The painting goes through the per-pixel water pass (src/water.js); without WebGL it is
   // drawn plainly. Returns the ambient drift the underwater effects follow during a row.
   drawBackground(ctx) {
-    const index = LOCATIONS[state.locationIndex].background;
+    const index = this.scene != null ? this.scene : LOCATIONS[state.locationIndex].background;
     const current = assets.backgrounds[index];
     if (!current) { preloadBackground(index); return 0; }
     const k = this.transition ? this.transition.k : 0;

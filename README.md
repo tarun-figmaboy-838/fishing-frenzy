@@ -42,9 +42,10 @@ the front page instead.
 - **Loading.** The first part loads behind the front page. While a part plays, the next one loads behind it,
   unseen, and begins the moment it is called. If one hasn't arrived yet, a frosted "Getting ready…" waits for it,
   with Try again if it fails.
-- **Fishing 1 is a warm-up:** one catch from a school of the target's fish (the instruction reads "Catch the
-  triangle fish!", not "all"), no "Great catch!", a brisk cast and reel and no rowing on; then the mystery fish,
-  Swiftee's "Let's find out!" and Next.
+- **Fishing 1 is a warm-up:** the four shapes (triangle, pentagon, hexagon, quadrilateral) as four quick rounds on
+  one lake, each won by one catch, with the other shapes swimming too (a wrong tap gets Popo's "Whoopsie Doopsie!");
+  the instruction reads "Catch the triangle fish!" (not "all"), there is no "Great catch!", a brisk cast and reel,
+  and no rowing on between rounds; then the mystery fish, Swiftee's "Let's find out!" and Next.
 - **From fishing 1 to fishing 2**, Swiftee flies off ("Let's find out!") and a giant wave swells up out of the
   lake behind Popo, lifts his raft onto its crest and carries him off to the right (`waveAway` in fishing 1's
   `src/sequences.js`). The two empty lakes cross-fade, and the wave rolls into fishing 2 from the left with Popo

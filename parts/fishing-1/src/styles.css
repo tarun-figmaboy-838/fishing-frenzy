@@ -216,22 +216,28 @@ html, body {
   45% { transform: translate(-0.6em, -100%) scale(1.08, 0.94); }
 }
 .caption {
+  /* the narrator's lines: the same navy plate as the instruction (a plate to read, not a speech bubble; the
+     characters' own words keep their bubbles), white with the stressed word in gold */
   left: 50%;
   top: 2.2%;
   width: max-content;
   max-width: 32em;
-  padding: 0.55em 1.3em 0.6em;
+  padding: 0.55em 1.4em 0.6em;
   font-size: 3.4em;
   font-weight: 600;
   line-height: 1.25;
   text-align: center;
-  color: var(--ink);
-  background: var(--paper);
-  border: 0.13em solid var(--ink);
-  border-radius: 1em;
-  box-shadow: 0 0.16em 0 var(--ink), 0 0.5em 1.3em rgba(0, 20, 60, 0.25);
+  color: var(--text);
+  background: var(--panel);
+  border: 0.1em solid var(--panel-border);
+  border-radius: 0.8em;
+  box-shadow: 0 0.4em 1.2em rgba(0, 20, 60, 0.3), inset 0 0.08em 0 rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  text-shadow: 0 0.06em 0.14em rgba(0, 0, 0, 0.35);
   transform: translateX(-50%);
 }
+.caption .line .w.em { color: var(--gold); text-shadow: 0 0.06em 0.14em rgba(0, 0, 0, 0.4); }
 .caption.pop { animation: caption-in 0.55s cubic-bezier(0.2, 1.5, 0.4, 1); }
 @keyframes caption-in {
   from { transform: translateX(-50%) translateY(-0.8em) scale(0.9); opacity: 0; }

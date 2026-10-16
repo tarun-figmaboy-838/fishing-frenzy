@@ -792,6 +792,34 @@ async function swifteeDeparts(game, token = newToken()) { // (waveAway shares it
   }
 }
 
+// The journey's next round: the next lake's shape, on this same lake (no rowing on between the lakes). The fish left
+// swim off, the instruction changes and the new school swims in with the narrator's line, as at the start.
+async function nextRound(game) {
+  const token = newToken();
+  const { ui, audio } = game;
+  try {
+    state.phase = PHASE.LEVEL_TRANSITION;
+    ui.setHitsEnabled(false);
+    audio.play('complete');
+    for (const f of state.fish) { f.frozen = false; f.escape(); }
+    await clock.wait(700, token);
+    state.fish = [];
+    ui.clearHits();
+    state.locationIndex += 1; // the next lake's shape (the lake drawn stays: game.scene)
+    state.challengeIndex = 0;
+    game.tutorialPending = false;
+    game.showHandOn(null);
+    ui.hideHand();
+    game.fishIn();
+    state.phase = PHASE.READY;
+    state.idleTime = 0;
+    ui.setHitsEnabled(true);
+    game.speakInstruction();
+  } catch (e) {
+    swallow(e);
+  }
+}
+
 // Next in the journey: Swiftee flies off to the lesson, and the giant wave swells up out of the lake behind Popo, lifts
 // his raft up its face onto its crest and carries him off to the right, to the next lake (fishing 2 brings him in on
 // it: waveIn). The journey moves on once the wave has gone. The wave itself: ../shared/wave.js.
@@ -842,5 +870,5 @@ async function waveAway(game, detail) {
   }
   if (!gone && window.Journey && isCurrent(token)) window.Journey.finish(detail);
 }
-Object.assign(PopoGame, { mouthOf, correctCatch, wrongCatch, travelTo, tutorial, opening, discovery, finale, swifteeDeparts, waveAway });
+Object.assign(PopoGame, { mouthOf, correctCatch, wrongCatch, travelTo, tutorial, opening, discovery, finale, swifteeDeparts, waveAway, nextRound });
 })(window.PopoGame = window.PopoGame || {});
