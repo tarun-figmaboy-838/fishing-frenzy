@@ -27,7 +27,10 @@
     enterMs: 420, collectMs: 580, pauseMs: 200,
     readyMs: 4500 // READY: time to tap a card before the lesson moves on (the engine then waits its usual beat)
   };
+  // the card's frame: the ice card, or in the journey's underwater card a parchment scrap like the measuring screens'
+  // treasure map (an ice card on the card looked odd; tools/paint-treasure-map.py)
   const FRAME = { src: 'assets/images/summary-card.webp', w: 1024, h: 984 };
+  const frameSrc = () => (document.documentElement.classList.contains('in-card') ? 'assets/images/summary-scrap.webp' : FRAME.src);
   const WARM = 'rgba(255, 150, 40, 0.85)';
   // name-tag colours, for the ideas that have a tone
   const TONE = {
@@ -37,7 +40,7 @@
     irregular: { deep: '#1f6bff', wash: '#e8f0fd', ink: '#1a4799' }
   };
   // the lesson's colours: pink bases, purple legs, lilac fill, orange parallel arrows; one colour per angle
-  const INK = { base: '#1f6bff', leg: '#00838f', fill: 'rgba(255,246,214,0.95)', chev: '#ff7a00', navy: '#123b63' };
+  const INK = { base: '#1f6bff', leg: '#00838f', fill: 'rgba(228,251,255,0.96)', chev: '#ff7a00', navy: '#123b63' }; // as the lesson's board: pale-aqua fill
   const ANG = { A: '#ff7a00', B: '#1fcf66', C: '#9b5de5', D: '#ffb800' };
   const TXT = { A: '#e0560a', B: '#128a44', C: '#6a35b8', D: '#a87200' }; // angle values, as on the lesson's board
   // Swiftee's two spots: 'peek' over the card's top edge, 'middle' standing on the snow between the albums. y = offset in stage px from her
@@ -211,8 +214,8 @@
       const g = mk('g', { 'class': 'summary-card', 'data-concept': c.id }, this.layer);
       g._rect = { x: x, y: y, w: w, h: h }; g._c = c;
       const pp = mk('g', {}, g); g._pop = pp;           // animations run on the inner group, the collect transform on the outer
-      const img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: FRAME.src }, pp);
-      img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', FRAME.src); // older browsers only read xlink:href
+      const src = frameSrc(), img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: src }, pp);
+      img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', src); // older browsers only read xlink:href
       const vis = mk('g', {}, pp); g._vis = vis;
       const X = SHAPES[V.shape || 'gen'], P = { A: pt(X, 'A'), B: pt(X, 'B'), C: pt(X, 'C'), D: pt(X, 'D') };
       g._P = P;
@@ -280,7 +283,7 @@
         const P = (p) => (m ? { x: m.a * p.x + m.c * p.y + m.e, y: m.b * p.x + m.d * p.y + m.f } : p);
         const A2 = P(a), B2 = P(b), len = Math.hypot(B2.x - A2.x, B2.y - A2.y) || 1;
         // a clean gold marker running along the side (no blur; orange is angle A's colour)
-        const ln = mk('line', { x1: A2.x, y1: A2.y, x2: B2.x, y2: B2.y, stroke: 'rgba(255, 184, 0, 0.9)', 'stroke-width': 9, 'stroke-linecap': 'round' }, this.fx);
+        const ln = mk('line', { x1: A2.x, y1: A2.y, x2: B2.x, y2: B2.y, stroke: '#ffb400', 'stroke-width': 8, 'stroke-linecap': 'round', style: 'filter: drop-shadow(0 0 3px rgba(255,170,0,.85))' }, this.fx);
         ln.style.strokeDasharray = len + ' ' + len;
         try {
           const an = ln.animate([{ strokeDashoffset: len + 'px', opacity: 1 }, { strokeDashoffset: '0px', opacity: 1, offset: 0.35 }, { strokeDashoffset: '0px', opacity: 0.55, offset: 0.55 }, { strokeDashoffset: '0px', opacity: 1, offset: 0.75 }, { strokeDashoffset: '0px', opacity: 0 }],
@@ -330,7 +333,7 @@
       if (V.lit) { // glow bands grow along the lit sides, under the side lines so their colour still shows
         g._lit = V.lit.map((s) => {
           const ab = SIDES[s], a = P[ab[0]], b = P[ab[1]];
-          const band = mk('line', { x1: a.x, y1: a.y, x2: a.x, y2: a.y, stroke: '#ffc629', 'stroke-width': 11, 'stroke-linecap': 'round', opacity: 0 }, g._bands); // (gold reads on the cream fill too)
+          const band = mk('line', { x1: a.x, y1: a.y, x2: a.x, y2: a.y, stroke: '#ffb400', 'stroke-width': 9, 'stroke-linecap': 'round', opacity: 0, style: 'filter: drop-shadow(0 0 3px rgba(255,170,0,.85))' }, g._bands); // (gold reads on the cream fill too)
           this.growLine(band, a, b, 300, t);
           return g._sides[s];
         });

@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """Paints the treasure map's parchment, parts/lesson/assets/images/treasure-map.webp (1770 x 988, shown at 1180 x 659):
 aged paper with a warm centre and darker worn edges, fine grain, a few faint stains and a soft, slightly uneven edge
-that fades out (nothing cut hard). A plain sheet: the shape is drawn on it (css/game.css .map). Run: python3 tools/paint-treasure-map.py"""
+that fades out (nothing cut hard). A plain sheet: the shape is drawn on it (css/game.css .map). Run: python3 tools/paint-treasure-map.py [out.webp W H] (the summary's square scraps: parts/lesson/assets/images/
+summary-scrap.webp 1024 984)"""
 import math, random
 from PIL import Image, ImageDraw, ImageFilter, ImageChops
 
 random.seed(5)
-W, H = 1770, 988
+import sys
+OUT = sys.argv[1] if len(sys.argv) > 1 else 'parts/lesson/assets/images/treasure-map.webp'
+W, H = (int(sys.argv[2]), int(sys.argv[3])) if len(sys.argv) > 3 else (1770, 988)
 # the paper: a warm radial gradient, darker toward the edges
 paper = Image.new('RGB', (W, H))
 px = paper.load()
@@ -48,5 +51,5 @@ mask = mask.filter(ImageFilter.GaussianBlur(3))
 rim = ImageChops.subtract(mask, mask.filter(ImageFilter.GaussianBlur(26))).point(lambda v: int(v * 0.32))
 paper = ImageChops.subtract(paper, Image.merge('RGB', [rim.point(lambda v: int(v * 0.6)), rim.point(lambda v: int(v * 0.8)), rim]))
 out = paper.convert('RGBA'); out.putalpha(mask)
-out.save('parts/lesson/assets/images/treasure-map.webp', 'WEBP', quality=86, method=6)
-print('parts/lesson/assets/images/treasure-map.webp', out.size)
+out.save(OUT, 'WEBP', quality=86, method=6)
+print(OUT, out.size)
