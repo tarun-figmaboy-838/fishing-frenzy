@@ -1185,7 +1185,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   boardMap() {
     const st = this.cur(), O = CONFIG.board;
     if (st.room === 'measure') { const R = CONFIG.measureRoom; return { x: O.x + R.tx, y: O.y + R.ty, s: R.scale }; }
-    if (!st.noZoom) { const Z = this.fit || CONFIG.lessonZoom; return { x: O.x + Z.tx, y: O.y + Z.ty, s: Z.scale }; }
+    if (!st.noZoom) { const Z = this.fit || (this.isPlate(st) ? CONFIG.lessonZoomPlate : CONFIG.lessonZoom); return { x: O.x + Z.tx, y: O.y + Z.ty, s: Z.scale }; }
     return { x: O.x + CONFIG.scene.boardX, y: O.y + (st.boardShiftY || 0), s: 1 };
   }
   // Lesson screens: the zoom that makes this screen's shape fill the ice panel. Fitted once per screen (goTo) from the
@@ -1201,11 +1201,14 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   fitBase(st) { return this.isPlate(st || this.cur()) ? CONFIG.fitPlate : CONFIG.fit; }
   fitFor(st, P) {
     const base = this.fitBase(st), box = Object.assign({}, st.fitBox || {});
-    if (base !== CONFIG.fit) { // a screen's own box is placed about the panel: move it with the shape
+    if (base !== CONFIG.fit) { // a screen's own box is placed about the panel: move it with the shape, and grow it with the card
       if (box.cx != null) box.cx += base.cx - CONFIG.fit.cx;
       if (box.cy != null) box.cy += base.cy - CONFIG.fit.cy;
+      if (box.h != null) box.h *= 1.35;
+      if (box.w != null) box.w *= 1.3;
     }
-    const F = Object.assign({}, base, box), L = CONFIG.limits; // fitBox: a screen's own area (e.g. between a question and its answers)
+    const F = Object.assign({}, base, box), L = CONFIG.limits;
+    if (base !== CONFIG.fit && st.task === 'extLegs') { F.cy = 392; F.h = 540; } // the extended legs meet high above the shape: a taller box, up under the plate // fitBox: a screen's own area (e.g. between a question and its answers)
     let x0 = Math.min(P.A.x, P.D.x), x1 = Math.max(P.B.x, P.C.x), y0 = Math.min(P.A.y, P.B.y), y1 = Math.max(P.C.y, P.D.y);
     const dragRoom = /^drag/.test(st.task || '') && !st.fitShape; // room for every corner position (fitShape: the shape itself)
     if (dragRoom) { x0 = Math.min(x0, L.minX + 30); x1 = Math.max(x1, L.maxX - 30); }
@@ -1705,7 +1708,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     if (c4.drag && c4.drag.id === id) return { x: c4.drag.x, y: c4.drag.y };
     if (c4.at[id]) { const sl = this.slotsDef().find((q) => q.id === c4.at[id]); return c4.locked[id] ? { x: 840 + 4, y: sl.y + 4 } : { x: 840 + 42, y: sl.y + 4 }; } // a locked label widens to fill its slot (CSS .lab.lock)
     const i = this.labsDef().findIndex((l) => l.id === id);
-    return { x: 556 + i * 216, y: 476 }; // three 208-wide labels, 8 apart
+    return { x: 556 + i * 216, y: this.isPlate(this.cur()) ? 504 : 476 }; // three 208-wide labels, 8 apart (lower on the card, where there is room)
   }
   // a stage point into check 4's group px (the group is drawn scaled, CONFIG.q4)
   q4Pt(x, y) { const Q = CONFIG.q4; return { x: Q.ox + (x - Q.ox) / Q.k, y: Q.oy + (y - Q.oy - Q.ty) / Q.k }; }
@@ -1915,8 +1918,8 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     };
     g.xAB = be('AB', A, B);
     g.xCD = be('CD', D, C);
-    // edges (NAVY is actually the outline's hot pink; PU is the purple)
-    const NAVY = '#1f6bff', PU = '#00c4a7';
+    // edges: NAVY the bases' deep blue, PU the legs' deep aqua
+    const NAVY = '#1f6bff', PU = '#00838f';
     const baseCol = () => NAVY; // bases always blue
     // the legs are purple from screen 5 (meet) onward
     const purpleFrom = this.steps().findIndex((x) => x.id === 'meet');
@@ -2248,7 +2251,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       g: G.g, tags: G.tags,
       words: words,
       // a line with its own breaks keeps exactly those lines: the bubble widens instead of wrapping again
-      bubCls: s.bub + ((s.line || '').indexOf('\n') >= 0 ? ' manual' : '') + ((s.line || '').replace(/\s+/g, ' ').length > 64 ? ' long' : ''), // long: a plate screen sets it smaller to keep one line
+      bubCls: s.bub + ((s.line || '').indexOf('\n') >= 0 ? ' manual' : '') + ((s.line || '').replace(/\s+/g, ' ').length > 86 ? ' long vlong' : (s.line || '').replace(/\s+/g, ' ').length > 64 ? ' long' : ''), // long: a plate screen sets it smaller to keep one line
       // lesson steps share one board, so it only fades in when it first appears; each check fades in fresh
       fadeCls: fadeV,
       birdCls: 'bird', // Swiftee's expressions are driven by pose() (js/swiftee.js), not by re-rendering
@@ -2260,14 +2263,15 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       wordSize: wi > 15 || (s.line || '').length > 80 ? 22 : 24, // long lines get the smaller size
       c1: c1, hasOpts: hasOpts, opts: opts,
       // qFocus: the shape centred in the panel with the answers in a row under it; otherwise the usual right column
-      optTop: (st.qFocus && s.qc ? CONFIG.qFocus.optTop : st.optTop || 376) + pdy, optLeft: (st.qFocus && s.qc ? CONFIG.qFocus.cx - CONFIG.qFocus.optW / 2 : CONFIG.scene.chipLeft + 8) + pdx,
+      // (plate: the answers are drawn larger, css .opts-row, and sit a little lower)
+      optTop: (st.qFocus && s.qc ? CONFIG.qFocus.optTop : st.optTop || 376) + pdy + (plate ? (st.qFocus ? 92 : 36) : 0), optLeft: (st.qFocus && s.qc ? CONFIG.qFocus.cx - CONFIG.qFocus.optW / 2 : CONFIG.scene.chipLeft + 8) + pdx,
       optW: st.qFocus && s.qc ? CONFIG.qFocus.optW : 504, optCls: fadeV + (st.qFocus ? ' opts-in' : st.optsAfter ? ' opts-in quick' : '') + (st.softWrong ? ' soft-wrong' : ''),
       qx: CONFIG.qFocus.cx - 305 + pdx, qy: (s.qc ? CONFIG.qFocus.shapeTop : CONFIG.qFocus.shapeTop0) + pdy, chipTop: st.chipTop ? st.chipTop + pdy : plate ? CONFIG.fitPlate.chipTop : CONFIG.scene.chipTop, chipLeft: CONFIG.scene.chipLeft + pdx,
       celebrate: st.id === 'wellDone',
       labs: labs, slots: slots,
       sceneCls: 'scene' + (plate ? ' plate' : '') + (st.noPanel ? ' nopanel' : '') + (st.hero ? ' hero' : '') + (st.hero && st.end ? ' endhero' : '') + (st.summary ? ' summary' : '') + (st.room === 'measure' ? ' measure-room' : ''), // hero (screens 36, 43-44): Swiftee centre stage, no board
       boardZ: this.boardMap().s || 1, // the board's zoom: angle values keep one size on screen (css .tag.alab)
-      boardTf: st.room === 'measure' ? tf(CONFIG.measureRoom) : !st.noZoom ? tf(this.fit || CONFIG.lessonZoom) : 'translate(' + CONFIG.scene.boardX + 'px, ' + (st.boardShiftY || 0) + 'px)',
+      boardTf: st.room === 'measure' ? tf(CONFIG.measureRoom) : !st.noZoom ? tf(this.fit || (plate ? CONFIG.lessonZoomPlate : CONFIG.lessonZoom)) : 'translate(' + CONFIG.scene.boardX + 'px, ' + (st.boardShiftY || 0) + 'px)',
       // focusing: a part is being named, so the rest of the shape steps back
       boardCls: fadeV + (Object.keys(s.emph || {}).length ? ' focusing' : '') + (st.shapePre ? ' shape-pre' : '') + (st.parStrong ? ' par-strong' : '') + (st.lenPre ? ' len-pre' : '') + (st.tickPre ? ' tick-pre' : '') + (st.chevPre ? ' chev-pre' : '') + (st.legsSet ? ' legs-set' : '') + (st.right90 && st.r90Pre ? ' r90pre' : ''),
       // pulse: the shape and its labels zoom once about the shape's centre

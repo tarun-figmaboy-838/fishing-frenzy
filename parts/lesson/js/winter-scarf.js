@@ -49,7 +49,8 @@
       const c = costume.getContext('2d');
       c.clearRect(0, 0, cell, cell);
       c.drawImage(source, sx, sy, cell, cell, 0, 0, cell, cell);
-      this.draw(c, anim, frame, 0, 0, cell, cell);
+      // inside the journey's underwater card she wears a diving mask instead (js/dive-mask.js)
+      if (window.DiveMask && DiveMask.on()) DiveMask.draw(c, anim, frame, cell); else this.draw(c, anim, frame, 0, 0, cell, cell);
       const masks = window.SWIFTEE_SCARF_OCCLUSION;
       const poses = masks && masks.frames[anim];
       const packed = poses && masks.masks[poses[frame]];

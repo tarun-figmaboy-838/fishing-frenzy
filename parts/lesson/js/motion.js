@@ -131,9 +131,11 @@
       if (!G) return;
       add(() => {
         const tl = G.timeline();
+        // the finished outline flashes, and the shape fills up from its base to its top, like water
         tl.fromTo($('.outline-settle'), { opacity: 0 }, { opacity: 0.75, duration: 0.45, ease: 'sine.out' })
           .to($('.outline-settle'), { opacity: 0, duration: 0.85, ease: 'sine.inOut' })
-          .to($('.shape-fill'), { opacity: 1, duration: 0.9, ease: 'sine.out' }, 0.1);
+          .fromTo($('.shape-fill'), { opacity: 1, clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: reduced ? 0 : 1.1, ease: 'power2.inOut' }, 0.15)
+          .set($('.shape-fill'), { clearProps: 'clipPath' });
         return tl;
       });
     },
@@ -373,7 +375,14 @@
           c.className = 'tag alab eq-fly l' + v + (box.classList.contains('eq-pair') ? ' small' : ''); c.textContent = src.textContent.trim(); c.style.left = from.x + 'px'; c.style.top = from.y + 'px';
           stage.appendChild(c);
           const at = (o.delay || 0) + i * gap, grow = 28 / 21; // the text grows from label size to formula size in flight
-          tl.fromTo(c, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 1, opacity: 0 }, { opacity: 1, y: -8, scale: 1.12, duration: lift, ease: 'power2.out' }, at);
+          // the label itself lifts off and flies (its copy takes its place at once, the original hidden), so there is
+          // only ever one of the value on screen; the original comes back once the value has landed in the sum
+          // (the copy waits hidden until its moment, then swaps in for the label in the same instant)
+          tl.fromTo(c, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 1, opacity: 0 }, { opacity: 1, duration: 0.01 }, at)
+            .call(() => src.classList.add('eq-src'), null, at)
+            .set(src, { opacity: 0 }, at)
+            .to(c, { y: -16, scale: 1.12, duration: lift, ease: 'power2.out' }, at)
+            .to(src, { opacity: 1, duration: 0.4, ease: 'sine.inOut', onComplete: () => src.classList.remove('eq-src') }, at + land + 0.1);
           if (o.only == null) tl.fromTo(src, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 1 }, { scale: 1.2, duration: 0.2, yoyo: true, repeat: 1 }, at); // (a single value's label is already hopping: angleJump)
           tl.to(c, { x: to.x - from.x, y: to.y - from.y, scale: grow, duration: travel, ease: 'power2.inOut' }, at + lift)
             .fromTo(dst, { opacity: 0 }, { opacity: 1, duration: 0.15 }, at + land - 0.05)
@@ -395,20 +404,18 @@
       box.dataset.result = '1';
       const go = () => {
         const v1 = box.querySelector('.eq-v1'), v2 = box.querySelector('.eq-v2'), plus = box.querySelector('.eq-plus'), res = box.querySelector('.eq-res');
-        const d = (v2.offsetLeft - v1.offsetLeft) / 2;
         if (onPop) onPop();
+        // the sum "120° + 60°" fades out where it stands, and only then does "180°" pop in: the numbers never collide
         add(() => G.timeline()
-          .to(v1, { x: d, opacity: 0, scale: 0.7, duration: 0.45, ease: 'power2.in' }, 0)
-          .to(v2, { x: -d, opacity: 0, scale: 0.7, duration: 0.45, ease: 'power2.in' }, 0)
-          .to(plus, { opacity: 0, scale: 0.5, duration: 0.3 }, 0)
-          .fromTo(res, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.8)' }, 0.38)
-          .fromTo(box, { boxShadow: '0 0 0 0 rgba(255,196,60,0)' }, { boxShadow: '0 0 0 6px rgba(255,214,110,.5)', duration: 0.35, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.45)
-          .to(res, { scale: 1.15, duration: 0.2, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.9)
+          .to([v1, plus, v2], { opacity: 0, scale: 0.85, duration: 0.28, ease: 'power2.in' }, 0)
+          .fromTo(res, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.8)' }, 0.3)
+          .fromTo(box, { boxShadow: '0 0 0 0 rgba(255,196,60,0)' }, { boxShadow: '0 0 0 6px rgba(255,214,110,.5)', duration: 0.35, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.4)
+          .to(res, { scale: 1.15, duration: 0.2, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.85)
           // the answer cell shrinks to the width of "180°" (the faded values leave the layout), so the equation
           // stays centred
-          .set(box.querySelector('.eq-r'), { width: box.querySelector('.eq-r').offsetWidth, minWidth: 0 }, 0.44)
-          .set(box.querySelector('.eq-sum'), { position: 'absolute' }, 0.44)
-          .to(box.querySelector('.eq-r'), { width: res.offsetWidth, duration: 0.45, ease: 'power2.inOut' }, 0.5));
+          .set(box.querySelector('.eq-r'), { width: box.querySelector('.eq-r').offsetWidth, minWidth: 0 }, 0.29)
+          .set(box.querySelector('.eq-sum'), { position: 'absolute' }, 0.29)
+          .to(box.querySelector('.eq-r'), { width: res.offsetWidth, duration: 0.4, ease: 'power2.inOut' }, 0.3));
       };
       // wait for the values to land first
       if (box.dataset.landed) go();

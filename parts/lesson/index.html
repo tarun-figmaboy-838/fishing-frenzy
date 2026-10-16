@@ -20,6 +20,8 @@
 <script src="js/swiftee-manifest.js"></script>
 <script src="js/scarf-anchors.js"></script>
 <script src="js/scarf-occlusion.js"></script>
+<script src="js/mask-anchors.js"></script>
+<script src="js/dive-mask.js"></script>
 <script src="js/winter-scarf.js"></script>
 <script src="js/swiftee.js"></script>
 <script src="js/walker.js"></script>
@@ -41,13 +43,16 @@
 <canvas class="snowfall" width="1280" height="720" aria-hidden="true" style="position: absolute; left: 0px; top: 0px; width: 1280px; height: 720px; pointer-events: none"></canvas>
 <img class="panel-img" src="assets/images/ice-panel.webp" alt="" style="position: absolute; left: 108px; top: 78px; width: 1064px; height: 561px; pointer-events: none">
 <img class="slab-img" src="assets/images/measure-slab.webp" alt="" style="position: absolute; left: 50px; top: 30px; width: 1180px; height: 659px; pointer-events: none">
+<!-- the measuring screens' treasure map (the journey's card, css .map): a plain parchment sheet that spreads open
+     under the shape as Swiftee comes to measure and folds away when she is done -->
+<div class="map" aria-hidden="true"><div class="map-sheet"></div></div>
 
 <sc-if value="{{isLesson}}" hint-placeholder-val="{{ true }}">
 <svg class="{{boardCls}}" viewBox="0 0 520 420" width="520" height="420" style="position: absolute; left: 640px; top: 104px; overflow: visible; touch-action: none; transform-origin: 0px 0px; transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.3, 1); transform: {{boardTf}}" aria-label="Trapezium ABCD">
 <g class="pop-g" style="transform-origin: {{popO}}">
-<polygon class="shape-fill" sc-camel-points="{{g.poly}}" fill="rgba(255,246,214,0.92)" stroke="none"></polygon>
-<line class="xleg" sc-camel-x1="{{g.xA.x1}}" sc-camel-y1="{{g.xA.y1}}" sc-camel-x2="{{g.xA.x2}}" sc-camel-y2="{{g.xA.y2}}" sc-camel-display="{{g.xA.d}}" stroke="#00c4a7" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
-<line class="xleg" sc-camel-x1="{{g.xB.x1}}" sc-camel-y1="{{g.xB.y1}}" sc-camel-x2="{{g.xB.x2}}" sc-camel-y2="{{g.xB.y2}}" sc-camel-display="{{g.xB.d}}" stroke="#00c4a7" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
+<polygon class="shape-fill" sc-camel-points="{{g.poly}}" fill="rgba(228,251,255,0.96)" stroke="none"></polygon>
+<line class="xleg" sc-camel-x1="{{g.xA.x1}}" sc-camel-y1="{{g.xA.y1}}" sc-camel-x2="{{g.xA.x2}}" sc-camel-y2="{{g.xA.y2}}" sc-camel-display="{{g.xA.d}}" stroke="#00838f" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
+<line class="xleg" sc-camel-x1="{{g.xB.x1}}" sc-camel-y1="{{g.xB.y1}}" sc-camel-x2="{{g.xB.x2}}" sc-camel-y2="{{g.xB.y2}}" sc-camel-display="{{g.xB.d}}" stroke="#00838f" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
 <line class="xleg" sc-camel-x1="{{g.xAB.x1}}" sc-camel-y1="{{g.xAB.y1}}" sc-camel-x2="{{g.xAB.x2}}" sc-camel-y2="{{g.xAB.y2}}" sc-camel-display="{{g.xAB.d}}" stroke="#1f6bff" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
 <line class="xleg" sc-camel-x1="{{g.xCD.x1}}" sc-camel-y1="{{g.xCD.y1}}" sc-camel-x2="{{g.xCD.x2}}" sc-camel-y2="{{g.xCD.y2}}" sc-camel-display="{{g.xCD.d}}" stroke="#1f6bff" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
 <circle class="apex-ring" sc-camel-cx="{{g.apex.cx}}" sc-camel-cy="{{g.apex.cy}}" r="7.5" fill="none" stroke="#ff7a00" stroke-width="2.5" sc-camel-display="{{g.apex.d}}"></circle>
@@ -100,7 +105,7 @@
 <text sc-camel-display="{{g.cal.tl}}" sc-camel-x="{{g.cal.p2.tx}}" sc-camel-y="{{g.cal.p2.ty}}" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="18" fill="#123b63">Leg</text>
 </g>
 </g>
-<circle sc-camel-cx="{{g.halo.x}}" sc-camel-cy="{{g.halo.y}}" r="19" sc-camel-display="{{g.halo.d}}" class="halo" fill="none" stroke="#00c4a7"></circle>
+<circle sc-camel-cx="{{g.halo.x}}" sc-camel-cy="{{g.halo.y}}" r="19" sc-camel-display="{{g.halo.d}}" class="halo" fill="none" stroke="#00838f"></circle>
 <circle class="vdot {{g.vA.cls}}" sc-camel-cx="{{g.vA.x}}" sc-camel-cy="{{g.vA.y}}" sc-camel-r="{{g.vA.r}}" fill="#fff" stroke="{{g.vA.c}}" sc-camel-stroke-width="{{g.vA.w}}"></circle>
 <circle class="vdot {{g.vB.cls}}" sc-camel-cx="{{g.vB.x}}" sc-camel-cy="{{g.vB.y}}" sc-camel-r="{{g.vB.r}}" fill="#fff" stroke="{{g.vB.c}}" sc-camel-stroke-width="{{g.vB.w}}"></circle>
 <circle class="vdot {{g.vC.cls}}" sc-camel-cx="{{g.vC.x}}" sc-camel-cy="{{g.vC.y}}" sc-camel-r="{{g.vC.r}}" fill="#fff" stroke="{{g.vC.c}}" sc-camel-stroke-width="{{g.vC.w}}"></circle>
@@ -123,10 +128,10 @@
 <sc-if value="{{isCfu1}}" hint-placeholder-val="{{ false }}">
 <div class="{{fadeCls}}" style="position: absolute; left: 596px; top: 131px; width: 560px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
 <button data-qa="opt-A" class="opt {{c1.A.cls}}" disabled="{{c1.A.dis}}" onClick="{{c1.A.pick}}" aria-label="Shape A" style="position: relative; height: 206px; display: flex; align-items: center; justify-content: center">
-<svg width="262" height="157" viewBox="0 0 200 120" aria-hidden="true"><polygon points="28,98 172,98 138,26 62,26" fill="#ffd66b" stroke="#b5870f" stroke-width="3.5" stroke-linejoin="round"></polygon><line class="q1-par" x1="62" y1="26" x2="138" y2="26" stroke="#ff7a00" stroke-width="6" stroke-linecap="round"></line><line class="q1-par" x1="28" y1="98" x2="172" y2="98" stroke="#ff7a00" stroke-width="6" stroke-linecap="round"></line><path class="q1-chev" d="M96,20 L102,26 L96,32 M96,92 L102,98 L96,104" fill="none" stroke="#d9640a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<svg width="262" height="157" viewBox="0 0 200 120" aria-hidden="true"><polygon points="28,98 172,98 138,26 62,26" fill="#ffd166" stroke="#d98f00" stroke-width="3.5" stroke-linejoin="round"></polygon><line class="q1-par" x1="62" y1="26" x2="138" y2="26" stroke="#ff7a00" stroke-width="6" stroke-linecap="round"></line><line class="q1-par" x1="28" y1="98" x2="172" y2="98" stroke="#ff7a00" stroke-width="6" stroke-linecap="round"></line><path class="q1-chev" d="M96,20 L102,26 L96,32 M96,92 L102,98 L96,104" fill="none" stroke="#d9640a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 </button>
 <button data-qa="opt-B" class="opt {{c1.B.cls}}" disabled="{{c1.B.dis}}" onClick="{{c1.B.pick}}" aria-label="Shape B" style="position: relative; height: 206px; display: flex; align-items: center; justify-content: center">
-<svg width="262" height="157" viewBox="0 0 200 120" aria-hidden="true"><polygon points="26,92 158,108 180,16 80,46" fill="#a9e8d6" stroke="#00c4a7" stroke-width="3.5" stroke-linejoin="round"></polygon><line class="sd s1" x1="26" y1="92" x2="158" y2="108" stroke="#00c4a7" stroke-width="6" stroke-linecap="round"></line><line class="sd s2" x1="158" y1="108" x2="180" y2="16" stroke="#00c4a7" stroke-width="6" stroke-linecap="round"></line><line class="sd s3" x1="180" y1="16" x2="80" y2="46" stroke="#00c4a7" stroke-width="6" stroke-linecap="round"></line><line class="sd s4" x1="80" y1="46" x2="26" y2="92" stroke="#00c4a7" stroke-width="6" stroke-linecap="round"></line></svg>
+<svg width="262" height="157" viewBox="0 0 200 120" aria-hidden="true"><polygon points="26,92 158,108 180,16 80,46" fill="#a9e8d6" stroke="#00838f" stroke-width="3.5" stroke-linejoin="round"></polygon><line class="sd s1" x1="26" y1="92" x2="158" y2="108" stroke="#00838f" stroke-width="6" stroke-linecap="round"></line><line class="sd s2" x1="158" y1="108" x2="180" y2="16" stroke="#00838f" stroke-width="6" stroke-linecap="round"></line><line class="sd s3" x1="180" y1="16" x2="80" y2="46" stroke="#00838f" stroke-width="6" stroke-linecap="round"></line><line class="sd s4" x1="80" y1="46" x2="26" y2="92" stroke="#00838f" stroke-width="6" stroke-linecap="round"></line></svg>
 </button>
 <button data-qa="opt-C" class="opt {{c1.C.cls}}" disabled="{{c1.C.dis}}" onClick="{{c1.C.pick}}" aria-label="Shape C" style="position: relative; height: 206px; display: flex; align-items: center; justify-content: center">
 <svg width="262" height="157" viewBox="0 0 200 120" aria-hidden="true"><polygon points="100,10 142,46 100,112 58,46" fill="#c6dcfa" stroke="#1f6bff" stroke-width="3.5" stroke-linejoin="round"></polygon></svg>
@@ -139,10 +144,10 @@
 
 <sc-if value="{{isCfu2}}" hint-placeholder-val="{{ false }}">
 <svg class="{{fadeCls}} qshape" width="610" height="281" viewBox="0 0 500 230" style="position: absolute; left: {{qx}}px; top: {{qy}}px" aria-label="Trapezium ABCD with equal legs">
-<polygon points="180,60 320,60 420,195 80,195" fill="rgba(255,246,214,0.92)" stroke="#1f6bff" stroke-width="5" stroke-linejoin="round"></polygon>
-<line class="q2-leg" x1="180" y1="60" x2="80" y2="195" stroke="#00c4a7" stroke-width="5" stroke-linecap="round"></line>
-<line class="q2-leg" x1="320" y1="60" x2="420" y2="195" stroke="#00c4a7" stroke-width="5" stroke-linecap="round"></line>
-<path class="q2-tick" d="M139.0,130.4 L124.6,119.7 M135.4,135.3 L121.0,124.6 M375.4,119.7 L361.0,130.4 M379.0,124.6 L364.6,135.3" stroke="#00c4a7" stroke-width="3" stroke-linecap="round"></path>
+<polygon points="180,60 320,60 420,195 80,195" fill="rgba(228,251,255,0.96)" stroke="#1f6bff" stroke-width="5" stroke-linejoin="round"></polygon>
+<line class="q2-leg" x1="180" y1="60" x2="80" y2="195" stroke="#00838f" stroke-width="5" stroke-linecap="round"></line>
+<line class="q2-leg" x1="320" y1="60" x2="420" y2="195" stroke="#00838f" stroke-width="5" stroke-linecap="round"></line>
+<path class="q2-tick" d="M139.0,130.4 L124.6,119.7 M135.4,135.3 L121.0,124.6 M375.4,119.7 L361.0,130.4 M379.0,124.6 L364.6,135.3" stroke="#00838f" stroke-width="3" stroke-linecap="round"></path>
 <path d="M244,54 L250,60 L244,66 M252,54 L258,60 L252,66 M244,189 L250,195 L244,201 M252,189 L258,195 L252,201" fill="none" stroke="#ff7a00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
 <circle cx="180" cy="60" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle cx="320" cy="60" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle cx="420" cy="195" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle cx="80" cy="195" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle>
 <text x="166" y="42" font-family="Nunito, sans-serif" font-weight="900" font-size="21" fill="#123b63">A</text>
@@ -155,11 +160,11 @@
 
 <sc-if value="{{isCfu3}}" hint-placeholder-val="{{ false }}">
 <svg class="{{fadeCls}} q3" width="600" height="288.5" viewBox="0 0 520 250" style="position: absolute; left: 546px; top: 117px; overflow: visible" aria-label="Trapezium ABCD with angle A of 120 degrees and angle D unknown">
-<polygon class="q3-fill" points="208.33,50 400,50 452,203 120,203" fill="rgba(255,246,214,0.92)"></polygon>
+<polygon class="q3-fill" points="208.33,50 400,50 452,203 120,203" fill="rgba(228,251,255,0.96)"></polygon>
 <path class="q3-wA" d="M208.33,50 L232.15,50 A23.82,23.82 0 0 1 196.42,70.62 Z" fill="#ff7a00" fill-opacity="1"></path>
 <path class="q3-wD" d="M120,203 L153.68,203 A33.68,33.68 0 0 0 136.84,173.83 Z" fill="#ffb800" fill-opacity="1"></path>
 <polygon class="q3-line" points="208.33,50 400,50 452,203 120,203" fill="none" stroke="#1f6bff" stroke-width="5" stroke-linejoin="round"></polygon>
-<line class="q3-ad" x1="208.33" y1="50" x2="120" y2="203" stroke="#fff6c8" stroke-width="7" stroke-linecap="round"></line>
+<line class="q3-ad" x1="208.33" y1="50" x2="120" y2="203" stroke="#e4fbff" stroke-width="7" stroke-linecap="round"></line>
 <path class="q3-chev" d="M298,44 L304,50 L298,56 M306,44 L312,50 L306,56 M280,197 L286,203 L280,209 M288,197 L294,203 L288,209" fill="none" stroke="#ff7a00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
 <circle class="q3-dot" cx="208.33" cy="50" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle class="q3-dot" cx="400" cy="50" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle class="q3-dot" cx="452" cy="203" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle class="q3-dot" cx="120" cy="203" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle>
 <text class="q3-lab" x="188.3" y="36" font-family="Nunito, sans-serif" font-weight="900" font-size="21" fill="#123b63">A</text>
@@ -178,9 +183,9 @@
 
 <sc-if value="{{isCfu5}}" hint-placeholder-val="{{ false }}">
 <svg class="{{fadeCls}} q5" width="610" height="281" viewBox="0 0 500 230" style="position: absolute; left: 562px; top: 150px" aria-label="Isosceles trapezium ABCD with AB 6 cm, CD 10 cm, AD 5 cm and BC unknown">
-<polygon points="154,48.4 346,48.4 410,195 90,195" fill="rgba(255,246,214,0.92)" stroke="#1f6bff" stroke-width="5" stroke-linejoin="round"></polygon>
-<line class="q5-leg" x1="154" y1="48.4" x2="90" y2="195" stroke="#00c4a7" stroke-width="7" stroke-linecap="round"></line><line class="q5-leg" x1="346" y1="48.4" x2="410" y2="195" stroke="#00c4a7" stroke-width="7" stroke-linecap="round"></line>
-<path class="q5-tick" d="M131.4,122.5 L115.0,115.3 M129.0,128.0 L112.6,120.8 M385.0,115.3 L368.6,122.5 M387.4,120.8 L371.0,128.0" stroke="#00c4a7" stroke-width="3" stroke-linecap="round"></path>
+<polygon points="154,48.4 346,48.4 410,195 90,195" fill="rgba(228,251,255,0.96)" stroke="#1f6bff" stroke-width="5" stroke-linejoin="round"></polygon>
+<line class="q5-leg" x1="154" y1="48.4" x2="90" y2="195" stroke="#00838f" stroke-width="7" stroke-linecap="round"></line><line class="q5-leg" x1="346" y1="48.4" x2="410" y2="195" stroke="#00838f" stroke-width="7" stroke-linecap="round"></line>
+<path class="q5-tick" d="M131.4,122.5 L115.0,115.3 M129.0,128.0 L112.6,120.8 M385.0,115.3 L368.6,122.5 M387.4,120.8 L371.0,128.0" stroke="#00838f" stroke-width="3" stroke-linecap="round"></path>
 <path d="M244,42.4 L250,48.4 L244,54.4 M244,189 L250,195 L244,201" fill="none" stroke="#ff7a00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
 <circle cx="154" cy="48.4" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle cx="346" cy="48.4" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle cx="410" cy="195" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle><circle cx="90" cy="195" r="7" fill="#fff" stroke="#1f6bff" stroke-width="3"></circle>
 <text x="136" y="32" font-family="Nunito, sans-serif" font-weight="900" font-size="21" fill="#123b63">A</text>
@@ -197,7 +202,7 @@
 </sc-if>
 
 <sc-if value="{{hasOpts}}" hint-placeholder-val="{{ false }}">
-<div class="{{optCls}}" style="position: absolute; left: {{optLeft}}px; top: {{optTop}}px; width: {{optW}}px; display: flex; gap: 18px">
+<div class="opts-row {{optCls}}" style="position: absolute; left: {{optLeft}}px; top: {{optTop}}px; width: {{optW}}px; display: flex; gap: 18px">
 <sc-for list="{{opts}}" as="o" hint-placeholder-count="3">
 <button class="opt crys {{o.cls}}" data-qa="opt-{{o.id}}" disabled="{{o.dis}}" onClick="{{o.pick}}" style="flex-grow: 1; flex-basis: 0; height: 74px; padding: 4px 8px; line-height: 1.15">{{o.t}}</button>
 </sc-for>
@@ -227,25 +232,25 @@
 <span class="cf" style="left: 517px; background: #2b7bd6; animation-delay: 0.12s; transform: rotate(53deg)"></span>
 <span class="cf" style="left: 914px; background: #ff7a00; animation-delay: 0.24s; transform: rotate(106deg)"></span>
 <span class="cf" style="left: 271px; background: #2e9e4f; animation-delay: 0.36s; transform: rotate(159deg)"></span>
-<span class="cf" style="left: 668px; background: #00c4a7; animation-delay: 0.48s; transform: rotate(212deg)"></span>
+<span class="cf" style="left: 668px; background: #00838f; animation-delay: 0.48s; transform: rotate(212deg)"></span>
 <span class="cf" style="left: 1065px; background: #56bdf4; animation-delay: 0.60s; transform: rotate(265deg)"></span>
 <span class="cf" style="left: 422px; background: #f2b51c; animation-delay: 0.72s; transform: rotate(318deg)"></span>
 <span class="cf" style="left: 819px; background: #2b7bd6; animation-delay: 0.00s; transform: rotate(11deg)"></span>
 <span class="cf" style="left: 176px; background: #ff7a00; animation-delay: 0.12s; transform: rotate(64deg)"></span>
 <span class="cf" style="left: 573px; background: #2e9e4f; animation-delay: 0.24s; transform: rotate(117deg)"></span>
-<span class="cf" style="left: 970px; background: #00c4a7; animation-delay: 0.36s; transform: rotate(170deg)"></span>
+<span class="cf" style="left: 970px; background: #00838f; animation-delay: 0.36s; transform: rotate(170deg)"></span>
 <span class="cf" style="left: 327px; background: #56bdf4; animation-delay: 0.48s; transform: rotate(223deg)"></span>
 <span class="cf" style="left: 724px; background: #f2b51c; animation-delay: 0.60s; transform: rotate(276deg)"></span>
 <span class="cf" style="left: 1121px; background: #2b7bd6; animation-delay: 0.72s; transform: rotate(329deg)"></span>
 <span class="cf" style="left: 478px; background: #ff7a00; animation-delay: 0.00s; transform: rotate(22deg)"></span>
 <span class="cf" style="left: 875px; background: #2e9e4f; animation-delay: 0.12s; transform: rotate(75deg)"></span>
-<span class="cf" style="left: 232px; background: #00c4a7; animation-delay: 0.24s; transform: rotate(128deg)"></span>
+<span class="cf" style="left: 232px; background: #00838f; animation-delay: 0.24s; transform: rotate(128deg)"></span>
 <span class="cf" style="left: 629px; background: #56bdf4; animation-delay: 0.36s; transform: rotate(181deg)"></span>
 <span class="cf" style="left: 1026px; background: #f2b51c; animation-delay: 0.48s; transform: rotate(234deg)"></span>
 <span class="cf" style="left: 383px; background: #2b7bd6; animation-delay: 0.60s; transform: rotate(287deg)"></span>
 <span class="cf" style="left: 780px; background: #ff7a00; animation-delay: 0.72s; transform: rotate(340deg)"></span>
 <span class="cf" style="left: 137px; background: #2e9e4f; animation-delay: 0.00s; transform: rotate(33deg)"></span>
-<span class="cf" style="left: 534px; background: #00c4a7; animation-delay: 0.12s; transform: rotate(86deg)"></span>
+<span class="cf" style="left: 534px; background: #00838f; animation-delay: 0.12s; transform: rotate(86deg)"></span>
 <span class="cf" style="left: 931px; background: #56bdf4; animation-delay: 0.24s; transform: rotate(139deg)"></span>
 <span class="cf" style="left: 288px; background: #f2b51c; animation-delay: 0.36s; transform: rotate(192deg)"></span>
 <span class="cf" style="left: 685px; background: #2b7bd6; animation-delay: 0.48s; transform: rotate(245deg)"></span>

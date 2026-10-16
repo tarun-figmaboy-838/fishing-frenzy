@@ -49,8 +49,9 @@ const CONFIG = {
   fit: { cx: 876, cy: 346, w: 714, h: 474, padX: 62, padTop: 58, padBottom: 52, maxScale: 1.5 },
   // in the journey's card, on a 'plate' screen (no Swiftee, no ice panel: her line is a plate at the top), the shape
   // is fitted big in the middle of the card, under the plate and above the name plates (game-engine isPlate / fitFor)
-  fitPlate: { cx: 640, cy: 378, w: 1040, h: 450, padX: 70, padTop: 60, padBottom: 56, maxScale: 2.1, chipTop: 606 },
+  fitPlate: { cx: 640, cy: 362, w: 1160, h: 520, padX: 60, padTop: 50, padBottom: 44, maxScale: 2.8, chipTop: 624 },
   lessonZoom: { scale: 1.3, tx: -56.5, ty: -88.6 },
+  lessonZoomPlate: { scale: 1.7, tx: -385, ty: -172 }, // the same, for a plate screen: the shape big in the middle of the card
   // Measuring Kit layout (screens 16 and 23): board scale and offset that put the shape large on the slab (which fills
   // the stage, index.html), right of Swiftee, with room above and below its corners for the protractor
   measureRoom: { scale: 1.6, tx: -257, ty: -122 },

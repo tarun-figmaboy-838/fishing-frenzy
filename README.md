@@ -54,12 +54,13 @@ the front page instead.
   with her welcome. The wave is the lake itself: each game's water pass (`src/water.js`, `uHump`/`uLean`) lifts the
   painted surface into a travelling hump, steered by `parts/shared/wave.js`.
 - **The lesson in the card.** Fishing 2 draws the shell, the bubble and the card (on its curtain canvas, in screen
-  space, centred on the stage), the shell hides behind the card while the lesson plays, and the journey lays the
+  space, centred on the stage; the card is a painted underwater card, `parts/fishing-2/assets/lesson-card.webp`,
+  with bubbles rising through its water), the shell hides behind the card while the lesson plays, and the journey lays the
   lesson's own frame exactly over the card. Inside, Swiftee appears only where she does something: the opening
   (she flies in and recalls), the two measuring screens, the hero screens and the summary. Every other screen is a
   "plate" screen: no Swiftee and no ice panel, her line on a navy instruction plate across the top (gold rim, one line of text) and the shape
-  big in the middle of the card (`isPlate`, `CONFIG.fitPlate`, css `.plate`). The shape's fill is ice-blue, angle C
-  purple, and a named side glows softly instead of carrying a solid band.
+  big in the middle of the card (`isPlate`, `CONFIG.fitPlate`, css `.plate`). The shape's fill is pale aqua on the card's blue water, the bases deep blue and the legs deep aqua, angle C purple, and a
+  named side glows softly instead of carrying a solid band.
 - **The lesson moves on by itself.** It has no Next, Back or screen list. A finished screen moves on once its voice
   and animations are over. A screen that asks for something (a drag, a tap, an answer) waits until it's done.
 - **The end.** Fishing 2 closes its cartoon iris on "The End", Next is tapped, and the front page fades back in.
@@ -69,6 +70,9 @@ the front page instead.
 
 - **Her scarf.** The lesson draws her red snowflake winter scarf on every frame. `tools/bake-swiftee-scarf.py`
   bakes the same scarf, placed by the lesson's own code, into the fishing games' Swiftee sheets and the front-page
+- **Her diving mask.** Inside the underwater card she wears a yellow twin-window dive mask with a strap and snorkel
+  instead of her scarf, drawn on every frame of every pose (`parts/lesson/js/dive-mask.js`), registered to her eyes by
+  `parts/lesson/tools/build-mask-anchors.py` (`js/mask-anchors.js`).
   banner. The band is fitted to her body in every pose and the tail hangs whole. The unscarfed originals are in
   `tools/scarf/originals/`, so the bake can run again.
 - **Her voice.** The lesson's voice-over comes from the "Ai Wala Human By Aamir" studio: Hindi script, voice Female

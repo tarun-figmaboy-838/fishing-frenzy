@@ -17,10 +17,15 @@ const shuffle = (list) => list.map((x) => [Math.random(), x]).sort((a, b) => a[0
 const RECALL_CARD = { x: 836, y: 533, w: 900, h: 500, scale: 44, title: -192, shape: [-170, -4], line: [250, 74], sum: 190, sector: 52, radius: 30, stroke: 4.5 };
 // The lesson's card (the journey, shell/journey.js): the whole trapezium lesson plays inside it, in the lesson's own
 // frame, which the shell lays over the card's middle (frame: the lesson's stage, 1280 x 720, at 1:1, an even margin
-// round it). A plain cream card with a faint print of the game's motifs (drawCardPrint). It is drawn on the curtain
+// round it). A painted underwater card (LESSON_ART), with bubbles rising through it (drawCardLife). It is drawn on the curtain
 // canvas, in screen space: the camera dives into the water behind it (dive), so only the lake's depths show round it,
 // with the shell on the sand just under its bottom edge.
-const LESSON_CARD = { x: 836, y: 470, w: 1380, h: 800, radius: 30, stroke: 4.5, frame: { w: 1280, h: 720, radius: 18 } }; // (centred on the stage)
+// The lesson's card is a painting (assets/lesson-card.webp: an underwater card, blue rim, water, sand, bubbles, seaweed),
+// drawn at w x h about (x, y), the centre of the stage. Its inner area (inside the rim) is 1572 x 780 of the art's
+// 1618 x 828: the lesson's 1280 x 720 frame sits centred in it, so the art's bubbles and seaweed show either side.
+const LESSON_CARD = { x: 836, y: 470, w: 1494, h: 764, radius: 52, frame: { w: 1280, h: 720, radius: 18 } };
+const LESSON_ART = typeof Image !== 'undefined' ? new Image() : null;
+if (LESSON_ART) LESSON_ART.src = 'assets/lesson-card.webp';
 const DIVE_ZOOM = 1.85; // the camera, into the water: the surface out of view above, the sand along the bottom
 const PEARL = { x: 836, y: 929, size: 1.12 };
 const RECALL_PIECES = ['#ffb347', '#ff8f3a'];
@@ -1561,24 +1566,43 @@ class Game {
       ctx.scale(b.card, b.card);
       ctx.lineJoin = 'round';
       ctx.lineCap = 'round';
-      ctx.beginPath();
-      ctx.roundRect(-C.w / 2, -C.h / 2, C.w, C.h, C.radius);
-      ctx.fillStyle = 'rgba(0, 20, 60, 0.22)';
-      ctx.save();
-      ctx.translate(0, 9);
-      ctx.fill();
-      ctx.restore();
-      ctx.fillStyle = '#fff8e8';
-      ctx.fill();
-      ctx.lineWidth = C.stroke;
-      ctx.strokeStyle = '#3b1d00';
-      ctx.stroke();
-      if (r.flash > 0) {
-        ctx.fillStyle = `rgba(255, 250, 235, ${0.7 * r.flash})`;
+      if (r.lesson) {
+        // the painted card, its shadow following its own outline, with bubbles rising through its water
+        const art = LESSON_ART && LESSON_ART.complete && LESSON_ART.naturalWidth ? LESSON_ART : null;
+        ctx.save();
+        ctx.shadowColor = 'rgba(0, 20, 60, 0.32)';
+        ctx.shadowBlur = 26;
+        ctx.shadowOffsetY = 10;
+        if (art) ctx.drawImage(art, -C.w / 2, -C.h / 2, C.w, C.h);
+        else { ctx.beginPath(); ctx.roundRect(-C.w / 2, -C.h / 2, C.w, C.h, C.radius); ctx.fillStyle = '#7fe0f2'; ctx.fill(); }
+        ctx.restore();
+        this.drawCardLife(ctx, r);
+        if (r.flash > 0 && art) { // the flash as the card springs out: the painting itself, brightened
+          ctx.save();
+          ctx.globalAlpha = 0.7 * r.flash;
+          ctx.filter = 'brightness(1.9)';
+          ctx.drawImage(art, -C.w / 2, -C.h / 2, C.w, C.h);
+          ctx.restore();
+        }
+      } else {
+        ctx.beginPath();
+        ctx.roundRect(-C.w / 2, -C.h / 2, C.w, C.h, C.radius);
+        ctx.fillStyle = 'rgba(0, 20, 60, 0.22)';
+        ctx.save();
+        ctx.translate(0, 9);
         ctx.fill();
+        ctx.restore();
+        ctx.fillStyle = '#fff8e8';
+        ctx.fill();
+        ctx.lineWidth = C.stroke;
+        ctx.strokeStyle = '#3b1d00';
+        ctx.stroke();
+        if (r.flash > 0) {
+          ctx.fillStyle = `rgba(255, 250, 235, ${0.7 * r.flash})`;
+          ctx.fill();
+        }
+        if (r.t >= r.shape) this.drawLesson(ctx, r, at, still);
       }
-      if (r.lesson) this.drawCardPrint(ctx, r);
-      else if (r.t >= r.shape) this.drawLesson(ctx, r, at, still);
       ctx.restore();
     }
     if (b.radius > 0) drawBubble(ctx, b.x, b.y, b.radius, r.t, still);
@@ -1589,99 +1613,29 @@ class Game {
     }
   }
 
-  // The lesson card's print (drawn about the card's centre): the lake floor, as a soft one-colour print on the cream
-  // behind the lesson. A sandy floor runs along the bottom in two long, low swells and rises into a rounded dune at
-  // the left, which Swiftee stands on (the lesson puts her there: css/game.css html.in-card); kelp grows at the
-  // dune's foot and in the strip right of the lesson's ice panel, a trail of bubbles rising from each; a school of
-  // three fish crosses the open water above her bubble and one swims back along the top right. Everything keeps
-  // clear of the card's corners and of the panel (x -149..621, y -280..268 here), so nothing is cut off or half hidden.
-  drawCardPrint(ctx, r) {
-    const C = r.card, w = C.w, h = C.h, L = -w / 2, R = w / 2, B = h / 2;
-    const ink = 'rgba(43, 123, 214, 0.18)', soft = 'rgba(43, 123, 214, 0.11)', wash = 'rgba(43, 123, 214, 0.07)';
-    const FLOOR = 318, CREST = 190; // the floor line, and the top of the dune's bell, whose sides pass y 199 (her feet) at L+160 and L+270
+  // Life in the lesson's card (about the card's centre, over the painting): small bubbles rise through its water,
+  // swaying a little, fading in off the sand and out under the surface. Stateless: placed from the recall's clock.
+  drawCardLife(ctx, r) {
+    if (this.fx.reduced) return;
+    const C = r.card, hw = C.w / 2 - 70, top = -C.h / 2 + 70, bottom = C.h / 2 - 95, span = bottom - top;
     ctx.save();
-    ctx.beginPath();
-    ctx.roundRect(L + 5, -B + 5, w - 10, h - 10, C.radius - 4);
-    ctx.clip();
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    // the floor and the dune, one smooth outline
-    ctx.beginPath();
-    ctx.moveTo(L - 10, B + 20);
-    ctx.lineTo(L - 10, FLOOR);
-    ctx.bezierCurveTo(L + 70, FLOOR, L + 90, CREST, L + 215, CREST);
-    ctx.bezierCurveTo(L + 340, CREST, L + 360, FLOOR, L + 440, FLOOR);
-    ctx.bezierCurveTo(L + 680, FLOOR, L + 760, FLOOR + 9, L + 940, FLOOR + 9);
-    ctx.bezierCurveTo(L + 1120, FLOOR + 9, L + 1200, FLOOR, R + 10, FLOOR);
-    ctx.lineTo(R + 10, B + 20);
-    ctx.closePath();
-    ctx.fillStyle = wash;
-    ctx.fill();
-    ctx.lineWidth = 3;
-    ctx.strokeStyle = ink;
-    ctx.stroke();
-    // kelp: a swaying stem rooted where it stands, with leaves either side pointing up and out
-    const kelp = (x, base, height, dir, leaves) => {
-      const p = [[x, base], [x + 24 * dir, base - height * 0.35], [x - 16 * dir, base - height * 0.7], [x + 8 * dir, base - height]];
-      const at = (t) => { const u = 1 - t, k = [u * u * u, 3 * u * u * t, 3 * u * t * t, t * t * t]; return [0, 1].map((i) => k[0] * p[0][i] + k[1] * p[1][i] + k[2] * p[2][i] + k[3] * p[3][i]); };
+    ctx.lineWidth = 1.5;
+    for (let i = 0; i < 16; i += 1) {
+      const v = 22 + (i % 5) * 7, rad = 2.4 + (i % 3) * 1.4;
+      const y = bottom - ((r.t * v + i * 97) % span), x = -hw + ((i * 211) % (hw * 2)) + Math.sin(r.t * 1.6 + i) * 10;
+      const a = Math.min(1, (y - top) / 90) * Math.min(1, (bottom - y) / 60);
+      ctx.globalAlpha = 0.6 * a;
       ctx.beginPath();
-      ctx.moveTo(p[0][0], p[0][1]);
-      ctx.bezierCurveTo(p[1][0], p[1][1], p[2][0], p[2][1], p[3][0], p[3][1]);
-      ctx.lineWidth = 3.5;
-      ctx.strokeStyle = ink;
+      ctx.arc(x, y, rad, 0, TAU);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)';
       ctx.stroke();
-      ctx.fillStyle = soft;
-      for (let i = 0; i < leaves; i += 1) {
-        const t = 0.9 - i * 0.2, side = i % 2 ? -dir : dir, [px, py] = at(t), [qx, qy] = at(t + 0.04);
-        const a = Math.atan2(qy - py, qx - px) + side * 0.8; // the leaf leans out from the stem's direction here
-        ctx.beginPath();
-        ctx.ellipse(px + Math.cos(a) * 12, py + Math.sin(a) * 12, 13, 5.5, a, 0, TAU);
-        ctx.fill();
-      }
-    };
-    kelp(L + 40, 299, 150, 1, 4); // on the dune's slope
-    kelp(L + 70, 271, 84, -1, 3);
-    kelp(R - 40, FLOOR, 160, 1, 4); // right of the panel
-    // bubbles: a trail rising from each kelp, growing and swaying a little as it goes
-    const trail = (x, y0, n, dir) => {
-      for (let i = 0, y = y0; i < n; i += 1, y -= 52 + i * 8) {
-        const rad = 4 + i * 1.3, bx = x + Math.sin(i * 1.9) * 9 * dir;
-        ctx.beginPath();
-        ctx.arc(bx, y, rad, 0, TAU);
-        ctx.lineWidth = 2.5;
-        ctx.strokeStyle = ink;
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(bx - rad * 0.35, y - rad * 0.35, rad * 0.24, 0, TAU);
-        ctx.fillStyle = ink;
-        ctx.fill();
-      }
-    };
-    trail(L + 46, 120, 7, 1);
-    trail(R - 36, 130, 7, -1);
-    // fish
-    const fish = (x, y, dir, k) => {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.scale(dir * k, k);
-      ctx.beginPath();
-      ctx.ellipse(0, 0, 26, 12, 0, 0, TAU);
-      ctx.moveTo(-22, 0);
-      ctx.lineTo(-40, -13);
-      ctx.lineTo(-40, 13);
-      ctx.closePath();
-      ctx.fillStyle = ink;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
       ctx.fill();
       ctx.beginPath();
-      ctx.arc(12, -3, 2.8, 0, TAU);
-      ctx.fillStyle = 'rgba(255, 248, 232, 0.95)';
+      ctx.arc(x - rad * 0.35, y - rad * 0.35, rad * 0.3, 0, TAU);
+      ctx.fillStyle = '#fff';
       ctx.fill();
-      ctx.restore();
-    };
-    fish(L + 340, -262, 1, 1.25); // a school over Swiftee
-    fish(L + 236, -318, 1, 0.95);
-    fish(L + 222, -222, 1, 0.72);
-    fish(R - 150, -342, -1, 0.9); // and one along the top right
+    }
     ctx.restore();
   }
 
