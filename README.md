@@ -57,7 +57,7 @@ the front page instead.
   space, centred on the stage), the shell hides behind the card while the lesson plays, and the journey lays the
   lesson's own frame exactly over the card. Inside, Swiftee appears only where she does something: the opening
   (she flies in and recalls), the two measuring screens, the hero screens and the summary. Every other screen is a
-  "plate" screen: no Swiftee and no ice panel, her line on a navy instruction plate across the top and the shape
+  "plate" screen: no Swiftee and no ice panel, her line on a navy instruction plate across the top (gold rim, a small portrait of Swiftee marking it as her line) and the shape
   big in the middle of the card (`isPlate`, `CONFIG.fitPlate`, css `.plate`). The shape's fill is ice-blue, angle C
   purple, and a named side glows softly instead of carrying a solid band.
 - **The lesson moves on by itself.** It has no Next, Back or screen list. A finished screen moves on once its voice
