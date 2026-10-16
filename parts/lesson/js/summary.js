@@ -27,14 +27,14 @@
     enterMs: 420, collectMs: 580, pauseMs: 200,
     readyMs: 4500 // READY: time to tap a card before the lesson moves on (the engine then waits its usual beat)
   };
-  // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is shown in an
-  // open seashell instead (shell()): it sits on the sand, its lid opens, and the idea is drawn on the lid's pearly inside
-  // face - the lesson's own recall seashell, not a card on the card. SHELL: the hinge, the lid's radius and half-angle,
-  // the base's size, the idea's zoom and where its centre goes, the bounds the collect step shrinks, the docked shells'
-  // places (further out than the cards', the shell being wider) and how far Swiftee peeks higher
+  // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is shown on a
+  // treasure-map page instead (mapPage()): parchment like the measuring screens' map (tools/paint-treasure-map.py) but
+  // a page of its own - smaller, a thin dashed frame line round it like an old map's, laid on the sand at a slight
+  // tilt (alternating) and unrolling upward from the sand as it comes, where the measuring map spreads sideways.
+  // MAPC: the page's box, the idea's zoom and where its centre goes, the tilt, the docked pages' places (further out
+  // than the cards', the page being wider) and Swiftee's peek
   const FRAME = { src: 'assets/images/summary-card.webp', w: 1024, h: 984 };
-  const SHELL = { hx: 500, hy: 460, R: 280, half: 65 * Math.PI / 180, brx: 250, bry: 76, k: 1.3, cy: 306, oy: 327, enterMs: 760, peekDy: -2,
-    rect: { x: 246, y: 180, w: 508, h: 350 },
+  const MAPC = { src: 'assets/images/summary-map.webp', rect: { x: 246, y: 178, w: 508, h: 322 }, k: 1.3, cy: 339, oy: 327, tilt: 1.4, enterMs: 700, peekDy: 0,
     mini: { w: 108, x: [[64, 178], [822, 936]], y: [190, 340], plate: { w: 104, h: 24, size: 14, rim: 2 } } };
   const inCard = () => document.documentElement.classList.contains('in-card');
   const WARM = 'rgba(255, 150, 40, 0.85)';
@@ -191,7 +191,7 @@
       const sw = document.querySelector('.stage .swiftee'), bub = document.querySelector('.stage .bubble');
       this.spot = where || this.spot || 'middle';
       const P = Object.assign({}, SPOT[this.spot]);
-      if (this.spot === 'peek' && inCard()) P.y += SHELL.peekDy; // (over the shell's lid rather than the card's top)
+      if (this.spot === 'peek' && inCard()) P.y += MAPC.peekDy; // (over the page's top)
       // keep her speech bubble above her head; in the middle it stays narrow enough to fit between the albums
       if (bub) { bub.style.marginBottom = (-P.y) + 'px'; bub.style.maxWidth = this.spot === 'middle' ? '470px' : ''; }
       if (!sw || !G) return Promise.resolve(this.live());
@@ -217,19 +217,21 @@
 
     // ---------- build one card: the frame image, the trapezium (hidden until reveal) and its name tag ----------
     card(c) {
-      const V = c.visual || {}, sh = inCard();
-      const w = sh ? SHELL.rect.w : SUM.card.w, h = sh ? SHELL.rect.h : w * FRAME.h / FRAME.w;
-      const x = sh ? SHELL.rect.x : SUM.card.cx - w / 2, y = sh ? SHELL.rect.y : SUM.card.cy - h / 2, cx = x + w / 2;
+      const V = c.visual || {}, mp = inCard();
+      const w = mp ? MAPC.rect.w : SUM.card.w, h = mp ? MAPC.rect.h : w * FRAME.h / FRAME.w;
+      const x = mp ? MAPC.rect.x : SUM.card.cx - w / 2, y = mp ? MAPC.rect.y : SUM.card.cy - h / 2, cx = x + w / 2;
       const g = mk('g', { 'class': 'summary-card', 'data-concept': c.id }, this.layer);
-      g._rect = { x: x, y: y, w: w, h: h }; g._c = c; g._shell = sh;
+      g._rect = { x: x, y: y, w: w, h: h }; g._c = c; g._map = mp;
       const pp = mk('g', {}, g); g._pop = pp;           // animations run on the inner group, the collect transform on the outer
-      if (sh) g._lid = this.shell(pp);
+      // a page lies at a slight tilt, every other one the other way; its idea tilts with it (the name plate stays level)
+      const tilt = mp ? mk('g', { transform: 'rotate(' + ((IDEAS.indexOf(c) % 2 ? 1 : -1) * MAPC.tilt) + ' ' + cx + ' ' + (y + h / 2) + ')' }, pp) : pp;
+      if (mp) this.mapPage(tilt, x, y, w, h);
       else {
         const img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: FRAME.src }, pp);
         img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', FRAME.src); // older browsers only read xlink:href
       }
-      // in a shell the idea is drawn larger, on the lid's inside face (everything inside vis scales with it)
-      const host = sh ? mk('g', { transform: 'translate(' + SHELL.hx + ' ' + SHELL.cy + ') scale(' + SHELL.k + ') translate(' + (-SUM.card.cx) + ' ' + (-SHELL.oy) + ')' }, pp) : pp;
+      // on a page the idea is drawn larger, centred on it (everything inside vis scales with it)
+      const host = mp ? mk('g', { transform: 'translate(' + cx + ' ' + MAPC.cy + ') scale(' + MAPC.k + ') translate(' + (-SUM.card.cx) + ' ' + (-MAPC.oy) + ')' }, tilt) : pp;
       const vis = mk('g', {}, host); g._vis = vis;
       const X = SHAPES[V.shape || 'gen'], P = { A: pt(X, 'A'), B: pt(X, 'B'), C: pt(X, 'C'), D: pt(X, 'D') };
       g._P = P;
@@ -244,55 +246,17 @@
       g._marks = mk('g', {}, vis);
       g._dots = ['A', 'B', 'C', 'D'].map((k) => mk('circle', { cx: P[k].x, cy: P[k].y, r: 4.2, fill: '#fff', stroke: INK.base, 'stroke-width': 2.2, opacity: 0 }, vis));
       // the name plate centred on the card's bottom edge
-      g._tag = this.nameTag(pp, cx, sh ? SHELL.hy + 40 : y + h + 4, c.label, c.tone); // (a shell's name plate sits on its base)
+      g._tag = this.nameTag(pp, cx, y + h + (mp ? -2 : 4), c.label, c.tone);
       g._tag.setAttribute('opacity', 0);
       return g;
     },
     // a rounded name plate sized to its text; o sets height, font size, minimum width and rim (the album plates)
-    // an open seashell (board units): a soft shadow on the sand; the lid's pearly inside face, a fan with a scalloped rim,
-    // faint ribs and an iridescent sheen; and the base in front, its coral outside ribbed and shaded, with the hinge's
-    // two ears where they meet. Returns the lid, which opens on its hinge (show())
-    shell(parent) {
-      const S = SHELL, d = this.defs, X = S.hx, Y = S.hy;
-      if (!d.querySelector('#shNacre')) {
-        const n = mk('radialGradient', { id: 'shNacre', gradientUnits: 'userSpaceOnUse', cx: X, cy: Y, r: S.R }, d);
-        [['0%', '#fffaf6'], ['45%', '#fdf0f2'], ['78%', '#f6e3ee'], ['100%', '#e9d9f0']].forEach((t) => mk('stop', { offset: t[0], 'stop-color': t[1] }, n));
-        const iri = mk('linearGradient', { id: 'shIri', x1: '0', y1: '0', x2: '1', y2: '1' }, d);
-        [['0%', '#a6e8ff', 0.0], ['35%', '#a6e8ff', 0.28], ['55%', '#ffd0ec', 0.22], ['80%', '#d9c8ff', 0.24], ['100%', '#d9c8ff', 0]].forEach((t) => mk('stop', { offset: t[0], 'stop-color': t[1], 'stop-opacity': t[2] }, iri));
-        const out = mk('linearGradient', { id: 'shOut', x1: '0', y1: '0', x2: '0', y2: '1' }, d);
-        [['0%', '#ffc7a6'], ['45%', '#f79a76'], ['100%', '#d8673f']].forEach((t) => mk('stop', { offset: t[0], 'stop-color': t[1] }, out));
-      }
-      const pt2 = (r, a) => (f1(X + r * Math.sin(a)) + ',' + f1(Y - r * Math.cos(a)));
-      // the lid's outline: hinge -> along the left edge -> the scalloped rim (11 lobes) -> the right edge -> hinge
-      const N = 11, steps = N * 8, rim = [];
-      for (let i = 0; i <= steps; i += 1) { const u = i / steps, a = -S.half + 2 * S.half * u, r = S.R * (0.955 + 0.045 * Math.abs(Math.cos(Math.PI * N * u))); rim.push(pt2(r, a)); }
-      const lidD = 'M' + X + ',' + Y + ' L' + rim.join(' L') + ' Z';
-      mk('ellipse', { cx: X, cy: Y + S.bry + 4, rx: S.brx * 0.95, ry: 20, fill: 'rgba(0, 40, 70, 0.28)', style: 'filter: blur(8px)' }, parent);
-      const lid = mk('g', {}, parent);
-      mk('path', { d: lidD, fill: 'url(#shNacre)', stroke: '#e98a6a', 'stroke-width': 7, 'stroke-linejoin': 'round' }, lid);
-      mk('path', { d: lidD, fill: 'url(#shIri)' }, lid);
-      for (let i = 1; i < N; i += 1) { // the ribs: faint grooves from the hinge to each dip of the rim
-        const a = -S.half + 2 * S.half * i / N;
-        mk('line', { x1: X, y1: Y, x2: f1(X + S.R * 0.93 * Math.sin(a)), y2: f1(Y - S.R * 0.93 * Math.cos(a)), stroke: 'rgba(214, 160, 182, 0.28)', 'stroke-width': 3, 'stroke-linecap': 'round' }, lid);
-      }
-      mk('path', { d: lidD, fill: 'none', stroke: 'rgba(255, 255, 255, 0.7)', 'stroke-width': 2.5, transform: 'translate(0 5)', 'clip-path': null }, lid); // the rim's inner lip
-      // the base: a squashed fan below the hinge, its outside towards us
-      const bs = [], M = 9, bsteps = M * 8;
-      // (the rim runs right round to the hinge's level at both ends, so the base is a rounded bowl, not a tray)
-      const T = 1.5;
-      for (let i = 0; i <= bsteps; i += 1) { const u = i / bsteps, t = -T + 2 * T * u, k = 0.94 + 0.06 * Math.abs(Math.cos(Math.PI * M * u)); bs.push(f1(X + S.brx * Math.sin(t) * k) + ',' + f1(Y + S.bry * Math.cos(t) * k)); }
-      const baseD = 'M' + f1(X - S.brx * Math.sin(T) * 0.94) + ',' + f1(Y + 2) + ' Q' + X + ',' + f1(Y - 18) + ' ' + f1(X + S.brx * Math.sin(T) * 0.94) + ',' + f1(Y + 2) + ' L' + bs.reverse().join(' L') + ' Z';
-      const base = mk('g', {}, parent);
-      mk('path', { d: baseD, fill: 'url(#shOut)', stroke: '#b9532f', 'stroke-width': 3, 'stroke-linejoin': 'round' }, base);
-      for (let i = 1; i < M; i += 1) {
-        const t = -1.3 + 2.6 * i / M;
-        mk('line', { x1: f1(X + S.brx * 0.12 * Math.sin(t)), y1: f1(Y - 4), x2: f1(X + S.brx * 0.92 * Math.sin(t)), y2: f1(Y + S.bry * 0.9 * Math.cos(t)), stroke: 'rgba(255, 255, 255, 0.32)', 'stroke-width': 3.5, 'stroke-linecap': 'round' }, base);
-      }
-      mk('path', { d: 'M' + f1(X - S.brx * 0.7) + ',' + f1(Y + 6) + ' Q' + X + ',' + f1(Y - 6) + ' ' + f1(X + S.brx * 0.7) + ',' + f1(Y + 6), fill: 'none', stroke: 'rgba(255, 236, 220, 0.75)', 'stroke-width': 3, 'stroke-linecap': 'round' }, base); // its top edge catches the light
-      [[-1, 0], [1, 0]].forEach(([s]) => { // the hinge's ears
-        mk('path', { d: 'M' + X + ',' + f1(Y - 10) + ' L' + f1(X + s * 46) + ',' + f1(Y - 18) + ' L' + f1(X + s * 40) + ',' + f1(Y + 4) + ' Z', fill: '#f2916d', stroke: '#b9532f', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, base);
-      });
-      return lid;
+    // a treasure-map page (board units): a soft shadow, the parchment, and a thin dashed frame line inset round it
+    mapPage(parent, x, y, w, h) {
+      mk('rect', { x: x + 6, y: y + 12, width: w - 12, height: h - 6, rx: 18, fill: 'rgba(0, 40, 70, 0.26)', style: 'filter: blur(8px)' }, parent);
+      const img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: MAPC.src }, parent);
+      img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', MAPC.src);
+      mk('rect', { x: x + 22, y: y + 20, width: w - 44, height: h - 40, rx: 12, fill: 'none', stroke: '#9a6a36', 'stroke-opacity': 0.5, 'stroke-width': 2.5, 'stroke-dasharray': '11 8', 'stroke-linecap': 'round' }, parent);
     },
     nameTag(parent, x, y, text, tone, o) {
       const c = TONE[tone] || null, g = mk('g', { 'class': 'badge' }, parent);
@@ -546,14 +510,13 @@
       if (!reduced() && g._pop.animate) {
         g._pop.style.transformBox = 'fill-box'; g._pop.style.transformOrigin = 'center';
         try {
-          if (g._shell) {
-            g._pop.animate([{ opacity: 0, scale: '.85', translate: '0 18px' }, { opacity: 1, scale: '1', translate: '0 0', offset: 0.35 }, { opacity: 1, scale: '1', translate: '0 0' }], { duration: SHELL.enterMs, easing: 'ease-out' });
-            g._lid.style.transformBox = 'view-box'; g._lid.style.transformOrigin = SHELL.hx + 'px ' + SHELL.hy + 'px'; // the lid opens on its hinge
-            g._lid.animate([{ scale: '1 .06', offset: 0 }, { scale: '1 .06', offset: 0.3 }, { scale: '1 1.05', offset: 0.82 }, { scale: '1 1' }], { duration: SHELL.enterMs, easing: 'cubic-bezier(.3,.7,.3,1)' });
+          if (g._map) { // a page unrolling upward from the sand, settling with the gentlest overshoot
+            g._pop.style.transformOrigin = '50% 100%';
+            g._pop.animate([{ opacity: 0, scale: '1 .12', translate: '0 14px' }, { opacity: 1, offset: 0.25 }, { scale: '1 1.035', translate: '0 0', offset: 0.75 }, { opacity: 1, scale: '1 1', translate: '0 0' }], { duration: MAPC.enterMs, easing: 'cubic-bezier(.3,.7,.3,1)' });
           } else g._pop.animate([{ opacity: 0, scale: '.96', translate: '0 16px' }, { opacity: 1, scale: '1', translate: '0 0' }], { duration: SUM.enterMs, easing: 'cubic-bezier(.22,1,.36,1)' });
         } catch (e) {}
       }
-      return this.hold(g._shell ? SHELL.enterMs : SUM.enterMs).then((ok) => {
+      return this.hold(g._map ? MAPC.enterMs : SUM.enterMs).then((ok) => {
         if (!ok) return false;
         this.setState('CONCEPT_REVEAL', c.id);
         return this.hold(this.reveal(g) + 60).then((ok2) => { if (!ok2) return false; this.pop(g._tag, 0); return this.hold(260); });
@@ -563,7 +526,7 @@
     slot(id) {
       const order = IDEAS.map((k) => k.id), i = Math.max(0, order.indexOf(id)), half = Math.ceil(order.length / 2) || 4;
       const col = i < half ? 0 : 1, k = col ? i - half : i;
-      const Mn = inCard() ? SHELL.mini : SUM.mini;
+      const Mn = inCard() ? MAPC.mini : SUM.mini;
       return { x: Mn.x[col][k % 2], y: Mn.y[Math.floor(k / 2)], col: col };
     },
     // CARD_COLLECT: the card shrinks along a small arc into its slot (now = jump straight there). Its shape is
@@ -573,8 +536,8 @@
       if (!c || c._done) return Promise.resolve(true);
       c._done = true; if (S.active === id) S.active = null;
       this.setState('CARD_COLLECT', id);
-      const Mn = c._shell ? SHELL.mini : SUM.mini, r = c._rect, cx0 = r.x + r.w / 2, cy0 = r.y + r.h / 2, sl = this.slot(id), k = Mn.w / r.w;
-      const Z = c._shell ? 1 : SUM.mini.zoom, zoom = (e) => { const z = 1 + (Z - 1) * e, sx = 500, sy = (TOP + BOT) / 2; c._vis.setAttribute('transform', 'translate(' + sx + ',' + sy + ') scale(' + z.toFixed(4) + ') translate(' + (-sx) + ',' + (-sy) + ')'); };
+      const Mn = c._map ? MAPC.mini : SUM.mini, r = c._rect, cx0 = r.x + r.w / 2, cy0 = r.y + r.h / 2, sl = this.slot(id), k = Mn.w / r.w;
+      const Z = c._map ? 1 : SUM.mini.zoom, zoom = (e) => { const z = 1 + (Z - 1) * e, sx = 500, sy = (TOP + BOT) / 2; c._vis.setAttribute('transform', 'translate(' + sx + ',' + sy + ') scale(' + z.toFixed(4) + ') translate(' + (-sx) + ',' + (-sy) + ')'); };
       const land = () => {
         c.setAttribute('transform', 'translate(' + sl.x + ',' + sl.y + ') scale(' + k.toFixed(4) + ') translate(' + (-cx0) + ',' + (-cy0) + ')');
         c._slot = sl; zoom(1);
