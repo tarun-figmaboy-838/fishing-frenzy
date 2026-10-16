@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Paints the treasure map's parchment, parts/lesson/assets/images/treasure-map.webp (1770 x 988, shown at 1180 x 659):
 aged paper with a warm centre and darker worn edges, fine grain, a few faint stains and a soft, slightly uneven edge
-that fades out (nothing cut hard). A plain sheet: the shape is drawn on it (css/game.css .map). Run: python3 tools/paint-treasure-map.py [out.webp W H] (the summary's square scraps: parts/lesson/assets/images/
-summary-scrap.webp 1024 984)"""
+that fades out (nothing cut hard). A plain sheet: the shape is drawn on it (css/game.css .map). Run: python3 tools/paint-treasure-map.py [out.webp W H]"""
 import math, random
 from PIL import Image, ImageDraw, ImageFilter, ImageChops
 

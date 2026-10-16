@@ -27,10 +27,13 @@
     enterMs: 420, collectMs: 580, pauseMs: 200,
     readyMs: 4500 // READY: time to tap a card before the lesson moves on (the engine then waits its usual beat)
   };
-  // the card's frame: the ice card, or in the journey's underwater card a parchment scrap like the measuring screens'
-  // treasure map (an ice card on the card looked odd; tools/paint-treasure-map.py)
+  // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is a glassy
+  // bubble instead (bubble()): an ice card on the card looked odd, and a bubble reads as remembering, not as a work
+  // surface like the measuring screens' map. BUB: its centre and radius, the zoom of the idea drawn inside it, the
+  // idea's centre in its own units (the shape plus the sum line under it), and how far Swiftee peeks higher
   const FRAME = { src: 'assets/images/summary-card.webp', w: 1024, h: 984 };
-  const frameSrc = () => (document.documentElement.classList.contains('in-card') ? 'assets/images/summary-scrap.webp' : FRAME.src);
+  const BUB = { cx: 500, cy: 332, r: 172, k: 1.38, oy: 327, enterMs: 560, peekDy: -23 };
+  const inCard = () => document.documentElement.classList.contains('in-card');
   const WARM = 'rgba(255, 150, 40, 0.85)';
   // name-tag colours, for the ideas that have a tone
   const TONE = {
@@ -184,7 +187,8 @@
     place(where, down, ms) {
       const sw = document.querySelector('.stage .swiftee'), bub = document.querySelector('.stage .bubble');
       this.spot = where || this.spot || 'middle';
-      const P = SPOT[this.spot];
+      const P = Object.assign({}, SPOT[this.spot]);
+      if (this.spot === 'peek' && inCard()) P.y += BUB.peekDy; // (the bubble's top is higher than the card's)
       // keep her speech bubble above her head; in the middle it stays narrow enough to fit between the albums
       if (bub) { bub.style.marginBottom = (-P.y) + 'px'; bub.style.maxWidth = this.spot === 'middle' ? '470px' : ''; }
       if (!sw || !G) return Promise.resolve(this.live());
@@ -210,13 +214,20 @@
 
     // ---------- build one card: the frame image, the trapezium (hidden until reveal) and its name tag ----------
     card(c) {
-      const V = c.visual || {}, w = SUM.card.w, h = w * FRAME.h / FRAME.w, x = SUM.card.cx - w / 2, y = SUM.card.cy - h / 2;
+      const V = c.visual || {}, bub = inCard();
+      const w = bub ? 2 * BUB.r : SUM.card.w, h = bub ? 2 * BUB.r : w * FRAME.h / FRAME.w, cx = bub ? BUB.cx : SUM.card.cx, cy = bub ? BUB.cy : SUM.card.cy;
+      const x = cx - w / 2, y = cy - h / 2;
       const g = mk('g', { 'class': 'summary-card', 'data-concept': c.id }, this.layer);
-      g._rect = { x: x, y: y, w: w, h: h }; g._c = c;
+      g._rect = { x: x, y: y, w: w, h: h }; g._c = c; g._bub = bub;
       const pp = mk('g', {}, g); g._pop = pp;           // animations run on the inner group, the collect transform on the outer
-      const src = frameSrc(), img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: src }, pp);
-      img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', src); // older browsers only read xlink:href
-      const vis = mk('g', {}, pp); g._vis = vis;
+      if (bub) this.bubble(pp, cx, cy, BUB.r);
+      else {
+        const img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: FRAME.src }, pp);
+        img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', FRAME.src); // older browsers only read xlink:href
+      }
+      // in a bubble the idea is drawn larger, centred in it (everything inside vis scales with it)
+      const host = bub ? mk('g', { transform: 'translate(' + cx + ' ' + cy + ') scale(' + BUB.k + ') translate(' + (-SUM.card.cx) + ' ' + (-BUB.oy) + ')' }, pp) : pp;
+      const vis = mk('g', {}, host); g._vis = vis;
       const X = SHAPES[V.shape || 'gen'], P = { A: pt(X, 'A'), B: pt(X, 'B'), C: pt(X, 'C'), D: pt(X, 'D') };
       g._P = P;
       g._fill = mk('polygon', { points: ['A', 'B', 'C', 'D'].map((k) => f1(P[k].x) + ',' + P[k].y).join(' '), fill: INK.fill, opacity: 0 }, vis);
@@ -230,11 +241,26 @@
       g._marks = mk('g', {}, vis);
       g._dots = ['A', 'B', 'C', 'D'].map((k) => mk('circle', { cx: P[k].x, cy: P[k].y, r: 4.2, fill: '#fff', stroke: INK.base, 'stroke-width': 2.2, opacity: 0 }, vis));
       // the name plate centred on the card's bottom edge
-      g._tag = this.nameTag(pp, SUM.card.cx, y + h + 4, c.label, c.tone);
+      g._tag = this.nameTag(pp, cx, bub ? cy + BUB.r - 2 : y + h + 4, c.label, c.tone);
       g._tag.setAttribute('opacity', 0);
       return g;
     },
     // a rounded name plate sized to its text; o sets height, font size, minimum width and rim (the album plates)
+    // a glassy bubble: a soft shadow under it, a pale-aqua body (opaque enough to hide Swiftee behind it), a white rim
+    // and a fainter inner one, and a curved glare with a small dot - all under the idea drawn in it
+    bubble(parent, cx, cy, r) {
+      if (!this.defs.querySelector('#sumGlass')) {
+        const rg = mk('radialGradient', { id: 'sumGlass', cx: '46%', cy: '40%', r: '62%' }, this.defs);
+        [['0%', '#f6fdff', 0.98], ['70%', '#e2f7fc', 0.97], ['100%', '#a6e2f3', 0.97]].forEach((st) => mk('stop', { offset: st[0], 'stop-color': st[1], 'stop-opacity': st[2] }, rg));
+      }
+      mk('ellipse', { cx: cx, cy: cy + 10, rx: r * 0.98, ry: r * 0.98, fill: 'rgba(0, 40, 80, 0.2)', style: 'filter: blur(7px)' }, parent);
+      mk('circle', { cx: cx, cy: cy, r: r, fill: 'url(#sumGlass)', stroke: '#ffffff', 'stroke-width': 5, 'stroke-opacity': 0.92 }, parent);
+      mk('circle', { cx: cx, cy: cy, r: r - 9, fill: 'none', stroke: 'rgba(70, 185, 228, 0.42)', 'stroke-width': 2.5 }, parent);
+      const gr = r * 0.86, a0 = Math.PI * 1.1, a1 = Math.PI * 1.38;
+      mk('path', { d: 'M' + f1(cx + gr * Math.cos(a0)) + ',' + f1(cy + gr * Math.sin(a0)) + ' A' + f1(gr) + ',' + f1(gr) + ' 0 0 1 ' + f1(cx + gr * Math.cos(a1)) + ',' + f1(cy + gr * Math.sin(a1)),
+        fill: 'none', stroke: '#ffffff', 'stroke-width': 10, 'stroke-linecap': 'round', opacity: 0.85 }, parent);
+      mk('circle', { cx: f1(cx + r * 0.5), cy: f1(cy - r * 0.66), r: 7, fill: '#ffffff', opacity: 0.8 }, parent);
+    },
     nameTag(parent, x, y, text, tone, o) {
       const c = TONE[tone] || null, g = mk('g', { 'class': 'badge' }, parent);
       const H0 = (o && o.h) || 50, fs = (o && o.size) || 26, rim = (o && o.rim) || 4, deep = c ? c.deep : '#1f6bff';
@@ -486,9 +512,12 @@
       S.active = c.id; this.setState('CARD_ENTER', c.id); this.sfx('whoosh');
       if (!reduced() && g._pop.animate) {
         g._pop.style.transformBox = 'fill-box'; g._pop.style.transformOrigin = 'center';
-        try { g._pop.animate([{ opacity: 0, scale: '.96', translate: '0 16px' }, { opacity: 1, scale: '1', translate: '0 0' }], { duration: SUM.enterMs, easing: 'cubic-bezier(.22,1,.36,1)' }); } catch (e) {}
+        try {
+          if (g._bub) g._pop.animate([{ opacity: 0, scale: '.45' }, { opacity: 1, scale: '1.06', offset: 0.62 }, { scale: '.98', offset: 0.84 }, { scale: '1' }], { duration: BUB.enterMs, easing: 'ease-out' }); // a bubble blowing up
+          else g._pop.animate([{ opacity: 0, scale: '.96', translate: '0 16px' }, { opacity: 1, scale: '1', translate: '0 0' }], { duration: SUM.enterMs, easing: 'cubic-bezier(.22,1,.36,1)' });
+        } catch (e) {}
       }
-      return this.hold(SUM.enterMs).then((ok) => {
+      return this.hold(g._bub ? BUB.enterMs : SUM.enterMs).then((ok) => {
         if (!ok) return false;
         this.setState('CONCEPT_REVEAL', c.id);
         return this.hold(this.reveal(g) + 60).then((ok2) => { if (!ok2) return false; this.pop(g._tag, 0); return this.hold(260); });
@@ -508,7 +537,7 @@
       c._done = true; if (S.active === id) S.active = null;
       this.setState('CARD_COLLECT', id);
       const r = c._rect, cx0 = r.x + r.w / 2, cy0 = r.y + r.h / 2, sl = this.slot(id), k = SUM.mini.w / r.w;
-      const zoom = (e) => { const z = 1 + (SUM.mini.zoom - 1) * e, sx = 500, sy = (TOP + BOT) / 2; c._vis.setAttribute('transform', 'translate(' + sx + ',' + sy + ') scale(' + z.toFixed(4) + ') translate(' + (-sx) + ',' + (-sy) + ')'); };
+      const Z = c._bub ? 1 : SUM.mini.zoom, zoom = (e) => { const z = 1 + (Z - 1) * e, sx = 500, sy = (TOP + BOT) / 2; c._vis.setAttribute('transform', 'translate(' + sx + ',' + sy + ') scale(' + z.toFixed(4) + ') translate(' + (-sx) + ',' + (-sy) + ')'); };
       const land = () => {
         c.setAttribute('transform', 'translate(' + sl.x + ',' + sl.y + ') scale(' + k.toFixed(4) + ') translate(' + (-cx0) + ',' + (-cy0) + ')');
         c._slot = sl; zoom(1);
