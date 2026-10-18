@@ -29,12 +29,12 @@
   };
   // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is shown on a
   // treasure-map page instead (mapPage()): parchment like the measuring screens' map (tools/paint-treasure-map.py) but
-  // a page of its own - smaller, a thin dashed frame line round it like an old map's, laid on the sand at a slight
-  // tilt (alternating) and unrolling upward from the sand as it comes, where the measuring map spreads sideways.
-  // MAPC: the page's box, the idea's zoom and where its centre goes, the tilt, the docked pages' places (further out
+  // a page of its own - page-sized, unrolling upward from the sand as it comes, where the measuring map spreads
+  // sideways under the shape.
+  // MAPC: the page's box, the idea's zoom and where its centre goes, the docked pages' places (further out
   // than the cards', the page being wider) and Swiftee's peek
   const FRAME = { src: 'assets/images/summary-card.webp', w: 1024, h: 984 };
-  const MAPC = { src: 'assets/images/summary-map.webp', rect: { x: 246, y: 178, w: 508, h: 322 }, k: 1.3, cy: 339, oy: 327, tilt: 1.4, enterMs: 700, peekDy: 0,
+  const MAPC = { src: 'assets/images/summary-map.webp', rect: { x: 320, y: 160, w: 360, h: 360 }, k: 1.24, cy: 340, oy: 327, enterMs: 700, peekDy: -23, // a square page
     mini: { w: 108, x: [[64, 178], [822, 936]], y: [190, 340], plate: { w: 104, h: 24, size: 14, rim: 2 } } };
   const inCard = () => document.documentElement.classList.contains('in-card');
   const WARM = 'rgba(255, 150, 40, 0.85)';
@@ -43,12 +43,12 @@
     convex: { deep: '#0f6f86', wash: '#e4f8fc', ink: '#0b5566' },
     concave: { deep: '#95590a', wash: '#fff3dd', ink: '#6d4100' },
     regular: { deep: '#a04e0a', wash: '#fff0e0', ink: '#7a3300' },
-    irregular: { deep: '#1f6bff', wash: '#e8f0fd', ink: '#1a4799' }
+    irregular: { deep: '#1e7bff', wash: '#e8f0fd', ink: '#1a4799' }
   };
   // the lesson's colours: pink bases, purple legs, lilac fill, orange parallel arrows; one colour per angle
-  const INK = { base: '#1f6bff', leg: '#00838f', fill: 'rgba(228,251,255,0.96)', chev: '#ff7a00', navy: '#123b63' }; // as the lesson's board: pale-aqua fill
-  const ANG = { A: '#ff7a00', B: '#1fcf66', C: '#9b5de5', D: '#ffb800' };
-  const TXT = { A: '#e0560a', B: '#128a44', C: '#6a35b8', D: '#a87200' }; // angle values, as on the lesson's board
+  const INK = { base: '#1e7bff', leg: '#00b8a9', fill: 'rgba(228,251,255,0.96)', chev: '#ff7a00', navy: '#123b63' }; // as the lesson's board: pale-aqua fill
+  const ANG = { A: '#ff7a00', B: '#00c853', C: '#9d4dff', D: '#ffab00' };
+  const TXT = { A: '#e65100', B: '#00963f', C: '#6a35b8', D: '#b86e00' }; // angle values, as on the lesson's board
   // Swiftee's two spots: 'peek' over the card's top edge, 'middle' standing on the snow between the albums. y = offset in stage px from her
   // CSS position, s = scale of her 259 px box, hide = how far she sinks to be out of sight
   const SPOT = { peek: { y: 0, s: 218 / 259, hide: 154 }, middle: { y: 186, s: 300 / 259, hide: 300 } };
@@ -223,8 +223,7 @@
       const g = mk('g', { 'class': 'summary-card', 'data-concept': c.id }, this.layer);
       g._rect = { x: x, y: y, w: w, h: h }; g._c = c; g._map = mp;
       const pp = mk('g', {}, g); g._pop = pp;           // animations run on the inner group, the collect transform on the outer
-      // a page lies at a slight tilt, every other one the other way; its idea tilts with it (the name plate stays level)
-      const tilt = mp ? mk('g', { transform: 'rotate(' + ((IDEAS.indexOf(c) % 2 ? 1 : -1) * MAPC.tilt) + ' ' + cx + ' ' + (y + h / 2) + ')' }, pp) : pp;
+      const tilt = pp; // (laid straight)
       if (mp) this.mapPage(tilt, x, y, w, h);
       else {
         const img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: FRAME.src }, pp);
@@ -251,16 +250,14 @@
       return g;
     },
     // a rounded name plate sized to its text; o sets height, font size, minimum width and rim (the album plates)
-    // a treasure-map page (board units): a soft shadow, the parchment, and a thin dashed frame line inset round it
+    // a treasure-map page (board units): the parchment alone, no shadow or box behind it
     mapPage(parent, x, y, w, h) {
-      mk('rect', { x: x + 6, y: y + 12, width: w - 12, height: h - 6, rx: 18, fill: 'rgba(0, 40, 70, 0.26)', style: 'filter: blur(8px)' }, parent);
       const img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: MAPC.src }, parent);
       img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', MAPC.src);
-      mk('rect', { x: x + 22, y: y + 20, width: w - 44, height: h - 40, rx: 12, fill: 'none', stroke: '#9a6a36', 'stroke-opacity': 0.5, 'stroke-width': 2.5, 'stroke-dasharray': '11 8', 'stroke-linecap': 'round' }, parent);
     },
     nameTag(parent, x, y, text, tone, o) {
       const c = TONE[tone] || null, g = mk('g', { 'class': 'badge' }, parent);
-      const H0 = (o && o.h) || 50, fs = (o && o.size) || 26, rim = (o && o.rim) || 4, deep = c ? c.deep : '#1f6bff';
+      const H0 = (o && o.h) || 50, fs = (o && o.size) || 26, rim = (o && o.rim) || 4, deep = c ? c.deep : '#1e7bff';
       const t = mk('text', { x: x, y: y + fs * 0.36, 'text-anchor': 'middle', 'font-size': fs, 'font-weight': 800,
         'font-family': "'Baloo 2', Nunito, system-ui, sans-serif", fill: c ? c.ink : '#123b63', text: text }, g);
       let w = 0; try { w = t.getComputedTextLength(); } catch (e) {}
@@ -306,7 +303,7 @@
         const P = (p) => (m ? { x: m.a * p.x + m.c * p.y + m.e, y: m.b * p.x + m.d * p.y + m.f } : p);
         const A2 = P(a), B2 = P(b), len = Math.hypot(B2.x - A2.x, B2.y - A2.y) || 1;
         // a clean gold marker running along the side (no blur; orange is angle A's colour)
-        const ln = mk('line', { x1: A2.x, y1: A2.y, x2: B2.x, y2: B2.y, stroke: '#ffb400', 'stroke-width': 8, 'stroke-linecap': 'round', style: 'filter: drop-shadow(0 0 3px rgba(255,170,0,.85))' }, this.fx);
+        const ln = mk('line', { x1: A2.x, y1: A2.y, x2: B2.x, y2: B2.y, stroke: '#ffd000', 'stroke-width': 8, 'stroke-linecap': 'round', style: 'filter: drop-shadow(0 0 3px rgba(255,170,0,.85))' }, this.fx);
         ln.style.strokeDasharray = len + ' ' + len;
         try {
           const an = ln.animate([{ strokeDashoffset: len + 'px', opacity: 1 }, { strokeDashoffset: '0px', opacity: 1, offset: 0.35 }, { strokeDashoffset: '0px', opacity: 0.55, offset: 0.55 }, { strokeDashoffset: '0px', opacity: 1, offset: 0.75 }, { strokeDashoffset: '0px', opacity: 0 }],
@@ -356,7 +353,7 @@
       if (V.lit) { // glow bands grow along the lit sides, under the side lines so their colour still shows
         g._lit = V.lit.map((s) => {
           const ab = SIDES[s], a = P[ab[0]], b = P[ab[1]];
-          const band = mk('line', { x1: a.x, y1: a.y, x2: a.x, y2: a.y, stroke: '#ffb400', 'stroke-width': 9, 'stroke-linecap': 'round', opacity: 0, style: 'filter: drop-shadow(0 0 3px rgba(255,170,0,.85))' }, g._bands); // (gold reads on the cream fill too)
+          const band = mk('line', { x1: a.x, y1: a.y, x2: a.x, y2: a.y, stroke: '#ffd000', 'stroke-width': 9, 'stroke-linecap': 'round', opacity: 0, style: 'filter: drop-shadow(0 0 3px rgba(255,170,0,.85))' }, g._bands); // (gold reads on the cream fill too)
           this.growLine(band, a, b, 300, t);
           return g._sides[s];
         });

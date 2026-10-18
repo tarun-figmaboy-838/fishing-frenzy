@@ -12,7 +12,7 @@
   if (G && G.config) G.config({ nullTargetWarn: false });
   const reduced = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   const $ = (sel) => Array.from(document.querySelectorAll('.stage ' + sel)).filter((e) => !e.closest('.board-ghost')); // (a fading copy of the last board is left alone)
-  const GLOW = 'drop-shadow(0px 0px 6px rgba(31,107,255,0.6))', NOGLOW = 'drop-shadow(0px 0px 0px rgba(31,107,255,0))';
+  const GLOW = 'drop-shadow(0px 0px 6px rgba(30,123,255,0.6))', NOGLOW = 'drop-shadow(0px 0px 0px rgba(30,123,255,0))';
   // the shared timing for entrances: a soft ease-out with a slight overshoot
   const ENTER = { duration: 0.6, ease: 'back.out(1.3)' };
   let ctx = G ? G.context(() => {}) : null;
@@ -262,7 +262,7 @@
       if (!G) return;
       const i = ['A', 'B', 'C', 'D'].indexOf(k), dot = $('.vdot')[i];
       const arc = $('.arc.a' + k)[0], wd = $('.wedge.w' + k)[0], lab = $('.tag.alab.l' + k)[0];
-      const C = { A: 'rgba(255,122,0,0.8)', B: 'rgba(31,207,102,0.7)', C: 'rgba(18,164,255,0.7)', D: 'rgba(255,184,0,0.9)' };
+      const C = { A: 'rgba(255,122,0,0.8)', B: 'rgba(31,207,102,0.7)', C: 'rgba(18,164,255,0.7)', D: 'rgba(255,196,0,0.9)' };
       add(() => {
         const tl = G.timeline();
         if (arc) tl.fromTo(arc, { opacity: 1, strokeDasharray: 100, strokeDashoffset: 100 }, { strokeDashoffset: 0, duration: reduced ? 0 : 0.45, ease: 'power2.out' }, 0);
@@ -497,7 +497,7 @@
     markPing(what) {
       if (!G || reduced) return;
       const els = (Array.isArray(what) ? what : [what]).filter((e) => e && e.nodeType === 1);
-      if (els.length) add(() => G.fromTo(els, { filter: 'drop-shadow(0px 0px 0px rgba(255,184,0,0))' }, { filter: 'drop-shadow(0px 0px 6px rgba(255,184,0,0.95))', duration: 0.4, ease: 'sine.inOut', yoyo: true, repeat: 1 }));
+      if (els.length) add(() => G.fromTo(els, { filter: 'drop-shadow(0px 0px 0px rgba(255,196,0,0))' }, { filter: 'drop-shadow(0px 0px 6px rgba(255,196,0,0.95))', duration: 0.4, ease: 'sine.inOut', yoyo: true, repeat: 1 }));
     },
     // a bright spark runs along a side from end to end, so the eye follows the side being named
     spark(k) {
@@ -511,7 +511,7 @@
       // the spark's place is its circle's own cx / cy (never a transform the screen-change cleanup could strip)
       const ns = 'http://www.w3.org/2000/svg', g = document.createElementNS(ns, 'circle');
       g.setAttribute('class', 'spark'); g.setAttribute('data-k', k); g.setAttribute('pointer-events', 'none');
-      g.setAttribute('r', 9); g.setAttribute('fill', '#ffffff'); g.setAttribute('stroke', '#ffb800'); g.setAttribute('stroke-width', 4);
+      g.setAttribute('r', 9); g.setAttribute('fill', '#ffffff'); g.setAttribute('stroke', '#ffab00'); g.setAttribute('stroke-width', 4);
       e.parentNode.appendChild(g);
       const p = { t: 0 }, put = () => { g.setAttribute('cx', (a.x + (b.x - a.x) * p.t).toFixed(1)); g.setAttribute('cy', (a.y + (b.y - a.y) * p.t).toFixed(1)); };
       put();
@@ -625,7 +625,7 @@
     // keys: 'AD' or ['B'] ...; 0.3 s apart, after `delay` s
     wedgeGrow(keys, delay) {
       const P = window.__trapP && window.__trapP(), K = typeof keys === 'string' ? keys.split('') : keys;
-      const C = { A: 'rgba(255,122,0,0.8)', B: 'rgba(31,207,102,0.7)', C: 'rgba(18,164,255,0.7)', D: 'rgba(255,184,0,0.9)' };
+      const C = { A: 'rgba(255,122,0,0.8)', B: 'rgba(31,207,102,0.7)', C: 'rgba(18,164,255,0.7)', D: 'rgba(255,196,0,0.9)' };
       if (!G || !P) return;
       add(() => {
         const tl = G.timeline({ delay: delay || 0 });
@@ -711,7 +711,7 @@
     suppAt(T, S) {
       const P = window.__trapP && window.__trapP(), e = $('.eAB')[0];
       if (!G || !P || !e) return;
-      const ns = 'http://www.w3.org/2000/svg', R = 38 / ((window.__boardS && window.__boardS()) || 1), COL = { A: '#ff7a00', B: '#1fcf66', C: '#9b5de5', D: '#ffb800' };
+      const ns = 'http://www.w3.org/2000/svg', R = 38 / ((window.__boardS && window.__boardS()) || 1), COL = { A: '#ff7a00', B: '#00c853', C: '#9d4dff', D: '#ffab00' };
       const nb = { A: 'B', B: 'A', C: 'D', D: 'C' }, unit = (p, q) => { const L = Math.hypot(q.x - p.x, q.y - p.y) || 1; return { x: (q.x - p.x) / L, y: (q.y - p.y) / L }; };
       const t = P[T], s = P[S], dT = unit(t, P[nb[T]]), dS = unit(s, P[nb[S]]), up = unit(s, t);
       const wedge = (u, v, col) => { const c = u.x * v.y - u.y * v.x, g = document.createElementNS(ns, 'path');
@@ -723,7 +723,7 @@
       // ...as far as the card allows: never past its inner edge
       const ex = { x: -dS.x, y: -dS.y }, B = window.__extBounds ? window.__extBounds() : null;
       const L = Math.max(R + 6, Math.min(80, B ? (ex.x < 0 ? s.x - B.l - 12 : B.r - 12 - s.x) / Math.max(0.2, Math.abs(ex.x)) : 80));
-      const line = el('line', { x1: s.x, y1: s.y, x2: s.x, y2: s.y, stroke: '#1f6bff', 'stroke-width': 4, 'stroke-dasharray': '10 8', 'stroke-linecap': 'round' });
+      const line = el('line', { x1: s.x, y1: s.y, x2: s.x, y2: s.y, stroke: '#1e7bff', 'stroke-width': 4, 'stroke-dasharray': '10 8', 'stroke-linecap': 'round' });
       const own = wedge(dS, up, COL[S]); own.setAttribute('transform', 'translate(' + s.x + ' ' + s.y + ')');
       const copy = wedge(dT, unit(t, s), COL[T]); copy.setAttribute('transform', 'translate(' + t.x + ' ' + t.y + ')');
       // once the copy has turned onto the line, the two make a half-disc: a gold rim draws round it - a straight angle
@@ -1242,7 +1242,7 @@
         const tl = G.timeline();
         tl.fromTo(el, { opacity: 0, x: d[0], y: d[1] }, { opacity: 1, x: 0, y: 0, overwrite: 'auto', duration: reduced ? 0 : 0.45, ease: 'power2.out' })
           .call(() => onLand && onLand(), null, 0.48)
-          .fromTo(el, { textShadow: '0px 0px 0px rgba(31,107,255,0)' }, { textShadow: '0px 0px 10px rgba(31,107,255,0.55)', duration: 0.4, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.45);
+          .fromTo(el, { textShadow: '0px 0px 0px rgba(30,123,255,0)' }, { textShadow: '0px 0px 10px rgba(30,123,255,0.55)', duration: 0.4, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.45);
         return tl;
       });
     },

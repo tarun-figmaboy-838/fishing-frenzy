@@ -56,7 +56,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .bird{animation:none!important;transform:none!important;transition:none!important}
 /* screens 29, 33: a corner to drag, screen 35: a corner to tap - the point itself pulses gently with a gold glow */
 .vdot.drag-cue{transform-box:fill-box;transform-origin:center;animation:dragCue 1.3s ease-in-out infinite}
-@keyframes dragCue{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(255,184,0,0))}50%{transform:scale(1.3);filter:drop-shadow(0 0 7px rgba(255,184,0,.95))}}
+@keyframes dragCue{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(255,196,0,0))}50%{transform:scale(1.3);filter:drop-shadow(0 0 7px rgba(255,196,0,.95))}}
 @media (prefers-reduced-motion: reduce){.vdot.drag-cue{animation:none}}
 .halo{animation:halo 1.2s ease-in-out infinite}
 @keyframes halo{0%,100%{stroke-opacity:.25;stroke-width:4}50%{stroke-opacity:.7;stroke-width:10}}
@@ -68,7 +68,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 /* angle values and side lengths are plain text, no box: a thin white outline keeps them readable over lines and fills.
    An angle's value is written in its angle's colour (darker, to read on the cream fill), so each number points at its angle */
 .alab,.mtag{background:none;box-shadow:none;padding:0;border:0;border-radius:0;font-family:'Nunito','Noto Sans Math',system-ui,sans-serif;font-size:21px;font-weight:900;color:#123b63;text-shadow:0 0 3px #fff,0 0 3px #fff,2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff}
-.alab.lA{color:#e0560a}.alab.lB{color:#128a44}.alab.lC{color:#6a35b8}.alab.lD{color:#a87200}
+.alab.lA{color:#e65100}.alab.lB{color:#00963f}.alab.lC{color:#6a35b8}.alab.lD{color:#b86e00}
 /* angle values on the board keep one size on screen at any zoom, like their arcs (--bz: the board's zoom, set by the
    engine), with the white outline in em so it shrinks with them */
 .tag.alab{font-size:calc(21px / var(--bz, 1));text-shadow:0 0 .14em #fff,0 0 .14em #fff,.095em 0 0 #fff,-.095em 0 0 #fff,0 .095em 0 #fff,0 -.095em 0 #fff,.07em .07em 0 #fff,-.07em -.07em 0 #fff,.07em -.07em 0 #fff,-.07em .07em 0 #fff}
@@ -89,6 +89,9 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .chip.name.long,.chip.gold.long{font-size:24px;padding:8px 28px 9px}
 @keyframes chipIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
 .edge{transition:stroke .5s ease,stroke-width .45s cubic-bezier(.3,0,.3,1),opacity .3s ease}
+/* vivid colours, edged in navy so they stand out on the card's aqua water (a game-art outline rather than a darker shade) */
+.edge,.wedge{filter:drop-shadow(0 0 0.7px #0b2a55) drop-shadow(0 0 0.7px #0b2a55)}
+.alab{paint-order:stroke}
 /* angle arcs draw in */
 .arc{stroke-dasharray:100 100;animation:arcIn .5s ease-out backwards}
 @keyframes arcIn{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
@@ -270,8 +273,8 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .edge.lit{stroke-width:7px}
 .edge.lit.emph{stroke-width:8px}
 /* a glow that runs along a side (the pen on screen 1, the extensions on screens 7 and 8) */
-.trace{opacity:.95;filter:drop-shadow(0 0 4px rgba(31,107,255,.45));transition:opacity .35s ease}
-.trace.leg{stroke:#00838f;filter:drop-shadow(0 0 4px rgba(0,196,167,.5))} /* purple on a leg */
+.trace{opacity:.95;filter:drop-shadow(0 0 4px rgba(30,123,255,.45));transition:opacity .35s ease}
+.trace.leg{stroke:#00b8a9;filter:drop-shadow(0 0 4px rgba(0,196,167,.5))} /* purple on a leg */
 .trace.out{opacity:0}
 .xleg{animation:xlegIn .2s ease both}
 @keyframes xlegIn{from{opacity:0}to{opacity:1}}
@@ -296,12 +299,12 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .opts-in.quick .opt:nth-child(4){animation-delay:.48s}
 /* screen 29 sum boxes: outlined in their pair's colours (A + D orange / yellow, B + C purple / blue) */
 .tag.sum.sumL,.tag.sum.sumR{background:#fffaf0;color:#123b63;font-weight:900;border-radius:14px;box-shadow:0 3px 0 rgba(0,0,0,.06)}
-.tag.sum.sumL{border:2px solid #ff7a00;border-bottom-color:#ffb800;border-right-color:#ffb800}
-.tag.sum.sumR{border:2px solid #1fcf66;border-bottom-color:#9b5de5;border-right-color:#9b5de5}
+.tag.sum.sumL{border:2px solid #ff7a00;border-bottom-color:#ffab00;border-right-color:#ffab00}
+.tag.sum.sumR{border:2px solid #00c853;border-bottom-color:#9d4dff;border-right-color:#9d4dff}
 /* screen 35: the 90° labels in the right-angled corners */
 .tag.r90{color:#123b63}
 /* a 90° value wears its angle's colour, like every other angle value (screen 34 shows the same corners) */
-.tag.r90.r90A{color:#e0560a}.tag.r90.r90B{color:#128a44}.tag.r90.r90C{color:#6a35b8}.tag.r90.r90D{color:#a87200}
+.tag.r90.r90A{color:#e65100}.tag.r90.r90B{color:#00963f}.tag.r90.r90C{color:#6a35b8}.tag.r90.r90D{color:#b86e00}
 .r90pre .rmark,.r90pre .tag.r90{opacity:0;animation:none} /* hidden from the first frame until GSAP reveals them */
 /* check 3 (screen 40): parts start hidden until GSAP reveals them (Motion.q3*); the hint sits under the shape;
    a wrong answer is warm orange, not red */
@@ -332,10 +335,10 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .legs-set .eDA,.legs-set .eBC{transition:none}
 /* screens 14 and 15: both Base pills yellow, both Leg pills purple */
 /* each callout wears its side's colour: Base tags blue like the bases, Leg tags teal like the legs */
-.callout.cal-bases .cal-pill{fill:#e3eeff;stroke:#1f6bff;stroke-width:3px}
-.callout.cal-bases .cal-stem{stroke:#1f6bff;stroke-width:3px}
-.callout.cal-legs .cal-pill{fill:#dcf8f2;stroke:#00838f;stroke-width:3px}
-.callout.cal-legs .cal-stem{stroke:#00838f;stroke-width:3px}
+.callout.cal-bases .cal-pill{fill:#e3eeff;stroke:#1e7bff;stroke-width:3px}
+.callout.cal-bases .cal-stem{stroke:#1e7bff;stroke-width:3px}
+.callout.cal-legs .cal-pill{fill:#dcf8f2;stroke:#00b8a9;stroke-width:3px}
+.callout.cal-legs .cal-stem{stroke:#00b8a9;stroke-width:3px}
 /* summary (screen 37, js/summary.js): no panel; Swiftee rises from behind the big card. She sits under the card
    layer (.sum-root), so the card's rim hides her body. No CSS translate or scale on her or the bubble: GSAP's
    clean-up on a screen change would carry it over as a transform */
@@ -358,7 +361,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .arc.dim,.wedge.dim,.rmark.dim{opacity:.22!important}
 /* (not yet measured, screen 23: hidden at once, never fading out over the measuring room) */
 .tag.alab.pre,.wedge.pre,.arc.pre{transition:none}
-.tag.alab.dim{opacity:.3!important}
+.tag.alab.dim{opacity:.42!important}
 .arc,.wedge,.rmark{transition:opacity .45s ease}
 .arc.glow{animation:arcGlow .7s ease-out .35s both}
 .tag.alab.glow{animation:labGlow .7s ease-out .35s both}
@@ -380,7 +383,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 
 /* screen 29: fixed-width sum boxes, so nothing shifts as the values change; the dragged leg's box and angles glow */
 .tag.sum.fixed{min-width:200px;text-align:center;transition:box-shadow .2s ease-out}
-.tag.sum.sumL.live{box-shadow:0 0 0 3px rgba(255,184,0,.55),0 0 14px 2px rgba(255,122,0,.35)}
+.tag.sum.sumL.live{box-shadow:0 0 0 3px rgba(255,196,0,.55),0 0 14px 2px rgba(255,122,0,.35)}
 .tag.sum.sumR.live{box-shadow:0 0 0 3px rgba(31,207,102,.35),0 0 14px 2px rgba(18,164,255,.30)}
 .arc.live{filter:drop-shadow(0 0 5px rgba(255,184,40,.85));transition:filter .15s ease-out}
 .tag.alab.live{scale:1.1}
@@ -436,12 +439,12 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 /* screen 16: each length in its own colour */
 .tag.mtag[data-col]{transition:color .35s ease}
 /* screens 16-17, "different lengths": every side and its length take their own colour, so all four read as different */
-.tag.mtag[data-col=AB]{color:#a87200}
+.tag.mtag[data-col=AB]{color:#b86e00}
 .tag.mtag[data-col=BC]{color:#1656e0}
 .tag.mtag[data-col=CD]{color:#00806d}
-.tag.mtag[data-col=DA]{color:#e0560a}
-svg[data-lencol] .eAB{stroke:#ffb800!important}svg[data-lencol] .eBC{stroke:#1f6bff!important}
-svg[data-lencol] .eCD{stroke:#00838f!important}svg[data-lencol] .eDA{stroke:#ff7a00!important}
+.tag.mtag[data-col=DA]{color:#e65100}
+svg[data-lencol] .eAB{stroke:#ffab00!important}svg[data-lencol] .eBC{stroke:#1e7bff!important}
+svg[data-lencol] .eCD{stroke:#00b8a9!important}svg[data-lencol] .eDA{stroke:#ff7a00!important}
 svg[data-lencol] .edge{transition:stroke .4s ease}
 /* screen 30: two equation boxes side by side, a little smaller so both fit */
 .chip.gold.eq-build.eq-pair{font-size:22px;padding:8px 20px 9px;gap:7px}
@@ -472,7 +475,7 @@ svg[data-lencol] .edge{transition:stroke .4s ease}
 .wedge.pre{opacity:0}
 /* the filled angles follow their arcs' focus */
 .wedge.glow{opacity:1}
-.wedge.live{stroke:#ffd43b;stroke-width:4px;paint-order:stroke}
+.wedge.live{stroke:#ffd000;stroke-width:4px;paint-order:stroke}
 
 /* ---------- crystal buttons: Back / Next / Done (.navbtn); the answers have their own look (end of file) ----------
    Drawn as a left cap, a right cap and a middle strip under them. Not a 9-slice: once the stage is scaled its
@@ -521,6 +524,9 @@ svg[data-lencol] .edge{transition:stroke .4s ease}
 /* she drifts off (back and down a little) as a plate screen comes, rather than vanishing */
 .stage.scene.plate .swiftee{opacity:0!important;pointer-events:none;transform:translate(-70px,36px) scale(.9)!important;transition:opacity .45s ease,transform .45s ease!important}
 .swiftee.flying{transition:none!important}
+/* Swiftee diving in (game-engine dive()): her trail of bubbles, rising and fading */
+.dive-bub{position:absolute;border-radius:50%;pointer-events:none;z-index:7;border:2px solid rgba(255,255,255,.95);background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.95) 0 18%,rgba(220,250,255,.35) 22%,rgba(255,255,255,.08) 70%);animation:diveBub 1.2s ease-out forwards}
+@keyframes diveBub{from{transform:translate(-50%,-50%) scale(.6);opacity:.95}to{transform:translate(-50%,calc(-50% - 70px)) scale(1.1);opacity:0}}
 .stage.scene.plate .panel-img{opacity:0!important}
 .stage.scene.plate .bubble{left:0!important;right:0!important;margin:0 auto;top:20px!important;bottom:auto!important;transform-origin:50% 0;
   min-width:0;max-width:1200px;min-height:70px;padding:14px 40px 15px;border-radius:22px;
@@ -662,7 +668,7 @@ html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
    bottom edge; the angle sums are a cream pill with a gold border ---------- */
 .stage .chip,.stage .chip.name,.stage .chip.white,.stage .chip.measure{font-family:'Baloo 2','Noto Sans Math',system-ui,sans-serif;font-weight:800;
   font-size:30px;line-height:1.1;letter-spacing:.2px;color:#123b63;padding:8px 36px 6px;border-radius:999px;cursor:default;
-  background:#ffffff;border:4px solid #1f6bff;box-shadow:0 3px 10px rgba(20,60,130,.18);animation:chipIn .5s ease-out backwards}
+  background:#ffffff;border:4px solid #1e7bff;box-shadow:0 3px 10px rgba(20,60,130,.18);animation:chipIn .5s ease-out backwards}
 .stage .chip.long,.stage .chip.name.long{font-size:25px;padding:7px 28px 6px}
 .stage .chip.gold,.eq-layer .chip.gold{font-family:'Baloo 2','Noto Sans Math',system-ui,sans-serif;font-weight:800;font-size:27px;color:#6b4300;padding:7px 30px 6px;border-radius:999px;cursor:default;
   background:#fff8e3;border:4px solid #f0b000;box-shadow:0 3px 10px rgba(110,70,0,.16)}
@@ -672,23 +678,24 @@ html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
    corner pings, a named angle glows, and the rest of the shape steps back until she moves on ---------- */
 /* the named side's highlight: a crisp yellow marker band under the side, drawn along it as the side is named */
 /* the named side's highlight: a soft gold glow under the side, swept along it as the side is named */
-/* the named side: a bright gold light runs along it once, start to end, then settles into a soft gold underglow while
-   the side is talked about (the other sides step back: .focusing). Gold reads on the card's aqua; pathLength is 100 */
-.hl{opacity:0;pointer-events:none;stroke:#ffb400;stroke-linecap:round;filter:drop-shadow(0 0 5px rgba(255,170,0,.85))}
-.hl.on{opacity:1;stroke-width:15px;animation:hlRun 1.25s cubic-bezier(.45,0,.25,1) both}
-@keyframes hlRun{
-  0%{stroke-dasharray:24 176;stroke-dashoffset:24;opacity:1}
-  62%{stroke-dasharray:24 176;stroke-dashoffset:-100;opacity:1}
-  63%{stroke-dasharray:100 0;stroke-dashoffset:0;opacity:0}
-  100%{stroke-dasharray:100 0;stroke-dashoffset:0;opacity:.6}}
+/* the named side: a sunflower-yellow marker redraws it - a glowing pen tip runs from one end to the other and the
+   side turns bold yellow behind it, edged in navy so the bright yellow stands out on the aqua - and it stays marked
+   while it is talked about (the other sides step back: .focusing). pathLength is 100 */
+.hl{opacity:0;pointer-events:none;stroke:#ffd000;stroke-linecap:round}
+.hl.on{opacity:1;stroke-width:9px;stroke-dasharray:100 100;animation:hlDraw .75s cubic-bezier(.45,0,.35,1) both;
+  filter:drop-shadow(0 0 0.8px #0b2a55) drop-shadow(0 0 0.8px #0b2a55) drop-shadow(0 0 0.6px #0b2a55)}
+@keyframes hlDraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+.hlp.hl{stroke:#ffffff}
+.hlp.hl.on{stroke-width:15px;stroke-dasharray:.4 300;animation:hlPen .75s cubic-bezier(.45,0,.35,1) both;filter:drop-shadow(0 0 2px #ff9d00) drop-shadow(0 0 5px #ffb300)}
+@keyframes hlPen{0%{stroke-dashoffset:0;opacity:1}90%{stroke-dashoffset:-100;opacity:1}100%{stroke-dashoffset:-100;opacity:0}}
 /* a named point: the dot grows gold (engine) with a soft gold glow */
-.vdot.on{filter:drop-shadow(0 0 5px rgba(255,184,0,.95))}
+.vdot.on{filter:drop-shadow(0 0 5px rgba(255,196,0,.95))}
 .wedge,.arc,.shape-fill{transition:opacity .3s ease}
 /* the shape's fill: pale aqua, a lighter water on the card's blue water; the sides are deep blue (bases) and deep aqua (legs) */
-.shape-fill{fill:#e4fbff;fill-opacity:.96}
+.shape-fill{fill:#e4fbff;fill-opacity:.96;filter:drop-shadow(0 6px 10px rgba(0,60,110,.22))}
 .focusing .edge:not(.emph):not(.lit){opacity:.35}
-.wedge.emph{stroke:#ffd43b;stroke-width:5px;paint-order:stroke}
-@media (prefers-reduced-motion: reduce){.hl.on{animation:none;stroke-dasharray:none;opacity:.6}}
+.wedge.emph{stroke:#123b63;stroke-width:5px;paint-order:stroke}
+@media (prefers-reduced-motion: reduce){.hl.on{animation:none;stroke-dasharray:none}.hlp.hl.on{display:none}}
 
 /* Done (screen 29, free exploration): the same orange pill as the answer buttons, with a check mark, so it plainly
    reads as the thing to tap once the learner has explored; it pops in and bobs gently to call for the tap */

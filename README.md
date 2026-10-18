@@ -59,8 +59,12 @@ the front page instead.
   lesson's own frame exactly over the card. Inside, Swiftee appears only where she does something: the opening
   (she flies in and recalls), the two measuring screens, the hero screens and the summary. Every other screen is a
   "plate" screen: no Swiftee and no ice panel, her line on a navy instruction plate across the top (gold rim, one line of text) and the shape
-  big in the middle of the card (`isPlate`, `CONFIG.fitPlate`, css `.plate`). The shape's fill is pale aqua on the card's blue water, the bases deep blue and the legs deep aqua, angle C purple, and a
-  named side glows softly instead of carrying a solid band.
+  big in the middle of the card (`isPlate`, `CONFIG.fitPlate`, css `.plate`). Colours are vivid and edged in navy so they stand out on the card's water: a pale-aqua fill, azure bases,
+  aqua-teal legs, bright angle colours. A named side is redrawn by a sunflower-yellow marker (a glowing tip runs
+  along it and it turns bold yellow, edged in navy, behind it) while the other sides step back. Swiftee dives in wherever she comes
+  back, with a trail of bubbles. After a second wrong try at any check or task the answer is shown (the right
+  option lights up, a corner glides into place, labels go to their boxes, the right angles light up) and the lesson
+  moves on, rather than looping.
 - **The lesson moves on by itself.** It has no Next, Back or screen list. A finished screen moves on once its voice
   and animations are over. A screen that asks for something (a drag, a tap, an answer) waits until it's done.
 - **The end.** Fishing 2 closes its cartoon iris on "The End", Next is tapped, and the front page fades back in.
