@@ -10,7 +10,9 @@ script.json (each line as shown, as spoken, and the Devanagari the voice was giv
 This trims each clip's silence (as the fishing games' own voice tool does: keep from 2% of the peak, 40 ms either
 side), encodes it as the games' other clips are (MP3, 64 kbps, mono) and puts it in place of her old line in
 parts/fishing-1/src/voice-data.js and parts/fishing-2/src/voice-data.js, under the same key (the speaker and the
-text on screen, as audio.js voiceKey() makes it). Popo's and the narrator's lines are left as they are.
+text on screen, as audio.js voiceKey() makes it). The game has only two voices, Popo's and Swiftee's, so the
+narrator's lines (the story's opening and the instructions and hints; "who": "narrator" in script.json) are read in
+her voice too, under their own keys. Popo's lines are left as they are.
 Needs macOS afconvert (to decode the studio's MP3) and lameenc (pip install lameenc).
 """
 import array
@@ -66,7 +68,7 @@ def main():
         rate, samples = pcm(VOICE / 'studio' / (line['id'] + '.mp3'))
         samples = trim(samples, rate)
         data = mp3(rate, samples)
-        clips.setdefault(line['game'], {})[voice_key('swiftee', line['line'])] = 'data:audio/mpeg;base64,' + base64.b64encode(data).decode()
+        clips.setdefault(line['game'], {})[voice_key(line.get('who', 'swiftee'), line['line'])] = 'data:audio/mpeg;base64,' + base64.b64encode(data).decode()
         print(f"  {len(samples) / rate:4.2f}s {len(data) // 1024:3d} KB  {line['game']}: {line['line']}")
     for game, new in clips.items():
         path = ROOT / 'parts' / game / 'src' / 'voice-data.js'
@@ -77,7 +79,7 @@ def main():
             if n != 1:
                 raise SystemExit(f'{game}: no line for {key!r} in voice-data.js')
         path.write_text(text)
-        print(f'wrote parts/{game}/src/voice-data.js ({len(new)} of Swiftee\'s lines in the lesson\'s voice)')
+        print(f'wrote parts/{game}/src/voice-data.js ({len(new)} lines in the lesson\'s voice: Swiftee\'s, and the narrator\'s, which she now reads)')
 
 
 if __name__ == '__main__':

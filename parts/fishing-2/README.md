@@ -1,5 +1,7 @@
 # Popo's Trapezium Fishing (part 2)
 
+> **In Fishing Frenzy** the narrator's lines are read in Swiftee's studio voice (the repository's `tools/build-swiftee-voice.py`): the game has only Popo's and Swiftee's voices.
+
 > **In Fishing Frenzy** this game is part 3 of the journey (the repository's README). It runs inside the journey's page after fishing 1, and the trapezium lesson plays inside it: in its opening the seashell opens on the empty lake and the lesson's card rises (`lessonCard` in `src/sequences.js`, the card in `src/game.js`: `LESSON_CARD`, `LESSON_ART` (assets/lesson-card.webp), `drawCardLife`, `dive`), the journey lays the lesson's frame over the card (the shell hides behind it), and after the lesson the giant wave rolls in from the left with Popo riding it, sweeps the shell away and sets him down (`waveIn` in `src/sequences.js`, the wave: `uHump` in `src/water.js`, steered by `../shared/wave.js`); then Swiftee swoops in with her welcome and the levels follow. Its Next at the end returns to the journey's front page. Its title banner, Fishing Frenzy, is that front page (`shell/front-page.js` draws it as this game did). Swiftee wears the lesson's scarf and speaks in the lesson's voice. Its source artwork, build tools and standalone tests stay in the original repository, `ice-age-fishing-2`.
 
 The post-learning half of Popo's shape fishing. The learner has just studied trapeziums; now Popo

@@ -1,5 +1,7 @@
 # Popo's Shape Fishing
 
+> **In Fishing Frenzy** the narrator's lines are read in Swiftee's studio voice (the repository's `tools/build-swiftee-voice.py`): the game has only Popo's and Swiftee's voices.
+
 > **In Fishing Frenzy** this game is the warm-up before the trapezium lesson: its four lakes' shapes are four quick rounds on one lake, each won by one catch (`currentChallenge` and `nextChallenge` in `src/game.js`, `nextRound` in `src/sequences.js`), with the other shapes swimming too; the instruction reads "Catch the triangle fish!" rather than "all" (the narrator's new lines: `tools/record-narrator-lines.py`), there is no "Great catch!", a brisker cast and reel, and no rowing on; then the story's mystery fish, Swiftee's "Let's find out!" and Next, where the giant wave carries Popo to fishing 2 (`waveAway`).
 
 > **In Fishing Frenzy** this game is part 1 of the journey (the repository's README). It runs inside the journey's page, which shows the front page (the Fishing Frenzy banner) and plays the lesson after this game's Next. So its own title banner is in `drafts/banners/shape-fish-adventure/`, and Swiftee wears the lesson's scarf and speaks in the lesson's voice. Its source artwork, build tools and standalone tests stay in the original repository, `ice-age-fishing`.

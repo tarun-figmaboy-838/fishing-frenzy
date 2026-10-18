@@ -289,12 +289,12 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   }
 
   // ---------- audio ----------
-  // the speech voice (the fallback when a recording can't play): in the journey, the shell's, which its Play
-  // tap has already unlocked
+  // the speech voice (the fallback when a recording can't play), outside the journey only: in Fishing Frenzy only
+  // Popo's and Swiftee's own recorded voices are heard, so a line without a playable clip shows its words silently
+  // (the paced reveal) rather than in the browser's voice
   synth() {
+    if (JOURNEY) return null;
     try {
-      const sp = JOURNEY && JOURNEY.speech();
-      if (sp && sp.synth) return sp.synth;
       return (typeof window !== 'undefined' && window.speechSynthesis) ? window.speechSynthesis : null;
     } catch (e) { return null; }
   }

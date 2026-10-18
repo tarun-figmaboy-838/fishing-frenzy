@@ -93,8 +93,12 @@ the front page instead.
 - **Her voice.** The lesson's voice-over comes from the "Ai Wala Human By Aamir" studio: Hindi script, voice Female
   Teacher (Standard), with the spoken-form rules in `parts/lesson/docs/VOICEOVER.md`. Her 16 lines in the fishing
   games were re-voiced the same way. The clips, and each line's spoken form and Devanagari, are in
-  `tools/swiftee-voice/`, and `tools/build-swiftee-voice.py` puts them into both games' `voice-data.js`. Popo and
-  the fishing narrator keep their own voices.
+  `tools/swiftee-voice/`, and `tools/build-swiftee-voice.py` puts them into both games' `voice-data.js`.
+- **Two voices only.** The whole game is heard in Popo's voice and Swiftee's. The fishing games' narrator lines (the
+  opening "Popo loves fishing...", every "Catch the ... fish!" instruction and fishing 2's hints) are read in
+  Swiftee's studio voice too (`"who": "narrator"` entries in `tools/swiftee-voice/script.json`, under the narrator's
+  keys), and in the journey the lesson never falls back to the browser's speech voice: a line whose clip cannot play
+  shows its words silently.
 
 ## Folder
 
