@@ -151,6 +151,18 @@ const LESSON = {
     // "trapezium": the name label pops in
     { id: 'defFull', legsSet: 1, chevPre: 1, lines: [{ t: 'A quadrilateral with at least\none pair of parallel sides\nis called a trapezium.', noEmph: 1, holdChips: 1,
       cueAt: { quadrilateral: 'defTrace', parallel: 'defParallel', trapezium: 'showTitle' }, chips: [{ t: 'Trapezium', k: 'name' }] }], f: { par: 1 } },
+    // check 1, straight after the definition: which of these is a trapezium?
+    { id: 'cfu1', cfu: 1, idle: 'Look for the shape with exactly one pair of parallel sides.', hint: 'Check 1 of 5 · Which one is a trapezium?',
+      okFx: 'q1Correct',
+      // cueTimes from the recording (vo185): "quadrilaterals" 0.88 s, "trapezium" 2.24 s
+      lines: [{ m: 'curious', t: 'Which of these quadrilaterals is a trapezium?', cueAt: { quadrilaterals: 'q1Cards', trapezium: 'q1Look' }, cueTimes: { trapezium: 2.24 } }],
+      ok: 'Correct! It has one pair of parallel sides, so it is a trapezium.',
+      opts: [
+        { id: 'A', ok: true },
+        { id: 'B', fb: 'Look at each side of this shape. No two sides are parallel, so it is not a trapezium.' },
+        { id: 'C', fb: 'This shape has no parallel sides at all.' },
+        { id: 'D', fb: 'Look at each side of this shape. No two sides are parallel, so it is not a trapezium.' }
+      ] },
     { id: 'bases', lines: [{ t: 'The parallel sides\nare called bases.', glow: ['AB', 'CD'], focusAt: 'parallel', glowAt: 'bases', callout: 'bases' }], f: { par: 1 } },
     { id: 'legs', fitBox: { cx: 839 }, // (cx: shape and labels centred together in the card: the Leg pills reach further right than left)
       lines: [{ t: 'The other two sides\nare called legs.', glow: ['DA', 'BC'], focusAt: 'other', glowAt: 'legs', callout: 'legs', cueTimes: { sides: 0.64 } }], f: { par: 1 } },
@@ -177,6 +189,7 @@ const LESSON = {
     { id: 'equalDrag', fitBox: { cx: 889 }, // (cx: shape and labels centred together in the card: as screen 18)
       lines: [{ m: 'curious', t: 'Drag vertex A so that both\nthe legs are of equal length.' }],
       task: 'dragA', handOnce: 1, wrongRight: { cm: 0.5, side: 'BC' }, hint: 'Drag point A along the top side', after: [{ m: 'happy', t: 'Perfect! Both legs are equal.' }],
+      revealLine: 'Watch! AD becomes 5 cm, just like BC. Now both legs are equal.', // (said as A glides there after a second wrong try)
       f: { par: 1, legLen: 1, sideLen: 1 } },
     // "trapezium": the shape pops; "same": both legs light up with their lengths;
     // "isosceles": the lengths shrink into the equal marks, then the name label pops in
@@ -187,6 +200,18 @@ const LESSON = {
     // the arrows pop on at "sides" and the name label at "trapezium"
     { id: 'sidesDone', shape: 1, shapePre: 1, chevPre: 1, voiceDelay: 400, lines: [{ m: 'happy', t: 'We know all about the sides\nof a trapezium.', noEmph: 1, onStart: 'shapeIn',
       holdChips: 1, cueAt: { sides: 'chevIn', trapezium: 'showTitle' }, chips: [{ t: 'Trapezium', k: 'name' }] }], f: { par: 1 } },
+    // check 2, after the sides (scalene, isosceles): the missing side of an isosceles trapezium
+    { id: 'cfu5', cfu: 5, idle: 'BC is a leg. What do you know about the legs of an isosceles trapezium?', hint: 'Check 2 of 5 · Find the missing side', optTop: 458, plateOptDy: 36, // (in the card: clear of the 10 cm and the corner letters) okFx: 'q5Correct', badFx: 'q5Wrong', optsAfter: 1,
+      // cueTimes from the recording (vo200, the lengths said in full): "A B" 2.06 s, "C D" 4.24, "A D" 6.84, "B C" 9.84
+      lines: [{ m: 'curious', t: 'In an isosceles trapezium, AB = 6 cm, CD = 10 cm and AD = 5 cm. What is the length of BC?', cueAt: { ab: 'q5AB', cd: 'q5CD', ad: 'q5AD', bc: 'q5BC' },
+        cueTimes: { 'AB = 6 cm': 2.06, 'CD = 10 cm': 4.24, 'AD = 5 cm': 6.84, BC: 9.84 } }],
+      ok: 'Yes! In an isosceles trapezium the legs are equal, so BC = 5 cm.',
+      opts: [
+        { id: 'a', t: '4 cm', fb: 'BC is a leg. In an isosceles trapezium, both legs are equal.' },
+        { id: 'b', t: '5 cm', ok: true },
+        { id: 'c', t: '6 cm', fb: '6 cm is the top base AB. BC is a leg, like AD.' },
+        { id: 'd', t: '8 cm', fb: 'BC is a leg. In an isosceles trapezium, both legs are equal.' } // (8, not 10: four short answers sit level; its feedback is the recorded line 4 cm has)
+      ] },
     // after the line Swiftee carries a protractor round A, B, C, D; each angle appears as she holds it there
     { id: 'angles', room: 'measure', anglesIn: 1, task: 'measureAngles', auto: 1, lines: [{ m: 'curious', t: "Let's measure its angles." }], f: { par: 1, arcs: 'ABCD' } },
     // 120° (A) and 60° (D) in focus: the pair the next screen adds up
@@ -208,7 +233,7 @@ const LESSON = {
       optsAfter: 1, okSum: ['B', 'C'], okFx: 'suppAtBC',
       // cueTimes from the recording (vo060): "angle B" 0.90-1.66 s (B at 1.40), "angle C" 2.08-2.70 (C at 2.44)
       lines: [{ m: 'curious', t: 'What about ∠B and ∠C?', angleCues: 1, pairEnd: ['B', 'C'], onStart: 'askIn', cueTimes: { '∠B': 1.4, '∠C': 2.44 }, chips: [{ t: '∠B + ∠C = ?', k: 'white' }] }],
-      ok: 'Correct! ∠B and ∠C are\nsupplementary angles too.', okChips: [{ t: '∠B + ∠C = 180°', k: 'gold' }],
+      ok: 'Correct! ∠B and ∠C are\nsupplementary angles too.', revealLine: 'It is 180°! Like ∠A and ∠D, ∠B and ∠C add up to 180°.', // (after a second wrong pick) okChips: [{ t: '∠B + ∠C = 180°', k: 'gold' }],
       opts: [
         { id: '90', t: '90°', fb: 'Not quite. Try again.' },
         { id: '180', t: '180°', ok: true },
@@ -226,48 +251,8 @@ const LESSON = {
       f: { par: 1, arcs: 'ABCD', sums: 1 } },
     { id: 'always', sumSteps: 1, lines: [{ m: 'happy', t: 'No matter the shape, the angles\nalways add up to 180°.' }], f: { par: 1, arcs: 'ABCD' } },
     { id: 'rule', sumSteps: 'sym', lines: [{ t: 'So in any trapezium,\nangles on the same leg\nalways add up to 180°.' }], f: { par: 1, arcs: 'ABCD' } },
-    { id: 'what90', lines: [{ m: 'curious', t: 'What if we make one of\nthe angles 90°?', cueAt: { 90: { fn: 'vertexPulse', sfx: 'chime' } } }], f: { par: 1, arcs: 'ABCD' } },
-    { id: 'make90', fitShape: 1, lines: [{ m: 'curious', t: 'Drag any vertex to make any angle 90°.' }],
-      task: 'drag90', hint: 'Drag a corner until an angle is 90°', idle: 'Drag a corner slowly and stop when an angle shows 90°.',
-      after: [{ m: 'happy', t: 'Great job!' }], f: { par: 1, arcs: 'ABCD' } },
-    // the learner's right angle glows; on "another" its partner on the same leg (also 90°) joins it
-    { id: 'another90', lines: [{ m: 'surprised', t: 'Woah! We got another\nright angle.', noEmph: 1, cueAt: { woah: 'anotherStart', another: 'anotherReveal' } }], f: { par: 1, arcs: 'ABCD' } },
-    // "adjacent": the arrows glide on; "right": both 90° marks draw in;
-    // "called": the name label. Then Swiftee asks the learner to tap the two 90° corners: every corner gets a ring
-    // (so the learner has to find them), a found one stops pulsing, and finding both is cheered
-    { id: 'right', shape: 'right', right90: 1, r90Pre: 1, chevPre: 1, rightTap: 1, okCheck: 1,
-      hint: 'Tap the two 90° corners', idle: 'Can you tap the two right angles?', // (the recorded line, so the reminder is in Swiftee's voice)
-      lines: [{ t: 'A trapezium with two adjacent\nright angles is called a\nright angled trapezium.', noEmph: 1,
-        holdChips: 1, cueAt: { trapezium: 'chevIn', right: 'rightBoth', called: 'showTitle' }, chips: [{ t: 'Right trapezium', k: 'name' }] },
-        { m: 'curious', t: 'Can you tap the two\nright angles?', holdChips: 1 }],
-      f: { par: 1, right: 1 } },
-    // Swiftee flies to centre stage (as on screen 43) and speaks once she has landed; screen 37 starts with her there
-    { id: 'wellDone', noBoard: 1, noPanel: 1, hero: 1, voiceDelay: 1100, lines: [{ m: 'celebrating', t: 'Great job! Now you know\nall about trapeziums.' }] },
-    // after this line eight idea cards are shown and explained one by one
-    { id: 'recap', noBoard: 1, layout: 'recap', summary: 1, noIdle: 1,
-      lines: [{ m: 'happy', t: "Let's recall what\nwe learnt today." }] },
-    { id: 'cfu1', cfu: 1, idle: 'Look for the shape with exactly one pair of parallel sides.', hint: 'Check 1 of 5 · Which one is a trapezium?',
-      okFx: 'q1Correct',
-      // cueTimes from the recording (vo185): "quadrilaterals" 0.88 s, "trapezium" 2.24 s
-      lines: [{ m: 'curious', t: 'Which of these quadrilaterals is a trapezium?', cueAt: { quadrilaterals: 'q1Cards', trapezium: 'q1Look' }, cueTimes: { trapezium: 2.24 } }],
-      ok: 'Correct! It has one pair of parallel sides, so it is a trapezium.',
-      opts: [
-        { id: 'A', ok: true },
-        { id: 'B', fb: 'Look at each side of this shape. No two sides are parallel, so it is not a trapezium.' },
-        { id: 'C', fb: 'This shape has no parallel sides at all.' },
-        { id: 'D', fb: 'Look at each side of this shape. No two sides are parallel, so it is not a trapezium.' }
-      ] },
-    { id: 'cfu2', cfu: 2, qFocus: 1, qStatic: 'Which type of trapezium is this?', idle: 'Which type of trapezium is this?', hint: 'Check 2 of 5 · Which type of trapezium?', optTop: 376, okFx: 'q2Correct', badFx: 'q2Wrong',
-      lines: [{ m: 'curious', t: 'Which type of trapezium is this?', cueAt: { type: 'q2Shape' } }],
-      ok: 'Right! The marks show its legs are equal, so it is an isosceles trapezium.',
-      opts: [
-        { id: 's', t: 'Scalene', fb: 'Look at the little marks on the legs. They tell us the legs are equal.' },
-        { id: 'i', t: 'Isosceles', ok: true },
-        { id: 'r', t: 'Right', fb: 'There are no right angles in this shape. Look at the legs instead.' }
-      ] },
-    // "120" opens ∠A; "value" runs a light down AD to a "?" at D. A wrong answer brings in
-    // "120° + ? = 180°" under the shape; the right one flies 60° to D and the equation resolves
-    { id: 'cfu3', cfu: 3, idle: 'In this trapezium, ∠A = 120°. What is the value of ∠D?', hint: 'Check 3 of 5 · Find the missing angle', optTop: 482,
+    // check 3, after the angle rule (angles on the same leg add up to 180°): the missing angle
+    { id: 'cfu3', cfu: 3, idle: 'In this trapezium, ∠A = 120°. What is the value of ∠D?', hint: 'Check 3 of 5 · Find the missing angle', optTop: 482, plateOptDy: 20,
       enterFx: 'q3In', okFx: 'q3Correct', badFx: 'q3Wrong', idleFx: 'q3Idle', optsAfter: 1, softWrong: 1, handMs: 3000, voiceDelay: 1300,
       // cueTimes from the recording (vo193): "trapezium" 0.82 s, "angle A" 1.88-2.58, "one hundred twenty" 2.92, "value" 5.66,
       // "angle D" 6.32-6.92 (D at 6.72). "∠A = 120°." is one word: at 2.5 s A's wedge opens and its 120° lands on "one hundred twenty"
@@ -280,22 +265,43 @@ const LESSON = {
         { id: 'c', t: '50°', fb: 'Angles on the same leg add up to 180°.' },
         { id: 'd', t: '180°', fb: 'Angles on the same leg add up to 180°.' }
       ] },
-    // "drag" lights each shape's clue, "labels" brings the labels in, "place" lights the boxes
-    { id: 'cfu4', cfu: 4, qStatic: 'Drag the labels to their\ncorrect place.', idle: 'Drag the labels to their correct place.', lockNext: 1, hint: 'Check 4 of 5 · Drag each label to its shape',
+    { id: 'what90', lines: [{ m: 'curious', t: 'What if we make one of\nthe angles 90°?', cueAt: { 90: { fn: 'vertexPulse', sfx: 'chime' } } }], f: { par: 1, arcs: 'ABCD' } },
+    { id: 'make90', fitShape: 1, lines: [{ m: 'curious', t: 'Drag any vertex to make any angle 90°.' }],
+      task: 'drag90', hint: 'Drag a corner until an angle is 90°', idle: 'Drag a corner slowly and stop when an angle shows 90°.',
+      after: [{ m: 'happy', t: 'Great job!' }], revealLine: 'Watch! Now ∠{k} is 90°. That is a right angle.', // ({k}: the corner she puts right)
+      f: { par: 1, arcs: 'ABCD' } },
+    // the learner's right angle glows; on "another" its partner on the same leg (also 90°) joins it
+    { id: 'another90', lines: [{ m: 'surprised', t: 'Woah! We got another\nright angle.', noEmph: 1, cueAt: { woah: 'anotherStart', another: 'anotherReveal' } }], f: { par: 1, arcs: 'ABCD' } },
+    // "adjacent": the arrows glide on; "right": both 90° marks draw in;
+    // "called": the name label. Then Swiftee asks the learner to tap the two 90° corners: every corner gets a ring
+    // (so the learner has to find them), a found one stops pulsing, and finding both is cheered
+    { id: 'right', shape: 'right', right90: 1, r90Pre: 1, chevPre: 1, rightTap: 1, okCheck: 1,
+      hint: 'Tap the two 90° corners', idle: 'Can you tap the two right angles?', revealLine: 'Here they are! ∠A and ∠D are both 90°.', // (after a second wrong tap) // (the recorded line, so the reminder is in Swiftee's voice)
+      lines: [{ t: 'A trapezium with two adjacent\nright angles is called a\nright angled trapezium.', noEmph: 1,
+        holdChips: 1, cueAt: { trapezium: 'chevIn', right: 'rightBoth', called: 'showTitle' }, chips: [{ t: 'Right trapezium', k: 'name' }] },
+        { m: 'curious', t: 'Can you tap the two\nright angles?', holdChips: 1 }],
+      f: { par: 1, right: 1 } },
+    // checks 4 and 5, once all three types are taught (the right trapezium last): which type, then label all three
+    { id: 'cfu2', cfu: 2, qFocus: 1, qStatic: 'Which type of trapezium is this?', idle: 'Which type of trapezium is this?', hint: 'Check 4 of 5 · Which type of trapezium?', optTop: 376, okFx: 'q2Correct', badFx: 'q2Wrong',
+      lines: [{ m: 'curious', t: 'Which type of trapezium is this?', cueAt: { type: 'q2Shape' } }],
+      ok: 'Right! The marks show its legs are equal, so it is an isosceles trapezium.',
+      opts: [
+        { id: 's', t: 'Scalene', fb: 'Look at the little marks on the legs. They tell us the legs are equal.' },
+        { id: 'i', t: 'Isosceles', ok: true },
+        { id: 'r', t: 'Right', fb: 'There are no right angles in this shape. Look at the legs instead.' }
+      ] },
+    { id: 'cfu4', cfu: 4, qStatic: 'Drag the labels to their\ncorrect place.', idle: 'Drag the labels to their correct place.', lockNext: 1, hint: 'Check 5 of 5 · Drag each label to its shape',
       enterFx: 'q4In', labelsAt: 1, instant: 1, handMs: 3000,
       lines: [{ m: 'curious', t: 'Drag the labels to their\ncorrect place.', cueAt: { drag: 'q4Shapes', labels: 'q4LabelsIn', place: 'q4HiShapes' } }],
       ok: 'Brilliant! You labelled all three trapeziums.' },
-    { id: 'cfu5', cfu: 5, idle: 'BC is a leg. What do you know about the legs of an isosceles trapezium?', hint: 'Check 5 of 5 · Find the missing side', optTop: 458, okFx: 'q5Correct', badFx: 'q5Wrong', optsAfter: 1,
-      // cueTimes from the recording (vo200, the lengths said in full): "A B" 2.06 s, "C D" 4.24, "A D" 6.84, "B C" 9.84
-      lines: [{ m: 'curious', t: 'In an isosceles trapezium, AB = 6 cm, CD = 10 cm and AD = 5 cm. What is the length of BC?', cueAt: { ab: 'q5AB', cd: 'q5CD', ad: 'q5AD', bc: 'q5BC' },
-        cueTimes: { 'AB = 6 cm': 2.06, 'CD = 10 cm': 4.24, 'AD = 5 cm': 6.84, BC: 9.84 } }],
-      ok: 'Yes! In an isosceles trapezium the legs are equal, so BC = 5 cm.',
-      opts: [
-        { id: 'a', t: '4 cm', fb: 'BC is a leg. In an isosceles trapezium, both legs are equal.' },
-        { id: 'b', t: '5 cm', ok: true },
-        { id: 'c', t: '6 cm', fb: '6 cm is the top base AB. BC is a leg, like AD.' },
-        { id: 'd', t: '8 cm', fb: 'BC is a leg. In an isosceles trapezium, both legs are equal.' } // (8, not 10: four short answers sit level; its feedback is the recorded line 4 cm has)
-      ] },
+    // Swiftee flies to centre stage (as on screen 43) and speaks once she has landed; screen 37 starts with her there
+    { id: 'wellDone', noBoard: 1, noPanel: 1, hero: 1, voiceDelay: 1100, lines: [{ m: 'celebrating', t: 'Great job! Now you know\nall about trapeziums.' }] },
+    // after this line eight idea cards are shown and explained one by one
+    { id: 'recap', noBoard: 1, layout: 'recap', summary: 1, noIdle: 1, autoAdvance: 500, // (the lesson's last screen: no long beat before Swiftee leaves)
+      lines: [{ m: 'happy', t: "Let's recall what\nwe learnt today." }] },
+    // "120" opens ∠A; "value" runs a light down AD to a "?" at D. A wrong answer brings in
+    // "120° + ? = 180°" under the shape; the right one flies 60° to D and the equation resolves
+    // "drag" lights each shape's clue, "labels" brings the labels in, "place" lights the boxes
     // Swiftee flies to centre stage and speaks once she has landed, she says goodbye, and screen 44 follows by itself
     { id: 'end', end: 1, hero: 1, voiceDelay: 1100, autoNext: 700,
       lines: [{ m: 'celebrating', t: 'Amazing work! You know all about trapeziums now.' }, { m: 'waving', t: 'Bye for now! See you on\nour next snowy adventure!' }] },

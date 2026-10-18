@@ -10,7 +10,7 @@ WebKit: pip install playwright && playwright install chromium webkit):
                where Popo rows in; the seashell opens and the lesson's card springs out of its bubble; the lesson's
                own frame appears over the card, see-through, with no winter scene (screens 1 to 5 move on by
                themselves; there is no Next, Back or screen list; the voice plays through the journey's <audio>);
-               its last check, a wrong answer and the right one; the lesson fades, the card closes and the shell
+               a check after a concept, a wrong answer and the right one; then from the summary the lesson fades, the card closes and the shell
                shuts; Swiftee's welcome; a real catch; its end ("The End") and Next
   front page   again, with fishing 1 loaded behind it for Play again; and Play again starts it
 
@@ -245,21 +245,30 @@ def journey(p, engine):
     fs = f2.evaluate(FISH)
     check(fs['zoom'] > 1.7 and fs['shadows'] >= 5, f'{tag}: behind the card the camera has dived into the water, with shadow fish swimming', f"zoom {fs['zoom']:.2f}, {fs['shadows']} shadows")
 
-    # the last check: a wrong answer, then the right one; the lesson then ends by itself and the card closes
-    lf.evaluate('() => window.lessonDebug.jumpTo(41)')
+    # a check now follows each concept: on the one after the sides (the missing side), a wrong answer keeps the lesson
+    # there and the right one moves it on; then from the summary, the lesson's last screen, it ends by itself and the
+    # card closes
+    order = lf.evaluate('() => lessonDebug.steps().map((x) => x.id)')
+    k5, kr = order.index('cfu5'), order.index('recap')
+    check(order.index('cfu1') == order.index('defFull') + 1 and k5 == order.index('sidesDone') + 1 and order.index('cfu3') == order.index('rule') + 1
+          and order.index('cfu2') == order.index('right') + 1 and kr == len(order) - 1,
+          f'{tag}: each check follows its concept, and the summary ends the lesson', ', '.join(f"{c}@{order.index(c) + 1}" for c in ('cfu1', 'cfu5', 'cfu3', 'cfu2', 'cfu4')))
+    lf.evaluate(f'() => window.lessonDebug.jumpTo({k5})')
     lf.locator('[data-qa="opt-a"]').wait_for(state='visible', timeout=40000)
     page.wait_for_timeout(1200)
     lf.locator('[data-qa="opt-a"]').click()
     page.wait_for_timeout(2500)
     ls = lf.evaluate(LESSON)
-    check(ls['step'] == 41 and not ls['done'], f'{tag}: a wrong answer on the last check keeps the lesson there')
-    page.screenshot(path=str(SHOTS / f'{tag}-6a-lesson-last-check.png'))
+    check(ls['step'] == k5 and not ls['done'], f'{tag}: a wrong answer on a check keeps the lesson there')
+    page.screenshot(path=str(SHOTS / f'{tag}-6a-lesson-check.png'))
     lf.locator('[data-qa="opt-b"]').click()
-    page.wait_for_timeout(1200)
-    st = until(shell, lambda s: not s['insetIn'], 60, 'the lesson hands over')
+    ls = until(lambda: lf.evaluate(LESSON), lambda s: s['step'] == k5 + 1, 40, 'the right answer moves the lesson on')
+    check(True, f'{tag}: the right answer moves the lesson on to the next concept')
+    lf.evaluate(f'() => window.lessonDebug.jumpTo({kr})')
+    st = until(shell, lambda s: not s['insetIn'], 180, 'the lesson hands over after the summary')
     page.screenshot(path=str(SHOTS / f'{tag}-6b-lesson-fades.png'))
     res = page.evaluate('() => FishingFrenzy.results')
-    check(res.get('lesson', {}).get('results', {}).get('cfu5') is False, f'{tag}: after the last check the lesson hands over by itself and reports its checks (the last one missed first time)')
+    check(res.get('lesson', {}).get('results', {}).get('cfu5') is False, f'{tag}: after the summary the lesson hands over by itself and reports its checks (that one missed first time)')
     fs = until(lambda: f2.evaluate(FISH), lambda s: not s['card'], 20, 'the card closes')
     page.wait_for_timeout(300)
     page.screenshot(path=str(SHOTS / f'{tag}-6c-card-closes.png'))
@@ -342,7 +351,7 @@ def devjumps(p):
     st = until(shell, lambda s: s['insetIn'] and s['inset'] == 'lesson', 15, 'the lesson shows in the card')
     f2 = part(page, 'fishing-2')
     fs = f2.evaluate(FISH)
-    check(fs['popoHome'] and fs['card'] and fs['lessonOpen'] and st['current'] == 'fishing-2', 'dev: ?start=lesson: Play goes straight to the open card, Popo on his raft')
+    check(not fs['popoHome'] and fs['card'] and fs['lessonOpen'] and st['current'] == 'fishing-2', 'dev: ?start=lesson: Play goes straight to the open card (Popo comes on the wave after the lesson, as in the journey)')
     # the window changes: the card moves, and the lesson's frame with it
     page.set_viewport_size({'width': 1000, 'height': 700})
     page.wait_for_timeout(600)
@@ -352,6 +361,11 @@ def devjumps(p):
     page.set_viewport_size({'width': 1280, 'height': 720})
     page.wait_for_timeout(400)
     page.screenshot(path=str(SHOTS / 'dev-1-start-lesson.png'))
+    # the lesson over: the card closes and the giant wave brings Popo in, as in the full journey
+    part(page, 'lesson').evaluate('() => lessonDebug.handOff()')
+    waved = until(lambda: f2.evaluate('() => !!(window.popoDebug && popoDebug.game.wave)'), lambda w: w, 20, 'the wave rolls in after the lesson')
+    fs = until(lambda: f2.evaluate(FISH), lambda s: s['popoHome'], 20, 'the wave brings Popo in')
+    check(waved and fs['popoHome'], 'dev: after the lesson the wave brings Popo in')
     browser.close()
 
     # ?dev=1: the jump panel

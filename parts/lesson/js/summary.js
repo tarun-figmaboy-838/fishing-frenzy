@@ -25,7 +25,8 @@
     card: { cx: 500, cy: 322, w: 300 },
     mini: { w: 132, x: [[80, 224], [776, 920]], y: [200, 378], zoom: 1.12, plate: { w: 118, h: 27, size: 15.5, rim: 2 } },
     enterMs: 420, collectMs: 580, pauseMs: 200,
-    readyMs: 4500 // READY: time to tap a card before the lesson moves on (the engine then waits its usual beat)
+    readyMs: 4500, // READY: time to tap a card before the lesson moves on (the engine then waits its usual beat)
+    readyMsJourney: 900 // in the journey the summary is the lesson's last screen: a long wait there read as Swiftee stalling
   };
   // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is shown on a
   // treasure-map page instead (mapPage()): parchment like the measuring screens' map (tools/paint-treasure-map.py) but
@@ -594,7 +595,7 @@
     // the lesson moves on once a moment passes with no card being replayed (a replay restarts the wait)
     moveOnLater() {
       const eng = this.eng;
-      this.later(SUM.readyMs, () => { if (!this.busy && this.S && this.S.state === 'READY') eng.maybeAdvance(false); });
+      this.later(typeof JOURNEY !== 'undefined' && JOURNEY ? SUM.readyMsJourney : SUM.readyMs, () => { if (!this.busy && this.S && this.S.state === 'READY') eng.maybeAdvance(false); });
     },
     // a tapped card: dim the others to 42 %, redraw its idea, say its line again, then back to READY.
     // busy blocks other taps until it is done

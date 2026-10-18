@@ -53,6 +53,10 @@ the front page instead.
   Popo riding it, sweeps the shell off the sand and sets Popo down on his spot (`waveIn`), and Swiftee swoops in
   with her welcome. The wave is the lake itself: each game's water pass (`src/water.js`, `uHump`/`uLean`) lifts the
   painted surface into a travelling hump, steered by `parts/shared/wave.js`.
+- **Checks follow their concepts.** The five checks are spread through the lesson, each straight after the concept
+  it tests: which shape is a trapezium (after the definition), the missing side of an isosceles trapezium (after the
+  sides), the missing angle (after the angle rule), then which type and labelling all three (once the right trapezium
+  is taught). The summary ends the lesson. Each check follows its concept.
 - **The lesson in the card.** Fishing 2 draws the shell, the bubble and the card (on its curtain canvas, in screen
   space, centred on the stage; the card is a painted underwater card, `parts/fishing-2/assets/lesson-card.webp`,
   with bubbles rising through its water), the shell hides behind the card while the lesson plays, and the journey lays the
@@ -62,11 +66,18 @@ the front page instead.
   big in the middle of the card (`isPlate`, `CONFIG.fitPlate`, css `.plate`). Colours are vivid and edged in navy so they stand out on the card's water: a pale-aqua fill, azure bases,
   aqua-teal legs, bright angle colours. A named side is redrawn by a sunflower-yellow marker (a glowing tip runs
   along it and it turns bold yellow, edged in navy, behind it) while the other sides step back. Swiftee dives in wherever she comes
-  back, with a trail of bubbles. After a second wrong try at any check or task the answer is shown (the right
-  option lights up, a corner glides into place, labels go to their boxes, the right angles light up) and the lesson
-  moves on, rather than looping.
+  back, with a trail of bubbles. In the activities (the corner drags, tapping the right angles, the practice question) a second wrong try shows
+  the answer - the corner glides into place, the right angles light up, the right option lights up - while Swiftee
+  says why, in her own recorded voice (each step's `revealLine`: "Watch! AD becomes 5 cm, just like BC..."), and the
+  lesson moves on rather than looping. The five checks never give the answer away: the learner keeps trying, with hints.
+- **Sides that meet, sides that don't (screens 6-9).** Both legs are marked together, then two glowing pen tips race
+  up them, drawing the dotted extensions, while the board pulls back to show where they will meet; they meet with a
+  burst. The bases' dotted extensions grow out of their corners both ways at once, out to the card's edges, and
+  arrowheads show they go on forever (no gap arrows and no pen tips there: the user found them odd).
 - **The lesson moves on by itself.** It has no Next, Back or screen list. A finished screen moves on once its voice
-  and animations are over. A screen that asks for something (a drag, a tap, an answer) waits until it's done.
+  and animations are over. A screen that asks for something (a drag, a tap, an answer) waits until it's done. The
+  summary is the last screen: in the journey Swiftee leaves about 2 s after her last line (the standalone lesson
+  keeps its longer pause for replaying a page), the card closes, and the giant wave brings Popo in.
 - **The end.** Fishing 2 closes its cartoon iris on "The End", Next is tapped, and the front page fades back in.
   Fishing 1 has already loaded again behind it, so Play again starts at once.
 
@@ -114,7 +125,8 @@ This repository ships the playable game.
 
 - `?dev=1`: one panel (bottom left) that jumps to any screen of the journey: the front page, each fishing game's
   own jumps (levels, a right or wrong catch, rowing on, the ending), and all 42 lesson screens (a lesson screen
-  opens fishing 2's card straight away with the lesson at that screen). The backtick key folds it away. In dev mode
+  opens fishing 2's card straight away with the lesson at that screen, and when the lesson ends the wave brings Popo
+  in, as in the full journey). The backtick key folds it away. In dev mode
   every part loads at once, so every list is there.
 - `?start=fishing-2`: the first journey begins at fishing 2 (Popo rows in and the lesson's card rises);
   `?start=lesson`: straight at the lesson's open card.

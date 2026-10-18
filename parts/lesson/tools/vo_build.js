@@ -71,6 +71,8 @@ function gather() {
       for (let n = 39; n <= 141; n++) if (n <= 85 || n >= 95) add(n + '° now. Keep dragging until it shows 90°.', null, { part: 1 });
     }
     if (st.rightTap) add('That angle is not 90°. Look for the square corners.');
+    // what Swiftee says when she shows an activity's answer after a second wrong try ({k}: the corner, on screen 33)
+    if (st.revealLine) (st.revealLine.indexOf('{k}') >= 0 ? 'ABCD'.split('') : ['']).forEach((k) => add(st.revealLine.replace('{k}', k)));
     (st.after || []).forEach(say);
     (st.opts || []).forEach((o) => o.fb && add(o.fb));
     if (st.id === 'cfu4') {

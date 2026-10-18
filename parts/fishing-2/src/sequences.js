@@ -697,8 +697,8 @@ async function lessonCard(game, token, { instant = false, keepShell = false } = 
   }
 }
 
-// ?start=lesson, or a ?dev=1 jump to a lesson screen: Popo already on his raft, the card open at once, then the rest
-// of the opening
+// ?start=lesson, or a ?dev=1 jump to a lesson screen: the card open at once, then the rest of the opening as the
+// journey plays it (the giant wave brings Popo in and sweeps the shell away, then the welcome)
 async function lessonNow(game) {
   const token = newToken();
   try {
@@ -706,9 +706,10 @@ async function lessonNow(game) {
     game.ui.setHitsEnabled(false);
     state.fish = [];
     game.ui.setInstruction('');
-    game.popo.travelShift = 0;
+    game.popo.travelShift = OFFSTAGE; // as in the journey's own opening: Popo comes on the wave once the lesson is over
     game.lessonFirst = true;
-    await lessonCard(game, token, { instant: true });
+    await lessonCard(game, token, { instant: true, keepShell: true });
+    await waveIn(game, token, { sweep: game.recall });
     await welcome(game, token);
     game.startLevel(0);
     game.play();

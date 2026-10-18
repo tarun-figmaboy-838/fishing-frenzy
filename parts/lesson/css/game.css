@@ -416,16 +416,27 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 /* (the front page - banner, title, sparkles, Play - is the journey's: shell/journey.css) */
 
 /* screen 7: where the extended legs meet, the dot breathes and two rings ripple out */
-.apex-dot{transform-box:fill-box;transform-origin:center;animation:fade .35s ease-out,apexBreathe 1.6s ease-in-out .35s infinite}
+.apex-dot{transform-box:fill-box;transform-origin:center;animation:apexPop .45s cubic-bezier(.3,1.8,.5,1) both,apexBreathe 1.6s ease-in-out .5s infinite}
+@keyframes apexPop{from{transform:scale(0)}to{transform:scale(1)}}
 .apex-ring{transform-box:fill-box;transform-origin:center;opacity:0;pointer-events:none;animation:apexRipple 1.6s ease-out .35s infinite}
 .apex-ring.r2{animation-delay:1.15s}
 @keyframes apexBreathe{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(232,100,60,0))}50%{transform:scale(1.3);filter:drop-shadow(0 0 5px rgba(232,100,60,.7))}}
-@keyframes apexRipple{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(3.2)}}
+@keyframes apexRipple{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(3.6)}}
 @media (prefers-reduced-motion: reduce){.apex-dot{animation:fade .35s ease-out}.apex-ring{animation:none}}
 
 /* screen 9: bolder dashed extensions of the parallel sides */
 /* extensions continue their own side: dashed, in the side's colour */
-.par-strong .xleg{stroke-width:5px;stroke-dasharray:12 8}
+.par-strong .xleg{stroke-width:6px}
+/* screens 7-9: the extensions are edged in navy like the sides, so the dashes read on the water; the bases' carry
+   arrowheads once they reach the card's edges (they go on forever) */
+.xleg{filter:drop-shadow(0 0 0.7px #0b2a55) drop-shadow(0 0 0.7px #0b2a55)}
+.xleg.xend{marker-start:url(#xHead);marker-end:url(#xHead)}
+/* the pen tips drawing the legs' extensions (screen 7): a white point with a warm glow, like the marker's pen */
+.xtip{filter:drop-shadow(0 0 2px #ff9d00) drop-shadow(0 0 6px #ffb300)}
+/* where the legs meet: the dot pops, the rays burst out once, the ripples keep going */
+.meet-rays{transform-box:fill-box;transform-origin:center;opacity:0;animation:raysBurst .7s ease-out both}
+@keyframes raysBurst{0%{opacity:1;transform:scale(.45)}60%{opacity:1}100%{opacity:0;transform:scale(1.35)}}
+@media (prefers-reduced-motion: reduce){.meet-rays{animation:none;opacity:0}}
 
 /* parts that wait for their voice cue: side lengths (len-pre, screens 17 and 21), equal-leg marks
    (tick-pre, screen 21) and parallel arrows (chev-pre, screens 13, 22 and 35) */

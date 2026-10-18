@@ -51,13 +51,20 @@
 <svg class="{{boardCls}}" viewBox="0 0 520 420" width="520" height="420" style="position: absolute; left: 640px; top: 104px; overflow: visible; touch-action: none; transform-origin: 0px 0px; transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.3, 1); transform: {{boardTf}}" aria-label="Trapezium ABCD">
 <g class="pop-g" style="transform-origin: {{popO}}">
 <polygon class="shape-fill" sc-camel-points="{{g.poly}}" fill="rgba(228,251,255,0.96)" stroke="none"></polygon>
-<line class="xleg" sc-camel-x1="{{g.xA.x1}}" sc-camel-y1="{{g.xA.y1}}" sc-camel-x2="{{g.xA.x2}}" sc-camel-y2="{{g.xA.y2}}" sc-camel-display="{{g.xA.d}}" stroke="#00b8a9" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
-<line class="xleg" sc-camel-x1="{{g.xB.x1}}" sc-camel-y1="{{g.xB.y1}}" sc-camel-x2="{{g.xB.x2}}" sc-camel-y2="{{g.xB.y2}}" sc-camel-display="{{g.xB.d}}" stroke="#00b8a9" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
-<line class="xleg" sc-camel-x1="{{g.xAB.x1}}" sc-camel-y1="{{g.xAB.y1}}" sc-camel-x2="{{g.xAB.x2}}" sc-camel-y2="{{g.xAB.y2}}" sc-camel-display="{{g.xAB.d}}" stroke="#1e7bff" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
-<line class="xleg" sc-camel-x1="{{g.xCD.x1}}" sc-camel-y1="{{g.xCD.y1}}" sc-camel-x2="{{g.xCD.x2}}" sc-camel-y2="{{g.xCD.y2}}" sc-camel-display="{{g.xCD.d}}" stroke="#1e7bff" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"></line>
-<circle class="apex-ring" sc-camel-cx="{{g.apex.cx}}" sc-camel-cy="{{g.apex.cy}}" r="7.5" fill="none" stroke="#ff7a00" stroke-width="2.5" sc-camel-display="{{g.apex.d}}"></circle>
-<circle class="apex-ring r2" sc-camel-cx="{{g.apex.cx}}" sc-camel-cy="{{g.apex.cy}}" r="7.5" fill="none" stroke="#ff7a00" stroke-width="2.5" sc-camel-display="{{g.apex.d}}"></circle>
-<circle class="fadein apex-dot" sc-camel-cx="{{g.apex.cx}}" sc-camel-cy="{{g.apex.cy}}" r="7.5" fill="#ff7a00" sc-camel-display="{{g.apex.d}}"></circle>
+<!-- screens 7-9: the dotted extensions (legs toward where they meet, bases out to the card's edges); on the bases,
+     arrowheads once they reach the edges (they go on forever) -->
+<defs>
+<marker id="xHead" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M2,1.5 L11,6 L2,10.5 Z" fill="#1e7bff" stroke="#0b2a55" stroke-width="1.2" stroke-linejoin="round"></path></marker>
+</defs>
+<line class="xleg" sc-camel-x1="{{g.xA.x1}}" sc-camel-y1="{{g.xA.y1}}" sc-camel-x2="{{g.xA.x2}}" sc-camel-y2="{{g.xA.y2}}" sc-camel-display="{{g.xA.d}}" stroke="#00b8a9" stroke-width="5.5" stroke-dasharray="12 9" stroke-linecap="round"></line>
+<line class="xleg" sc-camel-x1="{{g.xB.x1}}" sc-camel-y1="{{g.xB.y1}}" sc-camel-x2="{{g.xB.x2}}" sc-camel-y2="{{g.xB.y2}}" sc-camel-display="{{g.xB.d}}" stroke="#00b8a9" stroke-width="5.5" stroke-dasharray="12 9" stroke-linecap="round"></line>
+<path class="{{g.xAB.cls}}" sc-camel-d="{{g.xAB.p}}" sc-camel-display="{{g.xAB.d}}" fill="none" stroke="#1e7bff" stroke-width="5.5" stroke-dasharray="12 9" stroke-linecap="round"></path>
+<path class="{{g.xCD.cls}}" sc-camel-d="{{g.xCD.p}}" sc-camel-display="{{g.xCD.d}}" fill="none" stroke="#1e7bff" stroke-width="5.5" stroke-dasharray="12 9" stroke-linecap="round"></path>
+<!-- screen 7: where the legs meet - a burst of rays, two ripples and the dot -->
+<path class="meet-rays" sc-camel-d="{{g.rays.p}}" sc-camel-display="{{g.apex.d}}" fill="none" stroke="#ff9d00" stroke-width="4" stroke-linecap="round"></path>
+<circle class="apex-ring" sc-camel-cx="{{g.apex.cx}}" sc-camel-cy="{{g.apex.cy}}" r="9" fill="none" stroke="#ff7a00" stroke-width="3" sc-camel-display="{{g.apex.d}}"></circle>
+<circle class="apex-ring r2" sc-camel-cx="{{g.apex.cx}}" sc-camel-cy="{{g.apex.cy}}" r="9" fill="none" stroke="#ff7a00" stroke-width="3" sc-camel-display="{{g.apex.d}}"></circle>
+<circle class="apex-dot" sc-camel-cx="{{g.apex.cx}}" sc-camel-cy="{{g.apex.cy}}" r="9.5" fill="#ff7a00" stroke="#0b2a55" stroke-width="2" sc-camel-display="{{g.apex.d}}"></circle>
 <clipPath id="shapeClip"><polygon sc-camel-points="{{g.poly}}"></polygon></clipPath>
 <g class="angle-marks" clip-path="url(#shapeClip)">
 <path sc-camel-d="{{g.wA.p}}" class="{{g.wA.cls}}" sc-camel-display="{{g.wA.d}}" fill="#ff7a00" fill-opacity="1" stroke="none"></path>
@@ -86,6 +93,9 @@
 <line class="hlp {{g.eCD.hl}}" sc-camel-x1="{{g.eCD.h1x}}" sc-camel-y1="{{g.eCD.h1y}}" sc-camel-x2="{{g.eCD.h2x}}" sc-camel-y2="{{g.eCD.h2y}}" pathLength="100" fill="none" stroke="#ffd23f" stroke-width="16" stroke-linecap="round" pointer-events="none"></line>
 <line class="hlp {{g.eDA.hl}}" sc-camel-x1="{{g.eDA.h1x}}" sc-camel-y1="{{g.eDA.h1y}}" sc-camel-x2="{{g.eDA.h2x}}" sc-camel-y2="{{g.eDA.h2y}}" pathLength="100" fill="none" stroke="#ffd23f" stroke-width="16" stroke-linecap="round" pointer-events="none"></line>
 <line sc-camel-x1="{{g.trace.x1}}" sc-camel-y1="{{g.trace.y1}}" sc-camel-x2="{{g.trace.x2}}" sc-camel-y2="{{g.trace.y2}}" sc-camel-display="{{g.trace.d}}" class="{{g.trace.cls}}" stroke="#1e7bff" stroke-width="6" stroke-linecap="round" pointer-events="none"></line>
+<!-- screen 7: a glowing pen tip at the end of each leg being drawn -->
+<circle class="xtip" sc-camel-cx="{{g.tA.cx}}" sc-camel-cy="{{g.tA.cy}}" sc-camel-display="{{g.tA.d}}" r="7" fill="#ffffff" pointer-events="none"></circle>
+<circle class="xtip" sc-camel-cx="{{g.tB.cx}}" sc-camel-cy="{{g.tB.cy}}" sc-camel-display="{{g.tB.d}}" r="7" fill="#ffffff" pointer-events="none"></circle>
 <polygon class="outline-settle" sc-camel-points="{{g.poly}}" sc-camel-display="{{g.ol.d}}" fill="none" stroke="#1e7bff" stroke-width="6" stroke-linejoin="round" pointer-events="none"></polygon>
 <path sc-camel-d="{{g.tape.p}}" sc-camel-display="{{g.tape.d}}" class="tape" fill="none" stroke="#f7c531" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"></path>
 <path sc-camel-d="{{g.tapeTk.p}}" sc-camel-display="{{g.tapeTk.d}}" fill="none" stroke="#6b4c0c" stroke-width="1.6" stroke-linecap="round"></path>
