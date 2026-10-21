@@ -12,6 +12,7 @@
 //   build        the shape draws itself with a pen as the screen opens (CONFIG.build)
 //   autoNext     ms after the last line before moving on by itself, even with manual navigation
 //   sideNums     the four sides get numbers 1-4, each flying in from its own side
+//   noLetters    the corner letters stay hidden (screen 1: they fly in on screen 3)
 //   letterIn     the corner letters start hidden and fly in on a letters line
 //   autoAdvance  ms to wait before moving on, used only when CONFIG.flow.autoAdvance is on
 //   locked       no Back on this screen
@@ -119,8 +120,10 @@ const LESSON = {
   steps: [
     // screens 1-2 run on by themselves (autoNext) as one intro. The pen draws the shape as Swiftee arrives; on "4" (once
     // the outline is drawn) the sides are numbered 1 to 4, one after another
-    { id: 'intro', build: 1, sideNums: 1, autoNext: 2200, lines: [{ m: 'waving', t: 'Remember we learnt about\nquadrilaterals earlier.' }, // (the pen draws the shape as she says it)
-      { m: 'happy', t: 'Any polygon with 4 sides\nis called a quadrilateral.', noEmph: 1, cueAt: { 4: 'sideNumsGo' } }] },
+    // the lesson opens with Swiftee (she dives in) while the pen draws the shape; the corner letters wait for screen 3
+    { id: 'intro', build: 1, noLetters: 1, autoNext: 2200, lines: [{ m: 'waving', t: 'Remember we learnt about\nquadrilaterals earlier.' }] },
+    // in the narration box: on "4" the sides are numbered 1 to 4, one after another
+    { id: 'quadSides', sideNums: 1, autoNext: 2200, lines: [{ m: 'happy', t: 'Any polygon with 4 sides\nis called a quadrilateral.', noEmph: 1, cueAt: { 4: 'sideNumsGo' } }] },
     // spoken "A, B, C, D", shown "ABCD": each letter flies in as it is said
     { id: 'quadName', letterIn: 1, autoNext: 2200, lines: [{ m: 'happy', t: 'We can call it\nquadrilateral ABCD.', s: 'We can call it quadrilateral, A, B, C, D.', letters: 1, noEmph: 1, letterTimes: [2.28, 2.64, 2.88, 3.30] }] }, // letterTimes: A, B, C, D in the recording (vo003)
     // growFocus: the shape grows to 120% and back as she starts

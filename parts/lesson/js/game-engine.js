@@ -126,7 +126,11 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     this.pose('happy');
     if (document.documentElement.classList.contains('in-card')) { // in the water she dives in - unless the lesson opens on a narration-box screen, where she is not shown
       if (this.isPlate(this.cur())) { this.setState({ arriving: false }); then(); return; }
-      this.setState({ arriving: false }, () => this.dive(then)); return;
+      // she waits above the card until it is in full view (its fade-in, the front page fading away), so the whole dive
+      // from the top is seen: it used to start under the fade and she was halfway down when the card showed
+      G.set(sw, { x: 150, y: -640, rotation: 38, scale: 0.9, transformOrigin: '50% 50%' });
+      this.setState({ arriving: false }, () => this.whenInView(() => this.dive(then)));
+      return;
     }
     G.set(sw, { x: -520, y: -470, rotation: -14, scale: 0.72 });
     this.setState({ arriving: false }, () => {
@@ -172,6 +176,22 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       .to(sw, { rotation: -7, duration: 1.1, ease: 'power1.out' }, 0)
       .to(sw, { rotation: 0, duration: 0.5, ease: 'sine.inOut' }, 1.1)
       .to(sw, { scale: 1, duration: 1.3, ease: 'power2.out' }, 0);
+  }
+  // then(), once the lesson's card is in full view: its frame faded in, and nothing of the shell over it (the front page
+  // fading out, the loading veil). At most 3 s, so a shell that never says never holds the lesson
+  whenInView(then) {
+    const t0 = Date.now(), seen = (el) => { const c = getComputedStyle(el); return c.display !== 'none' && c.visibility !== 'hidden' && +c.opacity > 0.02; };
+    const check = () => {
+      let ok = true;
+      try {
+        const fe = window.frameElement, pd = fe && fe.ownerDocument;
+        if (fe && +getComputedStyle(fe).opacity < 0.98) ok = false;
+        if (pd) { const fr = pd.querySelector('.front'); if ((fr && seen(fr)) || pd.querySelector('.veil.on')) ok = false; }
+      } catch (e) {} // (another origin: no way to look, so go)
+      if (ok || Date.now() - t0 > 3000) { this.tm(then, 120); return; }
+      this.tm(check, 50);
+    };
+    check();
   }
   // mid-lesson, where Swiftee comes back after screens without her (the journey's plate screens): she dives in
   swifteeIn(then) { this.dive(then); }
@@ -1216,7 +1236,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   // card to itself. She stays where she does something: the opening (she flies in and recalls), the measuring rooms
   // (she measures), the hero screens and the summary (css/game.css .plate)
   isPlate(st) {
-    return !!(st && typeof document !== 'undefined' && document.documentElement.classList.contains('in-card') && !st.hero && !st.summary && st.room !== 'measure'); // (screen 1 too: its line in the narration box like every other screen, no Swiftee)
+    return !!(st && typeof document !== 'undefined' && document.documentElement.classList.contains('in-card') && !st.hero && !st.summary && st.room !== 'measure' && st.id !== 'intro'); // (screen 1: Swiftee opens the lesson with her own bubble)
   }
   // a plate screen's name plates sit just under the shape, clear of the bottom letters and lengths (never lower than
   // fitPlate.chipTop): the row's top, its 104 px height centring the plate
@@ -2193,7 +2213,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       const L = 1;
       // letterIn (screen 3): each corner letter stays hidden until the voice says it, then flies in from its corner
       const lin = st.letterIn ? ' vin c' + k : '';
-      tags.push({ t: k, x: r1(Vk.x + dx * 28), y: r1(Vk.y + dy * 28), cls: 'vlab' + (vOn(k) ? '' : ' off') + (st.sideNums ? ' off' : '') + lin });
+      tags.push({ t: k, x: r1(Vk.x + dx * 28), y: r1(Vk.y + dy * 28), cls: 'vlab' + (vOn(k) ? '' : ' off') + (st.sideNums || st.noLetters ? ' off' : '') + lin });
     });
     // two values at the ends of a short side can meet: the one pointing more steeply into the shape steps a little
     // deeper into its own corner, so they stack apart (never crossing, never leaving their corners). The values keep
