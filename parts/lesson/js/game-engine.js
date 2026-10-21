@@ -124,7 +124,10 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     this.unlockAudio();
     if (!sw || !G || Motion.reduced) { this.setState({ arriving: false }); then(); return; }
     this.pose('happy');
-    if (document.documentElement.classList.contains('in-card')) { this.setState({ arriving: false }, () => this.dive(then)); return; } // in the water she dives in
+    if (document.documentElement.classList.contains('in-card')) { // in the water she dives in - unless the lesson opens on a narration-box screen, where she is not shown
+      if (this.isPlate(this.cur())) { this.setState({ arriving: false }); then(); return; }
+      this.setState({ arriving: false }, () => this.dive(then)); return;
+    }
     G.set(sw, { x: -520, y: -470, rotation: -14, scale: 0.72 });
     this.setState({ arriving: false }, () => {
       const tl = G.timeline({ delay: 0.5, onComplete: () => { G.set(sw, { clearProps: 'transform' }); then(); } });
@@ -1213,7 +1216,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   // card to itself. She stays where she does something: the opening (she flies in and recalls), the measuring rooms
   // (she measures), the hero screens and the summary (css/game.css .plate)
   isPlate(st) {
-    return !!(st && typeof document !== 'undefined' && document.documentElement.classList.contains('in-card') && !st.hero && !st.summary && st.room !== 'measure' && st.id !== 'intro');
+    return !!(st && typeof document !== 'undefined' && document.documentElement.classList.contains('in-card') && !st.hero && !st.summary && st.room !== 'measure'); // (screen 1 too: its line in the narration box like every other screen, no Swiftee)
   }
   // a plate screen's name plates sit just under the shape, clear of the bottom letters and lengths (never lower than
   // fitPlate.chipTop): the row's top, its 104 px height centring the plate
