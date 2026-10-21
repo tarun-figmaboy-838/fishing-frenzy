@@ -20,6 +20,8 @@
   // (Motion.paced), so a child can follow them while the voice says the word. pace stretches every animation
   // started inside add() while it is set.
   const TEACH_PACE = 1.7;
+  // a tag's glow (a right answer, a question arriving): the tags' own gold rim swelling out, and back to nothing
+  const TAG_GLOW = '0 0 0 6px rgba(255,201,77,0.5), 0 6px 18px rgba(0,20,60,0.3)', TAG_GLOW_OFF = '0 0 0 0px rgba(255,201,77,0), 0 6px 18px rgba(0,20,60,0.3)';
   let pace = 1;
   const add = (fn) => {
     if (!ctx) return null;
@@ -654,8 +656,8 @@
       const all = $('.arc').concat($('.board .tag.alab'), $('.wedge'));
       add(() => {
         const tl = G.timeline();
-        if (chip) tl.to(chip, { scale: 1.06, boxShadow: '0 0 0 6px rgba(92,198,207,0.35), 0 4px 18px rgba(46,158,79,0.35)', duration: 0.3, ease: 'sine.out' }, 0)
-          .to(chip, { scale: 1, boxShadow: '0 4px 12px rgba(11,91,112,0.10)', duration: 0.5, ease: 'sine.inOut' }, 0.35);
+        if (chip) tl.to(chip, { scale: 1.06, boxShadow: TAG_GLOW, duration: 0.3, ease: 'sine.out' }, 0)
+          .to(chip, { scale: 1, boxShadow: TAG_GLOW_OFF, duration: 0.5, ease: 'sine.inOut' }, 0.35).set(chip, { clearProps: 'boxShadow' });
         tl.to(all, { opacity: 1, duration: 0.5, ease: 'sine.inOut' }, 2.6)
           .set(all, { clearProps: 'opacity,strokeWidth' });
         return tl;
@@ -719,15 +721,15 @@
       if (!G || !el) return;
       add(() => G.timeline()
         .fromTo(el, { opacity: 0, y: -14, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: reduced ? 0 : 0.5, ease: 'back.out(1.7)' })
-        .to(el, { boxShadow: '0 0 0 5px rgba(92,198,207,0.30), 0 4px 14px rgba(18,59,99,0.14)', duration: 0.3, ease: 'sine.out', yoyo: true, repeat: 1 }, '>+0.05'));
+        .to(el, { boxShadow: TAG_GLOW, duration: 0.3, ease: 'sine.out', yoyo: true, repeat: 1 }, '>+0.05').set(el, { clearProps: 'boxShadow' }));
     },
     // a soft success glow round the latest label, after `delay` s (screen 27's right answer)
     chipGlow(delay) {
       const chips = $('.chip'), el = chips[chips.length - 1];
       if (!G || !el) return;
       add(() => G.timeline({ delay: delay || 0 })
-        .to(el, { scale: 1.06, boxShadow: '0 0 0 6px rgba(92,198,207,0.35), 0 4px 18px rgba(46,158,79,0.35)', duration: 0.3, ease: 'sine.out' })
-        .to(el, { scale: 1, boxShadow: '0 4px 12px rgba(11,91,112,0.10)', duration: 0.5, ease: 'sine.inOut' }, '>+0.05'));
+        .to(el, { scale: 1.06, boxShadow: TAG_GLOW, duration: 0.3, ease: 'sine.out' })
+        .to(el, { scale: 1, boxShadow: TAG_GLOW_OFF, duration: 0.5, ease: 'sine.inOut' }, '>+0.05').set(el, { clearProps: 'boxShadow' }));
     },
 
     // screen 28, as the line starts: the shape gives a small squash, as if about to change
@@ -972,7 +974,7 @@
       if (!G) return;
       add(() => G.timeline()
         .to($('.q3-q'), { scale: 1.2, transformOrigin: '50% 50%', duration: 0.3, yoyo: true, repeat: 1 }, 0)
-        .to($('.q3-hint'), { boxShadow: '0 0 0 6px rgba(92,198,207,0.35), 0 4px 14px rgba(11,91,112,0.12)', duration: 0.3, yoyo: true, repeat: 1 }, 0.1));
+        .to($('.q3-hint'), { boxShadow: TAG_GLOW, duration: 0.3, yoyo: true, repeat: 1 }, 0.1).set($('.q3-hint'), { clearProps: 'boxShadow' }));
     },
     // the right answer: 60° flies from its card to D and replaces the "?", A and D glow, the hint equation reads
     // "120° + 60° = 180°" and its two wedges close into a straight angle
@@ -994,11 +996,11 @@
         .call(() => {
           const ops = h.querySelectorAll('.q3h-op');
           h.querySelector('.q3h-a').textContent = '120°'; ops[0].textContent = '+'; ops[1].textContent = '=';
-          const x = h.querySelector('.q3h-x'); x.textContent = '60°'; x.style.color = '#ffab00'; // (∠D's and ∠A's own colours, bright on the navy tag) h.querySelector('.q3h-s').textContent = '180°';
+          const x = h.querySelector('.q3h-x'); x.textContent = '60°'; x.style.color = '#ffab00'; h.querySelector('.q3h-s').textContent = '180°'; // (∠D's and ∠A's own colours, bright on the navy tag)
           h.querySelector('.q3h-a').style.color = '#ff7a00'; h.querySelector('.q3h-s').style.color = '';
         }, null, 0.9)
-        .fromTo(h, { scale: 0.92 }, { scale: 1.06, boxShadow: '0 0 0 6px rgba(46,158,79,0.28), 0 4px 18px rgba(46,158,79,0.3)', duration: 0.3, ease: 'back.out(2)' }, 0.9)
-        .to(h, { scale: 1, duration: 0.4 }, 1.3));
+        .fromTo(h, { scale: 0.92 }, { scale: 1.06, boxShadow: TAG_GLOW, duration: 0.3, ease: 'back.out(2)' }, 0.9)
+        .to(h, { scale: 1, boxShadow: TAG_GLOW_OFF, duration: 0.4 }, 1.3).set(h, { clearProps: 'boxShadow' }));
     },
 
     // ---------- screen 41 (check 4: label the trapeziums) ----------

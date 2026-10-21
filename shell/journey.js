@@ -183,7 +183,7 @@
     if (f) drop(f); // on its way out (hideLesson, dispose): a fresh frame takes its place at once, so nothing reuses a frame that is being torn down
     const el = document.createElement('iframe');
     el.className = 'part';
-    el.title = p.title;
+    el.dataset.part = p.title; // (not a title: the browser showed it as a tooltip over the game; the frame is aria-hidden)
     el.setAttribute('allow', 'autoplay; fullscreen');
     el.setAttribute('aria-hidden', 'true');
     el.tabIndex = -1;

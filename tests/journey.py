@@ -45,7 +45,7 @@ SHELL = '''() => { const T = window.FishingFrenzy;
   return { phase: T.phase, current: T.current, f1: T.status('fishing-1'), lesson: T.status('lesson'), f2: T.status('fishing-2'),
            frames: document.querySelectorAll('iframe.part').length, live: document.querySelectorAll('iframe.part.live').length,
            cover: !document.getElementById('cover').hidden, veil: document.getElementById('veil').className,
-           leaving: [...document.querySelectorAll('iframe.part.leaving')].map(f => f.title),
+           leaving: [...document.querySelectorAll('iframe.part.leaving')].map(f => f.dataset.part),
            ctx: T.audio.ctx ? T.audio.ctx.state : null, inset: T.inset,
            insetIn: !!document.querySelector('iframe.part.inset.in'),
            insetRect: (() => { const e = document.querySelector('iframe.part.inset'); if (!e) return null; const r = e.getBoundingClientRect(); return [r.left, r.top, r.width, r.height]; })() }; }'''
