@@ -145,22 +145,27 @@
     // screen 2: the side numbers 1-4 (top, right, bottom, left) glide in from their own sides, one after another;
     // onLand(i) fires as number i settles
     sideNumsHide() { const els = $('.tag.snum'); if (G && els.length) add(() => { centred(els); G.set(els, { opacity: 0 }); }); },
-    // onSide(i) starts side i's marker as its number starts: both take 0.35 s (css .side-nums .hl.on), so the number
-    // lands as its side finishes lighting, and the next side follows straight on
+    // onSide(i) starts side i's marker as its number starts: both take 0.4 s with the same ease (css .side-nums .hl.on),
+    // so the number lands as its side finishes lighting, and the count keeps one steady beat (gap). It always runs at
+    // its written speed: the teaching pace would slow only the numbers, never the css markers
     sideNums(onSide) {
       const els = ['.tag.snum.n1', '.tag.snum.n2', '.tag.snum.n3', '.tag.snum.n4'].map((s) => $(s)[0]).filter(Boolean);
       if (!G || !els.length) { els.forEach((e, i) => onSide && onSide(i)); return; }
-      const from = [{ y: -46 }, { x: 46 }, { y: 46 }, { x: -46 }], gap = 0.45;
-      add(() => {
-        centred(els);
-        const tl = G.timeline();
-        els.forEach((el, i) => {
-          tl.call(() => onSide && onSide(i), null, i * gap)
-            .fromTo(el, Object.assign({ opacity: 0, x: 0, y: 0 }, from[i]),
-              { opacity: 1, x: 0, y: 0, duration: reduced ? 0 : 0.35, ease: 'power2.out' }, i * gap);
+      const from = [{ y: -40 }, { x: 40 }, { y: 40 }, { x: -40 }], gap = 0.5, was = pace;
+      pace = 1;
+      try {
+        add(() => {
+          centred(els);
+          G.to($('.outline-settle'), { opacity: 0, duration: 0.15, overwrite: true }); // the outline's flash is drawn over the markers: it ends as the count starts
+          const tl = G.timeline();
+          els.forEach((el, i) => {
+            tl.call(() => onSide && onSide(i), null, i * gap)
+              .fromTo(el, Object.assign({ opacity: 0, x: 0, y: 0 }, from[i]),
+                { opacity: 1, x: 0, y: 0, duration: reduced ? 0 : 0.4, ease: 'power1.out' }, i * gap);
+          });
+          return tl;
         });
-        return tl;
-      });
+      } finally { pace = was; }
     },
 
     // screens 9 and 11: the parallel pair AB, DC pulses together with a soft purple glow (with its dashed

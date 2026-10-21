@@ -232,7 +232,7 @@ def journey(p, engine):
     lf = part(page, 'lesson')
     ls = until(lambda: lf.evaluate(LESSON), lambda s: s['started'] and s['line'], 15, 'the lesson speaks')
     check(ls['inCard'] and ls['seeThrough'] and ls['winterHidden'], f'{tag}: the lesson is on the card: see-through, with no winter scene or snow')
-    check(ls['of'] == 35 and ls['nav'] == 0, f'{tag}: the lesson has 35 screens and no Next, Back or screen list', f"{ls['of']} screens, {ls['nav']} buttons")
+    check(ls['of'] == 37 and ls['nav'] == 0, f'{tag}: the lesson has 37 screens and no Next, Back or screen list', f"{ls['of']} screens, {ls['nav']} buttons")
     check('Any polygon with 4 sides' in ls['line'], f'{tag}: screen 1 opens with Swiftee\'s first line', ls['line'])
     check(ls['shared'], f'{tag}: the lesson plays through the journey\'s AudioContext')
     if engine == 'chromium':
@@ -250,7 +250,7 @@ def journey(p, engine):
     # card closes
     order = lf.evaluate('() => lessonDebug.steps().map((x) => x.id)')
     k5, kr = order.index('cfu5'), order.index('recap')
-    check(order.index('cfu1') == order.index('defFull') + 1 and k5 == order.index('iso') + 1 and order.index('cfu3') == order.index('rule') + 1
+    check(order.index('cfu1') == order.index('defFull') + 1 and k5 == order.index('sidesDone') + 1 and order.index('cfu3') == order.index('rule') + 1
           and order.index('cfu2') == order.index('right') + 1 and kr == len(order) - 1,
           f'{tag}: each check follows its concept, and the summary ends the lesson', ', '.join(f"{c}@{order.index(c) + 1}" for c in ('cfu1', 'cfu5', 'cfu3', 'cfu2', 'cfu4')))
     lf.evaluate(f'() => window.lessonDebug.jumpTo({k5})')
@@ -419,7 +419,7 @@ def devjumps(p):
     ctx.add_init_script(INIT)
     page = ctx.new_page()
     page.goto((ROOT / 'index.html').as_uri() + '?dev=1&debug')
-    page.wait_for_function('() => document.querySelectorAll(".dev-part[data-part=lesson] button.j").length >= 35', timeout=120000)
+    page.wait_for_function('() => document.querySelectorAll(".dev-part[data-part=lesson] button.j").length >= 37', timeout=120000)
     check(True, 'dev: from disk, the panel lists every part\'s screens')
     page.click('.dev-tag')
     page.locator('.dev-part[data-part="lesson"] button.j').nth(2).click()

@@ -186,6 +186,10 @@ const LESSON = {
     { id: 'iso', lenPre: 1, tickPre: 1, lines: [{ t: 'A trapezium where legs are\nof same length is called\nan isosceles trapezium.', legsAt: 'same', holdChips: 1, noEmph: 1,
       cueAt: { trapezium: 'shapePop', isosceles: 'isoName' }, chips: [{ t: 'Isosceles trapezium', k: 'name' }] }],
       f: { par: 1, legLen: 1, ticks: 1 } },
+    // from here on the angle shape (A 120°, B 105°, C 75°, D 60°); it fades in as she starts,
+    // the arrows pop on at "sides" and the name label at "trapezium"
+    { id: 'sidesDone', shape: 1, shapePre: 1, chevPre: 1, voiceDelay: 400, lines: [{ m: 'happy', t: 'We know all about the sides\nof a trapezium.', noEmph: 1, onStart: 'shapeIn',
+      holdChips: 1, cueAt: { sides: 'chevIn', trapezium: 'showTitle' }, chips: [{ t: 'Trapezium', k: 'name' }] }], f: { par: 1 } },
     // check 2, after the sides (scalene, isosceles): the missing side of an isosceles trapezium
     { id: 'cfu5', cfu: 5, optTop: 458, plateOptDy: 36, okFx: 'q5Correct', badFx: 'q5Wrong', optsAfter: 1, // (plateOptDy: in the card, clear of the 10 cm and the corner letters)
       // cueTimes from the recording (vo200, the lengths said in full): "A B" 2.06 s, "C D" 4.24, "A D" 6.84, "B C" 9.84
@@ -253,6 +257,7 @@ const LESSON = {
         { id: 'c', t: '50°', fb: 'Angles on the same leg add up to 180°.' },
         { id: 'd', t: '180°', fb: 'Angles on the same leg add up to 180°.' }
       ] },
+    { id: 'what90', lines: [{ m: 'curious', t: 'What if we make one of\nthe angles 90°?', cueAt: { 90: { fn: 'vertexPulse', sfx: 'chime' } } }], f: { par: 1, arcs: 'ABCD' } },
     { id: 'make90', fitShape: 1, lines: [{ m: 'curious', t: 'Drag any vertex to make any angle 90°.' }],
       task: 'drag90', 
       after: [{ m: 'happy', t: 'Great job!' }], revealLine: 'Watch! Now ∠{k} is 90°. That is a right angle.', // ({k}: the corner she puts right)

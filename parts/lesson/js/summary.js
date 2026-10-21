@@ -165,6 +165,7 @@
       if (this.ctx) { this.ctx.revert(); this.ctx = null; }
       const sw = document.querySelector('.stage .swiftee'), bub = document.querySelector('.stage .bubble');
       if (sw && G) G.set(sw, { clearProps: 'transform,opacity' });
+      this.peekMask(false);
       if (bub) { bub.style.marginBottom = ''; bub.style.maxWidth = ''; }
       if (this.root) this.root.innerHTML = '';
       this.root = null; this.S = null; this.busy = false;
@@ -192,8 +193,9 @@
       if (bub) { bub.style.marginBottom = (-P.y - (this.spot === 'peek' && inCard() ? BUB.tailDy : 0)) + 'px'; bub.style.maxWidth = this.spot === 'middle' ? '470px' : ''; }
       if (!sw || !G) return Promise.resolve(this.live());
       const to = { y: P.y + (down ? P.hide : 0), scale: P.s, opacity: down ? 0 : 1 };
-      if (!ms || reduced()) { this.ctx.add(() => G.set(sw, to)); return Promise.resolve(this.live()); }
-      return new Promise((res) => this.ctx.add(() => G.to(sw, Object.assign(to, { duration: ms / 1000, ease: down ? 'power2.in' : 'power3.out', onComplete: () => res(this.live()) }))));
+      const mask = () => this.peekMask(this.spot === 'peek' && inCard()); // (behind the see-through bubble: cut out where it covers her)
+      if (!ms || reduced()) { this.ctx.add(() => { G.set(sw, to); mask(); }); return Promise.resolve(this.live()); }
+      return new Promise((res) => this.ctx.add(() => G.to(sw, Object.assign(to, { duration: ms / 1000, ease: down ? 'power2.in' : 'power3.out', onStart: mask, onUpdate: mask, onComplete: () => { mask(); res(this.live()); } }))));
     },
     // rise: start out of sight, come up (340 ms). sink: drop out of sight (300 ms)
     rise(where) { this.place(where, true, 0); this.eng.pose('happy'); return this.place(where, false, 340); },
@@ -245,20 +247,41 @@
       return g;
     },
     // a rounded name plate sized to its text; o sets height, font size, minimum width and rim (the album plates)
-    // a glassy bubble: a soft shadow under it, a pale-aqua body (opaque enough to hide Swiftee behind it), a white rim
-    // and a fainter inner one, and a curved glare with a small dot - all under the idea drawn in it
+    // a real bubble, like the card's own: see-through (the water shows through its middle), brightening to a thin
+    // white rim where the film turns edge-on, a faint soap-film rainbow round the edge, a window glint top left and a
+    // soft crescent bottom right. No shadow: it floats. Its skin sways gently (css .sum-bub-skin); the idea drawn in
+    // it stays still. Swiftee peeking from behind it is cut out where it covers her (peekMask)
     bubble(parent, cx, cy, r) {
-      if (!this.defs.querySelector('#sumGlass')) {
-        const rg = mk('radialGradient', { id: 'sumGlass', cx: '46%', cy: '40%', r: '62%' }, this.defs);
-        [['0%', '#f6fdff', 0.98], ['70%', '#e2f7fc', 0.97], ['100%', '#a6e2f3', 0.97]].forEach((st) => mk('stop', { offset: st[0], 'stop-color': st[1], 'stop-opacity': st[2] }, rg));
+      if (!this.defs.querySelector('#sumFilm')) {
+        const rg = mk('radialGradient', { id: 'sumFilm', cx: '50%', cy: '50%', r: '50%' }, this.defs);
+        [['0%', '#ffffff', 0.12], ['60%', '#effcff', 0.16], ['82%', '#ffffff', 0.26], ['94%', '#ffffff', 0.5], ['100%', '#ffffff', 0.8]]
+          .forEach((st) => mk('stop', { offset: st[0], 'stop-color': st[1], 'stop-opacity': st[2] }, rg));
+        const sh = mk('linearGradient', { id: 'sumSheen', x1: 0, y1: 0, x2: 1, y2: 1 }, this.defs);
+        [['0%', '#7ff3ff'], ['28%', '#b9a2ff'], ['52%', '#ff9fd8'], ['76%', '#ffe58a'], ['100%', '#8dffc6']].forEach((st) => mk('stop', { offset: st[0], 'stop-color': st[1] }, sh));
+        const soft = mk('filter', { id: 'sumSoft', x: '-20%', y: '-20%', width: '140%', height: '140%' }, this.defs);
+        mk('feGaussianBlur', { stdDeviation: 2.4 }, soft);
       }
-      mk('ellipse', { cx: cx, cy: cy + 10, rx: r * 0.98, ry: r * 0.98, fill: 'rgba(0, 40, 80, 0.2)', style: 'filter: blur(7px)' }, parent);
-      mk('circle', { cx: cx, cy: cy, r: r, fill: 'url(#sumGlass)', stroke: '#ffffff', 'stroke-width': 5, 'stroke-opacity': 0.92 }, parent);
-      mk('circle', { cx: cx, cy: cy, r: r - 9, fill: 'none', stroke: 'rgba(70, 185, 228, 0.42)', 'stroke-width': 2.5 }, parent);
-      const gr = r * 0.86, a0 = Math.PI * 1.1, a1 = Math.PI * 1.38;
-      mk('path', { d: 'M' + f1(cx + gr * Math.cos(a0)) + ',' + f1(cy + gr * Math.sin(a0)) + ' A' + f1(gr) + ',' + f1(gr) + ' 0 0 1 ' + f1(cx + gr * Math.cos(a1)) + ',' + f1(cy + gr * Math.sin(a1)),
-        fill: 'none', stroke: '#ffffff', 'stroke-width': 10, 'stroke-linecap': 'round', opacity: 0.85 }, parent);
-      mk('circle', { cx: f1(cx + r * 0.5), cy: f1(cy - r * 0.66), r: 7, fill: '#ffffff', opacity: 0.8 }, parent);
+      const skin = mk('g', { 'class': 'sum-bub-skin' }, parent);
+      mk('circle', { cx: cx, cy: cy, r: r, fill: 'url(#sumFilm)' }, skin);
+      mk('circle', { cx: cx, cy: cy, r: f1(r * 0.955), fill: 'none', stroke: 'url(#sumSheen)', 'stroke-width': f1(r * 0.07), opacity: 0.5, filter: 'url(#sumSoft)' }, skin);
+      mk('circle', { cx: cx, cy: cy, r: r, fill: 'none', stroke: '#ffffff', 'stroke-width': f1(r * 0.014), 'stroke-opacity': 0.92 }, skin);
+      // the glints hug the rim (clear of the idea inside): a curved window top left with a dot after it, a faint crescent bottom right
+      const arc = (rr, a0, a1, w, o) => mk('path', { d: 'M' + f1(cx + rr * Math.cos(a0)) + ',' + f1(cy + rr * Math.sin(a0)) + ' A' + f1(rr) + ',' + f1(rr) + ' 0 0 1 ' + f1(cx + rr * Math.cos(a1)) + ',' + f1(cy + rr * Math.sin(a1)),
+        fill: 'none', stroke: '#ffffff', 'stroke-width': f1(w), 'stroke-linecap': 'round', opacity: o }, skin);
+      arc(r * 0.82, Math.PI * 1.06, Math.PI * 1.3, r * 0.075, 0.8);
+      mk('circle', { cx: f1(cx + r * 0.82 * Math.cos(Math.PI * 1.39)), cy: f1(cy + r * 0.82 * Math.sin(Math.PI * 1.39)), r: f1(r * 0.04), fill: '#ffffff', opacity: 0.8 }, skin);
+      arc(r * 0.84, Math.PI * 0.12, Math.PI * 0.36, r * 0.04, 0.45);
+    },
+    // the big bubble is see-through, so while Swiftee peeks from behind it its disc is cut out of her: a mask in her own
+    // box, worked out again every frame she moves (on: false takes it off)
+    peekMask(on) {
+      const sw = document.querySelector('.stage .swiftee');
+      if (!sw) return;
+      if (!on || !this.svg || !this.svg.getScreenCTM) { sw.style.maskImage = sw.style.webkitMaskImage = ''; return; }
+      const M = this.svg.getScreenCTM(), rc = sw.getBoundingClientRect(), k = rc.width / (sw.offsetWidth || 1);
+      if (!M || !k) return;
+      const x = (M.a * BUB.cx + M.e - rc.left) / k, y = (M.d * BUB.cy + M.f - rc.top) / k, R = (M.a * BUB.r) / k;
+      sw.style.maskImage = sw.style.webkitMaskImage = 'radial-gradient(circle ' + f1(R) + 'px at ' + f1(x) + 'px ' + f1(y) + 'px, transparent ' + f1(R - 0.5) + 'px, #000 ' + f1(R + 0.5) + 'px)';
     },
     // On the journey's card every plate has the instruction plate's look, a little larger: navy glass, a gold rim and gold
     // lettering (a white or cream pill was lost on the sand and looked off the game's theme)

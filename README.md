@@ -7,7 +7,7 @@ A voiced maths adventure for young learners, in three parts that play as one jou
    the bird flies in: "Let's find out!"
 2. **Swiftee's trapezium lesson** (`parts/lesson`), inside the lake: Popo rows in, the seashell on the sand rattles
    and opens, its pearl blows a bubble up and out springs a big card. The camera dives into the water, and the
-   lesson plays on the card (35 screens: what makes a trapezium, its bases and legs, its types, its angles, a recap
+   lesson plays on the card (37 screens: what makes a trapezium, its bases and legs, its types, its angles, a recap
    and five checks) while the water moves and shadow fish swim behind it.
 3. **Popo's trapezium fishing** (`parts/fishing-2`): the card closes, Swiftee swoops in ("Great job! You know all
    about trapeziums!") and Popo catches trapezium fish across five levels, ending on "The End".
