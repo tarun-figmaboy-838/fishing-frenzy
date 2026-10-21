@@ -232,7 +232,7 @@ def journey(p, engine):
     lf = part(page, 'lesson')
     ls = until(lambda: lf.evaluate(LESSON), lambda s: s['started'] and s['line'], 15, 'the lesson speaks')
     check(ls['inCard'] and ls['seeThrough'] and ls['winterHidden'], f'{tag}: the lesson is on the card: see-through, with no winter scene or snow')
-    check(ls['of'] == 33 and ls['nav'] == 0, f'{tag}: the lesson has 33 screens and no Next, Back or screen list', f"{ls['of']} screens, {ls['nav']} buttons")
+    check(ls['of'] == 35 and ls['nav'] == 0, f'{tag}: the lesson has 35 screens and no Next, Back or screen list', f"{ls['of']} screens, {ls['nav']} buttons")
     check('Any polygon with 4 sides' in ls['line'], f'{tag}: screen 1 opens with Swiftee\'s first line', ls['line'])
     check(ls['shared'], f'{tag}: the lesson plays through the journey\'s AudioContext')
     if engine == 'chromium':
@@ -419,7 +419,7 @@ def devjumps(p):
     ctx.add_init_script(INIT)
     page = ctx.new_page()
     page.goto((ROOT / 'index.html').as_uri() + '?dev=1&debug')
-    page.wait_for_function('() => document.querySelectorAll(".dev-part[data-part=lesson] button.j").length >= 33', timeout=120000)
+    page.wait_for_function('() => document.querySelectorAll(".dev-part[data-part=lesson] button.j").length >= 35', timeout=120000)
     check(True, 'dev: from disk, the panel lists every part\'s screens')
     page.click('.dev-tag')
     page.locator('.dev-part[data-part="lesson"] button.j').nth(2).click()

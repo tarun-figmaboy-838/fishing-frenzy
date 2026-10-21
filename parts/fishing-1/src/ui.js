@@ -37,7 +37,9 @@ class UI {
   }
 
   // A story line: a speech bubble (Popo's or Swiftee's, anchored at a stage point) or the narrator's caption.
-  // Every word is laid out up front (hidden) so the bubble never resizes as words appear.
+  // A bubble is laid out whole once (balanced) to pin where its line breaks, then its words take no room until they
+  // are said: it grows with them and no word ever jumps to another line (as in fishing 2). The caption lays every
+  // word out up front (hidden), so it never resizes.
   showLine(who, words) {
     this.hideLines();
     const el = who === 'narrator' ? this.el.caption : this.el.speech;
@@ -52,8 +54,19 @@ class UI {
     });
     el.classList.toggle('swiftee', who === 'swiftee');
     el.hidden = false;
+    this.breaks = null;
     if (el === this.el.speech) {
-      this.speechBox = { w: el.offsetWidth, h: el.offsetHeight, em: parseFloat(getComputedStyle(el).fontSize) };
+      el.classList.add('measuring');
+      const mids = this.wordEls.map((span) => span.offsetTop + span.offsetHeight / 2); // (a word's middle: stressed words sit higher)
+      const em = parseFloat(getComputedStyle(el).fontSize);
+      this.speechBox = { w: el.offsetWidth, h: el.offsetHeight, em };
+      el.classList.remove('measuring');
+      this.breaks = this.wordEls.map((span, i) => {
+        if (!i || mids[i] - mids[i - 1] < em * 0.6) return null;
+        const br = document.createElement('br');
+        line.insertBefore(br, span);
+        return br;
+      });
     }
     el.classList.remove('pop', 'bump');
     void el.offsetWidth;
@@ -65,6 +78,7 @@ class UI {
   revealWord(i, bump) {
     const span = this.wordEls && this.wordEls[i];
     if (span) span.classList.add('in');
+    if (this.breaks && this.breaks[i]) this.breaks[i].classList.add('in');
     if (bump && this.lineEl === this.el.speech) {
       this.el.speech.classList.remove('pop', 'bump');
       void this.el.speech.offsetWidth;

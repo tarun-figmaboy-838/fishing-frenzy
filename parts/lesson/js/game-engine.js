@@ -1370,6 +1370,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   // Highlight cues share one focus language (emphasize): the named sides get the gold highlighter, corners ping,
   // angles glow, and the rest of the shape steps back while Swiftee talks about them
   glowLegs() { this.emphasize(['DA', 'BC']); }
+  growAD() { this.emphasize(['aA', 'aD']); } // the pair already swept open as the screen opened: now it is pointed out
   parPulse() { this.emphasize(['AB', 'CD']); Motion.parallelShow(); } // the arrows run along both bases the same way
   suppConfirmLater() { const tok = this.stepTok; this.holdFor(3800); this.tm(() => { if (tok !== this.stepTok) return; this.sfx('snap'); Motion.suppConfirm(); }, 2800); }
   // screen 1, on "4 sides": the sides are numbered one after another, each side lighting up as its number lands (once
@@ -2354,7 +2355,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       boardZ: this.boardMap().s || 1, // the board's zoom: angle values keep one size on screen (css .tag.alab)
       boardTf: st.room === 'measure' ? tf(CONFIG.measureRoom) : !st.noZoom ? tf(this.fit || (plate ? CONFIG.lessonZoomPlate : CONFIG.lessonZoom)) : 'translate(' + CONFIG.scene.boardX + 'px, ' + (st.boardShiftY || 0) + 'px)',
       // focusing: a part is being named, so the rest of the shape steps back
-      boardCls: fadeV + (s.tracking ? ' tracking' : '') + (st.sideNums ? ' side-nums' : '') + (Object.keys(s.emph || {}).length ? ' focusing' : '') + (st.shapePre ? ' shape-pre' : '') + (st.parStrong ? ' par-strong' : '') + (st.lenPre ? ' len-pre' : '') + (st.tickPre ? ' tick-pre' : '') + (st.chevPre ? ' chev-pre' : '') + (st.legsSet ? ' legs-set' : '') + (st.right90 && st.r90Pre ? ' r90pre' : ''),
+      boardCls: fadeV + (s.tracking ? ' tracking' : '') + (st.sideNums ? ' side-nums' : '') + (st.build && !(s.build && s.build.done) ? ' pre-build' : '') + (Object.keys(s.emph || {}).length ? ' focusing' : '') + (st.shapePre ? ' shape-pre' : '') + (st.parStrong ? ' par-strong' : '') + (st.lenPre ? ' len-pre' : '') + (st.tickPre ? ' tick-pre' : '') + (st.chevPre ? ' chev-pre' : '') + (st.legsSet ? ' legs-set' : '') + (st.right90 && st.r90Pre ? ' r90pre' : ''),
       // pulse: the shape and its labels zoom once about the shape's centre
       popO: s.P ? Math.round((s.P.A.x + s.P.B.x + s.P.C.x + s.P.D.x) / 4) + 'px ' + Math.round((s.P.A.y + s.P.B.y + s.P.C.y + s.P.D.y) / 4) + 'px' : 'center',
       swCls: s.swAway || s.arriving ? 'swiftee away' : 'swiftee',

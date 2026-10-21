@@ -170,12 +170,20 @@ html, body {
 .speech[hidden], .caption[hidden] { display: none; }
 .line .w { display: inline-block; visibility: hidden; white-space: pre; }
 .line .w.in { visibility: visible; animation: word-in 0.32s cubic-bezier(0.2, 1.8, 0.4, 1); }
-.line .w.em { color: var(--accent); font-weight: 700; font-size: 1.15em; }
+/* a bubble's words take no room until they're said, so it grows with them; the breaks are pinned where the whole line
+   wraps (balanced), so words never jump between lines as it grows (as in fishing 2) */
+.speech .line { white-space: nowrap; }
+.speech .line .w { display: none; }
+.speech .line br:not(.in) { display: none; }
+.speech .line .w.in { display: inline-block; }
+.speech.measuring .line { white-space: normal; text-wrap: balance; }
+.speech.measuring .line .w { display: inline-block; animation: none; }
+.line .w.em { color: var(--accent); font-weight: 700; font-size: 1.15em; transform-origin: 0 75%; } /* (it pops from its left edge, clear of the word before) */
 .line .w.em.in { animation: word-boing 0.55s cubic-bezier(0.2, 1.8, 0.4, 1); }
 @keyframes word-in { from { transform: translateY(0.35em) scale(0.4); opacity: 0; } }
 @keyframes word-boing {
   0% { transform: scale(0.2); opacity: 0; }
-  55% { transform: scale(1.3); opacity: 1; }
+  55% { transform: scale(1.14); opacity: 1; }
   80% { transform: scale(0.94); }
 }
 

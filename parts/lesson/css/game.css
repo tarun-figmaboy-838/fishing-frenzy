@@ -11,7 +11,7 @@ a{color:#123b63}a:hover{color:#0b2742}
 html.in-card,html.in-card body,html.in-card .stage-root,html.in-card .stage{background:transparent}
 html.in-card .stage>img.bg-winter,html.in-card .stage>canvas.snowfall{display:none}
 html.in-card .swiftee img.swiftee-still[src*="winter-scarf"]{display:none} /* in the water she wears her diving mask (js/dive-mask.js), not her scarf */
-html.in-card .stage.scene .panel-img,html.in-card .stage.scene.measure-room .slab-img{opacity:0!important} /* no ice panel or measuring slab on the card: a card on the card looked odd */
+html.in-card .stage .panel-img,html.in-card .stage .slab-img{display:none!important} /* no ice panel or measuring slab on the card: a card on the card looked odd */
 html.in-card .bubble{background:#fff}
 html.in-card .bubble-tail path{fill:#fff}
 /* on the card Swiftee stands on its sand (the card's bottom band), and she and her bubble sit 36px further left, so the pair is centred between the card's
@@ -687,11 +687,10 @@ html.in-card .stage .chip.name.long{font-size:30px;padding:9px 34px 7px}
 html.in-card .stage .chip.white,html.in-card .stage .chip.gold:not(.eq-build):not(.sumstep){font-size:33px;padding:9px 38px 7px}
 html.in-card .stage .chip.gold.sumstep{width:330px;font-size:27px}
 html.in-card .stage .chip .chip-res,html.in-card .eq-layer .chip .chip-res{color:#ffd166}
-/* "AB ∥ CD" (screen 8): the parallel sign spaced clear of the side names, and what it means in words under it */
-.stage .chip.par{text-align:center;word-spacing:.32em;line-height:1.05;padding-top:8px;padding-bottom:9px}
-.stage .chip.par .chip-res{display:block;word-spacing:normal;font-size:.56em;font-weight:700;letter-spacing:.02em;margin-top:3px}
-html.in-card .stage .chip.par .chip-res{color:#ffd166}
+/* "AB ∥ CD" (screen 8): the parallel sign spaced clear of the side names */
+.stage .chip.par{word-spacing:.32em}
 html.in-card .eq-layer .chip.gold.eq-build{font-size:32px;padding:9px 36px 7px} /* (the equation built on screens 21-22: as large as the other tags; the animation measures it) */
+html.in-card .eq-layer .chip.gold.eq-build.eq-pair{font-size:23px;padding:8px 22px 7px} /* (the two sums side by side, screen 27: they must not meet) */
 html.in-card .eq-layer .eq-q,html.in-card .eq-layer .eq-res{color:#ffd166}
 /* the angle sums under the shape (screens 24-25): navy too, each keeping its pair's coloured rim */
 html.in-card .stage .tag.sum.sumL,html.in-card .stage .tag.sum.sumR{background:linear-gradient(180deg,#103a7a,#061e4a);color:#fff8ec;font-size:21px;padding:7px 16px;
@@ -709,6 +708,7 @@ html.in-card .stage .tag.sum.sumL,html.in-card .stage .tag.sum.sumR{background:l
   filter:drop-shadow(0 0 0.8px #0b2a55) drop-shadow(0 0 0.8px #0b2a55) drop-shadow(0 0 0.6px #0b2a55)}
 @keyframes hlDraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
 .side-nums .hl.on{animation-duration:.35s} /* screen 1: each side lights in step with its number (Motion.sideNums) */
+.pre-build .shape-fill{opacity:0!important} /* screen 1: no fill until the pen has drawn the outline (it showed as a ghost for a frame) */
 .hlp.hl{stroke:#ffffff}
 .hlp.hl.on{stroke-width:15px;stroke-dasharray:.4 300;animation:hlPen .55s cubic-bezier(.45,0,.35,1) both;filter:drop-shadow(0 0 2px #ff9d00) drop-shadow(0 0 5px #ffb300)}
 @keyframes hlPen{0%{stroke-dashoffset:0;opacity:1}90%{stroke-dashoffset:-100;opacity:1}100%{stroke-dashoffset:-100;opacity:0}}

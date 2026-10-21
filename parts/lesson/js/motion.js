@@ -330,7 +330,7 @@
       stage.appendChild(box);
       add(() => G.timeline()
         .fromTo(box, { xPercent: -50, yPercent: -50, x: 0, opacity: 0, y: 14, scale: 0.94 }, { opacity: sp.dim ? 0.5 : 1, y: 0, scale: 1, duration: 0.35, ease: 'power2.out' }, 0.15)
-        .fromTo(box.querySelector('.eq-q'), { scale: 1 }, { scale: 1.25, color: '#d9640a', duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 0.6));
+        .fromTo(box.querySelector('.eq-q'), { scale: 1 }, { scale: 1.25, color: '#ffab00', duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 0.6)); // (bright: it pulses inside a navy tag)
     },
     // "add": copies of the two values lift off the shape and fly, one after the other, to the answer side;
     // the first replaces the "?", then the "+" appears and the second lands beside it
@@ -441,7 +441,7 @@
         const tl = G.timeline();
         tl.fromTo(r, { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.8)' }, 0)
           .fromTo(c, { boxShadow: '0 0 0 0px rgba(255,196,60,0)' }, { boxShadow: '0 0 0 6px rgba(255,214,110,.5)', duration: 0.35, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.1);
-        if (strong) tl.to(r, { scale: 1.18, color: '#d9640a', duration: 0.28, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.55);
+        if (strong) tl.to(r, { scale: 1.18, color: '#ffab00', duration: 0.28, ease: 'sine.out', yoyo: true, repeat: 1 }, 0.55);
         return tl;
       });
     },
@@ -994,8 +994,8 @@
         .call(() => {
           const ops = h.querySelectorAll('.q3h-op');
           h.querySelector('.q3h-a').textContent = '120°'; ops[0].textContent = '+'; ops[1].textContent = '=';
-          const x = h.querySelector('.q3h-x'); x.textContent = '60°'; x.style.color = '#1d6b35'; h.querySelector('.q3h-s').textContent = '180°';
-          h.querySelector('.q3h-a').style.color = '#d9640a'; h.querySelector('.q3h-s').style.color = '';
+          const x = h.querySelector('.q3h-x'); x.textContent = '60°'; x.style.color = '#ffab00'; // (∠D's and ∠A's own colours, bright on the navy tag) h.querySelector('.q3h-s').textContent = '180°';
+          h.querySelector('.q3h-a').style.color = '#ff7a00'; h.querySelector('.q3h-s').style.color = '';
         }, null, 0.9)
         .fromTo(h, { scale: 0.92 }, { scale: 1.06, boxShadow: '0 0 0 6px rgba(46,158,79,0.28), 0 4px 18px rgba(46,158,79,0.3)', duration: 0.3, ease: 'back.out(2)' }, 0.9)
         .to(h, { scale: 1, duration: 0.4 }, 1.3));

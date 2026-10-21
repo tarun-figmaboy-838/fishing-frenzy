@@ -135,7 +135,7 @@ const LESSON = {
     { id: 'parallel', parStrong: 1, lines: [{ m: 'surprised', t: 'This pair of sides\ndoes not meet.', noEmph: 1, cueAt: { pair: 'parPulse', meet: 'parPulse' } }], f: { baseExt: 1 } },
     // second line is voice only; its label appears once "A B" and "C D" have both been said
     { id: 'abcd', lines: [{ t: 'This means the sides are parallel to each other.', cueAt: { parallel: 'parPulse' } },
-      { keep: 1, s: 'A B is parallel to C D.', chipsAfterParts: ['AB', 'CD'], chips: [{ t: 'AB ∥ CD', r: 'AB is parallel to CD', k: 'white par' }] }], f: { par: 1 } }, // (r: the symbol's meaning, in words under it)
+      { keep: 1, s: 'A B is parallel to C D.', chipsAfterParts: ['AB', 'CD'], chips: [{ t: 'AB ∥ CD', k: 'white par' }] }], f: { par: 1 } },
     // "parallel": the arrows glide on (as on the right trapezium's definition, no tracing of the sides);
     // "trapezium": the name label pops in
     { id: 'defFull', legsSet: 1, chevPre: 1, lines: [{ t: 'A quadrilateral with at least\none pair of parallel sides\nis called a trapezium.', noEmph: 1, holdChips: 1,
@@ -201,6 +201,8 @@ const LESSON = {
     // from here on the angle shape (A 120°, B 105°, C 75°, D 60°). After the line Swiftee carries a protractor round
     // A, B, C, D; each angle appears as she holds it there
     { id: 'angles', shape: 1, room: 'measure', anglesIn: 1, task: 'measureAngles', auto: 1, lines: [{ m: 'curious', t: "Let's measure its angles." }], f: { par: 1, arcs: 'ABCD' } },
+    // 120° (A) and 60° (D) in focus: the pair the next screen adds up
+    { id: 'notice', lines: [{ m: 'thinking', t: 'Did you notice something?', cueAt: { notice: 'growAD' } }], f: { par: 1, arcs: 'ABCD', focusAng: 'AD' } },
     // "∠A + ∠D = ?" rises in; each value jumps into the sum as its angle is named, and they add up on "180". cueTimes: measured in the recording
     // (vo058): "angle A" 0.06-0.86 s, "angle D" 1.22-1.92, "one hundred eighty" 2.78
     { id: 'sumAD', lines: [{ m: 'surprised', t: '∠A and ∠D add up to 180°.', onStart: 'eqStart',
@@ -234,6 +236,8 @@ const LESSON = {
       lines: [{ m: 'curious', t: 'Drag any vertex to change\nthe angles. Notice the\nsum of angles.', cueAt: { change: 'demoDrag', sum: 'sumPanels' } }],
       task: 'dragFree', 
       f: { par: 1, arcs: 'ABCD', sums: 1 } },
+    // the two sums built one pair at a time: each value flies into its sum and the sum resolves to 180°
+    { id: 'always', sumSteps: 1, lines: [{ m: 'happy', t: 'No matter the shape, the angles\nalways add up to 180°.' }], f: { par: 1, arcs: 'ABCD' } },
     { id: 'rule', sumSteps: 'sym', lines: [{ t: 'So in any trapezium,\nangles on the same leg\nalways add up to 180°.' }], f: { par: 1, arcs: 'ABCD' } },
     // check 3, after the angle rule (angles on the same leg add up to 180°): the missing angle
     { id: 'cfu3', cfu: 3, optTop: 482, plateOptDy: 34,
