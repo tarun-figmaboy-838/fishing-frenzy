@@ -304,7 +304,6 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .q4-card{position:absolute;width:196px;height:92px;border-radius:18px;background:linear-gradient(180deg,#ffffff,#f4f9ff);pointer-events:none}
 .q4-link{position:absolute;width:12px;height:20px;pointer-events:none;clip-path:polygon(0 0,100% 50%,0 100%)}
 .stage .slot.empty{animation:slotBreathe 2.6s ease-in-out infinite}
-.stage .slot.hot{transform:scale(1.04)}
 /* (the waiting labels sit level in their row: they used to bob out of step, so the row never looked aligned) */
 /* screen 13: the purple legs are there from the first frame, with no colour transition */
 .legs-set .eDA,.legs-set .eBC{transition:none}
@@ -777,7 +776,8 @@ html.in-card .stage .done-btn:active{animation:none;transform:translateY(4px);fi
   text-shadow:-2px -2px 0 #155a0c,2px -2px 0 #155a0c,-2px 2px 0 #155a0c,2px 2px 0 #155a0c,0 3px 0 #155a0c;padding:0 10px}
 .stage .lab.lock::before,.stage .lab.lock::after{display:none}
 .stage .slot{border:3px dashed #5b9ee6;border-radius:18px;background:rgba(232,243,255,.75);box-shadow:none}
-.stage .slot.hot{border-color:#ff7a00;border-style:solid;background:rgba(255,240,224,.5);box-shadow:none} /* (the box a held label is over: its edge turns solid orange - no filled box or glow ring stacked under the label) */
+.stage .slot.hot{border-color:#ff9a1f;border-style:dashed;background:rgba(255,255,255,.92);box-shadow:none;transform:none} /* (the box a held label is over: its dashes turn orange and it brightens; no grey wash, no growing second outline round the label) */
+.stage .lab.drag{transition:transform .18s ease} /* (a held label stays right under the finger: its slide on left/top is only for going back or into a box) */
 .stage .slot.filled.ok{border:3px solid #fff;border-radius:999px;
   background:linear-gradient(180deg,#b9f591 0%,#82e35c 40%,#4dc930 74%,#35ad1c 100%);
   box-shadow:0 0 0 2px #2f9617,inset 0 -5px 0 rgba(20,110,10,.35),inset 0 2px 0 rgba(255,255,255,.5)}

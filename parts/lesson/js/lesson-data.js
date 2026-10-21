@@ -119,7 +119,8 @@ const LESSON = {
   steps: [
     // screens 1-2 run on by themselves (autoNext) as one intro. The pen draws the shape as Swiftee arrives; on "4" (once
     // the outline is drawn) the sides are numbered 1 to 4, one after another
-    { id: 'intro', build: 1, sideNums: 1, voiceDelay: 2100, autoNext: 2200, lines: [{ m: 'waving', t: 'Any polygon with 4 sides\nis called a quadrilateral.', noEmph: 1, cueAt: { 4: 'sideNumsGo' } }] },
+    { id: 'intro', build: 1, sideNums: 1, autoNext: 2200, lines: [{ m: 'waving', t: 'Remember we learnt about\nquadrilaterals earlier.' }, // (the pen draws the shape as she says it)
+      { m: 'happy', t: 'Any polygon with 4 sides\nis called a quadrilateral.', noEmph: 1, cueAt: { 4: 'sideNumsGo' } }] },
     // spoken "A, B, C, D", shown "ABCD": each letter flies in as it is said
     { id: 'quadName', letterIn: 1, autoNext: 2200, lines: [{ m: 'happy', t: 'We can call it\nquadrilateral ABCD.', s: 'We can call it quadrilateral, A, B, C, D.', letters: 1, noEmph: 1, letterTimes: [2.28, 2.64, 2.88, 3.30] }] }, // letterTimes: A, B, C, D in the recording (vo003)
     // growFocus: the shape grows to 120% and back as she starts

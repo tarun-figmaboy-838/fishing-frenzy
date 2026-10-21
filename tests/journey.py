@@ -233,7 +233,7 @@ def journey(p, engine):
     ls = until(lambda: lf.evaluate(LESSON), lambda s: s['started'] and s['line'], 15, 'the lesson speaks')
     check(ls['inCard'] and ls['seeThrough'] and ls['winterHidden'], f'{tag}: the lesson is on the card: see-through, with no winter scene or snow')
     check(ls['of'] == 37 and ls['nav'] == 0, f'{tag}: the lesson has 37 screens and no Next, Back or screen list', f"{ls['of']} screens, {ls['nav']} buttons")
-    check('Any polygon with 4 sides' in ls['line'], f'{tag}: screen 1 opens with Swiftee\'s first line', ls['line'])
+    check('Remember we learnt about' in ls['line'], f'{tag}: screen 1 opens with Swiftee\'s first line', ls['line'])
     check(ls['shared'], f'{tag}: the lesson plays through the journey\'s AudioContext')
     if engine == 'chromium':
         v = until(lambda: lf.evaluate(LESSON), lambda s: 'parts/lesson/assets/vo/' in s['voice'], 10, 'the voice-over plays')

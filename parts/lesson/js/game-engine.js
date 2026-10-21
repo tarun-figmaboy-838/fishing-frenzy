@@ -1793,7 +1793,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     if (c4.drag && c4.drag.id === id) return { x: c4.drag.x, y: c4.drag.y };
     if (c4.at[id]) { const sl = this.slotsDef().find((q) => q.id === c4.at[id]); return c4.locked[id] ? { x: 840 + 4, y: sl.y + 4 } : { x: 840 + 42, y: sl.y + 4 }; } // a locked label widens to fill its slot (CSS .lab.lock)
     const i = this.labsDef().findIndex((l) => l.id === id);
-    return { x: 556 + i * 216, y: this.isPlate(this.cur()) ? 516 : 476 }; // three 208-wide labels, 8 apart (lower on the card, where there is room)
+    return { x: 536 + i * 236, y: this.isPlate(this.cur()) ? 516 : 476 }; // three 208-wide labels, 28 apart, centred on 876 (lower on the card, where there is room)
   }
   // a stage point into check 4's group px (the group is drawn scaled, CONFIG.q4, or CONFIG.q4Plate on the journey's card)
   q4Pt(x, y) { const Q = this.isPlate(this.cur()) ? CONFIG.q4Plate : CONFIG.q4; return { x: Q.ox + (x - Q.ox - (Q.tx || 0)) / Q.k, y: Q.oy + (y - Q.oy - Q.ty) / Q.k }; }
