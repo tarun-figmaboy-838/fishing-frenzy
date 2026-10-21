@@ -2154,14 +2154,14 @@ class Game {
 
   // --- why a wrong fish isn't one -------------------------------------------------------------------
   // A bright card over the fish with the reason in a few words (the level's `why`, which
-  // Popo also says), and in level 5 its own angles (95° + 105° = 200°). Meanwhile the fish lights
+  // Popo also says), and in level 5 "That's not a trapezium!" under it (no sum: the user asked
+  // for the plain words, not the fish's own 95° + 105° = 200°). Meanwhile the fish lights
   // up: its marked angles swell into gold fans, or, with nothing marked, its legs (when they're
   // the reason) or its whole outline glow.
   showWhy(fish) {
     const level = this.level();
     if (!level.why) return;
-    const [a, b] = fish.spec.angles || [];
-    const detail = level.compare === 'sum' && a !== undefined ? `${a}° + ${b}° = *${a + b}°*` : '';
+    const detail = level.compare === 'sum' ? "That's not a *trapezium!*" : '';
     const marked = fish.marksFor && fish.marksFor(ShapeFish.labelFont).arcs.length > 0;
     if (marked) fish.showMarks(1.15);
     const legs = !marked && level.glow === 'legs' ? geometry.classify(fish.spec.body).legs : null;
