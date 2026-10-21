@@ -43,9 +43,6 @@
 <canvas class="snowfall" width="1280" height="720" aria-hidden="true" style="position: absolute; left: 0px; top: 0px; width: 1280px; height: 720px; pointer-events: none"></canvas>
 <img class="panel-img" src="assets/images/ice-panel.webp" alt="" style="position: absolute; left: 108px; top: 78px; width: 1064px; height: 561px; pointer-events: none">
 <img class="slab-img" src="assets/images/measure-slab.webp" alt="" style="position: absolute; left: 50px; top: 30px; width: 1180px; height: 659px; pointer-events: none">
-<!-- the measuring screens' treasure map (the journey's card, css .map): a plain parchment sheet that spreads open
-     under the shape as Swiftee comes to measure and folds away when she is done -->
-<div class="map" aria-hidden="true"><div class="map-sheet"></div></div>
 
 <sc-if value="{{isLesson}}" hint-placeholder-val="{{ true }}">
 <svg class="{{boardCls}}" viewBox="0 0 520 420" width="520" height="420" style="position: absolute; left: 640px; top: 104px; overflow: visible; touch-action: none; transform-origin: 0px 0px; transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.3, 1); transform: {{boardTf}}" aria-label="Trapezium ABCD">
@@ -240,36 +237,6 @@
 </div>
 </sc-if>
 
-<sc-if value="{{celebrate}}" hint-placeholder-val="{{ false }}">
-<div class="celebrate" aria-hidden="true">
-<span class="cf" style="left: 120px; background: #f2b51c; animation-delay: 0.00s; transform: rotate(0deg)"></span>
-<span class="cf" style="left: 517px; background: #2b7bd6; animation-delay: 0.12s; transform: rotate(53deg)"></span>
-<span class="cf" style="left: 914px; background: #ff7a00; animation-delay: 0.24s; transform: rotate(106deg)"></span>
-<span class="cf" style="left: 271px; background: #2e9e4f; animation-delay: 0.36s; transform: rotate(159deg)"></span>
-<span class="cf" style="left: 668px; background: #00b8a9; animation-delay: 0.48s; transform: rotate(212deg)"></span>
-<span class="cf" style="left: 1065px; background: #56bdf4; animation-delay: 0.60s; transform: rotate(265deg)"></span>
-<span class="cf" style="left: 422px; background: #f2b51c; animation-delay: 0.72s; transform: rotate(318deg)"></span>
-<span class="cf" style="left: 819px; background: #2b7bd6; animation-delay: 0.00s; transform: rotate(11deg)"></span>
-<span class="cf" style="left: 176px; background: #ff7a00; animation-delay: 0.12s; transform: rotate(64deg)"></span>
-<span class="cf" style="left: 573px; background: #2e9e4f; animation-delay: 0.24s; transform: rotate(117deg)"></span>
-<span class="cf" style="left: 970px; background: #00b8a9; animation-delay: 0.36s; transform: rotate(170deg)"></span>
-<span class="cf" style="left: 327px; background: #56bdf4; animation-delay: 0.48s; transform: rotate(223deg)"></span>
-<span class="cf" style="left: 724px; background: #f2b51c; animation-delay: 0.60s; transform: rotate(276deg)"></span>
-<span class="cf" style="left: 1121px; background: #2b7bd6; animation-delay: 0.72s; transform: rotate(329deg)"></span>
-<span class="cf" style="left: 478px; background: #ff7a00; animation-delay: 0.00s; transform: rotate(22deg)"></span>
-<span class="cf" style="left: 875px; background: #2e9e4f; animation-delay: 0.12s; transform: rotate(75deg)"></span>
-<span class="cf" style="left: 232px; background: #00b8a9; animation-delay: 0.24s; transform: rotate(128deg)"></span>
-<span class="cf" style="left: 629px; background: #56bdf4; animation-delay: 0.36s; transform: rotate(181deg)"></span>
-<span class="cf" style="left: 1026px; background: #f2b51c; animation-delay: 0.48s; transform: rotate(234deg)"></span>
-<span class="cf" style="left: 383px; background: #2b7bd6; animation-delay: 0.60s; transform: rotate(287deg)"></span>
-<span class="cf" style="left: 780px; background: #ff7a00; animation-delay: 0.72s; transform: rotate(340deg)"></span>
-<span class="cf" style="left: 137px; background: #2e9e4f; animation-delay: 0.00s; transform: rotate(33deg)"></span>
-<span class="cf" style="left: 534px; background: #00b8a9; animation-delay: 0.12s; transform: rotate(86deg)"></span>
-<span class="cf" style="left: 931px; background: #56bdf4; animation-delay: 0.24s; transform: rotate(139deg)"></span>
-<span class="cf" style="left: 288px; background: #f2b51c; animation-delay: 0.36s; transform: rotate(192deg)"></span>
-<span class="cf" style="left: 685px; background: #2b7bd6; animation-delay: 0.48s; transform: rotate(245deg)"></span>
-</div>
-</sc-if>
 
 <sc-if value="{{isRecap}}" hint-placeholder-val="{{ false }}">
 <div class="sum-root"></div>
@@ -308,6 +275,10 @@
 <!-- (no screen list, Back or Next: each screen moves on by itself once its voice and animations are done, and a
      screen that asks for something waits for it; ?dev=1 on the journey's page jumps to any screen) -->
 
+<!-- the summary's Next: once every idea has been explained, the learner moves on when they choose -->
+<sc-if value="{{showSumNext}}" hint-placeholder-val="{{ false }}">
+<button class="done-btn sum-next" data-qa="sum-next" aria-label="Next" onClick="{{sumNext}}">Next<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+</sc-if>
 <sc-if value="{{showDone}}" hint-placeholder-val="{{ false }}">
 <button class="done-btn" data-qa="done" aria-label="Done" onClick="{{doneExplore}}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Done</button>
 </sc-if>

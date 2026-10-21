@@ -200,7 +200,7 @@ window.AngleWalker = class AngleWalker {
       const r = CONFIG.angleR(Math.abs(tr.deg)) + 3.5, end = tr.a + tr.sweep * tr.t; // stage px: exactly the filled angle that stays on the shape
       c.setTransform(k, 0, 0, k, 0, 0);
       c.beginPath(); c.moveTo(tr.p.x, tr.p.y); c.arc(tr.p.x, tr.p.y, r, tr.a, end, tr.sweep < 0); c.closePath();
-      c.fillStyle = tr.col; c.fill();
+      c.globalAlpha = 0.6; c.fillStyle = tr.col; c.fill(); c.globalAlpha = 1; // see-through, so the protractor reads whole under it
       if (tr.lab) { // the degrees count up as the angle is traced, where the value will land
         c.font = '900 21px Nunito, system-ui, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; // (21px: the size the value lands at, css .tag.alab)
         c.lineWidth = 6; c.strokeStyle = '#ffffff'; c.lineJoin = 'round'; c.fillStyle = '#123b63';

@@ -84,7 +84,6 @@ const focusWait=async()=>{ for(let k=0;k<100&&c.cur().layout==='focus'&&!c.state
   c.maybeAdvance=realAdvance;
   { const k=steps.findIndex(x=>x.id==='parallel'); c.navAt=0; c.goTo(k,true); for(let w=0;w<120&&c.state.step===k;w++) await sleep(50); if(c.state.step!==k+1) errs.push('parallel: did not move on by itself (step '+c.state.step+')'); else console.log('narration screen moves on by itself: ok'); }
   { const k=steps.findIndex(x=>x.autoNext); c.navAt=0; c.goTo(k,true); for(let w=0;w<80&&c.state.step<=k;w++) await sleep(50); if(c.state.step<=k) errs.push(steps[k].id+': autoNext screen did not move on'); else console.log('autoNext screen moves on: ok'); }
-  { const k=steps.findIndex(x=>x.id==='right'); c.navAt=0; c.goTo(k,true); await sleep(1500); if(c.state.step!==k) errs.push('right: moved on before both right angles were found'); else console.log('screen 35 waits for its two right angles: ok'); }
   { const k=steps.findIndex(x=>x.cfu===2); c.navAt=0; c.goTo(k,true); await sleep(1500); if(c.state.step!==k) errs.push('cfu2: moved on before it was answered'); else console.log('a check waits for its answer: ok'); }
   // print how a few lines are rewritten for the voice (symbols to words)
   ['So, AB is parallel to CD.','Can you make ∠A exactly 90°?','In an isosceles trapezium, AB = 6 cm, CD = 10 cm and AD = 5 cm. What is the length of BC?','∠A + ∠D = 180°'].forEach(t=>console.log('SPEECH:',c.speechOf(t)));

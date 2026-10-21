@@ -1,6 +1,6 @@
 (function (PopoGame) {
 'use strict';
-const { assets, preloadBackground, clock, Effects, WaterScene, surfaceWave, PAN_OVERLAP, spawnFish, spawnSwimmers, refreshShadows, LOCATIONS, STORY, matchesTarget, challengeFish, getShape, Popo, correctCatch, wrongCatch, travelTo, tutorial, opening, discovery, mouthOf, Cancelled, STAGE_W, STAGE_H, swimArea, raftAnchor, state, PHASE, resetProgress, newToken, isCurrent } = PopoGame;
+const { assets, preloadBackground, clock, Effects, WaterScene, surfaceWave, PAN_OVERLAP, spawnFish, spawnSwimmers, refreshShadows, LOCATIONS, STORY, matchesTarget, challengeFish, shuffleFish, getShape, Popo, correctCatch, wrongCatch, travelTo, tutorial, opening, discovery, mouthOf, Cancelled, STAGE_W, STAGE_H, swimArea, raftAnchor, state, PHASE, resetProgress, newToken, isCurrent } = PopoGame;
 
 const HINT_DELAY = 4;
 
@@ -195,12 +195,20 @@ class Game {
     const ch = this.currentChallenge();
     state.target = ch.target;
     state.selectedFish = null;
-    state.fish = spawnSwimmers(challengeFish(ch), this.area, ch.fishScale || 1);
+    state.fish = spawnSwimmers(this.embedded ? this.journeySchool() : challengeFish(ch), this.area, ch.fishScale || 1);
     // fewer background shadows when the challenge itself is busy
     this.ambient = refreshShadows(this.ambient, Math.max(3, Math.min(5, 8 - state.fish.length)), this.area);
     state.idleTime = 0;
     state.hintShown = false;
     this.ui.setInstruction(this.challengeText());
+  }
+
+  // The journey's one school for all four rounds: a fish of each round's shape and two round ones. A catch takes only
+  // its own fish, so every round is fished from the fish still swimming (nextRound).
+  journeySchool() {
+    const any = (list) => list[Math.floor(Math.random() * list.length)];
+    const targets = LOCATIONS.map(({ challenges: [ch] }) => any(ch.targetPool || ch.targetGroups.flat()));
+    return shuffleFish([...targets, 'circle', 'oval']);
   }
 
   challengeText() {
@@ -210,8 +218,11 @@ class Game {
   }
 
 
-  // A wrong catch keeps the instruction but names the fish that was tapped.
+  // A wrong catch teaches what to look for: in the journey, the target's number of sides; otherwise the instruction
+  // again, naming the fish that was tapped.
   wrongText(fish) {
+    const target = getShape(this.currentChallenge().target);
+    if (this.embedded) return `Look at the sides. A *${target.name.toLowerCase()}* has ${target.sides} sides.`;
     return `${this.challengeText().replace(/!$/, '')}, not the ${fish.shape.name.toLowerCase()} one!`;
   }
 
@@ -276,7 +287,7 @@ class Game {
     if (state.challengeIndex < loc.challenges.length) {
       this.setupChallenge();
     } else if (this.embedded && state.locationIndex + 1 < LOCATIONS.length) {
-      PopoGame.nextRound(this); // the journey: the next shape's school on this same lake, no rowing on
+      PopoGame.nextRound(this); // the journey: the next shape, fished from the fish still swimming, no rowing on
     } else if (state.locationIndex + 1 < LOCATIONS.length) {
       travelTo(this, state.locationIndex + 1);
     } else if (STORY.ending) {
@@ -556,7 +567,7 @@ class Game {
       if (target) target.hinted = true;
       this.ui.pulseTarget();
       this.audio.play('hint');
-      this.speakInstruction();
+      if (!this.embedded) this.speakInstruction(); // (in the journey the instruction is said once: the glow and the chime remind)
     }
     if (state.idleTime > HINT_DELAY + 3) {
       this.clearHint();

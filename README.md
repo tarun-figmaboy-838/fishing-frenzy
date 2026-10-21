@@ -7,7 +7,7 @@ A voiced maths adventure for young learners, in three parts that play as one jou
    the bird flies in: "Let's find out!"
 2. **Swiftee's trapezium lesson** (`parts/lesson`), inside the lake: Popo rows in, the seashell on the sand rattles
    and opens, its pearl blows a bubble up and out springs a big card. The camera dives into the water, and the
-   lesson plays on the card (42 screens: what makes a trapezium, its bases and legs, its types, its angles, a recap
+   lesson plays on the card (33 screens: what makes a trapezium, its bases and legs, its types, its angles, a recap
    and five checks) while the water moves and shadow fish swim behind it.
 3. **Popo's trapezium fishing** (`parts/fishing-2`): the card closes, Swiftee swoops in ("Great job! You know all
    about trapeziums!") and Popo catches trapezium fish across five levels, ending on "The End".
@@ -43,7 +43,8 @@ the front page instead.
   unseen, and begins the moment it is called. If one hasn't arrived yet, a frosted "Getting ready…" waits for it,
   with Try again if it fails.
 - **Fishing 1 is a warm-up:** the four shapes (triangle, pentagon, hexagon, quadrilateral) as four quick rounds on
-  one lake, each won by one catch, with the other shapes swimming too (a wrong tap gets Popo's "Whoopsie Doopsie!");
+  one lake, one school for all four, each round won by one catch from the fish still swimming (a wrong tap tips Popo
+  into the lake, and the plate says "Look at the sides. A pentagon has 5 sides.");
   the instruction reads "Catch the triangle fish!" (not "all"), there is no "Great catch!", a brisk cast and reel,
   and no rowing on between rounds; then the mystery fish, Swiftee's "Let's find out!" and Next.
 - **From fishing 1 to fishing 2**, Swiftee flies off ("Let's find out!") and a giant wave swells up out of the
@@ -61,12 +62,12 @@ the front page instead.
   space, centred on the stage; the card is a painted underwater card, `parts/fishing-2/assets/lesson-card.webp`,
   with bubbles rising through its water), the shell hides behind the card while the lesson plays, and the journey lays the
   lesson's own frame exactly over the card. Inside, Swiftee appears only where she does something: the opening
-  (she flies in and recalls), the two measuring screens, the hero screens and the summary. Every other screen is a
+  (she flies in and recalls), the two measuring screens and the summary. Every other screen is a
   "plate" screen: no Swiftee and no ice panel, her line on a navy instruction plate across the top (gold rim, one line of text) and the shape
   big in the middle of the card (`isPlate`, `CONFIG.fitPlate`, css `.plate`). Colours are vivid and edged in navy so they stand out on the card's water: a pale-aqua fill, azure bases,
   aqua-teal legs, bright angle colours. A named side is redrawn by a sunflower-yellow marker (a glowing tip runs
   along it and it turns bold yellow, edged in navy, behind it) while the other sides step back. Swiftee dives in wherever she comes
-  back, with a trail of bubbles. In the activities (the corner drags, tapping the right angles, the practice question) a second wrong try shows
+  back, with a trail of bubbles. In the activities (the corner drags, the practice question) a second wrong try shows
   the answer - the corner glides into place, the right angles light up, the right option lights up - while Swiftee
   says why, in her own recorded voice (each step's `revealLine`: "Watch! AD becomes 5 cm, just like BC..."), and the
   lesson moves on rather than looping. The five checks never give the answer away: the learner keeps trying, with hints.
@@ -76,8 +77,24 @@ the front page instead.
   arrowheads show they go on forever (no gap arrows and no pen tips there: the user found them odd).
 - **The lesson moves on by itself.** It has no Next, Back or screen list. A finished screen moves on once its voice
   and animations are over. A screen that asks for something (a drag, a tap, an answer) waits until it's done. The
-  summary is the last screen: in the journey Swiftee leaves about 2 s after her last line (the standalone lesson
-  keeps its longer pause for replaying a page), the card closes, and the giant wave brings Popo in.
+  summary is the last screen: each idea blows up in a glassy bubble and docks at the side as a small one; at the end
+  Swiftee rises among them with no closing line, and Next comes up under them: when the learner taps it (an idea can
+  be tapped to hear it again first), Swiftee flies off, the card closes, and the giant wave brings Popo in.
+- **Kept short and clear (2026-10-21; the review and the "Fishing Game Corrections" PDF, FF-01 to FF-23).** The lesson
+  says each thing once: it opens on "Any polygon with 4 sides…" (no "Remember…"), the legs extend on Swiftee's own
+  "Let's extend them." with the camera pulling back as they climb (no tracing first), the definition's arrows glide on
+  instead of the sides being traced, and the screens that repeated a line are gone ("So this quadrilateral has one
+  pair…", "We call this a trapezium.", "We know all about the sides…", "Did you notice something?", "No matter the
+  shape…", "What if we make one of the angles 90°?", tapping the two right angles, the "Great job!" screen). An
+  instruction is said once, as its screen opens: a quiet spell brings the pointing hand, never the voice again (the
+  fishing games' idle hints too). The instruction plate is one size on every screen; name tags are navy glass with a
+  gold rim, just under their shape; the summary's ideas are glassy bubbles, with no closing line and a Next button
+  under them that the learner taps to move on. The measuring screens have no map under the shape, and the mask's
+  strap never crosses the protractor. Fishing 1 is fished from one school (a catch takes only its own fish) and a
+  wrong catch says "Look at the sides. A pentagon has 5 sides."; in fishing 2 Swiftee's "Great job! You know all
+  about trapeziums!" comes as she meets Popo, the rod reminder is the pointing hand, Popo says no "Great catch!", a
+  wrong catch shows only the tag on the fish, and level 5 starts without the shell's angle recall (Swiftee swoops in
+  with "Look at the marked angles!").
 - **The end.** Fishing 2 closes its cartoon iris on "The End", Next is tapped, and the front page fades back in.
   Fishing 1 has already loaded again behind it, so Play again starts at once.
 
@@ -128,7 +145,7 @@ This repository ships the playable game.
 ## Options for testing
 
 - `?dev=1`: one panel (bottom left) that jumps to any screen of the journey: the front page, each fishing game's
-  own jumps (levels, a right or wrong catch, rowing on, the ending), and all 42 lesson screens (a lesson screen
+  own jumps (levels, a right or wrong catch, rowing on, the ending), and all 33 lesson screens (a lesson screen
   opens fishing 2's card straight away with the lesson at that screen, and when the lesson ends the wave brings Popo
   in, as in the full journey). The backtick key folds it away. In dev mode
   every part loads at once, so every list is there.

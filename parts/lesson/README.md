@@ -1,8 +1,10 @@
 # Trapezium Adventure
 
-> The five checks come straight after the concepts they test, not together at the end: after the definition (13), the sides (22), the angle rule (31) and the right trapezium (35, two checks); the summary ends the lesson. Each check follows its concept.
+> The five checks come straight after the concepts they test, not together at the end: after the definition (9), the sides (18), the angle rule (26) and the right trapezium (30, two checks); the summary ends the lesson. Each check follows its concept.
 >
-> A check never gives its answer away. In an activity (dragging A to equal legs, dragging a corner to 90°, tapping the two right angles, the practice question on ∠B + ∠C) a second wrong try shows the answer while Swiftee says why: each step's `revealLine`, recorded in the lesson's voice (vo211-vo217).
+> A check never gives its answer away. In an activity (dragging A to equal legs, dragging a corner to 90°, the practice question on ∠B + ∠C) a second wrong try shows the answer while Swiftee says why: each step's `revealLine`, recorded in the lesson's voice (vo211-vo216).
+>
+> Kept short (2026-10-21): the screens that said a thing twice are gone (the "Remember…" opening, the separate "Let's extend them." screen (the line now starts the extension itself), "So this quadrilateral has one pair…", "We call this a trapezium.", "We know all about the sides…", "Did you notice something?", "No matter the shape…", "What if we make one of the angles 90°?", the "Great job!" screen), the right trapezium is named without asking for taps, the summary has no closing line and waits for its Next, and no instruction is said again on an idle spell (the hand points instead). In the journey's card the summary's ideas are glassy bubbles and the measuring screens have no map under the shape. `js/lesson-data.js` is the screen list; GAME_DESIGN.md is the original design.
 
 > **In Fishing Frenzy** this lesson is part 2 of the journey (the repository's README): it plays inside the card that rises from the seashell at the start of fishing 2, in its own frame laid over the card, with no winter scene of its own (`html.in-card` in `css/game.css`: the page is see-through, Swiftee's bubble is white, and she sits level with the board). Its front page is the journey's, and its own (Trapezium Adventure) is in `drafts/banners/trapezium-adventure/`. It ends with the summary, without its goodbye and "The End", which would cut into the fishing that follows; there Swiftee leaves about 2 s after her last line (`SUM.readyMsJourney`). It has no Next, Back or screen list: each screen moves on by itself once its voice and animations are done, a screen that asks for something waits for it, and `?dev=1` on the journey's page jumps to any screen.
 
@@ -26,13 +28,13 @@ The stage is 1920 × 1080 and scales to fit any window. Mouse, touch and pen all
 
 | Screens | Part |
 |---|---|
-| 1–15 | What is a trapezium: quadrilaterals, sides that meet and sides that don't, parallel sides, bases and legs |
-| 16–22 | Types by sides: Swiftee measures the sides with a tape, scalene, drag A to make the legs equal, isosceles |
-| 23–35 | Angles: Swiftee measures the angles with a protractor, same-leg angles add to 180°, supplementary angles, right trapezium |
-| 36–37 | Well done, and the summary (eight idea cards) |
-| 38–42 | Five checks |
-| 43 | Lesson complete and goodbye |
-| 44 | The End: the cartoon closer and Play again |
+| 1–10 | What is a trapezium: quadrilaterals, sides that meet and sides that don't, parallel sides, the definition; Check 1 |
+| 11–19 | Bases and legs; types by sides: Swiftee measures the sides with a tape, scalene, drag A to make the legs equal, isosceles; Check 2 |
+| 20–27 | Angles: Swiftee measures the angles with a protractor, same-leg angles add to 180°, supplementary angles; Check 3 |
+| 28–32 | The right trapezium (drag a corner to 90°); Checks 4 and 5 |
+| 33 | The summary (eight ideas; in the journey's card, glassy bubbles) |
+| 34 | Lesson complete and goodbye |
+| 35 | The End: the cartoon closer and Play again |
 
 ## Folder
 

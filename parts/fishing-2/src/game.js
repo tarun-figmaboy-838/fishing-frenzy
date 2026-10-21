@@ -739,7 +739,7 @@ class Game {
       if (target) target.hinted = true;
       this.ui.pulseTarget();
       try { this.audio.play('hint'); } catch (e) { /* sound is optional */ }
-      this.speakInstruction();
+      if (!this.embedded) this.speakInstruction(); // (in the journey the instruction is said once: the glow and the chime remind)
     }
     if (state.idleTime > HINT_DELAY + 3) {
       this.clearHint();

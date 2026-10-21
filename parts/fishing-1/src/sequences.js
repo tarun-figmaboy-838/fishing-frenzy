@@ -25,11 +25,10 @@ function swallow(e) {
   if (!(e instanceof Cancelled)) throw e;
 }
 
-// Popo casts and the hook flies to the chosen fish. Shared by the correct and wrong flows.
+// Popo casts and the hook flies to the chosen fish. Shared by the correct and wrong flows. No wind-up (the rod isn't
+// drawn back first): the cast starts on the tap, so a catch runs fast.
 async function castTo(game, fish, token) {
   const { popo, fx, audio } = game;
-  popo.playFrames('casting', ['lift', 'up', 'back'], 110);
-  await clock.wait(240, token);
   audio.play('whoosh');
   popo.playFrames('casting', ['swing', 'follow', 'hold'], 120);
   const from = popo.hookPosition();
@@ -70,12 +69,11 @@ async function correctCatch(game, fish) {
     fish.wiggle();
     audio.play('fishTap');
     ui.setHitsEnabled(false);
-    await clock.wait(200, token);
     await castTo(game, fish, token);
 
     fish.wiggle();
     audio.play('hooked');
-    await clock.wait(220, token);
+    await clock.wait(160, token);
 
     state.phase = PHASE.REELING;
     audio.play('reel');
@@ -262,6 +260,7 @@ async function wrongCatch(game, fish) {
       [2050, () => { state.phase = PHASE.RESURFACING; }],
       [2300, () => { sound('bloop'); fx.ripple(origin.x + landingX, game.waterline, .85); }],
       [2450, () => {
+        if (game.embedded) return; // (in the journey no "Whoopsie Doopsie!": the tumble says it)
         feedback = game.say(STORY.wrong, token);
         // Attach cancellation handling immediately, even while the motion is running.
         feedback.catch(() => {});
@@ -792,32 +791,24 @@ async function swifteeDeparts(game, token = newToken()) { // (waveAway shares it
   }
 }
 
-// The journey's next round: the next lake's shape, on this same lake (no rowing on between the lakes). The fish left
-// swim off, the instruction changes and the new school swims in with the narrator's line, as at the start.
-async function nextRound(game) {
-  const token = newToken();
+// The journey's next round: the next lake's shape, on this same lake (no rowing on between the lakes), fished from the
+// fish still swimming (game.journeySchool): only the instruction changes, said by the narrator as at the start.
+function nextRound(game) {
   const { ui, audio } = game;
-  try {
-    state.phase = PHASE.LEVEL_TRANSITION;
-    ui.setHitsEnabled(false);
-    audio.play('complete');
-    for (const f of state.fish) { f.frozen = false; f.escape(); }
-    await clock.wait(700, token);
-    state.fish = [];
-    ui.clearHits();
-    state.locationIndex += 1; // the next lake's shape (the lake drawn stays: game.scene)
-    state.challengeIndex = 0;
-    game.tutorialPending = false;
-    game.showHandOn(null);
-    ui.hideHand();
-    game.fishIn();
-    state.phase = PHASE.READY;
-    state.idleTime = 0;
-    ui.setHitsEnabled(true);
-    game.speakInstruction();
-  } catch (e) {
-    swallow(e);
-  }
+  audio.play('complete');
+  state.locationIndex += 1; // the next lake's shape (the lake drawn stays: game.scene)
+  state.challengeIndex = 0;
+  state.target = game.currentChallenge().target;
+  state.selectedFish = null;
+  state.idleTime = 0;
+  state.hintShown = false;
+  game.tutorialPending = false;
+  game.showHandOn(null);
+  ui.hideHand();
+  ui.setInstruction(game.challengeText());
+  state.phase = PHASE.READY;
+  ui.setHitsEnabled(true);
+  game.speakInstruction();
 }
 
 // Next in the journey: Swiftee flies off to the lesson, and the giant wave swells up out of the lake behind Popo, lifts

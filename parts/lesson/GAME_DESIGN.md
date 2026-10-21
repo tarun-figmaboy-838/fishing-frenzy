@@ -1,5 +1,8 @@
 # Trapezium Game — Game Flow & Mechanics
 
+> This is the lesson's original design. Fishing Frenzy has since moved the checks next to their concepts and cut the
+> screens that said a thing twice: the screen list as it plays is `js/lesson-data.js` (and README.md, "The lesson").
+
 A guided, voice-led lesson on **trapeziums** for young learners. The mascot **Swiftee** narrates every screen while the
 shape on an ice panel draws, moves and highlights itself in step with her words. The learner taps and drags at key
 moments, then answers five scored checks.

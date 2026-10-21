@@ -9,8 +9,8 @@
 //   SWIFTEE_EXIT    she sinks back behind the card
 //   CARD_COLLECT    the card shrinks into a 2 x 2 album at the side
 //   NEXT_CONCEPT    then the next card
-// After the last card: FINAL_SUMMARY (albums gather in, she says the closing line), then READY (tapping a card replays
-// it; after SUM.readyMs with nothing tapped the lesson moves on by itself). Each state waits for the one before, so lines never overlap and nothing can be tapped while she talks.
+// After the last card: FINAL_SUMMARY (albums gather in, she rises and every idea glows once; no closing line), then READY (tapping a card replays
+// it, and Next moves on when the learner chooses). Each state waits for the one before, so lines never overlap and nothing can be tapped while she talks.
 // Coordinates are the kit's 1000 x 562 board, scaled to the 1280 x 720 stage. Reduced motion: same states, no movement.
 // Engine: Summary.enter(engine) when the screen opens, Summary.start(engine) once the opening line is said,
 // Summary.stop() on every screen change.
@@ -24,19 +24,15 @@
     // each card's name plate sits centred on its bottom edge
     card: { cx: 500, cy: 322, w: 300 },
     mini: { w: 132, x: [[80, 224], [776, 920]], y: [200, 378], zoom: 1.12, plate: { w: 118, h: 27, size: 15.5, rim: 2 } },
-    enterMs: 420, collectMs: 580, pauseMs: 200,
-    readyMs: 4500, // READY: time to tap a card before the lesson moves on (the engine then waits its usual beat)
-    readyMsJourney: 900 // in the journey the summary is the lesson's last screen: a long wait there read as Swiftee stalling
+    enterMs: 420, collectMs: 580, pauseMs: 200
   };
-  // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is shown on a
-  // treasure-map page instead (mapPage()): parchment like the measuring screens' map (tools/paint-treasure-map.py) but
-  // a page of its own - page-sized, unrolling upward from the sand as it comes, where the measuring map spreads
-  // sideways under the shape.
-  // MAPC: the page's box, the idea's zoom and where its centre goes, the docked pages' places (further out
-  // than the cards', the page being wider) and Swiftee's peek
+  // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is a glassy
+  // bubble instead (bubble()): an ice card on the card looked odd, and a bubble belongs in the water. BUB: its centre
+  // and radius, the zoom of the idea drawn inside it, the idea's centre in its own units (the shape plus the sum line
+  // under it), how far Swiftee peeks higher, and the docked bubbles' columns (wider apart than the cards', so the
+  // round bubbles and their plates don't touch)
   const FRAME = { src: 'assets/images/summary-card.webp', w: 1024, h: 984 };
-  const MAPC = { src: 'assets/images/summary-map.webp', rect: { x: 320, y: 160, w: 360, h: 360 }, k: 1.24, cy: 340, oy: 327, enterMs: 700, peekDy: -23, // a square page
-    mini: { w: 108, x: [[64, 178], [822, 936]], y: [190, 340], plate: { w: 104, h: 24, size: 14, rim: 2 } } };
+  const BUB = { cx: 500, cy: 346, r: 160, k: 1.28, oy: 327, enterMs: 560, peekDy: -35, miniX: [[68, 232], [768, 932]] }; // (her face and mask clear the bubble's top as she peeks)
   const inCard = () => document.documentElement.classList.contains('in-card');
   const WARM = 'rgba(255, 150, 40, 0.85)';
   // name-tag colours, for the ideas that have a tone
@@ -93,8 +89,6 @@
       visual: { shape: 'ang', lit: ['BC'], wedges: ['B', 'C'] }, cue: { angles: 'wedges', add: 'add', 180: 'sum', supplementary: 'tag' },
       times: { add: 1.16, '180°': 1.76, supplementary: 3.44 } } // (vo183): "add" 1.16 s, "one hundred eighty" 1.76 s, "supplementary" 3.44 s
   ];
-  // the closing line (the opening line comes from lesson-data, 'recap')
-  const DONE = { m: 'celebrating', t: 'Wonderful! You remember everything about trapeziums!', cue: { trapeziums: 'all' } };
 
   // ---------- small helpers ----------
   // make an SVG element: null attributes are skipped, attrs.text becomes its text
@@ -160,7 +154,7 @@
       return chain.then((ok) => ok && this.hold(400))
         .then((ok) => ok && this.gather())
         .then((ok) => ok && this.rise('middle'))
-        .then((ok) => ok && this.say(DONE))
+        .then((ok) => { if (ok) this.cue('all'); return ok && this.hold(600); })
         .then((ok) => { if (ok && live()) { this.hush(); this.ready(); } return ok; });
     },
     // screen change: cancel timers and tweens, put Swiftee and her bubble back, clear the layer
@@ -192,7 +186,7 @@
       const sw = document.querySelector('.stage .swiftee'), bub = document.querySelector('.stage .bubble');
       this.spot = where || this.spot || 'middle';
       const P = Object.assign({}, SPOT[this.spot]);
-      if (this.spot === 'peek' && inCard()) P.y += MAPC.peekDy; // (over the page's top)
+      if (this.spot === 'peek' && inCard()) P.y += BUB.peekDy; // (the bubble's top is higher than the card's)
       // keep her speech bubble above her head; in the middle it stays narrow enough to fit between the albums
       if (bub) { bub.style.marginBottom = (-P.y) + 'px'; bub.style.maxWidth = this.spot === 'middle' ? '470px' : ''; }
       if (!sw || !G) return Promise.resolve(this.live());
@@ -218,20 +212,19 @@
 
     // ---------- build one card: the frame image, the trapezium (hidden until reveal) and its name tag ----------
     card(c) {
-      const V = c.visual || {}, mp = inCard();
-      const w = mp ? MAPC.rect.w : SUM.card.w, h = mp ? MAPC.rect.h : w * FRAME.h / FRAME.w;
-      const x = mp ? MAPC.rect.x : SUM.card.cx - w / 2, y = mp ? MAPC.rect.y : SUM.card.cy - h / 2, cx = x + w / 2;
+      const V = c.visual || {}, bub = inCard();
+      const w = bub ? 2 * BUB.r : SUM.card.w, h = bub ? 2 * BUB.r : w * FRAME.h / FRAME.w, cx = bub ? BUB.cx : SUM.card.cx, cy = bub ? BUB.cy : SUM.card.cy;
+      const x = cx - w / 2, y = cy - h / 2;
       const g = mk('g', { 'class': 'summary-card', 'data-concept': c.id }, this.layer);
-      g._rect = { x: x, y: y, w: w, h: h }; g._c = c; g._map = mp;
+      g._rect = { x: x, y: y, w: w, h: h }; g._c = c; g._bub = bub;
       const pp = mk('g', {}, g); g._pop = pp;           // animations run on the inner group, the collect transform on the outer
-      const tilt = pp; // (laid straight)
-      if (mp) this.mapPage(tilt, x, y, w, h);
+      if (bub) this.bubble(pp, cx, cy, BUB.r);
       else {
         const img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: FRAME.src }, pp);
         img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', FRAME.src); // older browsers only read xlink:href
       }
-      // on a page the idea is drawn larger, centred on it (everything inside vis scales with it)
-      const host = mp ? mk('g', { transform: 'translate(' + cx + ' ' + MAPC.cy + ') scale(' + MAPC.k + ') translate(' + (-SUM.card.cx) + ' ' + (-MAPC.oy) + ')' }, tilt) : pp;
+      // in a bubble the idea is drawn larger, centred in it (everything inside vis scales with it)
+      const host = bub ? mk('g', { transform: 'translate(' + cx + ' ' + cy + ') scale(' + BUB.k + ') translate(' + (-SUM.card.cx) + ' ' + (-BUB.oy) + ')' }, pp) : pp;
       const vis = mk('g', {}, host); g._vis = vis;
       const X = SHAPES[V.shape || 'gen'], P = { A: pt(X, 'A'), B: pt(X, 'B'), C: pt(X, 'C'), D: pt(X, 'D') };
       g._P = P;
@@ -246,26 +239,43 @@
       g._marks = mk('g', {}, vis);
       g._dots = ['A', 'B', 'C', 'D'].map((k) => mk('circle', { cx: P[k].x, cy: P[k].y, r: 4.2, fill: '#fff', stroke: INK.base, 'stroke-width': 2.2, opacity: 0 }, vis));
       // the name plate centred on the card's bottom edge
-      g._tag = this.nameTag(pp, cx, y + h + (mp ? -2 : 4), c.label, c.tone);
+      g._tag = this.nameTag(pp, cx, bub ? cy + BUB.r - 2 : y + h + 4, c.label, c.tone);
       g._tag.setAttribute('opacity', 0);
       return g;
     },
     // a rounded name plate sized to its text; o sets height, font size, minimum width and rim (the album plates)
-    // a treasure-map page (board units): the parchment alone, no shadow or box behind it
-    mapPage(parent, x, y, w, h) {
-      const img = mk('image', { x: x, y: y, width: w, height: h, preserveAspectRatio: 'none', href: MAPC.src }, parent);
-      img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', MAPC.src);
+    // a glassy bubble: a soft shadow under it, a pale-aqua body (opaque enough to hide Swiftee behind it), a white rim
+    // and a fainter inner one, and a curved glare with a small dot - all under the idea drawn in it
+    bubble(parent, cx, cy, r) {
+      if (!this.defs.querySelector('#sumGlass')) {
+        const rg = mk('radialGradient', { id: 'sumGlass', cx: '46%', cy: '40%', r: '62%' }, this.defs);
+        [['0%', '#f6fdff', 0.98], ['70%', '#e2f7fc', 0.97], ['100%', '#a6e2f3', 0.97]].forEach((st) => mk('stop', { offset: st[0], 'stop-color': st[1], 'stop-opacity': st[2] }, rg));
+      }
+      mk('ellipse', { cx: cx, cy: cy + 10, rx: r * 0.98, ry: r * 0.98, fill: 'rgba(0, 40, 80, 0.2)', style: 'filter: blur(7px)' }, parent);
+      mk('circle', { cx: cx, cy: cy, r: r, fill: 'url(#sumGlass)', stroke: '#ffffff', 'stroke-width': 5, 'stroke-opacity': 0.92 }, parent);
+      mk('circle', { cx: cx, cy: cy, r: r - 9, fill: 'none', stroke: 'rgba(70, 185, 228, 0.42)', 'stroke-width': 2.5 }, parent);
+      const gr = r * 0.86, a0 = Math.PI * 1.1, a1 = Math.PI * 1.38;
+      mk('path', { d: 'M' + f1(cx + gr * Math.cos(a0)) + ',' + f1(cy + gr * Math.sin(a0)) + ' A' + f1(gr) + ',' + f1(gr) + ' 0 0 1 ' + f1(cx + gr * Math.cos(a1)) + ',' + f1(cy + gr * Math.sin(a1)),
+        fill: 'none', stroke: '#ffffff', 'stroke-width': 10, 'stroke-linecap': 'round', opacity: 0.85 }, parent);
+      mk('circle', { cx: f1(cx + r * 0.5), cy: f1(cy - r * 0.66), r: 7, fill: '#ffffff', opacity: 0.8 }, parent);
     },
+    // On the journey's card every plate has the instruction plate's look, a little larger: navy glass, a gold rim and gold
+    // lettering (a white or cream pill was lost on the sand and looked off the game's theme)
     nameTag(parent, x, y, text, tone, o) {
-      const c = TONE[tone] || null, g = mk('g', { 'class': 'badge' }, parent);
-      const H0 = (o && o.h) || 50, fs = (o && o.size) || 26, rim = (o && o.rim) || 4, deep = c ? c.deep : '#1e7bff';
+      const c = TONE[tone] || null, g = mk('g', { 'class': 'badge' }, parent), navy = inCard(), k = navy ? 1.15 : 1;
+      const H0 = ((o && o.h) || 50) * k, fs = ((o && o.size) || 26) * k, rim = (o && o.rim) || 4, deep = navy ? '#ffc94d' : c ? c.deep : '#1e7bff';
+      if (navy && !this.defs.querySelector('#sumNavy')) {
+        const lg = mk('linearGradient', { id: 'sumNavy', x1: 0, y1: 0, x2: 0, y2: 1 }, this.defs);
+        [['0%', '#103a7a'], ['100%', '#061e4a']].forEach((st) => mk('stop', { offset: st[0], 'stop-color': st[1] }, lg));
+      }
       const t = mk('text', { x: x, y: y + fs * 0.36, 'text-anchor': 'middle', 'font-size': fs, 'font-weight': 800,
-        'font-family': "'Baloo 2', Nunito, system-ui, sans-serif", fill: c ? c.ink : '#123b63', text: text }, g);
+        'font-family': "'Baloo 2', Nunito, system-ui, sans-serif", fill: navy ? '#ffd166' : c ? c.ink : '#123b63', text: text }, g);
       let w = 0; try { w = t.getComputedTextLength(); } catch (e) {}
       if (!w) w = text.length * fs * 0.54; // could not measure the text: estimate
-      const bw = (o && o.w) ? Math.max(o.w, w + 16) : (w + 60);
-      // the plate (as in the lesson): a flat pill with a thick rim - a label, not a button
-      g.insertBefore(mk('rect', { x: x - bw / 2, y: y - H0 / 2, width: bw, height: H0, rx: H0 / 2, fill: c ? c.wash : '#ffffff', stroke: deep, 'stroke-width': rim }), t);
+      const bw = (o && o.w) ? Math.max(o.w * k, w + 16 * k) : (w + 60 * k);
+      // the plate (as in the lesson): a flat pill with a rim - a label, not a button
+      g.insertBefore(mk('rect', { x: x - bw / 2, y: y - H0 / 2, width: bw, height: H0, rx: H0 / 2, fill: navy ? 'url(#sumNavy)' : c ? c.wash : '#ffffff',
+        stroke: deep, 'stroke-width': navy ? Math.max(2, rim * 0.75) : rim, style: navy ? 'filter: drop-shadow(0 3px 5px rgba(0, 20, 60, 0.35))' : null }), t);
       return g;
     },
     // bring an element in: a plain fade (marks are drawn, never popped); fill 'backwards' keeps it hidden during the delay
@@ -508,13 +518,11 @@
       if (!reduced() && g._pop.animate) {
         g._pop.style.transformBox = 'fill-box'; g._pop.style.transformOrigin = 'center';
         try {
-          if (g._map) { // a page unrolling upward from the sand, settling with the gentlest overshoot
-            g._pop.style.transformOrigin = '50% 100%';
-            g._pop.animate([{ opacity: 0, scale: '1 .12', translate: '0 14px' }, { opacity: 1, offset: 0.25 }, { scale: '1 1.035', translate: '0 0', offset: 0.75 }, { opacity: 1, scale: '1 1', translate: '0 0' }], { duration: MAPC.enterMs, easing: 'cubic-bezier(.3,.7,.3,1)' });
-          } else g._pop.animate([{ opacity: 0, scale: '.96', translate: '0 16px' }, { opacity: 1, scale: '1', translate: '0 0' }], { duration: SUM.enterMs, easing: 'cubic-bezier(.22,1,.36,1)' });
+          if (g._bub) g._pop.animate([{ opacity: 0, scale: '.45' }, { opacity: 1, scale: '1.06', offset: 0.62 }, { scale: '.98', offset: 0.84 }, { scale: '1' }], { duration: BUB.enterMs, easing: 'ease-out' }); // a bubble blowing up
+          else g._pop.animate([{ opacity: 0, scale: '.96', translate: '0 16px' }, { opacity: 1, scale: '1', translate: '0 0' }], { duration: SUM.enterMs, easing: 'cubic-bezier(.22,1,.36,1)' });
         } catch (e) {}
       }
-      return this.hold(g._map ? MAPC.enterMs : SUM.enterMs).then((ok) => {
+      return this.hold(g._bub ? BUB.enterMs : SUM.enterMs).then((ok) => {
         if (!ok) return false;
         this.setState('CONCEPT_REVEAL', c.id);
         return this.hold(this.reveal(g) + 60).then((ok2) => { if (!ok2) return false; this.pop(g._tag, 0); return this.hold(260); });
@@ -524,8 +532,8 @@
     slot(id) {
       const order = IDEAS.map((k) => k.id), i = Math.max(0, order.indexOf(id)), half = Math.ceil(order.length / 2) || 4;
       const col = i < half ? 0 : 1, k = col ? i - half : i;
-      const Mn = inCard() ? MAPC.mini : SUM.mini;
-      return { x: Mn.x[col][k % 2], y: Mn.y[Math.floor(k / 2)], col: col };
+      const X = inCard() ? BUB.miniX : SUM.mini.x;
+      return { x: X[col][k % 2], y: SUM.mini.y[Math.floor(k / 2)], col: col };
     },
     // CARD_COLLECT: the card shrinks along a small arc into its slot (now = jump straight there). Its shape is
     // zoomed up to SUM.mini.zoom so it still reads at album size
@@ -534,12 +542,12 @@
       if (!c || c._done) return Promise.resolve(true);
       c._done = true; if (S.active === id) S.active = null;
       this.setState('CARD_COLLECT', id);
-      const Mn = c._map ? MAPC.mini : SUM.mini, r = c._rect, cx0 = r.x + r.w / 2, cy0 = r.y + r.h / 2, sl = this.slot(id), k = Mn.w / r.w;
-      const Z = c._map ? 1 : SUM.mini.zoom, zoom = (e) => { const z = 1 + (Z - 1) * e, sx = 500, sy = (TOP + BOT) / 2; c._vis.setAttribute('transform', 'translate(' + sx + ',' + sy + ') scale(' + z.toFixed(4) + ') translate(' + (-sx) + ',' + (-sy) + ')'); };
+      const r = c._rect, cx0 = r.x + r.w / 2, cy0 = r.y + r.h / 2, sl = this.slot(id), k = SUM.mini.w / r.w;
+      const Z = c._bub ? 1 : SUM.mini.zoom, zoom = (e) => { const z = 1 + (Z - 1) * e, sx = 500, sy = (TOP + BOT) / 2; c._vis.setAttribute('transform', 'translate(' + sx + ',' + sy + ') scale(' + z.toFixed(4) + ') translate(' + (-sx) + ',' + (-sy) + ')'); };
       const land = () => {
         c.setAttribute('transform', 'translate(' + sl.x + ',' + sl.y + ') scale(' + k.toFixed(4) + ') translate(' + (-cx0) + ',' + (-cy0) + ')');
         c._slot = sl; zoom(1);
-        const P0 = Mn.plate;
+        const P0 = SUM.mini.plate;
         // the album plate centred on its small card's bottom edge
         c._mini = this.nameTag(this.layer, sl.x, sl.y + r.h * k / 2 + 1, c._c.label, c._c.tone, { h: P0.h, size: P0.size, w: P0.w, rim: P0.rim });
         if (!now) this.pop(c._mini, 0);
@@ -585,18 +593,15 @@
       return this.hold(S.collected.length * 70 + 460);
     },
 
-    // ---------- READY: the cards become tappable; left alone, the lesson moves on ----------
+    // ---------- READY: the cards become tappable, and Next comes up for the learner to move on ----------
     ready() {
       const S = this.S;
       this.setState('READY');
       S.collected.forEach((id) => S.cards[id].classList.add('tappable'));
-      this.moveOnLater();
+      this.eng.setState({ sumNext: true });
     },
-    // the lesson moves on once a moment passes with no card being replayed (a replay restarts the wait)
-    moveOnLater() {
-      const eng = this.eng;
-      this.later(typeof JOURNEY !== 'undefined' && JOURNEY ? SUM.readyMsJourney : SUM.readyMs, () => { if (!this.busy && this.S && this.S.state === 'READY') eng.maybeAdvance(false); });
-    },
+    // Next is taken only between replays
+    canLeave() { return !!(this.S && this.S.state === 'READY' && !this.busy); },
     // a tapped card: dim the others to 42 %, redraw its idea, say its line again, then back to READY.
     // busy blocks other taps until it is done
     replay(id) {
@@ -619,7 +624,7 @@
         if (!live()) return false;
         this.hush(); S.active = null; this.eng.pose('happy');
         S.collected.forEach((k) => { [S.cards[k], S.cards[k]._mini].forEach((el) => { el.style.opacity = ''; }); });
-        this.busy = false; this.setState('READY'); this.moveOnLater(); return ok;
+        this.busy = false; this.setState('READY'); return ok;
       });
     }
   };

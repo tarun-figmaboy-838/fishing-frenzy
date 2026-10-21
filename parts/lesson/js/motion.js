@@ -143,17 +143,19 @@
     // screen 2: the side numbers 1-4 (top, right, bottom, left) glide in from their own sides, one after another;
     // onLand(i) fires as number i settles
     sideNumsHide() { const els = $('.tag.snum'); if (G && els.length) add(() => { centred(els); G.set(els, { opacity: 0 }); }); },
-    sideNums(onLand) {
+    // onSide(i) starts side i's marker as its number starts: both take 0.35 s (css .side-nums .hl.on), so the number
+    // lands as its side finishes lighting, and the next side follows straight on
+    sideNums(onSide) {
       const els = ['.tag.snum.n1', '.tag.snum.n2', '.tag.snum.n3', '.tag.snum.n4'].map((s) => $(s)[0]).filter(Boolean);
-      if (!G || !els.length) { els.forEach((e, i) => onLand && onLand(i)); return; }
-      const from = [{ y: -46 }, { x: 46 }, { y: 46 }, { x: -46 }];
+      if (!G || !els.length) { els.forEach((e, i) => onSide && onSide(i)); return; }
+      const from = [{ y: -46 }, { x: 46 }, { y: 46 }, { x: -46 }], gap = 0.45;
       add(() => {
         centred(els);
         const tl = G.timeline();
         els.forEach((el, i) => {
-          tl.fromTo(el, Object.assign({ opacity: 0, x: 0, y: 0 }, from[i]),
-            { opacity: 1, x: 0, y: 0, duration: reduced ? 0 : 0.45, ease: 'power2.out' }, i * 0.6)
-            .call(() => onLand && onLand(i), null, i * 0.6 + 0.3);
+          tl.call(() => onSide && onSide(i), null, i * gap)
+            .fromTo(el, Object.assign({ opacity: 0, x: 0, y: 0 }, from[i]),
+              { opacity: 1, x: 0, y: 0, duration: reduced ? 0 : 0.35, ease: 'power2.out' }, i * gap);
         });
         return tl;
       });
@@ -471,10 +473,13 @@
         return tl;
       });
     },
-    // screen 17, on "sides": AB, BC, CD, DA in turn, each side and its length in its own colour (all different)
+    // the scalene screen, on "sides": AB, BC, CD, DA in turn, each side and its length in its own colour (all
+    // different). Returns how long it runs (s), so the name can wait for the last length
     lensSeq() {
-      this.lensIn(['AB', 'BC', 'CD', 'DA'], 0.45);
-      ['AB', 'BC', 'CD', 'DA'].forEach((k, i) => add(() => G && G.delayedCall(i * 0.45 + 0.15, () => { const l = lenTag(k); if (l) l.setAttribute('data-col', k); this.sideColours(); })));
+      const keys = ['AB', 'BC', 'CD', 'DA'], gap = 0.3;
+      this.lensIn(keys, gap);
+      keys.forEach((k, i) => add(() => G && G.delayedCall(i * gap + 0.15, () => { const l = lenTag(k); if (l) l.setAttribute('data-col', k); this.sideColours(); })));
+      return (keys.length - 1) * gap + 0.65;
     },
     // the sides take their own colours (CSS svg[data-lencol]); an attribute, so a redraw keeps it, and clear() removes it
     sideColours() { $('svg[aria-label="Trapezium ABCD"]').forEach((s) => s.setAttribute('data-lencol', '1')); },
@@ -560,25 +565,6 @@
         return tl;
       });
     },
-    // screens 13 ("quadrilateral") and 35 ("trapezium"): the four sides trace in one after another
-    defTrace() {
-      if (!G) return;
-      const len = (e) => Math.hypot(+e.getAttribute('x2') - +e.getAttribute('x1'), +e.getAttribute('y2') - +e.getAttribute('y1')) || 1;
-      add(() => {
-        const tl = G.timeline();
-        ['AB', 'BC', 'CD', 'DA'].forEach((k, i) => {
-          const e = $('.e' + k)[0];
-          if (!e) return;
-          const L = len(e), at = i * 0.42;
-          tl.set(e, { strokeDasharray: L, strokeDashoffset: L }, 0)
-            .to(e, { strokeDashoffset: 0, duration: 0.4, ease: 'power1.inOut' }, at)
-            .to(e, { strokeWidth: 7, duration: 0.2, yoyo: true, repeat: 1 }, at + 0.3);
-        });
-        tl.call(() => $('.edge').forEach((e) => { e.style.removeProperty('stroke-dasharray'); e.style.removeProperty('stroke-dashoffset'); }))
-          .set($('.edge'), { clearProps: 'strokeWidth,filter' });
-        return tl;
-      });
-    },
     // screen 8: before the bases extend, the named sides glow once together (thicker line, soft purple halo)
     softGlow(keys) {
       const els = keys.map((k) => $('.e' + k)[0]).filter(Boolean);
@@ -591,7 +577,7 @@
     // screen 22: the whole shape fades in with a soft scale-up. It is a CSS animation keyed on data-in
     // (.shape-pre), so a redraw mid-way cannot cut it short.
     shapeIn() { $('.pop-g').forEach((e) => e.setAttribute('data-in', '1')); },
-    // screens 22 and 35: the parallel arrows (hidden by .chev-pre) pop onto their sides
+    // the definitions (the trapezium's and the right trapezium's): the parallel arrows (hidden by .chev-pre) glide onto their sides
     chevIn() {
       const chev = $('.chev');
       if (!G || !chev.length) return;
@@ -608,19 +594,6 @@
       add(() => G.delayedCall(0.6, () => this.rightMark('D')));
       add(() => G.delayedCall(1.3, () => this.rightGlow()));
     },
-    // screen 13, on "parallel": AB and DC glow together, then the parallel arrows (hidden by .chev-pre) pop on
-    defParallel() {
-      const sides = [$('.eAB')[0], $('.eCD')[0]].filter(Boolean), chev = $('.chev');
-      if (!G || !sides.length) return;
-      add(() => G.timeline()
-        .to(sides, { strokeWidth: 7, duration: 0.35, yoyo: true, repeat: 1 }, 0)
-        .call(() => chev.forEach((c) => c.setAttribute('data-in', '1')), null, 0.6)
-        .fromTo(chev, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: reduced ? 0 : 0.8, ease: 'power2.out' }, 0.6)
-        .call(() => this.markPing(chev.filter((c) => !c.classList.contains('chev-halo'))), null, 1.3)
-        .to(chev, { duration: 0.3, yoyo: true, repeat: 1 }, 1.35)
-        .set(sides, { clearProps: 'strokeWidth,filter' }));
-    },
-
     // the filled angle of each key grows out of its corner (soft overshoot) and glows once in its own colour.
     // keys: 'AD' or ['B'] ...; 0.3 s apart, after `delay` s
     wedgeGrow(keys, delay) {

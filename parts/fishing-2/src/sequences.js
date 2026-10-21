@@ -32,11 +32,10 @@ function swallow(e) {
   if (!(e instanceof Cancelled)) throw e;
 }
 
-// Popo casts and the hook flies to the chosen fish. Shared by the correct and wrong flows.
+// Popo casts and the hook flies to the chosen fish. Shared by the correct and wrong flows. No wind-up (the rod isn't
+// drawn back first): the cast starts on the tap, so a catch runs fast.
 async function castTo(game, fish, token) {
   const { popo, fx, audio } = game;
-  popo.playFrames('casting', ['lift', 'up', 'back'], 110);
-  await clock.wait(340, token);
   audio.play('whoosh');
   popo.playFrames('casting', ['swing', 'follow', 'hold'], 120);
   const from = popo.hookPosition();
@@ -46,7 +45,7 @@ async function castTo(game, fish, token) {
   const target = mouthOf(fish);
   const apexY = Math.min(from.y, target.y) - 150;
   let splashed = false;
-  await clock.tween(560, token, (t) => {
+  await clock.tween(420, token, (t) => {
     const k = ease.out(t);
     const x = from.x + (target.x - from.x) * k;
     const y = (1 - k) * (1 - k) * from.y + 2 * (1 - k) * k * apexY + k * k * target.y;
@@ -77,7 +76,6 @@ async function correctCatch(game, fish) {
     fish.wiggle();
     audio.play('fishTap');
     ui.setHitsEnabled(false);
-    await clock.wait(330, token);
     await castTo(game, fish, token);
 
     fish.wiggle();
@@ -85,7 +83,7 @@ async function correctCatch(game, fish) {
     audio.play('hooked');
     // in level 5 the angles told us; now the fish shows its parallel sides
     if (fish.spec.level === 5 && fish.revealParallel()) audio.play('boing');
-    await clock.wait(300, token);
+    await clock.wait(160, token);
 
     // reeled in towards the rod: it fights the line (less as it tires), tail flicking, nose rising,
     // trailing bubbles; fish in the way dart clear of the line
@@ -100,7 +98,7 @@ async function correctCatch(game, fish) {
     const along = [surface.x - start.x, surface.y - start.y];
     const span = Math.hypot(...along) || 1;
     let bubbled = 0;
-    await clock.tween(Math.min(1400, Math.max(850, 500 + span * 0.65)), token, (t) => {
+    await clock.tween(Math.min(1000, Math.max(650, 400 + span * 0.5)), token, (t) => {
       const k = ease.inOut(t);
       const fight = Math.sin(t * Math.PI * 6) * (1 - t) * 12;
       fish.x = start.x + along[0] * k - (along[1] / span) * fight;
@@ -124,7 +122,7 @@ async function correctCatch(game, fish) {
     const at = (k, i) => (1 - k) ** 3 * path[0][i] + 3 * (1 - k) ** 2 * k * path[1][i] + 3 * (1 - k) * k * k * path[2][i] + k ** 3 * path[3][i];
     let dripped = 0;
     let last = { ...from };
-    await clock.tween(800, token, (t) => {
+    await clock.tween(620, token, (t) => {
       const k = ease.inOut(t);
       fish.x = at(k, 'x');
       fish.y = at(k, 'y');
@@ -160,8 +158,8 @@ async function correctCatch(game, fish) {
       game.cheer();
       clock.wait(380, token).then(() => game.storyCue('hop')).catch(() => {});
     }
-    // "Great catch!"
-    await game.say(STORY.right[(state.collected.length - 1) % STORY.right.length], token);
+    // "Great catch!" (in the journey the cheer is enough: straight on, as in fishing 1)
+    if (!game.embedded) await game.say(STORY.right[(state.collected.length - 1) % STORY.right.length], token);
     game.afterCatch();
   } catch (e) {
     swallow(e);
@@ -253,6 +251,7 @@ async function wrongCatch(game, fish) {
     };
     let released = null, hookRelease = null;
     let feedback = Promise.resolve();
+    const quiet = game.embedded; // the journey: the card on the fish says why, and nothing else does (no lines, no hint)
     const events = [
       [0, () => { state.phase = PHASE.WRONG_PULL; try { audio.duck(WRONG_DURATION); } catch (e) { /* optional music */ } }],
       [YANKS[0], yanked],
@@ -267,12 +266,13 @@ async function wrongCatch(game, fish) {
       [1750, () => { state.phase = PHASE.SUBMERGED; }],
       [2050, () => { state.phase = PHASE.RESURFACING; }],
       [2450, () => {
+        if (quiet) return;
         feedback = game.sayAll(game.wrongLine(), token);
         // Attach cancellation handling immediately, even while the motion is running.
         feedback.catch(() => {});
       }],
       [2750, () => { state.phase = PHASE.RECOVERING; }],
-      [4150, () => { ui.setInstruction(game.level().hint); }],
+      [4150, () => { if (!quiet) ui.setInstruction(game.level().hint); }],
     ];
     await runTumble(game, token, { nodes, events, rotation, origin, edge, gripPoint, landingX, sound,
       // the yanks jerk him and the raft about; the rod bends with them
@@ -320,6 +320,7 @@ async function wrongCatch(game, fish) {
     if (!isCurrent(token)) throw new Cancelled();
     restore();
     popo.act('wet');
+    if (quiet) return;
     game.speakHint();
     // the hint stays up while Popo is still explaining, and a little after
     game.revertInstructionIn(Infinity);
@@ -720,11 +721,13 @@ async function lessonNow(game) {
 }
 
 // The reminder rings the hook and points the tutorial hand at a fish to catch (the hand follows
-// it and stays until the first right catch) while Swiftee swoops back to explain the rod.
+// it and stays until the first right catch) while Swiftee swoops back to explain the rod. In the
+// journey fishing 1 has taught the rod: the hand alone, no Swiftee and no lines.
 async function remind(game, token) {
   while (!game.inViewTarget()) await clock.wait(100, token);
   await clock.wait(600, token);
   game.tutorialPending = true;
+  if (game.embedded) { game.showHandOn(game.inViewTarget()); return; }
   game.ui.setInstruction(''); // it comes back with the fishing, clear of Swiftee's bubble
   game.showHandOn(game.inViewTarget());
   game.hookRing = { t: 0 };
@@ -771,7 +774,7 @@ async function finishLevel(game) {
     }
     if (LEVELS[next].place !== game.place) await rowOn(game, LEVELS[next].place, token);
     if (LEVELS[next].observe) {
-      await recallAngles(game, token);
+      if (!game.embedded) await recallAngles(game, token); // (in the journey the lesson has just taught the angles)
       await observeAngles(game, next, token);
     } else {
       game.startLevel(next);
@@ -1181,7 +1184,9 @@ async function observeAngles(game, next, token) {
   game.spotlight = first; // the story cue on "angles!" lights up its marks
   const arriving = swimIn(plan.slice(0, 1), 1500, 0);
   arriving.catch(() => {});
-  await game.sayAll(STORY.observe, token);
+  // Swiftee is still by the recall card; without one (the journey) she swoops in to say it
+  if (game.swiftee) await game.sayAll(STORY.observe, token);
+  else await swifteeArrives(game, STORY.observe, token);
   await arriving;
   game.spotlight = null;
   await swimIn(plan.slice(1), 1300, 140);

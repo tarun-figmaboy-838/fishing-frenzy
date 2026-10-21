@@ -12,24 +12,6 @@ html.in-card,html.in-card body,html.in-card .stage-root,html.in-card .stage{back
 html.in-card .stage>img.bg-winter,html.in-card .stage>canvas.snowfall{display:none}
 html.in-card .swiftee img.swiftee-still[src*="winter-scarf"]{display:none} /* in the water she wears her diving mask (js/dive-mask.js), not her scarf */
 html.in-card .stage.scene .panel-img,html.in-card .stage.scene.measure-room .slab-img{opacity:0!important} /* no ice panel or measuring slab on the card: a card on the card looked odd */
-/* ---------- the treasure map (measuring screens, in the journey's card): a plain parchment sheet with soft worn
-   edges (assets/images/treasure-map.webp, tools/paint-treasure-map.py) spread where the ice slab was, Swiftee
-   standing on it. As she swoops in it spreads open from the middle: a feathered mask widens across the sheet (the
-   paper never stretches and no hard edge sweeps), while the sheet settles a few px down onto the water; when the
-   screen moves on it folds back to the middle the same way. Each direction has its own easing (the destination
-   state's transition) */
-.map{display:none;position:absolute;left:50px;top:30px;width:1180px;height:659px;pointer-events:none;z-index:0;
-  opacity:0;transform:translateY(-10px) scale(.985);filter:drop-shadow(0 16px 18px rgba(0,30,70,.3));
-  transition:opacity .3s ease .45s,transform .7s ease-in}
-html.in-card .map{display:block}
-.map-sheet{position:absolute;inset:0;background:url(../assets/images/treasure-map.webp) center/100% 100% no-repeat;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);
-  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:50% 50%;mask-position:50% 50%;
-  -webkit-mask-size:0% 100%;mask-size:0% 100%;transition:-webkit-mask-size .65s cubic-bezier(.55,0,.8,.3),mask-size .65s cubic-bezier(.55,0,.8,.3)}
-.stage.scene.measure-room .map{opacity:1;transform:none;transition:opacity .25s ease .1s,transform 1s cubic-bezier(.2,.8,.3,1) .1s}
-.stage.scene.measure-room .map-sheet{-webkit-mask-size:140% 100%;mask-size:140% 100%;
-  transition:-webkit-mask-size 1s cubic-bezier(.25,.8,.3,1) .15s,mask-size 1s cubic-bezier(.25,.8,.3,1) .15s}
-@media (prefers-reduced-motion: reduce){.map,.map-sheet{transition:none!important}}
 html.in-card .bubble{background:#fff}
 html.in-card .bubble-tail path{fill:#fff}
 /* on the card Swiftee stands on its sand (the card's bottom band), and she and her bubble sit 36px further left, so the pair is centred between the card's
@@ -165,6 +147,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
    zoom, which sizes the angle values) glides with it, so a value never jumps in size when the zoom changes */
 @property --bz{syntax:'<number>';inherits:true;initial-value:1}
 .board{transform-origin:0 0;transition:transform .7s cubic-bezier(.22,.8,.3,1),--bz .7s cubic-bezier(.22,.8,.3,1)}
+.tracking{transition:none!important} /* the camera following the extending legs frame by frame (game-engine autoExtend) */
 /* Swiftee fades and rises into place */
 .swiftee{left:130px;animation:swHome .45s ease-out}
 @keyframes swHome{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -210,10 +193,6 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 /* live angle sums (screen 29) */
 .tag.sum{font-size:18px;padding:6px 14px;border:2px solid #2e9e4f;color:#1d6b35;background:#effbf1;transition:left .18s ease-out,top .18s ease-out}
 /* confetti for "Great job!" (screen 36), falls once */
-.celebrate{position:absolute;left:0;top:0;width:1280px;height:720px;pointer-events:none;overflow:hidden}
-.cf{position:absolute;top:-24px;width:10px;height:16px;border-radius:3px;opacity:0;animation:cfFall 2.6s cubic-bezier(.3,.6,.5,1) forwards}
-@keyframes cfFall{0%{opacity:1;translate:0 0}85%{opacity:1}100%{opacity:0;translate:-30px 760px;rotate:540deg}}
-@media (prefers-reduced-motion: reduce){.cf{display:none}}
 /* scene layout (every screen): ice panel on the right, Swiftee and her bubble on the snow at the left.
    !important overrides the inline positions in index.html */
 /* the ice panel: as large as the stage allows beside Swiftee and her bubble (the shape is fitted to it, engine fitFor) */
@@ -346,6 +325,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .stage.scene.summary .swiftee{left:510.5px!important;top:123px!important;transform-origin:50% 0;opacity:0;animation:none!important}
 .stage.scene.summary .bubble{left:0!important;right:0!important;margin:0 auto;top:auto!important;bottom:607px!important;max-width:760px;z-index:8;transform-origin:50% 100%}
 .stage.scene.summary .bubble .bubble-tail{left:calc(50% - 15px)}
+html.in-card .stage.scene.summary .bubble{max-width:1120px} /* on the card each idea's line stays on one line, so the box stays inside the card over Swiftee */
 .sum-root{position:absolute;left:0;top:0;width:1280px;height:720px;z-index:6;pointer-events:none}
 .sum-root > svg{position:absolute;left:0;top:0;width:1280px;height:720px;overflow:visible}
 .sum-root .summary-card.tappable{cursor:pointer;pointer-events:visiblePainted}
@@ -544,6 +524,9 @@ svg[data-lencol] .edge{transition:stroke .4s ease}
   background:linear-gradient(180deg,rgba(16,58,122,.88),rgba(6,30,74,.92))!important;border:2px solid rgba(255,214,140,.55);
   box-shadow:0 10px 26px rgba(0,20,60,.32),inset 0 1px 0 rgba(255,255,255,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .stage.scene.plate .bubble.manual{max-width:1200px}
+/* the plate is one size on every screen (its width no longer follows the line): a long line is set smaller inside it */
+.stage.scene.plate .bubble{width:1120px!important;height:70px;min-height:0;box-sizing:border-box;display:flex;align-items:center;justify-content:center;padding-top:0;padding-bottom:0}
+.stage.scene.plate .bubble .bubble-text{width:100%}
 /* an empty plate or bubble never shows: it fades in with its first word (a box with nothing in it read as a bug) */
 html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
 .stage.scene.plate .bubble .bubble-tail{display:none}
@@ -556,14 +539,20 @@ html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
 .stage.scene.plate .w.key{color:#ffb454}
 /* the checks fill the card: check 1's grid of shapes (laid out about the panel's centre in index.html) moves to the
    card's centre and grows, as do the question shape, the answer rows and check 4's drag group */
-.stage.scene.plate div:has(> [data-qa="opt-A"]){left:360px!important;top:118px!important;scale:1.2!important;transform-origin:50% 0}
+.stage.scene.plate div:has(> [data-qa="opt-A"]){left:360px!important;top:138px!important;scale:1.1!important;transform-origin:50% 0} /* (clear of the question plate above and the sand below) */
 .stage.scene.plate .qshape{scale:1.3!important;transform-origin:50% 0}
 .stage.scene.plate .q3{left:300px!important;top:104px!important;scale:1.38!important;transform-origin:50% 0}
 .stage.scene.plate .q5{left:335px!important;top:118px!important;scale:1.38!important;transform-origin:50% 0}
-.stage.scene.plate .q3-hint{left:640px!important;top:512px!important}
+.stage.scene.plate .q3-hint{left:640px!important;top:505px!important} /* (between the shape and the answers, clear of both) */
+/* Check 3's sum, in the name tags' look: navy glass, a gold rim (it was cream on the sand) */
+html.in-card .q3-hint{background:linear-gradient(180deg,#103a7a,#061e4a);border-color:#ffc94d;color:#fff8ec;box-shadow:0 6px 14px rgba(0,20,60,.3)}
+html.in-card .q3-hint .q3h-a{color:#ffb454}html.in-card .q3-hint .q3h-x{color:#ffd166}html.in-card .q3-hint .q3h-op{color:#cfe3ff}
+/* Done on the card: centred under the two angle sums (screen 25), never on them */
+.stage.scene.plate .done-btn{left:640px;top:628px}
 .stage.scene.plate .opts-row{scale:1.18!important;transform-origin:50% 0}
-/* check 4's labels, boxes and shapes were laid out about the panel's centre: they move with the shape */
-.stage.scene.plate .q4-wrap{transform:translate(-236px,10px) scale(1.28)}
+/* check 4's labels, boxes and shapes were laid out about the panel's centre: they move to the card's centre, clear of
+   the question plate (translate and scale = CONFIG.q4Plate, which the label drags map the pointer through) */
+.stage.scene.plate .q4-wrap{transform:translate(-234px,13px) scale(1.2)}
 /* ---------- fun and festive touches ---------- */
 /* the measuring room's lengths land with the stamp (game-engine measureLeg), not the plain CSS pop */
 .stage.measure-room .tag.mtag{animation:none}
@@ -685,6 +674,23 @@ html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
   background:#fff8e3;border:4px solid #f0b000;box-shadow:0 3px 10px rgba(110,70,0,.16)}
 @keyframes chipIn{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
 
+/* ---------- name tags on the journey's card: the instruction plate's look (navy glass, a gold rim), larger, so they
+   stand out on the sand as well as the water. A white pill with a blue border looked off the game's theme and the
+   cream ones were lost on the sand. Names in gold, sums in white with the result in gold ---------- */
+html.in-card .stage .chip,html.in-card .stage .chip.name,html.in-card .stage .chip.white,html.in-card .stage .chip.gold,html.in-card .eq-layer .chip.gold{
+  color:#fff8ec;background:linear-gradient(180deg,rgba(16,58,122,.95),rgba(6,30,74,.97));border:3px solid #ffc94d;
+  box-shadow:0 8px 20px rgba(0,20,60,.35),inset 0 1px 0 rgba(255,255,255,.16);text-shadow:0 2px 3px rgba(0,0,0,.3)}
+html.in-card .stage .chip.name{color:#ffd166;font-size:36px;padding:10px 42px 8px}
+html.in-card .stage .chip.name.long{font-size:30px;padding:9px 34px 7px}
+html.in-card .stage .chip.white,html.in-card .stage .chip.gold:not(.eq-build):not(.sumstep){font-size:33px;padding:9px 38px 7px}
+html.in-card .stage .chip.gold.sumstep{width:330px;font-size:27px}
+html.in-card .stage .chip .chip-res,html.in-card .eq-layer .chip .chip-res{color:#ffd166}
+html.in-card .eq-layer .chip.gold.eq-build{font-size:32px;padding:9px 36px 7px} /* (the equation built on screens 21-22: as large as the other tags; the animation measures it) */
+html.in-card .eq-layer .eq-q,html.in-card .eq-layer .eq-res{color:#ffd166}
+/* the angle sums under the shape (screens 24-25): navy too, each keeping its pair's coloured rim */
+html.in-card .stage .tag.sum.sumL,html.in-card .stage .tag.sum.sumR{background:linear-gradient(180deg,#103a7a,#061e4a);color:#fff8ec;font-size:21px;padding:7px 16px;
+  box-shadow:0 6px 14px rgba(0,20,60,.3);text-shadow:0 1px 2px rgba(0,0,0,.3)}
+
 /* ---------- focus: the part Swiftee names is unmistakable. A gold highlighter sweeps along a named side, a named
    corner pings, a named angle glows, and the rest of the shape steps back until she moves on ---------- */
 /* the named side's highlight: a crisp yellow marker band under the side, drawn along it as the side is named */
@@ -696,6 +702,7 @@ html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
 .hl.on{opacity:1;stroke-width:9px;stroke-dasharray:100 100;animation:hlDraw .75s cubic-bezier(.45,0,.35,1) both;
   filter:drop-shadow(0 0 0.8px #0b2a55) drop-shadow(0 0 0.8px #0b2a55) drop-shadow(0 0 0.6px #0b2a55)}
 @keyframes hlDraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+.side-nums .hl.on{animation-duration:.35s} /* screen 1: each side lights in step with its number (Motion.sideNums) */
 .hlp.hl{stroke:#ffffff}
 .hlp.hl.on{stroke-width:15px;stroke-dasharray:.4 300;animation:hlPen .75s cubic-bezier(.45,0,.35,1) both;filter:drop-shadow(0 0 2px #ff9d00) drop-shadow(0 0 5px #ffb300)}
 @keyframes hlPen{0%{stroke-dashoffset:0;opacity:1}90%{stroke-dashoffset:-100;opacity:1}100%{stroke-dashoffset:-100;opacity:0}}
@@ -721,6 +728,8 @@ html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
 .stage .done-btn:hover{filter:brightness(1.06)}
 .stage .done-btn:active{animation:none;transform:translateY(5px);box-shadow:0 1px 0 #c95c00,0 4px 8px rgba(120,50,0,.25)}
 .stage .done-btn:focus-visible{outline:4px solid #fff;outline-offset:6px}
+/* the summary's Next, centred under the ideas (on the journey's card, the card's centre) */
+.stage .done-btn.sum-next{left:640px;top:626px;z-index:8;padding:0 24px 0 32px}
 @keyframes doneBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @media (prefers-reduced-motion: reduce){.stage .done-btn{animation:none}}
 

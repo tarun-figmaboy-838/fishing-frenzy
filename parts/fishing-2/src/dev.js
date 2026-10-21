@@ -56,7 +56,7 @@ const JUMPS = [
   }],
   ['Intro', () => { const g = game(); begin(g); g.restart(); }],
   ...LEVELS.map((lvl, i) => [`L${i + 1}`, () => level(i)]),
-  ['Recall', () => finish(3)],
+  ['Before L5', () => finish(3)], // (the angle recall card, or in the journey Swiftee's look at the marked angles)
   ['Catch ✓', () => tapFish(true)],
   ['Wrong ✗', () => tapFish(false)],
   ['Level done', () => finish(state.phase === PHASE.INTRO ? 0 : state.level)],
