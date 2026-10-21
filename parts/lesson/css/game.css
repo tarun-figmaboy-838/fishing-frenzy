@@ -549,8 +549,9 @@ html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
 /* Check 3's sum, in the name tags' look: navy glass, a gold rim (it was cream on the sand) */
 html.in-card .q3-hint{background:linear-gradient(180deg,#103a7a,#061e4a);border-color:#ffc94d;color:#fff8ec;box-shadow:0 6px 14px rgba(0,20,60,.3)}
 html.in-card .q3-hint .q3h-a{color:#ffb454}html.in-card .q3-hint .q3h-x{color:#ffd166}html.in-card .q3-hint .q3h-op{color:#cfe3ff}
-/* Done on the card: centred under the two angle sums (screen 25), never on them */
-.stage.scene.plate .done-btn{left:640px;top:628px}
+/* Done on the card: as big as the summary's Next, centred on the card's bottom edge under the two angle sums (never on them) */
+.stage.scene.plate .done-btn{left:640px;top:634px;height:76px;min-width:240px;font-size:36px;padding:0 50px 0 42px;gap:12px}
+.stage.scene.plate .done-btn svg{width:32px;height:32px}
 .stage.scene.plate .opts-row{scale:1.18!important;transform-origin:50% 0}
 /* check 4's labels, boxes and shapes were laid out about the panel's centre: they move to the card's centre, clear of
    the question plate (translate and scale = CONFIG.q4Plate, which the label drags map the pointer through) */
