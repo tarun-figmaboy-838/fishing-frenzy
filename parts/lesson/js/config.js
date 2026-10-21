@@ -11,9 +11,9 @@ const CONFIG = {
   rightShape: { A: 45, B: 300, C: 405, D: 45 },
   // screen 22 on: A 120°, B 105°, C 75°, D 60° (corner x only; the bases keep their heights)
   angleShape: { A: 158.14, B: 352.49, C: 405, D: 45 },
-  // exactCm: screen 20 counts the legs equal within this (their labels show one decimal);
-  // rightAngleDeg: screen 33 snaps a corner to 90° within this many degrees
-  snap: { exactCm: 0.05, rightAngleDeg: 5 },
+  // the corner drags snap into place while the corner is still held: exactCm, A locks at equal legs within this of BC;
+  // rightAngleDeg, a corner's leg stands upright within this many degrees of 90° (generous: close enough is enough)
+  snap: { exactCm: 0.3, rightAngleDeg: 6 },
   // recorded effects (the rest are synthesised): good = every correct action, bad = every wrong one
   sounds: { good: 'assets/audio/correct.mp3', bad: 'assets/audio/incorrect.mp3' },
   soundVolume: 0.9,

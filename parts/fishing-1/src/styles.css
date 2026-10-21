@@ -258,11 +258,18 @@ html, body {
   animation: next-in 0.55s cubic-bezier(0.2, 1.7, 0.4, 1), next-glow 1.6s ease-in-out 0.6s infinite;
 }
 .next-btn[hidden] { display: none; }
+.btn.next-btn:focus-visible { outline: none; } /* (it is focused as it appears; its glow calls for the tap, as the lesson's Next does) */
+/* a game button to press: it stands on an orange ledge, lifts a little under the pointer and presses down onto the
+   ledge when tapped (the lesson's Done and Next are the same button) */
+.btn.next-btn { border: 0.1em solid #fff3d6; transition: transform 0.1s ease, filter 0.1s ease; }
+.btn.next-btn:hover { transform: translateY(-0.05em); filter: brightness(1.05); }
+.btn.next-btn:active { animation: none; transform: translateY(0.13em); filter: brightness(0.97);
+  box-shadow: 0 0.03em 0 #b85a00, 0 0.15em 0.4em rgba(120, 50, 0, 0.3), inset 0 0.1em 0 rgba(255, 255, 255, 0.45); }
 .next-btn::after { content: ' \25B6'; font-size: 0.7em; vertical-align: 0.12em; }
 @keyframes next-in { from { transform: translateY(1.2em) scale(0.3); opacity: 0; } }
 @keyframes next-glow {
-  0%, 100% { box-shadow: 0 0.5em 1.6em rgba(240, 138, 29, 0.45), inset 0 0.15em 0 rgba(255, 255, 255, 0.45); }
-  50% { box-shadow: 0 0 0 0.35em rgba(255, 210, 120, 0.55), 0 0.5em 2.2em rgba(240, 138, 29, 0.7), inset 0 0.15em 0 rgba(255, 255, 255, 0.45); }
+  0%, 100% { box-shadow: 0 0.16em 0 #b85a00, 0 0.4em 1em rgba(120, 50, 0, 0.35), inset 0 0.1em 0 rgba(255, 255, 255, 0.55); }
+  50% { box-shadow: 0 0.16em 0 #b85a00, 0 0 0 0.3em rgba(255, 210, 120, 0.55), 0 0.4em 1.6em rgba(240, 138, 29, 0.6), inset 0 0.1em 0 rgba(255, 255, 255, 0.55); }
 }
 
 /* ---------- overlays ---------- */

@@ -53,12 +53,9 @@
 //   sumSteps     the two angle sums built one pair at a time; 'sym' first turns the values into names
 //   right90      90° labels on the right angles
 //   r90Pre       right-angle marks and labels hidden until a cue brings them in
-//   rightTap     after the line the learner taps the 90° corners; finding them all completes the screen
-//   okCheck      a sparkle burst when the task is done
 //   noBoard      no shape
 //   noPanel      no ice panel
 //   summary      the Summary Kit's recall cards (js/summary.js)
-//   noIdle       no idle reminders
 //   skip         a silent screen that moves on by itself; Back passes over it
 //   cfu          check number (1-5)
 //   okFx / badFx Motion functions run on a right / wrong answer (they show why on the shape)
@@ -68,7 +65,6 @@
 //   badFx        Motion function run on a wrong answer
 //   idleFx       Motion function run with each hand nudge
 //   softWrong    wrong answers shown in soft orange
-//   lockNext     Next stays disabled until the screen is solved
 //   labelsAt     the drag labels stay hidden and fixed until a cue brings them in
 //   instant      each dropped label is checked as it lands
 //   end          the lesson-complete screen (title, stars, score, Play again)
@@ -273,12 +269,12 @@ const LESSON = {
         { id: 'i', t: 'Isosceles', ok: true },
         { id: 'r', t: 'Right', fb: 'There are no right angles in this shape. Look at the legs instead.' }
       ] },
-    { id: 'cfu4', cfu: 4, qStatic: 'Drag the labels to their\ncorrect place.', lockNext: 1, 
+    { id: 'cfu4', cfu: 4, qStatic: 'Drag the labels to their\ncorrect place.', 
       enterFx: 'q4In', labelsAt: 1, instant: 1, handMs: 3000,
       lines: [{ m: 'curious', t: 'Drag the labels to their\ncorrect place.', cueAt: { drag: 'q4Shapes', labels: 'q4LabelsIn', place: 'q4HiShapes' } }],
       ok: 'Brilliant! You labelled all three trapeziums.' },
     // Swiftee rises into the middle; after this line eight idea cards are shown and explained one by one
-    { id: 'recap', noBoard: 1, layout: 'recap', summary: 1, noIdle: 1, autoAdvance: 500, // (the lesson's last screen: no long beat before Swiftee leaves)
+    { id: 'recap', noBoard: 1, layout: 'recap', summary: 1, autoAdvance: 500, // (the lesson's last screen: no long beat before Swiftee leaves)
       lines: [{ m: 'happy', t: "Let's recall what\nwe learnt today." }] },
     // "120" opens ∠A; "value" runs a light down AD to a "?" at D. A wrong answer brings in
     // "120° + ? = 180°" under the shape; the right one flies 60° to D and the equation resolves
@@ -287,7 +283,7 @@ const LESSON = {
     { id: 'end', end: 1, hero: 1, voiceDelay: 1100, autoNext: 700,
       lines: [{ m: 'celebrating', t: 'Amazing work! You know all about trapeziums now.' }, { m: 'waving', t: 'Bye for now! See you on\nour next snowy adventure!' }] },
     // the cartoon closer (js/finale.js): an iris closes on Swiftee, the sunburst, "The End", Play again
-    { id: 'theEnd', end: 1, hero: 1, finale: 1, noIdle: 1, lines: [] }
+    { id: 'theEnd', end: 1, hero: 1, finale: 1, lines: [] }
   ],
   cfu4: {
     labels: [{ id: 'iso', t: 'Isosceles' }, { id: 'right', t: 'Right' }, { id: 'scal', t: 'Scalene' }],

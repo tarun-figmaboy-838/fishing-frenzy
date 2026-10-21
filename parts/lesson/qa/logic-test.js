@@ -62,8 +62,6 @@ const focusWait=async()=>{ for(let k=0;k<100&&c.cur().layout==='focus'&&!c.state
       case 'dragA': { const Q=c.clone(P); Q.A.x=Q.D.x+(Q.C.x-Q.B.x); // legs exactly equal (the screen needs AD to read exactly BC)
         c.setState({P:Q,moved:true}); c.checkDrag('A'); break; }
     }
-    // screen 35: tap the two right angles (it is finished once both are found)
-    if(st.rightTap){ ['A','B','C','D'].filter(k=>Math.abs(c.angle(c.state.P,k)-90)<0.5).forEach(k=>c.rightTap(k)); }
     // answer screens: a wrong pick first, then the right one
     if((st.cfu||st.practice) && st.opts){ const bad=st.opts.find(o=>!o.ok); c.pick(bad); check(st.id+':bad'); c.pick(st.opts.find(o=>o.ok)); }
     // check 4 (drag the labels to the shapes): a wrong placement first, then the right one

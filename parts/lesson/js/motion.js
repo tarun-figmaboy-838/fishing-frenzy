@@ -220,13 +220,6 @@
         .fromTo(dots, { scale: 0.4, opacity: 0, transformOrigin: '50% 50%' }, { scale: 1, opacity: 1, duration: reduced ? 0 : 0.35, ease: 'back.out(1.8)', stagger: 0.08 }, 0.15)
         .fromTo(labels, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: 'sine.out', stagger: 0.05 }, '>-0.1'));
     },
-    // screen 35, once the right angles are found: a soft sparkle burst beside the shape (no check-mark icons)
-    okCheck() {
-      const g = $('.okcheck')[0];
-      if (!G || !g) return;
-      const spk = Array.from(g.querySelectorAll('.spk'));
-      add(() => G.fromTo(spk, { scale: 0, opacity: 1, transformOrigin: '50% 50%' }, { scale: 1.3, opacity: 0, duration: 0.9, ease: 'power2.out', stagger: 0.08 }));
-    },
 
     // screen 23 without the protractor walk (reduced motion, or no walker): A -> B -> C -> D, each arc draws
     // round its corner, its filled angle grows out and its value glides in toward the corner
@@ -564,15 +557,6 @@
           .to(ticks, { duration: 0.3, yoyo: true, repeat: 1 }, 0.85);
         return tl;
       });
-    },
-    // screen 8: before the bases extend, the named sides glow once together (thicker line, soft purple halo)
-    softGlow(keys) {
-      const els = keys.map((k) => $('.e' + k)[0]).filter(Boolean);
-      if (!G || !els.length) return;
-      add(() => G.timeline()
-        .to(els, { strokeWidth: 7, duration: 0.3, ease: 'sine.out' })
-        .to(els, { strokeWidth: 5, filter: NOGLOW, duration: 0.35, ease: 'sine.in' })
-        .set(els, { clearProps: 'strokeWidth,filter' }));
     },
     // screen 22: the whole shape fades in with a soft scale-up. It is a CSS animation keyed on data-in
     // (.shape-pre), so a redraw mid-way cannot cut it short.
@@ -929,22 +913,6 @@
       add(() => G.timeline()
         .fromTo(labs, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 1 }, { scale: 1.15, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 1, stagger: 0.12 }, 0)
         .call(() => ms.forEach((m) => this.markPing(m)), null, 0));
-    },
-    // screen 35, a right angle tapped: its marker and 90° label give a soft green pulse
-    rightFound(k) {
-      const m = $('.rm' + k)[0], lab = $('.tag.r90' + k)[0];
-      if (!G) return;
-      add(() => G.timeline()
-        .to(m, { strokeWidth: 5, duration: 0.2, yoyo: true, repeat: 1 }, 0)
-        .fromTo(lab, { xPercent: -50, yPercent: -50, x: 0, y: 0, scale: 1 }, { scale: 1.3, duration: 0.2, ease: 'sine.out', yoyo: true, repeat: 1 }, 0));
-    },
-    // screen 35, both right angles found: the vertical side glows once
-    rightAll() {
-      const s = $('.eDA')[0];
-      if (G && s) add(() => G.timeline()
-        .to(s, { strokeWidth: 7, duration: 0.35, ease: 'sine.out' })
-        .to(s, { strokeWidth: 5, filter: NOGLOW, duration: 0.6, ease: 'sine.inOut' }, '>+0.4')
-        .set(s, { clearProps: 'strokeWidth,filter' }));
     },
 
     // ---------- screen 40 (check 3: find ∠D) ----------
