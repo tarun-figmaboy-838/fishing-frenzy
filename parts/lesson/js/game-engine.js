@@ -711,10 +711,12 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       if (!started) begin(); // (once begun, the word-by-word reveal is already running and now runs to the end)
       this.tm(silentEnd, 300);
     };
-    // the device's voice, also when a recorded clip can't play
+    // the device's voice - only when there are no recorded clips at all. With them, Swiftee has ONE voice: a line with
+    // no clip, or a clip that can't play (missing, refused, too slow), shows its words with no voice rather than in the
+    // device's (a British or American voice among hers sounded odd)
     const speakIt = () => {
       const s = this.synth();
-      const canSpeak = !this.state.muted && s && !!this.utterance('');
+      const canSpeak = !this.state.muted && s && !!this.utterance('') && !(window.Voice && Voice.on);
       if (!canSpeak) {
         sDone = true; // no voice: the words pace themselves and the beak moves while they appear
         this.tm(() => { begin(); }, 140);
@@ -1684,7 +1686,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       } else if (s.moved) { // anything else (5.2 cm, 4.8 cm...) is not correct yet
         if (Date.now() - (this.wigAt || 0) > 2500) this.sfx('bad'); // skip it if a wrong-way wiggle just played it
         if ((this.misses = (this.misses || 0) + 1) >= 2) { this.solveDrag('A'); return; } // a second wrong try: shown
-        this.interject({ t: 'AD is ' + this.cm(ad) + '. ' + (ad > bc ? 'Keep dragging A' : 'Drag A back a little') + ' until it shows exactly ' + this.cm(bc) + '.' });
+        this.interject({ t: this.voiced('AD is ' + this.cm(ad) + '. ' + (ad > bc ? 'Keep dragging A' : 'Drag A back a little') + ' until it shows exactly ' + this.cm(bc) + '.') });
       }
     } else if (st.task === 'dragFree' && st.explore && !s.done) {
       // explore (screen 29): drags just reshape, with no check and no success feedback. The first real drag
@@ -1706,11 +1708,14 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       } else {
         this.sfx('bad');
         if ((this.misses = (this.misses || 0) + 1) >= 2) { this.solveDrag(k); return; } // a second wrong try: shown
-        this.interject({ t: '∠' + k + ' is ' + Math.round(this.angle(P, k)) + '° now. Keep dragging until it shows 90°.' });
+        this.interject({ t: this.voiced('∠' + k + ' is ' + Math.round(this.angle(P, k)) + '° now. Keep dragging until it shows 90°.') });
       }
     }
   }
 
+  // a drag's feedback names the value it is at; only some values were recorded (AD too short, or an angle outside
+  // 39-141°, has none), so a value with no clip says the recorded "Not quite. Try again." (the label shows the value)
+  voiced(t) { return !(window.Voice && Voice.on) || Voice.find(t) ? t : 'Not quite. Try again.'; }
   // corner k's leg stands upright (k moves straight above or below its partner on the same leg): a right angle at k
   uprightLeg(P, k) { if (k === 'A') P.A.x = P.D.x; if (k === 'D') P.D.x = P.A.x; if (k === 'B') P.B.x = P.C.x; if (k === 'C') P.C.x = P.B.x; }
   // a corner-drag task after a second wrong try: the corner glides on its own to where it belongs (legs equal, or the
@@ -2027,7 +2032,6 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       const cur = bOrder.map((e) => bAt[e[0]]).find((e) => bd.d < e.s + e.L) || bAt.CD;
       g.trace = seg(cur.p, lerp(cur.p, cur.q, Math.min(1, (bd.d - cur.s) / cur.L)), true, { cls: 'trace' });
     }
-    g.ol = { d: dsp(!!(bd && bd.settle)) };
     g.eAB = seg(A, B, edgeOn('AB'), { c: baseCol('AB'), cls: eCls('AB'), hl: hlCls('AB') });
     g.eCD = seg(C, D, edgeOn('CD'), { c: baseCol('CD'), cls: eCls('CD'), hl: hlCls('CD') });
     g.eBC = seg(B, C, edgeOn('BC'), { c: legCol('BC'), cls: eCls('BC'), hl: hlCls('BC') });

@@ -259,7 +259,6 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 @keyframes xlegIn{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion: reduce){.xleg{animation:none}.trace{transition:none}}
 /* glow round the finished outline (screen 1) */
-.outline-settle{opacity:0} /* GSAP fades it in and out: a crisp flash of the finished outline, no glow */
 /* screen 2 side numbers: plain bold numerals; GSAP brings them in (Motion.sideNums) */
 .tag.snum{background:none;box-shadow:none;padding:0;font-family:'Nunito','Noto Sans Math',system-ui,sans-serif;font-weight:900;font-size:26px;color:#123b63}
 
@@ -300,16 +299,13 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
 .q4s .q4-leg{opacity:0}
 .slot.hot{border-color:#56aee8;border-style:solid;background:rgba(230,244,255,.92);transform:scale(1.03);box-shadow:0 0 0 5px rgba(86,174,232,.22)}
 .slot.filled.ok{border:2.5px solid #2e9e4f;background:rgba(227,247,231,.7)}
-/* check 4 rows: the shape on its own card, a small arrow, then the answer box; waiting labels float gently */
+/* check 4 rows: the shape on its own card, a small arrow, then the answer box */
 .q4-strip{position:absolute;width:522px;height:96px;border-radius:22px;background:rgba(255,255,255,.38);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.65),0 4px 14px rgba(18,59,99,.06);pointer-events:none}
 .q4-card{position:absolute;width:196px;height:92px;border-radius:18px;background:linear-gradient(180deg,#ffffff,#f4f9ff);pointer-events:none}
 .q4-link{position:absolute;width:12px;height:20px;pointer-events:none;clip-path:polygon(0 0,100% 50%,0 100%)}
 .stage .slot.empty{animation:slotBreathe 2.6s ease-in-out infinite}
 .stage .slot.hot{transform:scale(1.04)}
-.stage .lab:not(.drag):not(.lock):not(.pre):not(.sel){animation:labFloat 2.8s ease-in-out infinite}
-.stage .lab:nth-of-type(2){animation-delay:-.9s}.stage .lab:nth-of-type(3){animation-delay:-1.8s}
-@keyframes labFloat{0%,100%{translate:0 0}50%{translate:0 -3px}}
-@media (prefers-reduced-motion: reduce){.stage .lab{animation:none!important}}
+/* (the waiting labels sit level in their row: they used to bob out of step, so the row never looked aligned) */
 /* screen 13: the purple legs are there from the first frame, with no colour transition */
 .legs-set .eDA,.legs-set .eBC{transition:none}
 /* screens 14 and 15: both Base pills yellow, both Leg pills purple */

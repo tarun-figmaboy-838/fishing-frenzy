@@ -68,9 +68,9 @@
   // CSS centres labels on their point with translate(-50%, -50%); GSAP must keep that once it owns the transform
   const centred = (els) => G.set(els, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
   // every element Motion animates; clear() wipes the animated properties from all of them
-  const ANIMATED = '.tag.snum, .tag.vlab, .edge, .vdot, .shape-fill, .outline-settle, .pop-g, .chev, .calp > *, .ticks, .tag.mtag, .okcheck *, .tag.alab, .arc, .wedge, .chip, .chip-res, .xleg, .swiftee, .swiftee canvas, .swiftee img, .bubble, .rmark, .tag.r90, .q3, .q3 *, .q3-hint, .q3-hint *, .q3-fly, .q4s, .q4s *, .slot, .lab, .q4-strip, .q4-card, .q4-link, .opt svg, .qshape, .hl, .spark, .q1-par, .q1-chev, .q2-leg, .q2-tick, .q2-eq, .q5-leg, .q5-tick, .q5-ad, .q5-q, .q5-bc, .q5-ab, .q5-cd, .q5-hab, .q5-hcd, .q5-hl';
+  const ANIMATED = '.tag.snum, .tag.vlab, .edge, .vdot, .shape-fill, .pop-g, .chev, .calp > *, .ticks, .tag.mtag, .okcheck *, .tag.alab, .arc, .wedge, .chip, .chip-res, .xleg, .swiftee, .swiftee canvas, .swiftee img, .bubble, .rmark, .tag.r90, .q3, .q3 *, .q3-hint, .q3-hint *, .q3-fly, .q4s, .q4s *, .slot, .lab, .q4-strip, .q4-card, .q4-link, .opt svg, .qshape, .hl, .spark, .q1-par, .q1-chev, .q2-leg, .q2-tick, .q2-eq, .q5-leg, .q5-tick, .q5-ad, .q5-q, .q5-bc, .q5-ab, .q5-cd, .q5-hab, .q5-hcd, .q5-hl';
   // the SVG ones among them (clear() removes transform-origin and stroke-dasharray from these by hand)
-  const ANIMATED_SVG = '.wedge, .edge, .vdot, .shape-fill, .outline-settle, svg g.pop-g, .chev, .calp > *, .ticks, .okcheck *, .arc, .rmark, .q1-par, .q1-chev, .q2-leg, .q2-tick, .q2-eq, .q5-leg, .q5-tick, .q5-ad, .q5-q, .q5-bc, .q5-ab, .q5-cd, .q5-hab, .q5-hcd, .q5-hl';
+  const ANIMATED_SVG = '.wedge, .edge, .vdot, .shape-fill, svg g.pop-g, .chev, .calp > *, .ticks, .okcheck *, .arc, .rmark, .q1-par, .q1-chev, .q2-leg, .q2-tick, .q2-eq, .q5-leg, .q5-tick, .q5-ad, .q5-q, .q5-bc, .q5-ab, .q5-cd, .q5-hab, .q5-hcd, .q5-hl';
 
   const Motion = {
     ok: !!G,
@@ -126,18 +126,20 @@
     // a pause that dies with the screen
     wait(seconds, fn) { if (!G) { fn(); return; } add(() => G.delayedCall(seconds, fn)); },
 
-    // screen 1: the fill stays hidden while the pen draws; once the outline closes, a soft glow settles on it
-    // and the fill fades in
+    // screen 1: the fill stays hidden while the pen draws; once the outline closes the shape fills up, and its soft
+    // shadow fades in after (the clip hides it while the fill rises: it must not pop in when the clip comes off)
     hideFill() { if (G) add(() => G.set($('.shape-fill'), { opacity: 0 })); },
     settle() {
       if (!G) return;
       add(() => {
         const tl = G.timeline();
-        // the finished outline flashes, and the shape fills up from its base to its top, like water
-        tl.fromTo($('.outline-settle'), { opacity: 0 }, { opacity: 0.75, duration: 0.45, ease: 'sine.out' })
-          .to($('.outline-settle'), { opacity: 0, duration: 0.85, ease: 'sine.inOut' })
-          .fromTo($('.shape-fill'), { opacity: 1, clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: reduced ? 0 : 1.1, ease: 'power2.inOut' }, 0.15)
-          .set($('.shape-fill'), { clearProps: 'clipPath' });
+        // the shape fills up from its base to its top, like water (no flash on the outline: a thick blue glow over the
+        // finished outline, cut short as the side count began, read as a shadow flashing)
+        const NOSH = 'drop-shadow(0px 6px 10px rgba(0, 60, 110, 0))', SH = 'drop-shadow(0px 6px 10px rgba(0, 60, 110, 0.22))'; // (css .shape-fill's own shadow)
+        tl.fromTo($('.shape-fill'), { opacity: 1, filter: NOSH, clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: reduced ? 0 : 1.1, ease: 'power2.inOut' }, 0)
+          .set($('.shape-fill'), { clearProps: 'clipPath' })
+          .to($('.shape-fill'), { filter: SH, duration: reduced ? 0 : 0.45, ease: 'sine.out' })
+          .set($('.shape-fill'), { clearProps: 'filter' });
         return tl;
       });
     },
@@ -156,7 +158,6 @@
       try {
         add(() => {
           centred(els);
-          G.to($('.outline-settle'), { opacity: 0, duration: 0.15, overwrite: true }); // the outline's flash is drawn over the markers: it ends as the count starts
           const tl = G.timeline();
           els.forEach((el, i) => {
             tl.call(() => onSide && onSide(i), null, i * gap)
@@ -1074,10 +1075,11 @@
         .fromTo($('.slot'), { boxShadow: '0 0 0 0 rgba(255,122,0,0)' }, { boxShadow: '0 0 0 7px rgba(255,122,0,0.35)', duration: 0.28, yoyo: true, repeat: 1, stagger: 0.15 }, 0.1)
         .set($('.slot'), { clearProps: 'boxShadow' }));
     },
-    // "labels": the three labels rise in with a soft spring, one after another
+    // "labels": the three labels rise in with a soft spring, one after another. On their own translate and scale
+    // (web animations), never an inline transform: a tween cut short there left a label stuck big and out of line
     q4Labels() {
-      const labs = $('.lab');
-      if (G && labs.length) add(() => G.fromTo(labs, { opacity: 0, y: 24, scale: 0.92 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: 'back.out(1.7)', stagger: 0.12, clearProps: 'transform' }));
+      if (reduced) return;
+      $('.lab').forEach((l, i) => { try { l.animate([{ opacity: 0, translate: '0 24px', scale: '0.92' }, { opacity: 1, translate: '0 0', scale: '1' }], { duration: 450, delay: i * 120, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'backwards' }); } catch (e) {} });
     },
     // a right match: the box pulses, its row glows green, the shape glows and shows its clue again
     q4Ok(i) {
@@ -1094,15 +1096,17 @@
         return tl;
       });
     },
-    // a wrong drop: that box pulses soft orange and the label wobbles on its way back to the row
+    // a wrong drop: that box pulses soft orange and the label wobbles on its way back to the row. The wobble is a web
+    // animation of translate: a GSAP x read the label's lifted size (css .lab.drag, 108%) into an inline transform, and
+    // when it was cut short the labels stayed big, overlapping and out of line
     q4Bad(i, labId) {
       const box = $('.slot')[i], lab = $('.lab[data-qa="lab-' + labId + '"]')[0];
+      if (lab && !reduced) { try { lab.animate([{ translate: '0 0' }, { translate: '-8px 0' }, { translate: '7px 0' }, { translate: '-4px 0' }, { translate: '0 0' }], { duration: 300, easing: 'ease-out' }); } catch (e) {} }
       if (!G) return;
       add(() => {
         const tl = G.timeline();
         if (box) tl.fromTo(box, { boxShadow: '0 0 0 0 rgba(240,160,32,0)' }, { boxShadow: '0 0 0 6px rgba(240,160,32,0.45)', borderColor: '#f0a020', duration: 0.2, yoyo: true, repeat: 1 }, 0)
           .set(box, { clearProps: 'boxShadow,borderColor' });
-        if (lab) tl.to(lab, { x: -8, duration: 0.07 }, 0).to(lab, { x: 7, duration: 0.08 }).to(lab, { x: -4, duration: 0.07 }).to(lab, { x: 0, duration: 0.08 }).set(lab, { clearProps: 'transform' });
         return tl;
       });
     },

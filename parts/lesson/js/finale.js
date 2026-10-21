@@ -50,10 +50,10 @@
       const sw = document.querySelector('.stage .swiftee');
       // "The End!" in Swiftee's voice as the title lands
       const sayEnd = () => {
-        // the recorded voice-over (js/voice.js) when there is a clip; otherwise the device's voice
+        // the recorded voice-over (js/voice.js); the device's voice only when there are no clips at all (one voice for Swiftee)
         const speak = () => {
           const s = eng.synth && eng.synth();
-          if (!s || eng.state.muted || typeof SpeechSynthesisUtterance === 'undefined') return;
+          if (!s || eng.state.muted || typeof SpeechSynthesisUtterance === 'undefined' || (window.Voice && Voice.on)) return;
           try { eng.cancelSpeech(); const u = new SpeechSynthesisUtterance('The End!'); if (eng.voice) u.voice = eng.voice; u.lang = (eng.voice && eng.voice.lang) || 'en-GB'; u.pitch = 1.15; s.speak(u); } catch (e) {}
         };
         const clip = window.Voice && !eng.state.muted ? Voice.find('The End!') : null;
