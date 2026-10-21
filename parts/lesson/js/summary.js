@@ -32,7 +32,7 @@
   // under it), how far Swiftee peeks higher, and the docked bubbles' columns (wider apart than the cards', so the
   // round bubbles and their plates don't touch)
   const FRAME = { src: 'assets/images/summary-card.webp', w: 1024, h: 984 };
-  const BUB = { cx: 500, cy: 346, r: 160, k: 1.28, oy: 327, enterMs: 560, peekDy: -35, miniX: [[68, 232], [768, 932]] }; // (her face and mask clear the bubble's top as she peeks)
+  const BUB = { cx: 500, cy: 346, r: 160, k: 1.28, oy: 327, enterMs: 560, peekDy: -35, tailDy: 24, miniX: [[68, 232], [768, 932]] }; // (peekDy: her face and mask clear the bubble's top as she peeks; tailDy: her speech box comes down so its tail ends just over her head)
   const inCard = () => document.documentElement.classList.contains('in-card');
   const WARM = 'rgba(255, 150, 40, 0.85)';
   // name-tag colours, for the ideas that have a tone
@@ -109,7 +109,7 @@
     enter(engine) {
       this.stop();
       const root = document.querySelector('.stage .sum-root');
-      if (!root) return;
+      if (!root) { engine.landed(engine.stepTok); return; } // (no layer: she speaks anyway)
       const run = ++this.run, eng = engine, tok = eng.stepTok;
       this.eng = eng;
       // live() turns false once the screen changes; every async step checks it, so nothing runs late
@@ -133,8 +133,9 @@
       });
       // from screen 36 she is already centre stage: she glides up into the middle spot instead of rising from below
       const sw = document.querySelector('.stage .swiftee');
-      if (eng.fromHero && sw && G && !reduced()) { this.ctx.add(() => G.set(sw, { y: 207, scale: 1, opacity: 1 })); this.place('middle', false, 420); } // (207: the hero spot's top, 330, less this screen's 123)
-      else { this.place('middle', true, 0); this.rise('middle'); }
+      // she speaks once she is in the middle (eng.landed starts the screen's line)
+      if (eng.fromHero && sw && G && !reduced()) { this.ctx.add(() => G.set(sw, { y: 207, scale: 1, opacity: 1 })); this.place('middle', false, 420).then(() => eng.landed(tok)); } // (207: the hero spot's top, 330, less this screen's 123)
+      else { this.place('middle', true, 0); this.rise('middle').then(() => eng.landed(tok)); }
     },
     // after the opening line: each card in turn, then the finale. A step that resolves false (screen changed) ends the chain
     start(engine) {
@@ -188,7 +189,7 @@
       const P = Object.assign({}, SPOT[this.spot]);
       if (this.spot === 'peek' && inCard()) P.y += BUB.peekDy; // (the bubble's top is higher than the card's)
       // keep her speech bubble above her head; in the middle it stays narrow enough to fit between the albums
-      if (bub) { bub.style.marginBottom = (-P.y) + 'px'; bub.style.maxWidth = this.spot === 'middle' ? '470px' : ''; }
+      if (bub) { bub.style.marginBottom = (-P.y - (this.spot === 'peek' && inCard() ? BUB.tailDy : 0)) + 'px'; bub.style.maxWidth = this.spot === 'middle' ? '470px' : ''; }
       if (!sw || !G) return Promise.resolve(this.live());
       const to = { y: P.y + (down ? P.hide : 0), scale: P.s, opacity: down ? 0 : 1 };
       if (!ms || reduced()) { this.ctx.add(() => G.set(sw, to)); return Promise.resolve(this.live()); }
@@ -600,8 +601,9 @@
       S.collected.forEach((id) => S.cards[id].classList.add('tappable'));
       this.eng.setState({ sumNext: true });
     },
-    // Next is taken only between replays
+    // Next is taken only between replays; once taken, no idea can be replayed while the lesson moves on
     canLeave() { return !!(this.S && this.S.state === 'READY' && !this.busy); },
+    leave() { if (this.S) this.setState('LEAVING'); },
     // a tapped card: dim the others to 42 %, redraw its idea, say its line again, then back to READY.
     // busy blocks other taps until it is done
     replay(id) {
@@ -609,6 +611,7 @@
       if (!S || this.busy || S.state !== 'READY' || !S.cards[id]) return Promise.resolve(false);
       this.busy = true;
       const c = S.cards[id], live = this.live;
+      this.eng.setState({ sumNext: false }); // (Next steps aside while she explains the idea again)
       this.eng.sfx('tap');
       this.setState('CARD_SELECTED', id);
       S.collected.forEach((k) => { const o = k === id ? '' : '.42'; [S.cards[k], S.cards[k]._mini].forEach((el) => { el.style.transition = 'opacity 240ms ease'; el.style.opacity = o; }); });
@@ -624,7 +627,7 @@
         if (!live()) return false;
         this.hush(); S.active = null; this.eng.pose('happy');
         S.collected.forEach((k) => { [S.cards[k], S.cards[k]._mini].forEach((el) => { el.style.opacity = ''; }); });
-        this.busy = false; this.setState('READY'); return ok;
+        this.busy = false; this.setState('READY'); this.eng.setState({ sumNext: true }); return ok;
       });
     }
   };

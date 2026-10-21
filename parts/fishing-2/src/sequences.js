@@ -1440,9 +1440,9 @@ async function closeCurtain(game) {
   game.complete();
 }
 
-// Swiftee swoops in from the right, below the sound and pause buttons, answers Popo while still in
-// flight, and settles into a hover beside him, facing him. Options: `to` where she hovers, `dip`
-// how far the swoop dips mid-flight (negative arcs up), `onLand` once she has settled.
+// Swiftee swoops in from the right, below the sound and pause buttons, settles into a hover beside
+// him, facing him, and then speaks (she is always there before her bubble is). Options: `to` where she
+// hovers, `dip` how far the swoop dips mid-flight (negative arcs up), `onLand` once she has settled.
 async function swifteeArrives(game, lines, token, { onLine = () => {}, to = { x: game.popo.anchor.x + 360, y: game.popo.anchor.y - 130 }, dip = 50, onLand = () => {} } = {}) {
   const { fx, audio } = game;
   const [first, ...rest] = [].concat(lines);
@@ -1452,7 +1452,6 @@ async function swifteeArrives(game, lines, token, { onLine = () => {}, to = { x:
   bird.onDownstroke = () => audio.play('flap');
   game.swiftee = bird;
   audio.play('whoosh');
-  let talking = null;
   await clock.tween(fx.reduced ? 1200 : 2400, token, (t) => {
     const k = ease.out(t);
     bird.x = from.x + (to.x - from.x) * k;
@@ -1461,16 +1460,13 @@ async function swifteeArrives(game, lines, token, { onLine = () => {}, to = { x:
     bird.lean = 0.32 * (1 - t) ** 1.5;
     bird.flapRate = 11 + 9 * (1 - t);
     if (Math.random() < 0.25 * (1 - t)) fx.sparkle(bird.x + 70, bird.y + (Math.random() - 0.5) * 60, 1);
-    if (!talking && t > 0.3) {
-      onLine(0);
-      talking = game.say(first, token);
-      talking.catch(() => {});
-    }
   });
   bird.lean = 0;
   bird.onDownstroke = null;
   onLand(bird);
-  if (talking) await talking;
+  // she is there before her bubble is: the first line starts once she has landed
+  onLine(0);
+  await game.say(first, token);
   await game.sayAll(rest, token, (i) => onLine(i + 1));
 }
 

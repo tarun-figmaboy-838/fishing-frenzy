@@ -451,7 +451,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     const tok = this.stepTok, id = (this.emphId = (this.emphId || 0) + 1);
     this.cueT = Date.now();
     this.setState({ emph: parts.reduce((o, k) => { o[k] = 1; return o; }, {}) },
-      () => { const sides = parts.filter((k) => /^(AB|BC|CD|DA)$/.test(k)); if (!quiet && sides.length === 1) Motion.paced(() => Motion.spark(sides[0]));
+      () => { const sides = parts.filter((k) => /^(AB|BC|CD|DA)$/.test(k)); if (!quiet && sides.length === 1) Motion.spark(sides[0]); // (at the marker's own speed, so the dot leads its line)
         parts.filter((k) => /^a[A-D]$/.test(k)).forEach((k) => Motion.angleJump(k[1])); }); // a dot only for one named side; a pair lights up together
     this.tm(() => {
       if (tok !== this.stepTok) return;
@@ -1027,6 +1027,10 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       this.focusAt = Date.now();
     }
     this.pose(this.restPose());
+    // Swiftee coming onto the card (her dive back onto the measuring slab or a hero spot, her rise into the summary)
+    // speaks only once she is there: landed() starts her lines, so her bubble never shows before she does
+    this.whenLanded = null; this.landTok = null;
+    const arrives = (st.summary && typeof window !== 'undefined' && !!window.Summary) || (this.fromPlate && !this.isPlate(st) && (st.room === 'measure' || (st.hero && !st.finale)));
     this.setState({}, () => this.stepMotion(st)); // once the new screen is drawn
     const lines = () => this.playLines(st.lines, () => {
       this.setState({ linesDone: true }); // the screen's own lines are over (later feedback lines don't count)
@@ -1047,9 +1051,20 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     // voiceDelay (ms): Swiftee waits for the screen's opening animation before she speaks
     const glide = fwd && i > 0 && this.steps()[i - 1].room === 'measure' && st.room !== 'measure' ? 800 : 0; // back from the measuring slab
     this.glideMs = glide;
-    if (st.voiceDelay || glide) this.tm(lines, Math.max(st.voiceDelay || 0, glide));
-    else if (!(st.lines || []).length) this.tm(lines, 60); // a silent screen: let the screen change land before it can move on
-    else lines();
+    const speak = () => {
+      if (st.voiceDelay || glide) this.tm(lines, Math.max(st.voiceDelay || 0, glide));
+      else if (!(st.lines || []).length) this.tm(lines, 60); // a silent screen: let the screen change land before it can move on
+      else lines();
+    };
+    if (arrives && this.landTok !== this.stepTok) this.whenLanded = speak; else speak();
+  }
+  // Swiftee has arrived on screen tok (stepMotion's dive, the summary's rise): her lines can start
+  landed(tok) {
+    if (tok !== this.stepTok) return; // (a dive that finished after the screen changed)
+    this.landTok = tok;
+    const go = this.whenLanded;
+    this.whenLanded = null;
+    if (go) go();
   }
   // a short lock after each screen change, so a double tap cannot skip a screen
   navLocked() { return Date.now() - (this.navAt || 0) < CONFIG.timing.navLockMs; }
@@ -1127,6 +1142,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   // the summary's Next: the learner moves on when they choose (a replaying idea finishes first)
   sumNextGo() {
     if (!this.state.sumNext || !window.Summary || !Summary.canLeave()) return;
+    Summary.leave();
     this.sfx('tap');
     this.setState({ sumNext: false });
     this.maybeAdvance(false);
@@ -1461,10 +1477,11 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     if (st.letterIn) { Motion.lettersReset(); Motion.fadeOut('.tag.snum'); const tok = this.stepTok; this.tm(() => { if (tok === this.stepTok) this.setState({ numsGone: true }); }, 450); }
     if (st.entryPop) Motion.entryPop();
     if (st.hero && !st.finale) {
-      if (this.fromPlate) this.swifteeIn(() => { const sw = document.querySelector('.stage .swiftee'); if (sw && window.gsap && !Motion.reduced) gsap.to(sw, { y: -12, duration: 1.4, ease: 'sine.inOut', yoyo: true, repeat: -1 }); });
+      const tok = this.stepTok;
+      if (this.fromPlate) this.swifteeIn(() => { this.landed(tok); const sw = document.querySelector('.stage .swiftee'); if (sw && window.gsap && !Motion.reduced) gsap.to(sw, { y: -12, duration: 1.4, ease: 'sine.inOut', yoyo: true, repeat: -1 }); });
       else Motion.heroIn(); // (on 44 she is already centre stage)
     }
-    if (st.room === 'measure' && this.fromPlate) this.swifteeIn(); // back from a plate screen: a swoop onto the slab, not a pop
+    if (st.room === 'measure' && this.fromPlate) { const tok = this.stepTok; this.swifteeIn(() => this.landed(tok)); } // back from a plate screen: a swoop onto the slab, not a pop
     if (st.enterFx && Motion[st.enterFx]) Motion[st.enterFx]();
     if (st.summary && window.Summary) Summary.enter(this); // screen 37: set up the summary layer
   }
@@ -1872,7 +1889,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     const q = this.q4Pt((e.clientX - L.r.left) / L.sc, (e.clientY - L.r.top) / L.sc), px = q.x, py = q.y;
     // a box takes the label when the pointer or the label's own middle is over it (a label held by its end still lands)
     const lx = px - L.ox + 104, ly = py - L.oy + 28, over = (x, y, sl) => x > 840 - 20 && x < 840 + 284 + 20 && y > sl.y - 20 && y < sl.y + 64 + 20;
-    const slot = this.slotsDef().find((sl) => over(px, py, sl) || over(lx, ly, sl));
+    const slot = this.slotsDef().find((sl) => over(px, py, sl)) || this.slotsDef().find((sl) => over(lx, ly, sl)); // (the box under the pointer first)
     if (slot && !c4.checking) this.place(L.id, slot.id, c4);
     else { const at = Object.assign({}, c4.at); at[L.id] = null; this.setState({ c4: Object.assign(c4, { at: at }) }); }
   }
@@ -2365,7 +2382,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       g: G.g, tags: G.tags,
       words: words,
       // a line with its own breaks keeps exactly those lines: the bubble widens instead of wrapping again
-      bubCls: s.bub + ((s.line || '').indexOf('\n') >= 0 ? ' manual' : '') + ((s.line || '').replace(/\s+/g, ' ').length > 86 ? ' long vlong' : (s.line || '').replace(/\s+/g, ' ').length > 64 ? ' long' : ''), // long: a plate screen sets it smaller to keep one line
+      bubCls: s.bub + ((s.line || '').indexOf('\n') >= 0 ? ' manual' : ''),
       // lesson steps share one board, so it only fades in when it first appears; each check fades in fresh
       fadeCls: fadeV,
       birdCls: 'bird', // Swiftee's expressions are driven by pose() (js/swiftee.js), not by re-rendering

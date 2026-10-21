@@ -95,6 +95,11 @@ the front page instead.
   about trapeziums!" comes as she meets Popo, the rod reminder is the pointing hand, Popo says no "Great catch!", a
   wrong catch shows only the tag on the fish, and level 5 starts without the shell's angle recall (Swiftee swoops in
   with "Look at the marked angles!").
+- **One look across the parts.** The narration box is fishing 1's instruction panel everywhere (fishing 2's instruction
+  and the lesson's plate too: translucent navy, a faint gold rim, Fredoka, key words in gold; in the lesson it fits its
+  line at one height and one size). Every button that moves the game on (fishing's Next, the lesson's Done and its
+  summary's Next) is the fishing games' orange Next. Swiftee is always there before her bubble: in the fishing games
+  she speaks once she has flown in, in the lesson once her dive or the summary's rise has landed (`landed()`).
 - **The end.** Fishing 2 closes its cartoon iris on "The End", Next is tapped, and the front page fades back in.
   Fishing 1 has already loaded again behind it, so Play again starts at once.
 

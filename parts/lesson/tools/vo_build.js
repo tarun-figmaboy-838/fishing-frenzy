@@ -52,10 +52,8 @@ function gather() {
   const ctx = {}; vm.createContext(ctx);
   vm.runInContext(fs.readFileSync(path.join(ROOT, 'js', 'lesson-data.js'), 'utf8') + '\nthis.LESSON = LESSON;', ctx);
   const sum = fs.readFileSync(path.join(ROOT, 'js', 'summary.js'), 'utf8');
-  const ideas = [...sum.slice(sum.indexOf('const IDEAS'), sum.indexOf('const DONE')).matchAll(/\bt: '([^']+)'/g)].map((m) => m[1]);
-  const done = /const DONE = \{[^}]*\bt: '([^']+)'/.exec(sum)[1];
+  const from = sum.indexOf('const IDEAS'), ideas = [...sum.slice(from, sum.indexOf('\n  ];', from)).matchAll(/\bt: '([^']+)'/g)].map((m) => m[1]);
   const out = [], add = (line, say, opt) => { line = norm(line); if (line && !out.some((x) => x.line === line)) out.push(Object.assign({ line: line, spoken: say ? norm(say) : spoken(line) }, opt || {})); };
-  const qText = (st) => st.qStatic || ((st.cfu || st.practice) && st.lines.length ? st.lines[st.lines.length - 1].t : null);
   const say = (L) => (L.keep ? add(L.s, L.s) : add(L.t, L.s ? spoken(L.s) : null));
   ctx.LESSON.steps.forEach((st) => {
     (st.lines || []).forEach(say);
@@ -80,10 +78,7 @@ function gather() {
       add('Some labels went back. Look for the marks: equal legs, right angles, or neither.');
     }
     if (st.ok) add(st.ok);
-    // idle reminder: the question itself on checks, else the idle line, else the hint
-    const needs = st.task || st.cfu || st.opts;
-    if (needs && !st.auto && !st.noIdle) add(qText(st) || st.idle || (st.hint + '.'));
-    if (st.summary) { ideas.forEach((t) => add(t)); add(done); }
+    if (st.summary) ideas.forEach((t) => add(t)); // (no closing line, and no spoken idle reminders anywhere)
     // screen 44's closer says its own line (js/finale.js, Voice.find)
     if (st.finale) { const f = fs.readFileSync(path.join(ROOT, 'js', 'finale.js'), 'utf8'), m = /Voice\.find\('([^']+)'\)/.exec(f); if (m) add(m[1]); }
   });

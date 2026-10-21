@@ -322,7 +322,7 @@ html.in-card .stage.scene:not(.hero):not(.measure-room):not(.summary):not(.plate
    layer (.sum-root), so the card's rim hides her body. No CSS translate or scale on her or the bubble: GSAP's
    clean-up on a screen change would carry it over as a transform */
 .stage.summary .panel-img{opacity:0}
-.stage.scene.summary .swiftee{left:510.5px!important;top:123px!important;transform-origin:50% 0;opacity:0;animation:none!important}
+.stage.scene.summary .swiftee{left:510.5px!important;top:123px!important;transform-origin:50% 0;opacity:0;animation:none!important;transition:none!important} /* (the summary moves her itself, js/summary.js: a CSS fade on top made her rise end late, after her bubble) */
 .stage.scene.summary .bubble{left:0!important;right:0!important;margin:0 auto;top:auto!important;bottom:607px!important;max-width:760px;z-index:8;transform-origin:50% 100%}
 .stage.scene.summary .bubble .bubble-tail{left:calc(50% - 15px)}
 html.in-card .stage.scene.summary .bubble{max-width:1120px} /* on the card each idea's line stays on one line, so the box stays inside the card over Swiftee */
@@ -519,24 +519,26 @@ svg[data-lencol] .edge{transition:stroke .4s ease}
 .dive-bub{position:absolute;border-radius:50%;pointer-events:none;z-index:7;border:2px solid rgba(255,255,255,.95);background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.95) 0 18%,rgba(220,250,255,.35) 22%,rgba(255,255,255,.08) 70%);animation:diveBub 1.2s ease-out forwards}
 @keyframes diveBub{from{transform:translate(-50%,-50%) scale(.6);opacity:.95}to{transform:translate(-50%,calc(-50% - 70px)) scale(1.1);opacity:0}}
 .stage.scene.plate .panel-img{opacity:0!important}
+/* the plate is the fishing games' instruction panel (fishing 1's .instruction): a translucent deep-navy plate with a
+   faint gold rim, a soft shadow and blur, cream Fredoka with its key words in gold - one narration box for the game */
 .stage.scene.plate .bubble{left:0!important;right:0!important;margin:0 auto;top:20px!important;bottom:auto!important;transform-origin:50% 0;
-  min-width:0;max-width:1200px;min-height:70px;padding:14px 40px 15px;border-radius:22px;
-  background:linear-gradient(180deg,rgba(16,58,122,.88),rgba(6,30,74,.92))!important;border:2px solid rgba(255,214,140,.55);
-  box-shadow:0 10px 26px rgba(0,20,60,.32),inset 0 1px 0 rgba(255,255,255,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  min-width:0;max-width:1200px;min-height:70px;padding:14px 38px 15px;border-radius:22px;
+  background:rgba(8,36,84,.62)!important;border:2.4px solid rgba(255,214,140,.35);
+  box-shadow:0 10px 29px rgba(0,20,60,.3),inset 0 2px 0 rgba(255,255,255,.1);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .stage.scene.plate .bubble.manual{max-width:1200px}
-/* the plate is one size on every screen (its width no longer follows the line): a long line is set smaller inside it */
-.stage.scene.plate .bubble{width:1120px!important;height:70px;min-height:0;box-sizing:border-box;display:flex;align-items:center;justify-content:center;padding-top:0;padding-bottom:0}
+/* the plate fits its line (no empty glass round a short one), at one height and one type size on every screen: the
+   longest line (Check 2's question) still fits the card on one line */
+.stage.scene.plate .bubble{height:70px;min-height:0;box-sizing:border-box;display:flex;align-items:center;justify-content:center;padding-top:0;padding-bottom:0}
 .stage.scene.plate .bubble .bubble-text{width:100%}
 /* an empty plate or bubble never shows: it fades in with its first word (a box with nothing in it read as a bug) */
 html.in-card .stage .bubble:not(:has(.w.on,.w.cur)){opacity:0}
 .stage.scene.plate .bubble .bubble-tail{display:none}
 /* one line always: a line's own breaks are ignored, and a long line is set smaller so it fits the card */
-.stage.scene.plate .bubble-text{flex-wrap:nowrap;white-space:nowrap;justify-content:center;text-align:center;font-size:26px!important;line-height:1.3;color:#fff8ec;text-shadow:0 2px 4px rgba(0,0,0,.3)}
-.stage.scene.plate .bubble.long .bubble-text{font-size:23px!important}
-.stage.scene.plate .bubble.vlong .bubble-text{font-size:21px!important}
+.stage.scene.plate .bubble-text{flex-wrap:nowrap;white-space:nowrap;justify-content:center;text-align:center;font-family:'Fredoka','Nunito','Noto Sans Math',system-ui,sans-serif;font-weight:600;letter-spacing:.01em;
+  font-size:24px!important;line-height:1.3;color:#fff8ec;text-shadow:0 1.5px 3.4px rgba(0,0,0,.35)}
 .stage.scene.plate .bubble-text .w.brk{display:none}
-.stage.scene.plate .w.cur{color:#ffe08a}
-.stage.scene.plate .w.key{color:#ffb454}
+.stage.scene.plate .w.cur{color:#fff8ec}
+.stage.scene.plate .w.key,.stage.scene.plate .w.cur.key{color:#ffd166;font-weight:700}
 /* the checks fill the card: check 1's grid of shapes (laid out about the panel's centre in index.html) moves to the
    card's centre and grows, as do the question shape, the answer rows and check 4's drag group */
 .stage.scene.plate div:has(> [data-qa="opt-A"]){left:360px!important;top:138px!important;scale:1.1!important;transform-origin:50% 0} /* (clear of the question plate above and the sand below) */
@@ -685,6 +687,10 @@ html.in-card .stage .chip.name.long{font-size:30px;padding:9px 34px 7px}
 html.in-card .stage .chip.white,html.in-card .stage .chip.gold:not(.eq-build):not(.sumstep){font-size:33px;padding:9px 38px 7px}
 html.in-card .stage .chip.gold.sumstep{width:330px;font-size:27px}
 html.in-card .stage .chip .chip-res,html.in-card .eq-layer .chip .chip-res{color:#ffd166}
+/* "AB ∥ CD" (screen 8): the parallel sign spaced clear of the side names, and what it means in words under it */
+.stage .chip.par{text-align:center;word-spacing:.32em;line-height:1.05;padding-top:8px;padding-bottom:9px}
+.stage .chip.par .chip-res{display:block;word-spacing:normal;font-size:.56em;font-weight:700;letter-spacing:.02em;margin-top:3px}
+html.in-card .stage .chip.par .chip-res{color:#ffd166}
 html.in-card .eq-layer .chip.gold.eq-build{font-size:32px;padding:9px 36px 7px} /* (the equation built on screens 21-22: as large as the other tags; the animation measures it) */
 html.in-card .eq-layer .eq-q,html.in-card .eq-layer .eq-res{color:#ffd166}
 /* the angle sums under the shape (screens 24-25): navy too, each keeping its pair's coloured rim */
@@ -699,12 +705,12 @@ html.in-card .stage .tag.sum.sumL,html.in-card .stage .tag.sum.sumR{background:l
    side turns bold yellow behind it, edged in navy so the bright yellow stands out on the aqua - and it stays marked
    while it is talked about (the other sides step back: .focusing). pathLength is 100 */
 .hl{opacity:0;pointer-events:none;stroke:#ffd000;stroke-linecap:round}
-.hl.on{opacity:1;stroke-width:9px;stroke-dasharray:100 100;animation:hlDraw .75s cubic-bezier(.45,0,.35,1) both;
+.hl.on{opacity:1;stroke-width:9px;stroke-dasharray:100 100;animation:hlDraw .55s cubic-bezier(.45,0,.35,1) both;
   filter:drop-shadow(0 0 0.8px #0b2a55) drop-shadow(0 0 0.8px #0b2a55) drop-shadow(0 0 0.6px #0b2a55)}
 @keyframes hlDraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
 .side-nums .hl.on{animation-duration:.35s} /* screen 1: each side lights in step with its number (Motion.sideNums) */
 .hlp.hl{stroke:#ffffff}
-.hlp.hl.on{stroke-width:15px;stroke-dasharray:.4 300;animation:hlPen .75s cubic-bezier(.45,0,.35,1) both;filter:drop-shadow(0 0 2px #ff9d00) drop-shadow(0 0 5px #ffb300)}
+.hlp.hl.on{stroke-width:15px;stroke-dasharray:.4 300;animation:hlPen .55s cubic-bezier(.45,0,.35,1) both;filter:drop-shadow(0 0 2px #ff9d00) drop-shadow(0 0 5px #ffb300)}
 @keyframes hlPen{0%{stroke-dashoffset:0;opacity:1}90%{stroke-dashoffset:-100;opacity:1}100%{stroke-dashoffset:-100;opacity:0}}
 /* a named point: the dot grows gold (engine) with a soft gold glow */
 .vdot.on{filter:drop-shadow(0 0 5px rgba(255,196,0,.95))}
@@ -729,7 +735,18 @@ html.in-card .stage .tag.sum.sumL,html.in-card .stage .tag.sum.sumR{background:l
 .stage .done-btn:active{animation:none;transform:translateY(5px);box-shadow:0 1px 0 #c95c00,0 4px 8px rgba(120,50,0,.25)}
 .stage .done-btn:focus-visible{outline:4px solid #fff;outline-offset:6px}
 /* the summary's Next, centred under the ideas (on the journey's card, the card's centre) */
-.stage .done-btn.sum-next{left:640px;top:626px;z-index:8;padding:0 24px 0 32px}
+.stage .done-btn.sum-next{left:640px;top:622px;z-index:8;height:64px;padding:0 44px;font-size:30px}
+.stage .done-btn.sum-next::after{content:' \25B6';font-size:.7em;margin-left:.3em}
+/* in the journey, Done and Next are the fishing games' Next button (their .btn.primary.next-btn): a light-orange pill
+   with a cream rim and dark lettering that glows gently - one look for every button that moves the game on */
+html.in-card .stage .done-btn{font-family:'Fredoka','Nunito',system-ui,sans-serif;font-weight:700;letter-spacing:.01em;color:#2b1600;text-shadow:none;
+  background:linear-gradient(180deg,#ffc15e,#f08a1d);border:3.5px solid rgba(255,236,190,.85);border-radius:999px;
+  animation:nextIn .55s cubic-bezier(.2,1.7,.4,1) both,nextGlow 1.6s ease-in-out .6s infinite}
+html.in-card .stage .done-btn svg{filter:none}
+@keyframes nextIn{from{transform:translateY(1.2em) scale(.3);opacity:0}}
+@keyframes nextGlow{0%,100%{box-shadow:0 12px 38px rgba(240,138,29,.45),inset 0 3.6px 0 rgba(255,255,255,.45)}
+  50%{box-shadow:0 0 0 8px rgba(255,210,120,.55),0 12px 52px rgba(240,138,29,.7),inset 0 3.6px 0 rgba(255,255,255,.45)}}
+@media (prefers-reduced-motion: reduce){html.in-card .stage .done-btn{animation:none}}
 @keyframes doneBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @media (prefers-reduced-motion: reduce){.stage .done-btn{animation:none}}
 

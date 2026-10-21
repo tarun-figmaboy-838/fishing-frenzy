@@ -522,8 +522,8 @@
       put();
       add(() => G.timeline({ onComplete: () => g.remove() })
         .fromTo(g, { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0)
-        .to(p, { t: 1, duration: 0.75, ease: 'power1.inOut', onUpdate: put }, 0)
-        .to(g, { opacity: 0, duration: 0.2 }, 0.72));
+        .to(p, { t: 1, duration: 0.55, ease: 'power1.inOut', onUpdate: put }, 0) // (as long as the marker's draw, css .hl.on)
+        .to(g, { opacity: 0, duration: 0.2 }, 0.52));
     },
     // screen 18, on "different": the legs are highlighted (engine) and their two lengths glow gold together
     legsPop() {
@@ -790,11 +790,9 @@
     // the questions: each part lights up as Swiftee reads it out
     q1Cards() { if (G) add(() => G.fromTo($('.opt'), { y: 0 }, { y: -14, duration: 0.18, ease: 'power2.out', yoyo: true, repeat: 1, stagger: 0.14 })); },
     q1Look() { if (G) add(() => G.fromTo($('.opt svg'), { scale: 1 }, { scale: 1.12, transformOrigin: '50% 50%', duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 1, stagger: 0.18 })); },
-    // check 2, "type": the shape pops and its outline thickens, so the eye goes to it as the question is asked
+    // check 4, "type": the shape's outline thickens, so the eye goes to it as the question is asked
     q2Shape() {
-      if (G) add(() => G.timeline()
-        .fromTo($('.qshape'), { scale: 1 }, { scale: 1.08, transformOrigin: '50% 50%', duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 0)
-        .fromTo($('.qshape polygon'), { strokeWidth: 5 }, { strokeWidth: 8, duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 0));
+      if (G) add(() => G.fromTo($('.qshape polygon'), { strokeWidth: 5 }, { strokeWidth: 8, duration: 0.35, ease: 'sine.inOut', yoyo: true, repeat: 1 })); // (the shape itself stays put: on the card it is zoomed about its top, css .plate .qshape)
     },
     q5Say(lab, line) {
       if (!G) return;
@@ -961,8 +959,6 @@
         .fromTo($('.q3-dot').concat($('.q3-lab')), { opacity: 0, scale: 0.4, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)', stagger: 0.05 }, 0.7)
         .fromTo($('.q3-chev'), { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.45, ease: 'power2.out' }, 1.0));
     },
-    // "trapezium": one gentle pulse of the whole shape
-    q3Shape() { const s = $('.q3')[0]; if (G && s) add(() => G.fromTo(s, { scale: 1 }, { scale: 1.03, transformOrigin: '50% 50%', duration: 0.3, ease: 'sine.out', yoyo: true, repeat: 1 })); },
     // "120": ∠A's orange wedge opens from A, its value pops in and the wedge glows once
     q3A() {
       if (!G) return;

@@ -736,8 +736,8 @@ async function finale(game) {
   }
 }
 
-// Swiftee swoops in from the right, answers Popo while still in flight, and settles into a
-// hover beside him, facing him.
+// Swiftee swoops in from the right and settles into a hover beside him, facing him; then she answers (she is
+// always there before her bubble is).
 async function swifteeArrives(game, line, token) {
   const { popo, fx, audio } = game;
   const from = { x: STAGE_W + 140, y: 120 };
@@ -746,7 +746,6 @@ async function swifteeArrives(game, line, token) {
   bird.onDownstroke = () => audio.play('flap');
   game.swiftee = bird;
   audio.play('whoosh');
-  let talking = null;
   await clock.tween(fx.reduced ? 1200 : 2400, token, (t) => {
     const k = ease.out(t);
     bird.x = from.x + (to.x - from.x) * k;
@@ -755,14 +754,10 @@ async function swifteeArrives(game, line, token) {
     bird.lean = 0.32 * (1 - t) ** 1.5;
     bird.flapRate = 11 + 9 * (1 - t);
     if (Math.random() < 0.25 * (1 - t)) fx.sparkle(bird.x + 70, bird.y + (Math.random() - 0.5) * 60, 1);
-    if (!talking && t > 0.3) {
-      talking = game.say(line, token);
-      talking.catch(() => {});
-    }
   });
   bird.lean = 0;
   bird.onDownstroke = null;
-  if (talking) await talking;
+  await game.say(line, token);
 }
 
 // In the journey, after Next: "Let's find out!" - Swiftee twirls and flies off over Popo's head, up and out of the
