@@ -1023,6 +1023,11 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   goTo(i, fwd) {
     const st = this.steps()[i];
     if (!st) return;
+    if (window.Voice && Voice.warm) { // this screen's clips start loading now, so its later short lines never wait on the network
+      const all = (x) => (Array.isArray(x) ? x : x ? [x] : []);
+      Voice.warm([].concat((st.lines || []).map((l) => l.t), (st.after || []).map((l) => l.t), all(st.ok), all(st.revealLine).filter((t) => t.indexOf('{k}') < 0),
+        ...(st.opts || []).map((o) => all(o.fb))));
+    }
     this.clearT();
     this.holdTo = 0;
     this.handId = null; this.handShown = 0; this.touched = false; this.overWig = false; this.letterAt = 0; this.morphing = false; this.settleWaiting = false; this.misses = 0; this.misses4 = {}; this.solved = false; this.solving = false; this.revealing = false;

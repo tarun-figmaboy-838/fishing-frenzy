@@ -122,5 +122,12 @@ window.Voice = (function () {
       return s + (b ? ' point ' + b.split('').map((d) => 'x'.repeat(NUM[d])).join(' ') : '');
     }).length + 1;
   }
-  return { find: find, play: play, stop: stop, unlock: unlock, prefetch: prefetch, weight: weight, get on() { return ok; } };
+  // a screen's own clips, fetched as it opens (its later short lines, its feedback): the background prefetch goes in order
+  // and may not have reached them yet, and a line whose clip is still loading shows nothing until its first word
+  const warmed = {};
+  function warm(texts) {
+    if (!ok || typeof fetch === 'undefined' || location.protocol === 'file:') return;
+    (texts || []).forEach((t) => (find(t) || []).forEach((c) => { if (!warmed[c.id]) { warmed[c.id] = 1; fetch(DIR + c.id + '.ogg').catch(() => { warmed[c.id] = 0; }); } }));
+  }
+  return { find: find, play: play, stop: stop, unlock: unlock, prefetch: prefetch, warm: warm, weight: weight, get on() { return ok; } };
 })();
