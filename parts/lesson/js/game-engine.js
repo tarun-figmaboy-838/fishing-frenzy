@@ -674,8 +674,9 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       fireLegs();
       wordCues.forEach(fireCue);
       if (L.pairEnd) this.tm(() => { if (live()) Motion.anglesTogether(L.pairEnd); }, 250); // both named angles glow together
-      // optsAfter: the answers slide in once the question has been asked
-      if (this.cur().optsAfter && !this.state.qc && !this.state.done) {
+      // optsAfter: the answers slide in once the question has been asked - all of it, when it is said in short lines
+      const qLast = !this.q || this.q.tok !== this.stepTok || this.q.i >= this.q.lines.length;
+      if (this.cur().optsAfter && qLast && !this.state.qc && !this.state.done) {
         this.tm(() => { if (live()) { this.sfx('pop'); this.setState({ qc: true }); } }, L.pairEnd ? 700 : 300);
       }
       // Swiftee holds the line's expression for a beat, then settles
@@ -849,7 +850,19 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   }
   interject(L) {
     const tok = this.stepTok;
-    this.say(L, () => { if (tok !== this.stepTok) return; if (this.q) this.qNext(); else { this.armIdle(); this.maybeAdvance(true); } this.qBack(); });
+    this.sayAll(L, () => { if (tok !== this.stepTok) return; if (this.q) this.qNext(); else { this.armIdle(); this.maybeAdvance(true); } this.qBack(); });
+  }
+  // feedback written as short lines (t: an array) is said one after another, as one; anything said meanwhile (a new tap,
+  // a screen change) ends the rest
+  sayAll(L, done) {
+    const parts = Array.isArray(L.t) ? L.t : [L.t], tok = this.stepTok;
+    // (a line cut short by a newer one never calls back, so a cut-short list just stops)
+    const next = (k) => {
+      if (tok !== this.stepTok) return;
+      if (k >= parts.length) { if (done) done(); return; }
+      this.say(Object.assign({}, L, { t: parts[k] }), () => next(k + 1));
+    };
+    next(0);
   }
   // After a feedback line, put the question back in the bubble (shown, not spoken again), so the
   // learner can always read what is being asked.
@@ -1755,7 +1768,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     this.setState({ hand: null });
     if (st.revealLine) { // what she is showing, said as the corner moves
       this.narrTok++; this.cancelSpeech(); this.q = null;
-      this.say({ m: CONFIG.swiftee.nudge, t: st.revealLine.replace('{k}', k) }, () => { said = true; end(); });
+      const rl = st.revealLine; this.sayAll({ m: CONFIG.swiftee.nudge, t: Array.isArray(rl) ? rl.map((x) => x.replace('{k}', k)) : rl.replace('{k}', k) }, () => { said = true; end(); });
     }
     Motion.value(0, 1, Motion.reduced ? 0 : 1.2, 'power2.inOut', (e) => {
       if (tok !== this.stepTok) return;

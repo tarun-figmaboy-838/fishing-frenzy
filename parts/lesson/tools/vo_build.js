@@ -70,14 +70,15 @@ function gather() {
     }
     if (st.rightTap) add('That angle is not 90°. Look for the square corners.');
     // what Swiftee says when she shows an activity's answer after a second wrong try ({k}: the corner, on screen 33)
-    if (st.revealLine) (st.revealLine.indexOf('{k}') >= 0 ? 'ABCD'.split('') : ['']).forEach((k) => add(st.revealLine.replace('{k}', k)));
+    const many = (x) => (Array.isArray(x) ? x : x ? [x] : []); // (feedback may be a list of short lines)
+    many(st.revealLine).forEach((rl) => (rl.indexOf('{k}') >= 0 ? 'ABCD'.split('') : ['']).forEach((k) => add(rl.replace('{k}', k))));
     (st.after || []).forEach(say);
-    (st.opts || []).forEach((o) => o.fb && add(o.fb));
+    (st.opts || []).forEach((o) => many(o.fb).forEach((x) => add(x)));
     if (st.id === 'cfu4') {
       add('Try again! Look closely at the shapes.'); add('Watch the glowing clue. Which shape has that mark?');
       add('Some labels went back. Look for the marks: equal legs, right angles, or neither.');
     }
-    if (st.ok) add(st.ok);
+    many(st.ok).forEach((x) => add(x));
     if (st.summary) ideas.forEach((t) => add(t)); // (no closing line, and no spoken idle reminders anywhere)
     // screen 44's closer says its own line (js/finale.js, Voice.find)
     if (st.finale) { const f = fs.readFileSync(path.join(ROOT, 'js', 'finale.js'), 'utf8'), m = /Voice\.find\('([^']+)'\)/.exec(f); if (m) add(m[1]); }

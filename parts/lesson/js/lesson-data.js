@@ -142,19 +142,20 @@ const LESSON = {
       { keep: 1, s: 'A B is parallel to C D.', chipsAfterParts: ['AB', 'CD'], chips: [{ t: 'AB ∥ CD', k: 'white par' }] }], f: { par: 1 } },
     // "parallel": the arrows glide on (as on the right trapezium's definition, no tracing of the sides);
     // "trapezium": the name label pops in
-    { id: 'defFull', legsSet: 1, chevPre: 1, lines: [{ t: 'A quadrilateral with at least\none pair of parallel sides\nis called a trapezium.', noEmph: 1, holdChips: 1,
-      cueAt: { parallel: 'chevIn', trapezium: 'showTitle' }, chips: [{ t: 'Trapezium', k: 'name' }] }], f: { par: 1 } },
+    { id: 'defFull', legsSet: 1, chevPre: 1, lines: [{ t: "Here's the big secret!", noEmph: 1 },
+      { t: 'One pair of parallel sides\nis enough.', noEmph: 1, cueAt: { parallel: 'chevIn' } },
+      { t: 'Then a quadrilateral\nis a trapezium!', noEmph: 1, holdChips: 1, cueAt: { trapezium: 'showTitle' }, chips: [{ t: 'Trapezium', k: 'name' }] }], f: { par: 1 } },
     // check 1, straight after the definition: which of these is a trapezium?
     { id: 'cfu1', cfu: 1, 
       okFx: 'q1Correct',
       // cueTimes from the recording (vo185): "quadrilaterals" 0.88 s, "trapezium" 2.24 s
       lines: [{ m: 'curious', t: 'Which of these quadrilaterals is a trapezium?', cueAt: { quadrilaterals: 'q1Cards', trapezium: 'q1Look' }, cueTimes: { trapezium: 2.24 } }],
-      ok: 'Correct! It has one pair of parallel sides, so it is a trapezium.',
+      ok: ['Correct!', 'It has one pair of parallel sides.', "So it's a trapezium!"],
       opts: [
         { id: 'A', ok: true },
-        { id: 'B', fb: 'Look at each side of this shape. No two sides are parallel, so it is not a trapezium.' },
+        { id: 'B', fb: ['Oops! No two sides are parallel here.', "So it's not a trapezium."] },
         { id: 'C', fb: 'This shape has no parallel sides at all.' },
-        { id: 'D', fb: 'Look at each side of this shape. No two sides are parallel, so it is not a trapezium.' }
+        { id: 'D', fb: ['Oops! No two sides are parallel here.', "So it's not a trapezium."] }
       ] },
     { id: 'bases', fitBox: { padTop: 78, padBottom: 78 }, // (room above and below the shape for the two Base pills, clear of the plate)
       lines: [{ t: 'The parallel sides\nare called bases.', glow: ['AB', 'CD'], focusAt: 'parallel', glowAt: 'bases', callout: 'bases' }], f: { par: 1 } },
@@ -165,8 +166,9 @@ const LESSON = {
       after: [{ m: 'surprised', t: 'Woah! All the sides of\nthis trapezium are of\ndifferent lengths.', s: 'Whoa! All the sides of this trapezium are of different lengths.', noEmph: 1, cueAt: { sides: 'lenColors' } }], f: { par: 1 } },
     // "trapezium": the shape pops; "sides": the lengths pop in one by one; "scalene": the name label.
     { id: 'scalene', fitBox: { cx: 864 }, // (cx: shape and labels centred together in the card: its length labels reach further right)
-      lenPre: 1, lines: [{ t: 'This type of trapezium which\nhas sides of different lengths\nis called a scalene trapezium.', holdChips: 1, noEmph: 1,
-      cueAt: { trapezium: 'shapePop', sides: 'lensSeq', scalene: 'showTitle' }, chips: [{ t: 'Scalene trapezium', k: 'name' }] }],
+      lenPre: 1, lines: [{ t: 'Look at this trapezium!', noEmph: 1, cueAt: { trapezium: 'shapePop' } },
+      { t: 'All its sides are\ndifferent lengths.', noEmph: 1, cueAt: { sides: 'lensSeq' } },
+      { t: "That's a scalene trapezium!", holdChips: 1, noEmph: 1, cueAt: { scalene: 'showTitle' }, chips: [{ t: 'Scalene trapezium', k: 'name' }] }],
       f: { par: 1, legLen: 1, sideLen: 1 } },
     // a longer autoNext so the last line can be read
     { id: 'legsDiff', fitBox: { cx: 889 }, // (cx: shape and labels centred together in the card: its length labels reach further left)
@@ -181,14 +183,15 @@ const LESSON = {
     // one demo hand after the line. Dragging A right (the wrong way) wiggles BC: A has only ~0.75 cm
     // before B stops it, so the limit is 0.5 cm. Equal legs snap into place and finish the task
     { id: 'equalDrag', fitBox: { cx: 889 }, // (cx: shape and labels centred together in the card: as screen 18)
-      lines: [{ m: 'curious', t: 'Drag vertex A so that both\nthe legs are of equal length.' }],
+      lines: [{ m: 'curious', t: 'Drag vertex A.' }, { m: 'curious', t: 'Make both legs\nthe same length!' }],
       task: 'dragA', handOnce: 1, wrongRight: { cm: 0.5, side: 'BC' }, after: [{ m: 'happy', t: 'Perfect! Both legs are equal.' }],
-      revealLine: 'Watch! AD becomes 5 cm, just like BC. Now both legs are equal.', // (said as A glides there after a second wrong try)
+      revealLine: ['Watch!', 'AD becomes 5 cm, just like BC.', 'Now both legs are equal!'], // (said as A glides there after a second wrong try)
       f: { par: 1, legLen: 1, sideLen: 1 } },
     // "trapezium": the shape pops; "same": both legs light up with their lengths;
     // "isosceles": the lengths shrink into the equal marks, then the name label pops in
-    { id: 'iso', lenPre: 1, tickPre: 1, lines: [{ t: 'A trapezium where legs are\nof same length is called\nan isosceles trapezium.', legsAt: 'same', holdChips: 1, noEmph: 1,
-      cueAt: { trapezium: 'shapePop', isosceles: 'isoName' }, chips: [{ t: 'Isosceles trapezium', k: 'name' }] }],
+    { id: 'iso', lenPre: 1, tickPre: 1, lines: [{ t: 'Now look at this trapezium!', noEmph: 1, cueAt: { trapezium: 'shapePop' } },
+      { t: 'Its legs are the same length!', legsAt: 'same', noEmph: 1 },
+      { t: "It's an isosceles trapezium!", holdChips: 1, noEmph: 1, cueAt: { isosceles: 'isoName' }, chips: [{ t: 'Isosceles trapezium', k: 'name' }] }],
       f: { par: 1, legLen: 1, ticks: 1 } },
     // from here on the angle shape (A 120°, B 105°, C 75°, D 60°); it fades in as she starts,
     // the arrows pop on at "sides" and the name label at "trapezium"
@@ -196,15 +199,17 @@ const LESSON = {
       holdChips: 1, cueAt: { sides: 'chevIn', trapezium: 'showTitle' }, chips: [{ t: 'Trapezium', k: 'name' }] }], f: { par: 1 } },
     // check 2, after the sides (scalene, isosceles): the missing side of an isosceles trapezium
     { id: 'cfu5', cfu: 5, optTop: 458, plateOptDy: 36, okFx: 'q5Correct', badFx: 'q5Wrong', optsAfter: 1, // (plateOptDy: in the card, clear of the 10 cm and the corner letters)
-      // cueTimes from the recording (vo200, the lengths said in full): "A B" 2.06 s, "C D" 4.24, "A D" 6.84, "B C" 9.84
-      lines: [{ m: 'curious', t: 'In an isosceles trapezium, AB = 6 cm, CD = 10 cm and AD = 5 cm. What is the length of BC?', cueAt: { ab: 'q5AB', cd: 'q5CD', ad: 'q5AD', bc: 'q5BC' },
-        cueTimes: { 'AB = 6 cm': 2.06, 'CD = 10 cm': 4.24, 'AD = 5 cm': 6.84, BC: 9.84 } }],
-      ok: 'Yes! In an isosceles trapezium the legs are equal, so BC = 5 cm.',
+      // the question in short steps; each length lands on its own words
+      lines: [{ m: 'curious', t: 'This is an isosceles trapezium.' },
+        { m: 'curious', t: 'AB = 6 cm and CD = 10 cm.', cueAt: { ab: 'q5AB', cd: 'q5CD' } },
+        { m: 'curious', t: 'AD = 5 cm.', cueAt: { ad: 'q5AD' } },
+        { m: 'curious', t: 'So how long is BC?', cueAt: { bc: 'q5BC' } }],
+      ok: ['Yes! The legs are equal.', 'So BC = 5 cm!'],
       opts: [
-        { id: 'a', t: '4 cm', fb: 'BC is a leg. In an isosceles trapezium, both legs are equal.' },
+        { id: 'a', t: '4 cm', fb: ['Hmm, BC is a leg.', 'And both legs are equal!'] },
         { id: 'b', t: '5 cm', ok: true },
-        { id: 'c', t: '6 cm', fb: '6 cm is the top base AB. BC is a leg, like AD.' },
-        { id: 'd', t: '8 cm', fb: 'BC is a leg. In an isosceles trapezium, both legs are equal.' } // (8, not 10: four short answers sit level; its feedback is the recorded line 4 cm has)
+        { id: 'c', t: '6 cm', fb: ['Oops! 6 cm is the top base AB.', 'BC is a leg, like AD.'] },
+        { id: 'd', t: '8 cm', fb: ['Hmm, BC is a leg.', 'And both legs are equal!'] } // (8, not 10: four short answers sit level; its feedback is 4 cm's)
       ] },
     // from here on the angle shape (A 120°, B 105°, C 75°, D 60°). After the line Swiftee carries a protractor round
     // A, B, C, D; each angle appears as she holds it there
@@ -228,11 +233,11 @@ const LESSON = {
       optsAfter: 1, okSum: ['B', 'C'], okFx: 'suppAtBC',
       // cueTimes from the recording (vo060): "angle B" 0.90-1.66 s (B at 1.40), "angle C" 2.08-2.70 (C at 2.44)
       lines: [{ m: 'curious', t: 'What about ∠B and ∠C?', angleCues: 1, pairEnd: ['B', 'C'], onStart: 'askIn', cueTimes: { '∠B': 1.4, '∠C': 2.44 }, chips: [{ t: '∠B + ∠C = ?', k: 'white' }] }],
-      ok: 'Correct! ∠B and ∠C are\nsupplementary angles too.', revealLine: 'It is 180°! Like ∠A and ∠D, ∠B and ∠C add up to 180°.', okChips: [{ t: '∠B + ∠C = 180°', k: 'gold' }], // (revealLine: after a second wrong pick)
+      ok: 'Correct! ∠B and ∠C are\nsupplementary angles too.', revealLine: ["It's 180°!", '∠B and ∠C add up to 180° too.'], okChips: [{ t: '∠B + ∠C = 180°', k: 'gold' }], // (revealLine: after a second wrong pick)
       opts: [
         { id: '90', t: '90°', fb: 'Not quite. Try again.' },
         { id: '180', t: '180°', ok: true },
-        { id: '360', t: '360°', fb: '360° is the sum of all four angles. Try again.' }
+        { id: '360', t: '360°', fb: ['Oops! 360° is all four angles.', 'Try again!'] }
       ], f: { par: 1, arcs: 'ABCD', focusAng: 'BC' } },
     // on "change" the top corners glide through the morph shapes; on "trapezium" the last one settles.
     // That shape carries on to screen 29
@@ -241,19 +246,17 @@ const LESSON = {
     // on "change" a guide hand drags A and back; on "sum" each pair pulses with its panel
     // fitBox: the shape and the sums under it, centred together in the ice card (Done sits on the card's bottom edge)
     { id: 'dragSum', entryPop: 1, lockTalk: 1, handMs: 3000, explore: 1, fitBox: { cx: 901, cy: 310 }, // (cx: the shape sits left of its drag range's middle)
-      lines: [{ m: 'curious', t: 'Drag any vertex to change\nthe angles. Notice the\nsum of angles.', cueAt: { change: 'demoDrag', sum: 'sumPanels' } }],
+      lines: [{ m: 'curious', t: 'Drag any vertex.' }, { m: 'curious', t: 'Watch the angles change!', cueAt: { change: 'demoDrag' } }, { m: 'curious', t: 'Now look at the sums!', cueAt: { sums: 'sumPanels' } }],
       task: 'dragFree', 
       f: { par: 1, arcs: 'ABCD', sums: 1 } },
     // the two sums built one pair at a time: each value flies into its sum and the sum resolves to 180°
-    { id: 'always', sumSteps: 1, lines: [{ m: 'happy', t: 'No matter the shape, the angles\nalways add up to 180°.' }], f: { par: 1, arcs: 'ABCD' } },
-    { id: 'rule', sumSteps: 'sym', lines: [{ t: 'So in any trapezium,\nangles on the same leg\nalways add up to 180°.' }], f: { par: 1, arcs: 'ABCD' } },
+    { id: 'always', sumSteps: 1, lines: [{ m: 'happy', t: 'Change the shape all you like!' }, { m: 'happy', t: 'They still add up to 180°!' }], f: { par: 1, arcs: 'ABCD' } },
+    { id: 'rule', sumSteps: 'sym', lines: [{ t: "Here's a rule for every trapezium!" }, { t: 'Take the two angles on one leg.' }, { t: 'They always add up to 180°!' }], f: { par: 1, arcs: 'ABCD' } },
     // check 3, after the angle rule (angles on the same leg add up to 180°): the missing angle
     { id: 'cfu3', cfu: 3, optTop: 482, plateOptDy: 34,
       enterFx: 'q3In', okFx: 'q3Correct', badFx: 'q3Wrong', idleFx: 'q3Idle', optsAfter: 1, softWrong: 1, handMs: 3000, voiceDelay: 1300,
-      // cueTimes from the recording (vo193): "trapezium" 0.82 s, "angle A" 1.88-2.58, "one hundred twenty" 2.92, "value" 5.66,
-      // "angle D" 6.32-6.92 (D at 6.72). "∠A = 120°." is one word: at 2.5 s A's wedge opens and its 120° lands on "one hundred twenty"
-      lines: [{ m: 'curious', t: 'In this trapezium, ∠A = 120°. What is the value of ∠D?', cueAt: { 120: 'q3A', value: 'q3D' },
-        cueTimes: { '∠A = 120°': 2.5, value: 5.66, '∠D': 6.72 } }],
+      // "∠A = 120°" opens A's wedge and lands its 120°; "what" runs a light down AD to a "?" at D
+      lines: [{ m: 'curious', t: 'Look! ∠A = 120°.', cueAt: { 120: 'q3A' } }, { m: 'curious', t: 'So what is ∠D?', cueAt: { what: 'q3D' } }],
       ok: 'Correct! 120° + 60° = 180°.',
       opts: [
         { id: 'a', t: '120°', fb: 'Angles on the same leg add up to 180°.' },
@@ -270,17 +273,18 @@ const LESSON = {
     { id: 'another90', lines: [{ m: 'surprised', t: 'Woah! We got another\nright angle.', noEmph: 1, cueAt: { woah: 'anotherStart', another: 'anotherReveal' } }], f: { par: 1, arcs: 'ABCD' } },
     // "adjacent": the arrows glide on; "right": both 90° marks draw in; "called": the name label
     { id: 'right', shape: 'right', right90: 1, r90Pre: 1, chevPre: 1,
-      lines: [{ t: 'A trapezium with two adjacent\nright angles is called a\nright angled trapezium.', noEmph: 1,
-        holdChips: 1, cueAt: { trapezium: 'chevIn', right: 'rightBoth', called: 'showTitle' }, chips: [{ t: 'Right trapezium', k: 'name' }] }],
+      lines: [{ t: 'Look at this trapezium!', noEmph: 1, cueAt: { trapezium: 'chevIn' } },
+        { t: 'Two right angles, side by side!', noEmph: 1, cueAt: { right: 'rightBoth' } },
+        { t: "It's a right angled trapezium!", noEmph: 1, holdChips: 1, cueAt: { trapezium: 'showTitle' }, chips: [{ t: 'Right trapezium', k: 'name' }] }],
       f: { par: 1, right: 1 } },
     // checks 4 and 5, once all three types are taught (the right trapezium last): which type, then label all three
     { id: 'cfu2', cfu: 2, qFocus: 1, qStatic: 'Which type of trapezium is this?', optTop: 376, okFx: 'q2Correct', badFx: 'q2Wrong',
       lines: [{ m: 'curious', t: 'Which type of trapezium is this?', cueAt: { type: 'q2Shape' } }],
-      ok: 'Right! The marks show its legs are equal, so it is an isosceles trapezium.',
+      ok: ['Right! Its legs are equal.', "So it's an isosceles trapezium!"],
       opts: [
-        { id: 's', t: 'Scalene', fb: 'Look at the little marks on the legs. They tell us the legs are equal.' },
+        { id: 's', t: 'Scalene', fb: ['Look at the little marks!', 'They say the legs are equal.'] },
         { id: 'i', t: 'Isosceles', ok: true },
-        { id: 'r', t: 'Right', fb: 'There are no right angles in this shape. Look at the legs instead.' }
+        { id: 'r', t: 'Right', fb: ['No right angles here!', 'Look at the legs instead.'] }
       ] },
     { id: 'cfu4', cfu: 4, qStatic: 'Drag the labels to their\ncorrect place.', 
       enterFx: 'q4In', labelsAt: 1, instant: 1, handMs: 3000,

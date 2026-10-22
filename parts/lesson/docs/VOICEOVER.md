@@ -110,22 +110,28 @@ line (screen lines, feedback, idle reminders, the summary cards) goes through it
 | vo010 | This pair of sides does not meet. | = | दिस पेयर ऑफ़ साइड्स डज़ नॉट मीट। | 2.46 |
 | vo011 | This means the sides are parallel to each other. | = | दिस मीन्स द साइड्स आर पैरेलल टू ईच अदर। | 3.04 |
 | vo012 | A B is parallel to C D. | = | ए बी इज़ पैरेलल टू सी डी। | 2.05 |
-| vo013 | So this quadrilateral has one pair of parallel sides. | = | सो दिस क्वाड्रिलैटरल हैज वन पेयर ऑफ पैरेलल साइड्स। | 4.17 |
-| vo014 | We call this a trapezium. | = | वी कॉल दिस ए ट्रैपीजियम। | 2.01 |
-| vo015 | A quadrilateral with at least one pair of parallel sides is called a trapezium. | = | ए क्वॉड्रीलैटरल विद एट लीस्ट वन पेयर ऑफ पैरेलल साइड्स इज कॉल्ड ए ट्रेपीजियम। | 5.30 |
+| vo218 | Here's the big secret! | = |  | 1.99 |
+| vo219 | One pair of parallel sides is enough. | = |  | 2.76 |
+| vo220 | Then a quadrilateral is a trapezium! | = |  | 2.75 |
 | vo185 | Which of these quadrilaterals is a trapezium? | = | विच ऑफ दीज़ क्वाड्रिलैटरल्स इज़ ए ट्रेपीजियम? | 3.14 |
-| vo186 | Look at each side of this shape. No two sides are parallel, so it is not a trapezium. | = | लुक एट ईच साइड ऑफ दिस शेप। नो टू साइड्स आर पैरेलल, सो इट इज नॉट अ ट्रेपेज़ियम। | 5.87 |
+| vo221 | Oops! No two sides are parallel here. | = |  | 2.75 |
+| vo222 | So it's not a trapezium. | = |  | 2.03 |
 | vo187 | This shape has no parallel sides at all. | = | दिस शेप हैज नो पैरेलल साइड्स एट ऑल। | 3.15 |
-| vo208 | Correct! It has one pair of parallel sides, so it is a trapezium. | = | करेक्ट! इट हैज वन पेयर ऑफ पैरेलल साइड्स, सो इट इज अ ट्रेपीजियम। | 4.58 |
+| vo223 | Correct! | = |  | 0.66 |
+| vo224 | It has one pair of parallel sides. | = |  | 2.45 |
+| vo225 | So it's a trapezium! | = |  | 1.90 |
 | vo016 | The parallel sides are called bases. | = | द पैरेलल साइड्स आर कॉल्ड बेसिस। | 3.02 |
 | vo017 | The other two sides are called legs. | = | द अदर टू साइड्स आर कॉल्ड लेग्स। | 2.91 |
 | vo018 | Let's measure the sides of this trapezium. | = | लेट्स मेजर द साइड्स ऑफ दिस ट्रेपीजियम। | 2.52 |
 | vo019 | Woah! All the sides of this trapezium are of different lengths. | Whoa! All the sides of this trapezium are of different lengths. | वो! ऑल द साइड्स ऑफ दिस ट्रेपीजियम आर ऑफ डिफरेंट लेंग्थ्स। | 4.29 |
-| vo020 | This type of trapezium which has sides of different lengths is called a scalene trapezium. | = | दिस टाइप ऑफ ट्रैपीज़ियम व्हिच हैज़ साइड्स ऑफ डिफरेंट लेंग्थ्स इज़ कॉल्ड अ स्केलीन ट्रैपीज़ियम। | 5.29 |
+| vo226 | Look at this trapezium! | = |  | 1.73 |
+| vo227 | All its sides are different lengths. | = |  | 2.56 |
+| vo228 | That's a scalene trapezium! | = |  | 2.33 |
 | vo021 | Look! Its legs are of different length too. | = | लुक! इट्स लेग्स आर ऑफ डिफरेंट लेंथ टू. | 3.04 |
 | vo022 | What if the legs were the same length? | = | वॉट इफ़ द लेग्स वर द सेम लेंथ? | 2.30 |
 | vo023 | Let's find out. | = | लेट्स फाइंड आउट। | 1.49 |
-| vo025 | Drag vertex A so that both the legs are of equal length. | = | ड्रैग वर्टेक्स ए सो दैट बोथ द लेग्स आर ऑफ इक्वल लेंथ। | 3.80 |
+| vo229 | Drag vertex A. | = |  | 1.51 |
+| vo230 | Make both legs the same length! | = |  | 2.63 |
 | vo026 | AD is 5.1 cm. Keep dragging A until it shows exactly 5 cm. | A D is five point one centimetres. Keep dragging A until it shows exactly five centimetres. | ए डी इज फाइव पॉइंट वन सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ इग्ज़ैक्टली फाइव सेंटीमीटर्स। | 6.73 |
 | vo027 | AD is 5.2 cm. Keep dragging A until it shows exactly 5 cm. | A D is five point two centimetres. Keep dragging A until it shows exactly five centimetres. | ए डी इज़ फाइव पॉइंट टू सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स। | 7.10 |
 | vo028 | AD is 5.3 cm. Keep dragging A until it shows exactly 5 cm. | A D is five point three centimetres. Keep dragging A until it shows exactly five centimetres. | ए डी इज़ फाइव पॉइंट थ्री सेंटीमीटर्स। कीप ड्रैगिंग ए अनटिल इट शोज़ एक्ज़ैक्टली फाइव सेंटीमीटर्स। | 7.59 |
@@ -152,30 +158,46 @@ line (screen lines, feedback, idle reminders, the summary cards) goes through it
 | vo049 | AD is 7.4 cm. Keep dragging A until it shows exactly 5 cm. | A D is seven point four centimetres. Keep dragging A until it shows exactly five centimetres. | ए डी इज़ सेवन पॉइंट फोर सेंटीमीटर्स. कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स. | 7.57 |
 | vo050 | AD is 7.5 cm. Keep dragging A until it shows exactly 5 cm. | A D is seven point five centimetres. Keep dragging A until it shows exactly five centimetres. | ए डी इज़ सेवन पॉइंट फाइव सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज़ एग्ज़ैक्टली फाइव सेंटीमीटर्स। | 7.31 |
 | vo051 | AD is 7.6 cm. Keep dragging A until it shows exactly 5 cm. | A D is seven point six centimetres. Keep dragging A until it shows exactly five centimetres. | ए डी इज सेवन पॉइंट सिक्स सेंटीमीटर्स। कीप ड्रैगिंग ए अंटिल इट शोज एक्जेक्टली फाइव सेंटीमीटर्स। | 7.46 |
-| vo211 | Watch! AD becomes 5 cm, just like BC. Now both legs are equal. | Watch! A D becomes five centimetres, just like B C. Now both legs are equal. | वॉच! ए डी बिकम्स फाइव सेंटीमीटर्स, जस्ट लाइक बी सी। नाओ बोथ लेग्स आर इक्वल। | 7.03 |
+| vo231 | Watch! | = |  | 0.68 |
+| vo232 | AD becomes 5 cm, just like BC. | A D becomes five centimetres, just like B C. |  | 3.16 |
+| vo233 | Now both legs are equal! | = |  | 2.23 |
 | vo052 | Perfect! Both legs are equal. | = | परफेक्ट! बोथ लेग्स आर इक्वल। | 2.56 |
-| vo053 | Drag point A along the top side. | = | ड्रैग पॉइंट ए अलॉन्ग द टॉप साइड। | 2.83 |
-| vo054 | A trapezium where legs are of same length is called an isosceles trapezium. | = | ए ट्रेपीजियम वेयर लेग्स आर ऑफ सेम लेंथ इज कॉल्ड एन आइसोसिलीज ट्रेपीजियम। | 5.30 |
+| vo234 | Now look at this trapezium! | = |  | 1.91 |
+| vo235 | Its legs are the same length! | = |  | 2.06 |
+| vo236 | It's an isosceles trapezium! | = |  | 2.19 |
 | vo055 | We know all about the sides of a trapezium. | = | वी नो ऑल अबाउट द साइड्स ऑफ अ ट्रेपीजियम। | 3.03 |
-| vo200 | In an isosceles trapezium, AB = 6 cm, CD = 10 cm and AD = 5 cm. What is the length of BC? | In an isosceles trapezium, A B equals six centimetres, C D equals ten centimetres, and A D equals five centimetres. What is the length of B C? | इन एन आइसोसिलीस ट्रेपीजियम, ए बी इक्वल्स सिक्स सेंटीमीटर्स, सी डी इक्वल्स टेन सेंटीमीटर्स, एंड ए डी इक्वल्स फाइव सेंटीमीटर्स। व्हाट इज द लेंथ ऑफ बी सी? | 10.51 |
-| vo201 | BC is a leg. In an isosceles trapezium, both legs are equal. | B C is a leg. In an isosceles trapezium, both legs are equal. | बी सी इज़ ए लैग। इन ऐन आइसोसेलीस ट्रैपीजियम, बोथ लैग्स आर इक्वल। | 5.43 |
-| vo202 | 6 cm is the top base AB. BC is a leg, like AD. | Six centimetres is the top base A B. B C is a leg, like A D. | सिक्स सेंटीमीटर इज द टॉप बेस ए बी। बी सी इज अ लेग, लाइक ए डी। | 5.71 |
-| vo204 | Yes! In an isosceles trapezium the legs are equal, so BC = 5 cm. | Yes! In an isosceles trapezium the legs are equal, so B C equals five centimetres. | येस! इन एन आइसोसेलीज़ ट्रेपीज़ियम द लेग्स आर इक्वल, सो बी सी इक्वल्स फाइव सेंटीमीटर्स। | 7.98 |
+| vo237 | This is an isosceles trapezium. | = |  | 2.23 |
+| vo238 | AB = 6 cm and CD = 10 cm. | A B equals six centimetres and C D equals ten centimetres. |  | 5.12 |
+| vo239 | AD = 5 cm. | A D equals five centimetres. |  | 2.37 |
+| vo240 | So how long is BC? | So how long is B C? |  | 2.26 |
+| vo241 | Hmm, BC is a leg. | Hmm, B C is a leg. |  | 2.71 |
+| vo242 | And both legs are equal! | = |  | 1.92 |
+| vo243 | Oops! 6 cm is the top base AB. | Oops! Six centimetres is the top base A B. |  | 3.23 |
+| vo244 | BC is a leg, like AD. | B C is a leg, like A D. |  | 2.99 |
+| vo245 | Yes! The legs are equal. | = |  | 2.68 |
+| vo246 | So BC = 5 cm! | So B C equals five centimetres! |  | 2.96 |
 | vo056 | Let's measure its angles. | = | लेट्स मेज़र इट्स एंगल्स। | 2.23 |
 | vo057 | Did you notice something? | = | डिड यू नोटिस समथिंग? | 1.33 |
 | vo058 | ∠A and ∠D add up to 180°. | Angle A and angle D add up to one hundred and eighty degrees. | एंगल ए एंड एंगल डी ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज़। | 4.65 |
 | vo059 | That means they are supplementary angles. | = | दैट मीन्स दे आर सप्लीमेंट्री एंगल्स। | 2.54 |
 | vo060 | What about ∠B and ∠C? | What about angle B and angle C? | वाट अबाउट एंगल बी एंड एंगल सी? | 2.81 |
-| vo212 | It is 180°! Like ∠A and ∠D, ∠B and ∠C add up to 180°. | It is one hundred and eighty degrees! Like angle A and angle D, angle B and angle C add up to one hundred and eighty degrees. | इट इज़ वन हंड्रेड एंड एटी डिग्रीज़! लाइक एंगल ए एंड एंगल डी, एंगल बी एंड एंगल सी ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज़। | 8.15 |
+| vo247 | It's 180°! | It's one hundred and eighty degrees! |  | 2.48 |
+| vo248 | ∠B and ∠C add up to 180° too. | Angle B and angle C add up to one hundred and eighty degrees too. |  | 4.36 |
 | vo061 | Not quite. Try again. | = | नॉट क्वाइट। ट्राई अगेन। | 2.38 |
-| vo062 | 360° is the sum of all four angles. Try again. | Three hundred and sixty degrees is the sum of all four angles. Try again. | थ्री हंड्रेड एंड सिक्सटी डिग्रीज़ इज़ द सम ऑफ़ ऑल फ़ोर एंगल्स. ट्राय अगेन. | 5.41 |
+| vo249 | Oops! 360° is all four angles. | Oops! Three hundred and sixty degrees is all four angles. |  | 4.77 |
+| vo250 | Try again! | = |  | 0.95 |
 | vo063 | Correct! ∠B and ∠C are supplementary angles too. | Correct! Angle B and angle C are supplementary angles too. | करेक्ट! एंगल बी एंड एंगल सी आर सप्लीमेंट्री एंगल्स टू. | 5.08 |
 | vo064 | What if we change the shape of this trapezium? | = | वॉट इफ़ वी चेंज द शेप ऑफ़ दिस ट्रेपीज़ियम? | 2.79 |
-| vo065 | Drag any vertex to change the angles. Notice the sum of angles. | = | ड्रैग एनी वर्टेक्स टू चेंज द एंगल्स। नोटिस द सम ऑफ एंगल्स। | 4.46 |
-| vo066 | Drag any corner and watch the two sums. | = | ड्रैग एनी कॉर्नर एंड वॉच द टू सम्स। | 2.98 |
-| vo067 | No matter the shape, the angles always add up to 180°. | No matter the shape, the angles always add up to one hundred and eighty degrees. | नो मैटर द शेप, द एंगल्स ऑलवेज ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज़। | 4.92 |
-| vo068 | So in any trapezium, angles on the same leg always add up to 180°. | So in any trapezium, angles on the same leg always add up to one hundred and eighty degrees. | सो इन एनी ट्रेपीज़ियम, एंगल्स ऑन द सेम लेग ऑलवेज ऐड अप टू वन हंड्रेड एंड एइटी डिग्रीज़। | 6.55 |
-| vo193 | In this trapezium, ∠A = 120°. What is the value of ∠D? | In this trapezium, angle A equals one hundred and twenty degrees. What is the value of angle D? | इन दिस ट्रेपीजियम एंगल ए इक्वल्स वन हंड्रेड एंड ट्वेंटी डिग्रीज़ वाट इज द वैल्यू ऑफ एंगल डी? | 7.02 |
+| vo251 | Drag any vertex. | = |  | 1.58 |
+| vo252 | Watch the angles change! | = |  | 2.02 |
+| vo253 | Now look at the sums! | = |  | 1.66 |
+| vo254 | Change the shape all you like! | = |  | 2.11 |
+| vo255 | They still add up to 180°! | They still add up to one hundred and eighty degrees! |  | 2.78 |
+| vo256 | Here's a rule for every trapezium! | = |  | 2.57 |
+| vo257 | Take the two angles on one leg. | = |  | 2.52 |
+| vo258 | They always add up to 180°! | They always add up to one hundred and eighty degrees! |  | 3.86 |
+| vo259 | Look! ∠A = 120°. | Look! Angle A equals one hundred and twenty degrees. |  | 3.81 |
+| vo260 | So what is ∠D? | So what is angle D? |  | 1.77 |
 | vo182 | Angles on the same leg add up to 180°. | Angles on the same leg add up to one hundred and eighty degrees. | एंगल्स ऑन द सेम लेग ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज। | 3.71 |
 | vo194 | Correct! 120° + 60° = 180°. | Correct! One hundred and twenty degrees, plus sixty degrees, equals one hundred and eighty degrees. | करेक्ट! वन हंड्रेड एंड ट्वेंटी डिग्रीज़, प्लस सिक्स्टी डिग्रीज़, इक्वल्स वन हंड्रेड एंड एटी डिग्रीज़। | 5.73 |
 | vo069 | What if we make one of the angles 90°? | What if we make one of the angles ninety degrees? | वॉट इफ़ वी मेक वन ऑफ़ द एंगल्स नाइन्टी डिग्रीज़? | 3.66 |
@@ -283,22 +305,21 @@ line (screen lines, feedback, idle reminders, the summary cards) goes through it
 | vo215 | Watch! Now ∠C is 90°. That is a right angle. | Watch! Now angle C is ninety degrees. That is a right angle. | वॉच! नाउ एंगल सी इज़ नाइन्टी डिग्रीज़। दैट इज़ अ राइट एंगल। | 5.59 |
 | vo216 | Watch! Now ∠D is 90°. That is a right angle. | Watch! Now angle D is ninety degrees. That is a right angle. | वॉच! नाओ एंगल डी इज नाइन्टी डिग्रीज। दैट इज ए राइट एंगल। | 5.42 |
 | vo169 | Great job! | = | ग्रेट जॉब! | 0.90 |
-| vo170 | Drag a corner slowly and stop when an angle shows 90°. | Drag a corner slowly and stop when an angle shows ninety degrees. | ड्रैग अ कॉर्नर स्लोली एंड स्टॉप व्हेन एन एंगल शोज़ नाइन्टी डिग्रीज़ | 5.45 |
 | vo171 | Woah! We got another right angle. | Whoa! ... We got another right angle. | वो! ... वी गॉट अनदर राइट एंगल। | 2.41 |
-| vo172 | A trapezium with two adjacent right angles is called a right angled trapezium. | = | ए ट्रैपीज़ियम विद टू एडजेसेंट राइट एंगल्स इज़ कॉल्ड ए राइट एंगल्ड ट्रैपीज़ियम। | 5.25 |
-| vo206 | Can you tap the two right angles? | = | कैन यू टैप द टू राइट एंगल्स? | 2.19 |
-| vo173 | That angle is not 90°. Look for the square corners. | That angle is not ninety degrees. Look for the square corners. | दैट एंगल इज नॉट नाइन्टी डिग्रीज। लुक फॉर द स्क्वायर कॉर्नर्स। | 4.03 |
-| vo217 | Here they are! ∠A and ∠D are both 90°. | Here they are! Angle A and angle D are both ninety degrees. | हीयर दे आर! एंगल ए एंड एंगल डी आर बोथ नाइन्टी डिग्रीज़। | 5.09 |
+| vo261 | Two right angles, side by side! | = |  | 2.56 |
+| vo262 | It's a right angled trapezium! | = |  | 2.29 |
 | vo189 | Which type of trapezium is this? | = | विच टाइप ऑफ ट्रेपीजियम इज दिस? | 2.29 |
-| vo190 | Look at the little marks on the legs. They tell us the legs are equal. | = | लुक एट द लिटिल मार्क्स ऑन द लेग्स। दे टेल अस द लेग्स आर इक्वल। | 4.31 |
-| vo191 | There are no right angles in this shape. Look at the legs instead. | = | देयर आर नो राइट एंगल्स इन दिस शेप। लुक एट द लेग्स इंस्टेड। | 4.15 |
-| vo192 | Right! The marks show its legs are equal, so it is an isosceles trapezium. | = | राइट! द मार्क्स शो इट्स लेग्स आर इक्वल, सो इट इज एन आइसोसिलीस ट्रेपीजियम। | 6.01 |
+| vo263 | Look at the little marks! | = |  | 1.84 |
+| vo264 | They say the legs are equal. | = |  | 2.15 |
+| vo265 | No right angles here! | = |  | 1.85 |
+| vo266 | Look at the legs instead. | = |  | 1.61 |
+| vo267 | Right! Its legs are equal. | = |  | 2.57 |
+| vo268 | So it's an isosceles trapezium! | = |  | 2.60 |
 | vo195 | Drag the labels to their correct place. | = | ड्रैग द लेबल्स टू देयर करेक्ट प्लेस। | 2.43 |
 | vo196 | Try again! Look closely at the shapes. | = | ट्राई अगेन! लुक क्लोजली एट द शेप्स. | 3.28 |
 | vo197 | Watch the glowing clue. Which shape has that mark? | = | वॉच द ग्लोइंग क्लू। विच शेप हैज दैट मार्क? | 4.04 |
 | vo198 | Some labels went back. Look for the marks: equal legs, right angles, or neither. | = | सम लेबल्स वेंट बैक। लुक फॉर द मार्क्स: इक्वल लेग्स, राइट एंगल्स, ऑर नाइदर। | 6.35 |
 | vo199 | Brilliant! You labelled all three trapeziums. | = | ब्रिलियंट! यू लेबल्ड ऑल थ्री ट्रैपीजियम्स। | 3.75 |
-| vo174 | Great job! Now you know all about trapeziums. | = | ग्रेट जॉब! नाउ यू नो ऑल अबाउट ट्रेपीजियम्स। | 3.84 |
 | vo175 | Let's recall what we learnt today. | = | लेट्स रिकॉल वॉट वी लर्न्ट टुडे। | 2.25 |
 | vo207 | A trapezium is a quadrilateral with at least one pair of parallel sides. | = | ए ट्रेपेज़ियम इज़ ए क्वॉड्रीलैटरल विद एट लीस्ट वन पेयर ऑफ़ पैरेलल साइड्स। | 5.01 |
 | vo177 | The parallel sides are called the bases. | = | द पैरेलल साइड्स आर कॉल्ड द बेसेस। | 3.19 |
@@ -307,7 +328,6 @@ line (screen lines, feedback, idle reminders, the summary cards) goes through it
 | vo180 | An isosceles trapezium has legs of the same length. | = | ऐन आइसोसेलीज़ ट्रपीज़ियम हैज़ लेग्स ऑफ़ द सेम लेंथ। | 3.66 |
 | vo181 | A right trapezium has two adjacent right angles. | = | ए राइट ट्रेपीजियम हैज टू एडजसेंट राइट एंगल्स। | 3.52 |
 | vo183 | Two angles that add up to 180° are supplementary. | Two angles that add up to one hundred and eighty degrees are supplementary. | टू एंगल्स दैट ऐड अप टू वन हंड्रेड एंड एटी डिग्रीज़ आर सप्लीमेंट्री। | 4.34 |
-| vo184 | Wonderful! You remember everything about trapeziums! | = | वंडरफुल! यू रिमेंबर एवरीथिंग अबाउट ट्रेपीज़ियम्स! | 4.08 |
 | vo205 | Amazing work! You know all about trapeziums now. | = | अमेजिंग वर्क! यू नो ऑल अबाउट ट्रेपीजियम्स नाउ। | 3.65 |
 | vo209 | Bye for now! See you on our next snowy adventure! | = | बाय फॉर नाउ! सी यू ऑन आवर नेक्स्ट स्नोवी एडवेंचर! | 3.29 |
 | vo210 | The End! | = | द एंड! | 0.75 |
