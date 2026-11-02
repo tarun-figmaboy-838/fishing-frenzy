@@ -9,3 +9,4 @@ parts/lesson/tools/
 .DS_Store
 .env
 .env.*
+.claude/

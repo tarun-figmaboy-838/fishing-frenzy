@@ -3,3 +3,10 @@
 .env
 .env.*
 __pycache__/
+
+# editor / OS / tooling leftovers
+.claude/
+node_modules/
+Thumbs.db
+*.log
+*.zip
