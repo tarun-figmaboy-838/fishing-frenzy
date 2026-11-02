@@ -703,12 +703,27 @@ class Game {
     this.water.resize(Math.round(c.width * k), Math.round(c.height * k), c.style.width, c.style.height);
   }
 
+  // A device that can't keep up steps down, one step each time frames have run slow (under about 24 a second) for
+  // three seconds: the water pass at 60% of its size, then the drawing at no more than 1.5 canvas pixels per screen
+  // pixel (a phone or tablet's 2-3 doubled the pixels drawn every frame), then the water at 42%. Five seconds of fast
+  // frames step it back up. The scene stays the same, a little softer; the game stays smooth. (As Fishing Frenzy 2.)
   watchFrameRate(dt) {
+    if (document.hidden || this.drawingHalf) { this.slowFor = 0; this.fastFor = 0; this.frameAvg = 1 / 60; return; }
     this.frameAvg = this.frameAvg * 0.97 + dt * 0.03;
-    this.slowFor = this.frameAvg > 0.026 ? this.slowFor + dt : 0;
-    if (this.slowFor > 2 && this.waterQuality > 0.6) {
-      this.waterQuality = 0.6;
-      this.slowFor = 0;
+    this.slowFor = this.frameAvg > 0.042 ? this.slowFor + dt : 0;
+    this.fastFor = this.frameAvg < 0.02 ? (this.fastFor || 0) + dt : 0;
+    const stage = this.stage, dpr = Math.min(2, window.devicePixelRatio || 1);
+    if (this.slowFor > 3) {
+      this.slowFor = 0; this.fastFor = 0;
+      this.frameAvg = 1 / 60; // (measured afresh after each step)
+      if (this.waterQuality > 0.6) this.waterQuality = 0.6;
+      else if (stage.dprCap > 1.5 && dpr > 1.5) { stage.dprCap = 1.5; this.resize(); }
+      else if (this.waterQuality > 0.42) this.waterQuality = 0.42;
+    } else if (this.fastFor > 5) {
+      this.fastFor = 0; this.frameAvg = 1 / 60;
+      if (this.waterQuality < 0.6) this.waterQuality = 0.6;
+      else if (stage.dprCap < 2 && dpr > 1.5) { stage.dprCap = 2; this.resize(); }
+      else if (this.waterQuality < 1) this.waterQuality = 1;
     }
   }
 
@@ -755,7 +770,11 @@ class Game {
     this.lastFrame = now;
     try {
       if (!state.paused && !document.hidden) this.update(dt);
-      this.draw();
+      // under the lesson's card the lake is only its surroundings: it is drawn every other frame while the camera holds
+      // still, leaving the device's time to the lesson (the dive in and out is drawn every frame; as Fishing Frenzy 2)
+      const cam = this.camera;
+      this.drawingHalf = !!(this.lessonOpen && !this.shaking && Math.abs(cam.to - cam.zoom) < 0.003);
+      if (!this.drawingHalf || (this.drawSkip = !this.drawSkip)) this.draw();
     } finally {
       requestAnimationFrame((t) => this.loop(t));
     }
@@ -1041,7 +1060,7 @@ class Game {
       const c = document.createElement('canvas');
       c.width = 400;
       c.height = 16;
-      const cx = c.getContext('2d');
+      const cx = c.getContext('2d', { willReadFrequently: true }); // (read back once: no stall of the GPU for it)
       cx.drawImage(img, 500, this.waterline + 8, 800, 32, 0, 0, 400, 16);
       const d = cx.getImageData(0, 0, 400, 16).data;
       const sum = [0, 0, 0];
@@ -2794,6 +2813,7 @@ class Game {
         cam.on = false;
         cam.zoom = 1;
         this.ui.el.scene.style.transform = '';
+        cam.applied = null;
       }
       return;
     }
@@ -2801,8 +2821,12 @@ class Game {
     const k = this.stage.scale;
     const jolt = this.shaking ? this.shaking.amount * (this.shaking.t / this.shaking.total) * k : 0;
     const scene = this.ui.el.scene.style;
-    scene.transformOrigin = `${(cam.x * k).toFixed(1)}px ${(cam.y * k).toFixed(1)}px`;
-    scene.transform = `translate(${((Math.random() - 0.5) * 2 * jolt).toFixed(1)}px, ${((Math.random() - 0.5) * 2 * jolt).toFixed(1)}px) scale(${cam.zoom.toFixed(4)})`;
+    const origin = `${(cam.x * k).toFixed(1)}px ${(cam.y * k).toFixed(1)}px`;
+    const tf = `translate(${((Math.random() - 0.5) * 2 * jolt).toFixed(1)}px, ${((Math.random() - 0.5) * 2 * jolt).toFixed(1)}px) scale(${cam.zoom.toFixed(4)})`;
+    if (cam.applied === origin + tf) return; // (held still, as under the lesson: nothing to write)
+    cam.applied = origin + tf;
+    scene.transformOrigin = origin;
+    scene.transform = tf;
   }
 
   // The water column the boot bursts out of: up in a blink, then slumping back in a spray. A
