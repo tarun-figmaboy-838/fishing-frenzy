@@ -127,13 +127,15 @@ the front page instead.
 Every word a player reads is looked up by key, so the whole journey can be read in another language.
 
 - **The words** are in `locales/locales.json`, one key per line, in the order the journey meets them (the journey's
-  page, fishing 1, the lesson and its summary, fishing 2). It holds English only for now (`"en"`); a new language is
-  one more object with exactly the same keys (`"hi"`, `"mr"`, `"te"`, `"gu"`, `"od"`). After editing it, run
+  page, fishing 1, the lesson and its summary, fishing 2). It holds English (`"en"`, the source) and Hindi, Marathi,
+  Telugu, Gujarati and Odia (`"hi"`, `"mr"`, `"te"`, `"gu"`, `"od"`), each with exactly English's keys in English's
+  order (the rules: `.claude/skills/translation_skill.md`). After editing it, run
   `python3 tools/build-locales.py`: it writes `locales/locales.js`, the copy every page loads (a plain script, so the
   words are there before any game script runs, served or opened from disk), and checks that every language has
   every key, keeps its `{placeholders}`, `*stressed*` words and line breaks. `--check` only says whether the copy
   is up to date.
-- **Choosing one:** `?lan=hi` on the journey's address (`?lang=hi` works too). The journey hands it on to every
+- **Choosing one:** `?lan=hi` (or `mr`, `te`, `gu`, `od`) on the journey's address (`?lang=hi` works too); without it
+  the journey is in English. The journey hands it on to every
   part's frame, and a part opened on its own keeps it when it goes to the front page. A language the file doesn't
   have yet plays in English (and says so in the console).
 - **In the code:** `T('key')` (or `T('key', { shape: name })` for a line with a placeholder), and in the markup
@@ -143,7 +145,13 @@ Every word a player reads is looked up by key, so the whole journey can be read 
 - **For a translator:** keep `{placeholders}` as they are (move them to where the language wants them), keep a
   `*stressed*` word's asterisks round its translation (it is drawn in gold or orange and lands with a boing), keep
   `\n` (a line break in Swiftee's bubble), and keep the mathematics as it is: numbers, `cm`, `°`, the corner
-  letters A B C D and lines like `AB ∥ CD` (those stay in the code: they read the same in every language).
+  letters A B C D and lines like `AB ∥ CD` (those stay in the code: they read the same in every language). The
+  shared terms come from the team's quadrilaterals game (e.g. trapezium समलंब / समलंब चौकोन / ట్రెపీజియం /
+  સમલંબ ચતુષ્કોણ / ଟ୍ରାପିଜିୟମ୍); a trapezium's legs are its "non-parallel sides" (असमांतर भुजा ...), as the
+  textbooks name them.
+- **Longer words:** every lesson line was measured on the card's one-line plate in all five languages, and every
+  answer button, label and fishing instruction; they fit. The lesson's "Base" / "Leg" pills widen to fit their
+  name, and a docked summary name that would run off the card is set a little smaller (English is unchanged).
 - **The voice-over is English for now.** A translated line is said by its English recording (each recording is
   found by its English line: `I18n.source`), and the lesson's animations, which are timed to words of the
   recording, keep following the English, so every one still fires on time. The lines Swiftee says that differ from
@@ -158,7 +166,7 @@ Every word a player reads is looked up by key, so the whole journey can be read 
 index.html              the journey's page: the front page, then the parts in frames
 manifest.webmanifest    installs as a full-screen landscape app
 locales/
-  locales.json          every word the player reads, by key (English for now)
+  locales.json          every word the player reads, by key: en, hi, mr, te, gu, od
   locales.js            its copy for the pages, written by tools/build-locales.py
 shell/
   journey.js            the journey: parts, loading, sound, hand-overs, the ?dev=1 panel
@@ -191,7 +199,7 @@ This repository ships the playable game.
 - `?start=fishing-2`: the first journey begins at fishing 2 (Popo rows in and the lesson's card rises);
   `?start=lesson`: straight at the lesson's open card.
 - `?debug`: exposes `window.popoDebug` in the fishing games and `window.lessonDebug` in the lesson.
-- `?lan=hi`: the journey in that language, once `locales/locales.json` has it (see Languages).
+- `?lan=hi`: the journey in Hindi (`mr` Marathi, `te` Telugu, `gu` Gujarati, `od` Odia; see Languages).
 
 ## For a page that hosts the journey
 

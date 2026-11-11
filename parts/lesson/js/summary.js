@@ -26,6 +26,7 @@
     mini: { w: 132, x: [[80, 224], [776, 920]], y: [200, 378], zoom: 1.12, plate: { w: 118, h: 27, size: 15.5, rim: 2 } },
     enterMs: 420, collectMs: 580, pauseMs: 200
   };
+  const EDGE = 8; // how far a docked name's plate may reach past the card's edge (English's longest already goes 6)
   // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is a glassy
   // bubble instead (bubble()): an ice card on the card looked odd, and a bubble belongs in the water. BUB: its centre
   // and radius, the zoom of the idea drawn inside it, the idea's centre in its own units (the shape plus the sum line
@@ -296,7 +297,13 @@
         'font-family': "'Baloo 2', Nunito, system-ui, sans-serif", fill: navy ? '#ffd166' : c ? c.ink : '#123b63', text: text }, g);
       let w = 0; try { w = t.getComputedTextLength(); } catch (e) {}
       if (!w) w = text.length * fs * 0.54; // could not measure the text: estimate
-      const bw = (o && o.w) ? Math.max(o.w * k, w + 16 * k) : (w + 60 * k);
+      let bw = (o && o.w) ? Math.max(o.w * k, w + 16 * k) : (w + 60 * k);
+      // a docked name that runs longer than any English one (a translation, ?lan=) is set a little smaller, so its plate
+      // reaches no further past the card's edge than English's longest ("Supplementary") already does (EDGE)
+      if (o && o.w) {
+        const room = 2 * Math.min(x + EDGE, W + EDGE - x);
+        if (bw > room && w > 0) { const f = fs * (room - 16 * k) / w; t.setAttribute('font-size', f); t.setAttribute('y', y + f * 0.36); bw = room; }
+      }
       // the plate (as in the lesson): a flat pill with a rim - a label, not a button
       g.insertBefore(mk('rect', { x: x - bw / 2, y: y - H0 / 2, width: bw, height: H0, rx: H0 / 2, fill: navy ? 'url(#sumNavy)' : c ? c.wash : '#ffffff',
         stroke: deep, 'stroke-width': navy ? Math.max(2, rim * 0.75) : rim, style: navy ? 'filter: drop-shadow(0 3px 5px rgba(0, 20, 60, 0.35))' : null }), t);

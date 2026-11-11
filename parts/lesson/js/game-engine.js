@@ -2092,7 +2092,8 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     {
       const legs = s.callout === 'legs';
       const show = (s.callout === 'bases' && !s.tap.AB && !s.tap.CD) || (legs && !s.tap.DA && !s.tap.BC);
-      const W = legs ? 64 : 78, H = 32, cx0 = (A.x + B.x + C.x + D.x) / 4, cy0 = (A.y + B.y + C.y + D.y) / 4;
+      // (a pill as wide as its name needs: "Leg" and "Base" fit with room to spare, a longer translation widens it)
+      const W = Math.max(legs ? 64 : 78, this.pillTextW(T(legs ? 'lsLeg' : 'lsBase')) + 28), H = 32, cx0 = (A.x + B.x + C.x + D.x) / 4, cy0 = (A.y + B.y + C.y + D.y) / 4;
       // dir 'v' points straight up or down (bases), 'h' straight left or right (legs)
       const pill = (p, q, dir) => {
         const vert = dir === 'v', horiz = dir === 'h';
@@ -2316,6 +2317,19 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       tags.push(side(D, A, '4', 'snum n4 from-left' + gone, on));
     }
     return { g: g, tags: tags, V: V };
+  }
+
+  // how wide a callout pill's name is, in board px (index.html draws it in Nunito 800 18px); 0 with no page (the
+  // headless test), where the pills keep their own widths
+  pillTextW(text) {
+    const memo = this.pillMemo || (this.pillMemo = {});
+    if (text in memo) return memo[text];
+    let w = 0;
+    try {
+      const c = typeof document !== 'undefined' && (this.pillCtx || (this.pillCtx = document.createElement('canvas').getContext('2d')));
+      if (c) { c.font = '800 18px Nunito, sans-serif'; w = Math.ceil(c.measureText(String(text)).width); }
+    } catch (e) { w = 0; }
+    return (memo[text] = w);
   }
 
   // the values index.html binds to
