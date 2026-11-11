@@ -214,7 +214,7 @@ class Game {
   challengeText() {
     const ch = this.currentChallenge();
     const name = getShape(ch.target).name.toLowerCase();
-    return ch.all ? `Catch all the *${name}* fish!` : `Catch the *${name}* fish!`;
+    return T(ch.all ? 'f1CatchAll' : 'f1Catch', { shape: name }); // "Catch all the *triangle* fish!"
   }
 
 
@@ -222,8 +222,9 @@ class Game {
   // again, naming the fish that was tapped.
   wrongText(fish) {
     const target = getShape(this.currentChallenge().target);
-    if (this.embedded) return `Look at the sides. A *${target.name.toLowerCase()}* has ${target.sides} sides.`;
-    return `${this.challengeText().replace(/!$/, '')}, not the ${fish.shape.name.toLowerCase()} one!`;
+    if (this.embedded) return T('f1WrongSides', { shape: target.name.toLowerCase(), sides: target.sides });
+    // "Catch all the *triangle* fish, not the circle one!"
+    return T(this.currentChallenge().all ? 'f1WrongNotAll' : 'f1WrongNot', { shape: target.name.toLowerCase(), other: fish.shape.name.toLowerCase() });
   }
 
 
@@ -626,8 +627,11 @@ class Game {
       if (this.dialogue) this.endLine();
       const words = line.text.split(' ').map((raw) => ({ text: raw.replace(/\*/g, ''), em: raw.includes('*') }));
       const narrator = line.who === 'narrator';
+      // a translated line (?lan=, shell/i18n.js): its cue moves to the word that plays its part (in English it stays put)
+      const en = I18n.source(line.text);
+      const cue = line.cue && en !== line.text ? { ...line.cue, word: I18n.mapWord(line.cue.word, en, line.text) } : line.cue;
       this.dialogue = {
-        words, who: line.who, cue: line.cue, cueDone: false, token, resolve, reject, stay: !!line.stay, settled: false,
+        words, who: line.who, cue, cueDone: false, token, resolve, reject, stay: !!line.stay, settled: false,
         next: 0, wait: 0, held: 0,
         pace: narrator ? 0.21 : 0.17,
         hold: (narrator ? 1000 : 700) + line.text.length * (narrator ? 26 : 22),

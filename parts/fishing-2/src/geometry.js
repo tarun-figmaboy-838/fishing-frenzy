@@ -194,7 +194,7 @@ function layoutMarks(points, scale, marks, { corners = [], font = 16 } = {}) {
   if (marks.includes('legs') && shape.kind === 'trapezium') {
     shape.legs.forEach((s, k) => {
       const number = `${round(shape.legLengths[k])}`;
-      const text = `${number} units`;
+      const text = T('f2Units', { n: number });
       const { hw: len, hh: thick } = chip(number.length * 0.6 + 0.3 + 1.75);
       // written along its leg, at the middle and just inside it, the way a ruler laid on that side
       // is read; turned so it never reads upside down
@@ -221,7 +221,7 @@ function layoutMarks(points, scale, marks, { corners = [], font = 16 } = {}) {
       // hw/hh: the upright box round the turned label, for keeping other things clear of it
       const hw = Math.abs(u[0]) * len + Math.abs(u[1]) * thick;
       const hh = Math.abs(u[1]) * len + Math.abs(u[0]) * thick;
-      out.labels.push({ text, number, unit: 'units', value: round(shape.legLengths[k]), at, hw, hh, len, thick, angle: Math.atan2(u[1], u[0]), side: s });
+      out.labels.push({ text, number, unit: T('f2UnitWord'), value: round(shape.legLengths[k]), at, hw, hh, len, thick, angle: Math.atan2(u[1], u[0]), side: s });
     });
   }
   if (marks.includes('ticks') && shape.kind === 'trapezium') {

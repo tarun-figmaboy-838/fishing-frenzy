@@ -1,6 +1,8 @@
 // =====================================================================
 // LESSON - every screen as data, in play order (LESSON.steps).
 // Screen numbers in comments count from 1 in this order (intro = 1, end = 34, The End = 35).
+// Every word the learner reads is looked up by key (T, shell/i18n.js; the lines are in locales/locales.json). Pure
+// mathematics - "5 cm", "90°", "∠A + ∠D = 180°", "AB ∥ CD" - reads the same in every language and stays here.
 //
 // Step options
 //   id           screen name
@@ -82,8 +84,9 @@
 //
 // Line options
 //   m                Swiftee's expression for the line (default: talking; see CONFIG.swiftee)
-//   t                bubble text (\n = line break)
-//   s                spoken text, when it differs from t
+//   t                bubble text (\n = line break), by key: T('key') from locales/locales.json (shell/i18n.js)
+//   s                spoken text, when it differs from t: the English recording's own wording (it finds the clip and
+//                    times the corner letters), so it stays English until the voice-over is translated
 //   keep             voice only: the bubble keeps the previous text (needs s)
 //   letters          each corner letter in s flies in as it is spoken
 //   onStart          Motion function run as the voice starts
@@ -121,61 +124,61 @@ const LESSON = {
     // screens 1-2 run on by themselves (autoNext) as one intro. The pen draws the shape as Swiftee arrives; on "4" (once
     // the outline is drawn) the sides are numbered 1 to 4, one after another
     // the lesson opens with Swiftee (she dives in) while the pen draws the shape; the corner letters wait for screen 3
-    { id: 'intro', build: 1, noLetters: 1, autoNext: 2200, lines: [{ m: 'waving', t: 'Remember we learnt about\nquadrilaterals earlier.' }] },
+    { id: 'intro', build: 1, noLetters: 1, autoNext: 2200, lines: [{ m: 'waving', t: T('lsRemember') }] },
     // in the narration box: on "4" the sides are numbered 1 to 4, one after another
-    { id: 'quadSides', sideNums: 1, autoNext: 2200, lines: [{ m: 'happy', t: 'Any polygon with 4 sides\nis called a quadrilateral.', noEmph: 1, cueAt: { 4: 'sideNumsGo' } }] },
+    { id: 'quadSides', sideNums: 1, autoNext: 2200, lines: [{ m: 'happy', t: T('lsAnyPolygon'), noEmph: 1, cueAt: { 4: 'sideNumsGo' } }] },
     // spoken "A, B, C, D", shown "ABCD": each letter flies in as it is said
-    { id: 'quadName', letterIn: 1, autoNext: 2200, lines: [{ m: 'happy', t: 'We can call it\nquadrilateral ABCD.', s: 'We can call it quadrilateral, A, B, C, D.', letters: 1, noEmph: 1, letterTimes: [2.28, 2.64, 2.88, 3.30] }] }, // letterTimes: A, B, C, D in the recording (vo003)
+    { id: 'quadName', letterIn: 1, autoNext: 2200, lines: [{ m: 'happy', t: T('lsCallIt'), s: 'We can call it quadrilateral, A, B, C, D.', letters: 1, noEmph: 1, letterTimes: [2.28, 2.64, 2.88, 3.30] }] }, // letterTimes: A, B, C, D in the recording (vo003)
     // growFocus: the shape grows to 120% and back as she starts
-    { id: 'special', lines: [{ m: 'happy', t: 'This is a special type\nof quadrilateral.', onStart: 'growFocus' },
-      { m: 'curious', t: "Let's see what\nmakes it special.", cueAt: { special: 'shapePop' } }] },
-    { id: 'meet', lines: [{ m: 'curious', t: 'These two sides look like they will meet.', noEmph: 1, cueAt: { sides: 'glowLegs' } }], f: { legGlow: 1 } },
+    { id: 'special', lines: [{ m: 'happy', t: T('lsSpecialType'), onStart: 'growFocus' },
+      { m: 'curious', t: T('lsSeeSpecial'), cueAt: { special: 'shapePop' } }] },
+    { id: 'meet', lines: [{ m: 'curious', t: T('lsLookMeet'), noEmph: 1, cueAt: { sides: 'glowLegs' } }], f: { legGlow: 1 } },
     // on "extend" both legs run on out of their ends, dotted, until they meet, the camera pulling back as they climb
-    { id: 'extend', lines: [{ m: 'curious', t: "Let's extend them.", noEmph: 1, cueAt: { extend: 'extendLegs' } }], task: 'extLegs', auto: 1,
-      after: [{ m: 'surprised', t: 'Woah! The sides meet.', s: 'Whoa! The sides meet.' }] },
+    { id: 'extend', lines: [{ m: 'curious', t: T('lsExtendThem'), noEmph: 1, cueAt: { extend: 'extendLegs' } }], task: 'extLegs', auto: 1,
+      after: [{ m: 'surprised', t: T('lsSidesMeet'), s: 'Whoa! The sides meet.' }] },
     // 1 s after the line AB and DC glow once, then A->B and D->C each extend both ways
-    { id: 'other', extendDelay: 1000, lines: [{ m: 'curious', t: "Let's check the other\npair of sides." }], task: 'extBases', auto: 1 },
+    { id: 'other', extendDelay: 1000, lines: [{ m: 'curious', t: T('lsCheckOther') }], task: 'extBases', auto: 1 },
     // the parallel sides and their extensions pulse on "pair" and again on "meet"
-    { id: 'parallel', parStrong: 1, lines: [{ m: 'surprised', t: 'This pair of sides\ndoes not meet.', noEmph: 1, cueAt: { pair: 'parPulse', meet: 'parPulse' } }], f: { baseExt: 1 } },
+    { id: 'parallel', parStrong: 1, lines: [{ m: 'surprised', t: T('lsPairNotMeet'), noEmph: 1, cueAt: { pair: 'parPulse', meet: 'parPulse' } }], f: { baseExt: 1 } },
     // second line is voice only; its label appears once "A B" and "C D" have both been said
-    { id: 'abcd', lines: [{ t: 'This means the sides are parallel to each other.', cueAt: { parallel: 'parPulse' } },
+    { id: 'abcd', lines: [{ t: T('lsMeansParallel'), cueAt: { parallel: 'parPulse' } },
       { keep: 1, s: 'A B is parallel to C D.', chipsAfterParts: ['AB', 'CD'], chips: [{ t: 'AB ∥ CD', k: 'white par' }] }], f: { par: 1 } },
     // "parallel": the arrows glide on (as on the right trapezium's definition, no tracing of the sides);
     // "trapezium": the name label pops in
-    { id: 'defFull', legsSet: 1, chevPre: 1, lines: [{ t: "Here's the big secret!", noEmph: 1 },
-      { t: 'One pair of parallel sides\nis enough.', noEmph: 1, cueAt: { parallel: 'chevIn' } },
-      { t: 'Then a quadrilateral\nis a trapezium!', noEmph: 1, holdChips: 1, cueAt: { trapezium: 'showTitle' }, chips: [{ t: 'Trapezium', k: 'name' }] }], f: { par: 1 } },
+    { id: 'defFull', legsSet: 1, chevPre: 1, lines: [{ t: T('lsBigSecret'), noEmph: 1 },
+      { t: T('lsOnePairEnough'), noEmph: 1, cueAt: { parallel: 'chevIn' } },
+      { t: T('lsThenTrapezium'), noEmph: 1, holdChips: 1, cueAt: { trapezium: 'showTitle' }, chips: [{ t: T('shapeTrapezium'), k: 'name' }] }], f: { par: 1 } },
     // check 1, straight after the definition: which of these is a trapezium?
     { id: 'cfu1', cfu: 1, 
       okFx: 'q1Correct',
       // cueTimes from the recording (vo185): "quadrilaterals" 0.88 s, "trapezium" 2.24 s
-      lines: [{ m: 'curious', t: 'Which of these quadrilaterals is a trapezium?', cueAt: { quadrilaterals: 'q1Cards', trapezium: 'q1Look' }, cueTimes: { trapezium: 2.24 } }],
-      ok: ['Correct!', 'It has one pair of parallel sides.', "So it's a trapezium!"],
+      lines: [{ m: 'curious', t: T('lsWhichTrapezium'), cueAt: { quadrilaterals: 'q1Cards', trapezium: 'q1Look' }, cueTimes: { trapezium: 2.24 } }],
+      ok: [T('lsCorrect'), T('lsHasOnePair'), T('lsSoTrapezium')],
       opts: [
         { id: 'A', ok: true },
-        { id: 'B', fb: ['Oops! No two sides are parallel here.', "So it's not a trapezium."] },
-        { id: 'C', fb: 'This shape has no parallel sides at all.' },
-        { id: 'D', fb: ['Oops! No two sides are parallel here.', "So it's not a trapezium."] }
+        { id: 'B', fb: [T('lsOopsNoParallel'), T('lsNotTrapezium')] },
+        { id: 'C', fb: T('lsNoParallelAtAll') },
+        { id: 'D', fb: [T('lsOopsNoParallel'), T('lsNotTrapezium')] }
       ] },
     { id: 'bases', fitBox: { padTop: 78, padBottom: 78 }, // (room above and below the shape for the two Base pills, clear of the plate)
-      lines: [{ t: 'The parallel sides\nare called bases.', glow: ['AB', 'CD'], focusAt: 'parallel', glowAt: 'bases', callout: 'bases' }], f: { par: 1 } },
+      lines: [{ t: T('lsCalledBases'), glow: ['AB', 'CD'], focusAt: 'parallel', glowAt: 'bases', callout: 'bases' }], f: { par: 1 } },
     { id: 'legs', fitBox: { cx: 839 }, // (cx: shape and labels centred together in the card: the Leg pills reach further right than left)
-      lines: [{ t: 'The other two sides\nare called legs.', glow: ['DA', 'BC'], focusAt: 'other', glowAt: 'legs', callout: 'legs', cueTimes: { sides: 0.64 } }], f: { par: 1 } },
+      lines: [{ t: T('lsCalledLegs'), glow: ['DA', 'BC'], focusAt: 'other', glowAt: 'legs', callout: 'legs', cueTimes: { sides: 0.64 } }], f: { par: 1 } },
     // after the line Swiftee walks out and measures each side; on "sides" each length pops in its own colour
-    { id: 'measure', room: 'measure', lines: [{ m: 'curious', t: "Let's measure the sides\nof this trapezium." }], task: 'measure', auto: 1,
-      after: [{ m: 'surprised', t: 'Woah! All the sides of\nthis trapezium are of\ndifferent lengths.', s: 'Whoa! All the sides of this trapezium are of different lengths.', noEmph: 1, cueAt: { sides: 'lenColors' } }], f: { par: 1 } },
+    { id: 'measure', room: 'measure', lines: [{ m: 'curious', t: T('lsMeasureSides') }], task: 'measure', auto: 1,
+      after: [{ m: 'surprised', t: T('lsAllDifferent'), s: 'Whoa! All the sides of this trapezium are of different lengths.', noEmph: 1, cueAt: { sides: 'lenColors' } }], f: { par: 1 } },
     // "trapezium": the shape pops; "sides": the lengths pop in one by one; "scalene": the name label.
     { id: 'scalene', fitBox: { cx: 864 }, // (cx: shape and labels centred together in the card: its length labels reach further right)
-      lenPre: 1, lines: [{ t: 'Look at this trapezium!', noEmph: 1, cueAt: { trapezium: 'shapePop' } },
-      { t: 'All its sides are\ndifferent lengths.', noEmph: 1, cueAt: { sides: 'lensSeq' } },
-      { t: "That's a scalene trapezium!", holdChips: 1, noEmph: 1, cueAt: { scalene: 'showTitle' }, chips: [{ t: 'Scalene trapezium', k: 'name' }] }],
+      lenPre: 1, lines: [{ t: T('lsLookTrapezium'), noEmph: 1, cueAt: { trapezium: 'shapePop' } },
+      { t: T('lsAllSidesDiff'), noEmph: 1, cueAt: { sides: 'lensSeq' } },
+      { t: T('lsScaleneIs'), holdChips: 1, noEmph: 1, cueAt: { scalene: 'showTitle' }, chips: [{ t: T('lsScaleneTrapezium'), k: 'name' }] }],
       f: { par: 1, legLen: 1, sideLen: 1 } },
     // a longer autoNext so the last line can be read
     { id: 'legsDiff', fitBox: { cx: 889 }, // (cx: shape and labels centred together in the card: its length labels reach further left)
       autoNext: 2600, lines: [
-      { m: 'surprised', t: 'Look! Its legs are of\ndifferent length too.', noEmph: 1, cueAt: { different: 'legsPop' } },
-      { m: 'curious', t: 'What if the legs were\nthe same length?', noEmph: 1, cueAt: { legs: 'legsTogether' } },
-      { m: 'excited', t: "Let's find out.", cueAt: { find: 'findOut' } }],
+      { m: 'surprised', t: T('lsLegsDiffToo'), noEmph: 1, cueAt: { different: 'legsPop' } },
+      { m: 'curious', t: T('lsWhatIfSame'), noEmph: 1, cueAt: { legs: 'legsTogether' } },
+      { m: 'excited', t: T('lsFindOut'), cueAt: { find: 'findOut' } }],
       f: { par: 1, legLen: 1, sideLen: 1 } },
     // a silent beat between "Let's find out." and the drag (no dialogue); it moves on by itself and Back skips it
     { id: 'equal', fitBox: { cx: 889 }, // (cx: shape and labels centred together in the card: as screen 18)
@@ -183,46 +186,46 @@ const LESSON = {
     // one demo hand after the line. Dragging A right (the wrong way) wiggles BC: A has only ~0.75 cm
     // before B stops it, so the limit is 0.5 cm. Equal legs snap into place and finish the task
     { id: 'equalDrag', fitBox: { cx: 889 }, // (cx: shape and labels centred together in the card: as screen 18)
-      lines: [{ m: 'curious', t: 'Drag vertex A.' }, { m: 'curious', t: 'Make both legs\nthe same length!' }],
-      task: 'dragA', handOnce: 1, wrongRight: { cm: 0.5, side: 'BC' }, after: [{ m: 'happy', t: 'Perfect! Both legs are equal.' }],
-      revealLine: ['Watch!', 'AD becomes 5 cm, just like BC.', 'Now both legs are equal!'], // (said as A glides there after a second wrong try)
+      lines: [{ m: 'curious', t: T('lsDragVertexA') }, { m: 'curious', t: T('lsMakeLegsSame') }],
+      task: 'dragA', handOnce: 1, wrongRight: { cm: 0.5, side: 'BC' }, after: [{ m: 'happy', t: T('lsPerfectEqual') }],
+      revealLine: [T('lsWatch'), T('lsAdBecomes'), T('lsNowLegsEqual')], // (said as A glides there after a second wrong try)
       f: { par: 1, legLen: 1, sideLen: 1 } },
     // "trapezium": the shape pops; "same": both legs light up with their lengths;
     // "isosceles": the lengths shrink into the equal marks, then the name label pops in
-    { id: 'iso', lenPre: 1, tickPre: 1, lines: [{ t: 'Now look at this trapezium!', noEmph: 1, cueAt: { trapezium: 'shapePop' } },
-      { t: 'Its legs are the same length!', legsAt: 'same', noEmph: 1 },
-      { t: "It's an isosceles trapezium!", holdChips: 1, noEmph: 1, cueAt: { isosceles: 'isoName' }, chips: [{ t: 'Isosceles trapezium', k: 'name' }] }],
+    { id: 'iso', lenPre: 1, tickPre: 1, lines: [{ t: T('lsNowLookTrapezium'), noEmph: 1, cueAt: { trapezium: 'shapePop' } },
+      { t: T('lsLegsSame'), legsAt: 'same', noEmph: 1 },
+      { t: T('lsIsoIs'), holdChips: 1, noEmph: 1, cueAt: { isosceles: 'isoName' }, chips: [{ t: T('lsIsoTrapezium'), k: 'name' }] }],
       f: { par: 1, legLen: 1, ticks: 1 } },
     // from here on the angle shape (A 120°, B 105°, C 75°, D 60°); it fades in as she starts,
     // the arrows pop on at "sides" and the name label at "trapezium"
-    { id: 'sidesDone', shape: 1, shapePre: 1, chevPre: 1, voiceDelay: 400, lines: [{ m: 'happy', t: 'We know all about the sides\nof a trapezium.', noEmph: 1, onStart: 'shapeIn',
-      holdChips: 1, cueAt: { sides: 'chevIn', trapezium: 'showTitle' }, chips: [{ t: 'Trapezium', k: 'name' }] }], f: { par: 1 } },
+    { id: 'sidesDone', shape: 1, shapePre: 1, chevPre: 1, voiceDelay: 400, lines: [{ m: 'happy', t: T('lsKnowSides'), noEmph: 1, onStart: 'shapeIn',
+      holdChips: 1, cueAt: { sides: 'chevIn', trapezium: 'showTitle' }, chips: [{ t: T('shapeTrapezium'), k: 'name' }] }], f: { par: 1 } },
     // check 2, after the sides (scalene, isosceles): the missing side of an isosceles trapezium
     { id: 'cfu5', cfu: 5, optTop: 458, plateOptDy: 36, okFx: 'q5Correct', badFx: 'q5Wrong', optsAfter: 1, // (plateOptDy: in the card, clear of the 10 cm and the corner letters)
       // the question in short steps; each length lands on its own words
-      lines: [{ m: 'curious', t: 'This is an isosceles trapezium.' },
-        { m: 'curious', t: 'AB = 6 cm and CD = 10 cm.', cueAt: { ab: 'q5AB', cd: 'q5CD' } },
-        { m: 'curious', t: 'AD = 5 cm.', cueAt: { ad: 'q5AD' } },
-        { m: 'curious', t: 'So how long is BC?', cueAt: { bc: 'q5BC' } }],
-      ok: ['Yes! The legs are equal.', 'So BC = 5 cm!'],
+      lines: [{ m: 'curious', t: T('lsThisIso') },
+        { m: 'curious', t: T('lsAbCd'), cueAt: { ab: 'q5AB', cd: 'q5CD' } },
+        { m: 'curious', t: T('lsAd5'), cueAt: { ad: 'q5AD' } },
+        { m: 'curious', t: T('lsHowLongBc'), cueAt: { bc: 'q5BC' } }],
+      ok: [T('lsYesLegsEqual'), T('lsSoBc5')],
       opts: [
-        { id: 'a', t: '4 cm', fb: ['Hmm, BC is a leg.', 'And both legs are equal!'] },
+        { id: 'a', t: '4 cm', fb: [T('lsBcIsLeg'), T('lsBothLegsEqual')] },
         { id: 'b', t: '5 cm', ok: true },
-        { id: 'c', t: '6 cm', fb: ['Oops! 6 cm is the top base AB.', 'BC is a leg, like AD.'] },
-        { id: 'd', t: '8 cm', fb: ['Hmm, BC is a leg.', 'And both legs are equal!'] } // (8, not 10: four short answers sit level; its feedback is 4 cm's)
+        { id: 'c', t: '6 cm', fb: [T('lsOops6Top'), T('lsBcLikeAd')] },
+        { id: 'd', t: '8 cm', fb: [T('lsBcIsLeg'), T('lsBothLegsEqual')] } // (8, not 10: four short answers sit level; its feedback is 4 cm's)
       ] },
     // from here on the angle shape (A 120°, B 105°, C 75°, D 60°). After the line Swiftee carries a protractor round
     // A, B, C, D; each angle appears as she holds it there
-    { id: 'angles', shape: 1, room: 'measure', anglesIn: 1, task: 'measureAngles', auto: 1, lines: [{ m: 'curious', t: "Let's measure its angles." }], f: { par: 1, arcs: 'ABCD' } },
+    { id: 'angles', shape: 1, room: 'measure', anglesIn: 1, task: 'measureAngles', auto: 1, lines: [{ m: 'curious', t: T('lsMeasureAngles') }], f: { par: 1, arcs: 'ABCD' } },
     // 120° (A) and 60° (D) in focus: the pair the next screen adds up
-    { id: 'notice', lines: [{ m: 'thinking', t: 'Did you notice something?', cueAt: { notice: 'growAD' } }], f: { par: 1, arcs: 'ABCD', focusAng: 'AD' } },
+    { id: 'notice', lines: [{ m: 'thinking', t: T('lsNotice'), cueAt: { notice: 'growAD' } }], f: { par: 1, arcs: 'ABCD', focusAng: 'AD' } },
     // "∠A + ∠D = ?" rises in; each value jumps into the sum as its angle is named, and they add up on "180". cueTimes: measured in the recording
     // (vo058): "angle A" 0.06-0.86 s, "angle D" 1.22-1.92, "one hundred eighty" 2.78
-    { id: 'sumAD', lines: [{ m: 'surprised', t: '∠A and ∠D add up to 180°.', onStart: 'eqStart',
+    { id: 'sumAD', lines: [{ m: 'surprised', t: T('lsAdSum180'), onStart: 'eqStart',
       cueAt: { '∠A': 'eqFlyA', '∠D': 'eqFlyD', 180: { fn: 'eqResult', sfx: 'snap' } }, cueTimes: { '∠A': 0.56, '∠D': 1.7, '180°': 2.8 } }], f: { par: 1, arcs: 'ABCD', focusAng: 'AD' } },
     // "supplementary": DC extends past D and a copy of 120° turns onto it beside 60°, a straight angle;
     // "angles": the equation glows
-    { id: 'supp', lines: [{ m: 'happy', t: 'That means they are\nsupplementary angles.', onStart: 'suppStart',
+    { id: 'supp', lines: [{ m: 'happy', t: T('lsSupplementary'), onStart: 'suppStart',
       cueAt: { supplementary: 'suppAtAD', angles: 'suppConfirmLater' }, chips: [{ t: '∠A + ∠D = 180°', k: 'gold' }] }], f: { par: 1, arcs: 'ABCD', focusAng: 'AD' } },
     // ∠B then ∠C get the focus as they are named, then the answers slide in. A correct answer shows
     // the real sum, and 105° turns onto the extended base beside 75° (okFx)
@@ -232,78 +235,78 @@ const LESSON = {
     { id: 'askBC', practice: 1, fitBox: { cy: 250, h: 282 }, optTop: 486, chipTop: 375, voiceDelay: 750,
       optsAfter: 1, okSum: ['B', 'C'], okFx: 'suppAtBC',
       // cueTimes from the recording (vo060): "angle B" 0.90-1.66 s (B at 1.40), "angle C" 2.08-2.70 (C at 2.44)
-      lines: [{ m: 'curious', t: 'What about ∠B and ∠C?', angleCues: 1, pairEnd: ['B', 'C'], onStart: 'askIn', cueTimes: { '∠B': 1.4, '∠C': 2.44 }, chips: [{ t: '∠B + ∠C = ?', k: 'white' }] }],
-      ok: 'Correct! ∠B and ∠C are\nsupplementary angles too.', revealLine: ["It's 180°!", '∠B and ∠C add up to 180° too.'], okChips: [{ t: '∠B + ∠C = 180°', k: 'gold' }], // (revealLine: after a second wrong pick)
+      lines: [{ m: 'curious', t: T('lsWhatAboutBc'), angleCues: 1, pairEnd: ['B', 'C'], onStart: 'askIn', cueTimes: { '∠B': 1.4, '∠C': 2.44 }, chips: [{ t: '∠B + ∠C = ?', k: 'white' }] }],
+      ok: T('lsCorrectBcSupp'), revealLine: [T('lsIts180'), T('lsBcSum180')], okChips: [{ t: '∠B + ∠C = 180°', k: 'gold' }], // (revealLine: after a second wrong pick)
       opts: [
-        { id: '90', t: '90°', fb: 'Not quite. Try again.' },
+        { id: '90', t: '90°', fb: T('lsNotQuite') },
         { id: '180', t: '180°', ok: true },
-        { id: '360', t: '360°', fb: ['Oops! 360° is all four angles.', 'Try again!'] }
+        { id: '360', t: '360°', fb: [T('lsOops360'), T('lsTryAgain')] }
       ], f: { par: 1, arcs: 'ABCD', focusAng: 'BC' } },
     // on "change" the top corners glide through the morph shapes; on "trapezium" the last one settles.
     // That shape carries on to screen 29
     { id: 'whatIf', morph: [{ A: 100, B: 300 }, { A: 215, B: 398 }, { A: 128, B: 378 }],
-      lines: [{ m: 'curious', t: 'What if we change the shape\nof this trapezium?', onStart: 'whatIfStart', cueAt: { change: 'shapeMorph', trapezium: 'shapeSettle' } }], f: { par: 1, arcs: 'ABCD' } },
+      lines: [{ m: 'curious', t: T('lsWhatIfChange'), onStart: 'whatIfStart', cueAt: { change: 'shapeMorph', trapezium: 'shapeSettle' } }], f: { par: 1, arcs: 'ABCD' } },
     // on "change" a guide hand drags A and back; on "sum" each pair pulses with its panel
     // fitBox: the shape and the sums under it, centred together in the ice card (Done sits on the card's bottom edge)
     { id: 'dragSum', entryPop: 1, lockTalk: 1, handMs: 3000, explore: 1, fitBox: { cx: 901, cy: 310 }, // (cx: the shape sits left of its drag range's middle)
-      lines: [{ m: 'curious', t: 'Drag any vertex.' }, { m: 'curious', t: 'Watch the angles change!', cueAt: { change: 'demoDrag' } }, { m: 'curious', t: 'Now look at the sums!', cueAt: { sums: 'sumPanels' } }],
+      lines: [{ m: 'curious', t: T('lsDragAnyVertex') }, { m: 'curious', t: T('lsWatchAngles'), cueAt: { change: 'demoDrag' } }, { m: 'curious', t: T('lsLookSums'), cueAt: { sums: 'sumPanels' } }],
       task: 'dragFree', 
       f: { par: 1, arcs: 'ABCD', sums: 1 } },
     // the two sums built one pair at a time: each value flies into its sum and the sum resolves to 180°
-    { id: 'always', sumSteps: 1, lines: [{ m: 'happy', t: 'Change the shape all you like!' }, { m: 'happy', t: 'They still add up to 180°!' }], f: { par: 1, arcs: 'ABCD' } },
-    { id: 'rule', sumSteps: 'sym', lines: [{ t: "Here's a rule for every trapezium!" }, { t: 'Take the two angles on one leg.' }, { t: 'They always add up to 180°!' }], f: { par: 1, arcs: 'ABCD' } },
+    { id: 'always', sumSteps: 1, lines: [{ m: 'happy', t: T('lsChangeAll') }, { m: 'happy', t: T('lsStill180') }], f: { par: 1, arcs: 'ABCD' } },
+    { id: 'rule', sumSteps: 'sym', lines: [{ t: T('lsRuleEvery') }, { t: T('lsTakeTwo') }, { t: T('lsAlways180') }], f: { par: 1, arcs: 'ABCD' } },
     // check 3, after the angle rule (angles on the same leg add up to 180°): the missing angle
     { id: 'cfu3', cfu: 3, optTop: 482, plateOptDy: 34,
       enterFx: 'q3In', okFx: 'q3Correct', badFx: 'q3Wrong', idleFx: 'q3Idle', optsAfter: 1, softWrong: 1, handMs: 3000, voiceDelay: 1300,
       // "∠A = 120°" opens A's wedge and lands its 120°; "what" runs a light down AD to a "?" at D
-      lines: [{ m: 'curious', t: 'Look! ∠A = 120°.', cueAt: { 120: 'q3A' } }, { m: 'curious', t: 'So what is ∠D?', cueAt: { what: 'q3D' } }],
-      ok: 'Correct! 120° + 60° = 180°.',
+      lines: [{ m: 'curious', t: T('lsLookA120'), cueAt: { 120: 'q3A' } }, { m: 'curious', t: T('lsWhatIsD'), cueAt: { what: 'q3D' } }],
+      ok: T('lsCorrect180'),
       opts: [
-        { id: 'a', t: '120°', fb: 'Angles on the same leg add up to 180°.' },
+        { id: 'a', t: '120°', fb: T('lsSameLeg180') },
         { id: 'b', t: '60°', ok: true },
-        { id: 'c', t: '50°', fb: 'Angles on the same leg add up to 180°.' },
-        { id: 'd', t: '180°', fb: 'Angles on the same leg add up to 180°.' }
+        { id: 'c', t: '50°', fb: T('lsSameLeg180') },
+        { id: 'd', t: '180°', fb: T('lsSameLeg180') }
       ] },
-    { id: 'what90', lines: [{ m: 'curious', t: 'What if we make one of\nthe angles 90°?', cueAt: { 90: { fn: 'vertexPulse', sfx: 'chime' } } }], f: { par: 1, arcs: 'ABCD' } },
-    { id: 'make90', fitShape: 1, lines: [{ m: 'curious', t: 'Drag any vertex to make any angle 90°.' }],
+    { id: 'what90', lines: [{ m: 'curious', t: T('lsWhatIf90'), cueAt: { 90: { fn: 'vertexPulse', sfx: 'chime' } } }], f: { par: 1, arcs: 'ABCD' } },
+    { id: 'make90', fitShape: 1, lines: [{ m: 'curious', t: T('lsDragTo90') }],
       task: 'drag90', 
-      after: [{ m: 'happy', t: 'Great job!' }], revealLine: 'Watch! Now ∠{k} is 90°. That is a right angle.', // ({k}: the corner she puts right)
+      after: [{ m: 'happy', t: T('lsGreatJob') }], revealLine: T('lsWatch90'), // ({k}: the corner she puts right)
       f: { par: 1, arcs: 'ABCD' } },
     // the learner's right angle glows; on "another" its partner on the same leg (also 90°) joins it
-    { id: 'another90', lines: [{ m: 'surprised', t: 'Woah! We got another\nright angle.', noEmph: 1, cueAt: { woah: 'anotherStart', another: 'anotherReveal' } }], f: { par: 1, arcs: 'ABCD' } },
+    { id: 'another90', lines: [{ m: 'surprised', t: T('lsAnotherRight'), noEmph: 1, cueAt: { woah: 'anotherStart', another: 'anotherReveal' } }], f: { par: 1, arcs: 'ABCD' } },
     // "adjacent": the arrows glide on; "right": both 90° marks draw in; "called": the name label
     { id: 'right', shape: 'right', right90: 1, r90Pre: 1, chevPre: 1,
-      lines: [{ t: 'Look at this trapezium!', noEmph: 1, cueAt: { trapezium: 'chevIn' } },
-        { t: 'Two right angles, side by side!', noEmph: 1, cueAt: { right: 'rightBoth' } },
-        { t: "It's a right angled trapezium!", noEmph: 1, holdChips: 1, cueAt: { trapezium: 'showTitle' }, chips: [{ t: 'Right trapezium', k: 'name' }] }],
+      lines: [{ t: T('lsLookTrapezium'), noEmph: 1, cueAt: { trapezium: 'chevIn' } },
+        { t: T('lsTwoRight'), noEmph: 1, cueAt: { right: 'rightBoth' } },
+        { t: T('lsRightIs'), noEmph: 1, holdChips: 1, cueAt: { trapezium: 'showTitle' }, chips: [{ t: T('lsRightTrapezium'), k: 'name' }] }],
       f: { par: 1, right: 1 } },
     // checks 4 and 5, once all three types are taught (the right trapezium last): which type, then label all three
-    { id: 'cfu2', cfu: 2, qFocus: 1, qStatic: 'Which type of trapezium is this?', optTop: 376, okFx: 'q2Correct', badFx: 'q2Wrong',
-      lines: [{ m: 'curious', t: 'Which type of trapezium is this?', cueAt: { type: 'q2Shape' } }],
-      ok: ['Right! Its legs are equal.', "So it's an isosceles trapezium!"],
+    { id: 'cfu2', cfu: 2, qFocus: 1, qStatic: T('lsWhichType'), optTop: 376, okFx: 'q2Correct', badFx: 'q2Wrong',
+      lines: [{ m: 'curious', t: T('lsWhichType'), cueAt: { type: 'q2Shape' } }],
+      ok: [T('lsRightLegsEqual'), T('lsSoIso')],
       opts: [
-        { id: 's', t: 'Scalene', fb: ['Look at the little marks!', 'They say the legs are equal.'] },
-        { id: 'i', t: 'Isosceles', ok: true },
-        { id: 'r', t: 'Right', fb: ['No right angles here!', 'Look at the legs instead.'] }
+        { id: 's', t: T('lsScalene'), fb: [T('lsLookMarks'), T('lsMarksEqual')] },
+        { id: 'i', t: T('lsIsosceles'), ok: true },
+        { id: 'r', t: T('lsRight'), fb: [T('lsNoRight'), T('lsLookLegs')] }
       ] },
-    { id: 'cfu4', cfu: 4, qStatic: 'Drag the labels to their\ncorrect place.', 
+    { id: 'cfu4', cfu: 4, qStatic: T('lsDragLabels'), 
       enterFx: 'q4In', labelsAt: 1, instant: 1, handMs: 3000,
-      lines: [{ m: 'curious', t: 'Drag the labels to their\ncorrect place.', cueAt: { drag: 'q4Shapes', labels: 'q4LabelsIn', place: 'q4HiShapes' } }],
-      ok: 'Brilliant! You labelled all three trapeziums.' },
+      lines: [{ m: 'curious', t: T('lsDragLabels'), cueAt: { drag: 'q4Shapes', labels: 'q4LabelsIn', place: 'q4HiShapes' } }],
+      ok: T('lsBrilliant') },
     // Swiftee rises into the middle; after this line eight idea cards are shown and explained one by one
     { id: 'recap', noBoard: 1, layout: 'recap', summary: 1, autoAdvance: 500, // (the lesson's last screen: no long beat before Swiftee leaves)
-      lines: [{ m: 'happy', t: "Let's recall what\nwe learnt today." }] },
+      lines: [{ m: 'happy', t: T('lsRecall') }] },
     // "120" opens ∠A; "value" runs a light down AD to a "?" at D. A wrong answer brings in
     // "120° + ? = 180°" under the shape; the right one flies 60° to D and the equation resolves
     // "drag" lights each shape's clue, "labels" brings the labels in, "place" lights the boxes
     // Swiftee flies to centre stage and speaks once she has landed, she says goodbye, and screen 44 follows by itself
     { id: 'end', end: 1, hero: 1, voiceDelay: 1100, autoNext: 700,
-      lines: [{ m: 'celebrating', t: 'Amazing work! You know all about trapeziums now.' }, { m: 'waving', t: 'Bye for now! See you on\nour next snowy adventure!' }] },
+      lines: [{ m: 'celebrating', t: T('lsAmazing') }, { m: 'waving', t: T('lsBye') }] },
     // the cartoon closer (js/finale.js): an iris closes on Swiftee, the sunburst, "The End", Play again
     { id: 'theEnd', end: 1, hero: 1, finale: 1, lines: [] }
   ],
   cfu4: {
-    labels: [{ id: 'iso', t: 'Isosceles' }, { id: 'right', t: 'Right' }, { id: 'scal', t: 'Scalene' }],
+    labels: [{ id: 'iso', t: T('lsIsosceles') }, { id: 'right', t: T('lsRight') }, { id: 'scal', t: T('lsScalene') }],
     slots: [{ id: 's0', ans: 'scal', y: 170 }, { id: 's1', ans: 'iso', y: 274 }, { id: 's2', ans: 'right', y: 378 }]
   }
 };

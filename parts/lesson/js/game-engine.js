@@ -35,7 +35,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
   fresh(started) {
     return {
       started: started, step: 0, P: this.initP(),
-      line: JOURNEY ? '' : "Hi! Ready to explore a new shape with me?", reveal: 99, talking: false, bub: 'bubA',
+      line: JOURNEY ? '' : T('lsHi'), reveal: 99, talking: false, bub: 'bubA',
       muted: this.state ? this.state.muted : false, done: true,
       ext: { DA: 0, BC: 0, AB: 0, CD: 0 }, tap: {}, chips: [],
       moved: false, dragging: null, picks: {}, cfuFirst: true, results: {},
@@ -526,7 +526,12 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     const keep = !!(L && L.keep); // voice-only: the bubble keeps showing the previous line
     if (!L || (!L.t && !keep) || (keep && !L.s)) { if (done) done(); return; }
     const text = keep ? this.state.line : L.t;
-    const words = this.toWords(keep ? L.s : text);
+    // a translated line (?lan=, shell/i18n.js) shows its own words, while the voice, the word cues and their timing go
+    // by its English (src), as recorded; the reveal shows the same share of the line. In English the two are one.
+    const src = keep ? text : I18n.source(text);
+    const words = this.toWords(keep ? L.s : src);
+    const shownN = keep || src === text ? 0 : this.toWords(text).length;
+    const shown = (n) => (shownN ? Math.min(shownN, Math.ceil((n * shownN) / Math.max(1, words.length))) : n);
     // letters (screen 3): the name in the bubble (ABCD) is written out letter by letter, each with its corner letter
     this.setState({ bubLetters: L.letters ? 0 : null });
     // spoken text, and where each displayed word starts in it
@@ -546,7 +551,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       return Math.min(words.length, Math.floor((ci / Math.max(1, sp.length)) * words.length) + 1);
     };
     const setReveal = (n) => Motion.paced(() => { // what a word starts plays at the teaching pace
-      if (!keep) this.setState({ reveal: n });
+      if (!keep) this.setState({ reveal: shown(n) });
       if (atIdx >= 0 && n >= atIdx + 1) highlight();
       if (pAt >= 0 && n >= pAt + 1) firePulse();
       if (chipsAt >= 0 && n >= chipsAt + 1) scheduleChipsAt();
@@ -665,7 +670,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       // anything still waiting for a word that was never reached (voice cut short) happens now
       highlight();
       letterCues.forEach(fireLetter);
-      this.setState(Object.assign(keep ? { talking: false } : { talking: false, reveal: words.length }, L.glow && atIdx < 0 ? { glow: null } : {}));
+      this.setState(Object.assign(keep ? { talking: false } : { talking: false, reveal: shown(words.length) }, L.glow && atIdx < 0 ? { glow: null } : {}));
       if (L.glow && atIdx >= 0) this.tm(() => { if (live()) this.setState({ glow: null }); }, 1500); // a glow that waited for its word lingers a moment
       firePulse();
       if (chipsAt < 0) scheduleChipsAt();
@@ -795,7 +800,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     };
     // recorded voice (js/voice.js): the clip is the clock. Words show by their share of the spoken line, and the
     // corner letters by their place in the spoken text
-    const clip = !this.state.muted && window.Voice ? Voice.find(keep ? L.s : text) : null;
+    const clip = !this.state.muted && window.Voice ? Voice.find(keep ? L.s : src) : null;
     if (clip) {
       const clipDur = clip.reduce((t, c) => t + c.dur, 0);
       const wt = words.map((w) => Voice.weight(this.speechOf(w)) + (/[.!?]$/.test(w) ? 6 : /[,:;]$/.test(w) ? 3 : 0));
@@ -1727,7 +1732,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       } else if (s.moved) { // anything else (5.2 cm, 4.8 cm...) is not correct yet
         if (Date.now() - (this.wigAt || 0) > 2500) this.sfx('bad'); // skip it if a wrong-way wiggle just played it
         if ((this.misses = (this.misses || 0) + 1) >= 2) { this.solveDrag('A'); return; } // a second wrong try: shown
-        this.interject({ t: this.voiced('AD is ' + this.cm(ad) + '. ' + (ad > bc ? 'Keep dragging A' : 'Drag A back a little') + ' until it shows exactly ' + this.cm(bc) + '.') });
+        this.interject({ t: this.voiced(T(ad > bc ? 'lsDragAKeep' : 'lsDragABack', { len: this.cm(ad), target: this.cm(bc) })) }); // "AD is 5.2 cm. Keep dragging A until it shows exactly 5 cm."
       }
     } else if (st.task === 'dragFree' && st.explore && !s.done) {
       // explore (screen 29): drags just reshape, with no check and no success feedback. The first real drag
@@ -1749,14 +1754,14 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       } else {
         this.sfx('bad');
         if ((this.misses = (this.misses || 0) + 1) >= 2) { this.solveDrag(k); return; } // a second wrong try: shown
-        this.interject({ t: this.voiced('∠' + k + ' is ' + Math.round(this.angle(P, k)) + '° now. Keep dragging until it shows 90°.') });
+        this.interject({ t: this.voiced(T('lsDrag90', { k: k, deg: Math.round(this.angle(P, k)) })) }); // "∠A is 84° now. Keep dragging until it shows 90°."
       }
     }
   }
 
   // a drag's feedback names the value it is at; only some values were recorded (AD too short, or an angle outside
   // 39-141°, has none), so a value with no clip says the recorded "Not quite. Try again." (the label shows the value)
-  voiced(t) { return !(window.Voice && Voice.on) || Voice.find(t) ? t : 'Not quite. Try again.'; }
+  voiced(t) { return !(window.Voice && Voice.on) || Voice.find(t) ? t : T('lsNotQuite'); }
   // corner k's leg stands upright (k moves straight above or below its partner on the same leg): a right angle at k
   uprightLeg(P, k) { if (k === 'A') P.A.x = P.D.x; if (k === 'D') P.D.x = P.A.x; if (k === 'B') P.B.x = P.C.x; if (k === 'C') P.C.x = P.B.x; }
   // a corner-drag task after a second wrong try: the corner glides on its own to where it belongs (legs equal, or the
@@ -1773,7 +1778,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     this.setState({ hand: null });
     if (st.revealLine) { // what she is showing, said as the corner moves
       this.narrTok++; this.cancelSpeech(); this.q = null;
-      const rl = st.revealLine; this.sayAll({ m: CONFIG.swiftee.nudge, t: Array.isArray(rl) ? rl.map((x) => x.replace('{k}', k)) : rl.replace('{k}', k) }, () => { said = true; end(); });
+      const rl = st.revealLine; this.sayAll({ m: CONFIG.swiftee.nudge, t: Array.isArray(rl) ? rl.map((x) => I18n.fill(x, { k: k })) : I18n.fill(rl, { k: k }) }, () => { said = true; end(); });
     }
     Motion.value(0, 1, Motion.reduced ? 0 : 1.2, 'power2.inOut', (e) => {
       if (tok !== this.stepTok) return;
@@ -1941,7 +1946,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     this.setState({ c4: Object.assign({}, c4, { at: at, sel: null, drag: null }), cfuFirst: false }, () => Motion.q4Bad(idx, labId));
     this.sfx('bad');
     if (m >= 2) this.tm(() => Motion.q4Clue(slots.findIndex((q) => q.ans === labId)), 500);
-    this.interject({ m: CONFIG.swiftee.wrong, t: m >= 2 ? 'Watch the glowing clue. Which shape has that mark?' : 'Try again! Look closely at the shapes.' });
+    this.interject({ m: CONFIG.swiftee.wrong, t: m >= 2 ? T('lsQ4Clue') : T('lsQ4TryAgain') });
     this.poke();
   }
   // check 4, on "labels": the labels slide in and can now be dragged; a hand shows one drag
@@ -1977,7 +1982,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     } else {
       this.setState({ cfuFirst: false });
       this.sfx('bad');
-      this.interject({ m: CONFIG.swiftee.wrong, t: 'Some labels went back. Look for the marks: equal legs, right angles, or neither.' });
+      this.interject({ m: CONFIG.swiftee.wrong, t: T('lsQ4WentBack') });
       this.poke();
     }
   }
@@ -2360,7 +2365,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
       // label (lighting only the right one would give the answer away).
       const okHere = Object.keys(c4.at).some((k) => c4.at[k] === q.id && c4.locked[k]);
       const cls = filled ? 'filled' + (okHere ? ' ok' : '') : over ? 'hot' : (c4.sel || d) ? 'ready' : 'empty';
-      return { id: q.id, y: q.y, cls: cls, t: '', aria: 'Drop zone for shape ' + (i + 1), tap: () => this.slotTap(q.id) };
+      return { id: q.id, y: q.y, cls: cls, t: '', aria: T('lsDropZone', { n: i + 1 }), tap: () => this.slotTap(q.id) };
     });
     // scene: the ice panel on the right, Swiftee and her bubble on the left; the measuring room, summary and
     // hero screens rearrange it in CSS

@@ -122,15 +122,49 @@ the front page instead.
   keys), and in the journey the lesson never falls back to the browser's speech voice: a line whose clip cannot play
   shows its words silently.
 
+## Languages
+
+Every word a player reads is looked up by key, so the whole journey can be read in another language.
+
+- **The words** are in `locales/locales.json`, one key per line, in the order the journey meets them (the journey's
+  page, fishing 1, the lesson and its summary, fishing 2). It holds English only for now (`"en"`); a new language is
+  one more object with exactly the same keys (`"hi"`, `"mr"`, `"te"`, `"gu"`, `"od"`). After editing it, run
+  `python3 tools/build-locales.py`: it writes `locales/locales.js`, the copy every page loads (a plain script, so the
+  words are there before any game script runs, served or opened from disk), and checks that every language has
+  every key, keeps its `{placeholders}`, `*stressed*` words and line breaks. `--check` only says whether the copy
+  is up to date.
+- **Choosing one:** `?lan=hi` on the journey's address (`?lang=hi` works too). The journey hands it on to every
+  part's frame, and a part opened on its own keeps it when it goes to the front page. A language the file doesn't
+  have yet plays in English (and says so in the console).
+- **In the code:** `T('key')` (or `T('key', { shape: name })` for a line with a placeholder), and in the markup
+  `data-i18n="key"` (an element's text) and `data-i18n-attr="aria-label:key"` (its attributes), filled by
+  `I18n.applyStatic()` straight after the markup. All of it is `shell/i18n.js`. A key the file doesn't have shows
+  as the key itself, on purpose, so it is seen and added.
+- **For a translator:** keep `{placeholders}` as they are (move them to where the language wants them), keep a
+  `*stressed*` word's asterisks round its translation (it is drawn in gold or orange and lands with a boing), keep
+  `\n` (a line break in Swiftee's bubble), and keep the mathematics as it is: numbers, `cm`, `°`, the corner
+  letters A B C D and lines like `AB ∥ CD` (those stay in the code: they read the same in every language).
+- **The voice-over is English for now.** A translated line is said by its English recording (each recording is
+  found by its English line: `I18n.source`), and the lesson's animations, which are timed to words of the
+  recording, keep following the English, so every one still fires on time. The lines Swiftee says that differ from
+  what her bubble shows (`s:` in `parts/lesson/js/lesson-data.js`) are the recordings' own wording and stay English
+  until the voice-over is translated. `I18n.voice(key)` is where a line's own recording will go.
+- **Not in the file:** the "Fishing Frenzy" logo (it is painted into the banner), the page's share and search
+  details (`<meta>`, `manifest.webmanifest`), the no-JavaScript notice, and the `?dev=1` panel.
+
 ## Folder
 
 ```
 index.html              the journey's page: the front page, then the parts in frames
 manifest.webmanifest    installs as a full-screen landscape app
+locales/
+  locales.json          every word the player reads, by key (English for now)
+  locales.js            its copy for the pages, written by tools/build-locales.py
 shell/
   journey.js            the journey: parts, loading, sound, hand-overs, the ?dev=1 panel
   front-page.js         the Fishing Frenzy title, alive
   bridge.js             loaded by every part: begin, finish, shared sound, dev screens
+  i18n.js               loaded by every page: T('key'), the language (?lan=), the words' English for the voice
   journey.css           the shell's styles (front page, dissolves, "Getting ready…")
   title/                water.js and effects.js, copied unchanged from fishing 2, for the front page
   images/               the banner, Play, icons, the share picture (source/: the masters, not deployed)
@@ -139,7 +173,7 @@ parts/
   lesson/               Swiftee's trapezium lesson (its README, GAME_DESIGN.md and docs/VOICEOVER.md)
   fishing-2/            Popo's trapezium fishing
 drafts/banners/         the two banners not in use: Trapezium Adventure (the lesson's), Shape Fish Adventure
-tools/                  the scarf bake, Swiftee's voice and its build
+tools/                  the scarf bake, Swiftee's voice and its build, the locales build (build-locales.py)
 tests/journey.py        the whole journey in real browsers
 ```
 
@@ -157,6 +191,7 @@ This repository ships the playable game.
 - `?start=fishing-2`: the first journey begins at fishing 2 (Popo rows in and the lesson's card rises);
   `?start=lesson`: straight at the lesson's open card.
 - `?debug`: exposes `window.popoDebug` in the fishing games and `window.lessonDebug` in the lesson.
+- `?lan=hi`: the journey in that language, once `locales/locales.json` has it (see Languages).
 
 ## For a page that hosts the journey
 

@@ -363,7 +363,7 @@ class Fish extends Swimmer {
     this.shape = shape;
     this.box = box;
     this.mouth = assets.fish.mouths[shape.atlas];
-    this.label = `${shape.name} fish`;
+    this.label = T('fishAria', { shape: shape.name });
   }
 
   drawBody(ctx) {
@@ -629,12 +629,12 @@ class ShapeFish extends Swimmer {
   describe() {
     const m = this.marksFor(LABEL.max);
     const parts = [];
-    if (m.arrows.length) parts.push('parallel arrows');
-    if (this.level.marks.includes('legs') && this.legLengths.length) parts.push(`legs ${this.legLengths.join(' units and ')} units`);
-    if (m.ticks.length) parts.push(m.ticks[0].count === m.ticks[1].count ? 'matching leg ticks' : 'different leg ticks');
-    if (m.squares.length) parts.push('two right-angle marks');
-    if (m.arcs.length) parts.push(`angles ${this.markedAngles.join('° and ')}°`);
-    return parts.length ? `Fish with ${parts.join(', ')}` : 'Fish';
+    if (m.arrows.length) parts.push(T('f2AriaParallel'));
+    if (this.level.marks.includes('legs') && this.legLengths.length) parts.push(T('f2AriaLegs', { lengths: this.legLengths.join(` ${T('f2AriaUnitsAnd')} `) })); // "legs 5 units and 6 units"
+    if (m.ticks.length) parts.push(m.ticks[0].count === m.ticks[1].count ? T('f2AriaTicksMatch') : T('f2AriaTicksDiffer'));
+    if (m.squares.length) parts.push(T('f2AriaRightMarks'));
+    if (m.arcs.length) parts.push(T('f2AriaAngles', { angles: this.markedAngles.join(`° ${T('f2AriaAnd')} `) })); // "angles 70° and 110°"
+    return parts.length ? T('f2AriaFishWith', { marks: parts.join(', ') }) : T('f2AriaFish');
   }
 
   marksFor(font) {

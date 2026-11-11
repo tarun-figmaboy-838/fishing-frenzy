@@ -50,8 +50,9 @@ class AudioEngine {
 
   // Plays a recorded line and returns its length in seconds (0 when there is no recording,
   // so the caller falls back to the synthesized voice). The music ducks under the voice.
+  // A translated line (?lan=, shell/i18n.js) is said by its English recording until it has one of its own.
   speak(who, text) {
-    const buf = this.voiceBuffers.get(voiceKey(who, text));
+    const buf = this.voiceBuffers.get(voiceKey(who, I18n.source(text)));
     if (!this.ctx || !buf) return 0;
     this.stopVoice();
     const src = this.ctx.createBufferSource();

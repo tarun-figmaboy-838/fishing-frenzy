@@ -364,7 +364,7 @@ async function travelTo(game, nextIndex) {
   try {
     state.phase = PHASE.LEVEL_TRANSITION;
     ui.setHitsEnabled(false);
-    ui.setInstruction('Popo rows on…');
+    ui.setInstruction(T('f1RowsOn'));
     audio.play('complete');
     for (const f of state.fish) { f.frozen = false; f.escape(); }
     await clock.wait(900, token);

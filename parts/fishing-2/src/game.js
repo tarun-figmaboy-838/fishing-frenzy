@@ -788,8 +788,10 @@ class Game {
     return new Promise((resolve, reject) => {
       if (this.dialogue) this.endLine();
       const words = line.text.split(' ').map((raw) => ({ text: raw.replace(/\*/g, ''), em: raw.includes('*') }));
+      // a translated line (?lan=, shell/i18n.js): each cue moves to the word that plays its part (in English they stay put)
+      const en = I18n.source(line.text);
       this.dialogue = {
-        words, who: line.who, cues: [].concat(line.cue || []).map((c) => ({ ...c })), token, resolve, reject, stay: !!line.stay, settled: false,
+        words, who: line.who, cues: [].concat(line.cue || []).map((c) => (en === line.text ? { ...c } : { ...c, word: I18n.mapWord(c.word, en, line.text) })), token, resolve, reject, stay: !!line.stay, settled: false,
         next: 0, wait: 0, held: 0,
         pace: 0.17,
         hold: 1000 + line.text.length * 24,
@@ -1333,7 +1335,7 @@ class Game {
       t: 0, fired: new Set(), motes: [], pops: [], spawning: false, leaving: false, cardOut: 0,
       shell: { open: 0, rock: 0, squash: 0, leak: 0, pearl: 1, alpha: 0 },
       dim: 0, glow: 0, emerge: 0, flash: 0, beam: 0,
-      name: shape.kind[0].toUpperCase() + shape.kind.slice(1),
+      name: shape.kind === 'trapezium' ? T('shapeTrapezium') : shape.kind[0].toUpperCase() + shape.kind.slice(1),
       px, bases: shape.bases, arrows, leg: [px[corners[0]], px[corners[1]]], angles, letters,
       parallelText: shape.bases.map(side).sort().join(' ∥ '),
       sumText: `${angles.map((g) => `∠${g.name}`).join(' + ')} = ${angles.map((g) => g.text).join(' + ')} = ${angles.reduce((sum, g) => sum + g.degrees, 0)}°`,
@@ -2180,7 +2182,7 @@ class Game {
   showWhy(fish) {
     const level = this.level();
     if (!level.why) return;
-    const detail = level.compare === 'sum' ? "That's not a *trapezium!*" : '';
+    const detail = level.compare === 'sum' ? T('f2NotTrapeziumCard') : '';
     const marked = fish.marksFor && fish.marksFor(ShapeFish.labelFont).arcs.length > 0;
     if (marked) fish.showMarks(1.15);
     const legs = !marked && level.glow === 'legs' ? geometry.classify(fish.spec.body).legs : null;
@@ -3014,10 +3016,11 @@ class Game {
     ctx.textBaseline = 'middle';
     ctx.lineJoin = 'round';
     ctx.font = '700 168px Fredoka, "Arial Rounded MT Bold", system-ui, sans-serif';
-    const text = 'The End';
-    const widths = [...text].map((c) => ctx.measureText(c).width);
+    // letter by letter (a script whose letters join up, word by word: I18n.pieces)
+    const text = I18n.pieces(T('theEnd'));
+    const widths = text.map((c) => ctx.measureText(c).width);
     let x = cx - widths.reduce((a, b) => a + b, 0) / 2;
-    [...text].forEach((c, i) => {
+    text.forEach((c, i) => {
       const k = Math.max(0, Math.min(1, (t - i * 0.08) / 0.4));
       const lx = x + widths[i] / 2;
       x += widths[i];

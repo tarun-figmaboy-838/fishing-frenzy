@@ -28,9 +28,10 @@ window.Voice = (function () {
   let cur = null; // the line playing: { tok, timer }
   let tokN = 0;
 
+  // (a translated line, ?lan=: its English recording, until it has one of its own - shell/i18n.js)
   function find(text) {
     if (!ok) return null;
-    const t = norm(text);
+    const t = norm(typeof I18n !== 'undefined' ? I18n.source(text) : text);
     if (LINES[t]) return [{ id: LINES[t][0], dur: LINES[t][1] }];
     for (const re of JOINS) {
       const m = re.exec(t);
