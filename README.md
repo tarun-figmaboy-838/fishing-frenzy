@@ -158,23 +158,31 @@ Every word a player reads is looked up by key, so the whole journey can be read 
   whose words vary has one per variant (`f1Catch.triangle.mp3`, `lsDragAKeep.5_1.mp3`), and screen 33's angle
   feedback is two clips back to back, as in English. Digits, corner letters and symbols are said as Hindi words
   (`180°` एक सौ अस्सी डिग्री, `∠A` कोण ए, `AB = 6 cm` ए बी बराबर छह सेंटीमीटर).
+- **Marathi has its own voice-over too** (`assets/VO-MR/`, the same 324 clips, played with `?lan=mr`). Swiftee and
+  the narrator are Sayali (a young Marathi voice: warm, clear, welcoming) and Popo is Vardaan (a young Marathi voice:
+  bright, upbeat), from the ElevenLabs voice library, recorded with `eleven_v4` (Hindi's `eleven_multilingual_v2`
+  doesn't speak Marathi). The mathematics is said as the Marathi textbooks say it (`180°` एकशे ऐंशी अंश, `∠A` कोन
+  ए, `AB = 6 cm` ए बी बरोबर सहा सेंटिमीटर, `5.1` पाच पूर्णांक एक, `+` अधिक). Everything below holds for both.
   - `locales/voices.js` indexes the clips by the line on screen and who says it: `I18n.voiceOf(line, who)` finds a
     line's clip ("Try again!" is Swiftee's in the lesson and Popo's in fishing 2), `I18n.voice(key)` gives a clip's
     address.
   - The fishing games fetch their clips before they start (from disk they can't, and their lines show with the
     game's own sounds). Fishing 1 also reads its wrong-catch hint aloud, as it does the instruction, when it has a
-    recording (Hindi does; English doesn't).
+    recording (Hindi and Marathi do; English doesn't).
   - The lesson plays them in the shared `<audio>` and fetches them in the background (its drag feedback only as it
     is said). Its word cues fire at their words' share of the line, since the English recordings' measured cue times
     don't apply, and screen 3's corner letters fly in where the clip says them.
   - Lines the game shows but doesn't say (shape names, the "Base" / "Leg" pills, type and summary labels, "The End",
     fishing 2's card line) have clips too, for when it does. Page titles, buttons, loading and error messages and
     screen-reader labels have none.
-  - **Re-recording** after a Hindi line changes: `ELEVENLABS_API_KEY=... python3 tools/voice-elevenlabs.py` records
-    the clips that are new or whose words changed (`--dry` lists them) and rewrites `assets/VO-HI/manifest.json`
-    (each clip's key, voice, line and spoken form); then `python3 tools/build-locales.py` rewrites
-    `locales/voices.js`, and flags any clip recorded from a line that has changed since.
-- **Marathi, Telugu, Gujarati and Odia** say the English recordings (each found by its English line: `I18n.source`),
+  - **Re-recording** after a line changes: `ELEVENLABS_API_KEY=... python3 tools/voice-elevenlabs.py --lang hi` (or
+    `--lang mr`) records the clips that are new or whose words changed (`--dry` lists them, `--only key ...` records
+    just those, as a test) and rewrites `assets/VO-<LANG>/manifest.json` (each clip's key, voice, line and spoken
+    form; a run that stops part-way keeps what it recorded, so nothing is paid for twice); then
+    `python3 tools/build-locales.py` rewrites `locales/voices.js`, and flags any clip recorded from a line that has
+    changed since. A language with clips still missing is left out of `voices.js` (it keeps the English voice) until
+    they are all there.
+- **Telugu, Gujarati and Odia** say the English recordings (each found by its English line: `I18n.source`),
   and the lesson's animations keep the English timings, until they are recorded too. The lines Swiftee says that
   differ from her bubble (`s:` in `parts/lesson/js/lesson-data.js`) are the English recordings' wording; the
   voice-only "A B is parallel to C D." is by key (`lsAbParallelCd`).
@@ -189,9 +197,10 @@ manifest.webmanifest    installs as a full-screen landscape app
 locales/
   locales.json          every word the player reads, by key: en, hi, mr, te, gu, od
   locales.js            its copy for the pages, written by tools/build-locales.py
-  voices.js             each language's own voice-over by line (Hindi), written by tools/build-locales.py
+  voices.js             each language's own voice-over by line (Hindi, Marathi), written by tools/build-locales.py
 assets/
   VO-HI/                the Hindi voice-over: one MP3 per spoken line, and manifest.json (tools/voice-elevenlabs.py)
+  VO-MR/                the Marathi voice-over, the same way
 shell/
   journey.js            the journey: parts, loading, sound, hand-overs, the ?dev=1 panel
   front-page.js         the Fishing Frenzy title, alive

@@ -42,6 +42,10 @@ def voices(data):
         if not isinstance(table, dict):
             issues.append(f'{rel}: no "{lang}" in locales.json')
             continue
+        if man.get('missing'):  # part-recorded (a test, or a run that stopped): the game keeps the English voice
+            issues.append(f'{rel}: {man["missing"]} clips not recorded yet (tools/voice-elevenlabs.py --lang {lang}); '
+                          f'"{lang}" is left out of locales/voices.js until they are')
+            continue
         for c in man['clips']:
             name = c['file'].rsplit('.', 1)[0]
             if not os.path.exists(os.path.join(folder, c['file'])):
