@@ -10,3 +10,4 @@ parts/lesson/tools/
 .env
 .env.*
 .claude/
+assets/VO-*/manifest.json

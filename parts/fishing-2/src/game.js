@@ -803,13 +803,13 @@ class Game {
     });
   }
 
-  // Spreads the words over the recording by length, with a beat after punctuation, so each
+  // Spreads the words over the recording by length (letters of any script), with a beat after punctuation, so each
   // word appears as it's spoken. The bubble stays up a moment after the voice finishes.
   paceToVoice(d, seconds) {
     // roughly how long each word takes to say: numbers and symbols are read as words
     // ("110°" is "one hundred and ten degrees", "+" is "plus")
     const said = (t) => (/\d/.test(t) ? t.replace(/\D/g, '').length * 6 + (t.includes('°') ? 7 : 0)
-      : t === '+' ? 4 : t === '=' ? 6 : t.replace(/[^a-z0-9']/gi, '').length);
+      : t === '+' ? 4 : t === '=' ? 6 : t.replace(/[^\p{L}\p{M}\p{N}']/gu, '').length);
     const weight = (w) => Math.max(2, said(w.text))
       + (w.text.endsWith('…') ? 5 : /[.!?]$/.test(w.text) ? 3 : w.text.endsWith(',') ? 2 : 0);
     const total = d.words.reduce((sum, w) => sum + weight(w), 0);

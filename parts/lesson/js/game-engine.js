@@ -526,10 +526,12 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     const keep = !!(L && L.keep); // voice-only: the bubble keeps showing the previous line
     if (!L || (!L.t && !keep) || (keep && !L.s)) { if (done) done(); return; }
     const text = keep ? this.state.line : L.t;
-    // a translated line (?lan=, shell/i18n.js) shows its own words, while the voice, the word cues and their timing go
-    // by its English (src), as recorded; the reveal shows the same share of the line. In English the two are one.
+    // a translated line (?lan=, shell/i18n.js) shows its own words, while the word cues go by its English (src) and fire
+    // at its words' share of the line, as the reveal shows the same share of the shown line. Its voice is its own
+    // recording (a language with its own voice-over, js/voice.js) or else its English one. In English the two are one.
+    // (A voice-only line's s is by key too: its English is what the cues read.)
     const src = keep ? text : I18n.source(text);
-    const words = this.toWords(keep ? L.s : src);
+    const words = this.toWords(keep ? I18n.source(L.s) : src);
     const shownN = keep || src === text ? 0 : this.toWords(text).length;
     const shown = (n) => (shownN ? Math.min(shownN, Math.ceil((n * shownN) / Math.max(1, words.length))) : n);
     // letters (screen 3): the name in the bubble (ABCD) is written out letter by letter, each with its corner letter
@@ -537,7 +539,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     // spoken text, and where each displayed word starts in it
     let sp, offs = null;
     if (L.s) {
-      sp = L.s;
+      sp = I18n.source(L.s);
       const toks = []; sp.replace(/\S+/g, (m, at) => { toks.push(at); return m; });
       if (toks.length === words.length) offs = toks;
     } else {
@@ -800,9 +802,13 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     };
     // recorded voice (js/voice.js): the clip is the clock. Words show by their share of the spoken line, and the
     // corner letters by their place in the spoken text
-    const clip = !this.state.muted && window.Voice ? Voice.find(keep ? L.s : src) : null;
+    const clip = !this.state.muted && window.Voice ? Voice.find(keep ? L.s : text) : null;
     if (clip) {
       const clipDur = clip.reduce((t, c) => t + c.dur, 0);
+      // a translated voice-over's clip: the times measured in the English recording (cueTimes, letterTimes) don't
+      // apply, so every cue goes by its word's share of the line, and the corner letters by where the clip says them
+      const own = clip.some((c) => c.own), ownLetters = own && clip.length === 1 ? clip[0].letters : null;
+      const letterTimes = own ? null : L.letterTimes, cueTimes = own ? null : L.cueTimes;
       const wt = words.map((w) => Voice.weight(this.speechOf(w)) + (/[.!?]$/.test(w) ? 6 : /[,:;]$/.test(w) ? 3 : 0));
       const all = wt.reduce((a, b) => a + b, 0) || 1, from = []; let acc = 0;
       wt.forEach((x) => { from.push(acc / all); acc += x; });
@@ -812,7 +818,7 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
         sDone = true; begin(); mouth(false); letterCues.forEach(fireLetter); fireTimed(() => true); revealAll(); finish();
       };
       // (an equation word like "∠A = 120°" is joined with non-breaking spaces)
-      Object.keys(L.cueTimes || {}).forEach((w) => { const j = words.findIndex((x) => x.replace(/[.,!?;:]+$/, '').replace(/\s+/g, ' ') === w); if (j >= 0) timed[j] = L.cueTimes[w]; });
+      Object.keys(cueTimes || {}).forEach((w) => { const j = words.findIndex((x) => x.replace(/[.,!?;:]+$/, '').replace(/\s+/g, ' ') === w); if (j >= 0) timed[j] = cueTimes[w]; });
       // (the clip's tail: anything not yet fired goes when the line ends, so a cut-short clip still completes the screen)
       const fireTimed = (due) => {
         emphCues.forEach((c) => { if (timed[c.i] != null && due(timed[c.i])) fireEmph(c); });
@@ -824,9 +830,10 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
         progress: (f) => {
           if (!live() || sDone) return;
           // letterTimes: when each corner letter is heard in the clip (s, measured from the recording); else its place in the text
-          if (L.letterTimes) { const t = f * Math.max(0.3, clipDur - 0.35) + 0.06; letterCues.forEach((c, j) => { if (t >= L.letterTimes[j] - 0.05) fireLetter(c); }); }
+          if (letterTimes) { const t = f * Math.max(0.3, clipDur - 0.35) + 0.06; letterCues.forEach((c, j) => { if (t >= letterTimes[j] - 0.05) fireLetter(c); }); }
+          else if (ownLetters) letterCues.forEach((c, j) => { if (ownLetters[j] != null && f >= ownLetters[j]) fireLetter(c); });
           else letterCues.forEach((c) => { if (f >= c.at / Math.max(1, sp.length)) fireLetter(c); });
-          if (L.cueTimes) { const t = f * Math.max(0.3, clipDur - 0.35) + 0.06; fireTimed((s) => t >= s - 0.03); }
+          if (cueTimes) { const t = f * Math.max(0.3, clipDur - 0.35) + 0.06; fireTimed((s) => t >= s - 0.03); }
           let k = 0; while (k < from.length && from[k] <= f) k++;
           if (k > i) { i = k; setReveal(i); }
         },

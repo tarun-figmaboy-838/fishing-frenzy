@@ -1,11 +1,14 @@
 // =====================================================================
-// VOICE - Swiftee's recorded voice-over (assets/vo/, mapped in js/vo-lines.js; see docs/VOICEOVER.md).
+// VOICE - Swiftee's recorded voice-over (assets/vo/, mapped in js/vo-lines.js; see docs/VOICEOVER.md). A language with
+// its own voice-over (?lan=hi: assets/VO-HI/, shell/i18n.js) says every line in its own clips instead, found by the
+// words on screen.
 //   Voice.find(text)      the clip(s) for a line, by the exact text the bubble shows, or null
 //   Voice.play(c, h)      play them in the one shared <audio>; h.start(), h.progress(0..1), h.end()
 //   Voice.stop()          stop the current line (a new line, a screen change, a restart)
 //   Voice.unlock()        call on the first tap (Play): tablets only allow audio after a gesture
 //   Voice.prefetch()      after Play, fetch every clip quietly, one at a time
-// Off (the game falls back to the browser voice) when the browser can't play Ogg Opus, with ?vo=0, or with no clips. A clip
+// Off (the game falls back to the browser voice) when the browser can't play the clips (Ogg Opus; a translated
+// voice-over's MP3), with ?vo=0, or with no clips. A clip
 // that can't play (missing, refused, too slow) ends without h.start(); the engine then says that line with the browser voice.
 // ?vorate=2 plays the clips faster for testing (0.5-4).
 // =====================================================================
@@ -16,10 +19,14 @@ window.Voice = (function () {
   const DIR = new URL('assets/vo/', location.href).href;
   const q = (k) => { try { return new URLSearchParams(location.search).get(k); } catch (e) { return null; } };
   const LINES = typeof VO_LINES !== 'undefined' ? VO_LINES : {};
+  // the language's own voice-over: the lesson's lines (its keys: ls..., sum...)
+  const OWN = typeof I18n !== 'undefined' && I18n.ownVoice;
+  const ownClips = OWN ? I18n.voiceClips((k) => /^(ls|sum)/.test(k)) : [];
   let el = null, ok = false;
   try {
     el = shared || new Audio();
-    ok = !!el.canPlayType('audio/ogg; codecs="opus"') && q('vo') !== '0' && Object.keys(LINES).length > 0;
+    ok = q('vo') !== '0' && (OWN ? !!el.canPlayType('audio/mpeg') && ownClips.length > 0
+      : !!el.canPlayType('audio/ogg; codecs="opus"') && Object.keys(LINES).length > 0);
   } catch (e) { ok = false; }
   const rate = Math.min(4, Math.max(0.5, +q('vorate') || 1));
   const norm = (t) => String(t || '').replace(/\s+/g, ' ').trim();
@@ -28,14 +35,29 @@ window.Voice = (function () {
   let cur = null; // the line playing: { tok, timer }
   let tokN = 0;
 
-  // (a translated line, ?lan=: its English recording, until it has one of its own - shell/i18n.js)
+  // a clip: { id, dur (s), url }; a translated voice-over's clip is `own` (the English recording's measured cue times
+  // don't apply to it) and knows where each corner letter is said (letters: shares of the line)
+  const english = (id, dur) => ({ id: id, dur: dur, url: DIR + id + '.ogg' });
+  const ownClip = (v) => ({ id: v.key, dur: v.dur, url: v.url, own: true, letters: v.letters });
+  // (a translated line, ?lan=, in a language without its own voice-over: its English recording - shell/i18n.js)
   function find(text) {
     if (!ok) return null;
+    if (OWN) {
+      const v = I18n.voiceOf(text, 'swiftee');
+      if (v) return [ownClip(v)];
+      // a line said in two clips (screen 33: the corner, then the angle): split where both halves have a clip
+      const t = norm(String(text).replace(/\*/g, ''));
+      for (let i = t.indexOf(' '); i > 0; i = t.indexOf(' ', i + 1)) {
+        const a = I18n.voiceOf(t.slice(0, i), 'swiftee'), b = a && I18n.voiceOf(t.slice(i + 1), 'swiftee');
+        if (a && b) return [ownClip(a), ownClip(b)];
+      }
+      return null;
+    }
     const t = norm(typeof I18n !== 'undefined' ? I18n.source(text) : text);
-    if (LINES[t]) return [{ id: LINES[t][0], dur: LINES[t][1] }];
+    if (LINES[t]) return [english(LINES[t][0], LINES[t][1])];
     for (const re of JOINS) {
       const m = re.exec(t);
-      if (m && m.slice(1).every((p) => LINES[p])) return m.slice(1).map((p) => ({ id: LINES[p][0], dur: LINES[p][1] }));
+      if (m && m.slice(1).every((p) => LINES[p])) return m.slice(1).map((p) => english(LINES[p][0], LINES[p][1]));
     }
     return null;
   }
@@ -65,7 +87,7 @@ window.Voice = (function () {
       el.onplaying = () => { if (!live()) return; if (!started) { started = true; h.start(); } };
       el.onended = () => { if (!live()) return; before += c.dur; k++; next(); };
       el.onerror = () => finish(); // missing file: the line carries on silently
-      el.src = DIR + c.id + '.ogg';
+      el.src = c.url;
       el.playbackRate = rate;
       el.muted = false;
       const p = el.play();
@@ -97,7 +119,7 @@ window.Voice = (function () {
     if (cur) return; // a line is already playing, so audio is allowed
     try {
       el.muted = true;
-      el.src = DIR + LINES[Object.keys(LINES)[0]][0] + '.ogg';
+      el.src = OWN ? ownClips[0].url : DIR + LINES[Object.keys(LINES)[0]][0] + '.ogg';
       const p = el.play();
       const off = () => { try { if (!cur) el.pause(); } catch (e) {} el.muted = false; };
       // only a refusal means "try again on the next tap"; an abort (a line started meanwhile) means audio is allowed
@@ -107,8 +129,11 @@ window.Voice = (function () {
   function prefetch() {
     if (!ok || prefetch.done || typeof fetch === 'undefined' || location.protocol === 'file:') return;
     prefetch.done = true;
-    const ids = Object.keys(LINES).map((k) => LINES[k][0]);
-    const one = (i) => { if (i < ids.length) fetch(DIR + ids[i] + '.ogg').then((r) => r.blob()).catch(() => {}).then(() => one(i + 1)); };
+    // (a translated voice-over's drag feedback - "AD is 5.3 cm...", "∠A 84°..." - is two thirds of its clips and a
+    // learner hears one or two: each loads as it is said)
+    const urls = OWN ? ownClips.filter((c) => !/^lsDrag(90|AKeep|ABack)\./.test(c.key)).map((c) => c.url)
+      : Object.keys(LINES).map((k) => DIR + LINES[k][0] + '.ogg');
+    const one = (i) => { if (i < urls.length) fetch(urls[i]).then((r) => r.blob()).catch(() => {}).then(() => one(i + 1)); };
     one(0);
   }
   // rough spoken length of a word, for spreading the words over the clip: numbers count as their words
@@ -128,7 +153,7 @@ window.Voice = (function () {
   const warmed = {};
   function warm(texts) {
     if (!ok || typeof fetch === 'undefined' || location.protocol === 'file:') return;
-    (texts || []).forEach((t) => (find(t) || []).forEach((c) => { if (!warmed[c.id]) { warmed[c.id] = 1; fetch(DIR + c.id + '.ogg').catch(() => { warmed[c.id] = 0; }); } }));
+    (texts || []).forEach((t) => (find(t) || []).forEach((c) => { if (!warmed[c.url]) { warmed[c.url] = 1; fetch(c.url).catch(() => { warmed[c.url] = 0; }); } }));
   }
   return { find: find, play: play, stop: stop, unlock: unlock, prefetch: prefetch, warm: warm, weight: weight, get on() { return ok; } };
 })();

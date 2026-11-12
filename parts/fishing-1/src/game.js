@@ -644,10 +644,10 @@ class Game {
     });
   }
 
-  // Spreads the words over the recording by length, with a beat after punctuation, so each
+  // Spreads the words over the recording by length (letters of any script), with a beat after punctuation, so each
   // word appears as it's spoken. The bubble stays up a moment after the voice finishes.
   paceToVoice(d, seconds) {
-    const weight = (w) => Math.max(2, w.text.replace(/[^a-z0-9']/gi, '').length)
+    const weight = (w) => Math.max(2, w.text.replace(/[^\p{L}\p{M}\p{N}']/gu, '').length)
       + (w.text.endsWith('…') ? 5 : /[.!?]$/.test(w.text) ? 3 : w.text.endsWith(',') ? 2 : 0);
     const total = d.words.reduce((sum, w) => sum + weight(w), 0);
     let at = 0;

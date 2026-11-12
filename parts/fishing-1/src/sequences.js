@@ -271,7 +271,8 @@ async function wrongCatch(game, fish) {
       [3640, () => { sound('splashSmall'); fx.splash(edge - 20, game.waterline, false); }],
       [3720, () => { sound('boing'); fx.drips(popo.bodyLandmark('head')); }],
       [3920, () => { sound('drip'); fx.drips(popo.bodyLandmark('head')); }],
-      [4150, () => { ui.setInstruction(game.wrongText(fish)); }],
+      // (read aloud when it has a recording, as the instruction is: game.speakInstruction)
+      [4150, () => { const hint = game.wrongText(fish); ui.setInstruction(hint); if (!game.dialogue) game.audio.speak('narrator', hint); }],
     ];
     await clock.tween(WRONG_DURATION, token, progress => {
       const ms = progress * WRONG_DURATION;

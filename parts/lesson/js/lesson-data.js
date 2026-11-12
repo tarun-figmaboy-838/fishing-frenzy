@@ -142,7 +142,7 @@ const LESSON = {
     { id: 'parallel', parStrong: 1, lines: [{ m: 'surprised', t: T('lsPairNotMeet'), noEmph: 1, cueAt: { pair: 'parPulse', meet: 'parPulse' } }], f: { baseExt: 1 } },
     // second line is voice only; its label appears once "A B" and "C D" have both been said
     { id: 'abcd', lines: [{ t: T('lsMeansParallel'), cueAt: { parallel: 'parPulse' } },
-      { keep: 1, s: 'A B is parallel to C D.', chipsAfterParts: ['AB', 'CD'], chips: [{ t: 'AB ∥ CD', k: 'white par' }] }], f: { par: 1 } },
+      { keep: 1, s: T('lsAbParallelCd'), chipsAfterParts: ['AB', 'CD'], chips: [{ t: 'AB ∥ CD', k: 'white par' }] }], f: { par: 1 } },
     // "parallel": the arrows glide on (as on the right trapezium's definition, no tracing of the sides);
     // "trapezium": the name label pops in
     { id: 'defFull', legsSet: 1, chevPre: 1, lines: [{ t: T('lsBigSecret'), noEmph: 1 },

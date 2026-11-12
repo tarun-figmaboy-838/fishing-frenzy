@@ -1,0 +1,3522 @@
+{
+ "language": "hi",
+ "source": "locales/locales.json -> hi",
+ "tool": "tools/voice-elevenlabs.py",
+ "model": "eleven_multilingual_v2",
+ "format": "mp3_44100_128",
+ "seed": 7,
+ "voices": {
+  "swiftee": {
+   "name": "Anjali – Friendly EdTech Teacher",
+   "voice_id": "Kfn3fYy8XcPyUvbTxn1H",
+   "settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.5,
+    "style": 0.0,
+    "use_speaker_boost": true,
+    "speed": 0.95
+   }
+  },
+  "popo": {
+   "name": "Amit – Kids Cartoon Character",
+   "voice_id": "NbvR1eY6Q8ivACdEO8PV",
+   "settings": {
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true,
+    "speed": 0.95
+   }
+  },
+  "narrator": "same voice as swiftee"
+ },
+ "clips": [
+  {
+   "file": "theEnd.mp3",
+   "key": "theEnd",
+   "speaker": "narrator",
+   "text": "समाप्त",
+   "spoken": "समाप्त",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.993
+  },
+  {
+   "file": "shapeTriangle.mp3",
+   "key": "shapeTriangle",
+   "speaker": "narrator",
+   "text": "त्रिभुज",
+   "spoken": "त्रिभुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.888
+  },
+  {
+   "file": "shapeSquare.mp3",
+   "key": "shapeSquare",
+   "speaker": "narrator",
+   "text": "वर्ग",
+   "spoken": "वर्ग",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.862
+  },
+  {
+   "file": "shapeRectangle.mp3",
+   "key": "shapeRectangle",
+   "speaker": "narrator",
+   "text": "आयत",
+   "spoken": "आयत",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.862
+  },
+  {
+   "file": "shapeRhombus.mp3",
+   "key": "shapeRhombus",
+   "speaker": "narrator",
+   "text": "समचतुर्भुज",
+   "spoken": "समचतुर्भुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.28
+  },
+  {
+   "file": "shapeParallelogram.mp3",
+   "key": "shapeParallelogram",
+   "speaker": "narrator",
+   "text": "समांतर चतुर्भुज",
+   "spoken": "समांतर चतुर्भुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.541
+  },
+  {
+   "file": "shapeTrapezium.mp3",
+   "key": "shapeTrapezium",
+   "speaker": "narrator",
+   "text": "समलंब",
+   "spoken": "समलंब",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapePentagon.mp3",
+   "key": "shapePentagon",
+   "speaker": "narrator",
+   "text": "पंचभुज",
+   "spoken": "पंचभुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.045
+  },
+  {
+   "file": "shapeHexagon.mp3",
+   "key": "shapeHexagon",
+   "speaker": "narrator",
+   "text": "षट्भुज",
+   "spoken": "षट्भुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeOctagon.mp3",
+   "key": "shapeOctagon",
+   "speaker": "narrator",
+   "text": "अष्टभुज",
+   "spoken": "अष्टभुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.993
+  },
+  {
+   "file": "shapeNonagon.mp3",
+   "key": "shapeNonagon",
+   "speaker": "narrator",
+   "text": "नवभुज",
+   "spoken": "नवभुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.993
+  },
+  {
+   "file": "shapeDecagon.mp3",
+   "key": "shapeDecagon",
+   "speaker": "narrator",
+   "text": "दशभुज",
+   "spoken": "दशभुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeCircle.mp3",
+   "key": "shapeCircle",
+   "speaker": "narrator",
+   "text": "वृत्त",
+   "spoken": "वृत्त",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.81
+  },
+  {
+   "file": "shapeOval.mp3",
+   "key": "shapeOval",
+   "speaker": "narrator",
+   "text": "अंडाकार",
+   "spoken": "अंडाकार",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeSemicircle.mp3",
+   "key": "shapeSemicircle",
+   "speaker": "narrator",
+   "text": "अर्धवृत्त",
+   "spoken": "अर्धवृत्त",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.123
+  },
+  {
+   "file": "shapeQuadrilateral.mp3",
+   "key": "shapeQuadrilateral",
+   "speaker": "narrator",
+   "text": "चतुर्भुज",
+   "spoken": "चतुर्भुज",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.097
+  },
+  {
+   "file": "popoWhoopsie.mp3",
+   "key": "popoWhoopsie",
+   "speaker": "popo",
+   "text": "उई माँ, उल्टा-पुल्टा!",
+   "spoken": "उई माँ, उल्टा-पुल्टा!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 2.116
+  },
+  {
+   "file": "popoGreatCatch.mp3",
+   "key": "popoGreatCatch",
+   "speaker": "popo",
+   "text": "*शानदार* पकड़!",
+   "spoken": "शानदार पकड़!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.593
+  },
+  {
+   "file": "f1StoryLoves.mp3",
+   "key": "f1StoryLoves",
+   "speaker": "narrator",
+   "text": "पोपो को मछली पकड़ना *बहुत* पसंद है।",
+   "spoken": "पोपो को मछली पकड़ना बहुत पसंद है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.482
+  },
+  {
+   "file": "f1StoryToday.mp3",
+   "key": "f1StoryToday",
+   "speaker": "narrator",
+   "text": "और आज…",
+   "spoken": "और आज...",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.097
+  },
+  {
+   "file": "f1StoryAllKinds.mp3",
+   "key": "f1StoryAllKinds",
+   "speaker": "narrator",
+   "text": "वह *हर* तरह की मछली पकड़ना चाहता है!",
+   "spoken": "वह हर तरह की मछली पकड़ना चाहता है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.482
+  },
+  {
+   "file": "f1CatchAll.triangle.mp3",
+   "key": "f1CatchAll",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "सारी *त्रिभुज* मछलियाँ पकड़ें!",
+   "spoken": "सारी त्रिभुज मछलियाँ पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.933
+  },
+  {
+   "file": "f1CatchAll.pentagon.mp3",
+   "key": "f1CatchAll",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "सारी *पंचभुज* मछलियाँ पकड़ें!",
+   "spoken": "सारी पंचभुज मछलियाँ पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.064
+  },
+  {
+   "file": "f1CatchAll.hexagon.mp3",
+   "key": "f1CatchAll",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "सारी *षट्भुज* मछलियाँ पकड़ें!",
+   "spoken": "सारी षट्भुज मछलियाँ पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.881
+  },
+  {
+   "file": "f1CatchAll.quadrilateral.mp3",
+   "key": "f1CatchAll",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "सारी *चतुर्भुज* मछलियाँ पकड़ें!",
+   "spoken": "सारी चतुर्भुज मछलियाँ पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.116
+  },
+  {
+   "file": "f1Catch.triangle.mp3",
+   "key": "f1Catch",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "*त्रिभुज* मछली पकड़ें!",
+   "spoken": "त्रिभुज मछली पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.515
+  },
+  {
+   "file": "f1Catch.pentagon.mp3",
+   "key": "f1Catch",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "*पंचभुज* मछली पकड़ें!",
+   "spoken": "पंचभुज मछली पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.541
+  },
+  {
+   "file": "f1Catch.hexagon.mp3",
+   "key": "f1Catch",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "*षट्भुज* मछली पकड़ें!",
+   "spoken": "षट्भुज मछली पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "f1Catch.quadrilateral.mp3",
+   "key": "f1Catch",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "*चतुर्भुज* मछली पकड़ें!",
+   "spoken": "चतुर्भुज मछली पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.646
+  },
+  {
+   "file": "f1WrongSides.triangle.mp3",
+   "key": "f1WrongSides",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "भुजाएँ देखें। *त्रिभुज* की 3 भुजाएँ होती हैं।",
+   "spoken": "भुजाएँ देखें। त्रिभुज की तीन भुजाएँ होती हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.396
+  },
+  {
+   "file": "f1WrongSides.pentagon.mp3",
+   "key": "f1WrongSides",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "भुजाएँ देखें। *पंचभुज* की 5 भुजाएँ होती हैं।",
+   "spoken": "भुजाएँ देखें। पंचभुज की पाँच भुजाएँ होती हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.448
+  },
+  {
+   "file": "f1WrongSides.hexagon.mp3",
+   "key": "f1WrongSides",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "भुजाएँ देखें। *षट्भुज* की 6 भुजाएँ होती हैं।",
+   "spoken": "भुजाएँ देखें। षट्भुज की छह भुजाएँ होती हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.318
+  },
+  {
+   "file": "f1WrongSides.quadrilateral.mp3",
+   "key": "f1WrongSides",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "भुजाएँ देखें। *चतुर्भुज* की 4 भुजाएँ होती हैं।",
+   "spoken": "भुजाएँ देखें। चतुर्भुज की चार भुजाएँ होती हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.5
+  },
+  {
+   "file": "f1RowsOn.mp3",
+   "key": "f1RowsOn",
+   "speaker": "narrator",
+   "text": "पोपो आगे बढ़ चला…",
+   "spoken": "पोपो आगे बढ़ चला...",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.515
+  },
+  {
+   "file": "f1Woah.mp3",
+   "key": "f1Woah",
+   "speaker": "popo",
+   "text": "*ओहो!*",
+   "spoken": "ओहो!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.097
+  },
+  {
+   "file": "f1NotSeen.mp3",
+   "key": "f1NotSeen",
+   "speaker": "popo",
+   "text": "*ऐसी* मछली तो मैंने पहले कभी नहीं देखी!",
+   "spoken": "ऐसी मछली तो मैंने पहले कभी नहीं देखी!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 2.534
+  },
+  {
+   "file": "f1WhatKind.mp3",
+   "key": "f1WhatKind",
+   "speaker": "popo",
+   "text": "वह किस *तरह* की मछली थी?",
+   "spoken": "वह किस तरह की मछली थी?",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.959
+  },
+  {
+   "file": "f1FindOut.mp3",
+   "key": "f1FindOut",
+   "speaker": "swiftee",
+   "text": "आइए पता *लगाएँ!*",
+   "spoken": "आइए पता लगाएँ!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.28
+  },
+  {
+   "file": "lsHi.mp3",
+   "key": "lsHi",
+   "speaker": "swiftee",
+   "text": "नमस्ते! मेरे साथ एक नई आकृति खोजने के लिए तैयार हैं?",
+   "spoken": "नमस्ते! मेरे साथ एक नई आकृति खोजने के लिए तैयार हैं?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.736
+  },
+  {
+   "file": "lsRemember.mp3",
+   "key": "lsRemember",
+   "speaker": "swiftee",
+   "text": "याद करें, हमने चतुर्भुजों\nके बारे में पहले सीखा था।",
+   "spoken": "याद करें, हमने चतुर्भुजों के बारे में पहले सीखा था।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.553
+  },
+  {
+   "file": "lsAnyPolygon.mp3",
+   "key": "lsAnyPolygon",
+   "speaker": "swiftee",
+   "text": "4 भुजाओं वाले हर बहुभुज को\nचतुर्भुज कहा जाता है।",
+   "spoken": "चार भुजाओं वाले हर बहुभुज को चतुर्भुज कहा जाता है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.448
+  },
+  {
+   "file": "lsCallIt.mp3",
+   "key": "lsCallIt",
+   "speaker": "swiftee",
+   "text": "हम इसे चतुर्भुज\nABCD कह सकते हैं।",
+   "spoken": "हम इसे चतुर्भुज ए बी सी डी कह सकते हैं।",
+   "letters": [
+    0.41,
+    0.462,
+    0.538,
+    0.615
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.717
+  },
+  {
+   "file": "lsSpecialType.mp3",
+   "key": "lsSpecialType",
+   "speaker": "swiftee",
+   "text": "यह एक ख़ास प्रकार का\nचतुर्भुज है।",
+   "spoken": "यह एक ख़ास प्रकार का चतुर्भुज है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.299
+  },
+  {
+   "file": "lsSeeSpecial.mp3",
+   "key": "lsSeeSpecial",
+   "speaker": "swiftee",
+   "text": "आइए देखें कि\nयह ख़ास क्यों है।",
+   "spoken": "आइए देखें कि यह ख़ास क्यों है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.933
+  },
+  {
+   "file": "lsLookMeet.mp3",
+   "key": "lsLookMeet",
+   "speaker": "swiftee",
+   "text": "लगता है ये दो भुजाएँ आपस में मिल जाएँगी।",
+   "spoken": "लगता है ये दो भुजाएँ आपस में मिल जाएँगी।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.429
+  },
+  {
+   "file": "lsExtendThem.mp3",
+   "key": "lsExtendThem",
+   "speaker": "swiftee",
+   "text": "आइए इन्हें आगे बढ़ाएँ।",
+   "spoken": "आइए इन्हें आगे बढ़ाएँ।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsSidesMeet.mp3",
+   "key": "lsSidesMeet",
+   "speaker": "swiftee",
+   "text": "अरे वाह! भुजाएँ मिल गईं।",
+   "spoken": "अरे वाह! भुजाएँ मिल गईं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.881
+  },
+  {
+   "file": "lsCheckOther.mp3",
+   "key": "lsCheckOther",
+   "speaker": "swiftee",
+   "text": "आइए भुजाओं के दूसरे\nजोड़े को जाँचें।",
+   "spoken": "आइए भुजाओं के दूसरे जोड़े को जाँचें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.377
+  },
+  {
+   "file": "lsPairNotMeet.mp3",
+   "key": "lsPairNotMeet",
+   "speaker": "swiftee",
+   "text": "भुजाओं का यह जोड़ा\nआपस में नहीं मिलता।",
+   "spoken": "भुजाओं का यह जोड़ा आपस में नहीं मिलता।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.247
+  },
+  {
+   "file": "lsMeansParallel.mp3",
+   "key": "lsMeansParallel",
+   "speaker": "swiftee",
+   "text": "इसका मतलब है कि ये भुजाएँ एक-दूसरे के समांतर हैं।",
+   "spoken": "इसका मतलब है कि ये भुजाएँ एक-दूसरे के समांतर हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.683
+  },
+  {
+   "file": "lsAbParallelCd.mp3",
+   "key": "lsAbParallelCd",
+   "speaker": "swiftee",
+   "text": "AB, CD के समांतर है।",
+   "spoken": "ए बी, सी डी के समांतर है।",
+   "letters": [
+    0.0,
+    0.08,
+    0.24,
+    0.36
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.064
+  },
+  {
+   "file": "lsBigSecret.mp3",
+   "key": "lsBigSecret",
+   "speaker": "swiftee",
+   "text": "यह रहा बड़ा राज़!",
+   "spoken": "यह रहा बड़ा राज़!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.358
+  },
+  {
+   "file": "lsOnePairEnough.mp3",
+   "key": "lsOnePairEnough",
+   "speaker": "swiftee",
+   "text": "बस समांतर भुजाओं का\nएक जोड़ा काफ़ी है।",
+   "spoken": "बस समांतर भुजाओं का एक जोड़ा काफ़ी है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.56
+  },
+  {
+   "file": "lsThenTrapezium.mp3",
+   "key": "lsThenTrapezium",
+   "speaker": "swiftee",
+   "text": "तब वह चतुर्भुज\nएक समलंब होता है!",
+   "spoken": "तब वह चतुर्भुज एक समलंब होता है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.351
+  },
+  {
+   "file": "lsWhichTrapezium.mp3",
+   "key": "lsWhichTrapezium",
+   "speaker": "swiftee",
+   "text": "इनमें से कौन-सा चतुर्भुज समलंब है?",
+   "spoken": "इनमें से कौन-सा चतुर्भुज समलंब है?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.351
+  },
+  {
+   "file": "lsCorrect.mp3",
+   "key": "lsCorrect",
+   "speaker": "swiftee",
+   "text": "सही!",
+   "spoken": "सही!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.81
+  },
+  {
+   "file": "lsHasOnePair.mp3",
+   "key": "lsHasOnePair",
+   "speaker": "swiftee",
+   "text": "इसमें समांतर भुजाओं का एक जोड़ा है।",
+   "spoken": "इसमें समांतर भुजाओं का एक जोड़ा है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.429
+  },
+  {
+   "file": "lsSoTrapezium.mp3",
+   "key": "lsSoTrapezium",
+   "speaker": "swiftee",
+   "text": "तो यह एक समलंब है!",
+   "spoken": "तो यह एक समलंब है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsOopsNoParallel.mp3",
+   "key": "lsOopsNoParallel",
+   "speaker": "swiftee",
+   "text": "उफ़! यहाँ कोई भी दो भुजाएँ समांतर नहीं हैं।",
+   "spoken": "उफ़! यहाँ कोई भी दो भुजाएँ समांतर नहीं हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.9
+  },
+  {
+   "file": "lsNotTrapezium.mp3",
+   "key": "lsNotTrapezium",
+   "speaker": "swiftee",
+   "text": "तो यह समलंब नहीं है।",
+   "spoken": "तो यह समलंब नहीं है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.541
+  },
+  {
+   "file": "lsNoParallelAtAll.mp3",
+   "key": "lsNoParallelAtAll",
+   "speaker": "swiftee",
+   "text": "इस आकृति में समांतर भुजाएँ हैं ही नहीं।",
+   "spoken": "इस आकृति में समांतर भुजाएँ हैं ही नहीं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.482
+  },
+  {
+   "file": "lsCalledBases.mp3",
+   "key": "lsCalledBases",
+   "speaker": "swiftee",
+   "text": "समांतर भुजाओं को\nआधार कहते हैं।",
+   "spoken": "समांतर भुजाओं को आधार कहते हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.142
+  },
+  {
+   "file": "lsCalledLegs.mp3",
+   "key": "lsCalledLegs",
+   "speaker": "swiftee",
+   "text": "बाक़ी दो भुजाओं को\nअसमांतर भुजाएँ कहते हैं।",
+   "spoken": "बाक़ी दो भुजाओं को असमांतर भुजाएँ कहते हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.717
+  },
+  {
+   "file": "lsMeasureSides.mp3",
+   "key": "lsMeasureSides",
+   "speaker": "swiftee",
+   "text": "आइए इस समलंब की\nभुजाएँ मापें।",
+   "spoken": "आइए इस समलंब की भुजाएँ मापें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.116
+  },
+  {
+   "file": "lsAllDifferent.mp3",
+   "key": "lsAllDifferent",
+   "speaker": "swiftee",
+   "text": "अरे वाह! इस समलंब की\nसभी भुजाओं की लंबाई\nअलग-अलग है।",
+   "spoken": "अरे वाह! इस समलंब की सभी भुजाओं की लंबाई अलग-अलग है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.788
+  },
+  {
+   "file": "lsLookTrapezium.mp3",
+   "key": "lsLookTrapezium",
+   "speaker": "swiftee",
+   "text": "इस समलंब को देखें!",
+   "spoken": "इस समलंब को देखें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsAllSidesDiff.mp3",
+   "key": "lsAllSidesDiff",
+   "speaker": "swiftee",
+   "text": "इसकी सभी भुजाओं की\nलंबाई अलग-अलग है।",
+   "spoken": "इसकी सभी भुजाओं की लंबाई अलग-अलग है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.56
+  },
+  {
+   "file": "lsScaleneIs.mp3",
+   "key": "lsScaleneIs",
+   "speaker": "swiftee",
+   "text": "यह है विषमबाहु समलंब!",
+   "spoken": "यह है विषमबाहु समलंब!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.646
+  },
+  {
+   "file": "lsScaleneTrapezium.mp3",
+   "key": "lsScaleneTrapezium",
+   "speaker": "swiftee",
+   "text": "विषमबाहु समलंब",
+   "spoken": "विषमबाहु समलंब",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsLegsDiffToo.mp3",
+   "key": "lsLegsDiffToo",
+   "speaker": "swiftee",
+   "text": "देखें! इसकी असमांतर भुजाएँ भी\nअलग-अलग लंबाई की हैं।",
+   "spoken": "देखें! इसकी असमांतर भुजाएँ भी अलग-अलग लंबाई की हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.918
+  },
+  {
+   "file": "lsWhatIfSame.mp3",
+   "key": "lsWhatIfSame",
+   "speaker": "swiftee",
+   "text": "अगर असमांतर भुजाएँ\nबराबर लंबाई की हों, तो?",
+   "spoken": "अगर असमांतर भुजाएँ बराबर लंबाई की हों, तो?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.978
+  },
+  {
+   "file": "lsFindOut.mp3",
+   "key": "lsFindOut",
+   "speaker": "swiftee",
+   "text": "आइए पता लगाएँ।",
+   "spoken": "आइए पता लगाएँ।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.306
+  },
+  {
+   "file": "lsDragVertexA.mp3",
+   "key": "lsDragVertexA",
+   "speaker": "swiftee",
+   "text": "शीर्ष A को ड्रैग करें।",
+   "spoken": "शीर्ष ए को ड्रैग करें।",
+   "letters": [
+    0.273
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.541
+  },
+  {
+   "file": "lsMakeLegsSame.mp3",
+   "key": "lsMakeLegsSame",
+   "speaker": "swiftee",
+   "text": "दोनों असमांतर भुजाएँ\nबराबर लंबी करें!",
+   "spoken": "दोनों असमांतर भुजाएँ बराबर लंबी करें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.482
+  },
+  {
+   "file": "lsPerfectEqual.mp3",
+   "key": "lsPerfectEqual",
+   "speaker": "swiftee",
+   "text": "एकदम सही! दोनों असमांतर भुजाएँ बराबर हैं।",
+   "spoken": "एकदम सही! दोनों असमांतर भुजाएँ बराबर हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.082
+  },
+  {
+   "file": "lsWatch.mp3",
+   "key": "lsWatch",
+   "speaker": "swiftee",
+   "text": "ध्यान से देखें!",
+   "spoken": "ध्यान से देखें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.228
+  },
+  {
+   "file": "lsAdBecomes.mp3",
+   "key": "lsAdBecomes",
+   "speaker": "swiftee",
+   "text": "AD भी BC की तरह 5 cm हो जाती है।",
+   "spoken": "ए डी भी बी सी की तरह पाँच सेंटीमीटर हो जाती है।",
+   "letters": [
+    0.0,
+    0.043,
+    0.17,
+    0.234
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.952
+  },
+  {
+   "file": "lsNowLegsEqual.mp3",
+   "key": "lsNowLegsEqual",
+   "speaker": "swiftee",
+   "text": "अब दोनों असमांतर भुजाएँ बराबर हैं!",
+   "spoken": "अब दोनों असमांतर भुजाएँ बराबर हैं!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.299
+  },
+  {
+   "file": "lsDragAKeep.5_1.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_1",
+   "speaker": "swiftee",
+   "text": "AD 5.1 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव एक सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.34
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.713
+  },
+  {
+   "file": "lsDragAKeep.5_2.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_2",
+   "speaker": "swiftee",
+   "text": "AD 5.2 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव दो सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.34
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.661
+  },
+  {
+   "file": "lsDragAKeep.5_3.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_3",
+   "speaker": "swiftee",
+   "text": "AD 5.3 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव तीन सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.02,
+    0.347
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.713
+  },
+  {
+   "file": "lsDragAKeep.5_4.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_4",
+   "speaker": "swiftee",
+   "text": "AD 5.4 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव चार सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.02,
+    0.347
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.478
+  },
+  {
+   "file": "lsDragAKeep.5_5.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_5",
+   "speaker": "swiftee",
+   "text": "AD 5.5 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव पाँच सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.02,
+    0.354
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.557
+  },
+  {
+   "file": "lsDragAKeep.5_6.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_6",
+   "speaker": "swiftee",
+   "text": "AD 5.6 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव छह सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.34
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.896
+  },
+  {
+   "file": "lsDragAKeep.5_7.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_7",
+   "speaker": "swiftee",
+   "text": "AD 5.7 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव सात सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.02,
+    0.347
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.792
+  },
+  {
+   "file": "lsDragAKeep.5_8.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_8",
+   "speaker": "swiftee",
+   "text": "AD 5.8 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव आठ सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.34
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 7.367
+  },
+  {
+   "file": "lsDragAKeep.5_9.mp3",
+   "key": "lsDragAKeep",
+   "variant": "5_9",
+   "speaker": "swiftee",
+   "text": "AD 5.9 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी पाँच दशमलव नौ सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.34
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 7.21
+  },
+  {
+   "file": "lsDragAKeep.6.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6",
+   "speaker": "swiftee",
+   "text": "AD 6 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.023,
+    0.256
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDragAKeep.6_1.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_1",
+   "speaker": "swiftee",
+   "text": "AD 6.1 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव एक सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.326
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.949
+  },
+  {
+   "file": "lsDragAKeep.6_2.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_2",
+   "speaker": "swiftee",
+   "text": "AD 6.2 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव दो सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.326
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.975
+  },
+  {
+   "file": "lsDragAKeep.6_3.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_3",
+   "speaker": "swiftee",
+   "text": "AD 6.3 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव तीन सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.333
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.896
+  },
+  {
+   "file": "lsDragAKeep.6_4.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_4",
+   "speaker": "swiftee",
+   "text": "AD 6.4 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव चार सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.333
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.844
+  },
+  {
+   "file": "lsDragAKeep.6_5.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_5",
+   "speaker": "swiftee",
+   "text": "AD 6.5 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव पाँच सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.34
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.792
+  },
+  {
+   "file": "lsDragAKeep.6_6.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_6",
+   "speaker": "swiftee",
+   "text": "AD 6.6 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव छह सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.326
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.661
+  },
+  {
+   "file": "lsDragAKeep.6_7.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_7",
+   "speaker": "swiftee",
+   "text": "AD 6.7 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव सात सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.333
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.896
+  },
+  {
+   "file": "lsDragAKeep.6_8.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_8",
+   "speaker": "swiftee",
+   "text": "AD 6.8 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव आठ सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.326
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.896
+  },
+  {
+   "file": "lsDragAKeep.6_9.mp3",
+   "key": "lsDragAKeep",
+   "variant": "6_9",
+   "speaker": "swiftee",
+   "text": "AD 6.9 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी छह दशमलव नौ सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.326
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.844
+  },
+  {
+   "file": "lsDragAKeep.7.mp3",
+   "key": "lsDragAKeep",
+   "variant": "7",
+   "speaker": "swiftee",
+   "text": "AD 7 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी सात सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.023,
+    0.264
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.113
+  },
+  {
+   "file": "lsDragAKeep.7_1.mp3",
+   "key": "lsDragAKeep",
+   "variant": "7_1",
+   "speaker": "swiftee",
+   "text": "AD 7.1 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी सात दशमलव एक सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.333
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 7.262
+  },
+  {
+   "file": "lsDragAKeep.7_2.mp3",
+   "key": "lsDragAKeep",
+   "variant": "7_2",
+   "speaker": "swiftee",
+   "text": "AD 7.2 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी सात दशमलव दो सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.333
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.792
+  },
+  {
+   "file": "lsDragAKeep.7_3.mp3",
+   "key": "lsDragAKeep",
+   "variant": "7_3",
+   "speaker": "swiftee",
+   "text": "AD 7.3 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी सात दशमलव तीन सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.34
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.74
+  },
+  {
+   "file": "lsDragAKeep.7_4.mp3",
+   "key": "lsDragAKeep",
+   "variant": "7_4",
+   "speaker": "swiftee",
+   "text": "AD 7.4 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी सात दशमलव चार सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.34
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.74
+  },
+  {
+   "file": "lsDragAKeep.7_5.mp3",
+   "key": "lsDragAKeep",
+   "variant": "7_5",
+   "speaker": "swiftee",
+   "text": "AD 7.5 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी सात दशमलव पाँच सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.02,
+    0.347
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.975
+  },
+  {
+   "file": "lsDragAKeep.7_6.mp3",
+   "key": "lsDragAKeep",
+   "variant": "7_6",
+   "speaker": "swiftee",
+   "text": "AD 7.6 cm है। A को तब तक ड्रैग करते रहें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी सात दशमलव छह सेंटीमीटर है। ए को तब तक ड्रैग करते रहें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.333
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 7.027
+  },
+  {
+   "file": "lsDragABack.4_9.mp3",
+   "key": "lsDragABack",
+   "variant": "4_9",
+   "speaker": "swiftee",
+   "text": "AD 4.9 cm है। A को थोड़ा पीछे ड्रैग करें, जब तक यह ठीक 5 cm न दिखाए।",
+   "spoken": "ए डी चार दशमलव नौ सेंटीमीटर है। ए को थोड़ा पीछे ड्रैग करें, जब तक यह ठीक पाँच सेंटीमीटर न दिखाए।",
+   "letters": [
+    0.0,
+    0.021,
+    0.333
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 6.478
+  },
+  {
+   "file": "lsNowLookTrapezium.mp3",
+   "key": "lsNowLookTrapezium",
+   "speaker": "swiftee",
+   "text": "अब इस समलंब को देखें!",
+   "spoken": "अब इस समलंब को देखें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.646
+  },
+  {
+   "file": "lsLegsSame.mp3",
+   "key": "lsLegsSame",
+   "speaker": "swiftee",
+   "text": "इसकी असमांतर भुजाएँ बराबर लंबाई की हैं!",
+   "spoken": "इसकी असमांतर भुजाएँ बराबर लंबाई की हैं!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.56
+  },
+  {
+   "file": "lsIsoIs.mp3",
+   "key": "lsIsoIs",
+   "speaker": "swiftee",
+   "text": "यह है समद्विबाहु समलंब!",
+   "spoken": "यह है समद्विबाहु समलंब!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.933
+  },
+  {
+   "file": "lsIsoTrapezium.mp3",
+   "key": "lsIsoTrapezium",
+   "speaker": "swiftee",
+   "text": "समद्विबाहु समलंब",
+   "spoken": "समद्विबाहु समलंब",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.698
+  },
+  {
+   "file": "lsKnowSides.mp3",
+   "key": "lsKnowSides",
+   "speaker": "swiftee",
+   "text": "समलंब की भुजाओं के बारे में\nहम सब कुछ जानते हैं।",
+   "spoken": "समलंब की भुजाओं के बारे में हम सब कुछ जानते हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.082
+  },
+  {
+   "file": "lsThisIso.mp3",
+   "key": "lsThisIso",
+   "speaker": "swiftee",
+   "text": "यह एक समद्विबाहु समलंब है।",
+   "spoken": "यह एक समद्विबाहु समलंब है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.011
+  },
+  {
+   "file": "lsAbCd.mp3",
+   "key": "lsAbCd",
+   "speaker": "swiftee",
+   "text": "AB = 6 cm और CD = 10 cm।",
+   "spoken": "ए बी बराबर छह सेंटीमीटर और सी डी बराबर दस सेंटीमीटर।",
+   "letters": [
+    0.0,
+    0.038,
+    0.519,
+    0.577
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.788
+  },
+  {
+   "file": "lsAd5.mp3",
+   "key": "lsAd5",
+   "speaker": "swiftee",
+   "text": "AD = 5 cm।",
+   "spoken": "ए डी बराबर पाँच सेंटीमीटर।",
+   "letters": [
+    0.0,
+    0.077
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.829
+  },
+  {
+   "file": "lsHowLongBc.mp3",
+   "key": "lsHowLongBc",
+   "speaker": "swiftee",
+   "text": "तो BC कितनी लंबी है?",
+   "spoken": "तो बी सी कितनी लंबी है?",
+   "letters": [
+    0.13,
+    0.261
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.646
+  },
+  {
+   "file": "lsYesLegsEqual.mp3",
+   "key": "lsYesLegsEqual",
+   "speaker": "swiftee",
+   "text": "हाँ! असमांतर भुजाएँ बराबर हैं।",
+   "spoken": "हाँ! असमांतर भुजाएँ बराबर हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.56
+  },
+  {
+   "file": "lsSoBc5.mp3",
+   "key": "lsSoBc5",
+   "speaker": "swiftee",
+   "text": "तो BC = 5 cm!",
+   "spoken": "तो बी सी बराबर पाँच सेंटीमीटर!",
+   "letters": [
+    0.1,
+    0.2
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.247
+  },
+  {
+   "file": "lsBcIsLeg.mp3",
+   "key": "lsBcIsLeg",
+   "speaker": "swiftee",
+   "text": "हम्म, BC एक असमांतर भुजा है।",
+   "spoken": "हम्म, बी सी एक असमांतर भुजा है।",
+   "letters": [
+    0.194,
+    0.29
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.247
+  },
+  {
+   "file": "lsBothLegsEqual.mp3",
+   "key": "lsBothLegsEqual",
+   "speaker": "swiftee",
+   "text": "और दोनों असमांतर भुजाएँ बराबर होती हैं!",
+   "spoken": "और दोनों असमांतर भुजाएँ बराबर होती हैं!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.717
+  },
+  {
+   "file": "lsOops6Top.mp3",
+   "key": "lsOops6Top",
+   "speaker": "swiftee",
+   "text": "उफ़! 6 cm तो ऊपर वाला आधार AB है।",
+   "spoken": "उफ़! छह सेंटीमीटर तो ऊपर वाला आधार ए बी है।",
+   "letters": [
+    0.814,
+    0.86
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsBcLikeAd.mp3",
+   "key": "lsBcLikeAd",
+   "speaker": "swiftee",
+   "text": "BC भी AD की तरह एक असमांतर भुजा है।",
+   "spoken": "बी सी भी ए डी की तरह एक असमांतर भुजा है।",
+   "letters": [
+    0.0,
+    0.075,
+    0.225,
+    0.275
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.717
+  },
+  {
+   "file": "lsMeasureAngles.mp3",
+   "key": "lsMeasureAngles",
+   "speaker": "swiftee",
+   "text": "आइए इसके कोण मापें।",
+   "spoken": "आइए इसके कोण मापें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsNotice.mp3",
+   "key": "lsNotice",
+   "speaker": "swiftee",
+   "text": "क्या आपने कुछ ध्यान दिया?",
+   "spoken": "क्या आपने कुछ ध्यान दिया?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsAdSum180.mp3",
+   "key": "lsAdSum180",
+   "speaker": "swiftee",
+   "text": "∠A और ∠D का योग 180° है।",
+   "spoken": "कोण ए और कोण डी का योग एक सौ अस्सी डिग्री है।",
+   "letters": [
+    0.089,
+    0.289
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.396
+  },
+  {
+   "file": "lsSupplementary.mp3",
+   "key": "lsSupplementary",
+   "speaker": "swiftee",
+   "text": "इसका मतलब है कि ये\nसंपूरक कोण हैं।",
+   "spoken": "इसका मतलब है कि ये संपूरक कोण हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsWhatAboutBc.mp3",
+   "key": "lsWhatAboutBc",
+   "speaker": "swiftee",
+   "text": "अब ∠B और ∠C का क्या?",
+   "spoken": "अब कोण बी और कोण सी का क्या?",
+   "letters": [
+    0.25,
+    0.607
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.829
+  },
+  {
+   "file": "lsCorrectBcSupp.mp3",
+   "key": "lsCorrectBcSupp",
+   "speaker": "swiftee",
+   "text": "सही! ∠B और ∠C भी\nसंपूरक कोण हैं।",
+   "spoken": "सही! कोण बी और कोण सी भी संपूरक कोण हैं।",
+   "letters": [
+    0.225,
+    0.475
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.082
+  },
+  {
+   "file": "lsIts180.mp3",
+   "key": "lsIts180",
+   "speaker": "swiftee",
+   "text": "यह 180° है!",
+   "spoken": "यह एक सौ अस्सी डिग्री है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.776
+  },
+  {
+   "file": "lsBcSum180.mp3",
+   "key": "lsBcSum180",
+   "speaker": "swiftee",
+   "text": "∠B और ∠C का योग भी 180° है।",
+   "spoken": "कोण बी और कोण सी का योग भी एक सौ अस्सी डिग्री है।",
+   "letters": [
+    0.082,
+    0.286
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.396
+  },
+  {
+   "file": "lsNotQuite.mp3",
+   "key": "lsNotQuite",
+   "speaker": "swiftee",
+   "text": "पूरी तरह सही नहीं। फिर से प्रयास करें।",
+   "spoken": "पूरी तरह सही नहीं। फिर से प्रयास करें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.56
+  },
+  {
+   "file": "lsOops360.mp3",
+   "key": "lsOops360",
+   "speaker": "swiftee",
+   "text": "उफ़! 360° तो चारों कोणों का योग है।",
+   "spoken": "उफ़! तीन सौ साठ डिग्री तो चारों कोणों का योग है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.553
+  },
+  {
+   "file": "lsTryAgain.mp3",
+   "key": "lsTryAgain",
+   "speaker": "swiftee",
+   "text": "फिर से प्रयास करें!",
+   "spoken": "फिर से प्रयास करें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.411
+  },
+  {
+   "file": "lsWhatIfChange.mp3",
+   "key": "lsWhatIfChange",
+   "speaker": "swiftee",
+   "text": "अगर हम इस समलंब का\nआकार बदल दें, तो?",
+   "spoken": "अगर हम इस समलंब का आकार बदल दें, तो?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.612
+  },
+  {
+   "file": "lsDragAnyVertex.mp3",
+   "key": "lsDragAnyVertex",
+   "speaker": "swiftee",
+   "text": "किसी भी शीर्ष को ड्रैग करें।",
+   "spoken": "किसी भी शीर्ष को ड्रैग करें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.881
+  },
+  {
+   "file": "lsWatchAngles.mp3",
+   "key": "lsWatchAngles",
+   "speaker": "swiftee",
+   "text": "कोणों को बदलते हुए देखें!",
+   "spoken": "कोणों को बदलते हुए देखें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.829
+  },
+  {
+   "file": "lsLookSums.mp3",
+   "key": "lsLookSums",
+   "speaker": "swiftee",
+   "text": "अब इनके योग देखें!",
+   "spoken": "अब इनके योग देखें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.515
+  },
+  {
+   "file": "lsChangeAll.mp3",
+   "key": "lsChangeAll",
+   "speaker": "swiftee",
+   "text": "आकार को जितना चाहें बदलें!",
+   "spoken": "आकार को जितना चाहें बदलें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.959
+  },
+  {
+   "file": "lsStill180.mp3",
+   "key": "lsStill180",
+   "speaker": "swiftee",
+   "text": "फिर भी इनका योग 180° ही रहता है!",
+   "spoken": "फिर भी इनका योग एक सौ अस्सी डिग्री ही रहता है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.978
+  },
+  {
+   "file": "lsRuleEvery.mp3",
+   "key": "lsRuleEvery",
+   "speaker": "swiftee",
+   "text": "यह रहा हर समलंब का एक नियम!",
+   "spoken": "यह रहा हर समलंब का एक नियम!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.011
+  },
+  {
+   "file": "lsTakeTwo.mp3",
+   "key": "lsTakeTwo",
+   "speaker": "swiftee",
+   "text": "एक असमांतर भुजा पर बने दो कोण लें।",
+   "spoken": "एक असमांतर भुजा पर बने दो कोण लें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.429
+  },
+  {
+   "file": "lsAlways180.mp3",
+   "key": "lsAlways180",
+   "speaker": "swiftee",
+   "text": "इनका योग हमेशा 180° होता है!",
+   "spoken": "इनका योग हमेशा एक सौ अस्सी डिग्री होता है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.664
+  },
+  {
+   "file": "lsLookA120.mp3",
+   "key": "lsLookA120",
+   "speaker": "swiftee",
+   "text": "देखें! ∠A = 120°।",
+   "spoken": "देखें! कोण ए बराबर एक सौ बीस डिग्री।",
+   "letters": [
+    0.306
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.082
+  },
+  {
+   "file": "lsWhatIsD.mp3",
+   "key": "lsWhatIsD",
+   "speaker": "swiftee",
+   "text": "तो ∠D कितना है?",
+   "spoken": "तो कोण डी कितना है?",
+   "letters": [
+    0.368
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.411
+  },
+  {
+   "file": "lsCorrect180.mp3",
+   "key": "lsCorrect180",
+   "speaker": "swiftee",
+   "text": "सही! 120° + 60° = 180°।",
+   "spoken": "सही! एक सौ बीस डिग्री जमा साठ डिग्री बराबर एक सौ अस्सी डिग्री।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.389
+  },
+  {
+   "file": "lsSameLeg180.mp3",
+   "key": "lsSameLeg180",
+   "speaker": "swiftee",
+   "text": "एक ही असमांतर भुजा पर बने कोणों का योग 180° होता है।",
+   "spoken": "एक ही असमांतर भुजा पर बने कोणों का योग एक सौ अस्सी डिग्री होता है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.885
+  },
+  {
+   "file": "lsWhatIf90.mp3",
+   "key": "lsWhatIf90",
+   "speaker": "swiftee",
+   "text": "अगर हम कोई एक कोण\n90° बना दें, तो?",
+   "spoken": "अगर हम कोई एक कोण नब्बे डिग्री बना दें, तो?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.769
+  },
+  {
+   "file": "lsDragTo90.mp3",
+   "key": "lsDragTo90",
+   "speaker": "swiftee",
+   "text": "किसी भी शीर्ष को ड्रैग करके कोई एक कोण 90° बनाएँ।",
+   "spoken": "किसी भी शीर्ष को ड्रैग करके कोई एक कोण नब्बे डिग्री बनाएँ।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.683
+  },
+  {
+   "file": "lsDrag90.A.mp3",
+   "key": "lsDrag90",
+   "variant": "A",
+   "part": "lead",
+   "next_text": "साठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "speaker": "swiftee",
+   "text": "अभी ∠A",
+   "spoken": "अभी कोण ए",
+   "letters": [
+    0.889
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.705
+  },
+  {
+   "file": "lsDrag90.B.mp3",
+   "key": "lsDrag90",
+   "variant": "B",
+   "part": "lead",
+   "next_text": "साठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "speaker": "swiftee",
+   "text": "अभी ∠B",
+   "spoken": "अभी कोण बी",
+   "letters": [
+    0.8
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.705
+  },
+  {
+   "file": "lsDrag90.C.mp3",
+   "key": "lsDrag90",
+   "variant": "C",
+   "part": "lead",
+   "next_text": "साठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "speaker": "swiftee",
+   "text": "अभी ∠C",
+   "spoken": "अभी कोण सी",
+   "letters": [
+    0.8
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.758
+  },
+  {
+   "file": "lsDrag90.D.mp3",
+   "key": "lsDrag90",
+   "variant": "D",
+   "part": "lead",
+   "next_text": "साठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "speaker": "swiftee",
+   "text": "अभी ∠D",
+   "spoken": "अभी कोण डी",
+   "letters": [
+    0.8
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.758
+  },
+  {
+   "file": "lsDrag90.39.mp3",
+   "key": "lsDrag90",
+   "variant": "39",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "39° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "उनतालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.40.mp3",
+   "key": "lsDrag90",
+   "variant": "40",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "40° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "चालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.441
+  },
+  {
+   "file": "lsDrag90.41.mp3",
+   "key": "lsDrag90",
+   "variant": "41",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "41° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "इकतालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.42.mp3",
+   "key": "lsDrag90",
+   "variant": "42",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "42° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "बयालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.519
+  },
+  {
+   "file": "lsDrag90.43.mp3",
+   "key": "lsDrag90",
+   "variant": "43",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "43° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "तैंतालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.44.mp3",
+   "key": "lsDrag90",
+   "variant": "44",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "44° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "चवालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.45.mp3",
+   "key": "lsDrag90",
+   "variant": "45",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "45° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "पैंतालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.46.mp3",
+   "key": "lsDrag90",
+   "variant": "46",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "46° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "छियालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.47.mp3",
+   "key": "lsDrag90",
+   "variant": "47",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "47° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "सैंतालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.48.mp3",
+   "key": "lsDrag90",
+   "variant": "48",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "48° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "अड़तालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.49.mp3",
+   "key": "lsDrag90",
+   "variant": "49",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "49° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "उनचास डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.50.mp3",
+   "key": "lsDrag90",
+   "variant": "50",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "50° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "पचास डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.51.mp3",
+   "key": "lsDrag90",
+   "variant": "51",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "51° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "इक्यावन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.52.mp3",
+   "key": "lsDrag90",
+   "variant": "52",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "52° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "बावन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.571
+  },
+  {
+   "file": "lsDrag90.53.mp3",
+   "key": "lsDrag90",
+   "variant": "53",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "53° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "तिरपन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.54.mp3",
+   "key": "lsDrag90",
+   "variant": "54",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "54° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "चौवन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.55.mp3",
+   "key": "lsDrag90",
+   "variant": "55",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "55° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "पचपन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.571
+  },
+  {
+   "file": "lsDrag90.56.mp3",
+   "key": "lsDrag90",
+   "variant": "56",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "56° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "छप्पन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.57.mp3",
+   "key": "lsDrag90",
+   "variant": "57",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "57° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "सत्तावन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.807
+  },
+  {
+   "file": "lsDrag90.58.mp3",
+   "key": "lsDrag90",
+   "variant": "58",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "58° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "अट्ठावन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.571
+  },
+  {
+   "file": "lsDrag90.59.mp3",
+   "key": "lsDrag90",
+   "variant": "59",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "59° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "उनसठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.571
+  },
+  {
+   "file": "lsDrag90.60.mp3",
+   "key": "lsDrag90",
+   "variant": "60",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "60° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "साठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.519
+  },
+  {
+   "file": "lsDrag90.61.mp3",
+   "key": "lsDrag90",
+   "variant": "61",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "61° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "इकसठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.62.mp3",
+   "key": "lsDrag90",
+   "variant": "62",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "62° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "बासठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.467
+  },
+  {
+   "file": "lsDrag90.63.mp3",
+   "key": "lsDrag90",
+   "variant": "63",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "63° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "तिरसठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.64.mp3",
+   "key": "lsDrag90",
+   "variant": "64",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "64° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "चौंसठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.65.mp3",
+   "key": "lsDrag90",
+   "variant": "65",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "65° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "पैंसठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.519
+  },
+  {
+   "file": "lsDrag90.66.mp3",
+   "key": "lsDrag90",
+   "variant": "66",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "66° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "छियासठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.67.mp3",
+   "key": "lsDrag90",
+   "variant": "67",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "67° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "सड़सठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.68.mp3",
+   "key": "lsDrag90",
+   "variant": "68",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "68° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "अड़सठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.69.mp3",
+   "key": "lsDrag90",
+   "variant": "69",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "69° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "उनहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.70.mp3",
+   "key": "lsDrag90",
+   "variant": "70",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "70° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "सत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.571
+  },
+  {
+   "file": "lsDrag90.71.mp3",
+   "key": "lsDrag90",
+   "variant": "71",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "71° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "इकहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.72.mp3",
+   "key": "lsDrag90",
+   "variant": "72",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "72° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "बहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.73.mp3",
+   "key": "lsDrag90",
+   "variant": "73",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "73° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "तिहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.74.mp3",
+   "key": "lsDrag90",
+   "variant": "74",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "74° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "चौहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.571
+  },
+  {
+   "file": "lsDrag90.75.mp3",
+   "key": "lsDrag90",
+   "variant": "75",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "75° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "पचहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.807
+  },
+  {
+   "file": "lsDrag90.76.mp3",
+   "key": "lsDrag90",
+   "variant": "76",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "76° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "छिहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.885
+  },
+  {
+   "file": "lsDrag90.77.mp3",
+   "key": "lsDrag90",
+   "variant": "77",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "77° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "सतहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.78.mp3",
+   "key": "lsDrag90",
+   "variant": "78",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "78° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "अठहत्तर डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.885
+  },
+  {
+   "file": "lsDrag90.79.mp3",
+   "key": "lsDrag90",
+   "variant": "79",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "79° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "उन्यासी डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.80.mp3",
+   "key": "lsDrag90",
+   "variant": "80",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "80° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "अस्सी डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.81.mp3",
+   "key": "lsDrag90",
+   "variant": "81",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "81° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "इक्यासी डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.82.mp3",
+   "key": "lsDrag90",
+   "variant": "82",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "82° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "बयासी डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.83.mp3",
+   "key": "lsDrag90",
+   "variant": "83",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "83° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "तिरासी डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.84.mp3",
+   "key": "lsDrag90",
+   "variant": "84",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "84° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "चौरासी डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.65
+  },
+  {
+   "file": "lsDrag90.85.mp3",
+   "key": "lsDrag90",
+   "variant": "85",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "85° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "पचासी डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.807
+  },
+  {
+   "file": "lsDrag90.95.mp3",
+   "key": "lsDrag90",
+   "variant": "95",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "95° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "पंचानवे डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.96.mp3",
+   "key": "lsDrag90",
+   "variant": "96",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "96° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "छियानवे डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.97.mp3",
+   "key": "lsDrag90",
+   "variant": "97",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "97° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "सत्तानवे डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.807
+  },
+  {
+   "file": "lsDrag90.98.mp3",
+   "key": "lsDrag90",
+   "variant": "98",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "98° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "अट्ठानवे डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.99.mp3",
+   "key": "lsDrag90",
+   "variant": "99",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "99° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "निन्यानवे डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.100.mp3",
+   "key": "lsDrag90",
+   "variant": "100",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "100° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.885
+  },
+  {
+   "file": "lsDrag90.101.mp3",
+   "key": "lsDrag90",
+   "variant": "101",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "101° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ एक डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.885
+  },
+  {
+   "file": "lsDrag90.102.mp3",
+   "key": "lsDrag90",
+   "variant": "102",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "102° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ दो डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.103.mp3",
+   "key": "lsDrag90",
+   "variant": "103",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "103° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ तीन डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.104.mp3",
+   "key": "lsDrag90",
+   "variant": "104",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "104° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ चार डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.042
+  },
+  {
+   "file": "lsDrag90.105.mp3",
+   "key": "lsDrag90",
+   "variant": "105",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "105° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ पाँच डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.106.mp3",
+   "key": "lsDrag90",
+   "variant": "106",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "106° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ छह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.807
+  },
+  {
+   "file": "lsDrag90.107.mp3",
+   "key": "lsDrag90",
+   "variant": "107",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "107° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ सात डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.108.mp3",
+   "key": "lsDrag90",
+   "variant": "108",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "108° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ आठ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.109.mp3",
+   "key": "lsDrag90",
+   "variant": "109",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "109° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ नौ डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.754
+  },
+  {
+   "file": "lsDrag90.110.mp3",
+   "key": "lsDrag90",
+   "variant": "110",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "110° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ दस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.111.mp3",
+   "key": "lsDrag90",
+   "variant": "111",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "111° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ ग्यारह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.112.mp3",
+   "key": "lsDrag90",
+   "variant": "112",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "112° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ बारह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.885
+  },
+  {
+   "file": "lsDrag90.113.mp3",
+   "key": "lsDrag90",
+   "variant": "113",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "113° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ तेरह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.068
+  },
+  {
+   "file": "lsDrag90.114.mp3",
+   "key": "lsDrag90",
+   "variant": "114",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "114° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ चौदह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.115.mp3",
+   "key": "lsDrag90",
+   "variant": "115",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "115° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ पंद्रह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsDrag90.116.mp3",
+   "key": "lsDrag90",
+   "variant": "116",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "116° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ सोलह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.46
+  },
+  {
+   "file": "lsDrag90.117.mp3",
+   "key": "lsDrag90",
+   "variant": "117",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "117° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ सत्रह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.303
+  },
+  {
+   "file": "lsDrag90.118.mp3",
+   "key": "lsDrag90",
+   "variant": "118",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "118° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ अठारह डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.042
+  },
+  {
+   "file": "lsDrag90.119.mp3",
+   "key": "lsDrag90",
+   "variant": "119",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "119° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ उन्नीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.120.mp3",
+   "key": "lsDrag90",
+   "variant": "120",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "120° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ बीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.042
+  },
+  {
+   "file": "lsDrag90.121.mp3",
+   "key": "lsDrag90",
+   "variant": "121",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "121° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ इक्कीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.068
+  },
+  {
+   "file": "lsDrag90.122.mp3",
+   "key": "lsDrag90",
+   "variant": "122",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "122° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ बाईस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.123.mp3",
+   "key": "lsDrag90",
+   "variant": "123",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "123° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ तेईस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.807
+  },
+  {
+   "file": "lsDrag90.124.mp3",
+   "key": "lsDrag90",
+   "variant": "124",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "124° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ चौबीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.042
+  },
+  {
+   "file": "lsDrag90.125.mp3",
+   "key": "lsDrag90",
+   "variant": "125",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "125° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ पच्चीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.885
+  },
+  {
+   "file": "lsDrag90.126.mp3",
+   "key": "lsDrag90",
+   "variant": "126",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "126° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ छब्बीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.355
+  },
+  {
+   "file": "lsDrag90.127.mp3",
+   "key": "lsDrag90",
+   "variant": "127",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "127° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ सत्ताईस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.12
+  },
+  {
+   "file": "lsDrag90.128.mp3",
+   "key": "lsDrag90",
+   "variant": "128",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "128° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ अट्ठाईस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.12
+  },
+  {
+   "file": "lsDrag90.129.mp3",
+   "key": "lsDrag90",
+   "variant": "129",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "129° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ उनतीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.130.mp3",
+   "key": "lsDrag90",
+   "variant": "130",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "130° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ तीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.131.mp3",
+   "key": "lsDrag90",
+   "variant": "131",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "131° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ इकतीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.132.mp3",
+   "key": "lsDrag90",
+   "variant": "132",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "132° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ बत्तीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.133.mp3",
+   "key": "lsDrag90",
+   "variant": "133",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "133° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ तैंतीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.355
+  },
+  {
+   "file": "lsDrag90.134.mp3",
+   "key": "lsDrag90",
+   "variant": "134",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "134° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ चौंतीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.355
+  },
+  {
+   "file": "lsDrag90.135.mp3",
+   "key": "lsDrag90",
+   "variant": "135",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "135° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ पैंतीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.068
+  },
+  {
+   "file": "lsDrag90.136.mp3",
+   "key": "lsDrag90",
+   "variant": "136",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "136° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ छत्तीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.224
+  },
+  {
+   "file": "lsDrag90.137.mp3",
+   "key": "lsDrag90",
+   "variant": "137",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "137° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ सैंतीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsDrag90.138.mp3",
+   "key": "lsDrag90",
+   "variant": "138",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "138° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ अड़तीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.303
+  },
+  {
+   "file": "lsDrag90.139.mp3",
+   "key": "lsDrag90",
+   "variant": "139",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "139° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ उनतालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.989
+  },
+  {
+   "file": "lsDrag90.140.mp3",
+   "key": "lsDrag90",
+   "variant": "140",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "140° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ चालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.303
+  },
+  {
+   "file": "lsDrag90.141.mp3",
+   "key": "lsDrag90",
+   "variant": "141",
+   "part": "tail",
+   "previous_text": "अभी कोण ए",
+   "speaker": "swiftee",
+   "text": "141° है। तब तक ड्रैग करते रहें, जब तक यह 90° न दिखाए।",
+   "spoken": "एक सौ इकतालीस डिग्री है। तब तक ड्रैग करते रहें, जब तक यह नब्बे डिग्री न दिखाए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsGreatJob.mp3",
+   "key": "lsGreatJob",
+   "speaker": "swiftee",
+   "text": "बहुत बढ़िया!",
+   "spoken": "बहुत बढ़िया!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.097
+  },
+  {
+   "file": "lsWatch90.A.mp3",
+   "key": "lsWatch90",
+   "variant": "A",
+   "speaker": "swiftee",
+   "text": "ध्यान से देखें! अब ∠A 90° है। यह एक समकोण है।",
+   "spoken": "ध्यान से देखें! अब कोण ए नब्बे डिग्री है। यह एक समकोण है।",
+   "letters": [
+    0.404
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.206
+  },
+  {
+   "file": "lsWatch90.B.mp3",
+   "key": "lsWatch90",
+   "variant": "B",
+   "speaker": "swiftee",
+   "text": "ध्यान से देखें! अब ∠B 90° है। यह एक समकोण है।",
+   "spoken": "ध्यान से देखें! अब कोण बी नब्बे डिग्री है। यह एक समकोण है।",
+   "letters": [
+    0.397
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.101
+  },
+  {
+   "file": "lsWatch90.C.mp3",
+   "key": "lsWatch90",
+   "variant": "C",
+   "speaker": "swiftee",
+   "text": "ध्यान से देखें! अब ∠C 90° है। यह एक समकोण है।",
+   "spoken": "ध्यान से देखें! अब कोण सी नब्बे डिग्री है। यह एक समकोण है।",
+   "letters": [
+    0.397
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.049
+  },
+  {
+   "file": "lsWatch90.D.mp3",
+   "key": "lsWatch90",
+   "variant": "D",
+   "speaker": "swiftee",
+   "text": "ध्यान से देखें! अब ∠D 90° है। यह एक समकोण है।",
+   "spoken": "ध्यान से देखें! अब कोण डी नब्बे डिग्री है। यह एक समकोण है।",
+   "letters": [
+    0.397
+   ],
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.206
+  },
+  {
+   "file": "lsAnotherRight.mp3",
+   "key": "lsAnotherRight",
+   "speaker": "swiftee",
+   "text": "अरे वाह! हमें एक और\nसमकोण मिल गया।",
+   "spoken": "अरे वाह! हमें एक और समकोण मिल गया।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.717
+  },
+  {
+   "file": "lsTwoRight.mp3",
+   "key": "lsTwoRight",
+   "speaker": "swiftee",
+   "text": "अगल-बगल दो समकोण!",
+   "spoken": "अगल-बगल दो समकोण!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.463
+  },
+  {
+   "file": "lsRightIs.mp3",
+   "key": "lsRightIs",
+   "speaker": "swiftee",
+   "text": "यह है समकोण समलंब!",
+   "spoken": "यह है समकोण समलंब!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsRightTrapezium.mp3",
+   "key": "lsRightTrapezium",
+   "speaker": "swiftee",
+   "text": "समकोण समलंब",
+   "spoken": "समकोण समलंब",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.411
+  },
+  {
+   "file": "lsWhichType.mp3",
+   "key": "lsWhichType",
+   "speaker": "swiftee",
+   "text": "यह किस प्रकार का समलंब है?",
+   "spoken": "यह किस प्रकार का समलंब है?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.724
+  },
+  {
+   "file": "lsRightLegsEqual.mp3",
+   "key": "lsRightLegsEqual",
+   "speaker": "swiftee",
+   "text": "बिल्कुल सही! इसकी असमांतर भुजाएँ बराबर हैं।",
+   "spoken": "बिल्कुल सही! इसकी असमांतर भुजाएँ बराबर हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsSoIso.mp3",
+   "key": "lsSoIso",
+   "speaker": "swiftee",
+   "text": "तो यह समद्विबाहु समलंब है!",
+   "spoken": "तो यह समद्विबाहु समलंब है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.011
+  },
+  {
+   "file": "lsScalene.mp3",
+   "key": "lsScalene",
+   "speaker": "swiftee",
+   "text": "विषमबाहु",
+   "spoken": "विषमबाहु",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.176
+  },
+  {
+   "file": "lsIsosceles.mp3",
+   "key": "lsIsosceles",
+   "speaker": "swiftee",
+   "text": "समद्विबाहु",
+   "spoken": "समद्विबाहु",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.306
+  },
+  {
+   "file": "lsRight.mp3",
+   "key": "lsRight",
+   "speaker": "swiftee",
+   "text": "समकोण",
+   "spoken": "समकोण",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.993
+  },
+  {
+   "file": "lsLookMarks.mp3",
+   "key": "lsLookMarks",
+   "speaker": "swiftee",
+   "text": "इन छोटे निशानों को देखें!",
+   "spoken": "इन छोटे निशानों को देखें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.724
+  },
+  {
+   "file": "lsMarksEqual.mp3",
+   "key": "lsMarksEqual",
+   "speaker": "swiftee",
+   "text": "ये बताते हैं कि असमांतर भुजाएँ बराबर हैं।",
+   "spoken": "ये बताते हैं कि असमांतर भुजाएँ बराबर हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.847
+  },
+  {
+   "file": "lsNoRight.mp3",
+   "key": "lsNoRight",
+   "speaker": "swiftee",
+   "text": "यहाँ कोई समकोण नहीं है!",
+   "spoken": "यहाँ कोई समकोण नहीं है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.698
+  },
+  {
+   "file": "lsLookLegs.mp3",
+   "key": "lsLookLegs",
+   "speaker": "swiftee",
+   "text": "इसके बजाय असमांतर भुजाओं को देखें।",
+   "spoken": "इसके बजाय असमांतर भुजाओं को देखें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.717
+  },
+  {
+   "file": "lsDragLabels.mp3",
+   "key": "lsDragLabels",
+   "speaker": "swiftee",
+   "text": "लेबलों को ड्रैग करके उनकी\nसही जगह पर रखें।",
+   "spoken": "लेबलों को ड्रैग करके उनकी सही जगह पर रखें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.847
+  },
+  {
+   "file": "lsQ4Clue.mp3",
+   "key": "lsQ4Clue",
+   "speaker": "swiftee",
+   "text": "चमकते संकेत को देखें। किस आकृति पर वह निशान है?",
+   "spoken": "चमकते संकेत को देखें। किस आकृति पर वह निशान है?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.605
+  },
+  {
+   "file": "lsQ4TryAgain.mp3",
+   "key": "lsQ4TryAgain",
+   "speaker": "swiftee",
+   "text": "फिर से प्रयास करें! आकृतियों को ध्यान से देखें।",
+   "spoken": "फिर से प्रयास करें! आकृतियों को ध्यान से देखें।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.213
+  },
+  {
+   "file": "lsQ4WentBack.mp3",
+   "key": "lsQ4WentBack",
+   "speaker": "swiftee",
+   "text": "कुछ लेबल वापस चले गए। निशान देखें: बराबर असमांतर भुजाएँ, समकोण, या इनमें से कोई नहीं।",
+   "spoken": "कुछ लेबल वापस चले गए। निशान देखें: बराबर असमांतर भुजाएँ, समकोण, या इनमें से कोई नहीं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 7.576
+  },
+  {
+   "file": "lsBrilliant.mp3",
+   "key": "lsBrilliant",
+   "speaker": "swiftee",
+   "text": "शानदार! आपने तीनों समलंबों पर लेबल लगा दिए।",
+   "spoken": "शानदार! आपने तीनों समलंबों पर लेबल लगा दिए।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsRecall.mp3",
+   "key": "lsRecall",
+   "speaker": "swiftee",
+   "text": "आइए याद करें, आज\nहमने क्या सीखा।",
+   "spoken": "आइए याद करें, आज हमने क्या सीखा।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.769
+  },
+  {
+   "file": "lsAmazing.mp3",
+   "key": "lsAmazing",
+   "speaker": "swiftee",
+   "text": "कमाल का काम! अब आप समलंब के बारे में सब कुछ जानते हैं।",
+   "spoken": "कमाल का काम! अब आप समलंब के बारे में सब कुछ जानते हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.814
+  },
+  {
+   "file": "lsBye.mp3",
+   "key": "lsBye",
+   "speaker": "swiftee",
+   "text": "अभी के लिए अलविदा! फिर मिलेंगे\nअगले बर्फ़ीले रोमांच में!",
+   "spoken": "अभी के लिए अलविदा! फिर मिलेंगे अगले बर्फ़ीले रोमांच में!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.135
+  },
+  {
+   "file": "lsTheEndSaid.mp3",
+   "key": "lsTheEndSaid",
+   "speaker": "swiftee",
+   "text": "समाप्त!",
+   "spoken": "समाप्त!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.94
+  },
+  {
+   "file": "lsBase.mp3",
+   "key": "lsBase",
+   "speaker": "swiftee",
+   "text": "आधार",
+   "spoken": "आधार",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.94
+  },
+  {
+   "file": "lsLeg.mp3",
+   "key": "lsLeg",
+   "speaker": "swiftee",
+   "text": "असमांतर भुजा",
+   "spoken": "असमांतर भुजा",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.358
+  },
+  {
+   "file": "sumTrapezium.mp3",
+   "key": "sumTrapezium",
+   "speaker": "swiftee",
+   "text": "समलंब एक ऐसा चतुर्भुज है जिसमें समांतर भुजाओं का कम से कम एक जोड़ा होता है।",
+   "spoken": "समलंब एक ऐसा चतुर्भुज है जिसमें समांतर भुजाओं का कम से कम एक जोड़ा होता है।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.695
+  },
+  {
+   "file": "sumBasesLabel.mp3",
+   "key": "sumBasesLabel",
+   "speaker": "swiftee",
+   "text": "आधार भुजाएँ",
+   "spoken": "आधार भुजाएँ",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.176
+  },
+  {
+   "file": "sumBases.mp3",
+   "key": "sumBases",
+   "speaker": "swiftee",
+   "text": "समांतर भुजाओं को आधार कहते हैं।",
+   "spoken": "समांतर भुजाओं को आधार कहते हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.142
+  },
+  {
+   "file": "sumLegsLabel.mp3",
+   "key": "sumLegsLabel",
+   "speaker": "swiftee",
+   "text": "असमांतर भुजाएँ",
+   "spoken": "असमांतर भुजाएँ",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.463
+  },
+  {
+   "file": "sumLegs.mp3",
+   "key": "sumLegs",
+   "speaker": "swiftee",
+   "text": "बाक़ी दो भुजाओं को असमांतर भुजाएँ कहते हैं।",
+   "spoken": "बाक़ी दो भुजाओं को असमांतर भुजाएँ कहते हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.717
+  },
+  {
+   "file": "sumScalene.mp3",
+   "key": "sumScalene",
+   "speaker": "swiftee",
+   "text": "विषमबाहु समलंब की भुजाएँ अलग-अलग लंबाई की होती हैं।",
+   "spoken": "विषमबाहु समलंब की भुजाएँ अलग-अलग लंबाई की होती हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.814
+  },
+  {
+   "file": "sumIsosceles.mp3",
+   "key": "sumIsosceles",
+   "speaker": "swiftee",
+   "text": "समद्विबाहु समलंब की असमांतर भुजाएँ बराबर लंबाई की होती हैं।",
+   "spoken": "समद्विबाहु समलंब की असमांतर भुजाएँ बराबर लंबाई की होती हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 4.206
+  },
+  {
+   "file": "sumRightLabel.mp3",
+   "key": "sumRightLabel",
+   "speaker": "swiftee",
+   "text": "समकोणीय",
+   "spoken": "समकोणीय",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.097
+  },
+  {
+   "file": "sumRight.mp3",
+   "key": "sumRight",
+   "speaker": "swiftee",
+   "text": "समकोण समलंब में दो समकोण अगल-बगल होते हैं।",
+   "spoken": "समकोण समलंब में दो समकोण अगल-बगल होते हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.03
+  },
+  {
+   "file": "sumAngleSumLabel.mp3",
+   "key": "sumAngleSumLabel",
+   "speaker": "swiftee",
+   "text": "कोणों का योग",
+   "spoken": "कोणों का योग",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.28
+  },
+  {
+   "file": "sumSupplementaryLabel.mp3",
+   "key": "sumSupplementaryLabel",
+   "speaker": "swiftee",
+   "text": "संपूरक",
+   "spoken": "संपूरक",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.097
+  },
+  {
+   "file": "sumSupplementary.mp3",
+   "key": "sumSupplementary",
+   "speaker": "swiftee",
+   "text": "जिन दो कोणों का योग 180° होता है, वे संपूरक कोण कहलाते हैं।",
+   "spoken": "जिन दो कोणों का योग एक सौ अस्सी डिग्री होता है, वे संपूरक कोण कहलाते हैं।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 5.12
+  },
+  {
+   "file": "f2GreatJob.mp3",
+   "key": "f2GreatJob",
+   "speaker": "swiftee",
+   "text": "बहुत *बढ़िया!*",
+   "spoken": "बहुत बढ़िया!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.097
+  },
+  {
+   "file": "f2KnowTrapeziums.mp3",
+   "key": "f2KnowTrapeziums",
+   "speaker": "swiftee",
+   "text": "आप *समलंबों* के बारे में सब कुछ जानते हैं!",
+   "spoken": "आप समलंबों के बारे में सब कुछ जानते हैं!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.612
+  },
+  {
+   "file": "f2HelpPopo.mp3",
+   "key": "f2HelpPopo",
+   "speaker": "swiftee",
+   "text": "अब आइए, *मछलियाँ* पकड़ने में पोपो की मदद करें!",
+   "spoken": "अब आइए, मछलियाँ पकड़ने में पोपो की मदद करें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 3.082
+  },
+  {
+   "file": "f2UseRod.mp3",
+   "key": "f2UseRod",
+   "speaker": "swiftee",
+   "text": "फ़िशिंग रॉड से *निशाना* लगाएँ…",
+   "spoken": "फ़िशिंग रॉड से निशाना लगाएँ...",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.829
+  },
+  {
+   "file": "f2DropHook.mp3",
+   "key": "f2DropHook",
+   "speaker": "swiftee",
+   "text": "…और काँटा *सही* मछली पर गिराएँ।",
+   "spoken": "और काँटा सही मछली पर गिराएँ।",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.064
+  },
+  {
+   "file": "f2CatchAllTrapeziums.mp3",
+   "key": "f2CatchAllTrapeziums",
+   "speaker": "narrator",
+   "text": "सारे *समलंब* पकड़ें!",
+   "spoken": "सारे समलंब पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.541
+  },
+  {
+   "file": "f2HintParallel.mp3",
+   "key": "f2HintParallel",
+   "speaker": "narrator",
+   "text": "*समांतर* भुजाएँ ढूँढें!",
+   "spoken": "समांतर भुजाएँ ढूँढें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.698
+  },
+  {
+   "file": "f2WhyNoParallel.mp3",
+   "key": "f2WhyNoParallel",
+   "speaker": "popo",
+   "text": "कोई *समांतर* भुजा नहीं!",
+   "spoken": "कोई समांतर भुजा नहीं!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.698
+  },
+  {
+   "file": "f2CatchScalene.mp3",
+   "key": "f2CatchScalene",
+   "speaker": "narrator",
+   "text": "*विषमबाहु* समलंब पकड़ें!",
+   "spoken": "विषमबाहु समलंब पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.724
+  },
+  {
+   "file": "f2HintLegLengths.mp3",
+   "key": "f2HintLegLengths",
+   "speaker": "narrator",
+   "text": "*असमांतर* भुजाओं की लंबाई जाँचें!",
+   "spoken": "असमांतर भुजाओं की लंबाई जाँचें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.351
+  },
+  {
+   "file": "f2WhyLegsEqual.mp3",
+   "key": "f2WhyLegsEqual",
+   "speaker": "popo",
+   "text": "इसकी असमांतर भुजाएँ *बराबर* हैं!",
+   "spoken": "इसकी असमांतर भुजाएँ बराबर हैं!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 2.247
+  },
+  {
+   "file": "f2CatchIsosceles.mp3",
+   "key": "f2CatchIsosceles",
+   "speaker": "narrator",
+   "text": "*समद्विबाहु* समलंब पकड़ें!",
+   "spoken": "समद्विबाहु समलंब पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.881
+  },
+  {
+   "file": "f2HintLegsEqual.mp3",
+   "key": "f2HintLegsEqual",
+   "speaker": "narrator",
+   "text": "क्या असमांतर भुजाएँ *बराबर* हैं?",
+   "spoken": "क्या असमांतर भुजाएँ बराबर हैं?",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.194
+  },
+  {
+   "file": "f2WhyLegsDifferent.mp3",
+   "key": "f2WhyLegsDifferent",
+   "speaker": "popo",
+   "text": "इसकी असमांतर भुजाएँ *अलग-अलग* हैं!",
+   "spoken": "इसकी असमांतर भुजाएँ अलग-अलग हैं!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 2.978
+  },
+  {
+   "file": "f2CatchRightAngled.mp3",
+   "key": "f2CatchRightAngled",
+   "speaker": "narrator",
+   "text": "समकोण *समलंब* पकड़ें!",
+   "spoken": "समकोण समलंब पकड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.593
+  },
+  {
+   "file": "f2HintTwoRight.mp3",
+   "key": "f2HintTwoRight",
+   "speaker": "narrator",
+   "text": "दो *समकोण* ढूँढें!",
+   "spoken": "दो समकोण ढूँढें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.515
+  },
+  {
+   "file": "f2WhyNoRight.mp3",
+   "key": "f2WhyNoRight",
+   "speaker": "popo",
+   "text": "कोई *समकोण* नहीं!",
+   "spoken": "कोई समकोण नहीं!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.411
+  },
+  {
+   "file": "f2RecallParallel.mp3",
+   "key": "f2RecallParallel",
+   "speaker": "swiftee",
+   "text": "देखें! ये दो भुजाएँ *समांतर* हैं!",
+   "spoken": "देखें! ये दो भुजाएँ समांतर हैं!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.534
+  },
+  {
+   "file": "f2Remember.mp3",
+   "key": "f2Remember",
+   "speaker": "swiftee",
+   "text": "*याद* रखें,",
+   "spoken": "याद रखें,",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.045
+  },
+  {
+   "file": "f2AnglesSameLeg.mp3",
+   "key": "f2AnglesSameLeg",
+   "speaker": "swiftee",
+   "text": "समलंब की एक ही *असमांतर* भुजा पर बने कोण…",
+   "spoken": "समलंब की एक ही असमांतर भुजा पर बने कोण...",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.9
+  },
+  {
+   "file": "f2AddUp180.mp3",
+   "key": "f2AddUp180",
+   "speaker": "swiftee",
+   "text": "मिलकर *180°* बनाते हैं!",
+   "spoken": "मिलकर एक सौ अस्सी डिग्री बनाते हैं!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2Detective.mp3",
+   "key": "f2Detective",
+   "speaker": "swiftee",
+   "text": "हुर्रे! आकृति *जासूस!*",
+   "spoken": "हुर्रे! आकृति जासूस!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 2.299
+  },
+  {
+   "file": "f2LookMarked.mp3",
+   "key": "f2LookMarked",
+   "speaker": "swiftee",
+   "text": "निशान लगे *कोणों* को देखें!",
+   "spoken": "निशान लगे कोणों को देखें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.724
+  },
+  {
+   "file": "f2HintAddAngles.mp3",
+   "key": "f2HintAddAngles",
+   "speaker": "narrator",
+   "text": "निशान लगे *कोणों* को जोड़ें!",
+   "spoken": "निशान लगे कोणों को जोड़ें!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.724
+  },
+  {
+   "file": "f2WhyNot180.mp3",
+   "key": "f2WhyNot180",
+   "speaker": "popo",
+   "text": "इन कोणों का योग *180°* नहीं है!",
+   "spoken": "इन कोणों का योग एक सौ अस्सी डिग्री नहीं है!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 3.788
+  },
+  {
+   "file": "f2OopsNotTrapezium.mp3",
+   "key": "f2OopsNotTrapezium",
+   "speaker": "popo",
+   "text": "यह *समलंब* नहीं है।",
+   "spoken": "यह समलंब नहीं है।",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.829
+  },
+  {
+   "file": "f2OopsTryAgain.mp3",
+   "key": "f2OopsTryAgain",
+   "speaker": "popo",
+   "text": "*फिर* से प्रयास करें!",
+   "spoken": "फिर से प्रयास करें!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.593
+  },
+  {
+   "file": "f2NotTrapeziumCard.mp3",
+   "key": "f2NotTrapeziumCard",
+   "speaker": "narrator",
+   "text": "यह तो *समलंब* नहीं है!",
+   "spoken": "यह तो समलंब नहीं है!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.515
+  },
+  {
+   "file": "f2Wow.mp3",
+   "key": "f2Wow",
+   "speaker": "popo",
+   "text": "*वाह!*",
+   "spoken": "वाह!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 0.862
+  },
+  {
+   "file": "f2WhatACatch.mp3",
+   "key": "f2WhatACatch",
+   "speaker": "popo",
+   "text": "क्या ज़बरदस्त *पकड़!*",
+   "spoken": "क्या ज़बरदस्त पकड़!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.724
+  },
+  {
+   "file": "f2GiantFish.mp3",
+   "key": "f2GiantFish",
+   "speaker": "popo",
+   "text": "बाप रे! एक *विशाल* मछली!",
+   "spoken": "बाप रे! एक विशाल मछली!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 2.847
+  },
+  {
+   "file": "f2ComeOn.mp3",
+   "key": "f2ComeOn",
+   "speaker": "popo",
+   "text": "आ *जा*, बड़ी मछली!",
+   "spoken": "आ जा, बड़ी मछली!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.776
+  },
+  {
+   "file": "f2Eek.mp3",
+   "key": "f2Eek",
+   "speaker": "swiftee",
+   "text": "*उई!*",
+   "spoken": "उई!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 0.679
+  },
+  {
+   "file": "f2Huh.mp3",
+   "key": "f2Huh",
+   "speaker": "popo",
+   "text": "हैं?!",
+   "spoken": "हैं?!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 0.81
+  },
+  {
+   "file": "f2GoodCatch.mp3",
+   "key": "f2GoodCatch",
+   "speaker": "swiftee",
+   "text": "बढ़िया पकड़, *पोपो!*",
+   "spoken": "बढ़िया पकड़, पोपो!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.646
+  },
+  {
+   "file": "f2PopoLaughs.mp3",
+   "key": "f2PopoLaughs",
+   "speaker": "popo",
+   "text": "हा हा *हा!*",
+   "spoken": "हा हा हा!",
+   "voice": "Amit – Kids Cartoon Character",
+   "seconds": 1.123
+  },
+  {
+   "file": "f2SwifteeLaughs.mp3",
+   "key": "f2SwifteeLaughs",
+   "speaker": "swiftee",
+   "text": "खी खी *खी!*",
+   "spoken": "खी खी खी!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.045
+  },
+  {
+   "file": "f2YouDidIt.mp3",
+   "key": "f2YouDidIt",
+   "speaker": "swiftee",
+   "text": "आपने *कर* दिखाया!",
+   "spoken": "आपने कर दिखाया!",
+   "voice": "Anjali – Friendly EdTech Teacher",
+   "seconds": 1.463
+  }
+ ]
+}

@@ -15,11 +15,15 @@
 // its copy, locales/locales.js (window.LOCALES), as a plain script, so the words are there before any game script
 // runs, served or opened from disk alike. After editing the JSON, regenerate the copy: python3 tools/build-locales.py
 //
-// The voice-over is English for now (a translated voice comes later), and every recording is found by its English
-// line. So a translated line remembers its English: I18n.source(line) gives it, for the voice lookups, for the
-// lesson's word cues (timed to the English recording) and for the fishing games' story cues (I18n.mapWord).
-// I18n.voice(key) is where a line's own recording will go (assets/VO/<lang>/<key>.webm).
+// A translated line remembers its English: I18n.source(line) gives it, for the lesson's word cues and the fishing
+// games' story cues (I18n.mapWord), which are written against the English words.
 // In English nothing is remembered and every helper hands its input straight back.
+//
+// The voice-over. A language with its own recordings (Hindi: assets/VO-HI/, indexed in locales/voices.js by
+// tools/build-locales.py) says every line in them: I18n.voiceOf(line, who) finds a line on screen's clip by its words
+// and who says them ('swiftee', 'narrator' - the same voice - or 'popo'); I18n.voice(key) is a clip's address by its
+// key ("lsHi", "f1Catch.triangle"). A language without them (English, and any not recorded yet) says the English
+// recordings, found by the line's English (I18n.source).
 // =====================================================================
 var I18n = (function () {
   'use strict';
@@ -29,6 +33,10 @@ var I18n = (function () {
   var data = null, lang = 'en', en = {}, cur = {};
   var srcOf = Object.create(null), srcLow = Object.create(null), keyOf = Object.create(null), missing = Object.create(null);
   var own = function (o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); };
+  // the game's folder, from this script's own address (shell/i18n.js), so a clip's address is the same from every page
+  var ROOT = (function () {
+    try { var s = document.currentScript && document.currentScript.src; return s ? new URL('../', s).href : ''; } catch (e) { return ''; }
+  })();
   var warn = function (m) { try { if (typeof console !== 'undefined' && console.warn) console.warn('[i18n] ' + m); } catch (e) { /* no console */ } };
 
   // ---------- which language ----------
@@ -134,6 +142,38 @@ var I18n = (function () {
     return s.split(/(\s)/).filter(Boolean);
   }
 
+  // ---------- the voice-over ----------
+  // The language's own clips (window.LOCALE_VOICES, locales/voices.js), by key and by the line on screen. A line's words
+  // match without its *stress* marks and with any run of spaces or line breaks as one space.
+  var vo = null, voKey = null, voText = null;
+  var norm = function (t) { return String(t == null ? '' : t).replace(/\*/g, '').replace(/\s+/g, ' ').trim(); };
+  function initVoice() {
+    init();
+    if (vo !== null) return;
+    vo = false; voKey = Object.create(null); voText = Object.create(null);
+    var V = W.LOCALE_VOICES && own(W.LOCALE_VOICES, lang) ? W.LOCALE_VOICES[lang] : null;
+    if (!V || !V.clips || !V.clips.length) return;
+    vo = V;
+    V.clips.forEach(function (c) { // [key, who, seconds, line, letters]
+      var e = { key: c[0], who: c[1], dur: c[2], url: ROOT + V.dir + c[0] + '.' + (V.ext || 'mp3'), letters: c[4] || null };
+      voKey[e.key] = e;
+      var t = norm(c[3]);
+      (voText[t] = voText[t] || []).push(e);
+    });
+  }
+  var SAME_VOICE = { swiftee: 'narrator', narrator: 'swiftee' }; // (README: "Two voices only")
+  // a line on screen -> its clip { key, who, dur, url, letters }, said by `who` (the same line can be Swiftee's and
+  // Popo's: "Try again!"); null when this language has no clip of it in that voice
+  function voiceOf(text, who) {
+    initVoice();
+    var list = vo ? voText[norm(text)] : null;
+    if (!list) return null;
+    var i;
+    for (i = 0; i < list.length; i++) if (list[i].who === who) return list[i];
+    for (i = 0; i < list.length; i++) if (list[i].who === SAME_VOICE[who]) return list[i];
+    return who ? null : list[0];
+  }
+
   // ---------- the page's own words ----------
   function applyStatic(root) {
     init();
@@ -156,8 +196,15 @@ var I18n = (function () {
     has: has,
     fill: fill,
     source: source,
-    keyOf: function (text) { init(); return keyOf[String(text)] || null; }, // a line on screen -> its key (for the voice-over to come)
-    voice: function (key) { init(); return 'assets/VO/' + lang + '/' + key + '.webm'; },
+    keyOf: function (text) { init(); return keyOf[String(text)] || null; }, // a line on screen -> its key
+    voice: function (key) { initVoice(); return vo && voKey[key] ? voKey[key].url : null; }, // a clip's address, by key
+    voiceOf: voiceOf,
+    // this language's clips whose key passes test(key) (all with none): for a game to load its own lines up front
+    voiceClips: function (test) {
+      initVoice();
+      return vo ? Object.keys(voKey).filter(function (k) { return !test || test(k); }).map(function (k) { return voKey[k]; }) : [];
+    },
+    get ownVoice() { initVoice(); return !!vo; }, // true when this language says its lines in its own recordings
     mapWord: mapWord,
     pieces: pieces,
     applyStatic: applyStatic,
