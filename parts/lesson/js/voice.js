@@ -8,7 +8,7 @@
 //   Voice.unlock()        call on the first tap (Play): tablets only allow audio after a gesture
 //   Voice.prefetch()      after Play, fetch every clip quietly, one at a time
 // Off (the game falls back to the browser voice) when the browser can't play the clips (Ogg Opus; a translated
-// voice-over's MP3), with ?vo=0, or with no clips. A clip
+// voice-over's WebM Opus), with ?vo=0, or with no clips. A clip
 // that can't play (missing, refused, too slow) ends without h.start(); the engine then says that line with the browser voice.
 // ?vorate=2 plays the clips faster for testing (0.5-4).
 // =====================================================================
@@ -22,10 +22,13 @@ window.Voice = (function () {
   // the language's own voice-over: the lesson's lines (its keys: ls..., sum...)
   const OWN = typeof I18n !== 'undefined' && I18n.ownVoice;
   const ownClips = OWN ? I18n.voiceClips((k) => /^(ls|sum)/.test(k)) : [];
+  // a clip's type, by its extension (locales/voices.js "ext")
+  const TYPE = { webm: 'audio/webm; codecs="opus"', mp3: 'audio/mpeg', ogg: 'audio/ogg; codecs="opus"' };
+  const typeOf = (url) => TYPE[String(url).split(/[?#]/)[0].split('.').pop()] || '';
   let el = null, ok = false;
   try {
     el = shared || new Audio();
-    ok = q('vo') !== '0' && (OWN ? !!el.canPlayType('audio/mpeg') && ownClips.length > 0
+    ok = q('vo') !== '0' && (OWN ? ownClips.length > 0 && !!el.canPlayType(typeOf(ownClips[0].url))
       : !!el.canPlayType('audio/ogg; codecs="opus"') && Object.keys(LINES).length > 0);
   } catch (e) { ok = false; }
   const rate = Math.min(4, Math.max(0.5, +q('vorate') || 1));

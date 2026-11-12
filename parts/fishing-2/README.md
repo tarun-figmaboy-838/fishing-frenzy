@@ -261,8 +261,9 @@ python3 -m venv ~/.cache/popo-voice311   # Python 3.10+ (e.g. via `uv python ins
 ```
 
 They can also be recorded with Gemini text-to-speech, which needs an API key. The clips are recorded
-once by `tools/build-voice.py` and shipped as small MP3s inside `src/voice-data.js`, so the API
-key never reaches the game. To record or re-record them:
+once by `tools/build-voice.py` and shipped as small clips inside `src/voice-data.js`, so the API
+key never reaches the game. (In Fishing Frenzy they are WebM Opus, 32 kbps, mono: its build-voice.py's MP3s were
+converted, and Swiftee's lines come from its `tools/build-swiftee-voice.py`.) To record or re-record them:
 
 ```
 echo 'GEMINI_API_KEY=your-key' > .env        # .env is git- and Vercel-ignored

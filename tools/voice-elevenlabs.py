@@ -13,8 +13,8 @@ Hindi (hi, assets/VO-HI/), Marathi (mr, assets/VO-MR/) and Gujarati (gu, assets/
 
 Then run python3 tools/build-locales.py: it writes locales/voices.js, the index the games find each clip by.
 
-One clip per spoken line, named by its key (lsHi.mp3). A line whose words vary has a clip per variant
-(f1Catch.triangle.mp3, lsDragAKeep.5_1.mp3); screen 33's "∠A is 84° now. ..." is two clips played back to back
+One clip per spoken line, named by its key (lsHi.webm). A line whose words vary has a clip per variant
+(f1Catch.triangle.webm, lsDragAKeep.5_1.webm); screen 33's "∠A is 84° now. ..." is two clips played back to back
 (lsDrag90.A + lsDrag90.84), as in English. The voice reads each line's spoken form: no *stress* marks or line
 breaks, and digits, corner letters and symbols written out as the language's words (Hindi: 180° -> एक सौ अस्सी
 डिग्री, ∠A -> कोण ए, = -> बराबर, + -> जमा; Marathi: 180° -> एकशे ऐंशी अंश, ∠A -> कोन ए, = -> बरोबर, + -> अधिक,
@@ -24,11 +24,19 @@ breaks, and digits, corner letters and symbols written out as the language's wor
 Voices: Swiftee and the narrator share one, as in English (README: "Two voices only"); Popo has his own. A little
 slower and steadier than the voices' defaults, for grade 6-7. Marathi and Gujarati are recorded with eleven_v4:
 eleven_multilingual_v2 (Hindi's model) doesn't speak them.
+
+The clips are kept as WebM Opus (32 kbps, mono), as small as the game's other voice-over: ElevenLabs sends MP3
+(FORMAT), ffmpeg turns it into WebM before it is saved, and the clip's length is measured from the MP3. Recording
+needs ffmpeg (on the PATH, or FFMPEG=/path/to/ffmpeg); without it nothing is recorded.
 """
 import json
 import os
 import re
+import shutil
+import struct
+import subprocess
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -36,6 +44,10 @@ from concurrent.futures import ThreadPoolExecutor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FORMAT, SEED = 'mp3_44100_128', 7
+# how each clip is kept: WebM Opus, the same as ffmpeg makes it from the MP3 (bit-exact, so a clip made twice is the same)
+EXT, STORED = 'webm', 'WebM Opus, 32 kbps, mono (ffmpeg, from the MP3)'
+OPUS = ['-map', '0:a', '-c:a', 'libopus', '-b:a', '32k', '-vbr', 'on', '-application', 'audio', '-compression_level', '10',
+        '-ac', '1', '-map_metadata', '-1', '-fflags', '+bitexact', '-flags:a', '+bitexact', '-f', 'webm', '-y']
 
 # ---------- each language: its voices, model and the words its voice says for the mathematics ----------
 HI_UNITS = ('शून्य एक दो तीन चार पाँच छह सात आठ नौ दस ग्यारह बारह तेरह चौदह पंद्रह सोलह सत्रह अठारह उन्नीस बीस '
@@ -183,7 +195,7 @@ def script(table, L):
     out = []
 
     def add(key, text, variant=None, said=None, **extra):
-        e = {'file': key + (f'.{variant}' if variant else '') + '.mp3', 'key': key}
+        e = {'file': key + (f'.{variant}' if variant else '') + '.' + EXT, 'key': key}
         if variant:
             e['variant'] = variant
         e.update(extra)
@@ -225,9 +237,8 @@ def script(table, L):
     return out
 
 
-# ---------- MP3 length (no ffprobe needed) ----------
-def mp3_seconds(path):
-    data = open(path, 'rb').read()
+# ---------- MP3 length (no ffprobe needed), of the MP3 ElevenLabs sends ----------
+def mp3_seconds(data):
     i = 10 + ((data[6] << 21) | (data[7] << 14) | (data[8] << 7) | data[9]) if data[:3] == b'ID3' else 0
     rates = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320]
     srs = [44100, 48000, 32000]
@@ -246,7 +257,65 @@ def mp3_seconds(path):
     return round(frames * 1152 / sr, 3)
 
 
+# ---------- WebM Opus, as the clips are kept ----------
+def ffmpeg():
+    exe = os.environ.get('FFMPEG') or shutil.which('ffmpeg')
+    if not exe:
+        raise SystemExit('needs ffmpeg (on the PATH, or FFMPEG=/path/to/ffmpeg): the clips are kept as WebM Opus')
+    return exe
+
+
+def to_webm(mp3):
+    # (through files: written to a file, a WebM gets its duration and seek index, which a pipe can't go back for)
+    with tempfile.TemporaryDirectory() as tmp:
+        src, dst = os.path.join(tmp, 'in.mp3'), os.path.join(tmp, 'out.webm')
+        with open(src, 'wb') as f:
+            f.write(mp3)
+        r = subprocess.run([ffmpeg(), '-v', 'error', '-i', src, *OPUS, dst], capture_output=True)
+        if r.returncode or not os.path.exists(dst):
+            raise SystemExit('ffmpeg: ' + r.stderr.decode(errors='replace')[:300])
+        with open(dst, 'rb') as f:
+            return f.read()
+
+
+def webm_seconds(path):
+    """A WebM's length, from its Segment Info (Duration x TimecodeScale), as ffmpeg writes it; None if it has none."""
+    with open(path, 'rb') as f:
+        data = f.read()
+
+    def vint(i, marker):  # an EBML id (marker kept) or size (marker dropped) at i -> (value, length)
+        n = 1
+        while n < 8 and not data[i] & (0x80 >> (n - 1)):
+            n += 1
+        v = data[i] if marker else data[i] & (0xFF >> n)
+        for k in range(1, n):
+            v = (v << 8) | data[i + k]
+        return v, n
+
+    i, scale, dur = 0, 1000000, None
+    while i < len(data):
+        eid, n = vint(i, True)
+        size, m = vint(i + n, False)
+        i += n + m
+        if eid in (0x18538067, 0x1549A966):  # Segment, Info: look inside
+            continue
+        if eid == 0x2AD7B1:  # TimecodeScale (ns)
+            scale = int.from_bytes(data[i:i + size], 'big')
+        elif eid == 0x4489:  # Duration (in TimecodeScale units)
+            dur = struct.unpack('>f' if size == 4 else '>d', data[i:i + size])[0]
+        elif eid in (0x1654AE6B, 0x1F43B675):  # Tracks, Cluster: past the Info
+            break
+        i += size
+    return round(dur * scale / 1e9, 3) if dur else None
+
+
+def stem(file):  # "lsDragAKeep.5_1.webm" -> "lsDragAKeep.5_1"
+    return file.rsplit('.', 1)[0]
+
+
 # ---------- ElevenLabs ----------
+# Records e (an entry of script()) into out/e["file"] - WebM Opus when its name says so, else the MP3 as sent - and
+# notes its length in e["seconds"]. Returns the credits it cost.
 def record(e, key, L, out):
     v = L['voices'][e['speaker']]
     body = {'text': e['spoken'], 'model_id': L['model'], 'voice_settings': v['settings'], 'seed': SEED}
@@ -267,8 +336,10 @@ def record(e, key, L, out):
                 time.sleep(2 * (attempt + 1))
                 continue
             raise SystemExit(f'{e["file"]}: HTTP {err.code} {err.read().decode(errors="replace")[:300]}')
+    e['seconds'] = mp3_seconds(audio)
+    data = to_webm(audio) if e['file'].endswith('.webm') else audio
     with open(os.path.join(out, e['file']), 'wb') as f:
-        f.write(audio)
+        f.write(data)
     print(f'  {e["file"]:30s} {e["speaker"]:8s} credits={cost}', flush=True)
     return int(cost or 0)
 
@@ -305,12 +376,12 @@ def main():
                 or o.get('voice') != voices[c['speaker']]['name'])
 
     if only:
-        todo = [c for c in clips if c['file'][:-4] in names]
-        unknown = names - {c['file'][:-4] for c in clips}
+        todo = [c for c in clips if stem(c['file']) in names]
+        unknown = names - {stem(c['file']) for c in clips}
         if unknown:
             raise SystemExit('no such clip: ' + ', '.join(sorted(unknown)))
     else:
-        todo = [c for c in clips if c['file'][:-4] in names or stale(c)]
+        todo = [c for c in clips if stem(c['file']) in names or stale(c)]
     print(f'{lang}: {len(clips)} clips; {len(todo)} to record ({sum(len(c["spoken"]) for c in todo)} characters, '
           f'{sum(len(c["spoken"].split()) for c in todo)} words)')
     if dry:
@@ -322,6 +393,7 @@ def main():
         key = os.environ.get('ELEVENLABS_API_KEY', '').strip()
         if not key:
             raise SystemExit('set ELEVENLABS_API_KEY')
+        ffmpeg()  # before anything is paid for: a clip that couldn't be kept would have to be recorded again
         os.makedirs(out, exist_ok=True)
         t0 = time.time()
 
@@ -339,12 +411,15 @@ def main():
     listed = []
     for c in clips:
         if c['file'] in done or (not stale(c) and c['file'] not in {t['file'] for t in todo}):
-            listed.append(dict(c, voice=voices[c['speaker']]['name'], seconds=mp3_seconds(path(c))))
+            # its length: measured as it was recorded (record), or as the manifest has it
+            listed.append(dict(c, voice=voices[c['speaker']]['name'],
+                               seconds=c['seconds'] if c['file'] in done else old[c['file']]['seconds']))
         elif c['file'] in old and os.path.exists(path(c)):
             listed.append(old[c['file']])  # recorded from older words: kept, and flagged by build-locales
     keep = {k: v for k, v in L['voices'].items() if k != 'narrator'}
     man = {'language': lang, 'source': 'locales/locales.json -> ' + lang, 'tool': 'tools/voice-elevenlabs.py',
-           'model': L['model'], 'format': FORMAT, 'seed': SEED, 'voices': dict(keep, narrator='same voice as swiftee'),
+           'model': L['model'], 'format': FORMAT, 'stored': STORED, 'seed': SEED,
+           'voices': dict(keep, narrator='same voice as swiftee'),
            'clips': listed}
     if len(listed) < len(clips):
         man['missing'] = len(clips) - len(listed)
@@ -353,7 +428,7 @@ def main():
     if only:
         for c in todo:
             if c['file'] in done:
-                print(f'  {c["file"]:30s} {mp3_seconds(path(c)):6.2f} s  {c["spoken"]}')
+                print(f'  {c["file"]:30s} {c["seconds"]:6.2f} s  {c["spoken"]}')
     gone = sorted(set(os.listdir(out)) - {c['file'] for c in clips} - {'manifest.json'})
     print(f'wrote {rel} ({len(listed)} of {len(clips)} clips, {sum(c["seconds"] for c in listed) / 60:.1f} min)'
           + (f'; not in the script any more: {", ".join(gone)}' if gone else ''))

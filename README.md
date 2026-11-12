@@ -152,10 +152,10 @@ Every word a player reads is looked up by key, so the whole journey can be read 
 - **Longer words:** every lesson line was measured on the card's one-line plate in all five languages, and every
   answer button, label and fishing instruction; they fit. The lesson's "Base" / "Leg" pills widen to fit their
   name, and a docked summary name that would run off the card is set a little smaller (English is unchanged).
-- **Hindi has its own voice-over** (`assets/VO-HI/`, 324 MP3 clips made with ElevenLabs). Swiftee and the narrator
+- **Hindi has its own voice-over** (`assets/VO-HI/`, 324 clips made with ElevenLabs, kept as WebM Opus). Swiftee and the narrator
   share one voice (Anjali, a Hindi teacher's voice) and Popo has his own (Amit, a young cartoon voice), both a little
-  slower and steadier than usual for grade 6-7. Every spoken line has a clip named by its key (`lsHi.mp3`); a line
-  whose words vary has one per variant (`f1Catch.triangle.mp3`, `lsDragAKeep.5_1.mp3`), and screen 33's angle
+  slower and steadier than usual for grade 6-7. Every spoken line has a clip named by its key (`lsHi.webm`); a line
+  whose words vary has one per variant (`f1Catch.triangle.webm`, `lsDragAKeep.5_1.webm`), and screen 33's angle
   feedback is two clips back to back, as in English. Digits, corner letters and symbols are said as Hindi words
   (`180°` एक सौ अस्सी डिग्री, `∠A` कोण ए, `AB = 6 cm` ए बी बराबर छह सेंटीमीटर).
 - **Marathi has its own voice-over too** (`assets/VO-MR/`, the same 324 clips, played with `?lan=mr`). Swiftee and
@@ -183,7 +183,9 @@ Every word a player reads is looked up by key, so the whole journey can be read 
   - **Re-recording** after a line changes: `ELEVENLABS_API_KEY=... python3 tools/voice-elevenlabs.py --lang hi` (or
     `--lang mr`) records the clips that are new or whose words changed (`--dry` lists them, `--only key ...` records
     just those, as a test) and rewrites `assets/VO-<LANG>/manifest.json` (each clip's key, voice, line and spoken
-    form; a run that stops part-way keeps what it recorded, so nothing is paid for twice); then
+    form; a run that stops part-way keeps what it recorded, so nothing is paid for twice). ElevenLabs sends MP3 and
+    the tool keeps each clip as WebM Opus (32 kbps, mono), so it needs ffmpeg (on the PATH, or `FFMPEG=...`); without
+    it nothing is recorded. Then
     `python3 tools/build-locales.py` rewrites `locales/voices.js`, and flags any clip recorded from a line that has
     changed since. A language with clips still missing is left out of `voices.js` (it keeps the English voice) until
     they are all there.
@@ -204,11 +206,11 @@ locales/
   locales.js            its copy for the pages, written by tools/build-locales.py
   voices.js             each language's own voice-over by line (Hindi, Marathi, Gujarati), written by tools/build-locales.py
 assets/
-  VO-HI/                the Hindi voice-over: one MP3 per spoken line, and manifest.json (tools/voice-elevenlabs.py)
+  VO-HI/                the Hindi voice-over: one WebM (Opus) per spoken line, and manifest.json (tools/voice-elevenlabs.py)
   VO-MR/                the Marathi voice-over, the same way
   VO-GU/                the Gujarati voice-over, the same way
-  VO-EN/                the English voice-over by key: the existing recordings (lesson .ogg, fishing .mp3), and the
-                        lines that had none recorded with ElevenLabs in a clone of the same studio voice (.mp3), with
+  VO-EN/                the English voice-over by key: the existing recordings (lesson .ogg, fishing .webm), and the
+                        lines that had none recorded with ElevenLabs in a clone of the same studio voice (.webm), with
                         manifest.json (tools/collect-vo-en.py, --record); not played from here: English still plays
                         its recordings from the parts
 shell/

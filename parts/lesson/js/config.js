@@ -15,7 +15,7 @@ const CONFIG = {
   // rightAngleDeg, a corner's leg stands upright within this many degrees of 90° (generous: close enough is enough)
   snap: { exactCm: 0.3, rightAngleDeg: 6 },
   // recorded effects (the rest are synthesised): good = every correct action, bad = every wrong one
-  sounds: { good: 'assets/audio/correct.mp3', bad: 'assets/audio/incorrect.mp3' },
+  sounds: { good: 'assets/audio/correct.webm', bad: 'assets/audio/incorrect.webm' },
   soundVolume: 0.9,
   drag: { wrongGapMs: 1200 },        // wrong-way drag feedback (wiggle + sound) at most once per this long
   // a part named in the voice-over grows briefly and holds this long before easing back

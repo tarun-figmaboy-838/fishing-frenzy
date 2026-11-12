@@ -4,15 +4,16 @@
 Every clip that has an English recording is that recording, copied byte for byte:
   - the lesson's lines: parts/lesson/assets/vo/voNNN.ogg (Ogg Opus), found by the line's words in
     parts/lesson/js/vo-lines.js -> <key>.ogg
-  - the fishing games' lines: the MP3s inside parts/fishing-1/src/voice-data.js and parts/fishing-2/src/voice-data.js,
-    found by "<who>:<line>" (voiceKey in src/audio.js) -> <key>.mp3
+  - the fishing games' lines: the clips inside parts/fishing-1/src/voice-data.js and parts/fishing-2/src/voice-data.js
+    (WebM Opus), found by "<who>:<line>" (voiceKey in src/audio.js) -> <key>.webm
 
 The lines with no English recording can be recorded (--record) with ElevenLabs in the same voice: an Instant Voice
 Clone of the English Swiftee/narrator voice (one voice, README: "Two voices only"), made from the studio's own MP3s
 (tools/swiftee-voice/studio/swNN.mp3: the "Ai Wala Human By Aamir" studio, Female Teacher (Standard), Gemini's Kore
 with a North Indian accent; parts/lesson/docs/VOICEOVER.md). The clone is made on the first --record and found by its
 name after that. Each line is said in the lesson's spoken form: numbers and symbols as English words, corner names
-spaced ("AD is 4.9 cm." -> "A D is four point nine centimetres."). None of these lines is Popo's.
+spaced ("AD is 4.9 cm." -> "A D is four point nine centimetres."). None of these lines is Popo's. They are kept as
+WebM Opus, as voice-elevenlabs.py keeps every recording (it needs ffmpeg).
 
 The spoken lines and their keys are tools/voice-elevenlabs.py's (the same 324 as the other languages), read from
 locales/locales.json -> "en". A line with neither clip is listed in manifest.json "missing". The folder is not in
@@ -27,6 +28,7 @@ locales/voices.js: English plays its recordings from where they are, as before.
                                                        record these again (and anything with no clip)
 """
 import base64
+import functools
 import importlib.util
 import json
 import os
@@ -55,6 +57,7 @@ MODEL = 'eleven_multilingual_v2'  # keeps a clone's accent best (and Hindi's mod
 SETTINGS = {'stability': 0.5, 'similarity_boost': 0.85, 'style': 0.0, 'use_speaker_boost': True, 'speed': 1.0}
 
 
+@functools.lru_cache(maxsize=None)
 def load_voice_tool():
     spec = importlib.util.spec_from_file_location('voice_elevenlabs', os.path.join(ROOT, 'tools', 'voice-elevenlabs.py'))
     ve = importlib.util.module_from_spec(spec)
@@ -127,14 +130,17 @@ def lesson_lines():
             for t, vo, sec in re.findall(r'^\s*"((?:[^"\\]|\\.)*)":\s*\["(vo\d+)",\s*([\d.]+)\]', src, re.M)}
 
 
+AUDIO_EXT = {'mpeg': 'mp3', 'webm': 'webm', 'ogg': 'ogg'}  # a data URL's audio type -> its file's extension
+
+
 def fishing_lines():
-    """"who:line" (voiceKey) -> (mp3 bytes, which game), from both fishing games' voice-data.js"""
+    """"who:line" (voiceKey) -> (clip bytes, which game, extension), from both fishing games' voice-data.js"""
     found = {}
     for part in ('fishing-1', 'fishing-2'):
         with open(os.path.join(ROOT, 'parts', part, 'src', 'voice-data.js'), encoding='utf-8') as f:
             src = f.read()
-        for k, b64 in re.findall(r'^\s*"((?:[^"\\]|\\.)*)":\s*"data:audio/mpeg;base64,([^"]+)"', src, re.M):
-            found.setdefault(js_string(k), (base64.b64decode(b64), part))
+        for k, kind, b64 in re.findall(r'^\s*"((?:[^"\\]|\\.)*)":\s*"data:audio/(mpeg|webm|ogg)[^;,"]*;base64,([^"]+)"', src, re.M):
+            found.setdefault(js_string(k), (base64.b64decode(b64), part, AUDIO_EXT[kind]))
     return found
 
 
@@ -144,6 +150,8 @@ def voice_key(who, text):  # as parts/fishing-*/src/audio.js
 
 
 def seconds(path):
+    if path.endswith('.webm'):
+        return load_voice_tool().webm_seconds(path)
     try:
         out = subprocess.run(['afinfo', path], capture_output=True, text=True).stdout  # macOS
         m = re.search(r'estimated duration:\s*([\d.]+)', out)
@@ -199,11 +207,12 @@ def record(ve, todo, dry):
         print(f'  the clone, if it isn\'t in the account yet, is made from {len(made)} studio clips '
               f'({sum(seconds(p) or 0 for p in made):.0f} s): {", ".join(os.path.basename(p)[:-4] for p in made)}')
         for e in todo:
-            print(f'  {e["wanted"] + ".mp3":32} {e["speaker"]:9} {e["spoken"]}')
+            print(f'  {e["wanted"] + "." + ve.EXT:32} {e["speaker"]:9} {e["spoken"]}')
         return None
     key = os.environ.get('ELEVENLABS_API_KEY', '').strip()
     if not key:
         raise SystemExit('set ELEVENLABS_API_KEY')
+    ve.ffmpeg()  # before anything is paid for (the clips are kept as WebM Opus)
     voice_id, made = clone_voice(key)
     print(f'  voice: {CLONE["name"]} ({voice_id}, {"made now from the studio clips" if made else "already in the account"})')
     v = {'name': CLONE['name'], 'voice_id': voice_id, 'settings': SETTINGS}
@@ -211,14 +220,14 @@ def record(ve, todo, dry):
     failed, t0 = [], time.time()
 
     def job(e):
-        c = {'file': e['wanted'] + '.mp3', 'speaker': e['speaker'], 'spoken': e['spoken']}
+        c = {'file': e['wanted'] + '.' + ve.EXT, 'speaker': e['speaker'], 'spoken': e['spoken']}
         try:
             ve.record(c, key, L, OUT)
         except (Exception, SystemExit) as err:  # the others carry on; this one is recorded on the next run
             failed.append(f'{c["file"]}: {err}')
             return
         e.update(file=c['file'], source=f'ElevenLabs {MODEL}, voice "{CLONE["name"]}" (tools/collect-vo-en.py --record)',
-                 voice=CLONE['name'], seconds=seconds(os.path.join(OUT, c['file'])))
+                 voice=CLONE['name'], seconds=c['seconds'])  # (measured from the MP3 as it came: ve.record)
 
     with ThreadPoolExecutor(max_workers=3) as pool:
         list(pool.map(job, todo))
@@ -244,24 +253,24 @@ def main():
     if os.path.exists(manifest):
         with open(manifest, encoding='utf-8') as f:
             m = json.load(f)
-        old = {c['file']: c for c in m['clips'] if c.get('voice')}  # the clips recorded with --record
+        old = {ve.stem(c['file']): c for c in m['clips'] if c.get('voice')}  # the clips recorded with --record, by name
         recorded_with = m.get('recorded_with')
     script = clips(ve)
-    unknown = redo - {c['file'][:-4] for c in script}
+    unknown = redo - {ve.stem(c['file']) for c in script}
     if unknown:
         raise SystemExit('no such clip: ' + ', '.join(sorted(unknown)))
     if not dry:
         os.makedirs(OUT, exist_ok=True)
     rows = []  # one per line, in the script's order; those with no "file" have no clip yet
     for c in script:
-        key = c['file'][:-4]
+        key = ve.stem(c['file'])
         who, text = c['speaker'], c['text']
         entry = {'key': c['key'], **({'variant': c['variant']} if 'variant' in c else {}), 'speaker': who, 'text': text}
         line = ' '.join(text.split())
         fk = next((k for k in (voice_key(who, text), voice_key(SAME_VOICE.get(who, who), text)) if k in fishing), None)
         if fk:
-            data, part = fishing[fk]
-            name = key + '.mp3'
+            data, part, ext = fishing[fk]
+            name = key + '.' + ext
             if not dry:
                 with open(os.path.join(OUT, name), 'wb') as f:
                     f.write(data)
@@ -275,7 +284,7 @@ def main():
                     dst.write(src.read())
             entry.update(file=name, source=f'parts/lesson/assets/vo/{vo}.ogg', seconds=sec)
         else:
-            o = old.get(key + '.mp3')
+            o = old.get(key)
             said = en_spoken(text)
             if o and o['text'] == text and o.get('spoken') == said and key not in redo \
                     and os.path.exists(os.path.join(OUT, o['file'])):
@@ -294,7 +303,7 @@ def main():
     done = [e for e in rows if 'file' in e]
     missing = [e for e in rows if 'file' not in e]
     for name in os.listdir(OUT):  # no clip left from a line that has changed, or that has a recording now
-        if name.endswith(('.mp3', '.ogg')) and name not in {e['file'] for e in done}:
+        if name.endswith(('.mp3', '.ogg', '.webm')) and name not in {e['file'] for e in done}:
             os.remove(os.path.join(OUT, name))
     man = {'language': 'en', 'source': 'the existing English recordings, and the lines that had none recorded in a '
                                        'clone of the same voice (see each clip\'s "source")',
@@ -305,9 +314,10 @@ def main():
         json.dump(man, f, ensure_ascii=False, indent=1)
         f.write('\n')
     copied = [e for e in done if not e.get('voice')]
-    print(f'en: {len(done)} clips in assets/VO-EN/: {len(copied)} existing recordings '
-          f'({sum(e["file"].endswith(".ogg") for e in copied)} .ogg, {sum(e["file"].endswith(".mp3") for e in copied)} '
-          f'.mp3), {len(done) - len(copied)} recorded with --record; {len(missing)} lines have no clip'
+    kinds = sorted({e['file'].rsplit('.', 1)[1] for e in copied})
+    print(f'en: {len(done)} clips in assets/VO-EN/: {len(copied)} existing recordings ('
+          + ', '.join(f'{sum(e["file"].endswith("." + k) for e in copied)} .{k}' for k in kinds)
+          + f'), {len(done) - len(copied)} recorded with --record; {len(missing)} lines have no clip'
           + (':' if missing else ''))
     for m in missing:
         print(f'  {m["wanted"]:28} {m["speaker"]:9} {m["text"]}')

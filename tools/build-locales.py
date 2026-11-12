@@ -46,6 +46,10 @@ def voices(data):
             issues.append(f'{rel}: {man["missing"]} clips not recorded yet (tools/voice-elevenlabs.py --lang {lang}); '
                           f'"{lang}" is left out of locales/voices.js until they are')
             continue
+        exts = {c['file'].rsplit('.', 1)[1] for c in man['clips']}  # one format per language (shell/i18n.js: V.ext)
+        if len(exts) != 1:
+            issues.append(f'{rel}: clips in {len(exts)} formats ({", ".join(sorted(exts))}); the game reads one per language')
+            continue
         for c in man['clips']:
             name = c['file'].rsplit('.', 1)[0]
             if not os.path.exists(os.path.join(folder, c['file'])):
@@ -56,9 +60,9 @@ def voices(data):
                 issues.append(f'{rel}{c["file"]}: "{c["key"]}" changed since it was recorded: record it again '
                               '(tools/voice-elevenlabs.py)')
             clips.append([name, c['speaker'], c['seconds'], c['text'], c.get('letters') or 0])
-        out[lang] = {'dir': rel, 'ext': 'mp3', 'clips': clips}
+        out[lang] = {'dir': rel, 'ext': exts.pop(), 'clips': clips}
     text = (VOICES_HEAD + 'window.LOCALE_VOICES = {\n' + ',\n'.join(
-        f'  {json.dumps(lang)}: {{ "dir": {json.dumps(v["dir"])}, "ext": "mp3", "clips": [\n' +
+        f'  {json.dumps(lang)}: {{ "dir": {json.dumps(v["dir"])}, "ext": {json.dumps(v["ext"])}, "clips": [\n' +
         ',\n'.join('    ' + json.dumps(c, ensure_ascii=False) for c in v['clips']) + '\n  ] }'
         for lang, v in out.items()) + '\n};\n')
     return text, issues, out

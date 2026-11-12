@@ -290,8 +290,8 @@ and its line while the others rest at 42 %. Next works at any time. Reduced moti
 
 | Sound | Used for |
 |---|---|
-| Correct (recorded `assets/audio/correct.mp3`) | Every correct learner action, together with a confetti burst |
-| Incorrect (recorded `assets/audio/incorrect.mp3`) | Every wrong action |
+| Correct (recorded `assets/audio/correct.webm`) | Every correct learner action, together with a confetti burst |
+| Incorrect (recorded `assets/audio/incorrect.webm`) | Every wrong action |
 | Soft synthesised tones | Taps, pops, snaps; on Screen 37 also draw, shimmer, whoosh, morph, chime, tick, warm chime, flourish |
 
 There is no background music.

@@ -4,6 +4,7 @@
  "tool": "tools/voice-elevenlabs.py",
  "model": "eleven_multilingual_v2",
  "format": "mp3_44100_128",
+ "stored": "WebM Opus, 32 kbps, mono (ffmpeg, from the MP3)",
  "seed": 7,
  "voices": {
   "swiftee": {
@@ -32,7 +33,7 @@
  },
  "clips": [
   {
-   "file": "theEnd.mp3",
+   "file": "theEnd.webm",
    "key": "theEnd",
    "speaker": "narrator",
    "text": "समाप्त",
@@ -41,7 +42,7 @@
    "seconds": 0.993
   },
   {
-   "file": "shapeTriangle.mp3",
+   "file": "shapeTriangle.webm",
    "key": "shapeTriangle",
    "speaker": "narrator",
    "text": "त्रिभुज",
@@ -50,7 +51,7 @@
    "seconds": 0.888
   },
   {
-   "file": "shapeSquare.mp3",
+   "file": "shapeSquare.webm",
    "key": "shapeSquare",
    "speaker": "narrator",
    "text": "वर्ग",
@@ -59,7 +60,7 @@
    "seconds": 0.862
   },
   {
-   "file": "shapeRectangle.mp3",
+   "file": "shapeRectangle.webm",
    "key": "shapeRectangle",
    "speaker": "narrator",
    "text": "आयत",
@@ -68,7 +69,7 @@
    "seconds": 0.862
   },
   {
-   "file": "shapeRhombus.mp3",
+   "file": "shapeRhombus.webm",
    "key": "shapeRhombus",
    "speaker": "narrator",
    "text": "समचतुर्भुज",
@@ -77,7 +78,7 @@
    "seconds": 1.28
   },
   {
-   "file": "shapeParallelogram.mp3",
+   "file": "shapeParallelogram.webm",
    "key": "shapeParallelogram",
    "speaker": "narrator",
    "text": "समांतर चतुर्भुज",
@@ -86,7 +87,7 @@
    "seconds": 1.541
   },
   {
-   "file": "shapeTrapezium.mp3",
+   "file": "shapeTrapezium.webm",
    "key": "shapeTrapezium",
    "speaker": "narrator",
    "text": "समलंब",
@@ -95,7 +96,7 @@
    "seconds": 0.94
   },
   {
-   "file": "shapePentagon.mp3",
+   "file": "shapePentagon.webm",
    "key": "shapePentagon",
    "speaker": "narrator",
    "text": "पंचभुज",
@@ -104,7 +105,7 @@
    "seconds": 1.045
   },
   {
-   "file": "shapeHexagon.mp3",
+   "file": "shapeHexagon.webm",
    "key": "shapeHexagon",
    "speaker": "narrator",
    "text": "षट्भुज",
@@ -113,7 +114,7 @@
    "seconds": 0.94
   },
   {
-   "file": "shapeOctagon.mp3",
+   "file": "shapeOctagon.webm",
    "key": "shapeOctagon",
    "speaker": "narrator",
    "text": "अष्टभुज",
@@ -122,7 +123,7 @@
    "seconds": 0.993
   },
   {
-   "file": "shapeNonagon.mp3",
+   "file": "shapeNonagon.webm",
    "key": "shapeNonagon",
    "speaker": "narrator",
    "text": "नवभुज",
@@ -131,7 +132,7 @@
    "seconds": 0.993
   },
   {
-   "file": "shapeDecagon.mp3",
+   "file": "shapeDecagon.webm",
    "key": "shapeDecagon",
    "speaker": "narrator",
    "text": "दशभुज",
@@ -140,7 +141,7 @@
    "seconds": 0.94
   },
   {
-   "file": "shapeCircle.mp3",
+   "file": "shapeCircle.webm",
    "key": "shapeCircle",
    "speaker": "narrator",
    "text": "वृत्त",
@@ -149,7 +150,7 @@
    "seconds": 0.81
   },
   {
-   "file": "shapeOval.mp3",
+   "file": "shapeOval.webm",
    "key": "shapeOval",
    "speaker": "narrator",
    "text": "अंडाकार",
@@ -158,7 +159,7 @@
    "seconds": 0.94
   },
   {
-   "file": "shapeSemicircle.mp3",
+   "file": "shapeSemicircle.webm",
    "key": "shapeSemicircle",
    "speaker": "narrator",
    "text": "अर्धवृत्त",
@@ -167,7 +168,7 @@
    "seconds": 1.123
   },
   {
-   "file": "shapeQuadrilateral.mp3",
+   "file": "shapeQuadrilateral.webm",
    "key": "shapeQuadrilateral",
    "speaker": "narrator",
    "text": "चतुर्भुज",
@@ -176,7 +177,7 @@
    "seconds": 1.097
   },
   {
-   "file": "popoWhoopsie.mp3",
+   "file": "popoWhoopsie.webm",
    "key": "popoWhoopsie",
    "speaker": "popo",
    "text": "उई माँ, उल्टा-पुल्टा!",
@@ -185,7 +186,7 @@
    "seconds": 2.116
   },
   {
-   "file": "popoGreatCatch.mp3",
+   "file": "popoGreatCatch.webm",
    "key": "popoGreatCatch",
    "speaker": "popo",
    "text": "*शानदार* पकड़!",
@@ -194,7 +195,7 @@
    "seconds": 1.593
   },
   {
-   "file": "f1StoryLoves.mp3",
+   "file": "f1StoryLoves.webm",
    "key": "f1StoryLoves",
    "speaker": "narrator",
    "text": "पोपो को मछली पकड़ना *बहुत* पसंद है।",
@@ -203,7 +204,7 @@
    "seconds": 2.482
   },
   {
-   "file": "f1StoryToday.mp3",
+   "file": "f1StoryToday.webm",
    "key": "f1StoryToday",
    "speaker": "narrator",
    "text": "और आज…",
@@ -212,7 +213,7 @@
    "seconds": 1.097
   },
   {
-   "file": "f1StoryAllKinds.mp3",
+   "file": "f1StoryAllKinds.webm",
    "key": "f1StoryAllKinds",
    "speaker": "narrator",
    "text": "वह *हर* तरह की मछली पकड़ना चाहता है!",
@@ -221,7 +222,7 @@
    "seconds": 2.482
   },
   {
-   "file": "f1CatchAll.triangle.mp3",
+   "file": "f1CatchAll.triangle.webm",
    "key": "f1CatchAll",
    "variant": "triangle",
    "speaker": "narrator",
@@ -231,7 +232,7 @@
    "seconds": 1.933
   },
   {
-   "file": "f1CatchAll.pentagon.mp3",
+   "file": "f1CatchAll.pentagon.webm",
    "key": "f1CatchAll",
    "variant": "pentagon",
    "speaker": "narrator",
@@ -241,7 +242,7 @@
    "seconds": 2.064
   },
   {
-   "file": "f1CatchAll.hexagon.mp3",
+   "file": "f1CatchAll.hexagon.webm",
    "key": "f1CatchAll",
    "variant": "hexagon",
    "speaker": "narrator",
@@ -251,7 +252,7 @@
    "seconds": 1.881
   },
   {
-   "file": "f1CatchAll.quadrilateral.mp3",
+   "file": "f1CatchAll.quadrilateral.webm",
    "key": "f1CatchAll",
    "variant": "quadrilateral",
    "speaker": "narrator",
@@ -261,7 +262,7 @@
    "seconds": 2.116
   },
   {
-   "file": "f1Catch.triangle.mp3",
+   "file": "f1Catch.triangle.webm",
    "key": "f1Catch",
    "variant": "triangle",
    "speaker": "narrator",
@@ -271,7 +272,7 @@
    "seconds": 1.515
   },
   {
-   "file": "f1Catch.pentagon.mp3",
+   "file": "f1Catch.pentagon.webm",
    "key": "f1Catch",
    "variant": "pentagon",
    "speaker": "narrator",
@@ -281,7 +282,7 @@
    "seconds": 1.541
   },
   {
-   "file": "f1Catch.hexagon.mp3",
+   "file": "f1Catch.hexagon.webm",
    "key": "f1Catch",
    "variant": "hexagon",
    "speaker": "narrator",
@@ -291,7 +292,7 @@
    "seconds": 1.593
   },
   {
-   "file": "f1Catch.quadrilateral.mp3",
+   "file": "f1Catch.quadrilateral.webm",
    "key": "f1Catch",
    "variant": "quadrilateral",
    "speaker": "narrator",
@@ -301,7 +302,7 @@
    "seconds": 1.646
   },
   {
-   "file": "f1WrongSides.triangle.mp3",
+   "file": "f1WrongSides.triangle.webm",
    "key": "f1WrongSides",
    "variant": "triangle",
    "speaker": "narrator",
@@ -311,7 +312,7 @@
    "seconds": 3.396
   },
   {
-   "file": "f1WrongSides.pentagon.mp3",
+   "file": "f1WrongSides.pentagon.webm",
    "key": "f1WrongSides",
    "variant": "pentagon",
    "speaker": "narrator",
@@ -321,7 +322,7 @@
    "seconds": 3.448
   },
   {
-   "file": "f1WrongSides.hexagon.mp3",
+   "file": "f1WrongSides.hexagon.webm",
    "key": "f1WrongSides",
    "variant": "hexagon",
    "speaker": "narrator",
@@ -331,7 +332,7 @@
    "seconds": 3.318
   },
   {
-   "file": "f1WrongSides.quadrilateral.mp3",
+   "file": "f1WrongSides.quadrilateral.webm",
    "key": "f1WrongSides",
    "variant": "quadrilateral",
    "speaker": "narrator",
@@ -341,7 +342,7 @@
    "seconds": 3.5
   },
   {
-   "file": "f1RowsOn.mp3",
+   "file": "f1RowsOn.webm",
    "key": "f1RowsOn",
    "speaker": "narrator",
    "text": "पोपो आगे बढ़ चला…",
@@ -350,7 +351,7 @@
    "seconds": 1.515
   },
   {
-   "file": "f1Woah.mp3",
+   "file": "f1Woah.webm",
    "key": "f1Woah",
    "speaker": "popo",
    "text": "*ओहो!*",
@@ -359,7 +360,7 @@
    "seconds": 1.097
   },
   {
-   "file": "f1NotSeen.mp3",
+   "file": "f1NotSeen.webm",
    "key": "f1NotSeen",
    "speaker": "popo",
    "text": "*ऐसी* मछली तो मैंने पहले कभी नहीं देखी!",
@@ -368,7 +369,7 @@
    "seconds": 2.534
   },
   {
-   "file": "f1WhatKind.mp3",
+   "file": "f1WhatKind.webm",
    "key": "f1WhatKind",
    "speaker": "popo",
    "text": "वह किस *तरह* की मछली थी?",
@@ -377,7 +378,7 @@
    "seconds": 1.959
   },
   {
-   "file": "f1FindOut.mp3",
+   "file": "f1FindOut.webm",
    "key": "f1FindOut",
    "speaker": "swiftee",
    "text": "आइए पता *लगाएँ!*",
@@ -386,7 +387,7 @@
    "seconds": 1.28
   },
   {
-   "file": "lsHi.mp3",
+   "file": "lsHi.webm",
    "key": "lsHi",
    "speaker": "swiftee",
    "text": "नमस्ते! मेरे साथ एक नई आकृति खोजने के लिए तैयार हैं?",
@@ -395,7 +396,7 @@
    "seconds": 3.736
   },
   {
-   "file": "lsRemember.mp3",
+   "file": "lsRemember.webm",
    "key": "lsRemember",
    "speaker": "swiftee",
    "text": "याद करें, हमने चतुर्भुजों\nके बारे में पहले सीखा था।",
@@ -404,7 +405,7 @@
    "seconds": 3.553
   },
   {
-   "file": "lsAnyPolygon.mp3",
+   "file": "lsAnyPolygon.webm",
    "key": "lsAnyPolygon",
    "speaker": "swiftee",
    "text": "4 भुजाओं वाले हर बहुभुज को\nचतुर्भुज कहा जाता है।",
@@ -413,7 +414,7 @@
    "seconds": 3.448
   },
   {
-   "file": "lsCallIt.mp3",
+   "file": "lsCallIt.webm",
    "key": "lsCallIt",
    "speaker": "swiftee",
    "text": "हम इसे चतुर्भुज\nABCD कह सकते हैं।",
@@ -428,7 +429,7 @@
    "seconds": 2.717
   },
   {
-   "file": "lsSpecialType.mp3",
+   "file": "lsSpecialType.webm",
    "key": "lsSpecialType",
    "speaker": "swiftee",
    "text": "यह एक ख़ास प्रकार का\nचतुर्भुज है।",
@@ -437,7 +438,7 @@
    "seconds": 2.299
   },
   {
-   "file": "lsSeeSpecial.mp3",
+   "file": "lsSeeSpecial.webm",
    "key": "lsSeeSpecial",
    "speaker": "swiftee",
    "text": "आइए देखें कि\nयह ख़ास क्यों है।",
@@ -446,7 +447,7 @@
    "seconds": 1.933
   },
   {
-   "file": "lsLookMeet.mp3",
+   "file": "lsLookMeet.webm",
    "key": "lsLookMeet",
    "speaker": "swiftee",
    "text": "लगता है ये दो भुजाएँ आपस में मिल जाएँगी।",
@@ -455,7 +456,7 @@
    "seconds": 2.429
   },
   {
-   "file": "lsExtendThem.mp3",
+   "file": "lsExtendThem.webm",
    "key": "lsExtendThem",
    "speaker": "swiftee",
    "text": "आइए इन्हें आगे बढ़ाएँ।",
@@ -464,7 +465,7 @@
    "seconds": 1.593
   },
   {
-   "file": "lsSidesMeet.mp3",
+   "file": "lsSidesMeet.webm",
    "key": "lsSidesMeet",
    "speaker": "swiftee",
    "text": "अरे वाह! भुजाएँ मिल गईं।",
@@ -473,7 +474,7 @@
    "seconds": 1.881
   },
   {
-   "file": "lsCheckOther.mp3",
+   "file": "lsCheckOther.webm",
    "key": "lsCheckOther",
    "speaker": "swiftee",
    "text": "आइए भुजाओं के दूसरे\nजोड़े को जाँचें।",
@@ -482,7 +483,7 @@
    "seconds": 2.377
   },
   {
-   "file": "lsPairNotMeet.mp3",
+   "file": "lsPairNotMeet.webm",
    "key": "lsPairNotMeet",
    "speaker": "swiftee",
    "text": "भुजाओं का यह जोड़ा\nआपस में नहीं मिलता।",
@@ -491,7 +492,7 @@
    "seconds": 2.247
   },
   {
-   "file": "lsMeansParallel.mp3",
+   "file": "lsMeansParallel.webm",
    "key": "lsMeansParallel",
    "speaker": "swiftee",
    "text": "इसका मतलब है कि ये भुजाएँ एक-दूसरे के समांतर हैं।",
@@ -500,7 +501,7 @@
    "seconds": 3.683
   },
   {
-   "file": "lsAbParallelCd.mp3",
+   "file": "lsAbParallelCd.webm",
    "key": "lsAbParallelCd",
    "speaker": "swiftee",
    "text": "AB, CD के समांतर है।",
@@ -515,7 +516,7 @@
    "seconds": 2.064
   },
   {
-   "file": "lsBigSecret.mp3",
+   "file": "lsBigSecret.webm",
    "key": "lsBigSecret",
    "speaker": "swiftee",
    "text": "यह रहा बड़ा राज़!",
@@ -524,7 +525,7 @@
    "seconds": 1.358
   },
   {
-   "file": "lsOnePairEnough.mp3",
+   "file": "lsOnePairEnough.webm",
    "key": "lsOnePairEnough",
    "speaker": "swiftee",
    "text": "बस समांतर भुजाओं का\nएक जोड़ा काफ़ी है।",
@@ -533,7 +534,7 @@
    "seconds": 2.56
   },
   {
-   "file": "lsThenTrapezium.mp3",
+   "file": "lsThenTrapezium.webm",
    "key": "lsThenTrapezium",
    "speaker": "swiftee",
    "text": "तब वह चतुर्भुज\nएक समलंब होता है!",
@@ -542,7 +543,7 @@
    "seconds": 2.351
   },
   {
-   "file": "lsWhichTrapezium.mp3",
+   "file": "lsWhichTrapezium.webm",
    "key": "lsWhichTrapezium",
    "speaker": "swiftee",
    "text": "इनमें से कौन-सा चतुर्भुज समलंब है?",
@@ -551,7 +552,7 @@
    "seconds": 2.351
   },
   {
-   "file": "lsCorrect.mp3",
+   "file": "lsCorrect.webm",
    "key": "lsCorrect",
    "speaker": "swiftee",
    "text": "सही!",
@@ -560,7 +561,7 @@
    "seconds": 0.81
   },
   {
-   "file": "lsHasOnePair.mp3",
+   "file": "lsHasOnePair.webm",
    "key": "lsHasOnePair",
    "speaker": "swiftee",
    "text": "इसमें समांतर भुजाओं का एक जोड़ा है।",
@@ -569,7 +570,7 @@
    "seconds": 2.429
   },
   {
-   "file": "lsSoTrapezium.mp3",
+   "file": "lsSoTrapezium.webm",
    "key": "lsSoTrapezium",
    "speaker": "swiftee",
    "text": "तो यह एक समलंब है!",
@@ -578,7 +579,7 @@
    "seconds": 1.593
   },
   {
-   "file": "lsOopsNoParallel.mp3",
+   "file": "lsOopsNoParallel.webm",
    "key": "lsOopsNoParallel",
    "speaker": "swiftee",
    "text": "उफ़! यहाँ कोई भी दो भुजाएँ समांतर नहीं हैं।",
@@ -587,7 +588,7 @@
    "seconds": 2.9
   },
   {
-   "file": "lsNotTrapezium.mp3",
+   "file": "lsNotTrapezium.webm",
    "key": "lsNotTrapezium",
    "speaker": "swiftee",
    "text": "तो यह समलंब नहीं है।",
@@ -596,7 +597,7 @@
    "seconds": 1.541
   },
   {
-   "file": "lsNoParallelAtAll.mp3",
+   "file": "lsNoParallelAtAll.webm",
    "key": "lsNoParallelAtAll",
    "speaker": "swiftee",
    "text": "इस आकृति में समांतर भुजाएँ हैं ही नहीं।",
@@ -605,7 +606,7 @@
    "seconds": 2.482
   },
   {
-   "file": "lsCalledBases.mp3",
+   "file": "lsCalledBases.webm",
    "key": "lsCalledBases",
    "speaker": "swiftee",
    "text": "समांतर भुजाओं को\nआधार कहते हैं।",
@@ -614,7 +615,7 @@
    "seconds": 2.142
   },
   {
-   "file": "lsCalledLegs.mp3",
+   "file": "lsCalledLegs.webm",
    "key": "lsCalledLegs",
    "speaker": "swiftee",
    "text": "बाक़ी दो भुजाओं को\nअसमांतर भुजाएँ कहते हैं।",
@@ -623,7 +624,7 @@
    "seconds": 2.717
   },
   {
-   "file": "lsMeasureSides.mp3",
+   "file": "lsMeasureSides.webm",
    "key": "lsMeasureSides",
    "speaker": "swiftee",
    "text": "आइए इस समलंब की\nभुजाएँ मापें।",
@@ -632,7 +633,7 @@
    "seconds": 2.116
   },
   {
-   "file": "lsAllDifferent.mp3",
+   "file": "lsAllDifferent.webm",
    "key": "lsAllDifferent",
    "speaker": "swiftee",
    "text": "अरे वाह! इस समलंब की\nसभी भुजाओं की लंबाई\nअलग-अलग है।",
@@ -641,7 +642,7 @@
    "seconds": 3.788
   },
   {
-   "file": "lsLookTrapezium.mp3",
+   "file": "lsLookTrapezium.webm",
    "key": "lsLookTrapezium",
    "speaker": "swiftee",
    "text": "इस समलंब को देखें!",
@@ -650,7 +651,7 @@
    "seconds": 1.593
   },
   {
-   "file": "lsAllSidesDiff.mp3",
+   "file": "lsAllSidesDiff.webm",
    "key": "lsAllSidesDiff",
    "speaker": "swiftee",
    "text": "इसकी सभी भुजाओं की\nलंबाई अलग-अलग है।",
@@ -659,7 +660,7 @@
    "seconds": 2.56
   },
   {
-   "file": "lsScaleneIs.mp3",
+   "file": "lsScaleneIs.webm",
    "key": "lsScaleneIs",
    "speaker": "swiftee",
    "text": "यह है विषमबाहु समलंब!",
@@ -668,7 +669,7 @@
    "seconds": 1.646
   },
   {
-   "file": "lsScaleneTrapezium.mp3",
+   "file": "lsScaleneTrapezium.webm",
    "key": "lsScaleneTrapezium",
    "speaker": "swiftee",
    "text": "विषमबाहु समलंब",
@@ -677,7 +678,7 @@
    "seconds": 1.593
   },
   {
-   "file": "lsLegsDiffToo.mp3",
+   "file": "lsLegsDiffToo.webm",
    "key": "lsLegsDiffToo",
    "speaker": "swiftee",
    "text": "देखें! इसकी असमांतर भुजाएँ भी\nअलग-अलग लंबाई की हैं।",
@@ -686,7 +687,7 @@
    "seconds": 3.918
   },
   {
-   "file": "lsWhatIfSame.mp3",
+   "file": "lsWhatIfSame.webm",
    "key": "lsWhatIfSame",
    "speaker": "swiftee",
    "text": "अगर असमांतर भुजाएँ\nबराबर लंबाई की हों, तो?",
@@ -695,7 +696,7 @@
    "seconds": 2.978
   },
   {
-   "file": "lsFindOut.mp3",
+   "file": "lsFindOut.webm",
    "key": "lsFindOut",
    "speaker": "swiftee",
    "text": "आइए पता लगाएँ।",
@@ -704,7 +705,7 @@
    "seconds": 1.306
   },
   {
-   "file": "lsDragVertexA.mp3",
+   "file": "lsDragVertexA.webm",
    "key": "lsDragVertexA",
    "speaker": "swiftee",
    "text": "शीर्ष A को ड्रैग करें।",
@@ -716,7 +717,7 @@
    "seconds": 1.541
   },
   {
-   "file": "lsMakeLegsSame.mp3",
+   "file": "lsMakeLegsSame.webm",
    "key": "lsMakeLegsSame",
    "speaker": "swiftee",
    "text": "दोनों असमांतर भुजाएँ\nबराबर लंबी करें!",
@@ -725,7 +726,7 @@
    "seconds": 2.482
   },
   {
-   "file": "lsPerfectEqual.mp3",
+   "file": "lsPerfectEqual.webm",
    "key": "lsPerfectEqual",
    "speaker": "swiftee",
    "text": "एकदम सही! दोनों असमांतर भुजाएँ बराबर हैं।",
@@ -734,7 +735,7 @@
    "seconds": 3.082
   },
   {
-   "file": "lsWatch.mp3",
+   "file": "lsWatch.webm",
    "key": "lsWatch",
    "speaker": "swiftee",
    "text": "ध्यान से देखें!",
@@ -743,7 +744,7 @@
    "seconds": 1.228
   },
   {
-   "file": "lsAdBecomes.mp3",
+   "file": "lsAdBecomes.webm",
    "key": "lsAdBecomes",
    "speaker": "swiftee",
    "text": "AD भी BC की तरह 5 cm हो जाती है।",
@@ -758,7 +759,7 @@
    "seconds": 2.952
   },
   {
-   "file": "lsNowLegsEqual.mp3",
+   "file": "lsNowLegsEqual.webm",
    "key": "lsNowLegsEqual",
    "speaker": "swiftee",
    "text": "अब दोनों असमांतर भुजाएँ बराबर हैं!",
@@ -767,7 +768,7 @@
    "seconds": 2.299
   },
   {
-   "file": "lsDragAKeep.5_1.mp3",
+   "file": "lsDragAKeep.5_1.webm",
    "key": "lsDragAKeep",
    "variant": "5_1",
    "speaker": "swiftee",
@@ -782,7 +783,7 @@
    "seconds": 6.713
   },
   {
-   "file": "lsDragAKeep.5_2.mp3",
+   "file": "lsDragAKeep.5_2.webm",
    "key": "lsDragAKeep",
    "variant": "5_2",
    "speaker": "swiftee",
@@ -797,7 +798,7 @@
    "seconds": 6.661
   },
   {
-   "file": "lsDragAKeep.5_3.mp3",
+   "file": "lsDragAKeep.5_3.webm",
    "key": "lsDragAKeep",
    "variant": "5_3",
    "speaker": "swiftee",
@@ -812,7 +813,7 @@
    "seconds": 6.713
   },
   {
-   "file": "lsDragAKeep.5_4.mp3",
+   "file": "lsDragAKeep.5_4.webm",
    "key": "lsDragAKeep",
    "variant": "5_4",
    "speaker": "swiftee",
@@ -827,7 +828,7 @@
    "seconds": 6.478
   },
   {
-   "file": "lsDragAKeep.5_5.mp3",
+   "file": "lsDragAKeep.5_5.webm",
    "key": "lsDragAKeep",
    "variant": "5_5",
    "speaker": "swiftee",
@@ -842,7 +843,7 @@
    "seconds": 6.557
   },
   {
-   "file": "lsDragAKeep.5_6.mp3",
+   "file": "lsDragAKeep.5_6.webm",
    "key": "lsDragAKeep",
    "variant": "5_6",
    "speaker": "swiftee",
@@ -857,7 +858,7 @@
    "seconds": 6.896
   },
   {
-   "file": "lsDragAKeep.5_7.mp3",
+   "file": "lsDragAKeep.5_7.webm",
    "key": "lsDragAKeep",
    "variant": "5_7",
    "speaker": "swiftee",
@@ -872,7 +873,7 @@
    "seconds": 6.792
   },
   {
-   "file": "lsDragAKeep.5_8.mp3",
+   "file": "lsDragAKeep.5_8.webm",
    "key": "lsDragAKeep",
    "variant": "5_8",
    "speaker": "swiftee",
@@ -887,7 +888,7 @@
    "seconds": 7.367
   },
   {
-   "file": "lsDragAKeep.5_9.mp3",
+   "file": "lsDragAKeep.5_9.webm",
    "key": "lsDragAKeep",
    "variant": "5_9",
    "speaker": "swiftee",
@@ -902,7 +903,7 @@
    "seconds": 7.21
   },
   {
-   "file": "lsDragAKeep.6.mp3",
+   "file": "lsDragAKeep.6.webm",
    "key": "lsDragAKeep",
    "variant": "6",
    "speaker": "swiftee",
@@ -917,7 +918,7 @@
    "seconds": 5.904
   },
   {
-   "file": "lsDragAKeep.6_1.mp3",
+   "file": "lsDragAKeep.6_1.webm",
    "key": "lsDragAKeep",
    "variant": "6_1",
    "speaker": "swiftee",
@@ -932,7 +933,7 @@
    "seconds": 6.949
   },
   {
-   "file": "lsDragAKeep.6_2.mp3",
+   "file": "lsDragAKeep.6_2.webm",
    "key": "lsDragAKeep",
    "variant": "6_2",
    "speaker": "swiftee",
@@ -947,7 +948,7 @@
    "seconds": 6.975
   },
   {
-   "file": "lsDragAKeep.6_3.mp3",
+   "file": "lsDragAKeep.6_3.webm",
    "key": "lsDragAKeep",
    "variant": "6_3",
    "speaker": "swiftee",
@@ -962,7 +963,7 @@
    "seconds": 6.896
   },
   {
-   "file": "lsDragAKeep.6_4.mp3",
+   "file": "lsDragAKeep.6_4.webm",
    "key": "lsDragAKeep",
    "variant": "6_4",
    "speaker": "swiftee",
@@ -977,7 +978,7 @@
    "seconds": 6.844
   },
   {
-   "file": "lsDragAKeep.6_5.mp3",
+   "file": "lsDragAKeep.6_5.webm",
    "key": "lsDragAKeep",
    "variant": "6_5",
    "speaker": "swiftee",
@@ -992,7 +993,7 @@
    "seconds": 6.792
   },
   {
-   "file": "lsDragAKeep.6_6.mp3",
+   "file": "lsDragAKeep.6_6.webm",
    "key": "lsDragAKeep",
    "variant": "6_6",
    "speaker": "swiftee",
@@ -1007,7 +1008,7 @@
    "seconds": 6.661
   },
   {
-   "file": "lsDragAKeep.6_7.mp3",
+   "file": "lsDragAKeep.6_7.webm",
    "key": "lsDragAKeep",
    "variant": "6_7",
    "speaker": "swiftee",
@@ -1022,7 +1023,7 @@
    "seconds": 6.896
   },
   {
-   "file": "lsDragAKeep.6_8.mp3",
+   "file": "lsDragAKeep.6_8.webm",
    "key": "lsDragAKeep",
    "variant": "6_8",
    "speaker": "swiftee",
@@ -1037,7 +1038,7 @@
    "seconds": 6.896
   },
   {
-   "file": "lsDragAKeep.6_9.mp3",
+   "file": "lsDragAKeep.6_9.webm",
    "key": "lsDragAKeep",
    "variant": "6_9",
    "speaker": "swiftee",
@@ -1052,7 +1053,7 @@
    "seconds": 6.844
   },
   {
-   "file": "lsDragAKeep.7.mp3",
+   "file": "lsDragAKeep.7.webm",
    "key": "lsDragAKeep",
    "variant": "7",
    "speaker": "swiftee",
@@ -1067,7 +1068,7 @@
    "seconds": 6.113
   },
   {
-   "file": "lsDragAKeep.7_1.mp3",
+   "file": "lsDragAKeep.7_1.webm",
    "key": "lsDragAKeep",
    "variant": "7_1",
    "speaker": "swiftee",
@@ -1082,7 +1083,7 @@
    "seconds": 7.262
   },
   {
-   "file": "lsDragAKeep.7_2.mp3",
+   "file": "lsDragAKeep.7_2.webm",
    "key": "lsDragAKeep",
    "variant": "7_2",
    "speaker": "swiftee",
@@ -1097,7 +1098,7 @@
    "seconds": 6.792
   },
   {
-   "file": "lsDragAKeep.7_3.mp3",
+   "file": "lsDragAKeep.7_3.webm",
    "key": "lsDragAKeep",
    "variant": "7_3",
    "speaker": "swiftee",
@@ -1112,7 +1113,7 @@
    "seconds": 6.74
   },
   {
-   "file": "lsDragAKeep.7_4.mp3",
+   "file": "lsDragAKeep.7_4.webm",
    "key": "lsDragAKeep",
    "variant": "7_4",
    "speaker": "swiftee",
@@ -1127,7 +1128,7 @@
    "seconds": 6.74
   },
   {
-   "file": "lsDragAKeep.7_5.mp3",
+   "file": "lsDragAKeep.7_5.webm",
    "key": "lsDragAKeep",
    "variant": "7_5",
    "speaker": "swiftee",
@@ -1142,7 +1143,7 @@
    "seconds": 6.975
   },
   {
-   "file": "lsDragAKeep.7_6.mp3",
+   "file": "lsDragAKeep.7_6.webm",
    "key": "lsDragAKeep",
    "variant": "7_6",
    "speaker": "swiftee",
@@ -1157,7 +1158,7 @@
    "seconds": 7.027
   },
   {
-   "file": "lsDragABack.4_9.mp3",
+   "file": "lsDragABack.4_9.webm",
    "key": "lsDragABack",
    "variant": "4_9",
    "speaker": "swiftee",
@@ -1172,7 +1173,7 @@
    "seconds": 6.478
   },
   {
-   "file": "lsNowLookTrapezium.mp3",
+   "file": "lsNowLookTrapezium.webm",
    "key": "lsNowLookTrapezium",
    "speaker": "swiftee",
    "text": "अब इस समलंब को देखें!",
@@ -1181,7 +1182,7 @@
    "seconds": 1.646
   },
   {
-   "file": "lsLegsSame.mp3",
+   "file": "lsLegsSame.webm",
    "key": "lsLegsSame",
    "speaker": "swiftee",
    "text": "इसकी असमांतर भुजाएँ बराबर लंबाई की हैं!",
@@ -1190,7 +1191,7 @@
    "seconds": 2.56
   },
   {
-   "file": "lsIsoIs.mp3",
+   "file": "lsIsoIs.webm",
    "key": "lsIsoIs",
    "speaker": "swiftee",
    "text": "यह है समद्विबाहु समलंब!",
@@ -1199,7 +1200,7 @@
    "seconds": 1.933
   },
   {
-   "file": "lsIsoTrapezium.mp3",
+   "file": "lsIsoTrapezium.webm",
    "key": "lsIsoTrapezium",
    "speaker": "swiftee",
    "text": "समद्विबाहु समलंब",
@@ -1208,7 +1209,7 @@
    "seconds": 1.698
   },
   {
-   "file": "lsKnowSides.mp3",
+   "file": "lsKnowSides.webm",
    "key": "lsKnowSides",
    "speaker": "swiftee",
    "text": "समलंब की भुजाओं के बारे में\nहम सब कुछ जानते हैं।",
@@ -1217,7 +1218,7 @@
    "seconds": 3.082
   },
   {
-   "file": "lsThisIso.mp3",
+   "file": "lsThisIso.webm",
    "key": "lsThisIso",
    "speaker": "swiftee",
    "text": "यह एक समद्विबाहु समलंब है।",
@@ -1226,7 +1227,7 @@
    "seconds": 2.011
   },
   {
-   "file": "lsAbCd.mp3",
+   "file": "lsAbCd.webm",
    "key": "lsAbCd",
    "speaker": "swiftee",
    "text": "AB = 6 cm और CD = 10 cm।",
@@ -1241,7 +1242,7 @@
    "seconds": 3.788
   },
   {
-   "file": "lsAd5.mp3",
+   "file": "lsAd5.webm",
    "key": "lsAd5",
    "speaker": "swiftee",
    "text": "AD = 5 cm।",
@@ -1254,7 +1255,7 @@
    "seconds": 1.829
   },
   {
-   "file": "lsHowLongBc.mp3",
+   "file": "lsHowLongBc.webm",
    "key": "lsHowLongBc",
    "speaker": "swiftee",
    "text": "तो BC कितनी लंबी है?",
@@ -1267,7 +1268,7 @@
    "seconds": 1.646
   },
   {
-   "file": "lsYesLegsEqual.mp3",
+   "file": "lsYesLegsEqual.webm",
    "key": "lsYesLegsEqual",
    "speaker": "swiftee",
    "text": "हाँ! असमांतर भुजाएँ बराबर हैं।",
@@ -1276,7 +1277,7 @@
    "seconds": 2.56
   },
   {
-   "file": "lsSoBc5.mp3",
+   "file": "lsSoBc5.webm",
    "key": "lsSoBc5",
    "speaker": "swiftee",
    "text": "तो BC = 5 cm!",
@@ -1289,7 +1290,7 @@
    "seconds": 2.247
   },
   {
-   "file": "lsBcIsLeg.mp3",
+   "file": "lsBcIsLeg.webm",
    "key": "lsBcIsLeg",
    "speaker": "swiftee",
    "text": "हम्म, BC एक असमांतर भुजा है।",
@@ -1302,7 +1303,7 @@
    "seconds": 2.247
   },
   {
-   "file": "lsBothLegsEqual.mp3",
+   "file": "lsBothLegsEqual.webm",
    "key": "lsBothLegsEqual",
    "speaker": "swiftee",
    "text": "और दोनों असमांतर भुजाएँ बराबर होती हैं!",
@@ -1311,7 +1312,7 @@
    "seconds": 2.717
   },
   {
-   "file": "lsOops6Top.mp3",
+   "file": "lsOops6Top.webm",
    "key": "lsOops6Top",
    "speaker": "swiftee",
    "text": "उफ़! 6 cm तो ऊपर वाला आधार AB है।",
@@ -1324,7 +1325,7 @@
    "seconds": 3.03
   },
   {
-   "file": "lsBcLikeAd.mp3",
+   "file": "lsBcLikeAd.webm",
    "key": "lsBcLikeAd",
    "speaker": "swiftee",
    "text": "BC भी AD की तरह एक असमांतर भुजा है।",
@@ -1339,7 +1340,7 @@
    "seconds": 2.717
   },
   {
-   "file": "lsMeasureAngles.mp3",
+   "file": "lsMeasureAngles.webm",
    "key": "lsMeasureAngles",
    "speaker": "swiftee",
    "text": "आइए इसके कोण मापें।",
@@ -1348,7 +1349,7 @@
    "seconds": 1.593
   },
   {
-   "file": "lsNotice.mp3",
+   "file": "lsNotice.webm",
    "key": "lsNotice",
    "speaker": "swiftee",
    "text": "क्या आपने कुछ ध्यान दिया?",
@@ -1357,7 +1358,7 @@
    "seconds": 1.593
   },
   {
-   "file": "lsAdSum180.mp3",
+   "file": "lsAdSum180.webm",
    "key": "lsAdSum180",
    "speaker": "swiftee",
    "text": "∠A और ∠D का योग 180° है।",
@@ -1370,7 +1371,7 @@
    "seconds": 3.396
   },
   {
-   "file": "lsSupplementary.mp3",
+   "file": "lsSupplementary.webm",
    "key": "lsSupplementary",
    "speaker": "swiftee",
    "text": "इसका मतलब है कि ये\nसंपूरक कोण हैं।",
@@ -1379,7 +1380,7 @@
    "seconds": 2.795
   },
   {
-   "file": "lsWhatAboutBc.mp3",
+   "file": "lsWhatAboutBc.webm",
    "key": "lsWhatAboutBc",
    "speaker": "swiftee",
    "text": "अब ∠B और ∠C का क्या?",
@@ -1392,7 +1393,7 @@
    "seconds": 1.829
   },
   {
-   "file": "lsCorrectBcSupp.mp3",
+   "file": "lsCorrectBcSupp.webm",
    "key": "lsCorrectBcSupp",
    "speaker": "swiftee",
    "text": "सही! ∠B और ∠C भी\nसंपूरक कोण हैं।",
@@ -1405,7 +1406,7 @@
    "seconds": 3.082
   },
   {
-   "file": "lsIts180.mp3",
+   "file": "lsIts180.webm",
    "key": "lsIts180",
    "speaker": "swiftee",
    "text": "यह 180° है!",
@@ -1414,7 +1415,7 @@
    "seconds": 1.776
   },
   {
-   "file": "lsBcSum180.mp3",
+   "file": "lsBcSum180.webm",
    "key": "lsBcSum180",
    "speaker": "swiftee",
    "text": "∠B और ∠C का योग भी 180° है।",
@@ -1427,7 +1428,7 @@
    "seconds": 3.396
   },
   {
-   "file": "lsNotQuite.mp3",
+   "file": "lsNotQuite.webm",
    "key": "lsNotQuite",
    "speaker": "swiftee",
    "text": "पूरी तरह सही नहीं। फिर से प्रयास करें।",
@@ -1436,7 +1437,7 @@
    "seconds": 2.56
   },
   {
-   "file": "lsOops360.mp3",
+   "file": "lsOops360.webm",
    "key": "lsOops360",
    "speaker": "swiftee",
    "text": "उफ़! 360° तो चारों कोणों का योग है।",
@@ -1445,7 +1446,7 @@
    "seconds": 3.553
   },
   {
-   "file": "lsTryAgain.mp3",
+   "file": "lsTryAgain.webm",
    "key": "lsTryAgain",
    "speaker": "swiftee",
    "text": "फिर से प्रयास करें!",
@@ -1454,7 +1455,7 @@
    "seconds": 1.411
   },
   {
-   "file": "lsWhatIfChange.mp3",
+   "file": "lsWhatIfChange.webm",
    "key": "lsWhatIfChange",
    "speaker": "swiftee",
    "text": "अगर हम इस समलंब का\nआकार बदल दें, तो?",
@@ -1463,7 +1464,7 @@
    "seconds": 2.612
   },
   {
-   "file": "lsDragAnyVertex.mp3",
+   "file": "lsDragAnyVertex.webm",
    "key": "lsDragAnyVertex",
    "speaker": "swiftee",
    "text": "किसी भी शीर्ष को ड्रैग करें।",
@@ -1472,7 +1473,7 @@
    "seconds": 1.881
   },
   {
-   "file": "lsWatchAngles.mp3",
+   "file": "lsWatchAngles.webm",
    "key": "lsWatchAngles",
    "speaker": "swiftee",
    "text": "कोणों को बदलते हुए देखें!",
@@ -1481,7 +1482,7 @@
    "seconds": 1.829
   },
   {
-   "file": "lsLookSums.mp3",
+   "file": "lsLookSums.webm",
    "key": "lsLookSums",
    "speaker": "swiftee",
    "text": "अब इनके योग देखें!",
@@ -1490,7 +1491,7 @@
    "seconds": 1.515
   },
   {
-   "file": "lsChangeAll.mp3",
+   "file": "lsChangeAll.webm",
    "key": "lsChangeAll",
    "speaker": "swiftee",
    "text": "आकार को जितना चाहें बदलें!",
@@ -1499,7 +1500,7 @@
    "seconds": 1.959
   },
   {
-   "file": "lsStill180.mp3",
+   "file": "lsStill180.webm",
    "key": "lsStill180",
    "speaker": "swiftee",
    "text": "फिर भी इनका योग 180° ही रहता है!",
@@ -1508,7 +1509,7 @@
    "seconds": 2.978
   },
   {
-   "file": "lsRuleEvery.mp3",
+   "file": "lsRuleEvery.webm",
    "key": "lsRuleEvery",
    "speaker": "swiftee",
    "text": "यह रहा हर समलंब का एक नियम!",
@@ -1517,7 +1518,7 @@
    "seconds": 2.011
   },
   {
-   "file": "lsTakeTwo.mp3",
+   "file": "lsTakeTwo.webm",
    "key": "lsTakeTwo",
    "speaker": "swiftee",
    "text": "एक असमांतर भुजा पर बने दो कोण लें।",
@@ -1526,7 +1527,7 @@
    "seconds": 2.429
   },
   {
-   "file": "lsAlways180.mp3",
+   "file": "lsAlways180.webm",
    "key": "lsAlways180",
    "speaker": "swiftee",
    "text": "इनका योग हमेशा 180° होता है!",
@@ -1535,7 +1536,7 @@
    "seconds": 2.664
   },
   {
-   "file": "lsLookA120.mp3",
+   "file": "lsLookA120.webm",
    "key": "lsLookA120",
    "speaker": "swiftee",
    "text": "देखें! ∠A = 120°।",
@@ -1547,7 +1548,7 @@
    "seconds": 3.082
   },
   {
-   "file": "lsWhatIsD.mp3",
+   "file": "lsWhatIsD.webm",
    "key": "lsWhatIsD",
    "speaker": "swiftee",
    "text": "तो ∠D कितना है?",
@@ -1559,7 +1560,7 @@
    "seconds": 1.411
   },
   {
-   "file": "lsCorrect180.mp3",
+   "file": "lsCorrect180.webm",
    "key": "lsCorrect180",
    "speaker": "swiftee",
    "text": "सही! 120° + 60° = 180°।",
@@ -1568,7 +1569,7 @@
    "seconds": 4.389
   },
   {
-   "file": "lsSameLeg180.mp3",
+   "file": "lsSameLeg180.webm",
    "key": "lsSameLeg180",
    "speaker": "swiftee",
    "text": "एक ही असमांतर भुजा पर बने कोणों का योग 180° होता है।",
@@ -1577,7 +1578,7 @@
    "seconds": 4.885
   },
   {
-   "file": "lsWhatIf90.mp3",
+   "file": "lsWhatIf90.webm",
    "key": "lsWhatIf90",
    "speaker": "swiftee",
    "text": "अगर हम कोई एक कोण\n90° बना दें, तो?",
@@ -1586,7 +1587,7 @@
    "seconds": 2.769
   },
   {
-   "file": "lsDragTo90.mp3",
+   "file": "lsDragTo90.webm",
    "key": "lsDragTo90",
    "speaker": "swiftee",
    "text": "किसी भी शीर्ष को ड्रैग करके कोई एक कोण 90° बनाएँ।",
@@ -1595,7 +1596,7 @@
    "seconds": 3.683
   },
   {
-   "file": "lsDrag90.A.mp3",
+   "file": "lsDrag90.A.webm",
    "key": "lsDrag90",
    "variant": "A",
    "part": "lead",
@@ -1610,7 +1611,7 @@
    "seconds": 0.705
   },
   {
-   "file": "lsDrag90.B.mp3",
+   "file": "lsDrag90.B.webm",
    "key": "lsDrag90",
    "variant": "B",
    "part": "lead",
@@ -1625,7 +1626,7 @@
    "seconds": 0.705
   },
   {
-   "file": "lsDrag90.C.mp3",
+   "file": "lsDrag90.C.webm",
    "key": "lsDrag90",
    "variant": "C",
    "part": "lead",
@@ -1640,7 +1641,7 @@
    "seconds": 0.758
   },
   {
-   "file": "lsDrag90.D.mp3",
+   "file": "lsDrag90.D.webm",
    "key": "lsDrag90",
    "variant": "D",
    "part": "lead",
@@ -1655,7 +1656,7 @@
    "seconds": 0.758
   },
   {
-   "file": "lsDrag90.39.mp3",
+   "file": "lsDrag90.39.webm",
    "key": "lsDrag90",
    "variant": "39",
    "part": "tail",
@@ -1667,7 +1668,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.40.mp3",
+   "file": "lsDrag90.40.webm",
    "key": "lsDrag90",
    "variant": "40",
    "part": "tail",
@@ -1679,7 +1680,7 @@
    "seconds": 4.441
   },
   {
-   "file": "lsDrag90.41.mp3",
+   "file": "lsDrag90.41.webm",
    "key": "lsDrag90",
    "variant": "41",
    "part": "tail",
@@ -1691,7 +1692,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.42.mp3",
+   "file": "lsDrag90.42.webm",
    "key": "lsDrag90",
    "variant": "42",
    "part": "tail",
@@ -1703,7 +1704,7 @@
    "seconds": 4.519
   },
   {
-   "file": "lsDrag90.43.mp3",
+   "file": "lsDrag90.43.webm",
    "key": "lsDrag90",
    "variant": "43",
    "part": "tail",
@@ -1715,7 +1716,7 @@
    "seconds": 4.702
   },
   {
-   "file": "lsDrag90.44.mp3",
+   "file": "lsDrag90.44.webm",
    "key": "lsDrag90",
    "variant": "44",
    "part": "tail",
@@ -1727,7 +1728,7 @@
    "seconds": 4.702
   },
   {
-   "file": "lsDrag90.45.mp3",
+   "file": "lsDrag90.45.webm",
    "key": "lsDrag90",
    "variant": "45",
    "part": "tail",
@@ -1739,7 +1740,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.46.mp3",
+   "file": "lsDrag90.46.webm",
    "key": "lsDrag90",
    "variant": "46",
    "part": "tail",
@@ -1751,7 +1752,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.47.mp3",
+   "file": "lsDrag90.47.webm",
    "key": "lsDrag90",
    "variant": "47",
    "part": "tail",
@@ -1763,7 +1764,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.48.mp3",
+   "file": "lsDrag90.48.webm",
    "key": "lsDrag90",
    "variant": "48",
    "part": "tail",
@@ -1775,7 +1776,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.49.mp3",
+   "file": "lsDrag90.49.webm",
    "key": "lsDrag90",
    "variant": "49",
    "part": "tail",
@@ -1787,7 +1788,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.50.mp3",
+   "file": "lsDrag90.50.webm",
    "key": "lsDrag90",
    "variant": "50",
    "part": "tail",
@@ -1799,7 +1800,7 @@
    "seconds": 4.624
   },
   {
-   "file": "lsDrag90.51.mp3",
+   "file": "lsDrag90.51.webm",
    "key": "lsDrag90",
    "variant": "51",
    "part": "tail",
@@ -1811,7 +1812,7 @@
    "seconds": 4.937
   },
   {
-   "file": "lsDrag90.52.mp3",
+   "file": "lsDrag90.52.webm",
    "key": "lsDrag90",
    "variant": "52",
    "part": "tail",
@@ -1823,7 +1824,7 @@
    "seconds": 4.571
   },
   {
-   "file": "lsDrag90.53.mp3",
+   "file": "lsDrag90.53.webm",
    "key": "lsDrag90",
    "variant": "53",
    "part": "tail",
@@ -1835,7 +1836,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.54.mp3",
+   "file": "lsDrag90.54.webm",
    "key": "lsDrag90",
    "variant": "54",
    "part": "tail",
@@ -1847,7 +1848,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.55.mp3",
+   "file": "lsDrag90.55.webm",
    "key": "lsDrag90",
    "variant": "55",
    "part": "tail",
@@ -1859,7 +1860,7 @@
    "seconds": 4.571
   },
   {
-   "file": "lsDrag90.56.mp3",
+   "file": "lsDrag90.56.webm",
    "key": "lsDrag90",
    "variant": "56",
    "part": "tail",
@@ -1871,7 +1872,7 @@
    "seconds": 4.702
   },
   {
-   "file": "lsDrag90.57.mp3",
+   "file": "lsDrag90.57.webm",
    "key": "lsDrag90",
    "variant": "57",
    "part": "tail",
@@ -1883,7 +1884,7 @@
    "seconds": 4.807
   },
   {
-   "file": "lsDrag90.58.mp3",
+   "file": "lsDrag90.58.webm",
    "key": "lsDrag90",
    "variant": "58",
    "part": "tail",
@@ -1895,7 +1896,7 @@
    "seconds": 4.571
   },
   {
-   "file": "lsDrag90.59.mp3",
+   "file": "lsDrag90.59.webm",
    "key": "lsDrag90",
    "variant": "59",
    "part": "tail",
@@ -1907,7 +1908,7 @@
    "seconds": 4.571
   },
   {
-   "file": "lsDrag90.60.mp3",
+   "file": "lsDrag90.60.webm",
    "key": "lsDrag90",
    "variant": "60",
    "part": "tail",
@@ -1919,7 +1920,7 @@
    "seconds": 4.519
   },
   {
-   "file": "lsDrag90.61.mp3",
+   "file": "lsDrag90.61.webm",
    "key": "lsDrag90",
    "variant": "61",
    "part": "tail",
@@ -1931,7 +1932,7 @@
    "seconds": 4.702
   },
   {
-   "file": "lsDrag90.62.mp3",
+   "file": "lsDrag90.62.webm",
    "key": "lsDrag90",
    "variant": "62",
    "part": "tail",
@@ -1943,7 +1944,7 @@
    "seconds": 4.467
   },
   {
-   "file": "lsDrag90.63.mp3",
+   "file": "lsDrag90.63.webm",
    "key": "lsDrag90",
    "variant": "63",
    "part": "tail",
@@ -1955,7 +1956,7 @@
    "seconds": 4.624
   },
   {
-   "file": "lsDrag90.64.mp3",
+   "file": "lsDrag90.64.webm",
    "key": "lsDrag90",
    "variant": "64",
    "part": "tail",
@@ -1967,7 +1968,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.65.mp3",
+   "file": "lsDrag90.65.webm",
    "key": "lsDrag90",
    "variant": "65",
    "part": "tail",
@@ -1979,7 +1980,7 @@
    "seconds": 4.519
   },
   {
-   "file": "lsDrag90.66.mp3",
+   "file": "lsDrag90.66.webm",
    "key": "lsDrag90",
    "variant": "66",
    "part": "tail",
@@ -1991,7 +1992,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.67.mp3",
+   "file": "lsDrag90.67.webm",
    "key": "lsDrag90",
    "variant": "67",
    "part": "tail",
@@ -2003,7 +2004,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.68.mp3",
+   "file": "lsDrag90.68.webm",
    "key": "lsDrag90",
    "variant": "68",
    "part": "tail",
@@ -2015,7 +2016,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.69.mp3",
+   "file": "lsDrag90.69.webm",
    "key": "lsDrag90",
    "variant": "69",
    "part": "tail",
@@ -2027,7 +2028,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.70.mp3",
+   "file": "lsDrag90.70.webm",
    "key": "lsDrag90",
    "variant": "70",
    "part": "tail",
@@ -2039,7 +2040,7 @@
    "seconds": 4.571
   },
   {
-   "file": "lsDrag90.71.mp3",
+   "file": "lsDrag90.71.webm",
    "key": "lsDrag90",
    "variant": "71",
    "part": "tail",
@@ -2051,7 +2052,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.72.mp3",
+   "file": "lsDrag90.72.webm",
    "key": "lsDrag90",
    "variant": "72",
    "part": "tail",
@@ -2063,7 +2064,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.73.mp3",
+   "file": "lsDrag90.73.webm",
    "key": "lsDrag90",
    "variant": "73",
    "part": "tail",
@@ -2075,7 +2076,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.74.mp3",
+   "file": "lsDrag90.74.webm",
    "key": "lsDrag90",
    "variant": "74",
    "part": "tail",
@@ -2087,7 +2088,7 @@
    "seconds": 4.571
   },
   {
-   "file": "lsDrag90.75.mp3",
+   "file": "lsDrag90.75.webm",
    "key": "lsDrag90",
    "variant": "75",
    "part": "tail",
@@ -2099,7 +2100,7 @@
    "seconds": 4.807
   },
   {
-   "file": "lsDrag90.76.mp3",
+   "file": "lsDrag90.76.webm",
    "key": "lsDrag90",
    "variant": "76",
    "part": "tail",
@@ -2111,7 +2112,7 @@
    "seconds": 4.885
   },
   {
-   "file": "lsDrag90.77.mp3",
+   "file": "lsDrag90.77.webm",
    "key": "lsDrag90",
    "variant": "77",
    "part": "tail",
@@ -2123,7 +2124,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.78.mp3",
+   "file": "lsDrag90.78.webm",
    "key": "lsDrag90",
    "variant": "78",
    "part": "tail",
@@ -2135,7 +2136,7 @@
    "seconds": 4.885
   },
   {
-   "file": "lsDrag90.79.mp3",
+   "file": "lsDrag90.79.webm",
    "key": "lsDrag90",
    "variant": "79",
    "part": "tail",
@@ -2147,7 +2148,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.80.mp3",
+   "file": "lsDrag90.80.webm",
    "key": "lsDrag90",
    "variant": "80",
    "part": "tail",
@@ -2159,7 +2160,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.81.mp3",
+   "file": "lsDrag90.81.webm",
    "key": "lsDrag90",
    "variant": "81",
    "part": "tail",
@@ -2171,7 +2172,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.82.mp3",
+   "file": "lsDrag90.82.webm",
    "key": "lsDrag90",
    "variant": "82",
    "part": "tail",
@@ -2183,7 +2184,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.83.mp3",
+   "file": "lsDrag90.83.webm",
    "key": "lsDrag90",
    "variant": "83",
    "part": "tail",
@@ -2195,7 +2196,7 @@
    "seconds": 4.624
   },
   {
-   "file": "lsDrag90.84.mp3",
+   "file": "lsDrag90.84.webm",
    "key": "lsDrag90",
    "variant": "84",
    "part": "tail",
@@ -2207,7 +2208,7 @@
    "seconds": 4.65
   },
   {
-   "file": "lsDrag90.85.mp3",
+   "file": "lsDrag90.85.webm",
    "key": "lsDrag90",
    "variant": "85",
    "part": "tail",
@@ -2219,7 +2220,7 @@
    "seconds": 4.807
   },
   {
-   "file": "lsDrag90.95.mp3",
+   "file": "lsDrag90.95.webm",
    "key": "lsDrag90",
    "variant": "95",
    "part": "tail",
@@ -2231,7 +2232,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.96.mp3",
+   "file": "lsDrag90.96.webm",
    "key": "lsDrag90",
    "variant": "96",
    "part": "tail",
@@ -2243,7 +2244,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.97.mp3",
+   "file": "lsDrag90.97.webm",
    "key": "lsDrag90",
    "variant": "97",
    "part": "tail",
@@ -2255,7 +2256,7 @@
    "seconds": 4.807
   },
   {
-   "file": "lsDrag90.98.mp3",
+   "file": "lsDrag90.98.webm",
    "key": "lsDrag90",
    "variant": "98",
    "part": "tail",
@@ -2267,7 +2268,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.99.mp3",
+   "file": "lsDrag90.99.webm",
    "key": "lsDrag90",
    "variant": "99",
    "part": "tail",
@@ -2279,7 +2280,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.100.mp3",
+   "file": "lsDrag90.100.webm",
    "key": "lsDrag90",
    "variant": "100",
    "part": "tail",
@@ -2291,7 +2292,7 @@
    "seconds": 4.885
   },
   {
-   "file": "lsDrag90.101.mp3",
+   "file": "lsDrag90.101.webm",
    "key": "lsDrag90",
    "variant": "101",
    "part": "tail",
@@ -2303,7 +2304,7 @@
    "seconds": 4.885
   },
   {
-   "file": "lsDrag90.102.mp3",
+   "file": "lsDrag90.102.webm",
    "key": "lsDrag90",
    "variant": "102",
    "part": "tail",
@@ -2315,7 +2316,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.103.mp3",
+   "file": "lsDrag90.103.webm",
    "key": "lsDrag90",
    "variant": "103",
    "part": "tail",
@@ -2327,7 +2328,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.104.mp3",
+   "file": "lsDrag90.104.webm",
    "key": "lsDrag90",
    "variant": "104",
    "part": "tail",
@@ -2339,7 +2340,7 @@
    "seconds": 5.042
   },
   {
-   "file": "lsDrag90.105.mp3",
+   "file": "lsDrag90.105.webm",
    "key": "lsDrag90",
    "variant": "105",
    "part": "tail",
@@ -2351,7 +2352,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.106.mp3",
+   "file": "lsDrag90.106.webm",
    "key": "lsDrag90",
    "variant": "106",
    "part": "tail",
@@ -2363,7 +2364,7 @@
    "seconds": 4.807
   },
   {
-   "file": "lsDrag90.107.mp3",
+   "file": "lsDrag90.107.webm",
    "key": "lsDrag90",
    "variant": "107",
    "part": "tail",
@@ -2375,7 +2376,7 @@
    "seconds": 4.937
   },
   {
-   "file": "lsDrag90.108.mp3",
+   "file": "lsDrag90.108.webm",
    "key": "lsDrag90",
    "variant": "108",
    "part": "tail",
@@ -2387,7 +2388,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.109.mp3",
+   "file": "lsDrag90.109.webm",
    "key": "lsDrag90",
    "variant": "109",
    "part": "tail",
@@ -2399,7 +2400,7 @@
    "seconds": 4.754
   },
   {
-   "file": "lsDrag90.110.mp3",
+   "file": "lsDrag90.110.webm",
    "key": "lsDrag90",
    "variant": "110",
    "part": "tail",
@@ -2411,7 +2412,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.111.mp3",
+   "file": "lsDrag90.111.webm",
    "key": "lsDrag90",
    "variant": "111",
    "part": "tail",
@@ -2423,7 +2424,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.112.mp3",
+   "file": "lsDrag90.112.webm",
    "key": "lsDrag90",
    "variant": "112",
    "part": "tail",
@@ -2435,7 +2436,7 @@
    "seconds": 4.885
   },
   {
-   "file": "lsDrag90.113.mp3",
+   "file": "lsDrag90.113.webm",
    "key": "lsDrag90",
    "variant": "113",
    "part": "tail",
@@ -2447,7 +2448,7 @@
    "seconds": 5.068
   },
   {
-   "file": "lsDrag90.114.mp3",
+   "file": "lsDrag90.114.webm",
    "key": "lsDrag90",
    "variant": "114",
    "part": "tail",
@@ -2459,7 +2460,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.115.mp3",
+   "file": "lsDrag90.115.webm",
    "key": "lsDrag90",
    "variant": "115",
    "part": "tail",
@@ -2471,7 +2472,7 @@
    "seconds": 5.277
   },
   {
-   "file": "lsDrag90.116.mp3",
+   "file": "lsDrag90.116.webm",
    "key": "lsDrag90",
    "variant": "116",
    "part": "tail",
@@ -2483,7 +2484,7 @@
    "seconds": 5.46
   },
   {
-   "file": "lsDrag90.117.mp3",
+   "file": "lsDrag90.117.webm",
    "key": "lsDrag90",
    "variant": "117",
    "part": "tail",
@@ -2495,7 +2496,7 @@
    "seconds": 5.303
   },
   {
-   "file": "lsDrag90.118.mp3",
+   "file": "lsDrag90.118.webm",
    "key": "lsDrag90",
    "variant": "118",
    "part": "tail",
@@ -2507,7 +2508,7 @@
    "seconds": 5.042
   },
   {
-   "file": "lsDrag90.119.mp3",
+   "file": "lsDrag90.119.webm",
    "key": "lsDrag90",
    "variant": "119",
    "part": "tail",
@@ -2519,7 +2520,7 @@
    "seconds": 4.859
   },
   {
-   "file": "lsDrag90.120.mp3",
+   "file": "lsDrag90.120.webm",
    "key": "lsDrag90",
    "variant": "120",
    "part": "tail",
@@ -2531,7 +2532,7 @@
    "seconds": 5.042
   },
   {
-   "file": "lsDrag90.121.mp3",
+   "file": "lsDrag90.121.webm",
    "key": "lsDrag90",
    "variant": "121",
    "part": "tail",
@@ -2543,7 +2544,7 @@
    "seconds": 5.068
   },
   {
-   "file": "lsDrag90.122.mp3",
+   "file": "lsDrag90.122.webm",
    "key": "lsDrag90",
    "variant": "122",
    "part": "tail",
@@ -2555,7 +2556,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.123.mp3",
+   "file": "lsDrag90.123.webm",
    "key": "lsDrag90",
    "variant": "123",
    "part": "tail",
@@ -2567,7 +2568,7 @@
    "seconds": 4.807
   },
   {
-   "file": "lsDrag90.124.mp3",
+   "file": "lsDrag90.124.webm",
    "key": "lsDrag90",
    "variant": "124",
    "part": "tail",
@@ -2579,7 +2580,7 @@
    "seconds": 5.042
   },
   {
-   "file": "lsDrag90.125.mp3",
+   "file": "lsDrag90.125.webm",
    "key": "lsDrag90",
    "variant": "125",
    "part": "tail",
@@ -2591,7 +2592,7 @@
    "seconds": 4.885
   },
   {
-   "file": "lsDrag90.126.mp3",
+   "file": "lsDrag90.126.webm",
    "key": "lsDrag90",
    "variant": "126",
    "part": "tail",
@@ -2603,7 +2604,7 @@
    "seconds": 5.355
   },
   {
-   "file": "lsDrag90.127.mp3",
+   "file": "lsDrag90.127.webm",
    "key": "lsDrag90",
    "variant": "127",
    "part": "tail",
@@ -2615,7 +2616,7 @@
    "seconds": 5.12
   },
   {
-   "file": "lsDrag90.128.mp3",
+   "file": "lsDrag90.128.webm",
    "key": "lsDrag90",
    "variant": "128",
    "part": "tail",
@@ -2627,7 +2628,7 @@
    "seconds": 5.12
   },
   {
-   "file": "lsDrag90.129.mp3",
+   "file": "lsDrag90.129.webm",
    "key": "lsDrag90",
    "variant": "129",
    "part": "tail",
@@ -2639,7 +2640,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.130.mp3",
+   "file": "lsDrag90.130.webm",
    "key": "lsDrag90",
    "variant": "130",
    "part": "tail",
@@ -2651,7 +2652,7 @@
    "seconds": 5.172
   },
   {
-   "file": "lsDrag90.131.mp3",
+   "file": "lsDrag90.131.webm",
    "key": "lsDrag90",
    "variant": "131",
    "part": "tail",
@@ -2663,7 +2664,7 @@
    "seconds": 4.937
   },
   {
-   "file": "lsDrag90.132.mp3",
+   "file": "lsDrag90.132.webm",
    "key": "lsDrag90",
    "variant": "132",
    "part": "tail",
@@ -2675,7 +2676,7 @@
    "seconds": 5.172
   },
   {
-   "file": "lsDrag90.133.mp3",
+   "file": "lsDrag90.133.webm",
    "key": "lsDrag90",
    "variant": "133",
    "part": "tail",
@@ -2687,7 +2688,7 @@
    "seconds": 5.355
   },
   {
-   "file": "lsDrag90.134.mp3",
+   "file": "lsDrag90.134.webm",
    "key": "lsDrag90",
    "variant": "134",
    "part": "tail",
@@ -2699,7 +2700,7 @@
    "seconds": 5.355
   },
   {
-   "file": "lsDrag90.135.mp3",
+   "file": "lsDrag90.135.webm",
    "key": "lsDrag90",
    "variant": "135",
    "part": "tail",
@@ -2711,7 +2712,7 @@
    "seconds": 5.068
   },
   {
-   "file": "lsDrag90.136.mp3",
+   "file": "lsDrag90.136.webm",
    "key": "lsDrag90",
    "variant": "136",
    "part": "tail",
@@ -2723,7 +2724,7 @@
    "seconds": 5.224
   },
   {
-   "file": "lsDrag90.137.mp3",
+   "file": "lsDrag90.137.webm",
    "key": "lsDrag90",
    "variant": "137",
    "part": "tail",
@@ -2735,7 +2736,7 @@
    "seconds": 5.277
   },
   {
-   "file": "lsDrag90.138.mp3",
+   "file": "lsDrag90.138.webm",
    "key": "lsDrag90",
    "variant": "138",
    "part": "tail",
@@ -2747,7 +2748,7 @@
    "seconds": 5.303
   },
   {
-   "file": "lsDrag90.139.mp3",
+   "file": "lsDrag90.139.webm",
    "key": "lsDrag90",
    "variant": "139",
    "part": "tail",
@@ -2759,7 +2760,7 @@
    "seconds": 4.989
   },
   {
-   "file": "lsDrag90.140.mp3",
+   "file": "lsDrag90.140.webm",
    "key": "lsDrag90",
    "variant": "140",
    "part": "tail",
@@ -2771,7 +2772,7 @@
    "seconds": 5.303
   },
   {
-   "file": "lsDrag90.141.mp3",
+   "file": "lsDrag90.141.webm",
    "key": "lsDrag90",
    "variant": "141",
    "part": "tail",
@@ -2783,7 +2784,7 @@
    "seconds": 5.172
   },
   {
-   "file": "lsGreatJob.mp3",
+   "file": "lsGreatJob.webm",
    "key": "lsGreatJob",
    "speaker": "swiftee",
    "text": "बहुत बढ़िया!",
@@ -2792,7 +2793,7 @@
    "seconds": 1.097
   },
   {
-   "file": "lsWatch90.A.mp3",
+   "file": "lsWatch90.A.webm",
    "key": "lsWatch90",
    "variant": "A",
    "speaker": "swiftee",
@@ -2805,7 +2806,7 @@
    "seconds": 4.206
   },
   {
-   "file": "lsWatch90.B.mp3",
+   "file": "lsWatch90.B.webm",
    "key": "lsWatch90",
    "variant": "B",
    "speaker": "swiftee",
@@ -2818,7 +2819,7 @@
    "seconds": 4.101
   },
   {
-   "file": "lsWatch90.C.mp3",
+   "file": "lsWatch90.C.webm",
    "key": "lsWatch90",
    "variant": "C",
    "speaker": "swiftee",
@@ -2831,7 +2832,7 @@
    "seconds": 4.049
   },
   {
-   "file": "lsWatch90.D.mp3",
+   "file": "lsWatch90.D.webm",
    "key": "lsWatch90",
    "variant": "D",
    "speaker": "swiftee",
@@ -2844,7 +2845,7 @@
    "seconds": 4.206
   },
   {
-   "file": "lsAnotherRight.mp3",
+   "file": "lsAnotherRight.webm",
    "key": "lsAnotherRight",
    "speaker": "swiftee",
    "text": "अरे वाह! हमें एक और\nसमकोण मिल गया।",
@@ -2853,7 +2854,7 @@
    "seconds": 2.717
   },
   {
-   "file": "lsTwoRight.mp3",
+   "file": "lsTwoRight.webm",
    "key": "lsTwoRight",
    "speaker": "swiftee",
    "text": "अगल-बगल दो समकोण!",
@@ -2862,7 +2863,7 @@
    "seconds": 1.463
   },
   {
-   "file": "lsRightIs.mp3",
+   "file": "lsRightIs.webm",
    "key": "lsRightIs",
    "speaker": "swiftee",
    "text": "यह है समकोण समलंब!",
@@ -2871,7 +2872,7 @@
    "seconds": 1.593
   },
   {
-   "file": "lsRightTrapezium.mp3",
+   "file": "lsRightTrapezium.webm",
    "key": "lsRightTrapezium",
    "speaker": "swiftee",
    "text": "समकोण समलंब",
@@ -2880,7 +2881,7 @@
    "seconds": 1.411
   },
   {
-   "file": "lsWhichType.mp3",
+   "file": "lsWhichType.webm",
    "key": "lsWhichType",
    "speaker": "swiftee",
    "text": "यह किस प्रकार का समलंब है?",
@@ -2889,7 +2890,7 @@
    "seconds": 1.724
   },
   {
-   "file": "lsRightLegsEqual.mp3",
+   "file": "lsRightLegsEqual.webm",
    "key": "lsRightLegsEqual",
    "speaker": "swiftee",
    "text": "बिल्कुल सही! इसकी असमांतर भुजाएँ बराबर हैं।",
@@ -2898,7 +2899,7 @@
    "seconds": 3.265
   },
   {
-   "file": "lsSoIso.mp3",
+   "file": "lsSoIso.webm",
    "key": "lsSoIso",
    "speaker": "swiftee",
    "text": "तो यह समद्विबाहु समलंब है!",
@@ -2907,7 +2908,7 @@
    "seconds": 2.011
   },
   {
-   "file": "lsScalene.mp3",
+   "file": "lsScalene.webm",
    "key": "lsScalene",
    "speaker": "swiftee",
    "text": "विषमबाहु",
@@ -2916,7 +2917,7 @@
    "seconds": 1.176
   },
   {
-   "file": "lsIsosceles.mp3",
+   "file": "lsIsosceles.webm",
    "key": "lsIsosceles",
    "speaker": "swiftee",
    "text": "समद्विबाहु",
@@ -2925,7 +2926,7 @@
    "seconds": 1.306
   },
   {
-   "file": "lsRight.mp3",
+   "file": "lsRight.webm",
    "key": "lsRight",
    "speaker": "swiftee",
    "text": "समकोण",
@@ -2934,7 +2935,7 @@
    "seconds": 0.993
   },
   {
-   "file": "lsLookMarks.mp3",
+   "file": "lsLookMarks.webm",
    "key": "lsLookMarks",
    "speaker": "swiftee",
    "text": "इन छोटे निशानों को देखें!",
@@ -2943,7 +2944,7 @@
    "seconds": 1.724
   },
   {
-   "file": "lsMarksEqual.mp3",
+   "file": "lsMarksEqual.webm",
    "key": "lsMarksEqual",
    "speaker": "swiftee",
    "text": "ये बताते हैं कि असमांतर भुजाएँ बराबर हैं।",
@@ -2952,7 +2953,7 @@
    "seconds": 2.847
   },
   {
-   "file": "lsNoRight.mp3",
+   "file": "lsNoRight.webm",
    "key": "lsNoRight",
    "speaker": "swiftee",
    "text": "यहाँ कोई समकोण नहीं है!",
@@ -2961,7 +2962,7 @@
    "seconds": 1.698
   },
   {
-   "file": "lsLookLegs.mp3",
+   "file": "lsLookLegs.webm",
    "key": "lsLookLegs",
    "speaker": "swiftee",
    "text": "इसके बजाय असमांतर भुजाओं को देखें।",
@@ -2970,7 +2971,7 @@
    "seconds": 2.717
   },
   {
-   "file": "lsDragLabels.mp3",
+   "file": "lsDragLabels.webm",
    "key": "lsDragLabels",
    "speaker": "swiftee",
    "text": "लेबलों को ड्रैग करके उनकी\nसही जगह पर रखें।",
@@ -2979,7 +2980,7 @@
    "seconds": 2.847
   },
   {
-   "file": "lsQ4Clue.mp3",
+   "file": "lsQ4Clue.webm",
    "key": "lsQ4Clue",
    "speaker": "swiftee",
    "text": "चमकते संकेत को देखें। किस आकृति पर वह निशान है?",
@@ -2988,7 +2989,7 @@
    "seconds": 3.605
   },
   {
-   "file": "lsQ4TryAgain.mp3",
+   "file": "lsQ4TryAgain.webm",
    "key": "lsQ4TryAgain",
    "speaker": "swiftee",
    "text": "फिर से प्रयास करें! आकृतियों को ध्यान से देखें।",
@@ -2997,7 +2998,7 @@
    "seconds": 3.213
   },
   {
-   "file": "lsQ4WentBack.mp3",
+   "file": "lsQ4WentBack.webm",
    "key": "lsQ4WentBack",
    "speaker": "swiftee",
    "text": "कुछ लेबल वापस चले गए। निशान देखें: बराबर असमांतर भुजाएँ, समकोण, या इनमें से कोई नहीं।",
@@ -3006,7 +3007,7 @@
    "seconds": 7.576
   },
   {
-   "file": "lsBrilliant.mp3",
+   "file": "lsBrilliant.webm",
    "key": "lsBrilliant",
    "speaker": "swiftee",
    "text": "शानदार! आपने तीनों समलंबों पर लेबल लगा दिए।",
@@ -3015,7 +3016,7 @@
    "seconds": 3.5
   },
   {
-   "file": "lsRecall.mp3",
+   "file": "lsRecall.webm",
    "key": "lsRecall",
    "speaker": "swiftee",
    "text": "आइए याद करें, आज\nहमने क्या सीखा।",
@@ -3024,7 +3025,7 @@
    "seconds": 2.769
   },
   {
-   "file": "lsAmazing.mp3",
+   "file": "lsAmazing.webm",
    "key": "lsAmazing",
    "speaker": "swiftee",
    "text": "कमाल का काम! अब आप समलंब के बारे में सब कुछ जानते हैं।",
@@ -3033,7 +3034,7 @@
    "seconds": 3.814
   },
   {
-   "file": "lsBye.mp3",
+   "file": "lsBye.webm",
    "key": "lsBye",
    "speaker": "swiftee",
    "text": "अभी के लिए अलविदा! फिर मिलेंगे\nअगले बर्फ़ीले रोमांच में!",
@@ -3042,7 +3043,7 @@
    "seconds": 3.135
   },
   {
-   "file": "lsTheEndSaid.mp3",
+   "file": "lsTheEndSaid.webm",
    "key": "lsTheEndSaid",
    "speaker": "swiftee",
    "text": "समाप्त!",
@@ -3051,7 +3052,7 @@
    "seconds": 0.94
   },
   {
-   "file": "lsBase.mp3",
+   "file": "lsBase.webm",
    "key": "lsBase",
    "speaker": "swiftee",
    "text": "आधार",
@@ -3060,7 +3061,7 @@
    "seconds": 0.94
   },
   {
-   "file": "lsLeg.mp3",
+   "file": "lsLeg.webm",
    "key": "lsLeg",
    "speaker": "swiftee",
    "text": "असमांतर भुजा",
@@ -3069,7 +3070,7 @@
    "seconds": 1.358
   },
   {
-   "file": "sumTrapezium.mp3",
+   "file": "sumTrapezium.webm",
    "key": "sumTrapezium",
    "speaker": "swiftee",
    "text": "समलंब एक ऐसा चतुर्भुज है जिसमें समांतर भुजाओं का कम से कम एक जोड़ा होता है।",
@@ -3078,7 +3079,7 @@
    "seconds": 5.695
   },
   {
-   "file": "sumBasesLabel.mp3",
+   "file": "sumBasesLabel.webm",
    "key": "sumBasesLabel",
    "speaker": "swiftee",
    "text": "आधार भुजाएँ",
@@ -3087,7 +3088,7 @@
    "seconds": 1.176
   },
   {
-   "file": "sumBases.mp3",
+   "file": "sumBases.webm",
    "key": "sumBases",
    "speaker": "swiftee",
    "text": "समांतर भुजाओं को आधार कहते हैं।",
@@ -3096,7 +3097,7 @@
    "seconds": 2.142
   },
   {
-   "file": "sumLegsLabel.mp3",
+   "file": "sumLegsLabel.webm",
    "key": "sumLegsLabel",
    "speaker": "swiftee",
    "text": "असमांतर भुजाएँ",
@@ -3105,7 +3106,7 @@
    "seconds": 1.463
   },
   {
-   "file": "sumLegs.mp3",
+   "file": "sumLegs.webm",
    "key": "sumLegs",
    "speaker": "swiftee",
    "text": "बाक़ी दो भुजाओं को असमांतर भुजाएँ कहते हैं।",
@@ -3114,7 +3115,7 @@
    "seconds": 2.717
   },
   {
-   "file": "sumScalene.mp3",
+   "file": "sumScalene.webm",
    "key": "sumScalene",
    "speaker": "swiftee",
    "text": "विषमबाहु समलंब की भुजाएँ अलग-अलग लंबाई की होती हैं।",
@@ -3123,7 +3124,7 @@
    "seconds": 3.814
   },
   {
-   "file": "sumIsosceles.mp3",
+   "file": "sumIsosceles.webm",
    "key": "sumIsosceles",
    "speaker": "swiftee",
    "text": "समद्विबाहु समलंब की असमांतर भुजाएँ बराबर लंबाई की होती हैं।",
@@ -3132,7 +3133,7 @@
    "seconds": 4.206
   },
   {
-   "file": "sumRightLabel.mp3",
+   "file": "sumRightLabel.webm",
    "key": "sumRightLabel",
    "speaker": "swiftee",
    "text": "समकोणीय",
@@ -3141,7 +3142,7 @@
    "seconds": 1.097
   },
   {
-   "file": "sumRight.mp3",
+   "file": "sumRight.webm",
    "key": "sumRight",
    "speaker": "swiftee",
    "text": "समकोण समलंब में दो समकोण अगल-बगल होते हैं।",
@@ -3150,7 +3151,7 @@
    "seconds": 3.03
   },
   {
-   "file": "sumAngleSumLabel.mp3",
+   "file": "sumAngleSumLabel.webm",
    "key": "sumAngleSumLabel",
    "speaker": "swiftee",
    "text": "कोणों का योग",
@@ -3159,7 +3160,7 @@
    "seconds": 1.28
   },
   {
-   "file": "sumSupplementaryLabel.mp3",
+   "file": "sumSupplementaryLabel.webm",
    "key": "sumSupplementaryLabel",
    "speaker": "swiftee",
    "text": "संपूरक",
@@ -3168,7 +3169,7 @@
    "seconds": 1.097
   },
   {
-   "file": "sumSupplementary.mp3",
+   "file": "sumSupplementary.webm",
    "key": "sumSupplementary",
    "speaker": "swiftee",
    "text": "जिन दो कोणों का योग 180° होता है, वे संपूरक कोण कहलाते हैं।",
@@ -3177,7 +3178,7 @@
    "seconds": 5.12
   },
   {
-   "file": "f2GreatJob.mp3",
+   "file": "f2GreatJob.webm",
    "key": "f2GreatJob",
    "speaker": "swiftee",
    "text": "बहुत *बढ़िया!*",
@@ -3186,7 +3187,7 @@
    "seconds": 1.097
   },
   {
-   "file": "f2KnowTrapeziums.mp3",
+   "file": "f2KnowTrapeziums.webm",
    "key": "f2KnowTrapeziums",
    "speaker": "swiftee",
    "text": "आप *समलंबों* के बारे में सब कुछ जानते हैं!",
@@ -3195,7 +3196,7 @@
    "seconds": 2.612
   },
   {
-   "file": "f2HelpPopo.mp3",
+   "file": "f2HelpPopo.webm",
    "key": "f2HelpPopo",
    "speaker": "swiftee",
    "text": "अब आइए, *मछलियाँ* पकड़ने में पोपो की मदद करें!",
@@ -3204,7 +3205,7 @@
    "seconds": 3.082
   },
   {
-   "file": "f2UseRod.mp3",
+   "file": "f2UseRod.webm",
    "key": "f2UseRod",
    "speaker": "swiftee",
    "text": "फ़िशिंग रॉड से *निशाना* लगाएँ…",
@@ -3213,7 +3214,7 @@
    "seconds": 1.829
   },
   {
-   "file": "f2DropHook.mp3",
+   "file": "f2DropHook.webm",
    "key": "f2DropHook",
    "speaker": "swiftee",
    "text": "…और काँटा *सही* मछली पर गिराएँ।",
@@ -3222,7 +3223,7 @@
    "seconds": 2.064
   },
   {
-   "file": "f2CatchAllTrapeziums.mp3",
+   "file": "f2CatchAllTrapeziums.webm",
    "key": "f2CatchAllTrapeziums",
    "speaker": "narrator",
    "text": "सारे *समलंब* पकड़ें!",
@@ -3231,7 +3232,7 @@
    "seconds": 1.541
   },
   {
-   "file": "f2HintParallel.mp3",
+   "file": "f2HintParallel.webm",
    "key": "f2HintParallel",
    "speaker": "narrator",
    "text": "*समांतर* भुजाएँ ढूँढें!",
@@ -3240,7 +3241,7 @@
    "seconds": 1.698
   },
   {
-   "file": "f2WhyNoParallel.mp3",
+   "file": "f2WhyNoParallel.webm",
    "key": "f2WhyNoParallel",
    "speaker": "popo",
    "text": "कोई *समांतर* भुजा नहीं!",
@@ -3249,7 +3250,7 @@
    "seconds": 1.698
   },
   {
-   "file": "f2CatchScalene.mp3",
+   "file": "f2CatchScalene.webm",
    "key": "f2CatchScalene",
    "speaker": "narrator",
    "text": "*विषमबाहु* समलंब पकड़ें!",
@@ -3258,7 +3259,7 @@
    "seconds": 1.724
   },
   {
-   "file": "f2HintLegLengths.mp3",
+   "file": "f2HintLegLengths.webm",
    "key": "f2HintLegLengths",
    "speaker": "narrator",
    "text": "*असमांतर* भुजाओं की लंबाई जाँचें!",
@@ -3267,7 +3268,7 @@
    "seconds": 2.351
   },
   {
-   "file": "f2WhyLegsEqual.mp3",
+   "file": "f2WhyLegsEqual.webm",
    "key": "f2WhyLegsEqual",
    "speaker": "popo",
    "text": "इसकी असमांतर भुजाएँ *बराबर* हैं!",
@@ -3276,7 +3277,7 @@
    "seconds": 2.247
   },
   {
-   "file": "f2CatchIsosceles.mp3",
+   "file": "f2CatchIsosceles.webm",
    "key": "f2CatchIsosceles",
    "speaker": "narrator",
    "text": "*समद्विबाहु* समलंब पकड़ें!",
@@ -3285,7 +3286,7 @@
    "seconds": 1.881
   },
   {
-   "file": "f2HintLegsEqual.mp3",
+   "file": "f2HintLegsEqual.webm",
    "key": "f2HintLegsEqual",
    "speaker": "narrator",
    "text": "क्या असमांतर भुजाएँ *बराबर* हैं?",
@@ -3294,7 +3295,7 @@
    "seconds": 2.194
   },
   {
-   "file": "f2WhyLegsDifferent.mp3",
+   "file": "f2WhyLegsDifferent.webm",
    "key": "f2WhyLegsDifferent",
    "speaker": "popo",
    "text": "इसकी असमांतर भुजाएँ *अलग-अलग* हैं!",
@@ -3303,7 +3304,7 @@
    "seconds": 2.978
   },
   {
-   "file": "f2CatchRightAngled.mp3",
+   "file": "f2CatchRightAngled.webm",
    "key": "f2CatchRightAngled",
    "speaker": "narrator",
    "text": "समकोण *समलंब* पकड़ें!",
@@ -3312,7 +3313,7 @@
    "seconds": 1.593
   },
   {
-   "file": "f2HintTwoRight.mp3",
+   "file": "f2HintTwoRight.webm",
    "key": "f2HintTwoRight",
    "speaker": "narrator",
    "text": "दो *समकोण* ढूँढें!",
@@ -3321,7 +3322,7 @@
    "seconds": 1.515
   },
   {
-   "file": "f2WhyNoRight.mp3",
+   "file": "f2WhyNoRight.webm",
    "key": "f2WhyNoRight",
    "speaker": "popo",
    "text": "कोई *समकोण* नहीं!",
@@ -3330,7 +3331,7 @@
    "seconds": 1.411
   },
   {
-   "file": "f2RecallParallel.mp3",
+   "file": "f2RecallParallel.webm",
    "key": "f2RecallParallel",
    "speaker": "swiftee",
    "text": "देखें! ये दो भुजाएँ *समांतर* हैं!",
@@ -3339,7 +3340,7 @@
    "seconds": 2.534
   },
   {
-   "file": "f2Remember.mp3",
+   "file": "f2Remember.webm",
    "key": "f2Remember",
    "speaker": "swiftee",
    "text": "*याद* रखें,",
@@ -3348,7 +3349,7 @@
    "seconds": 1.045
   },
   {
-   "file": "f2AnglesSameLeg.mp3",
+   "file": "f2AnglesSameLeg.webm",
    "key": "f2AnglesSameLeg",
    "speaker": "swiftee",
    "text": "समलंब की एक ही *असमांतर* भुजा पर बने कोण…",
@@ -3357,7 +3358,7 @@
    "seconds": 2.9
   },
   {
-   "file": "f2AddUp180.mp3",
+   "file": "f2AddUp180.webm",
    "key": "f2AddUp180",
    "speaker": "swiftee",
    "text": "मिलकर *180°* बनाते हैं!",
@@ -3366,7 +3367,7 @@
    "seconds": 2.377
   },
   {
-   "file": "f2Detective.mp3",
+   "file": "f2Detective.webm",
    "key": "f2Detective",
    "speaker": "swiftee",
    "text": "हुर्रे! आकृति *जासूस!*",
@@ -3375,7 +3376,7 @@
    "seconds": 2.299
   },
   {
-   "file": "f2LookMarked.mp3",
+   "file": "f2LookMarked.webm",
    "key": "f2LookMarked",
    "speaker": "swiftee",
    "text": "निशान लगे *कोणों* को देखें!",
@@ -3384,7 +3385,7 @@
    "seconds": 1.724
   },
   {
-   "file": "f2HintAddAngles.mp3",
+   "file": "f2HintAddAngles.webm",
    "key": "f2HintAddAngles",
    "speaker": "narrator",
    "text": "निशान लगे *कोणों* को जोड़ें!",
@@ -3393,7 +3394,7 @@
    "seconds": 1.724
   },
   {
-   "file": "f2WhyNot180.mp3",
+   "file": "f2WhyNot180.webm",
    "key": "f2WhyNot180",
    "speaker": "popo",
    "text": "इन कोणों का योग *180°* नहीं है!",
@@ -3402,7 +3403,7 @@
    "seconds": 3.788
   },
   {
-   "file": "f2OopsNotTrapezium.mp3",
+   "file": "f2OopsNotTrapezium.webm",
    "key": "f2OopsNotTrapezium",
    "speaker": "popo",
    "text": "यह *समलंब* नहीं है।",
@@ -3411,7 +3412,7 @@
    "seconds": 1.829
   },
   {
-   "file": "f2OopsTryAgain.mp3",
+   "file": "f2OopsTryAgain.webm",
    "key": "f2OopsTryAgain",
    "speaker": "popo",
    "text": "*फिर* से प्रयास करें!",
@@ -3420,7 +3421,7 @@
    "seconds": 1.593
   },
   {
-   "file": "f2NotTrapeziumCard.mp3",
+   "file": "f2NotTrapeziumCard.webm",
    "key": "f2NotTrapeziumCard",
    "speaker": "narrator",
    "text": "यह तो *समलंब* नहीं है!",
@@ -3429,7 +3430,7 @@
    "seconds": 1.515
   },
   {
-   "file": "f2Wow.mp3",
+   "file": "f2Wow.webm",
    "key": "f2Wow",
    "speaker": "popo",
    "text": "*वाह!*",
@@ -3438,7 +3439,7 @@
    "seconds": 0.862
   },
   {
-   "file": "f2WhatACatch.mp3",
+   "file": "f2WhatACatch.webm",
    "key": "f2WhatACatch",
    "speaker": "popo",
    "text": "क्या ज़बरदस्त *पकड़!*",
@@ -3447,7 +3448,7 @@
    "seconds": 1.724
   },
   {
-   "file": "f2GiantFish.mp3",
+   "file": "f2GiantFish.webm",
    "key": "f2GiantFish",
    "speaker": "popo",
    "text": "बाप रे! एक *विशाल* मछली!",
@@ -3456,7 +3457,7 @@
    "seconds": 2.847
   },
   {
-   "file": "f2ComeOn.mp3",
+   "file": "f2ComeOn.webm",
    "key": "f2ComeOn",
    "speaker": "popo",
    "text": "आ *जा*, बड़ी मछली!",
@@ -3465,7 +3466,7 @@
    "seconds": 1.776
   },
   {
-   "file": "f2Eek.mp3",
+   "file": "f2Eek.webm",
    "key": "f2Eek",
    "speaker": "swiftee",
    "text": "*उई!*",
@@ -3474,7 +3475,7 @@
    "seconds": 0.679
   },
   {
-   "file": "f2Huh.mp3",
+   "file": "f2Huh.webm",
    "key": "f2Huh",
    "speaker": "popo",
    "text": "हैं?!",
@@ -3483,7 +3484,7 @@
    "seconds": 0.81
   },
   {
-   "file": "f2GoodCatch.mp3",
+   "file": "f2GoodCatch.webm",
    "key": "f2GoodCatch",
    "speaker": "swiftee",
    "text": "बढ़िया पकड़, *पोपो!*",
@@ -3492,7 +3493,7 @@
    "seconds": 1.646
   },
   {
-   "file": "f2PopoLaughs.mp3",
+   "file": "f2PopoLaughs.webm",
    "key": "f2PopoLaughs",
    "speaker": "popo",
    "text": "हा हा *हा!*",
@@ -3501,7 +3502,7 @@
    "seconds": 1.123
   },
   {
-   "file": "f2SwifteeLaughs.mp3",
+   "file": "f2SwifteeLaughs.webm",
    "key": "f2SwifteeLaughs",
    "speaker": "swiftee",
    "text": "खी खी *खी!*",
@@ -3510,7 +3511,7 @@
    "seconds": 1.045
   },
   {
-   "file": "f2YouDidIt.mp3",
+   "file": "f2YouDidIt.webm",
    "key": "f2YouDidIt",
    "speaker": "swiftee",
    "text": "आपने *कर* दिखाया!",

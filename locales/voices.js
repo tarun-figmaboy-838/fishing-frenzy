@@ -2,7 +2,7 @@
 // Each language's own voice-over: its folder, and per clip [key, who says it, seconds, the line on
 // screen, where each corner letter is said (share of the line) or 0]. Read by shell/i18n.js.
 window.LOCALE_VOICES = {
-  "gu": { "dir": "assets/VO-GU/", "ext": "mp3", "clips": [
+  "gu": { "dir": "assets/VO-GU/", "ext": "webm", "clips": [
     ["theEnd", "narrator", 1.019, "સમાપ્ત", 0],
     ["shapeTriangle", "narrator", 0.862, "ત્રિકોણ", 0],
     ["shapeSquare", "narrator", 0.94, "ચોરસ", 0],
@@ -328,7 +328,7 @@ window.LOCALE_VOICES = {
     ["f2SwifteeLaughs", "swiftee", 1.097, "હી હી *હી!*", 0],
     ["f2YouDidIt", "swiftee", 1.593, "તમે *કરી* બતાવ્યું!", 0]
   ] },
-  "hi": { "dir": "assets/VO-HI/", "ext": "mp3", "clips": [
+  "hi": { "dir": "assets/VO-HI/", "ext": "webm", "clips": [
     ["theEnd", "narrator", 0.993, "समाप्त", 0],
     ["shapeTriangle", "narrator", 0.888, "त्रिभुज", 0],
     ["shapeSquare", "narrator", 0.862, "वर्ग", 0],
@@ -654,7 +654,7 @@ window.LOCALE_VOICES = {
     ["f2SwifteeLaughs", "swiftee", 1.045, "खी खी *खी!*", 0],
     ["f2YouDidIt", "swiftee", 1.463, "आपने *कर* दिखाया!", 0]
   ] },
-  "mr": { "dir": "assets/VO-MR/", "ext": "mp3", "clips": [
+  "mr": { "dir": "assets/VO-MR/", "ext": "webm", "clips": [
     ["theEnd", "narrator", 0.94, "समाप्त", 0],
     ["shapeTriangle", "narrator", 0.862, "त्रिकोण", 0],
     ["shapeSquare", "narrator", 0.94, "चौरस", 0],

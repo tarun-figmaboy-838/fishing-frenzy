@@ -3,7 +3,9 @@
 const { SHEET_DATA, FISH_ATLAS } = PopoGame;
 
 // (No title banner or Play button: the journey's front page, index.html at the root, has them.)
-const BACKGROUNDS = PopoGame.BACKGROUND_DATA || [1, 2, 3, 4].map((n) => `assets/backgrounds/location-${n}.webp`);
+// The four backgrounds, as data URLs (src/background-data.js, which index.html always loads first: WebGL can use them
+// even when the game is opened straight from the file system).
+const BACKGROUNDS = PopoGame.BACKGROUND_DATA;
 
 const assets = {
   backgrounds: [],
@@ -30,8 +32,8 @@ function loadImage(src) {
   });
 }
 
-// Each background comes with a water mask (white where the surface waves may move it).
-const WATER_MASKS = PopoGame.WATER_MASKS || [1, 2, 3, 4].map((n) => `assets/backgrounds/water-${n}.png`);
+// Each background comes with a water mask (white where the surface waves may move it), in the same file.
+const WATER_MASKS = PopoGame.WATER_MASKS;
 
 function preloadBackground(index) {
   if (!pending.has(index)) {
