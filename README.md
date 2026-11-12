@@ -207,6 +207,10 @@ assets/
   VO-HI/                the Hindi voice-over: one MP3 per spoken line, and manifest.json (tools/voice-elevenlabs.py)
   VO-MR/                the Marathi voice-over, the same way
   VO-GU/                the Gujarati voice-over, the same way
+  VO-EN/                the English voice-over by key: the existing recordings (lesson .ogg, fishing .mp3), and the
+                        lines that had none recorded with ElevenLabs in a clone of the same studio voice (.mp3), with
+                        manifest.json (tools/collect-vo-en.py, --record); not played from here: English still plays
+                        its recordings from the parts
 shell/
   journey.js            the journey: parts, loading, sound, hand-overs, the ?dev=1 panel
   front-page.js         the Fishing Frenzy title, alive
@@ -221,7 +225,7 @@ parts/
   fishing-2/            Popo's trapezium fishing
 drafts/banners/         the two banners not in use: Trapezium Adventure (the lesson's), Shape Fish Adventure
 tools/                  the scarf bake, Swiftee's voice and its build, the locales build (build-locales.py), the
-                        Hindi voice-over (voice-elevenlabs.py)
+                        Hindi voice-over (voice-elevenlabs.py), the English one gathered and completed (collect-vo-en.py)
 tests/journey.py        the whole journey in real browsers
 ```
 

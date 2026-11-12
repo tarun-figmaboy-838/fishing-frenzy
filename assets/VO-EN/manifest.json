@@ -1,0 +1,2705 @@
+{
+ "language": "en",
+ "source": "the existing English recordings, and the lines that had none recorded in a clone of the same voice (see each clip's \"source\")",
+ "tool": "tools/collect-vo-en.py",
+ "clips": [
+  {
+   "key": "popoWhoopsie",
+   "speaker": "popo",
+   "text": "Whoopsie Doopsie!",
+   "file": "popoWhoopsie.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"popo:whoopsie doopsie!\"",
+   "seconds": 1.752
+  },
+  {
+   "key": "popoGreatCatch",
+   "speaker": "popo",
+   "text": "*Great* catch!",
+   "file": "popoGreatCatch.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"popo:great catch!\"",
+   "seconds": 1.248
+  },
+  {
+   "key": "f1StoryLoves",
+   "speaker": "narrator",
+   "text": "Popo *loves* fishing.",
+   "file": "f1StoryLoves.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:popo loves fishing.\"",
+   "seconds": 1.632
+  },
+  {
+   "key": "f1StoryToday",
+   "speaker": "narrator",
+   "text": "And today…",
+   "file": "f1StoryToday.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:and today...\"",
+   "seconds": 0.96
+  },
+  {
+   "key": "f1StoryAllKinds",
+   "speaker": "narrator",
+   "text": "he wants to catch *all* kinds of fish!",
+   "file": "f1StoryAllKinds.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:he wants to catch all kinds of fish!\"",
+   "seconds": 2.784
+  },
+  {
+   "key": "f1CatchAll",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "Catch all the *Triangle* fish!",
+   "file": "f1CatchAll.triangle.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:catch all the triangle fish!\"",
+   "seconds": 2.208
+  },
+  {
+   "key": "f1CatchAll",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "Catch all the *Pentagon* fish!",
+   "file": "f1CatchAll.pentagon.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:catch all the pentagon fish!\"",
+   "seconds": 2.16
+  },
+  {
+   "key": "f1CatchAll",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "Catch all the *Hexagon* fish!",
+   "file": "f1CatchAll.hexagon.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:catch all the hexagon fish!\"",
+   "seconds": 2.112
+  },
+  {
+   "key": "f1CatchAll",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "Catch all the *Quadrilateral* fish!",
+   "file": "f1CatchAll.quadrilateral.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:catch all the quadrilateral fish!\"",
+   "seconds": 2.424
+  },
+  {
+   "key": "f1Catch",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "Catch the *Triangle* fish!",
+   "file": "f1Catch.triangle.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:catch the triangle fish!\"",
+   "seconds": 1.872
+  },
+  {
+   "key": "f1Catch",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "Catch the *Pentagon* fish!",
+   "file": "f1Catch.pentagon.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:catch the pentagon fish!\"",
+   "seconds": 2.112
+  },
+  {
+   "key": "f1Catch",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "Catch the *Hexagon* fish!",
+   "file": "f1Catch.hexagon.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:catch the hexagon fish!\"",
+   "seconds": 1.92
+  },
+  {
+   "key": "f1Catch",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "Catch the *Quadrilateral* fish!",
+   "file": "f1Catch.quadrilateral.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"narrator:catch the quadrilateral fish!\"",
+   "seconds": 2.184
+  },
+  {
+   "key": "f1Woah",
+   "speaker": "popo",
+   "text": "*Woah!*",
+   "file": "f1Woah.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"popo:woah!\"",
+   "seconds": 0.552
+  },
+  {
+   "key": "f1NotSeen",
+   "speaker": "popo",
+   "text": "I haven't seen *that* one before!",
+   "file": "f1NotSeen.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"popo:i haven't seen that one before!\"",
+   "seconds": 2.16
+  },
+  {
+   "key": "f1WhatKind",
+   "speaker": "popo",
+   "text": "What *kind* of fish was that?",
+   "file": "f1WhatKind.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"popo:what kind of fish was that?\"",
+   "seconds": 1.824
+  },
+  {
+   "key": "f1FindOut",
+   "speaker": "swiftee",
+   "text": "Let's find *out!*",
+   "file": "f1FindOut.mp3",
+   "source": "parts/fishing-1/src/voice-data.js \"swiftee:let's find out!\"",
+   "seconds": 1.512
+  },
+  {
+   "key": "lsRemember",
+   "speaker": "swiftee",
+   "text": "Remember we learnt about\nquadrilaterals earlier.",
+   "file": "lsRemember.ogg",
+   "source": "parts/lesson/assets/vo/vo001.ogg",
+   "seconds": 3.14
+  },
+  {
+   "key": "lsAnyPolygon",
+   "speaker": "swiftee",
+   "text": "Any polygon with 4 sides\nis called a quadrilateral.",
+   "file": "lsAnyPolygon.ogg",
+   "source": "parts/lesson/assets/vo/vo002.ogg",
+   "seconds": 3.49
+  },
+  {
+   "key": "lsCallIt",
+   "speaker": "swiftee",
+   "text": "We can call it\nquadrilateral ABCD.",
+   "file": "lsCallIt.ogg",
+   "source": "parts/lesson/assets/vo/vo003.ogg",
+   "seconds": 3.64
+  },
+  {
+   "key": "lsSpecialType",
+   "speaker": "swiftee",
+   "text": "This is a special type\nof quadrilateral.",
+   "file": "lsSpecialType.ogg",
+   "source": "parts/lesson/assets/vo/vo004.ogg",
+   "seconds": 2.48
+  },
+  {
+   "key": "lsSeeSpecial",
+   "speaker": "swiftee",
+   "text": "Let's see what\nmakes it special.",
+   "file": "lsSeeSpecial.ogg",
+   "source": "parts/lesson/assets/vo/vo005.ogg",
+   "seconds": 1.82
+  },
+  {
+   "key": "lsLookMeet",
+   "speaker": "swiftee",
+   "text": "These two sides look like they will meet.",
+   "file": "lsLookMeet.ogg",
+   "source": "parts/lesson/assets/vo/vo006.ogg",
+   "seconds": 2.41
+  },
+  {
+   "key": "lsExtendThem",
+   "speaker": "swiftee",
+   "text": "Let's extend them.",
+   "file": "lsExtendThem.ogg",
+   "source": "parts/lesson/assets/vo/vo007.ogg",
+   "seconds": 1.53
+  },
+  {
+   "key": "lsSidesMeet",
+   "speaker": "swiftee",
+   "text": "Woah! The sides meet.",
+   "file": "lsSidesMeet.ogg",
+   "source": "parts/lesson/assets/vo/vo008.ogg",
+   "seconds": 2.28
+  },
+  {
+   "key": "lsCheckOther",
+   "speaker": "swiftee",
+   "text": "Let's check the other\npair of sides.",
+   "file": "lsCheckOther.ogg",
+   "source": "parts/lesson/assets/vo/vo009.ogg",
+   "seconds": 2.4
+  },
+  {
+   "key": "lsPairNotMeet",
+   "speaker": "swiftee",
+   "text": "This pair of sides\ndoes not meet.",
+   "file": "lsPairNotMeet.ogg",
+   "source": "parts/lesson/assets/vo/vo010.ogg",
+   "seconds": 2.46
+  },
+  {
+   "key": "lsMeansParallel",
+   "speaker": "swiftee",
+   "text": "This means the sides are parallel to each other.",
+   "file": "lsMeansParallel.ogg",
+   "source": "parts/lesson/assets/vo/vo011.ogg",
+   "seconds": 3.04
+  },
+  {
+   "key": "lsAbParallelCd",
+   "speaker": "swiftee",
+   "text": "A B is parallel to C D.",
+   "file": "lsAbParallelCd.ogg",
+   "source": "parts/lesson/assets/vo/vo012.ogg",
+   "seconds": 2.05
+  },
+  {
+   "key": "lsBigSecret",
+   "speaker": "swiftee",
+   "text": "Here's the big secret!",
+   "file": "lsBigSecret.ogg",
+   "source": "parts/lesson/assets/vo/vo218.ogg",
+   "seconds": 1.99
+  },
+  {
+   "key": "lsOnePairEnough",
+   "speaker": "swiftee",
+   "text": "One pair of parallel sides\nis enough.",
+   "file": "lsOnePairEnough.ogg",
+   "source": "parts/lesson/assets/vo/vo219.ogg",
+   "seconds": 2.76
+  },
+  {
+   "key": "lsThenTrapezium",
+   "speaker": "swiftee",
+   "text": "Then a quadrilateral\nis a trapezium!",
+   "file": "lsThenTrapezium.ogg",
+   "source": "parts/lesson/assets/vo/vo220.ogg",
+   "seconds": 2.75
+  },
+  {
+   "key": "lsWhichTrapezium",
+   "speaker": "swiftee",
+   "text": "Which of these quadrilaterals is a trapezium?",
+   "file": "lsWhichTrapezium.ogg",
+   "source": "parts/lesson/assets/vo/vo185.ogg",
+   "seconds": 3.14
+  },
+  {
+   "key": "lsCorrect",
+   "speaker": "swiftee",
+   "text": "Correct!",
+   "file": "lsCorrect.ogg",
+   "source": "parts/lesson/assets/vo/vo223.ogg",
+   "seconds": 0.66
+  },
+  {
+   "key": "lsHasOnePair",
+   "speaker": "swiftee",
+   "text": "It has one pair of parallel sides.",
+   "file": "lsHasOnePair.ogg",
+   "source": "parts/lesson/assets/vo/vo224.ogg",
+   "seconds": 2.45
+  },
+  {
+   "key": "lsSoTrapezium",
+   "speaker": "swiftee",
+   "text": "So it's a trapezium!",
+   "file": "lsSoTrapezium.ogg",
+   "source": "parts/lesson/assets/vo/vo225.ogg",
+   "seconds": 1.9
+  },
+  {
+   "key": "lsOopsNoParallel",
+   "speaker": "swiftee",
+   "text": "Oops! No two sides are parallel here.",
+   "file": "lsOopsNoParallel.ogg",
+   "source": "parts/lesson/assets/vo/vo221.ogg",
+   "seconds": 2.75
+  },
+  {
+   "key": "lsNotTrapezium",
+   "speaker": "swiftee",
+   "text": "So it's not a trapezium.",
+   "file": "lsNotTrapezium.ogg",
+   "source": "parts/lesson/assets/vo/vo222.ogg",
+   "seconds": 2.03
+  },
+  {
+   "key": "lsNoParallelAtAll",
+   "speaker": "swiftee",
+   "text": "This shape has no parallel sides at all.",
+   "file": "lsNoParallelAtAll.ogg",
+   "source": "parts/lesson/assets/vo/vo187.ogg",
+   "seconds": 3.15
+  },
+  {
+   "key": "lsCalledBases",
+   "speaker": "swiftee",
+   "text": "The parallel sides\nare called bases.",
+   "file": "lsCalledBases.ogg",
+   "source": "parts/lesson/assets/vo/vo016.ogg",
+   "seconds": 3.02
+  },
+  {
+   "key": "lsCalledLegs",
+   "speaker": "swiftee",
+   "text": "The other two sides\nare called legs.",
+   "file": "lsCalledLegs.ogg",
+   "source": "parts/lesson/assets/vo/vo017.ogg",
+   "seconds": 2.91
+  },
+  {
+   "key": "lsMeasureSides",
+   "speaker": "swiftee",
+   "text": "Let's measure the sides\nof this trapezium.",
+   "file": "lsMeasureSides.ogg",
+   "source": "parts/lesson/assets/vo/vo018.ogg",
+   "seconds": 2.52
+  },
+  {
+   "key": "lsAllDifferent",
+   "speaker": "swiftee",
+   "text": "Woah! All the sides of\nthis trapezium are of\ndifferent lengths.",
+   "file": "lsAllDifferent.ogg",
+   "source": "parts/lesson/assets/vo/vo019.ogg",
+   "seconds": 4.29
+  },
+  {
+   "key": "lsLookTrapezium",
+   "speaker": "swiftee",
+   "text": "Look at this trapezium!",
+   "file": "lsLookTrapezium.ogg",
+   "source": "parts/lesson/assets/vo/vo226.ogg",
+   "seconds": 1.73
+  },
+  {
+   "key": "lsAllSidesDiff",
+   "speaker": "swiftee",
+   "text": "All its sides are\ndifferent lengths.",
+   "file": "lsAllSidesDiff.ogg",
+   "source": "parts/lesson/assets/vo/vo227.ogg",
+   "seconds": 2.56
+  },
+  {
+   "key": "lsScaleneIs",
+   "speaker": "swiftee",
+   "text": "That's a scalene trapezium!",
+   "file": "lsScaleneIs.ogg",
+   "source": "parts/lesson/assets/vo/vo228.ogg",
+   "seconds": 2.33
+  },
+  {
+   "key": "lsLegsDiffToo",
+   "speaker": "swiftee",
+   "text": "Look! Its legs are of\ndifferent length too.",
+   "file": "lsLegsDiffToo.ogg",
+   "source": "parts/lesson/assets/vo/vo021.ogg",
+   "seconds": 3.04
+  },
+  {
+   "key": "lsWhatIfSame",
+   "speaker": "swiftee",
+   "text": "What if the legs were\nthe same length?",
+   "file": "lsWhatIfSame.ogg",
+   "source": "parts/lesson/assets/vo/vo022.ogg",
+   "seconds": 2.3
+  },
+  {
+   "key": "lsFindOut",
+   "speaker": "swiftee",
+   "text": "Let's find out.",
+   "file": "lsFindOut.ogg",
+   "source": "parts/lesson/assets/vo/vo023.ogg",
+   "seconds": 1.49
+  },
+  {
+   "key": "lsDragVertexA",
+   "speaker": "swiftee",
+   "text": "Drag vertex A.",
+   "file": "lsDragVertexA.ogg",
+   "source": "parts/lesson/assets/vo/vo229.ogg",
+   "seconds": 1.51
+  },
+  {
+   "key": "lsMakeLegsSame",
+   "speaker": "swiftee",
+   "text": "Make both legs\nthe same length!",
+   "file": "lsMakeLegsSame.ogg",
+   "source": "parts/lesson/assets/vo/vo230.ogg",
+   "seconds": 2.63
+  },
+  {
+   "key": "lsPerfectEqual",
+   "speaker": "swiftee",
+   "text": "Perfect! Both legs are equal.",
+   "file": "lsPerfectEqual.ogg",
+   "source": "parts/lesson/assets/vo/vo052.ogg",
+   "seconds": 2.56
+  },
+  {
+   "key": "lsWatch",
+   "speaker": "swiftee",
+   "text": "Watch!",
+   "file": "lsWatch.ogg",
+   "source": "parts/lesson/assets/vo/vo231.ogg",
+   "seconds": 0.68
+  },
+  {
+   "key": "lsAdBecomes",
+   "speaker": "swiftee",
+   "text": "AD becomes 5 cm, just like BC.",
+   "file": "lsAdBecomes.ogg",
+   "source": "parts/lesson/assets/vo/vo232.ogg",
+   "seconds": 3.16
+  },
+  {
+   "key": "lsNowLegsEqual",
+   "speaker": "swiftee",
+   "text": "Now both legs are equal!",
+   "file": "lsNowLegsEqual.ogg",
+   "source": "parts/lesson/assets/vo/vo233.ogg",
+   "seconds": 2.23
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_1",
+   "speaker": "swiftee",
+   "text": "AD is 5.1 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_1.ogg",
+   "source": "parts/lesson/assets/vo/vo026.ogg",
+   "seconds": 6.73
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_2",
+   "speaker": "swiftee",
+   "text": "AD is 5.2 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_2.ogg",
+   "source": "parts/lesson/assets/vo/vo027.ogg",
+   "seconds": 7.1
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_3",
+   "speaker": "swiftee",
+   "text": "AD is 5.3 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_3.ogg",
+   "source": "parts/lesson/assets/vo/vo028.ogg",
+   "seconds": 7.59
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_4",
+   "speaker": "swiftee",
+   "text": "AD is 5.4 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_4.ogg",
+   "source": "parts/lesson/assets/vo/vo029.ogg",
+   "seconds": 6.71
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_5",
+   "speaker": "swiftee",
+   "text": "AD is 5.5 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_5.ogg",
+   "source": "parts/lesson/assets/vo/vo030.ogg",
+   "seconds": 7.28
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_6",
+   "speaker": "swiftee",
+   "text": "AD is 5.6 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_6.ogg",
+   "source": "parts/lesson/assets/vo/vo031.ogg",
+   "seconds": 7.16
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_7",
+   "speaker": "swiftee",
+   "text": "AD is 5.7 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_7.ogg",
+   "source": "parts/lesson/assets/vo/vo032.ogg",
+   "seconds": 7.92
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_8",
+   "speaker": "swiftee",
+   "text": "AD is 5.8 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_8.ogg",
+   "source": "parts/lesson/assets/vo/vo033.ogg",
+   "seconds": 6.52
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "5_9",
+   "speaker": "swiftee",
+   "text": "AD is 5.9 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.5_9.ogg",
+   "source": "parts/lesson/assets/vo/vo034.ogg",
+   "seconds": 6.55
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6",
+   "speaker": "swiftee",
+   "text": "AD is 6 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6.ogg",
+   "source": "parts/lesson/assets/vo/vo035.ogg",
+   "seconds": 6.8
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_1",
+   "speaker": "swiftee",
+   "text": "AD is 6.1 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_1.ogg",
+   "source": "parts/lesson/assets/vo/vo036.ogg",
+   "seconds": 7.94
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_2",
+   "speaker": "swiftee",
+   "text": "AD is 6.2 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_2.ogg",
+   "source": "parts/lesson/assets/vo/vo037.ogg",
+   "seconds": 7.45
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_3",
+   "speaker": "swiftee",
+   "text": "AD is 6.3 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_3.ogg",
+   "source": "parts/lesson/assets/vo/vo038.ogg",
+   "seconds": 7.87
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_4",
+   "speaker": "swiftee",
+   "text": "AD is 6.4 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_4.ogg",
+   "source": "parts/lesson/assets/vo/vo039.ogg",
+   "seconds": 7.63
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_5",
+   "speaker": "swiftee",
+   "text": "AD is 6.5 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_5.ogg",
+   "source": "parts/lesson/assets/vo/vo040.ogg",
+   "seconds": 7.4
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_6",
+   "speaker": "swiftee",
+   "text": "AD is 6.6 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_6.ogg",
+   "source": "parts/lesson/assets/vo/vo041.ogg",
+   "seconds": 6.91
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_7",
+   "speaker": "swiftee",
+   "text": "AD is 6.7 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_7.ogg",
+   "source": "parts/lesson/assets/vo/vo042.ogg",
+   "seconds": 7.94
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_8",
+   "speaker": "swiftee",
+   "text": "AD is 6.8 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_8.ogg",
+   "source": "parts/lesson/assets/vo/vo043.ogg",
+   "seconds": 6.94
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "6_9",
+   "speaker": "swiftee",
+   "text": "AD is 6.9 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.6_9.ogg",
+   "source": "parts/lesson/assets/vo/vo044.ogg",
+   "seconds": 7.27
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "7",
+   "speaker": "swiftee",
+   "text": "AD is 7 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.7.ogg",
+   "source": "parts/lesson/assets/vo/vo045.ogg",
+   "seconds": 7.0
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "7_1",
+   "speaker": "swiftee",
+   "text": "AD is 7.1 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.7_1.ogg",
+   "source": "parts/lesson/assets/vo/vo046.ogg",
+   "seconds": 7.55
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "7_2",
+   "speaker": "swiftee",
+   "text": "AD is 7.2 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.7_2.ogg",
+   "source": "parts/lesson/assets/vo/vo047.ogg",
+   "seconds": 7.36
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "7_3",
+   "speaker": "swiftee",
+   "text": "AD is 7.3 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.7_3.ogg",
+   "source": "parts/lesson/assets/vo/vo048.ogg",
+   "seconds": 7.34
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "7_4",
+   "speaker": "swiftee",
+   "text": "AD is 7.4 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.7_4.ogg",
+   "source": "parts/lesson/assets/vo/vo049.ogg",
+   "seconds": 7.57
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "7_5",
+   "speaker": "swiftee",
+   "text": "AD is 7.5 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.7_5.ogg",
+   "source": "parts/lesson/assets/vo/vo050.ogg",
+   "seconds": 7.31
+  },
+  {
+   "key": "lsDragAKeep",
+   "variant": "7_6",
+   "speaker": "swiftee",
+   "text": "AD is 7.6 cm. Keep dragging A until it shows exactly 5 cm.",
+   "file": "lsDragAKeep.7_6.ogg",
+   "source": "parts/lesson/assets/vo/vo051.ogg",
+   "seconds": 7.46
+  },
+  {
+   "key": "lsNowLookTrapezium",
+   "speaker": "swiftee",
+   "text": "Now look at this trapezium!",
+   "file": "lsNowLookTrapezium.ogg",
+   "source": "parts/lesson/assets/vo/vo234.ogg",
+   "seconds": 1.91
+  },
+  {
+   "key": "lsLegsSame",
+   "speaker": "swiftee",
+   "text": "Its legs are the same length!",
+   "file": "lsLegsSame.ogg",
+   "source": "parts/lesson/assets/vo/vo235.ogg",
+   "seconds": 2.06
+  },
+  {
+   "key": "lsIsoIs",
+   "speaker": "swiftee",
+   "text": "It's an isosceles trapezium!",
+   "file": "lsIsoIs.ogg",
+   "source": "parts/lesson/assets/vo/vo236.ogg",
+   "seconds": 2.19
+  },
+  {
+   "key": "lsKnowSides",
+   "speaker": "swiftee",
+   "text": "We know all about the sides\nof a trapezium.",
+   "file": "lsKnowSides.ogg",
+   "source": "parts/lesson/assets/vo/vo055.ogg",
+   "seconds": 3.03
+  },
+  {
+   "key": "lsThisIso",
+   "speaker": "swiftee",
+   "text": "This is an isosceles trapezium.",
+   "file": "lsThisIso.ogg",
+   "source": "parts/lesson/assets/vo/vo237.ogg",
+   "seconds": 2.23
+  },
+  {
+   "key": "lsAbCd",
+   "speaker": "swiftee",
+   "text": "AB = 6 cm and CD = 10 cm.",
+   "file": "lsAbCd.ogg",
+   "source": "parts/lesson/assets/vo/vo238.ogg",
+   "seconds": 5.12
+  },
+  {
+   "key": "lsAd5",
+   "speaker": "swiftee",
+   "text": "AD = 5 cm.",
+   "file": "lsAd5.ogg",
+   "source": "parts/lesson/assets/vo/vo239.ogg",
+   "seconds": 2.37
+  },
+  {
+   "key": "lsHowLongBc",
+   "speaker": "swiftee",
+   "text": "So how long is BC?",
+   "file": "lsHowLongBc.ogg",
+   "source": "parts/lesson/assets/vo/vo240.ogg",
+   "seconds": 2.26
+  },
+  {
+   "key": "lsYesLegsEqual",
+   "speaker": "swiftee",
+   "text": "Yes! The legs are equal.",
+   "file": "lsYesLegsEqual.ogg",
+   "source": "parts/lesson/assets/vo/vo245.ogg",
+   "seconds": 2.68
+  },
+  {
+   "key": "lsSoBc5",
+   "speaker": "swiftee",
+   "text": "So BC = 5 cm!",
+   "file": "lsSoBc5.ogg",
+   "source": "parts/lesson/assets/vo/vo246.ogg",
+   "seconds": 2.96
+  },
+  {
+   "key": "lsBcIsLeg",
+   "speaker": "swiftee",
+   "text": "Hmm, BC is a leg.",
+   "file": "lsBcIsLeg.ogg",
+   "source": "parts/lesson/assets/vo/vo241.ogg",
+   "seconds": 2.71
+  },
+  {
+   "key": "lsBothLegsEqual",
+   "speaker": "swiftee",
+   "text": "And both legs are equal!",
+   "file": "lsBothLegsEqual.ogg",
+   "source": "parts/lesson/assets/vo/vo242.ogg",
+   "seconds": 1.92
+  },
+  {
+   "key": "lsOops6Top",
+   "speaker": "swiftee",
+   "text": "Oops! 6 cm is the top base AB.",
+   "file": "lsOops6Top.ogg",
+   "source": "parts/lesson/assets/vo/vo243.ogg",
+   "seconds": 3.23
+  },
+  {
+   "key": "lsBcLikeAd",
+   "speaker": "swiftee",
+   "text": "BC is a leg, like AD.",
+   "file": "lsBcLikeAd.ogg",
+   "source": "parts/lesson/assets/vo/vo244.ogg",
+   "seconds": 2.99
+  },
+  {
+   "key": "lsMeasureAngles",
+   "speaker": "swiftee",
+   "text": "Let's measure its angles.",
+   "file": "lsMeasureAngles.ogg",
+   "source": "parts/lesson/assets/vo/vo056.ogg",
+   "seconds": 2.23
+  },
+  {
+   "key": "lsNotice",
+   "speaker": "swiftee",
+   "text": "Did you notice something?",
+   "file": "lsNotice.ogg",
+   "source": "parts/lesson/assets/vo/vo057.ogg",
+   "seconds": 1.33
+  },
+  {
+   "key": "lsAdSum180",
+   "speaker": "swiftee",
+   "text": "∠A and ∠D add up to 180°.",
+   "file": "lsAdSum180.ogg",
+   "source": "parts/lesson/assets/vo/vo058.ogg",
+   "seconds": 4.65
+  },
+  {
+   "key": "lsSupplementary",
+   "speaker": "swiftee",
+   "text": "That means they are\nsupplementary angles.",
+   "file": "lsSupplementary.ogg",
+   "source": "parts/lesson/assets/vo/vo059.ogg",
+   "seconds": 2.54
+  },
+  {
+   "key": "lsWhatAboutBc",
+   "speaker": "swiftee",
+   "text": "What about ∠B and ∠C?",
+   "file": "lsWhatAboutBc.ogg",
+   "source": "parts/lesson/assets/vo/vo060.ogg",
+   "seconds": 2.81
+  },
+  {
+   "key": "lsCorrectBcSupp",
+   "speaker": "swiftee",
+   "text": "Correct! ∠B and ∠C are\nsupplementary angles too.",
+   "file": "lsCorrectBcSupp.ogg",
+   "source": "parts/lesson/assets/vo/vo063.ogg",
+   "seconds": 5.08
+  },
+  {
+   "key": "lsIts180",
+   "speaker": "swiftee",
+   "text": "It's 180°!",
+   "file": "lsIts180.ogg",
+   "source": "parts/lesson/assets/vo/vo247.ogg",
+   "seconds": 2.48
+  },
+  {
+   "key": "lsBcSum180",
+   "speaker": "swiftee",
+   "text": "∠B and ∠C add up to 180° too.",
+   "file": "lsBcSum180.ogg",
+   "source": "parts/lesson/assets/vo/vo248.ogg",
+   "seconds": 4.36
+  },
+  {
+   "key": "lsNotQuite",
+   "speaker": "swiftee",
+   "text": "Not quite. Try again.",
+   "file": "lsNotQuite.ogg",
+   "source": "parts/lesson/assets/vo/vo061.ogg",
+   "seconds": 2.38
+  },
+  {
+   "key": "lsOops360",
+   "speaker": "swiftee",
+   "text": "Oops! 360° is all four angles.",
+   "file": "lsOops360.ogg",
+   "source": "parts/lesson/assets/vo/vo249.ogg",
+   "seconds": 4.77
+  },
+  {
+   "key": "lsTryAgain",
+   "speaker": "swiftee",
+   "text": "Try again!",
+   "file": "lsTryAgain.ogg",
+   "source": "parts/lesson/assets/vo/vo250.ogg",
+   "seconds": 0.95
+  },
+  {
+   "key": "lsWhatIfChange",
+   "speaker": "swiftee",
+   "text": "What if we change the shape\nof this trapezium?",
+   "file": "lsWhatIfChange.ogg",
+   "source": "parts/lesson/assets/vo/vo064.ogg",
+   "seconds": 2.79
+  },
+  {
+   "key": "lsDragAnyVertex",
+   "speaker": "swiftee",
+   "text": "Drag any vertex.",
+   "file": "lsDragAnyVertex.ogg",
+   "source": "parts/lesson/assets/vo/vo251.ogg",
+   "seconds": 1.58
+  },
+  {
+   "key": "lsWatchAngles",
+   "speaker": "swiftee",
+   "text": "Watch the angles change!",
+   "file": "lsWatchAngles.ogg",
+   "source": "parts/lesson/assets/vo/vo252.ogg",
+   "seconds": 2.02
+  },
+  {
+   "key": "lsLookSums",
+   "speaker": "swiftee",
+   "text": "Now look at the sums!",
+   "file": "lsLookSums.ogg",
+   "source": "parts/lesson/assets/vo/vo253.ogg",
+   "seconds": 1.66
+  },
+  {
+   "key": "lsChangeAll",
+   "speaker": "swiftee",
+   "text": "Change the shape all you like!",
+   "file": "lsChangeAll.ogg",
+   "source": "parts/lesson/assets/vo/vo254.ogg",
+   "seconds": 2.11
+  },
+  {
+   "key": "lsStill180",
+   "speaker": "swiftee",
+   "text": "They still add up to 180°!",
+   "file": "lsStill180.ogg",
+   "source": "parts/lesson/assets/vo/vo255.ogg",
+   "seconds": 2.78
+  },
+  {
+   "key": "lsRuleEvery",
+   "speaker": "swiftee",
+   "text": "Here's a rule for every trapezium!",
+   "file": "lsRuleEvery.ogg",
+   "source": "parts/lesson/assets/vo/vo256.ogg",
+   "seconds": 2.57
+  },
+  {
+   "key": "lsTakeTwo",
+   "speaker": "swiftee",
+   "text": "Take the two angles on one leg.",
+   "file": "lsTakeTwo.ogg",
+   "source": "parts/lesson/assets/vo/vo257.ogg",
+   "seconds": 2.52
+  },
+  {
+   "key": "lsAlways180",
+   "speaker": "swiftee",
+   "text": "They always add up to 180°!",
+   "file": "lsAlways180.ogg",
+   "source": "parts/lesson/assets/vo/vo258.ogg",
+   "seconds": 3.86
+  },
+  {
+   "key": "lsLookA120",
+   "speaker": "swiftee",
+   "text": "Look! ∠A = 120°.",
+   "file": "lsLookA120.ogg",
+   "source": "parts/lesson/assets/vo/vo259.ogg",
+   "seconds": 3.81
+  },
+  {
+   "key": "lsWhatIsD",
+   "speaker": "swiftee",
+   "text": "So what is ∠D?",
+   "file": "lsWhatIsD.ogg",
+   "source": "parts/lesson/assets/vo/vo260.ogg",
+   "seconds": 1.77
+  },
+  {
+   "key": "lsCorrect180",
+   "speaker": "swiftee",
+   "text": "Correct! 120° + 60° = 180°.",
+   "file": "lsCorrect180.ogg",
+   "source": "parts/lesson/assets/vo/vo194.ogg",
+   "seconds": 5.73
+  },
+  {
+   "key": "lsSameLeg180",
+   "speaker": "swiftee",
+   "text": "Angles on the same leg add up to 180°.",
+   "file": "lsSameLeg180.ogg",
+   "source": "parts/lesson/assets/vo/vo182.ogg",
+   "seconds": 3.71
+  },
+  {
+   "key": "lsWhatIf90",
+   "speaker": "swiftee",
+   "text": "What if we make one of\nthe angles 90°?",
+   "file": "lsWhatIf90.ogg",
+   "source": "parts/lesson/assets/vo/vo069.ogg",
+   "seconds": 3.66
+  },
+  {
+   "key": "lsDragTo90",
+   "speaker": "swiftee",
+   "text": "Drag any vertex to make any angle 90°.",
+   "file": "lsDragTo90.ogg",
+   "source": "parts/lesson/assets/vo/vo070.ogg",
+   "seconds": 3.71
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "A",
+   "speaker": "swiftee",
+   "text": "∠A is",
+   "file": "lsDrag90.A.ogg",
+   "source": "parts/lesson/assets/vo/vo071.ogg",
+   "seconds": 1.71
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "B",
+   "speaker": "swiftee",
+   "text": "∠B is",
+   "file": "lsDrag90.B.ogg",
+   "source": "parts/lesson/assets/vo/vo072.ogg",
+   "seconds": 1.34
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "C",
+   "speaker": "swiftee",
+   "text": "∠C is",
+   "file": "lsDrag90.C.ogg",
+   "source": "parts/lesson/assets/vo/vo073.ogg",
+   "seconds": 1.31
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "D",
+   "speaker": "swiftee",
+   "text": "∠D is",
+   "file": "lsDrag90.D.ogg",
+   "source": "parts/lesson/assets/vo/vo074.ogg",
+   "seconds": 1.61
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "39",
+   "speaker": "swiftee",
+   "text": "39° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.39.ogg",
+   "source": "parts/lesson/assets/vo/vo075.ogg",
+   "seconds": 5.01
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "40",
+   "speaker": "swiftee",
+   "text": "40° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.40.ogg",
+   "source": "parts/lesson/assets/vo/vo076.ogg",
+   "seconds": 4.6
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "41",
+   "speaker": "swiftee",
+   "text": "41° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.41.ogg",
+   "source": "parts/lesson/assets/vo/vo077.ogg",
+   "seconds": 4.3
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "42",
+   "speaker": "swiftee",
+   "text": "42° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.42.ogg",
+   "source": "parts/lesson/assets/vo/vo078.ogg",
+   "seconds": 4.66
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "43",
+   "speaker": "swiftee",
+   "text": "43° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.43.ogg",
+   "source": "parts/lesson/assets/vo/vo079.ogg",
+   "seconds": 4.76
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "44",
+   "speaker": "swiftee",
+   "text": "44° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.44.ogg",
+   "source": "parts/lesson/assets/vo/vo080.ogg",
+   "seconds": 5.02
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "45",
+   "speaker": "swiftee",
+   "text": "45° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.45.ogg",
+   "source": "parts/lesson/assets/vo/vo081.ogg",
+   "seconds": 5.2
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "46",
+   "speaker": "swiftee",
+   "text": "46° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.46.ogg",
+   "source": "parts/lesson/assets/vo/vo082.ogg",
+   "seconds": 4.53
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "47",
+   "speaker": "swiftee",
+   "text": "47° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.47.ogg",
+   "source": "parts/lesson/assets/vo/vo083.ogg",
+   "seconds": 4.72
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "48",
+   "speaker": "swiftee",
+   "text": "48° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.48.ogg",
+   "source": "parts/lesson/assets/vo/vo084.ogg",
+   "seconds": 4.83
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "49",
+   "speaker": "swiftee",
+   "text": "49° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.49.ogg",
+   "source": "parts/lesson/assets/vo/vo085.ogg",
+   "seconds": 4.57
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "50",
+   "speaker": "swiftee",
+   "text": "50° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.50.ogg",
+   "source": "parts/lesson/assets/vo/vo086.ogg",
+   "seconds": 4.04
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "51",
+   "speaker": "swiftee",
+   "text": "51° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.51.ogg",
+   "source": "parts/lesson/assets/vo/vo087.ogg",
+   "seconds": 4.74
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "52",
+   "speaker": "swiftee",
+   "text": "52° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.52.ogg",
+   "source": "parts/lesson/assets/vo/vo088.ogg",
+   "seconds": 4.78
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "53",
+   "speaker": "swiftee",
+   "text": "53° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.53.ogg",
+   "source": "parts/lesson/assets/vo/vo089.ogg",
+   "seconds": 5.04
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "54",
+   "speaker": "swiftee",
+   "text": "54° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.54.ogg",
+   "source": "parts/lesson/assets/vo/vo090.ogg",
+   "seconds": 4.89
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "55",
+   "speaker": "swiftee",
+   "text": "55° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.55.ogg",
+   "source": "parts/lesson/assets/vo/vo091.ogg",
+   "seconds": 4.9
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "56",
+   "speaker": "swiftee",
+   "text": "56° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.56.ogg",
+   "source": "parts/lesson/assets/vo/vo092.ogg",
+   "seconds": 4.96
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "57",
+   "speaker": "swiftee",
+   "text": "57° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.57.ogg",
+   "source": "parts/lesson/assets/vo/vo093.ogg",
+   "seconds": 4.62
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "58",
+   "speaker": "swiftee",
+   "text": "58° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.58.ogg",
+   "source": "parts/lesson/assets/vo/vo094.ogg",
+   "seconds": 4.85
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "59",
+   "speaker": "swiftee",
+   "text": "59° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.59.ogg",
+   "source": "parts/lesson/assets/vo/vo095.ogg",
+   "seconds": 4.98
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "60",
+   "speaker": "swiftee",
+   "text": "60° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.60.ogg",
+   "source": "parts/lesson/assets/vo/vo096.ogg",
+   "seconds": 4.53
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "61",
+   "speaker": "swiftee",
+   "text": "61° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.61.ogg",
+   "source": "parts/lesson/assets/vo/vo097.ogg",
+   "seconds": 4.84
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "62",
+   "speaker": "swiftee",
+   "text": "62° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.62.ogg",
+   "source": "parts/lesson/assets/vo/vo098.ogg",
+   "seconds": 5.29
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "63",
+   "speaker": "swiftee",
+   "text": "63° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.63.ogg",
+   "source": "parts/lesson/assets/vo/vo099.ogg",
+   "seconds": 4.78
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "64",
+   "speaker": "swiftee",
+   "text": "64° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.64.ogg",
+   "source": "parts/lesson/assets/vo/vo100.ogg",
+   "seconds": 4.6
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "65",
+   "speaker": "swiftee",
+   "text": "65° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.65.ogg",
+   "source": "parts/lesson/assets/vo/vo101.ogg",
+   "seconds": 5.0
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "66",
+   "speaker": "swiftee",
+   "text": "66° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.66.ogg",
+   "source": "parts/lesson/assets/vo/vo102.ogg",
+   "seconds": 4.92
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "67",
+   "speaker": "swiftee",
+   "text": "67° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.67.ogg",
+   "source": "parts/lesson/assets/vo/vo103.ogg",
+   "seconds": 4.67
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "68",
+   "speaker": "swiftee",
+   "text": "68° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.68.ogg",
+   "source": "parts/lesson/assets/vo/vo104.ogg",
+   "seconds": 4.84
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "69",
+   "speaker": "swiftee",
+   "text": "69° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.69.ogg",
+   "source": "parts/lesson/assets/vo/vo105.ogg",
+   "seconds": 4.8
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "70",
+   "speaker": "swiftee",
+   "text": "70° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.70.ogg",
+   "source": "parts/lesson/assets/vo/vo106.ogg",
+   "seconds": 4.85
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "71",
+   "speaker": "swiftee",
+   "text": "71° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.71.ogg",
+   "source": "parts/lesson/assets/vo/vo107.ogg",
+   "seconds": 4.8
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "72",
+   "speaker": "swiftee",
+   "text": "72° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.72.ogg",
+   "source": "parts/lesson/assets/vo/vo108.ogg",
+   "seconds": 4.99
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "73",
+   "speaker": "swiftee",
+   "text": "73° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.73.ogg",
+   "source": "parts/lesson/assets/vo/vo109.ogg",
+   "seconds": 5.15
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "74",
+   "speaker": "swiftee",
+   "text": "74° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.74.ogg",
+   "source": "parts/lesson/assets/vo/vo110.ogg",
+   "seconds": 5.35
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "75",
+   "speaker": "swiftee",
+   "text": "75° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.75.ogg",
+   "source": "parts/lesson/assets/vo/vo111.ogg",
+   "seconds": 4.59
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "76",
+   "speaker": "swiftee",
+   "text": "76° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.76.ogg",
+   "source": "parts/lesson/assets/vo/vo112.ogg",
+   "seconds": 5.37
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "77",
+   "speaker": "swiftee",
+   "text": "77° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.77.ogg",
+   "source": "parts/lesson/assets/vo/vo113.ogg",
+   "seconds": 4.64
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "78",
+   "speaker": "swiftee",
+   "text": "78° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.78.ogg",
+   "source": "parts/lesson/assets/vo/vo114.ogg",
+   "seconds": 4.61
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "79",
+   "speaker": "swiftee",
+   "text": "79° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.79.ogg",
+   "source": "parts/lesson/assets/vo/vo115.ogg",
+   "seconds": 4.75
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "80",
+   "speaker": "swiftee",
+   "text": "80° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.80.ogg",
+   "source": "parts/lesson/assets/vo/vo116.ogg",
+   "seconds": 3.77
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "81",
+   "speaker": "swiftee",
+   "text": "81° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.81.ogg",
+   "source": "parts/lesson/assets/vo/vo117.ogg",
+   "seconds": 4.41
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "82",
+   "speaker": "swiftee",
+   "text": "82° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.82.ogg",
+   "source": "parts/lesson/assets/vo/vo118.ogg",
+   "seconds": 4.65
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "83",
+   "speaker": "swiftee",
+   "text": "83° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.83.ogg",
+   "source": "parts/lesson/assets/vo/vo119.ogg",
+   "seconds": 4.22
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "84",
+   "speaker": "swiftee",
+   "text": "84° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.84.ogg",
+   "source": "parts/lesson/assets/vo/vo120.ogg",
+   "seconds": 4.78
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "85",
+   "speaker": "swiftee",
+   "text": "85° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.85.ogg",
+   "source": "parts/lesson/assets/vo/vo121.ogg",
+   "seconds": 4.38
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "95",
+   "speaker": "swiftee",
+   "text": "95° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.95.ogg",
+   "source": "parts/lesson/assets/vo/vo122.ogg",
+   "seconds": 4.98
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "96",
+   "speaker": "swiftee",
+   "text": "96° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.96.ogg",
+   "source": "parts/lesson/assets/vo/vo123.ogg",
+   "seconds": 5.46
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "97",
+   "speaker": "swiftee",
+   "text": "97° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.97.ogg",
+   "source": "parts/lesson/assets/vo/vo124.ogg",
+   "seconds": 4.51
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "98",
+   "speaker": "swiftee",
+   "text": "98° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.98.ogg",
+   "source": "parts/lesson/assets/vo/vo125.ogg",
+   "seconds": 4.43
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "99",
+   "speaker": "swiftee",
+   "text": "99° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.99.ogg",
+   "source": "parts/lesson/assets/vo/vo126.ogg",
+   "seconds": 4.46
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "100",
+   "speaker": "swiftee",
+   "text": "100° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.100.ogg",
+   "source": "parts/lesson/assets/vo/vo127.ogg",
+   "seconds": 7.44
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "101",
+   "speaker": "swiftee",
+   "text": "101° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.101.ogg",
+   "source": "parts/lesson/assets/vo/vo128.ogg",
+   "seconds": 5.38
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "102",
+   "speaker": "swiftee",
+   "text": "102° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.102.ogg",
+   "source": "parts/lesson/assets/vo/vo129.ogg",
+   "seconds": 5.5
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "103",
+   "speaker": "swiftee",
+   "text": "103° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.103.ogg",
+   "source": "parts/lesson/assets/vo/vo130.ogg",
+   "seconds": 4.78
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "104",
+   "speaker": "swiftee",
+   "text": "104° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.104.ogg",
+   "source": "parts/lesson/assets/vo/vo131.ogg",
+   "seconds": 5.17
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "105",
+   "speaker": "swiftee",
+   "text": "105° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.105.ogg",
+   "source": "parts/lesson/assets/vo/vo132.ogg",
+   "seconds": 4.92
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "106",
+   "speaker": "swiftee",
+   "text": "106° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.106.ogg",
+   "source": "parts/lesson/assets/vo/vo133.ogg",
+   "seconds": 5.98
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "107",
+   "speaker": "swiftee",
+   "text": "107° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.107.ogg",
+   "source": "parts/lesson/assets/vo/vo134.ogg",
+   "seconds": 4.98
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "108",
+   "speaker": "swiftee",
+   "text": "108° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.108.ogg",
+   "source": "parts/lesson/assets/vo/vo135.ogg",
+   "seconds": 5.38
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "109",
+   "speaker": "swiftee",
+   "text": "109° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.109.ogg",
+   "source": "parts/lesson/assets/vo/vo136.ogg",
+   "seconds": 5.46
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "110",
+   "speaker": "swiftee",
+   "text": "110° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.110.ogg",
+   "source": "parts/lesson/assets/vo/vo137.ogg",
+   "seconds": 5.41
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "111",
+   "speaker": "swiftee",
+   "text": "111° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.111.ogg",
+   "source": "parts/lesson/assets/vo/vo138.ogg",
+   "seconds": 5.45
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "112",
+   "speaker": "swiftee",
+   "text": "112° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.112.ogg",
+   "source": "parts/lesson/assets/vo/vo139.ogg",
+   "seconds": 5.1
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "113",
+   "speaker": "swiftee",
+   "text": "113° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.113.ogg",
+   "source": "parts/lesson/assets/vo/vo140.ogg",
+   "seconds": 5.54
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "114",
+   "speaker": "swiftee",
+   "text": "114° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.114.ogg",
+   "source": "parts/lesson/assets/vo/vo141.ogg",
+   "seconds": 5.56
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "115",
+   "speaker": "swiftee",
+   "text": "115° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.115.ogg",
+   "source": "parts/lesson/assets/vo/vo142.ogg",
+   "seconds": 5.82
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "116",
+   "speaker": "swiftee",
+   "text": "116° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.116.ogg",
+   "source": "parts/lesson/assets/vo/vo143.ogg",
+   "seconds": 5.62
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "117",
+   "speaker": "swiftee",
+   "text": "117° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.117.ogg",
+   "source": "parts/lesson/assets/vo/vo144.ogg",
+   "seconds": 5.25
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "118",
+   "speaker": "swiftee",
+   "text": "118° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.118.ogg",
+   "source": "parts/lesson/assets/vo/vo145.ogg",
+   "seconds": 5.14
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "119",
+   "speaker": "swiftee",
+   "text": "119° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.119.ogg",
+   "source": "parts/lesson/assets/vo/vo146.ogg",
+   "seconds": 5.22
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "120",
+   "speaker": "swiftee",
+   "text": "120° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.120.ogg",
+   "source": "parts/lesson/assets/vo/vo147.ogg",
+   "seconds": 5.43
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "121",
+   "speaker": "swiftee",
+   "text": "121° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.121.ogg",
+   "source": "parts/lesson/assets/vo/vo148.ogg",
+   "seconds": 5.29
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "122",
+   "speaker": "swiftee",
+   "text": "122° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.122.ogg",
+   "source": "parts/lesson/assets/vo/vo149.ogg",
+   "seconds": 5.49
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "123",
+   "speaker": "swiftee",
+   "text": "123° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.123.ogg",
+   "source": "parts/lesson/assets/vo/vo150.ogg",
+   "seconds": 5.91
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "124",
+   "speaker": "swiftee",
+   "text": "124° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.124.ogg",
+   "source": "parts/lesson/assets/vo/vo151.ogg",
+   "seconds": 5.07
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "125",
+   "speaker": "swiftee",
+   "text": "125° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.125.ogg",
+   "source": "parts/lesson/assets/vo/vo152.ogg",
+   "seconds": 5.37
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "126",
+   "speaker": "swiftee",
+   "text": "126° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.126.ogg",
+   "source": "parts/lesson/assets/vo/vo153.ogg",
+   "seconds": 6.0
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "127",
+   "speaker": "swiftee",
+   "text": "127° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.127.ogg",
+   "source": "parts/lesson/assets/vo/vo154.ogg",
+   "seconds": 5.66
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "128",
+   "speaker": "swiftee",
+   "text": "128° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.128.ogg",
+   "source": "parts/lesson/assets/vo/vo155.ogg",
+   "seconds": 5.05
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "129",
+   "speaker": "swiftee",
+   "text": "129° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.129.ogg",
+   "source": "parts/lesson/assets/vo/vo156.ogg",
+   "seconds": 5.42
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "130",
+   "speaker": "swiftee",
+   "text": "130° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.130.ogg",
+   "source": "parts/lesson/assets/vo/vo157.ogg",
+   "seconds": 5.01
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "131",
+   "speaker": "swiftee",
+   "text": "131° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.131.ogg",
+   "source": "parts/lesson/assets/vo/vo158.ogg",
+   "seconds": 5.41
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "132",
+   "speaker": "swiftee",
+   "text": "132° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.132.ogg",
+   "source": "parts/lesson/assets/vo/vo159.ogg",
+   "seconds": 5.69
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "133",
+   "speaker": "swiftee",
+   "text": "133° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.133.ogg",
+   "source": "parts/lesson/assets/vo/vo160.ogg",
+   "seconds": 5.5
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "134",
+   "speaker": "swiftee",
+   "text": "134° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.134.ogg",
+   "source": "parts/lesson/assets/vo/vo161.ogg",
+   "seconds": 5.62
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "135",
+   "speaker": "swiftee",
+   "text": "135° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.135.ogg",
+   "source": "parts/lesson/assets/vo/vo162.ogg",
+   "seconds": 6.06
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "136",
+   "speaker": "swiftee",
+   "text": "136° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.136.ogg",
+   "source": "parts/lesson/assets/vo/vo163.ogg",
+   "seconds": 5.54
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "137",
+   "speaker": "swiftee",
+   "text": "137° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.137.ogg",
+   "source": "parts/lesson/assets/vo/vo164.ogg",
+   "seconds": 5.6
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "138",
+   "speaker": "swiftee",
+   "text": "138° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.138.ogg",
+   "source": "parts/lesson/assets/vo/vo165.ogg",
+   "seconds": 5.52
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "139",
+   "speaker": "swiftee",
+   "text": "139° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.139.ogg",
+   "source": "parts/lesson/assets/vo/vo166.ogg",
+   "seconds": 5.64
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "140",
+   "speaker": "swiftee",
+   "text": "140° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.140.ogg",
+   "source": "parts/lesson/assets/vo/vo167.ogg",
+   "seconds": 5.49
+  },
+  {
+   "key": "lsDrag90",
+   "variant": "141",
+   "speaker": "swiftee",
+   "text": "141° now. Keep dragging until it shows 90°.",
+   "file": "lsDrag90.141.ogg",
+   "source": "parts/lesson/assets/vo/vo168.ogg",
+   "seconds": 5.16
+  },
+  {
+   "key": "lsGreatJob",
+   "speaker": "swiftee",
+   "text": "Great job!",
+   "file": "lsGreatJob.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:great job!\"",
+   "seconds": 1.056
+  },
+  {
+   "key": "lsWatch90",
+   "variant": "A",
+   "speaker": "swiftee",
+   "text": "Watch! Now ∠A is 90°. That is a right angle.",
+   "file": "lsWatch90.A.ogg",
+   "source": "parts/lesson/assets/vo/vo213.ogg",
+   "seconds": 5.49
+  },
+  {
+   "key": "lsWatch90",
+   "variant": "B",
+   "speaker": "swiftee",
+   "text": "Watch! Now ∠B is 90°. That is a right angle.",
+   "file": "lsWatch90.B.ogg",
+   "source": "parts/lesson/assets/vo/vo214.ogg",
+   "seconds": 5.41
+  },
+  {
+   "key": "lsWatch90",
+   "variant": "C",
+   "speaker": "swiftee",
+   "text": "Watch! Now ∠C is 90°. That is a right angle.",
+   "file": "lsWatch90.C.ogg",
+   "source": "parts/lesson/assets/vo/vo215.ogg",
+   "seconds": 5.59
+  },
+  {
+   "key": "lsWatch90",
+   "variant": "D",
+   "speaker": "swiftee",
+   "text": "Watch! Now ∠D is 90°. That is a right angle.",
+   "file": "lsWatch90.D.ogg",
+   "source": "parts/lesson/assets/vo/vo216.ogg",
+   "seconds": 5.42
+  },
+  {
+   "key": "lsAnotherRight",
+   "speaker": "swiftee",
+   "text": "Woah! We got another\nright angle.",
+   "file": "lsAnotherRight.ogg",
+   "source": "parts/lesson/assets/vo/vo171.ogg",
+   "seconds": 2.41
+  },
+  {
+   "key": "lsTwoRight",
+   "speaker": "swiftee",
+   "text": "Two right angles, side by side!",
+   "file": "lsTwoRight.ogg",
+   "source": "parts/lesson/assets/vo/vo261.ogg",
+   "seconds": 2.56
+  },
+  {
+   "key": "lsRightIs",
+   "speaker": "swiftee",
+   "text": "It's a right angled trapezium!",
+   "file": "lsRightIs.ogg",
+   "source": "parts/lesson/assets/vo/vo262.ogg",
+   "seconds": 2.29
+  },
+  {
+   "key": "lsWhichType",
+   "speaker": "swiftee",
+   "text": "Which type of trapezium is this?",
+   "file": "lsWhichType.ogg",
+   "source": "parts/lesson/assets/vo/vo189.ogg",
+   "seconds": 2.29
+  },
+  {
+   "key": "lsRightLegsEqual",
+   "speaker": "swiftee",
+   "text": "Right! Its legs are equal.",
+   "file": "lsRightLegsEqual.ogg",
+   "source": "parts/lesson/assets/vo/vo267.ogg",
+   "seconds": 2.57
+  },
+  {
+   "key": "lsSoIso",
+   "speaker": "swiftee",
+   "text": "So it's an isosceles trapezium!",
+   "file": "lsSoIso.ogg",
+   "source": "parts/lesson/assets/vo/vo268.ogg",
+   "seconds": 2.6
+  },
+  {
+   "key": "lsLookMarks",
+   "speaker": "swiftee",
+   "text": "Look at the little marks!",
+   "file": "lsLookMarks.ogg",
+   "source": "parts/lesson/assets/vo/vo263.ogg",
+   "seconds": 1.84
+  },
+  {
+   "key": "lsMarksEqual",
+   "speaker": "swiftee",
+   "text": "They say the legs are equal.",
+   "file": "lsMarksEqual.ogg",
+   "source": "parts/lesson/assets/vo/vo264.ogg",
+   "seconds": 2.15
+  },
+  {
+   "key": "lsNoRight",
+   "speaker": "swiftee",
+   "text": "No right angles here!",
+   "file": "lsNoRight.ogg",
+   "source": "parts/lesson/assets/vo/vo265.ogg",
+   "seconds": 1.85
+  },
+  {
+   "key": "lsLookLegs",
+   "speaker": "swiftee",
+   "text": "Look at the legs instead.",
+   "file": "lsLookLegs.ogg",
+   "source": "parts/lesson/assets/vo/vo266.ogg",
+   "seconds": 1.61
+  },
+  {
+   "key": "lsDragLabels",
+   "speaker": "swiftee",
+   "text": "Drag the labels to their\ncorrect place.",
+   "file": "lsDragLabels.ogg",
+   "source": "parts/lesson/assets/vo/vo195.ogg",
+   "seconds": 2.43
+  },
+  {
+   "key": "lsQ4Clue",
+   "speaker": "swiftee",
+   "text": "Watch the glowing clue. Which shape has that mark?",
+   "file": "lsQ4Clue.ogg",
+   "source": "parts/lesson/assets/vo/vo197.ogg",
+   "seconds": 4.04
+  },
+  {
+   "key": "lsQ4TryAgain",
+   "speaker": "swiftee",
+   "text": "Try again! Look closely at the shapes.",
+   "file": "lsQ4TryAgain.ogg",
+   "source": "parts/lesson/assets/vo/vo196.ogg",
+   "seconds": 3.28
+  },
+  {
+   "key": "lsQ4WentBack",
+   "speaker": "swiftee",
+   "text": "Some labels went back. Look for the marks: equal legs, right angles, or neither.",
+   "file": "lsQ4WentBack.ogg",
+   "source": "parts/lesson/assets/vo/vo198.ogg",
+   "seconds": 6.35
+  },
+  {
+   "key": "lsBrilliant",
+   "speaker": "swiftee",
+   "text": "Brilliant! You labelled all three trapeziums.",
+   "file": "lsBrilliant.ogg",
+   "source": "parts/lesson/assets/vo/vo199.ogg",
+   "seconds": 3.75
+  },
+  {
+   "key": "lsRecall",
+   "speaker": "swiftee",
+   "text": "Let's recall what\nwe learnt today.",
+   "file": "lsRecall.ogg",
+   "source": "parts/lesson/assets/vo/vo175.ogg",
+   "seconds": 2.25
+  },
+  {
+   "key": "lsAmazing",
+   "speaker": "swiftee",
+   "text": "Amazing work! You know all about trapeziums now.",
+   "file": "lsAmazing.ogg",
+   "source": "parts/lesson/assets/vo/vo205.ogg",
+   "seconds": 3.65
+  },
+  {
+   "key": "lsBye",
+   "speaker": "swiftee",
+   "text": "Bye for now! See you on\nour next snowy adventure!",
+   "file": "lsBye.ogg",
+   "source": "parts/lesson/assets/vo/vo209.ogg",
+   "seconds": 3.29
+  },
+  {
+   "key": "lsTheEndSaid",
+   "speaker": "swiftee",
+   "text": "The End!",
+   "file": "lsTheEndSaid.ogg",
+   "source": "parts/lesson/assets/vo/vo210.ogg",
+   "seconds": 0.75
+  },
+  {
+   "key": "sumTrapezium",
+   "speaker": "swiftee",
+   "text": "A trapezium is a quadrilateral with at least one pair of parallel sides.",
+   "file": "sumTrapezium.ogg",
+   "source": "parts/lesson/assets/vo/vo207.ogg",
+   "seconds": 5.01
+  },
+  {
+   "key": "sumBases",
+   "speaker": "swiftee",
+   "text": "The parallel sides are called the bases.",
+   "file": "sumBases.ogg",
+   "source": "parts/lesson/assets/vo/vo177.ogg",
+   "seconds": 3.19
+  },
+  {
+   "key": "sumLegs",
+   "speaker": "swiftee",
+   "text": "The other two sides are called the legs.",
+   "file": "sumLegs.ogg",
+   "source": "parts/lesson/assets/vo/vo178.ogg",
+   "seconds": 2.68
+  },
+  {
+   "key": "sumScalene",
+   "speaker": "swiftee",
+   "text": "A scalene trapezium has sides of different lengths.",
+   "file": "sumScalene.ogg",
+   "source": "parts/lesson/assets/vo/vo179.ogg",
+   "seconds": 3.74
+  },
+  {
+   "key": "sumIsosceles",
+   "speaker": "swiftee",
+   "text": "An isosceles trapezium has legs of the same length.",
+   "file": "sumIsosceles.ogg",
+   "source": "parts/lesson/assets/vo/vo180.ogg",
+   "seconds": 3.66
+  },
+  {
+   "key": "sumRight",
+   "speaker": "swiftee",
+   "text": "A right trapezium has two adjacent right angles.",
+   "file": "sumRight.ogg",
+   "source": "parts/lesson/assets/vo/vo181.ogg",
+   "seconds": 3.52
+  },
+  {
+   "key": "sumSupplementary",
+   "speaker": "swiftee",
+   "text": "Two angles that add up to 180° are supplementary.",
+   "file": "sumSupplementary.ogg",
+   "source": "parts/lesson/assets/vo/vo183.ogg",
+   "seconds": 4.34
+  },
+  {
+   "key": "f2GreatJob",
+   "speaker": "swiftee",
+   "text": "*Great* job!",
+   "file": "f2GreatJob.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:great job!\"",
+   "seconds": 1.056
+  },
+  {
+   "key": "f2KnowTrapeziums",
+   "speaker": "swiftee",
+   "text": "You know all about *trapeziums!*",
+   "file": "f2KnowTrapeziums.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:you know all about trapeziums!\"",
+   "seconds": 2.256
+  },
+  {
+   "key": "f2HelpPopo",
+   "speaker": "swiftee",
+   "text": "Now, let's help Popo catch some *fish!*",
+   "file": "f2HelpPopo.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:now, let's help popo catch some fish!\"",
+   "seconds": 3.048
+  },
+  {
+   "key": "f2UseRod",
+   "speaker": "swiftee",
+   "text": "Use the fishing rod to *aim*…",
+   "file": "f2UseRod.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:use the fishing rod to aim...\"",
+   "seconds": 2.352
+  },
+  {
+   "key": "f2DropHook",
+   "speaker": "swiftee",
+   "text": "…and drop the hook on the *correct* fish.",
+   "file": "f2DropHook.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:...and drop the hook on the correct fish.\"",
+   "seconds": 2.28
+  },
+  {
+   "key": "f2CatchAllTrapeziums",
+   "speaker": "narrator",
+   "text": "Catch all the *trapeziums*!",
+   "file": "f2CatchAllTrapeziums.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:catch all the trapeziums!\"",
+   "seconds": 1.896
+  },
+  {
+   "key": "f2HintParallel",
+   "speaker": "narrator",
+   "text": "Look for *parallel* sides!",
+   "file": "f2HintParallel.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:look for parallel sides!\"",
+   "seconds": 1.848
+  },
+  {
+   "key": "f2WhyNoParallel",
+   "speaker": "popo",
+   "text": "No *parallel* sides!",
+   "file": "f2WhyNoParallel.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:no parallel sides!\"",
+   "seconds": 1.776
+  },
+  {
+   "key": "f2CatchScalene",
+   "speaker": "narrator",
+   "text": "Catch the *scalene* trapeziums!",
+   "file": "f2CatchScalene.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:catch the scalene trapeziums!\"",
+   "seconds": 2.4
+  },
+  {
+   "key": "f2HintLegLengths",
+   "speaker": "narrator",
+   "text": "Check the *leg* lengths!",
+   "file": "f2HintLegLengths.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:check the leg lengths!\"",
+   "seconds": 1.8
+  },
+  {
+   "key": "f2WhyLegsEqual",
+   "speaker": "popo",
+   "text": "Its legs are *equal!*",
+   "file": "f2WhyLegsEqual.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:its legs are equal!\"",
+   "seconds": 1.776
+  },
+  {
+   "key": "f2CatchIsosceles",
+   "speaker": "narrator",
+   "text": "Catch the *isosceles* trapeziums!",
+   "file": "f2CatchIsosceles.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:catch the isosceles trapeziums!\"",
+   "seconds": 2.64
+  },
+  {
+   "key": "f2HintLegsEqual",
+   "speaker": "narrator",
+   "text": "Are the legs *equal?*",
+   "file": "f2HintLegsEqual.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:are the legs equal?\"",
+   "seconds": 1.44
+  },
+  {
+   "key": "f2WhyLegsDifferent",
+   "speaker": "popo",
+   "text": "Its legs are *different!*",
+   "file": "f2WhyLegsDifferent.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:its legs are different!\"",
+   "seconds": 1.8
+  },
+  {
+   "key": "f2CatchRightAngled",
+   "speaker": "narrator",
+   "text": "Catch the right-angled *trapeziums*!",
+   "file": "f2CatchRightAngled.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:catch the right-angled trapeziums!\"",
+   "seconds": 2.64
+  },
+  {
+   "key": "f2HintTwoRight",
+   "speaker": "narrator",
+   "text": "Look for two *right* angles!",
+   "file": "f2HintTwoRight.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:look for two right angles!\"",
+   "seconds": 2.304
+  },
+  {
+   "key": "f2WhyNoRight",
+   "speaker": "popo",
+   "text": "No *right* angles!",
+   "file": "f2WhyNoRight.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:no right angles!\"",
+   "seconds": 1.824
+  },
+  {
+   "key": "f2RecallParallel",
+   "speaker": "swiftee",
+   "text": "Look! These two sides are *parallel!*",
+   "file": "f2RecallParallel.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:look! these two sides are parallel!\"",
+   "seconds": 2.376
+  },
+  {
+   "key": "f2Remember",
+   "speaker": "swiftee",
+   "text": "*Remember,*",
+   "file": "f2Remember.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:remember,\"",
+   "seconds": 0.84
+  },
+  {
+   "key": "f2AnglesSameLeg",
+   "speaker": "swiftee",
+   "text": "angles on the same *leg* of a trapezium…",
+   "file": "f2AnglesSameLeg.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:angles on the same leg of a trapezium...\"",
+   "seconds": 2.568
+  },
+  {
+   "key": "f2AddUp180",
+   "speaker": "swiftee",
+   "text": "add up to *180°!*",
+   "file": "f2AddUp180.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:add up to 180°!\"",
+   "seconds": 2.904
+  },
+  {
+   "key": "f2Detective",
+   "speaker": "swiftee",
+   "text": "Yay! Shape *detective!*",
+   "file": "f2Detective.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:yay! shape detective!\"",
+   "seconds": 2.376
+  },
+  {
+   "key": "f2LookMarked",
+   "speaker": "swiftee",
+   "text": "Look at the marked *angles!*",
+   "file": "f2LookMarked.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:look at the marked angles!\"",
+   "seconds": 1.8
+  },
+  {
+   "key": "f2HintAddAngles",
+   "speaker": "narrator",
+   "text": "Add the marked *angles!*",
+   "file": "f2HintAddAngles.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"narrator:add the marked angles!\"",
+   "seconds": 1.656
+  },
+  {
+   "key": "f2WhyNot180",
+   "speaker": "popo",
+   "text": "These angles don't add up to *180°!*",
+   "file": "f2WhyNot180.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:these angles don't add up to 180°!\"",
+   "seconds": 3.696
+  },
+  {
+   "key": "f2OopsNotTrapezium",
+   "speaker": "popo",
+   "text": "Not a *trapezium.*",
+   "file": "f2OopsNotTrapezium.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:not a trapezium.\"",
+   "seconds": 1.272
+  },
+  {
+   "key": "f2OopsTryAgain",
+   "speaker": "popo",
+   "text": "Try *again!*",
+   "file": "f2OopsTryAgain.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:try again!\"",
+   "seconds": 0.912
+  },
+  {
+   "key": "f2Wow",
+   "speaker": "popo",
+   "text": "*Wow!*",
+   "file": "f2Wow.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:wow!\"",
+   "seconds": 0.744
+  },
+  {
+   "key": "f2WhatACatch",
+   "speaker": "popo",
+   "text": "What a *catch!*",
+   "file": "f2WhatACatch.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:what a catch!\"",
+   "seconds": 1.608
+  },
+  {
+   "key": "f2GiantFish",
+   "speaker": "popo",
+   "text": "Whoa! A *giant* fish!",
+   "file": "f2GiantFish.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:whoa! a giant fish!\"",
+   "seconds": 2.304
+  },
+  {
+   "key": "f2ComeOn",
+   "speaker": "popo",
+   "text": "Come *on*, big fish!",
+   "file": "f2ComeOn.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:come on, big fish!\"",
+   "seconds": 2.208
+  },
+  {
+   "key": "f2Eek",
+   "speaker": "swiftee",
+   "text": "*Eek!*",
+   "file": "f2Eek.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:eek!\"",
+   "seconds": 0.864
+  },
+  {
+   "key": "f2Huh",
+   "speaker": "popo",
+   "text": "Huh?!",
+   "file": "f2Huh.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:huh?!\"",
+   "seconds": 0.384
+  },
+  {
+   "key": "f2GoodCatch",
+   "speaker": "swiftee",
+   "text": "Good catch, *Popo!*",
+   "file": "f2GoodCatch.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:good catch, popo!\"",
+   "seconds": 1.488
+  },
+  {
+   "key": "f2PopoLaughs",
+   "speaker": "popo",
+   "text": "Ha ha *ha!*",
+   "file": "f2PopoLaughs.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"popo:ha ha ha!\"",
+   "seconds": 0.816
+  },
+  {
+   "key": "f2SwifteeLaughs",
+   "speaker": "swiftee",
+   "text": "Hee hee *hee!*",
+   "file": "f2SwifteeLaughs.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:hee hee hee!\"",
+   "seconds": 1.368
+  },
+  {
+   "key": "f2YouDidIt",
+   "speaker": "swiftee",
+   "text": "You *did* it!",
+   "file": "f2YouDidIt.mp3",
+   "source": "parts/fishing-2/src/voice-data.js \"swiftee:you did it!\"",
+   "seconds": 1.296
+  }
+ ],
+ "missing": [
+  {
+   "key": "theEnd",
+   "speaker": "narrator",
+   "text": "The End",
+   "wanted": "theEnd",
+   "spoken": "The End."
+  },
+  {
+   "key": "shapeTriangle",
+   "speaker": "narrator",
+   "text": "Triangle",
+   "wanted": "shapeTriangle",
+   "spoken": "Triangle."
+  },
+  {
+   "key": "shapeSquare",
+   "speaker": "narrator",
+   "text": "Square",
+   "wanted": "shapeSquare",
+   "spoken": "Square."
+  },
+  {
+   "key": "shapeRectangle",
+   "speaker": "narrator",
+   "text": "Rectangle",
+   "wanted": "shapeRectangle",
+   "spoken": "Rectangle."
+  },
+  {
+   "key": "shapeRhombus",
+   "speaker": "narrator",
+   "text": "Rhombus",
+   "wanted": "shapeRhombus",
+   "spoken": "Rhombus."
+  },
+  {
+   "key": "shapeParallelogram",
+   "speaker": "narrator",
+   "text": "Parallelogram",
+   "wanted": "shapeParallelogram",
+   "spoken": "Parallelogram."
+  },
+  {
+   "key": "shapeTrapezium",
+   "speaker": "narrator",
+   "text": "Trapezium",
+   "wanted": "shapeTrapezium",
+   "spoken": "Trapezium."
+  },
+  {
+   "key": "shapePentagon",
+   "speaker": "narrator",
+   "text": "Pentagon",
+   "wanted": "shapePentagon",
+   "spoken": "Pentagon."
+  },
+  {
+   "key": "shapeHexagon",
+   "speaker": "narrator",
+   "text": "Hexagon",
+   "wanted": "shapeHexagon",
+   "spoken": "Hexagon."
+  },
+  {
+   "key": "shapeOctagon",
+   "speaker": "narrator",
+   "text": "Octagon",
+   "wanted": "shapeOctagon",
+   "spoken": "Octagon."
+  },
+  {
+   "key": "shapeNonagon",
+   "speaker": "narrator",
+   "text": "Nonagon",
+   "wanted": "shapeNonagon",
+   "spoken": "Nonagon."
+  },
+  {
+   "key": "shapeDecagon",
+   "speaker": "narrator",
+   "text": "Decagon",
+   "wanted": "shapeDecagon",
+   "spoken": "Decagon."
+  },
+  {
+   "key": "shapeCircle",
+   "speaker": "narrator",
+   "text": "Circle",
+   "wanted": "shapeCircle",
+   "spoken": "Circle."
+  },
+  {
+   "key": "shapeOval",
+   "speaker": "narrator",
+   "text": "Oval",
+   "wanted": "shapeOval",
+   "spoken": "Oval."
+  },
+  {
+   "key": "shapeSemicircle",
+   "speaker": "narrator",
+   "text": "Semicircle",
+   "wanted": "shapeSemicircle",
+   "spoken": "Semicircle."
+  },
+  {
+   "key": "shapeQuadrilateral",
+   "speaker": "narrator",
+   "text": "Quadrilateral",
+   "wanted": "shapeQuadrilateral",
+   "spoken": "Quadrilateral."
+  },
+  {
+   "key": "f1WrongSides",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "Look at the sides. A *Triangle* has 3 sides.",
+   "wanted": "f1WrongSides.triangle",
+   "spoken": "Look at the sides. A Triangle has three sides."
+  },
+  {
+   "key": "f1WrongSides",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "Look at the sides. A *Pentagon* has 5 sides.",
+   "wanted": "f1WrongSides.pentagon",
+   "spoken": "Look at the sides. A Pentagon has five sides."
+  },
+  {
+   "key": "f1WrongSides",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "Look at the sides. A *Hexagon* has 6 sides.",
+   "wanted": "f1WrongSides.hexagon",
+   "spoken": "Look at the sides. A Hexagon has six sides."
+  },
+  {
+   "key": "f1WrongSides",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "Look at the sides. A *Quadrilateral* has 4 sides.",
+   "wanted": "f1WrongSides.quadrilateral",
+   "spoken": "Look at the sides. A Quadrilateral has four sides."
+  },
+  {
+   "key": "f1RowsOn",
+   "speaker": "narrator",
+   "text": "Popo rows on…",
+   "wanted": "f1RowsOn",
+   "spoken": "Popo rows on..."
+  },
+  {
+   "key": "lsHi",
+   "speaker": "swiftee",
+   "text": "Hi! Ready to explore a new shape with me?",
+   "wanted": "lsHi",
+   "spoken": "Hi! Ready to explore a new shape with me?"
+  },
+  {
+   "key": "lsScaleneTrapezium",
+   "speaker": "swiftee",
+   "text": "Scalene trapezium",
+   "wanted": "lsScaleneTrapezium",
+   "spoken": "Scalene trapezium."
+  },
+  {
+   "key": "lsDragABack",
+   "variant": "4_9",
+   "speaker": "swiftee",
+   "text": "AD is 4.9 cm. Drag A back a little until it shows exactly 5 cm.",
+   "wanted": "lsDragABack.4_9",
+   "spoken": "A D is four point nine centimetres. Drag A back a little until it shows exactly five centimetres."
+  },
+  {
+   "key": "lsIsoTrapezium",
+   "speaker": "swiftee",
+   "text": "Isosceles trapezium",
+   "wanted": "lsIsoTrapezium",
+   "spoken": "Isosceles trapezium."
+  },
+  {
+   "key": "lsRightTrapezium",
+   "speaker": "swiftee",
+   "text": "Right trapezium",
+   "wanted": "lsRightTrapezium",
+   "spoken": "Right trapezium."
+  },
+  {
+   "key": "lsScalene",
+   "speaker": "swiftee",
+   "text": "Scalene",
+   "wanted": "lsScalene",
+   "spoken": "Scalene."
+  },
+  {
+   "key": "lsIsosceles",
+   "speaker": "swiftee",
+   "text": "Isosceles",
+   "wanted": "lsIsosceles",
+   "spoken": "Isosceles."
+  },
+  {
+   "key": "lsRight",
+   "speaker": "swiftee",
+   "text": "Right",
+   "wanted": "lsRight",
+   "spoken": "Right."
+  },
+  {
+   "key": "lsBase",
+   "speaker": "swiftee",
+   "text": "Base",
+   "wanted": "lsBase",
+   "spoken": "Base."
+  },
+  {
+   "key": "lsLeg",
+   "speaker": "swiftee",
+   "text": "Leg",
+   "wanted": "lsLeg",
+   "spoken": "Leg."
+  },
+  {
+   "key": "sumBasesLabel",
+   "speaker": "swiftee",
+   "text": "Bases",
+   "wanted": "sumBasesLabel",
+   "spoken": "Bases."
+  },
+  {
+   "key": "sumLegsLabel",
+   "speaker": "swiftee",
+   "text": "Legs",
+   "wanted": "sumLegsLabel",
+   "spoken": "Legs."
+  },
+  {
+   "key": "sumRightLabel",
+   "speaker": "swiftee",
+   "text": "Right angled",
+   "wanted": "sumRightLabel",
+   "spoken": "Right angled."
+  },
+  {
+   "key": "sumAngleSumLabel",
+   "speaker": "swiftee",
+   "text": "Angle sum",
+   "wanted": "sumAngleSumLabel",
+   "spoken": "Angle sum."
+  },
+  {
+   "key": "sumSupplementaryLabel",
+   "speaker": "swiftee",
+   "text": "Supplementary",
+   "wanted": "sumSupplementaryLabel",
+   "spoken": "Supplementary."
+  },
+  {
+   "key": "f2NotTrapeziumCard",
+   "speaker": "narrator",
+   "text": "That's not a *trapezium!*",
+   "wanted": "f2NotTrapeziumCard",
+   "spoken": "That's not a trapezium!"
+  }
+ ]
+}
