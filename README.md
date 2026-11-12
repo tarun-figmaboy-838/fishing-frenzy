@@ -162,13 +162,18 @@ Every word a player reads is looked up by key, so the whole journey can be read 
   the narrator are Sayali (a young Marathi voice: warm, clear, welcoming) and Popo is Vardaan (a young Marathi voice:
   bright, upbeat), from the ElevenLabs voice library, recorded with `eleven_v4` (Hindi's `eleven_multilingual_v2`
   doesn't speak Marathi). The mathematics is said as the Marathi textbooks say it (`180°` एकशे ऐंशी अंश, `∠A` कोन
-  ए, `AB = 6 cm` ए बी बरोबर सहा सेंटिमीटर, `5.1` पाच पूर्णांक एक, `+` अधिक). Everything below holds for both.
+  ए, `AB = 6 cm` ए बी बरोबर सहा सेंटिमीटर, `5.1` पाच पूर्णांक एक, `+` अधिक).
+- **Gujarati has its own voice-over too** (`assets/VO-GU/`, the same 324 clips, played with `?lan=gu`). Swiftee and
+  the narrator are Hetalben (a young Gujarati voice: bright, warm) and Popo is Bhavesh Bhai (an expressive Gujarati
+  character voice), from the ElevenLabs voice library, recorded with `eleven_v4`. The mathematics is said in Gujarati
+  (`180°` એકસો એંસી અંશ, `∠A` ખૂણો એ, `AB = 6 cm` એ બી બરાબર છ સેન્ટિમીટર, `5.1` પાંચ દશાંશ એક, `+` વત્તા).
+  Everything below holds for all three.
   - `locales/voices.js` indexes the clips by the line on screen and who says it: `I18n.voiceOf(line, who)` finds a
     line's clip ("Try again!" is Swiftee's in the lesson and Popo's in fishing 2), `I18n.voice(key)` gives a clip's
     address.
   - The fishing games fetch their clips before they start (from disk they can't, and their lines show with the
     game's own sounds). Fishing 1 also reads its wrong-catch hint aloud, as it does the instruction, when it has a
-    recording (Hindi and Marathi do; English doesn't).
+    recording (Hindi, Marathi and Gujarati do; English doesn't).
   - The lesson plays them in the shared `<audio>` and fetches them in the background (its drag feedback only as it
     is said). Its word cues fire at their words' share of the line, since the English recordings' measured cue times
     don't apply, and screen 3's corner letters fly in where the clip says them.
@@ -197,10 +202,11 @@ manifest.webmanifest    installs as a full-screen landscape app
 locales/
   locales.json          every word the player reads, by key: en, hi, mr, te, gu, od
   locales.js            its copy for the pages, written by tools/build-locales.py
-  voices.js             each language's own voice-over by line (Hindi, Marathi), written by tools/build-locales.py
+  voices.js             each language's own voice-over by line (Hindi, Marathi, Gujarati), written by tools/build-locales.py
 assets/
   VO-HI/                the Hindi voice-over: one MP3 per spoken line, and manifest.json (tools/voice-elevenlabs.py)
   VO-MR/                the Marathi voice-over, the same way
+  VO-GU/                the Gujarati voice-over, the same way
 shell/
   journey.js            the journey: parts, loading, sound, hand-overs, the ?dev=1 panel
   front-page.js         the Fishing Frenzy title, alive

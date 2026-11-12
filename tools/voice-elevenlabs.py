@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """A language's own voice-over (assets/VO-<LANG>/), made with ElevenLabs from locales/locales.json -> "<lang>".
-Hindi (hi, assets/VO-HI/) and Marathi (mr, assets/VO-MR/) so far; --lang picks one (Hindi when left out).
+Hindi (hi, assets/VO-HI/), Marathi (mr, assets/VO-MR/) and Gujarati (gu, assets/VO-GU/) so far; --lang picks one
+(Hindi when left out).
 
     ELEVENLABS_API_KEY=... python3 tools/voice-elevenlabs.py --lang mr     record every line that has no clip yet, or
                                                                            whose words changed; write the manifest
@@ -17,11 +18,12 @@ One clip per spoken line, named by its key (lsHi.mp3). A line whose words vary h
 (lsDrag90.A + lsDrag90.84), as in English. The voice reads each line's spoken form: no *stress* marks or line
 breaks, and digits, corner letters and symbols written out as the language's words (Hindi: 180° -> एक सौ अस्सी
 डिग्री, ∠A -> कोण ए, = -> बराबर, + -> जमा; Marathi: 180° -> एकशे ऐंशी अंश, ∠A -> कोन ए, = -> बरोबर, + -> अधिक,
-5.1 -> पाच पूर्णांक एक).
+5.1 -> पाच पूर्णांक एक; Gujarati: 180° -> એકસો એંસી અંશ, ∠A -> ખૂણો એ, = -> બરાબર, + -> વત્તા,
+5.1 -> પાંચ દશાંશ એક).
 
 Voices: Swiftee and the narrator share one, as in English (README: "Two voices only"); Popo has his own. A little
-slower and steadier than the voices' defaults, for grade 6-7. Marathi is recorded with eleven_v4:
-eleven_multilingual_v2 (Hindi's model) doesn't speak Marathi.
+slower and steadier than the voices' defaults, for grade 6-7. Marathi and Gujarati are recorded with eleven_v4:
+eleven_multilingual_v2 (Hindi's model) doesn't speak them.
 """
 import json
 import os
@@ -51,7 +53,15 @@ MR_UNITS = ('शून्य एक दोन तीन चार पाच स�
             'एकाहत्तर बाहत्तर त्र्याहत्तर चौऱ्याहत्तर पंच्याहत्तर शहात्तर सत्याहत्तर अठ्ठ्याहत्तर एकोणऐंशी ऐंशी '
             'एक्याऐंशी ब्याऐंशी त्र्याऐंशी चौऱ्याऐंशी पंच्याऐंशी शहाऐंशी सत्त्याऐंशी अठ्ठ्याऐंशी एकोणनव्वद नव्वद '
             'एक्याण्णव ब्याण्णव त्र्याण्णव चौऱ्याण्णव पंच्याण्णव शहाण्णव सत्त्याण्णव अठ्ठ्याण्णव नव्याण्णव').split()
-assert len(HI_UNITS) == 100 and len(MR_UNITS) == 100
+GU_UNITS = ('શૂન્ય એક બે ત્રણ ચાર પાંચ છ સાત આઠ નવ દસ અગિયાર બાર તેર ચૌદ પંદર સોળ સત્તર અઢાર ઓગણીસ વીસ '
+            'એકવીસ બાવીસ ત્રેવીસ ચોવીસ પચ્ચીસ છવ્વીસ સત્તાવીસ અઠ્ઠાવીસ ઓગણત્રીસ ત્રીસ એકત્રીસ બત્રીસ તેત્રીસ ચોત્રીસ '
+            'પાંત્રીસ છત્રીસ સાડત્રીસ આડત્રીસ ઓગણચાલીસ ચાલીસ એકતાલીસ બેતાલીસ તેતાલીસ ચુંમાલીસ પિસ્તાલીસ છેતાલીસ '
+            'સુડતાલીસ અડતાલીસ ઓગણપચાસ પચાસ એકાવન બાવન ત્રેપન ચોપન પંચાવન છપ્પન સત્તાવન અઠ્ઠાવન ઓગણસાઠ સાઠ એકસઠ '
+            'બાસઠ ત્રેસઠ ચોસઠ પાંસઠ છાસઠ સડસઠ અડસઠ ઓગણોસિત્તેર સિત્તેર એકોતેર બોતેર તોતેર ચુંમોતેર પંચોતેર છોતેર '
+            'સિત્યોતેર ઇઠ્યોતેર ઓગણએંસી એંસી એક્યાસી બ્યાસી ત્યાસી ચોર્યાસી પંચાસી છ્યાસી સિત્યાસી ઇઠ્યાસી નેવ્યાસી '
+            'નેવું એકાણું બાણું ત્રાણું ચોરાણું પંચાણું છન્નું સત્તાણું અઠ્ઠાણું નવ્વાણું').split()
+assert len(HI_UNITS) == 100 and len(MR_UNITS) == 100 and len(GU_UNITS) == 100
+GU_HUNDREDS = [None, 'એકસો', 'બસો', 'ત્રણસો', 'ચારસો', 'પાંચસો', 'છસો', 'સાતસો', 'આઠસો', 'નવસો']
 MR_HUNDREDS = [None, 'एकशे', 'दोनशे', 'तीनशे', 'चारशे', 'पाचशे', 'सहाशे', 'सातशे', 'आठशे', 'नऊशे']
 
 LANGS = {
@@ -82,6 +92,19 @@ LANGS = {
         'units': MR_UNITS, 'hundreds': lambda h, r: 'शंभर' if h == 1 and not r else MR_HUNDREDS[h],
         'letters': {'A': 'ए', 'B': 'बी', 'C': 'सी', 'D': 'डी'},
         'angle': 'कोन', 'degree': 'अंश', 'cm': 'सेंटिमीटर', 'point': 'पूर्णांक', 'equals': 'बरोबर', 'plus': 'अधिक',
+    },
+    'gu': {
+        'model': 'eleven_v4', 'stitch': True,  # eleven_v3/v4 speak Gujarati (GET /v1/models); v4 is newer
+        'voices': {  # both from the ElevenLabs voice library, Gujarati voices
+            'swiftee': {'name': 'Hetalben - Young Gujarati Customer Care', 'voice_id': '1wX3DrX9Q7x2fkeiljyg',
+                        'settings': {'stability': 0.5, 'similarity_boost': 0.75, 'speed': 0.95}},
+            'popo': {'name': 'Bhavesh Bhai - Expressive Gujarati Friend', 'voice_id': 'UHwU6ReRgTsCs68KHc6C',
+                     'settings': {'stability': 0.5, 'similarity_boost': 0.75, 'speed': 0.95}},
+        },
+        # 100 સો, 120 એકસો વીસ, 360 ત્રણસો સાઠ
+        'units': GU_UNITS, 'hundreds': lambda h, r: 'સો' if h == 1 and not r else GU_HUNDREDS[h],
+        'letters': {'A': 'એ', 'B': 'બી', 'C': 'સી', 'D': 'ડી'},
+        'angle': 'ખૂણો', 'degree': 'અંશ', 'cm': 'સેન્ટિમીટર', 'point': 'દશાંશ', 'equals': 'બરાબર', 'plus': 'વત્તા',
     },
 }
 
@@ -114,7 +137,7 @@ def num(n, L):
     return L['hundreds'](h, r) + (f' {L["units"][r]}' if r else '')
 
 
-def dec(s, L):  # "5.1" -> "पाँच दशमलव एक" / "पाच पूर्णांक एक"
+def dec(s, L):  # "5.1" -> "पाँच दशमलव एक" / "पाच पूर्णांक एक" / "પાંચ દશાંશ એક"
     if '.' in s:
         a, b = s.split('.')
         return f'{num(a, L)} {L["point"]} ' + ' '.join(L['units'][int(c)] for c in b)
