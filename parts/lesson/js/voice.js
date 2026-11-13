@@ -5,8 +5,12 @@
 //   Voice.stop()          stop the current line (a new line, a screen change, a restart)
 //   Voice.unlock()        call on the first tap (Play): tablets only allow audio after a gesture
 //   Voice.prefetch()      after Play, fetch every clip quietly, one at a time
-// Off (the game falls back to the browser voice) when the browser can't play Ogg Opus, with ?vo=0, or with no clips. A clip
-// that can't play (missing, refused, too slow) ends without h.start(); the engine then says that line with the browser voice.
+// Every clip ships twice: Ogg Opus (small) and an MP3 twin for the browsers without Ogg Opus - every iPad before
+// iPadOS 18.4, Instagram's in-app browser on them included, which had no recorded voice at all. The format is chosen once
+// (canPlayType); an Ogg that still fails to play is retried as its MP3, and the rest of the lesson then uses MP3.
+// Off only with ?vo=0, with no clips, or in a browser that plays neither (the engine then shows the words silently, or
+// falls back to the device voice only when no clip can ever play). A clip that can't play (missing, refused, too slow)
+// ends without h.start(); the engine then shows that line's words with no voice - Swiftee keeps one voice.
 // ?vorate=2 plays the clips faster for testing (0.5-4).
 // =====================================================================
 window.Voice = (function () {
@@ -16,11 +20,14 @@ window.Voice = (function () {
   const DIR = new URL('assets/vo/', location.href).href;
   const q = (k) => { try { return new URLSearchParams(location.search).get(k); } catch (e) { return null; } };
   const LINES = typeof VO_LINES !== 'undefined' ? VO_LINES : {};
-  let el = null, ok = false;
+  let el = null, ok = false, ext = 'ogg';
   try {
     el = shared || new Audio();
-    ok = !!el.canPlayType('audio/ogg; codecs="opus"') && q('vo') !== '0' && Object.keys(LINES).length > 0;
+    const can = (t) => { try { return !!el.canPlayType(t); } catch (e) { return false; } };
+    ext = can('audio/ogg; codecs="opus"') ? 'ogg' : can('audio/mpeg') ? 'mp3' : '';
+    ok = !!ext && q('vo') !== '0' && Object.keys(LINES).length > 0;
   } catch (e) { ok = false; }
+  const clipUrl = (id) => DIR + id + '.' + ext;
   const rate = Math.min(4, Math.max(0.5, +q('vorate') || 1));
   const norm = (t) => String(t || '').replace(/\s+/g, ' ').trim();
   // lines said in two clips: the corner, then the angle (screen 33)
@@ -57,18 +64,27 @@ window.Voice = (function () {
       if (!started) { el.onended = el.onerror = el.onplaying = null; try { el.pause(); el.removeAttribute('src'); el.load(); } catch (e) {} }
       h.end();
     };
+    let tries = 0;
     const next = () => {
       if (!live()) return;
       if (k >= clips.length) { finish(); return; }
-      const c = clips[k];
+      const c = clips[k], attempt = ++tries;
+      const mine = () => live() && attempt === tries; // (a retry makes the attempt before it stale)
+      // an Ogg this browser said it could play but can't (an error event, or play() rejecting it as unsupported):
+      // its MP3 twin, and MP3 from now on. Anything else: the line types silently
+      const failed = (e) => {
+        if (!mine()) return;
+        if (ext === 'ogg' && !started && (!e || e.name !== 'NotAllowedError')) { ext = 'mp3'; next(); return; }
+        finish();
+      };
       el.onplaying = () => { if (!live()) return; if (!started) { started = true; h.start(); } };
-      el.onended = () => { if (!live()) return; before += c.dur; k++; next(); };
-      el.onerror = () => finish(); // missing file: the line carries on silently
-      el.src = DIR + c.id + '.ogg';
+      el.onended = () => { if (!mine()) return; before += c.dur; k++; next(); };
+      el.onerror = () => failed(null);
+      el.src = clipUrl(c.id);
       el.playbackRate = rate;
       el.muted = false;
       const p = el.play();
-      if (p && p.catch) p.catch(() => finish()); // play() refused: the line types silently
+      if (p && p.catch) p.catch((e) => { if (!e || e.name !== 'AbortError') failed(e); }); // (an abort is a newer src taking over)
     };
     cur = { timer: setInterval(() => {
       if (!live() || !started || done) return;
@@ -96,7 +112,7 @@ window.Voice = (function () {
     if (cur) return; // a line is already playing, so audio is allowed
     try {
       el.muted = true;
-      el.src = DIR + LINES[Object.keys(LINES)[0]][0] + '.ogg';
+      el.src = clipUrl(LINES[Object.keys(LINES)[0]][0]);
       const p = el.play();
       const off = () => { try { if (!cur) el.pause(); } catch (e) {} el.muted = false; };
       // only a refusal means "try again on the next tap"; an abort (a line started meanwhile) means audio is allowed
@@ -107,7 +123,7 @@ window.Voice = (function () {
     if (!ok || prefetch.done || typeof fetch === 'undefined' || location.protocol === 'file:') return;
     prefetch.done = true;
     const ids = Object.keys(LINES).map((k) => LINES[k][0]);
-    const one = (i) => { if (i < ids.length) fetch(DIR + ids[i] + '.ogg').then((r) => r.blob()).catch(() => {}).then(() => one(i + 1)); };
+    const one = (i) => { if (i < ids.length) fetch(clipUrl(ids[i])).then((r) => r.blob()).catch(() => {}).then(() => one(i + 1)); };
     one(0);
   }
   // rough spoken length of a word, for spreading the words over the clip: numbers count as their words
@@ -127,7 +143,7 @@ window.Voice = (function () {
   const warmed = {};
   function warm(texts) {
     if (!ok || typeof fetch === 'undefined' || location.protocol === 'file:') return;
-    (texts || []).forEach((t) => (find(t) || []).forEach((c) => { if (!warmed[c.id]) { warmed[c.id] = 1; fetch(DIR + c.id + '.ogg').catch(() => { warmed[c.id] = 0; }); } }));
+    (texts || []).forEach((t) => (find(t) || []).forEach((c) => { if (!warmed[c.id]) { warmed[c.id] = 1; fetch(clipUrl(c.id)).catch(() => { warmed[c.id] = 0; }); } }));
   }
-  return { find: find, play: play, stop: stop, unlock: unlock, prefetch: prefetch, warm: warm, weight: weight, get on() { return ok; } };
+  return { find: find, play: play, stop: stop, unlock: unlock, prefetch: prefetch, warm: warm, weight: weight, get on() { return ok; }, get format() { return ext; } };
 })();

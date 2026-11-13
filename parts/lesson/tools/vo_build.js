@@ -237,8 +237,11 @@ async function writeMap() {
   const missing = list.filter((e) => !durs[e.id]);
   console.log('js/vo-lines.js: ' + have.length + ' of ' + list.length + ' lines voiced, ' + (Object.values(durs).reduce((a, b) => a + b, 0) / 60).toFixed(1) + ' min');
   if (missing.length) console.log('no clip yet: ' + missing.map((e) => e.id).join(' '));
-  // one file per voiced line, nothing else
-  fs.readdirSync(VO_DIR).forEach((f) => { if (!list.some((e) => e.id + '.ogg' === f)) { fs.unlinkSync(path.join(VO_DIR, f)); console.log('removed unused ' + f); } });
+  // one clip per voiced line (its .ogg and the .mp3 twin older iPads play), nothing else
+  fs.readdirSync(VO_DIR).forEach((f) => { if (!list.some((e) => e.id + '.ogg' === f || e.id + '.mp3' === f)) { fs.unlinkSync(path.join(VO_DIR, f)); console.log('removed unused ' + f); } });
+  const stale = list.filter((e) => fs.existsSync(path.join(VO_DIR, e.id + '.ogg')) &&
+    (!fs.existsSync(path.join(VO_DIR, e.id + '.mp3')) || fs.statSync(path.join(VO_DIR, e.id + '.mp3')).mtimeMs < fs.statSync(path.join(VO_DIR, e.id + '.ogg')).mtimeMs));
+  if (stale.length) console.log('MP3 twins to (re)make (iPads before 18.4 play only these): python3 tools/ogg2mp3.py assets/vo  - ' + stale.map((e) => e.id).join(' '));
 }
 
 async function cmdBuild(zips) {

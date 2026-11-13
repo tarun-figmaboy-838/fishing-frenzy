@@ -1,6 +1,9 @@
 # Voice-over
 
-Every line Swiftee can say has a recorded clip in `assets/vo/` (Ogg Opus, 32 kbps, mono). The words in the dialogue box
+Every line Swiftee can say has a recorded clip in `assets/vo/` (Ogg Opus, 32 kbps, mono), and an MP3 twin of it
+(`voNNN.mp3`, 24 kHz mono 64 kbps) for browsers without Ogg Opus - every iPad before iPadOS 18.4, Instagram's in-app
+browser on them included. Remake the twins after any clip changes: `python3 tools/ogg2mp3.py assets/vo` (needs numpy,
+scipy, soundfile, lameenc; it only rewrites twins older than their .ogg). The words in the dialogue box
 appear in time with the clip, and Swiftee's beak moves only while it plays.
 
 | File | What it is |
@@ -80,9 +83,11 @@ line (screen lines, feedback, idle reminders, the summary cards) goes through it
 - **Repeats.** The question put back after feedback is shown, not said again. Idle reminders are said.
 - **No ducking:** the game has no music or ambience.
 - **Prefetch.** After Play, every clip is fetched quietly, one at a time.
-- **Off.** With no Ogg Opus support (`canPlayType('audio/ogg; codecs="opus"')` empty), with `?vo=0`, or if a clip is
-  missing or `play()` is refused, the line falls back to what the game did before: the device's speech voice, or a timed
-  reveal with no voice. Nothing crashes.
+- **Format.** `.ogg` where `canPlayType('audio/ogg; codecs="opus"')` says yes, otherwise the `.mp3` twin; an `.ogg`
+  that still fails to play is retried as its `.mp3`, and the lesson stays on MP3 after that.
+- **Off.** With `?vo=0`, or in a browser that plays neither format. A clip that is missing or whose `play()` is refused
+  shows its line's words with no voice (never the device's speech voice while clips can play: Swiftee keeps one voice).
+  Nothing crashes.
 - **Testing speed:** `?vorate=2` plays the clips faster (0.5–4).
 
 ## Remaking a line
