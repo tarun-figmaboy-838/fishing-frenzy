@@ -1,0 +1,3519 @@
+{
+ "language": "gu",
+ "source": "locales/locales.json -> gu",
+ "tool": "tools/voice-elevenlabs.py",
+ "model": "eleven_v4",
+ "format": "mp3_44100_128",
+ "stored": "WebM Opus, 32 kbps, mono (ffmpeg, from the MP3)",
+ "seed": 7,
+ "voices": {
+  "swiftee": {
+   "name": "Hetalben - Young Gujarati Customer Care",
+   "voice_id": "1wX3DrX9Q7x2fkeiljyg",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "speed": 0.95
+   }
+  },
+  "popo": {
+   "name": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "voice_id": "UHwU6ReRgTsCs68KHc6C",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "speed": 0.95
+   }
+  },
+  "narrator": "same voice as swiftee"
+ },
+ "clips": [
+  {
+   "file": "theEnd.webm",
+   "key": "theEnd",
+   "speaker": "narrator",
+   "text": "સમાપ્ત",
+   "spoken": "સમાપ્ત",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeTriangle.webm",
+   "key": "shapeTriangle",
+   "speaker": "narrator",
+   "text": "ત્રિકોણ",
+   "spoken": "ત્રિકોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 0.862
+  },
+  {
+   "file": "shapeSquare.webm",
+   "key": "shapeSquare",
+   "speaker": "narrator",
+   "text": "ચોરસ",
+   "spoken": "ચોરસ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeRectangle.webm",
+   "key": "shapeRectangle",
+   "speaker": "narrator",
+   "text": "લંબચોરસ",
+   "spoken": "લંબચોરસ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.254
+  },
+  {
+   "file": "shapeRhombus.webm",
+   "key": "shapeRhombus",
+   "speaker": "narrator",
+   "text": "સમબાજુ ચતુષ્કોણ",
+   "spoken": "સમબાજુ ચતુષ્કોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.75
+  },
+  {
+   "file": "shapeParallelogram.webm",
+   "key": "shapeParallelogram",
+   "speaker": "narrator",
+   "text": "સમાંતરબાજુ ચતુષ્કોણ",
+   "spoken": "સમાંતરબાજુ ચતુષ્કોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.064
+  },
+  {
+   "file": "shapeTrapezium.webm",
+   "key": "shapeTrapezium",
+   "speaker": "narrator",
+   "text": "સમલંબ ચતુષ્કોણ",
+   "spoken": "સમલંબ ચતુષ્કોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.829
+  },
+  {
+   "file": "shapePentagon.webm",
+   "key": "shapePentagon",
+   "speaker": "narrator",
+   "text": "પંચકોણ",
+   "spoken": "પંચકોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeHexagon.webm",
+   "key": "shapeHexagon",
+   "speaker": "narrator",
+   "text": "ષટ્કોણ",
+   "spoken": "ષટ્કોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeOctagon.webm",
+   "key": "shapeOctagon",
+   "speaker": "narrator",
+   "text": "અષ્ટકોણ",
+   "spoken": "અષ્ટકોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeNonagon.webm",
+   "key": "shapeNonagon",
+   "speaker": "narrator",
+   "text": "નવકોણ",
+   "spoken": "નવકોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeDecagon.webm",
+   "key": "shapeDecagon",
+   "speaker": "narrator",
+   "text": "દશકોણ",
+   "spoken": "દશકોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeCircle.webm",
+   "key": "shapeCircle",
+   "speaker": "narrator",
+   "text": "વર્તુળ",
+   "spoken": "વર્તુળ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeOval.webm",
+   "key": "shapeOval",
+   "speaker": "narrator",
+   "text": "અંડાકાર",
+   "spoken": "અંડાકાર",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.097
+  },
+  {
+   "file": "shapeSemicircle.webm",
+   "key": "shapeSemicircle",
+   "speaker": "narrator",
+   "text": "અર્ધવર્તુળ",
+   "spoken": "અર્ધવર્તુળ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.176
+  },
+  {
+   "file": "shapeQuadrilateral.webm",
+   "key": "shapeQuadrilateral",
+   "speaker": "narrator",
+   "text": "ચતુષ્કોણ",
+   "spoken": "ચતુષ્કોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.097
+  },
+  {
+   "file": "popoWhoopsie.webm",
+   "key": "popoWhoopsie",
+   "speaker": "popo",
+   "text": "અરે રે રે… છપાક!",
+   "spoken": "અરે રે રે... છપાક!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 2.612
+  },
+  {
+   "file": "popoGreatCatch.webm",
+   "key": "popoGreatCatch",
+   "speaker": "popo",
+   "text": "*જોરદાર* પકડી!",
+   "spoken": "જોરદાર પકડી!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 1.829
+  },
+  {
+   "file": "f1StoryLoves.webm",
+   "key": "f1StoryLoves",
+   "speaker": "narrator",
+   "text": "પોપોને માછલી પકડવાનું *ખૂબ* ગમે છે.",
+   "spoken": "પોપોને માછલી પકડવાનું ખૂબ ગમે છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.795
+  },
+  {
+   "file": "f1StoryToday.webm",
+   "key": "f1StoryToday",
+   "speaker": "narrator",
+   "text": "અને આજે…",
+   "spoken": "અને આજે...",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.254
+  },
+  {
+   "file": "f1StoryAllKinds.webm",
+   "key": "f1StoryAllKinds",
+   "speaker": "narrator",
+   "text": "તે *બધી* જાતની માછલીઓ પકડવા માંગે છે!",
+   "spoken": "તે બધી જાતની માછલીઓ પકડવા માંગે છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.873
+  },
+  {
+   "file": "f1CatchAll.triangle.webm",
+   "key": "f1CatchAll",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "બધી *ત્રિકોણ* માછલીઓ પકડો!",
+   "spoken": "બધી ત્રિકોણ માછલીઓ પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.377
+  },
+  {
+   "file": "f1CatchAll.pentagon.webm",
+   "key": "f1CatchAll",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "બધી *પંચકોણ* માછલીઓ પકડો!",
+   "spoken": "બધી પંચકોણ માછલીઓ પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.377
+  },
+  {
+   "file": "f1CatchAll.hexagon.webm",
+   "key": "f1CatchAll",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "બધી *ષટ્કોણ* માછલીઓ પકડો!",
+   "spoken": "બધી ષટ્કોણ માછલીઓ પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.717
+  },
+  {
+   "file": "f1CatchAll.quadrilateral.webm",
+   "key": "f1CatchAll",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "બધી *ચતુષ્કોણ* માછલીઓ પકડો!",
+   "spoken": "બધી ચતુષ્કોણ માછલીઓ પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.612
+  },
+  {
+   "file": "f1Catch.triangle.webm",
+   "key": "f1Catch",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "*ત્રિકોણ* માછલી પકડો!",
+   "spoken": "ત્રિકોણ માછલી પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.829
+  },
+  {
+   "file": "f1Catch.pentagon.webm",
+   "key": "f1Catch",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "*પંચકોણ* માછલી પકડો!",
+   "spoken": "પંચકોણ માછલી પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.064
+  },
+  {
+   "file": "f1Catch.hexagon.webm",
+   "key": "f1Catch",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "*ષટ્કોણ* માછલી પકડો!",
+   "spoken": "ષટ્કોણ માછલી પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.142
+  },
+  {
+   "file": "f1Catch.quadrilateral.webm",
+   "key": "f1Catch",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "*ચતુષ્કોણ* માછલી પકડો!",
+   "spoken": "ચતુષ્કોણ માછલી પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.142
+  },
+  {
+   "file": "f1WrongSides.triangle.webm",
+   "key": "f1WrongSides",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "બાજુઓ જુઓ. *ત્રિકોણ*ને 3 બાજુઓ હોય છે.",
+   "spoken": "બાજુઓ જુઓ. ત્રિકોણને ત્રણ બાજુઓ હોય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.657
+  },
+  {
+   "file": "f1WrongSides.pentagon.webm",
+   "key": "f1WrongSides",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "બાજુઓ જુઓ. *પંચકોણ*ને 5 બાજુઓ હોય છે.",
+   "spoken": "બાજુઓ જુઓ. પંચકોણને પાંચ બાજુઓ હોય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.892
+  },
+  {
+   "file": "f1WrongSides.hexagon.webm",
+   "key": "f1WrongSides",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "બાજુઓ જુઓ. *ષટ્કોણ*ને 6 બાજુઓ હોય છે.",
+   "spoken": "બાજુઓ જુઓ. ષટ્કોણને છ બાજુઓ હોય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.736
+  },
+  {
+   "file": "f1WrongSides.quadrilateral.webm",
+   "key": "f1WrongSides",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "બાજુઓ જુઓ. *ચતુષ્કોણ*ને 4 બાજુઓ હોય છે.",
+   "spoken": "બાજુઓ જુઓ. ચતુષ્કોણને ચાર બાજુઓ હોય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.736
+  },
+  {
+   "file": "f1RowsOn.webm",
+   "key": "f1RowsOn",
+   "speaker": "narrator",
+   "text": "પોપો હલેસાં મારતો આગળ વધે છે…",
+   "spoken": "પોપો હલેસાં મારતો આગળ વધે છે...",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.534
+  },
+  {
+   "file": "f1Woah.webm",
+   "key": "f1Woah",
+   "speaker": "popo",
+   "text": "*ઓહો!*",
+   "spoken": "ઓહો!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 1.254
+  },
+  {
+   "file": "f1NotSeen.webm",
+   "key": "f1NotSeen",
+   "speaker": "popo",
+   "text": "મેં *આવી* માછલી પહેલાં ક્યારેય જોઈ નથી!",
+   "spoken": "મેં આવી માછલી પહેલાં ક્યારેય જોઈ નથી!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 3.187
+  },
+  {
+   "file": "f1WhatKind.webm",
+   "key": "f1WhatKind",
+   "speaker": "popo",
+   "text": "એ કઈ *જાતની* માછલી હતી?",
+   "spoken": "એ કઈ જાતની માછલી હતી?",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 1.985
+  },
+  {
+   "file": "f1FindOut.webm",
+   "key": "f1FindOut",
+   "speaker": "swiftee",
+   "text": "ચાલો, *જાણીએ!*",
+   "spoken": "ચાલો, જાણીએ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.437
+  },
+  {
+   "file": "lsHi.webm",
+   "key": "lsHi",
+   "speaker": "swiftee",
+   "text": "નમસ્તે! મારી સાથે એક નવો આકાર શોધવા તૈયાર છો?",
+   "spoken": "નમસ્તે! મારી સાથે એક નવો આકાર શોધવા તૈયાર છો?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.153
+  },
+  {
+   "file": "lsRemember.webm",
+   "key": "lsRemember",
+   "speaker": "swiftee",
+   "text": "યાદ છે, આપણે પહેલાં\nચતુષ્કોણ વિશે શીખ્યા હતા.",
+   "spoken": "યાદ છે, આપણે પહેલાં ચતુષ્કોણ વિશે શીખ્યા હતા.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsAnyPolygon.webm",
+   "key": "lsAnyPolygon",
+   "speaker": "swiftee",
+   "text": "4 બાજુઓવાળા કોઈ પણ\nબહુકોણને ચતુષ્કોણ કહેવાય છે.",
+   "spoken": "ચાર બાજુઓવાળા કોઈ પણ બહુકોણને ચતુષ્કોણ કહેવાય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.389
+  },
+  {
+   "file": "lsCallIt.webm",
+   "key": "lsCallIt",
+   "speaker": "swiftee",
+   "text": "આપણે તેને કહી શકીએ\nચતુષ્કોણ ABCD.",
+   "spoken": "આપણે તેને કહી શકીએ ચતુષ્કોણ એ બી સી ડી.",
+   "letters": [
+    0.718,
+    0.769,
+    0.846,
+    0.923
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsSpecialType.webm",
+   "key": "lsSpecialType",
+   "speaker": "swiftee",
+   "text": "આ એક ખાસ પ્રકારનો\nચતુષ્કોણ છે.",
+   "spoken": "આ એક ખાસ પ્રકારનો ચતુષ્કોણ છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.534
+  },
+  {
+   "file": "lsSeeSpecial.webm",
+   "key": "lsSeeSpecial",
+   "speaker": "swiftee",
+   "text": "ચાલો જોઈએ કે\nતે ખાસ કેમ છે.",
+   "spoken": "ચાલો જોઈએ કે તે ખાસ કેમ છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.612
+  },
+  {
+   "file": "lsLookMeet.webm",
+   "key": "lsLookMeet",
+   "speaker": "swiftee",
+   "text": "આ બે બાજુઓ મળી જશે એવું લાગે છે.",
+   "spoken": "આ બે બાજુઓ મળી જશે એવું લાગે છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsExtendThem.webm",
+   "key": "lsExtendThem",
+   "speaker": "swiftee",
+   "text": "ચાલો, તેમને લંબાવીએ.",
+   "spoken": "ચાલો, તેમને લંબાવીએ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.907
+  },
+  {
+   "file": "lsSidesMeet.webm",
+   "key": "lsSidesMeet",
+   "speaker": "swiftee",
+   "text": "ઓહો! બાજુઓ મળી ગઈ.",
+   "spoken": "ઓહો! બાજુઓ મળી ગઈ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.142
+  },
+  {
+   "file": "lsCheckOther.webm",
+   "key": "lsCheckOther",
+   "speaker": "swiftee",
+   "text": "ચાલો, બાજુઓની બીજી\nજોડ તપાસીએ.",
+   "spoken": "ચાલો, બાજુઓની બીજી જોડ તપાસીએ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.873
+  },
+  {
+   "file": "lsPairNotMeet.webm",
+   "key": "lsPairNotMeet",
+   "speaker": "swiftee",
+   "text": "બાજુઓની આ જોડ\nમળતી નથી.",
+   "spoken": "બાજુઓની આ જોડ મળતી નથી.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.377
+  },
+  {
+   "file": "lsMeansParallel.webm",
+   "key": "lsMeansParallel",
+   "speaker": "swiftee",
+   "text": "એનો અર્થ એ કે આ બાજુઓ એકબીજાને સમાંતર છે.",
+   "spoken": "એનો અર્થ એ કે આ બાજુઓ એકબીજાને સમાંતર છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.153
+  },
+  {
+   "file": "lsAbParallelCd.webm",
+   "key": "lsAbParallelCd",
+   "speaker": "swiftee",
+   "text": "AB, CD ને સમાંતર છે.",
+   "spoken": "એ બી, સી ડી ને સમાંતર છે.",
+   "letters": [
+    0.0,
+    0.08,
+    0.24,
+    0.36
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.873
+  },
+  {
+   "file": "lsBigSecret.webm",
+   "key": "lsBigSecret",
+   "speaker": "swiftee",
+   "text": "આ રહ્યું મોટું રહસ્ય!",
+   "spoken": "આ રહ્યું મોટું રહસ્ય!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.22
+  },
+  {
+   "file": "lsOnePairEnough.webm",
+   "key": "lsOnePairEnough",
+   "speaker": "swiftee",
+   "text": "સમાંતર બાજુઓની\nએક જોડ પૂરતી છે.",
+   "spoken": "સમાંતર બાજુઓની એક જોડ પૂરતી છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsThenTrapezium.webm",
+   "key": "lsThenTrapezium",
+   "speaker": "swiftee",
+   "text": "તો એ ચતુષ્કોણ\nસમલંબ ચતુષ્કોણ છે!",
+   "spoken": "તો એ ચતુષ્કોણ સમલંબ ચતુષ્કોણ છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.344
+  },
+  {
+   "file": "lsWhichTrapezium.webm",
+   "key": "lsWhichTrapezium",
+   "speaker": "swiftee",
+   "text": "આમાંથી કયો ચતુષ્કોણ સમલંબ ચતુષ્કોણ છે?",
+   "spoken": "આમાંથી કયો ચતુષ્કોણ સમલંબ ચતુષ્કોણ છે?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsCorrect.webm",
+   "key": "lsCorrect",
+   "speaker": "swiftee",
+   "text": "સાચું!",
+   "spoken": "સાચું!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 0.862
+  },
+  {
+   "file": "lsHasOnePair.webm",
+   "key": "lsHasOnePair",
+   "speaker": "swiftee",
+   "text": "તેમાં સમાંતર બાજુઓની એક જોડ છે.",
+   "spoken": "તેમાં સમાંતર બાજુઓની એક જોડ છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.873
+  },
+  {
+   "file": "lsSoTrapezium.webm",
+   "key": "lsSoTrapezium",
+   "speaker": "swiftee",
+   "text": "એટલે એ સમલંબ ચતુષ્કોણ છે!",
+   "spoken": "એટલે એ સમલંબ ચતુષ્કોણ છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.612
+  },
+  {
+   "file": "lsOopsNoParallel.webm",
+   "key": "lsOopsNoParallel",
+   "speaker": "swiftee",
+   "text": "અરે! અહીં કોઈ બે બાજુઓ સમાંતર નથી.",
+   "spoken": "અરે! અહીં કોઈ બે બાજુઓ સમાંતર નથી.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsNotTrapezium.webm",
+   "key": "lsNotTrapezium",
+   "speaker": "swiftee",
+   "text": "એટલે એ સમલંબ ચતુષ્કોણ નથી.",
+   "spoken": "એટલે એ સમલંબ ચતુષ્કોણ નથી.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsNoParallelAtAll.webm",
+   "key": "lsNoParallelAtAll",
+   "speaker": "swiftee",
+   "text": "આ આકારમાં એક પણ સમાંતર બાજુ નથી.",
+   "spoken": "આ આકારમાં એક પણ સમાંતર બાજુ નથી.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsCalledBases.webm",
+   "key": "lsCalledBases",
+   "speaker": "swiftee",
+   "text": "સમાંતર બાજુઓને\nપાયા કહેવાય છે.",
+   "spoken": "સમાંતર બાજુઓને પાયા કહેવાય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsCalledLegs.webm",
+   "key": "lsCalledLegs",
+   "speaker": "swiftee",
+   "text": "બાકીની બે બાજુઓને\nઅસમાંતર બાજુઓ કહેવાય છે.",
+   "spoken": "બાકીની બે બાજુઓને અસમાંતર બાજુઓ કહેવાય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.579
+  },
+  {
+   "file": "lsMeasureSides.webm",
+   "key": "lsMeasureSides",
+   "speaker": "swiftee",
+   "text": "ચાલો, આ સમલંબ ચતુષ્કોણની\nબાજુઓનું માપ લઈએ.",
+   "spoken": "ચાલો, આ સમલંબ ચતુષ્કોણની બાજુઓનું માપ લઈએ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.997
+  },
+  {
+   "file": "lsAllDifferent.webm",
+   "key": "lsAllDifferent",
+   "speaker": "swiftee",
+   "text": "ઓહો! આ સમલંબ ચતુષ્કોણની\nબધી બાજુઓની લંબાઈ\nઅલગ અલગ છે.",
+   "spoken": "ઓહો! આ સમલંબ ચતુષ્કોણની બધી બાજુઓની લંબાઈ અલગ અલગ છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsLookTrapezium.webm",
+   "key": "lsLookTrapezium",
+   "speaker": "swiftee",
+   "text": "આ સમલંબ ચતુષ્કોણ જુઓ!",
+   "spoken": "આ સમલંબ ચતુષ્કોણ જુઓ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.064
+  },
+  {
+   "file": "lsAllSidesDiff.webm",
+   "key": "lsAllSidesDiff",
+   "speaker": "swiftee",
+   "text": "તેની બધી બાજુઓની\nલંબાઈ અલગ અલગ છે.",
+   "spoken": "તેની બધી બાજુઓની લંબાઈ અલગ અલગ છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsScaleneIs.webm",
+   "key": "lsScaleneIs",
+   "speaker": "swiftee",
+   "text": "આ વિષમબાજુ સમલંબ ચતુષ્કોણ છે!",
+   "spoken": "આ વિષમબાજુ સમલંબ ચતુષ્કોણ છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.952
+  },
+  {
+   "file": "lsScaleneTrapezium.webm",
+   "key": "lsScaleneTrapezium",
+   "speaker": "swiftee",
+   "text": "વિષમબાજુ સમલંબ ચતુષ્કોણ",
+   "spoken": "વિષમબાજુ સમલંબ ચતુષ્કોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.534
+  },
+  {
+   "file": "lsLegsDiffToo.webm",
+   "key": "lsLegsDiffToo",
+   "speaker": "swiftee",
+   "text": "જુઓ! તેની અસમાંતર બાજુઓની\nલંબાઈ પણ અલગ છે.",
+   "spoken": "જુઓ! તેની અસમાંતર બાજુઓની લંબાઈ પણ અલગ છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.736
+  },
+  {
+   "file": "lsWhatIfSame.webm",
+   "key": "lsWhatIfSame",
+   "speaker": "swiftee",
+   "text": "જો અસમાંતર બાજુઓ\nસરખી લંબાઈની હોય તો?",
+   "spoken": "જો અસમાંતર બાજુઓ સરખી લંબાઈની હોય તો?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsFindOut.webm",
+   "key": "lsFindOut",
+   "speaker": "swiftee",
+   "text": "ચાલો, શોધી કાઢીએ.",
+   "spoken": "ચાલો, શોધી કાઢીએ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsDragVertexA.webm",
+   "key": "lsDragVertexA",
+   "speaker": "swiftee",
+   "text": "શિરોબિંદુ A ને ડ્રેગ કરો.",
+   "spoken": "શિરોબિંદુ એ ને ડ્રેગ કરો.",
+   "letters": [
+    0.4
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.534
+  },
+  {
+   "file": "lsMakeLegsSame.webm",
+   "key": "lsMakeLegsSame",
+   "speaker": "swiftee",
+   "text": "બંને અસમાંતર બાજુઓને\nસરખી લંબાઈની કરો!",
+   "spoken": "બંને અસમાંતર બાજુઓને સરખી લંબાઈની કરો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsPerfectEqual.webm",
+   "key": "lsPerfectEqual",
+   "speaker": "swiftee",
+   "text": "એકદમ બરાબર! બંને અસમાંતર બાજુઓ સમાન છે.",
+   "spoken": "એકદમ બરાબર! બંને અસમાંતર બાજુઓ સમાન છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.075
+  },
+  {
+   "file": "lsWatch.webm",
+   "key": "lsWatch",
+   "speaker": "swiftee",
+   "text": "ધ્યાનથી જુઓ!",
+   "spoken": "ધ્યાનથી જુઓ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.332
+  },
+  {
+   "file": "lsAdBecomes.webm",
+   "key": "lsAdBecomes",
+   "speaker": "swiftee",
+   "text": "AD પણ BC ની જેમ 5 cm થઈ જાય છે.",
+   "spoken": "એ ડી પણ બી સી ની જેમ પાંચ સેન્ટિમીટર થઈ જાય છે.",
+   "letters": [
+    0.0,
+    0.043,
+    0.17,
+    0.234
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.422
+  },
+  {
+   "file": "lsNowLegsEqual.webm",
+   "key": "lsNowLegsEqual",
+   "speaker": "swiftee",
+   "text": "હવે બંને અસમાંતર બાજુઓ સમાન છે!",
+   "spoken": "હવે બંને અસમાંતર બાજુઓ સમાન છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsDragAKeep.5_1.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_1",
+   "speaker": "swiftee",
+   "text": "AD 5.1 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ એક સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.792
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.576
+  },
+  {
+   "file": "lsDragAKeep.5_2.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_2",
+   "speaker": "swiftee",
+   "text": "AD 5.2 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ બે સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.792
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.837
+  },
+  {
+   "file": "lsDragAKeep.5_3.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_3",
+   "speaker": "swiftee",
+   "text": "AD 5.3 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ ત્રણ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.02,
+    0.796
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.732
+  },
+  {
+   "file": "lsDragAKeep.5_4.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_4",
+   "speaker": "swiftee",
+   "text": "AD 5.4 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ ચાર સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.794
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.654
+  },
+  {
+   "file": "lsDragAKeep.5_5.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_5",
+   "speaker": "swiftee",
+   "text": "AD 5.5 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ પાંચ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.02,
+    0.796
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.837
+  },
+  {
+   "file": "lsDragAKeep.5_6.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_6",
+   "speaker": "swiftee",
+   "text": "AD 5.6 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ છ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.789
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.654
+  },
+  {
+   "file": "lsDragAKeep.5_7.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_7",
+   "speaker": "swiftee",
+   "text": "AD 5.7 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ સાત સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.794
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.732
+  },
+  {
+   "file": "lsDragAKeep.5_8.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_8",
+   "speaker": "swiftee",
+   "text": "AD 5.8 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ આઠ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.792
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.654
+  },
+  {
+   "file": "lsDragAKeep.5_9.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_9",
+   "speaker": "swiftee",
+   "text": "AD 5.9 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી પાંચ દશાંશ નવ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.792
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.497
+  },
+  {
+   "file": "lsDragAKeep.6.webm",
+   "key": "lsDragAKeep",
+   "variant": "6",
+   "speaker": "swiftee",
+   "text": "AD 6 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.024,
+    0.762
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.635
+  },
+  {
+   "file": "lsDragAKeep.6_1.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_1",
+   "speaker": "swiftee",
+   "text": "AD 6.1 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ એક સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.022,
+    0.785
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.497
+  },
+  {
+   "file": "lsDragAKeep.6_2.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_2",
+   "speaker": "swiftee",
+   "text": "AD 6.2 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ બે સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.022,
+    0.785
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.419
+  },
+  {
+   "file": "lsDragAKeep.6_3.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_3",
+   "speaker": "swiftee",
+   "text": "AD 6.3 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ ત્રણ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.789
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.576
+  },
+  {
+   "file": "lsDragAKeep.6_4.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_4",
+   "speaker": "swiftee",
+   "text": "AD 6.4 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ ચાર સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.787
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.497
+  },
+  {
+   "file": "lsDragAKeep.6_5.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_5",
+   "speaker": "swiftee",
+   "text": "AD 6.5 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ પાંચ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.789
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.837
+  },
+  {
+   "file": "lsDragAKeep.6_6.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_6",
+   "speaker": "swiftee",
+   "text": "AD 6.6 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ છ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.022,
+    0.783
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.915
+  },
+  {
+   "file": "lsDragAKeep.6_7.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_7",
+   "speaker": "swiftee",
+   "text": "AD 6.7 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ સાત સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.787
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.497
+  },
+  {
+   "file": "lsDragAKeep.6_8.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_8",
+   "speaker": "swiftee",
+   "text": "AD 6.8 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ આઠ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.022,
+    0.785
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.732
+  },
+  {
+   "file": "lsDragAKeep.6_9.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_9",
+   "speaker": "swiftee",
+   "text": "AD 6.9 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી છ દશાંશ નવ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.022,
+    0.785
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.576
+  },
+  {
+   "file": "lsDragAKeep.7.webm",
+   "key": "lsDragAKeep",
+   "variant": "7",
+   "speaker": "swiftee",
+   "text": "AD 7 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી સાત સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.023,
+    0.767
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.635
+  },
+  {
+   "file": "lsDragAKeep.7_1.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_1",
+   "speaker": "swiftee",
+   "text": "AD 7.1 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી સાત દશાંશ એક સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.789
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.576
+  },
+  {
+   "file": "lsDragAKeep.7_2.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_2",
+   "speaker": "swiftee",
+   "text": "AD 7.2 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી સાત દશાંશ બે સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.789
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.654
+  },
+  {
+   "file": "lsDragAKeep.7_3.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_3",
+   "speaker": "swiftee",
+   "text": "AD 7.3 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી સાત દશાંશ ત્રણ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.794
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.419
+  },
+  {
+   "file": "lsDragAKeep.7_4.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_4",
+   "speaker": "swiftee",
+   "text": "AD 7.4 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી સાત દશાંશ ચાર સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.792
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.497
+  },
+  {
+   "file": "lsDragAKeep.7_5.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_5",
+   "speaker": "swiftee",
+   "text": "AD 7.5 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી સાત દશાંશ પાંચ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.794
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.654
+  },
+  {
+   "file": "lsDragAKeep.7_6.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_6",
+   "speaker": "swiftee",
+   "text": "AD 7.6 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને ડ્રેગ કરતા રહો.",
+   "spoken": "એ ડી સાત દશાંશ છ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને ડ્રેગ કરતા રહો.",
+   "letters": [
+    0.0,
+    0.021,
+    0.787
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.576
+  },
+  {
+   "file": "lsDragABack.4_9.webm",
+   "key": "lsDragABack",
+   "variant": "4_9",
+   "speaker": "swiftee",
+   "text": "AD 4.9 cm છે. તે બરાબર 5 cm બતાવે ત્યાં સુધી A ને થોડું પાછું ડ્રેગ કરો.",
+   "spoken": "એ ડી ચાર દશાંશ નવ સેન્ટિમીટર છે. તે બરાબર પાંચ સેન્ટિમીટર બતાવે ત્યાં સુધી એ ને થોડું પાછું ડ્રેગ કરો.",
+   "letters": [
+    0.0,
+    0.02,
+    0.735
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 8.229
+  },
+  {
+   "file": "lsNowLookTrapezium.webm",
+   "key": "lsNowLookTrapezium",
+   "speaker": "swiftee",
+   "text": "હવે આ સમલંબ ચતુષ્કોણ જુઓ!",
+   "spoken": "હવે આ સમલંબ ચતુષ્કોણ જુઓ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.534
+  },
+  {
+   "file": "lsLegsSame.webm",
+   "key": "lsLegsSame",
+   "speaker": "swiftee",
+   "text": "તેની અસમાંતર બાજુઓની લંબાઈ સરખી છે!",
+   "spoken": "તેની અસમાંતર બાજુઓની લંબાઈ સરખી છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsIsoIs.webm",
+   "key": "lsIsoIs",
+   "speaker": "swiftee",
+   "text": "આ સમદ્વિબાજુ સમલંબ ચતુષ્કોણ છે!",
+   "spoken": "આ સમદ્વિબાજુ સમલંબ ચતુષ્કોણ છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.952
+  },
+  {
+   "file": "lsIsoTrapezium.webm",
+   "key": "lsIsoTrapezium",
+   "speaker": "swiftee",
+   "text": "સમદ્વિબાજુ સમલંબ ચતુષ્કોણ",
+   "spoken": "સમદ્વિબાજુ સમલંબ ચતુષ્કોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsKnowSides.webm",
+   "key": "lsKnowSides",
+   "speaker": "swiftee",
+   "text": "આપણે સમલંબ ચતુષ્કોણની\nબાજુઓ વિશે બધું જાણીએ છીએ.",
+   "spoken": "આપણે સમલંબ ચતુષ્કોણની બાજુઓ વિશે બધું જાણીએ છીએ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.153
+  },
+  {
+   "file": "lsThisIso.webm",
+   "key": "lsThisIso",
+   "speaker": "swiftee",
+   "text": "આ એક સમદ્વિબાજુ સમલંબ ચતુષ્કોણ છે.",
+   "spoken": "આ એક સમદ્વિબાજુ સમલંબ ચતુષ્કોણ છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsAbCd.webm",
+   "key": "lsAbCd",
+   "speaker": "swiftee",
+   "text": "AB = 6 cm અને CD = 10 cm.",
+   "spoken": "એ બી બરાબર છ સેન્ટિમીટર અને સી ડી બરાબર દસ સેન્ટિમીટર.",
+   "letters": [
+    0.0,
+    0.037,
+    0.519,
+    0.574
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsAd5.webm",
+   "key": "lsAd5",
+   "speaker": "swiftee",
+   "text": "AD = 5 cm.",
+   "spoken": "એ ડી બરાબર પાંચ સેન્ટિમીટર.",
+   "letters": [
+    0.0,
+    0.074
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.377
+  },
+  {
+   "file": "lsHowLongBc.webm",
+   "key": "lsHowLongBc",
+   "speaker": "swiftee",
+   "text": "તો BC કેટલી લાંબી છે?",
+   "spoken": "તો બી સી કેટલી લાંબી છે?",
+   "letters": [
+    0.125,
+    0.25
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.829
+  },
+  {
+   "file": "lsYesLegsEqual.webm",
+   "key": "lsYesLegsEqual",
+   "speaker": "swiftee",
+   "text": "હા! અસમાંતર બાજુઓ સમાન છે.",
+   "spoken": "હા! અસમાંતર બાજુઓ સમાન છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsSoBc5.webm",
+   "key": "lsSoBc5",
+   "speaker": "swiftee",
+   "text": "એટલે BC = 5 cm!",
+   "spoken": "એટલે બી સી બરાબર પાંચ સેન્ટિમીટર!",
+   "letters": [
+    0.152,
+    0.242
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.422
+  },
+  {
+   "file": "lsBcIsLeg.webm",
+   "key": "lsBcIsLeg",
+   "speaker": "swiftee",
+   "text": "હમ્મ, BC એક અસમાંતર બાજુ છે.",
+   "spoken": "હમ્મ, બી સી એક અસમાંતર બાજુ છે.",
+   "letters": [
+    0.194,
+    0.29
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.579
+  },
+  {
+   "file": "lsBothLegsEqual.webm",
+   "key": "lsBothLegsEqual",
+   "speaker": "swiftee",
+   "text": "અને બંને અસમાંતર બાજુઓ સમાન છે!",
+   "spoken": "અને બંને અસમાંતર બાજુઓ સમાન છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.187
+  },
+  {
+   "file": "lsOops6Top.webm",
+   "key": "lsOops6Top",
+   "speaker": "swiftee",
+   "text": "અરે! 6 cm તો ઉપરનો પાયો AB છે.",
+   "spoken": "અરે! છ સેન્ટિમીટર તો ઉપરનો પાયો એ બી છે.",
+   "letters": [
+    0.8,
+    0.85
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.579
+  },
+  {
+   "file": "lsBcLikeAd.webm",
+   "key": "lsBcLikeAd",
+   "speaker": "swiftee",
+   "text": "BC પણ AD ની જેમ અસમાંતર બાજુ છે.",
+   "spoken": "બી સી પણ એ ડી ની જેમ અસમાંતર બાજુ છે.",
+   "letters": [
+    0.0,
+    0.081,
+    0.243,
+    0.297
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsMeasureAngles.webm",
+   "key": "lsMeasureAngles",
+   "speaker": "swiftee",
+   "text": "ચાલો, તેના ખૂણા માપીએ.",
+   "spoken": "ચાલો, તેના ખૂણા માપીએ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.907
+  },
+  {
+   "file": "lsNotice.webm",
+   "key": "lsNotice",
+   "speaker": "swiftee",
+   "text": "તમે કંઈ નોંધ્યું?",
+   "spoken": "તમે કંઈ નોંધ્યું?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.254
+  },
+  {
+   "file": "lsAdSum180.webm",
+   "key": "lsAdSum180",
+   "speaker": "swiftee",
+   "text": "∠A અને ∠D નો સરવાળો 180° થાય છે.",
+   "spoken": "ખૂણો એ અને ખૂણો ડી નો સરવાળો એકસો એંસી અંશ થાય છે.",
+   "letters": [
+    0.1,
+    0.32
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsSupplementary.webm",
+   "key": "lsSupplementary",
+   "speaker": "swiftee",
+   "text": "એનો અર્થ એ કે તેઓ\nપૂરક ખૂણા છે.",
+   "spoken": "એનો અર્થ એ કે તેઓ પૂરક ખૂણા છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsWhatAboutBc.webm",
+   "key": "lsWhatAboutBc",
+   "speaker": "swiftee",
+   "text": "∠B અને ∠C નું શું?",
+   "spoken": "ખૂણો બી અને ખૂણો સી નું શું?",
+   "letters": [
+    0.179,
+    0.607
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsCorrectBcSupp.webm",
+   "key": "lsCorrectBcSupp",
+   "speaker": "swiftee",
+   "text": "સાચું! ∠B અને ∠C પણ\nપૂરક ખૂણા છે.",
+   "spoken": "સાચું! ખૂણો બી અને ખૂણો સી પણ પૂરક ખૂણા છે.",
+   "letters": [
+    0.279,
+    0.558
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsIts180.webm",
+   "key": "lsIts180",
+   "speaker": "swiftee",
+   "text": "જવાબ 180° છે!",
+   "spoken": "જવાબ એકસો એંસી અંશ છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.873
+  },
+  {
+   "file": "lsBcSum180.webm",
+   "key": "lsBcSum180",
+   "speaker": "swiftee",
+   "text": "∠B અને ∠C નો સરવાળો પણ 180° થાય છે.",
+   "spoken": "ખૂણો બી અને ખૂણો સી નો સરવાળો પણ એકસો એંસી અંશ થાય છે.",
+   "letters": [
+    0.093,
+    0.315
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsNotQuite.webm",
+   "key": "lsNotQuite",
+   "speaker": "swiftee",
+   "text": "બરાબર નથી. ફરી પ્રયાસ કરો.",
+   "spoken": "બરાબર નથી. ફરી પ્રયાસ કરો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.456
+  },
+  {
+   "file": "lsOops360.webm",
+   "key": "lsOops360",
+   "speaker": "swiftee",
+   "text": "અરે! 360° તો ચારેય ખૂણાનો સરવાળો છે.",
+   "spoken": "અરે! ત્રણસો સાઠ અંશ તો ચારેય ખૂણાનો સરવાળો છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.997
+  },
+  {
+   "file": "lsTryAgain.webm",
+   "key": "lsTryAgain",
+   "speaker": "swiftee",
+   "text": "ફરી પ્રયાસ કરો!",
+   "spoken": "ફરી પ્રયાસ કરો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.254
+  },
+  {
+   "file": "lsWhatIfChange.webm",
+   "key": "lsWhatIfChange",
+   "speaker": "swiftee",
+   "text": "જો આ સમલંબ ચતુષ્કોણનો\nઆકાર બદલીએ તો?",
+   "spoken": "જો આ સમલંબ ચતુષ્કોણનો આકાર બદલીએ તો?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.187
+  },
+  {
+   "file": "lsDragAnyVertex.webm",
+   "key": "lsDragAnyVertex",
+   "speaker": "swiftee",
+   "text": "કોઈ પણ શિરોબિંદુને ડ્રેગ કરો.",
+   "spoken": "કોઈ પણ શિરોબિંદુને ડ્રેગ કરો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.299
+  },
+  {
+   "file": "lsWatchAngles.webm",
+   "key": "lsWatchAngles",
+   "speaker": "swiftee",
+   "text": "ખૂણા બદલાતા જુઓ!",
+   "spoken": "ખૂણા બદલાતા જુઓ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.672
+  },
+  {
+   "file": "lsLookSums.webm",
+   "key": "lsLookSums",
+   "speaker": "swiftee",
+   "text": "હવે સરવાળા જુઓ!",
+   "spoken": "હવે સરવાળા જુઓ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.515
+  },
+  {
+   "file": "lsChangeAll.webm",
+   "key": "lsChangeAll",
+   "speaker": "swiftee",
+   "text": "આકારને જેટલો ગમે તેટલો બદલો!",
+   "spoken": "આકારને જેટલો ગમે તેટલો બદલો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.612
+  },
+  {
+   "file": "lsStill180.webm",
+   "key": "lsStill180",
+   "speaker": "swiftee",
+   "text": "તો પણ તેમનો સરવાળો 180° જ થાય છે!",
+   "spoken": "તો પણ તેમનો સરવાળો એકસો એંસી અંશ જ થાય છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.814
+  },
+  {
+   "file": "lsRuleEvery.webm",
+   "key": "lsRuleEvery",
+   "speaker": "swiftee",
+   "text": "આ રહ્યો દરેક સમલંબ ચતુષ્કોણ માટેનો નિયમ!",
+   "spoken": "આ રહ્યો દરેક સમલંબ ચતુષ્કોણ માટેનો નિયમ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.579
+  },
+  {
+   "file": "lsTakeTwo.webm",
+   "key": "lsTakeTwo",
+   "speaker": "swiftee",
+   "text": "એક અસમાંતર બાજુ પરના બે ખૂણા લો.",
+   "spoken": "એક અસમાંતર બાજુ પરના બે ખૂણા લો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsAlways180.webm",
+   "key": "lsAlways180",
+   "speaker": "swiftee",
+   "text": "તેમનો સરવાળો હંમેશાં 180° થાય છે!",
+   "spoken": "તેમનો સરવાળો હંમેશાં એકસો એંસી અંશ થાય છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.814
+  },
+  {
+   "file": "lsLookA120.webm",
+   "key": "lsLookA120",
+   "speaker": "swiftee",
+   "text": "જુઓ! ∠A = 120°.",
+   "spoken": "જુઓ! ખૂણો એ બરાબર એકસો વીસ અંશ.",
+   "letters": [
+    0.323
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.814
+  },
+  {
+   "file": "lsWhatIsD.webm",
+   "key": "lsWhatIsD",
+   "speaker": "swiftee",
+   "text": "તો ∠D કેટલો છે?",
+   "spoken": "તો ખૂણો ડી કેટલો છે?",
+   "letters": [
+    0.4
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.064
+  },
+  {
+   "file": "lsCorrect180.webm",
+   "key": "lsCorrect180",
+   "speaker": "swiftee",
+   "text": "સાચું! 120° + 60° = 180°.",
+   "spoken": "સાચું! એકસો વીસ અંશ વત્તા સાઠ અંશ બરાબર એકસો એંસી અંશ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.825
+  },
+  {
+   "file": "lsSameLeg180.webm",
+   "key": "lsSameLeg180",
+   "speaker": "swiftee",
+   "text": "એક જ અસમાંતર બાજુ પરના ખૂણાઓનો સરવાળો 180° થાય છે.",
+   "spoken": "એક જ અસમાંતર બાજુ પરના ખૂણાઓનો સરવાળો એકસો એંસી અંશ થાય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.355
+  },
+  {
+   "file": "lsWhatIf90.webm",
+   "key": "lsWhatIf90",
+   "speaker": "swiftee",
+   "text": "જો આપણે એક ખૂણો\n90° નો કરીએ તો?",
+   "spoken": "જો આપણે એક ખૂણો નેવું અંશ નો કરીએ તો?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.422
+  },
+  {
+   "file": "lsDragTo90.webm",
+   "key": "lsDragTo90",
+   "speaker": "swiftee",
+   "text": "કોઈ પણ ખૂણો 90° નો કરવા કોઈ પણ શિરોબિંદુને ડ્રેગ કરો.",
+   "spoken": "કોઈ પણ ખૂણો નેવું અંશ નો કરવા કોઈ પણ શિરોબિંદુને ડ્રેગ કરો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.A.webm",
+   "key": "lsDrag90",
+   "variant": "A",
+   "part": "lead",
+   "next_text": "સાઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "speaker": "swiftee",
+   "text": "∠A હવે",
+   "spoken": "ખૂણો એ હવે",
+   "letters": [
+    0.5
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.176
+  },
+  {
+   "file": "lsDrag90.B.webm",
+   "key": "lsDrag90",
+   "variant": "B",
+   "part": "lead",
+   "next_text": "સાઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "speaker": "swiftee",
+   "text": "∠B હવે",
+   "spoken": "ખૂણો બી હવે",
+   "letters": [
+    0.455
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.019
+  },
+  {
+   "file": "lsDrag90.C.webm",
+   "key": "lsDrag90",
+   "variant": "C",
+   "part": "lead",
+   "next_text": "સાઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "speaker": "swiftee",
+   "text": "∠C હવે",
+   "spoken": "ખૂણો સી હવે",
+   "letters": [
+    0.455
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.019
+  },
+  {
+   "file": "lsDrag90.D.webm",
+   "key": "lsDrag90",
+   "variant": "D",
+   "part": "lead",
+   "next_text": "સાઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "speaker": "swiftee",
+   "text": "∠D હવે",
+   "spoken": "ખૂણો ડી હવે",
+   "letters": [
+    0.455
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.332
+  },
+  {
+   "file": "lsDrag90.39.webm",
+   "key": "lsDrag90",
+   "variant": "39",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "39° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ઓગણચાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.40.webm",
+   "key": "lsDrag90",
+   "variant": "40",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "40° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ચાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.41.webm",
+   "key": "lsDrag90",
+   "variant": "41",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "41° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકતાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.42.webm",
+   "key": "lsDrag90",
+   "variant": "42",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "42° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "બેતાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.512
+  },
+  {
+   "file": "lsDrag90.43.webm",
+   "key": "lsDrag90",
+   "variant": "43",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "43° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "તેતાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.44.webm",
+   "key": "lsDrag90",
+   "variant": "44",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "44° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ચુંમાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.45.webm",
+   "key": "lsDrag90",
+   "variant": "45",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "45° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "પિસ્તાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.46.webm",
+   "key": "lsDrag90",
+   "variant": "46",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "46° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "છેતાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.47.webm",
+   "key": "lsDrag90",
+   "variant": "47",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "47° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "સુડતાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.48.webm",
+   "key": "lsDrag90",
+   "variant": "48",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "48° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "અડતાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.49.webm",
+   "key": "lsDrag90",
+   "variant": "49",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "49° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ઓગણપચાસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.50.webm",
+   "key": "lsDrag90",
+   "variant": "50",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "50° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "પચાસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.51.webm",
+   "key": "lsDrag90",
+   "variant": "51",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "51° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકાવન અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.52.webm",
+   "key": "lsDrag90",
+   "variant": "52",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "52° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "બાવન અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.53.webm",
+   "key": "lsDrag90",
+   "variant": "53",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "53° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ત્રેપન અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.54.webm",
+   "key": "lsDrag90",
+   "variant": "54",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "54° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ચોપન અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.59
+  },
+  {
+   "file": "lsDrag90.55.webm",
+   "key": "lsDrag90",
+   "variant": "55",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "55° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "પંચાવન અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.56.webm",
+   "key": "lsDrag90",
+   "variant": "56",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "56° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "છપ્પન અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDrag90.57.webm",
+   "key": "lsDrag90",
+   "variant": "57",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "57° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "સત્તાવન અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.825
+  },
+  {
+   "file": "lsDrag90.58.webm",
+   "key": "lsDrag90",
+   "variant": "58",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "58° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "અઠ્ઠાવન અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.512
+  },
+  {
+   "file": "lsDrag90.59.webm",
+   "key": "lsDrag90",
+   "variant": "59",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "59° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ઓગણસાઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.60.webm",
+   "key": "lsDrag90",
+   "variant": "60",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "60° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "સાઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.61.webm",
+   "key": "lsDrag90",
+   "variant": "61",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "61° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.62.webm",
+   "key": "lsDrag90",
+   "variant": "62",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "62° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "બાસઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDrag90.63.webm",
+   "key": "lsDrag90",
+   "variant": "63",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "63° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ત્રેસઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.64.webm",
+   "key": "lsDrag90",
+   "variant": "64",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "64° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ચોસઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.65.webm",
+   "key": "lsDrag90",
+   "variant": "65",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "65° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "પાંસઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.66.webm",
+   "key": "lsDrag90",
+   "variant": "66",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "66° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "છાસઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.67.webm",
+   "key": "lsDrag90",
+   "variant": "67",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "67° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "સડસઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.68.webm",
+   "key": "lsDrag90",
+   "variant": "68",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "68° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "અડસઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.355
+  },
+  {
+   "file": "lsDrag90.69.webm",
+   "key": "lsDrag90",
+   "variant": "69",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "69° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ઓગણોસિત્તેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.70.webm",
+   "key": "lsDrag90",
+   "variant": "70",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "70° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "સિત્તેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDrag90.71.webm",
+   "key": "lsDrag90",
+   "variant": "71",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "71° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકોતેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.72.webm",
+   "key": "lsDrag90",
+   "variant": "72",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "72° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "બોતેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.73.webm",
+   "key": "lsDrag90",
+   "variant": "73",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "73° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "તોતેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.74.webm",
+   "key": "lsDrag90",
+   "variant": "74",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "74° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ચુંમોતેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.75.webm",
+   "key": "lsDrag90",
+   "variant": "75",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "75° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "પંચોતેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.76.webm",
+   "key": "lsDrag90",
+   "variant": "76",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "76° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "છોતેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.77.webm",
+   "key": "lsDrag90",
+   "variant": "77",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "77° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "સિત્યોતેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.78.webm",
+   "key": "lsDrag90",
+   "variant": "78",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "78° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ઇઠ્યોતેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.79.webm",
+   "key": "lsDrag90",
+   "variant": "79",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "79° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ઓગણએંસી અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.80.webm",
+   "key": "lsDrag90",
+   "variant": "80",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "80° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એંસી અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.81.webm",
+   "key": "lsDrag90",
+   "variant": "81",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "81° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એક્યાસી અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.82.webm",
+   "key": "lsDrag90",
+   "variant": "82",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "82° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "બ્યાસી અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.355
+  },
+  {
+   "file": "lsDrag90.83.webm",
+   "key": "lsDrag90",
+   "variant": "83",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "83° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ત્યાસી અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.84.webm",
+   "key": "lsDrag90",
+   "variant": "84",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "84° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "ચોર્યાસી અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.85.webm",
+   "key": "lsDrag90",
+   "variant": "85",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "85° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "પંચાસી અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.95.webm",
+   "key": "lsDrag90",
+   "variant": "95",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "95° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "પંચાણું અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.96.webm",
+   "key": "lsDrag90",
+   "variant": "96",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "96° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "છન્નું અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.97.webm",
+   "key": "lsDrag90",
+   "variant": "97",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "97° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "સત્તાણું અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.669
+  },
+  {
+   "file": "lsDrag90.98.webm",
+   "key": "lsDrag90",
+   "variant": "98",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "98° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "અઠ્ઠાણું અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDrag90.99.webm",
+   "key": "lsDrag90",
+   "variant": "99",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "99° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "નવ્વાણું અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.100.webm",
+   "key": "lsDrag90",
+   "variant": "100",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "100° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "સો અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.101.webm",
+   "key": "lsDrag90",
+   "variant": "101",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "101° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો એક અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsDrag90.102.webm",
+   "key": "lsDrag90",
+   "variant": "102",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "102° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો બે અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.669
+  },
+  {
+   "file": "lsDrag90.103.webm",
+   "key": "lsDrag90",
+   "variant": "103",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "103° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ત્રણ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.747
+  },
+  {
+   "file": "lsDrag90.104.webm",
+   "key": "lsDrag90",
+   "variant": "104",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "104° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ચાર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.825
+  },
+  {
+   "file": "lsDrag90.105.webm",
+   "key": "lsDrag90",
+   "variant": "105",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "105° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો પાંચ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.106.webm",
+   "key": "lsDrag90",
+   "variant": "106",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "106° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો છ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.825
+  },
+  {
+   "file": "lsDrag90.107.webm",
+   "key": "lsDrag90",
+   "variant": "107",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "107° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો સાત અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.512
+  },
+  {
+   "file": "lsDrag90.108.webm",
+   "key": "lsDrag90",
+   "variant": "108",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "108° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો આઠ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsDrag90.109.webm",
+   "key": "lsDrag90",
+   "variant": "109",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "109° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો નવ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.110.webm",
+   "key": "lsDrag90",
+   "variant": "110",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "110° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો દસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.139
+  },
+  {
+   "file": "lsDrag90.111.webm",
+   "key": "lsDrag90",
+   "variant": "111",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "111° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો અગિયાર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.112.webm",
+   "key": "lsDrag90",
+   "variant": "112",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "112° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો બાર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.825
+  },
+  {
+   "file": "lsDrag90.113.webm",
+   "key": "lsDrag90",
+   "variant": "113",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "113° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો તેર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.982
+  },
+  {
+   "file": "lsDrag90.114.webm",
+   "key": "lsDrag90",
+   "variant": "114",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "114° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ચૌદ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDrag90.115.webm",
+   "key": "lsDrag90",
+   "variant": "115",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "115° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો પંદર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.139
+  },
+  {
+   "file": "lsDrag90.116.webm",
+   "key": "lsDrag90",
+   "variant": "116",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "116° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો સોળ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.217
+  },
+  {
+   "file": "lsDrag90.117.webm",
+   "key": "lsDrag90",
+   "variant": "117",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "117° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો સત્તર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.06
+  },
+  {
+   "file": "lsDrag90.118.webm",
+   "key": "lsDrag90",
+   "variant": "118",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "118° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો અઢાર અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.119.webm",
+   "key": "lsDrag90",
+   "variant": "119",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "119° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ઓગણીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsDrag90.120.webm",
+   "key": "lsDrag90",
+   "variant": "120",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "120° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો વીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.139
+  },
+  {
+   "file": "lsDrag90.121.webm",
+   "key": "lsDrag90",
+   "variant": "121",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "121° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો એકવીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsDrag90.122.webm",
+   "key": "lsDrag90",
+   "variant": "122",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "122° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો બાવીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.59
+  },
+  {
+   "file": "lsDrag90.123.webm",
+   "key": "lsDrag90",
+   "variant": "123",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "123° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ત્રેવીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.433
+  },
+  {
+   "file": "lsDrag90.124.webm",
+   "key": "lsDrag90",
+   "variant": "124",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "124° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ચોવીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDrag90.125.webm",
+   "key": "lsDrag90",
+   "variant": "125",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "125° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો પચ્ચીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.06
+  },
+  {
+   "file": "lsDrag90.126.webm",
+   "key": "lsDrag90",
+   "variant": "126",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "126° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો છવ્વીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDrag90.127.webm",
+   "key": "lsDrag90",
+   "variant": "127",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "127° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો સત્તાવીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.06
+  },
+  {
+   "file": "lsDrag90.128.webm",
+   "key": "lsDrag90",
+   "variant": "128",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "128° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો અઠ્ઠાવીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsDrag90.129.webm",
+   "key": "lsDrag90",
+   "variant": "129",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "129° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ઓગણત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.296
+  },
+  {
+   "file": "lsDrag90.130.webm",
+   "key": "lsDrag90",
+   "variant": "130",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "130° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.904
+  },
+  {
+   "file": "lsDrag90.131.webm",
+   "key": "lsDrag90",
+   "variant": "131",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "131° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો એકત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.132.webm",
+   "key": "lsDrag90",
+   "variant": "132",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "132° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો બત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.825
+  },
+  {
+   "file": "lsDrag90.133.webm",
+   "key": "lsDrag90",
+   "variant": "133",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "133° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો તેત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.134.webm",
+   "key": "lsDrag90",
+   "variant": "134",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "134° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ચોત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.217
+  },
+  {
+   "file": "lsDrag90.135.webm",
+   "key": "lsDrag90",
+   "variant": "135",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "135° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો પાંત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.982
+  },
+  {
+   "file": "lsDrag90.136.webm",
+   "key": "lsDrag90",
+   "variant": "136",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "136° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો છત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.982
+  },
+  {
+   "file": "lsDrag90.137.webm",
+   "key": "lsDrag90",
+   "variant": "137",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "137° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો સાડત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.217
+  },
+  {
+   "file": "lsDrag90.138.webm",
+   "key": "lsDrag90",
+   "variant": "138",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "138° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો આડત્રીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.139.webm",
+   "key": "lsDrag90",
+   "variant": "139",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "139° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ઓગણચાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 6.217
+  },
+  {
+   "file": "lsDrag90.140.webm",
+   "key": "lsDrag90",
+   "variant": "140",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "140° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો ચાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.141.webm",
+   "key": "lsDrag90",
+   "variant": "141",
+   "part": "tail",
+   "previous_text": "ખૂણો એ હવે",
+   "speaker": "swiftee",
+   "text": "141° છે. 90° બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "spoken": "એકસો એકતાલીસ અંશ છે. નેવું અંશ બતાવે ત્યાં સુધી ડ્રેગ કરતા રહો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsGreatJob.webm",
+   "key": "lsGreatJob",
+   "speaker": "swiftee",
+   "text": "ખૂબ સરસ!",
+   "spoken": "ખૂબ સરસ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.176
+  },
+  {
+   "file": "lsWatch90.A.webm",
+   "key": "lsWatch90",
+   "variant": "A",
+   "speaker": "swiftee",
+   "text": "જુઓ! હવે ∠A 90° નો છે. એ કાટખૂણો છે.",
+   "spoken": "જુઓ! હવે ખૂણો એ નેવું અંશ નો છે. એ કાટખૂણો છે.",
+   "letters": [
+    0.304
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsWatch90.B.webm",
+   "key": "lsWatch90",
+   "variant": "B",
+   "speaker": "swiftee",
+   "text": "જુઓ! હવે ∠B 90° નો છે. એ કાટખૂણો છે.",
+   "spoken": "જુઓ! હવે ખૂણો બી નેવું અંશ નો છે. એ કાટખૂણો છે.",
+   "letters": [
+    0.298
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsWatch90.C.webm",
+   "key": "lsWatch90",
+   "variant": "C",
+   "speaker": "swiftee",
+   "text": "જુઓ! હવે ∠C 90° નો છે. એ કાટખૂણો છે.",
+   "spoken": "જુઓ! હવે ખૂણો સી નેવું અંશ નો છે. એ કાટખૂણો છે.",
+   "letters": [
+    0.298
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsWatch90.D.webm",
+   "key": "lsWatch90",
+   "variant": "D",
+   "speaker": "swiftee",
+   "text": "જુઓ! હવે ∠D 90° નો છે. એ કાટખૂણો છે.",
+   "spoken": "જુઓ! હવે ખૂણો ડી નેવું અંશ નો છે. એ કાટખૂણો છે.",
+   "letters": [
+    0.298
+   ],
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsAnotherRight.webm",
+   "key": "lsAnotherRight",
+   "speaker": "swiftee",
+   "text": "ઓહો! આપણને બીજો\nકાટખૂણો મળ્યો.",
+   "spoken": "ઓહો! આપણને બીજો કાટખૂણો મળ્યો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsTwoRight.webm",
+   "key": "lsTwoRight",
+   "speaker": "swiftee",
+   "text": "બે કાટખૂણા, એકબીજાની બાજુમાં!",
+   "spoken": "બે કાટખૂણા, એકબીજાની બાજુમાં!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.873
+  },
+  {
+   "file": "lsRightIs.webm",
+   "key": "lsRightIs",
+   "speaker": "swiftee",
+   "text": "આ કાટકોણ સમલંબ ચતુષ્કોણ છે!",
+   "spoken": "આ કાટકોણ સમલંબ ચતુષ્કોણ છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsRightTrapezium.webm",
+   "key": "lsRightTrapezium",
+   "speaker": "swiftee",
+   "text": "કાટકોણ સમલંબ ચતુષ્કોણ",
+   "spoken": "કાટકોણ સમલંબ ચતુષ્કોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.612
+  },
+  {
+   "file": "lsWhichType.webm",
+   "key": "lsWhichType",
+   "speaker": "swiftee",
+   "text": "આ કયા પ્રકારનો સમલંબ ચતુષ્કોણ છે?",
+   "spoken": "આ કયા પ્રકારનો સમલંબ ચતુષ્કોણ છે?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.717
+  },
+  {
+   "file": "lsRightLegsEqual.webm",
+   "key": "lsRightLegsEqual",
+   "speaker": "swiftee",
+   "text": "બરાબર! તેની અસમાંતર બાજુઓ સમાન છે.",
+   "spoken": "બરાબર! તેની અસમાંતર બાજુઓ સમાન છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.657
+  },
+  {
+   "file": "lsSoIso.webm",
+   "key": "lsSoIso",
+   "speaker": "swiftee",
+   "text": "એટલે એ સમદ્વિબાજુ સમલંબ ચતુષ્કોણ છે!",
+   "spoken": "એટલે એ સમદ્વિબાજુ સમલંબ ચતુષ્કોણ છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.736
+  },
+  {
+   "file": "lsScalene.webm",
+   "key": "lsScalene",
+   "speaker": "swiftee",
+   "text": "વિષમબાજુ",
+   "spoken": "વિષમબાજુ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.254
+  },
+  {
+   "file": "lsIsosceles.webm",
+   "key": "lsIsosceles",
+   "speaker": "swiftee",
+   "text": "સમદ્વિબાજુ",
+   "spoken": "સમદ્વિબાજુ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.254
+  },
+  {
+   "file": "lsRight.webm",
+   "key": "lsRight",
+   "speaker": "swiftee",
+   "text": "કાટકોણ",
+   "spoken": "કાટકોણ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 0.94
+  },
+  {
+   "file": "lsLookMarks.webm",
+   "key": "lsLookMarks",
+   "speaker": "swiftee",
+   "text": "આ નાનાં નિશાન જુઓ!",
+   "spoken": "આ નાનાં નિશાન જુઓ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsMarksEqual.webm",
+   "key": "lsMarksEqual",
+   "speaker": "swiftee",
+   "text": "તે બતાવે છે કે અસમાંતર બાજુઓ સમાન છે.",
+   "spoken": "તે બતાવે છે કે અસમાંતર બાજુઓ સમાન છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.579
+  },
+  {
+   "file": "lsNoRight.webm",
+   "key": "lsNoRight",
+   "speaker": "swiftee",
+   "text": "અહીં કોઈ કાટખૂણો નથી!",
+   "spoken": "અહીં કોઈ કાટખૂણો નથી!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.985
+  },
+  {
+   "file": "lsLookLegs.webm",
+   "key": "lsLookLegs",
+   "speaker": "swiftee",
+   "text": "તેના બદલે અસમાંતર બાજુઓ જુઓ.",
+   "spoken": "તેના બદલે અસમાંતર બાજુઓ જુઓ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.612
+  },
+  {
+   "file": "lsDragLabels.webm",
+   "key": "lsDragLabels",
+   "speaker": "swiftee",
+   "text": "લેબલને તેમની સાચી\nજગ્યાએ ડ્રેગ કરો.",
+   "spoken": "લેબલને તેમની સાચી જગ્યાએ ડ્રેગ કરો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.952
+  },
+  {
+   "file": "lsQ4Clue.webm",
+   "key": "lsQ4Clue",
+   "speaker": "swiftee",
+   "text": "ચમકતો સંકેત જુઓ. કયા આકાર પર એ નિશાન છે?",
+   "spoken": "ચમકતો સંકેત જુઓ. કયા આકાર પર એ નિશાન છે?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.736
+  },
+  {
+   "file": "lsQ4TryAgain.webm",
+   "key": "lsQ4TryAgain",
+   "speaker": "swiftee",
+   "text": "ફરી પ્રયાસ કરો! આકારોને ધ્યાનથી જુઓ.",
+   "spoken": "ફરી પ્રયાસ કરો! આકારોને ધ્યાનથી જુઓ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.344
+  },
+  {
+   "file": "lsQ4WentBack.webm",
+   "key": "lsQ4WentBack",
+   "speaker": "swiftee",
+   "text": "કેટલાંક લેબલ પાછાં ગયાં. નિશાન શોધો: સમાન અસમાંતર બાજુઓ, કાટખૂણા, કે બેમાંથી એકેય નહીં.",
+   "spoken": "કેટલાંક લેબલ પાછાં ગયાં. નિશાન શોધો: સમાન અસમાંતર બાજુઓ, કાટખૂણા, કે બેમાંથી એકેય નહીં.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 8.542
+  },
+  {
+   "file": "lsBrilliant.webm",
+   "key": "lsBrilliant",
+   "speaker": "swiftee",
+   "text": "શાનદાર! તમે ત્રણેય સમલંબ ચતુષ્કોણને સાચાં નામ આપ્યાં.",
+   "spoken": "શાનદાર! તમે ત્રણેય સમલંબ ચતુષ્કોણને સાચાં નામ આપ્યાં.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsRecall.webm",
+   "key": "lsRecall",
+   "speaker": "swiftee",
+   "text": "ચાલો, આજે શું શીખ્યા\nતે યાદ કરીએ.",
+   "spoken": "ચાલો, આજે શું શીખ્યા તે યાદ કરીએ.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsAmazing.webm",
+   "key": "lsAmazing",
+   "speaker": "swiftee",
+   "text": "અદ્ભુત! હવે તમે સમલંબ ચતુષ્કોણ વિશે બધું જાણો છો.",
+   "spoken": "અદ્ભુત! હવે તમે સમલંબ ચતુષ્કોણ વિશે બધું જાણો છો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.467
+  },
+  {
+   "file": "lsBye.webm",
+   "key": "lsBye",
+   "speaker": "swiftee",
+   "text": "ચાલો, આવજો! આપણા આગલા\nબરફીલા સાહસમાં મળીશું!",
+   "spoken": "ચાલો, આવજો! આપણા આગલા બરફીલા સાહસમાં મળીશું!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.892
+  },
+  {
+   "file": "lsTheEndSaid.webm",
+   "key": "lsTheEndSaid",
+   "speaker": "swiftee",
+   "text": "સમાપ્ત!",
+   "spoken": "સમાપ્ત!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.176
+  },
+  {
+   "file": "lsBase.webm",
+   "key": "lsBase",
+   "speaker": "swiftee",
+   "text": "પાયો",
+   "spoken": "પાયો",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 0.784
+  },
+  {
+   "file": "lsLeg.webm",
+   "key": "lsLeg",
+   "speaker": "swiftee",
+   "text": "અસમાંતર બાજુ",
+   "spoken": "અસમાંતર બાજુ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.515
+  },
+  {
+   "file": "sumTrapezium.webm",
+   "key": "sumTrapezium",
+   "speaker": "swiftee",
+   "text": "સમલંબ ચતુષ્કોણ એ એવો ચતુષ્કોણ છે, જેમાં સમાંતર બાજુઓની ઓછામાં ઓછી એક જોડ હોય.",
+   "spoken": "સમલંબ ચતુષ્કોણ એ એવો ચતુષ્કોણ છે, જેમાં સમાંતર બાજુઓની ઓછામાં ઓછી એક જોડ હોય.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 7.027
+  },
+  {
+   "file": "sumBasesLabel.webm",
+   "key": "sumBasesLabel",
+   "speaker": "swiftee",
+   "text": "પાયા",
+   "spoken": "પાયા",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 0.784
+  },
+  {
+   "file": "sumBases.webm",
+   "key": "sumBases",
+   "speaker": "swiftee",
+   "text": "સમાંતર બાજુઓ પાયા કહેવાય છે.",
+   "spoken": "સમાંતર બાજુઓ પાયા કહેવાય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.534
+  },
+  {
+   "file": "sumLegsLabel.webm",
+   "key": "sumLegsLabel",
+   "speaker": "swiftee",
+   "text": "અસમાંતર બાજુઓ",
+   "spoken": "અસમાંતર બાજુઓ",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.593
+  },
+  {
+   "file": "sumLegs.webm",
+   "key": "sumLegs",
+   "speaker": "swiftee",
+   "text": "બાકીની બે બાજુઓ અસમાંતર બાજુઓ કહેવાય છે.",
+   "spoken": "બાકીની બે બાજુઓ અસમાંતર બાજુઓ કહેવાય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.579
+  },
+  {
+   "file": "sumScalene.webm",
+   "key": "sumScalene",
+   "speaker": "swiftee",
+   "text": "વિષમબાજુ સમલંબ ચતુષ્કોણની બાજુઓની લંબાઈ અલગ અલગ હોય છે.",
+   "spoken": "વિષમબાજુ સમલંબ ચતુષ્કોણની બાજુઓની લંબાઈ અલગ અલગ હોય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.702
+  },
+  {
+   "file": "sumIsosceles.webm",
+   "key": "sumIsosceles",
+   "speaker": "swiftee",
+   "text": "સમદ્વિબાજુ સમલંબ ચતુષ્કોણની અસમાંતર બાજુઓની લંબાઈ સરખી હોય છે.",
+   "spoken": "સમદ્વિબાજુ સમલંબ ચતુષ્કોણની અસમાંતર બાજુઓની લંબાઈ સરખી હોય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 5.512
+  },
+  {
+   "file": "sumRightLabel.webm",
+   "key": "sumRightLabel",
+   "speaker": "swiftee",
+   "text": "કાટખૂણાવાળો",
+   "spoken": "કાટખૂણાવાળો",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.254
+  },
+  {
+   "file": "sumRight.webm",
+   "key": "sumRight",
+   "speaker": "swiftee",
+   "text": "કાટકોણ સમલંબ ચતુષ્કોણમાં બે પાસપાસેના કાટખૂણા હોય છે.",
+   "spoken": "કાટકોણ સમલંબ ચતુષ્કોણમાં બે પાસપાસેના કાટખૂણા હોય છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.624
+  },
+  {
+   "file": "sumAngleSumLabel.webm",
+   "key": "sumAngleSumLabel",
+   "speaker": "swiftee",
+   "text": "ખૂણાઓનો સરવાળો",
+   "spoken": "ખૂણાઓનો સરવાળો",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.672
+  },
+  {
+   "file": "sumSupplementaryLabel.webm",
+   "key": "sumSupplementaryLabel",
+   "speaker": "swiftee",
+   "text": "પૂરક ખૂણા",
+   "spoken": "પૂરક ખૂણા",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.254
+  },
+  {
+   "file": "sumSupplementary.webm",
+   "key": "sumSupplementary",
+   "speaker": "swiftee",
+   "text": "જે બે ખૂણાનો સરવાળો 180° થાય, તે પૂરક ખૂણા છે.",
+   "spoken": "જે બે ખૂણાનો સરવાળો એકસો એંસી અંશ થાય, તે પૂરક ખૂણા છે.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.859
+  },
+  {
+   "file": "f2GreatJob.webm",
+   "key": "f2GreatJob",
+   "speaker": "swiftee",
+   "text": "*ખૂબ* સરસ!",
+   "spoken": "ખૂબ સરસ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.176
+  },
+  {
+   "file": "f2KnowTrapeziums.webm",
+   "key": "f2KnowTrapeziums",
+   "speaker": "swiftee",
+   "text": "તમે *સમલંબ ચતુષ્કોણ* વિશે બધું જાણો છો!",
+   "spoken": "તમે સમલંબ ચતુષ્કોણ વિશે બધું જાણો છો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 3.265
+  },
+  {
+   "file": "f2HelpPopo.webm",
+   "key": "f2HelpPopo",
+   "speaker": "swiftee",
+   "text": "હવે, ચાલો પોપોને થોડી *માછલીઓ* પકડવામાં મદદ કરીએ!",
+   "spoken": "હવે, ચાલો પોપોને થોડી માછલીઓ પકડવામાં મદદ કરીએ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.232
+  },
+  {
+   "file": "f2UseRod.webm",
+   "key": "f2UseRod",
+   "speaker": "swiftee",
+   "text": "માછીમારીની લાકડીથી *નિશાન* તાકો…",
+   "spoken": "માછીમારીની લાકડીથી નિશાન તાકો...",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.717
+  },
+  {
+   "file": "f2DropHook.webm",
+   "key": "f2DropHook",
+   "speaker": "swiftee",
+   "text": "…અને *સાચી* માછલી પર હૂક નાખો.",
+   "spoken": "અને સાચી માછલી પર હૂક નાખો.",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.456
+  },
+  {
+   "file": "f2CatchAllTrapeziums.webm",
+   "key": "f2CatchAllTrapeziums",
+   "speaker": "narrator",
+   "text": "બધા *સમલંબ ચતુષ્કોણ* પકડો!",
+   "spoken": "બધા સમલંબ ચતુષ્કોણ પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2HintParallel.webm",
+   "key": "f2HintParallel",
+   "speaker": "narrator",
+   "text": "*સમાંતર* બાજુઓ શોધો!",
+   "spoken": "સમાંતર બાજુઓ શોધો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.907
+  },
+  {
+   "file": "f2WhyNoParallel.webm",
+   "key": "f2WhyNoParallel",
+   "speaker": "popo",
+   "text": "એક પણ *સમાંતર* બાજુ નથી!",
+   "spoken": "એક પણ સમાંતર બાજુ નથી!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 2.299
+  },
+  {
+   "file": "f2CatchScalene.webm",
+   "key": "f2CatchScalene",
+   "speaker": "narrator",
+   "text": "*વિષમબાજુ* સમલંબ ચતુષ્કોણ પકડો!",
+   "spoken": "વિષમબાજુ સમલંબ ચતુષ્કોણ પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.795
+  },
+  {
+   "file": "f2HintLegLengths.webm",
+   "key": "f2HintLegLengths",
+   "speaker": "narrator",
+   "text": "*અસમાંતર* બાજુઓની લંબાઈ તપાસો!",
+   "spoken": "અસમાંતર બાજુઓની લંબાઈ તપાસો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.534
+  },
+  {
+   "file": "f2WhyLegsEqual.webm",
+   "key": "f2WhyLegsEqual",
+   "speaker": "popo",
+   "text": "તેની અસમાંતર બાજુઓ *સમાન* છે!",
+   "spoken": "તેની અસમાંતર બાજુઓ સમાન છે!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 2.952
+  },
+  {
+   "file": "f2CatchIsosceles.webm",
+   "key": "f2CatchIsosceles",
+   "speaker": "narrator",
+   "text": "*સમદ્વિબાજુ* સમલંબ ચતુષ્કોણ પકડો!",
+   "spoken": "સમદ્વિબાજુ સમલંબ ચતુષ્કોણ પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.873
+  },
+  {
+   "file": "f2HintLegsEqual.webm",
+   "key": "f2HintLegsEqual",
+   "speaker": "narrator",
+   "text": "શું અસમાંતર બાજુઓ *સમાન* છે?",
+   "spoken": "શું અસમાંતર બાજુઓ સમાન છે?",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.534
+  },
+  {
+   "file": "f2WhyLegsDifferent.webm",
+   "key": "f2WhyLegsDifferent",
+   "speaker": "popo",
+   "text": "તેની અસમાંતર બાજુઓ *અલગ* છે!",
+   "spoken": "તેની અસમાંતર બાજુઓ અલગ છે!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 2.873
+  },
+  {
+   "file": "f2CatchRightAngled.webm",
+   "key": "f2CatchRightAngled",
+   "speaker": "narrator",
+   "text": "કાટકોણ *સમલંબ ચતુષ્કોણ* પકડો!",
+   "spoken": "કાટકોણ સમલંબ ચતુષ્કોણ પકડો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2HintTwoRight.webm",
+   "key": "f2HintTwoRight",
+   "speaker": "narrator",
+   "text": "બે *કાટખૂણા* શોધો!",
+   "spoken": "બે કાટખૂણા શોધો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.593
+  },
+  {
+   "file": "f2WhyNoRight.webm",
+   "key": "f2WhyNoRight",
+   "speaker": "popo",
+   "text": "એક પણ *કાટખૂણો* નથી!",
+   "spoken": "એક પણ કાટખૂણો નથી!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 2.064
+  },
+  {
+   "file": "f2RecallParallel.webm",
+   "key": "f2RecallParallel",
+   "speaker": "swiftee",
+   "text": "જુઓ! આ બે બાજુઓ *સમાંતર* છે!",
+   "spoken": "જુઓ! આ બે બાજુઓ સમાંતર છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.873
+  },
+  {
+   "file": "f2Remember.webm",
+   "key": "f2Remember",
+   "speaker": "swiftee",
+   "text": "*યાદ રાખો,*",
+   "spoken": "યાદ રાખો,",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.176
+  },
+  {
+   "file": "f2AnglesSameLeg.webm",
+   "key": "f2AnglesSameLeg",
+   "speaker": "swiftee",
+   "text": "સમલંબ ચતુષ્કોણની એક જ *અસમાંતર* બાજુ પરના ખૂણાઓનો…",
+   "spoken": "સમલંબ ચતુષ્કોણની એક જ અસમાંતર બાજુ પરના ખૂણાઓનો...",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 4.624
+  },
+  {
+   "file": "f2AddUp180.webm",
+   "key": "f2AddUp180",
+   "speaker": "swiftee",
+   "text": "સરવાળો *180°* થાય છે!",
+   "spoken": "સરવાળો એકસો એંસી અંશ થાય છે!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.795
+  },
+  {
+   "file": "f2Detective.webm",
+   "key": "f2Detective",
+   "speaker": "swiftee",
+   "text": "હુર્રે! આકારોના *જાસૂસ!*",
+   "spoken": "હુર્રે! આકારોના જાસૂસ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.795
+  },
+  {
+   "file": "f2LookMarked.webm",
+   "key": "f2LookMarked",
+   "speaker": "swiftee",
+   "text": "નિશાનીવાળા *ખૂણા* જુઓ!",
+   "spoken": "નિશાનીવાળા ખૂણા જુઓ!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.064
+  },
+  {
+   "file": "f2HintAddAngles.webm",
+   "key": "f2HintAddAngles",
+   "speaker": "narrator",
+   "text": "નિશાનીવાળા *ખૂણાનો* સરવાળો કરો!",
+   "spoken": "નિશાનીવાળા ખૂણાનો સરવાળો કરો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2WhyNot180.webm",
+   "key": "f2WhyNot180",
+   "speaker": "popo",
+   "text": "આ ખૂણાઓનો સરવાળો *180°* થતો નથી!",
+   "spoken": "આ ખૂણાઓનો સરવાળો એકસો એંસી અંશ થતો નથી!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 4.31
+  },
+  {
+   "file": "f2OopsNotTrapezium.webm",
+   "key": "f2OopsNotTrapezium",
+   "speaker": "popo",
+   "text": "આ *સમલંબ ચતુષ્કોણ* નથી.",
+   "spoken": "આ સમલંબ ચતુષ્કોણ નથી.",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2OopsTryAgain.webm",
+   "key": "f2OopsTryAgain",
+   "speaker": "popo",
+   "text": "*ફરી* પ્રયાસ કરો!",
+   "spoken": "ફરી પ્રયાસ કરો!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 1.332
+  },
+  {
+   "file": "f2NotTrapeziumCard.webm",
+   "key": "f2NotTrapeziumCard",
+   "speaker": "narrator",
+   "text": "આ તો *સમલંબ ચતુષ્કોણ* નથી!",
+   "spoken": "આ તો સમલંબ ચતુષ્કોણ નથી!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2Wow.webm",
+   "key": "f2Wow",
+   "speaker": "popo",
+   "text": "*વાહ!*",
+   "spoken": "વાહ!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 1.019
+  },
+  {
+   "file": "f2WhatACatch.webm",
+   "key": "f2WhatACatch",
+   "speaker": "popo",
+   "text": "શું મસ્ત *પકડી!*",
+   "spoken": "શું મસ્ત પકડી!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 1.829
+  },
+  {
+   "file": "f2GiantFish.webm",
+   "key": "f2GiantFish",
+   "speaker": "popo",
+   "text": "ઓ બાપ રે! *મોટ્ટી* માછલી!",
+   "spoken": "ઓ બાપ રે! મોટ્ટી માછલી!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 3.03
+  },
+  {
+   "file": "f2ComeOn.webm",
+   "key": "f2ComeOn",
+   "speaker": "popo",
+   "text": "આવી *જા*, મોટી માછલી!",
+   "spoken": "આવી જા, મોટી માછલી!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2Eek.webm",
+   "key": "f2Eek",
+   "speaker": "swiftee",
+   "text": "*ઓ મા!*",
+   "spoken": "ઓ મા!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.332
+  },
+  {
+   "file": "f2Huh.webm",
+   "key": "f2Huh",
+   "speaker": "popo",
+   "text": "હેં?!",
+   "spoken": "હેં?!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 0.862
+  },
+  {
+   "file": "f2GoodCatch.webm",
+   "key": "f2GoodCatch",
+   "speaker": "swiftee",
+   "text": "સરસ પકડી, *પોપો!*",
+   "spoken": "સરસ પકડી, પોપો!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 2.142
+  },
+  {
+   "file": "f2PopoLaughs.webm",
+   "key": "f2PopoLaughs",
+   "speaker": "popo",
+   "text": "હા હા *હા!*",
+   "spoken": "હા હા હા!",
+   "voice": "Bhavesh Bhai - Expressive Gujarati Friend",
+   "seconds": 1.437
+  },
+  {
+   "file": "f2SwifteeLaughs.webm",
+   "key": "f2SwifteeLaughs",
+   "speaker": "swiftee",
+   "text": "હી હી *હી!*",
+   "spoken": "હી હી હી!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.097
+  },
+  {
+   "file": "f2YouDidIt.webm",
+   "key": "f2YouDidIt",
+   "speaker": "swiftee",
+   "text": "તમે *કરી* બતાવ્યું!",
+   "spoken": "તમે કરી બતાવ્યું!",
+   "voice": "Hetalben - Young Gujarati Customer Care",
+   "seconds": 1.593
+  }
+ ]
+}

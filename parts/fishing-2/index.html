@@ -4,9 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
   <meta name="theme-color" content="#0b4fb8">
-  <title>Trapezium fishing · Fishing Frenzy</title>
+  <title data-i18n="f2PageTitle">Trapezium fishing · Fishing Frenzy</title>
   <!-- part of the journey: index.html at the root plays it after the front page (shell/bridge.js) -->
   <script src="../../shell/bridge.js" data-part="fishing-2"></script>
+  <!-- every word, by key (?lan=xx picks the language; shell/i18n.js) -->
+  <script src="../../locales/locales.js"></script>
+  <script src="../../locales/voices.js"></script> <!-- (a language's own voice-over, by line: shell/i18n.js) -->
+  <script src="../../shell/i18n.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
@@ -33,38 +37,39 @@
             <span id="instruction-text"></span>
           </div>
           <div class="hud-buttons">
-            <button id="btn-sound" class="icon-btn" type="button" aria-label="Sound on" aria-pressed="true">
+            <button id="btn-sound" class="icon-btn" type="button" aria-label="Sound on" aria-pressed="true" data-i18n-attr="aria-label:soundOn">
               <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path class="spk" d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="mute" d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
-            <button id="btn-pause" class="icon-btn" type="button" aria-label="Pause">
+            <button id="btn-pause" class="icon-btn" type="button" aria-label="Pause" data-i18n-attr="aria-label:btnPause">
               <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
             </button>
           </div>
         </div>
-        <button id="btn-next" class="btn primary next-btn" type="button" aria-label="Next" hidden>Next</button>
+        <button id="btn-next" class="btn primary next-btn" type="button" aria-label="Next" hidden data-i18n="btnNext" data-i18n-attr="aria-label:btnNext">Next</button>
       </div>
 
-      <section id="overlay-pause" class="overlay pause" hidden aria-label="Paused">
+      <section id="overlay-pause" class="overlay pause" hidden aria-label="Paused" data-i18n-attr="aria-label:paused">
         <div class="card">
-          <h2>Paused</h2>
-          <button id="btn-resume" class="btn primary" type="button">Resume</button>
-          <button id="btn-restart" class="btn" type="button">Restart</button>
+          <h2 data-i18n="paused">Paused</h2>
+          <button id="btn-resume" class="btn primary" type="button" data-i18n="btnResume">Resume</button>
+          <button id="btn-restart" class="btn" type="button" data-i18n="btnRestart">Restart</button>
         </div>
       </section>
 
       <section id="screen-start" class="screen start" aria-labelledby="game-title">
-        <h1 id="game-title" class="sr-only">Fishing Frenzy</h1>
-        <button id="btn-play" class="play-hit" type="button" aria-label="Play" disabled></button>
-        <div id="loading" class="loader" role="progressbar" aria-label="Loading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <h1 id="game-title" class="sr-only" data-i18n="pageTitle">Fishing Frenzy</h1>
+        <button id="btn-play" class="play-hit" type="button" aria-label="Play" disabled data-i18n-attr="aria-label:btnPlay"></button>
+        <div id="loading" class="loader" role="progressbar" aria-label="Loading" data-i18n-attr="aria-label:loadingAria" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           <span class="bobber" aria-hidden="true"></span>
           <span class="loader-bar" aria-hidden="true"><span class="loader-fill"></span></span>
-          <span id="loading-text" class="loader-text">Loading…</span>
-          <button id="btn-retry" class="btn primary" type="button" hidden>Try again</button>
+          <span id="loading-text" class="loader-text" data-i18n="loading">Loading…</span>
+          <button id="btn-retry" class="btn primary" type="button" hidden data-i18n="btnTryAgain">Try again</button>
         </div>
       </section>
     </div>
-    <div id="rotate-hint" class="rotate-hint" hidden>Rotate your device for the best experience</div>
+    <div id="rotate-hint" class="rotate-hint" hidden data-i18n="rotateHint">Rotate your device for the best experience</div>
   </div>
+  <script>I18n.applyStatic();</script> <!-- (the words above, before any game script runs) -->
   <script src="src/sprite-data.js" defer></script>
   <script src="src/personality-data.js" defer></script>
   <script src="src/geometry.js" defer></script>

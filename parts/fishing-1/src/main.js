@@ -67,13 +67,13 @@ if (journey) {
     })
     .catch((err) => journey.failed(err.message));
 } else {
-  ui.setLoading('Loading…');
+  ui.setLoading(T('loading'));
   Promise.all([loadCoreAssets(), audio.prepareVoices(PopoGame.VOICE_DATA)])
     .then(() => {
       ui.setLoading('');
       game.popo.rowTint(); // decode the paddling frames now, not on the first stroke
       game.showIdleScene();
     })
-    .catch((err) => ui.setLoading(`Could not load the game art (${err.message}).`));
+    .catch((err) => ui.setLoading(T('f1LoadFailed', { error: err.message })));
 }
 })(window.PopoGame = window.PopoGame || {});

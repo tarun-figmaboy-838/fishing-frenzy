@@ -3,6 +3,7 @@
 const { trapezium, angled, kite, arrowhead, orient } = PopoGame.geometry;
 
 // The trapezium activity: five levels at one frozen lake, their fish, and the story lines.
+// (Every word the player reads is looked up by key in locales/locales.json: T, shell/i18n.js.)
 
 // A trapezium from its bottom base, its height and its two base angles in whole degrees (the top
 // corners lean in by height / tan(angle); 90° stands straight up).
@@ -15,15 +16,15 @@ function byAngles(bottom, height, [a, b]) {
 // none is four-sided, so only the trapezium levels' fish are quadrilaterals.
 // atlas: sprite index (row-major, see FISH_ATLAS).
 const SHAPES = {
-  triangle: { shape: 'triangle', name: 'Triangle', atlas: 'triangle', sides: 3 },
-  'triangle-right': { shape: 'triangle', name: 'Triangle', atlas: 'triangle-right', sides: 3 },
-  pentagon: { shape: 'pentagon', name: 'Pentagon', atlas: 'pentagon', sides: 5 },
-  hexagon: { shape: 'hexagon', name: 'Hexagon', atlas: 'hexagon', sides: 6 },
-  octagon: { shape: 'octagon', name: 'Octagon', atlas: 'octagon', sides: 8 },
-  decagon: { shape: 'decagon', name: 'Decagon', atlas: 'decagon', sides: 10 },
-  circle: { shape: 'circle', name: 'Circle', atlas: 'circle', curved: true },
-  oval: { shape: 'oval', name: 'Oval', atlas: 'oval', curved: true },
-  semicircle: { shape: 'semicircle', name: 'Semicircle', atlas: 'semicircle' },
+  triangle: { shape: 'triangle', name: T('shapeTriangle'), atlas: 'triangle', sides: 3 },
+  'triangle-right': { shape: 'triangle', name: T('shapeTriangle'), atlas: 'triangle-right', sides: 3 },
+  pentagon: { shape: 'pentagon', name: T('shapePentagon'), atlas: 'pentagon', sides: 5 },
+  hexagon: { shape: 'hexagon', name: T('shapeHexagon'), atlas: 'hexagon', sides: 6 },
+  octagon: { shape: 'octagon', name: T('shapeOctagon'), atlas: 'octagon', sides: 8 },
+  decagon: { shape: 'decagon', name: T('shapeDecagon'), atlas: 'decagon', sides: 10 },
+  circle: { shape: 'circle', name: T('shapeCircle'), atlas: 'circle', curved: true },
+  oval: { shape: 'oval', name: T('shapeOval'), atlas: 'oval', curved: true },
+  semicircle: { shape: 'semicircle', name: T('shapeSemicircle'), atlas: 'semicircle' },
 };
 
 function getShape(key) {
@@ -33,6 +34,7 @@ function getShape(key) {
 // Popo rows round the frozen lake, a new place for every level: Triangle Bay, Pentagon Cove,
 // Hexagon Pass, Quadrilateral Waters (where he first saw a trapezium fish), and the first bay
 // seen from across the lake. background: the painting (src/background-data.js).
+// (A place's name labels the ?dev=1 panel only; the player never reads it, so it is not in locales.json.)
 const PLACES = [
   { name: 'Triangle Bay', background: 0, waterline: 388 },
   { name: 'Pentagon Cove', background: 1, waterline: 390 },
@@ -111,64 +113,64 @@ const RECALL = { body: angled({ bottom: 10, side: 5, angles: [70, 110, 62] }), c
 // Popo's beats as he climbs back aboard.
 // The instructions and hints are the handoff's.
 const LEVELS = [
-  { place: 0, instruction: 'Catch all the *trapeziums*!', catches: 3,
+  { place: 0, instruction: T('f2CatchAllTrapeziums'), catches: 3,
     school: 4, targets: 2, least: 3, speed: [34, 46], sizes: [0.9, 1.08], marks: [],
-    hint: 'Look for *parallel* sides!', why: 'No *parallel* sides!', oops: ['Whoopsie Doopsie!', 'No *parallel* sides!'] },
-  { place: 1, instruction: 'Catch the *scalene* trapeziums!', catches: 3,
+    hint: T('f2HintParallel'), why: T('f2WhyNoParallel'), oops: [T('popoWhoopsie'), T('f2WhyNoParallel')] },
+  { place: 1, instruction: T('f2CatchScalene'), catches: 3,
     school: 4, targets: 2, least: 3, speed: [40, 52], sizes: [1, 1], marks: [], glow: 'legs',
-    hint: 'Check the *leg* lengths!', why: 'Its legs are *equal!*', oops: ['Whoopsie Doopsie!', 'Its legs are *equal!*'] },
-  { place: 2, instruction: 'Catch the *isosceles* trapeziums!', catches: 3,
+    hint: T('f2HintLegLengths'), why: T('f2WhyLegsEqual'), oops: [T('popoWhoopsie'), T('f2WhyLegsEqual')] },
+  { place: 2, instruction: T('f2CatchIsosceles'), catches: 3,
     school: 4, targets: 2, least: 4, speed: [44, 58], sizes: [0.96, 1.04], marks: [], glow: 'legs',
-    hint: 'Are the legs *equal?*', why: 'Its legs are *different!*', oops: ['Whoopsie Doopsie!', 'Its legs are *different!*'] },
-  { place: 3, instruction: 'Catch the right-angled *trapeziums*!', catches: 3,
+    hint: T('f2HintLegsEqual'), why: T('f2WhyLegsDifferent'), oops: [T('popoWhoopsie'), T('f2WhyLegsDifferent')] },
+  { place: 3, instruction: T('f2CatchRightAngled'), catches: 3,
     school: 5, targets: 2, least: 4, speed: [44, 58], sizes: [0.96, 1.04], marks: [],
-    hint: 'Look for two *right* angles!', why: 'No *right* angles!', oops: ['Whoopsie Doopsie!', 'No *right* angles!'] },
-  { place: 4, instruction: 'Catch all the *trapeziums*!', catches: 4,
+    hint: T('f2HintTwoRight'), why: T('f2WhyNoRight'), oops: [T('popoWhoopsie'), T('f2WhyNoRight')] },
+  { place: 4, instruction: T('f2CatchAllTrapeziums'), catches: 4,
     school: 5, targets: 3, least: 4, speed: [44, 58], sizes: [1, 1], marks: ['angles'], compare: 'sum', observe: true,
-    hint: 'Add the marked *angles!*', why: "These angles don't add up to *180°!*",
-    oops: ['Not a *trapezium.*', "These angles don't add up to *180°!*", 'Try *again!*'] },
+    hint: T('f2HintAddAngles'), why: T('f2WhyNot180'),
+    oops: [T('f2OopsNotTrapezium'), T('f2WhyNot180'), T('f2OopsTryAgain')] },
 ];
 
 // Story lines, in short comic beats delivered word by word. *Stressed* words land bigger with a
 // boing, and a cue fires a moment in the scene when its word appears (see Game.storyCue).
 const STORY = {
   welcome: [
-    { who: 'swiftee', text: '*Great* job!', cue: { word: 0, do: 'twirl' } },
-    { who: 'swiftee', text: 'You know all about *trapeziums!*' },
-    { who: 'swiftee', text: "Now, let's help Popo catch some *fish!*", cue: { word: 6, do: 'hop' } },
+    { who: 'swiftee', text: T('f2GreatJob'), cue: { word: 0, do: 'twirl' } },
+    { who: 'swiftee', text: T('f2KnowTrapeziums') },
+    { who: 'swiftee', text: T('f2HelpPopo'), cue: { word: 6, do: 'hop' } },
   ],
   remind: [
-    { who: 'swiftee', text: 'Use the fishing rod to *aim*…' },
-    { who: 'swiftee', text: '…and drop the hook on the *correct* fish.' },
+    { who: 'swiftee', text: T('f2UseRod') },
+    { who: 'swiftee', text: T('f2DropHook') },
   ],
   // the recall card follows these words: it opens and draws its trapezium on "Look!", the parallel
   // sides light up on "parallel!", the leg and its angles come on "leg", the two angles snap into a
   // straight line on "180°!", and a little celebration on "Yay!"
   recall: [
-    { who: 'swiftee', text: 'Look! These two sides are *parallel!*', cue: [{ word: 0, do: 'recall:shape' }, { word: 5, do: 'recall:parallel' }] },
-    { who: 'swiftee', text: '*Remember,*' },
-    { who: 'swiftee', text: 'angles on the same *leg* of a trapezium…', cue: { word: 4, do: 'recall:angles' } },
-    { who: 'swiftee', text: 'add up to *180°!*', cue: { word: 3, do: 'recall:sum' } },
-    { who: 'swiftee', text: 'Yay! Shape *detective!*', cue: { word: 0, do: 'recall:cheer' } },
+    { who: 'swiftee', text: T('f2RecallParallel'), cue: [{ word: 0, do: 'recall:shape' }, { word: 5, do: 'recall:parallel' }] },
+    { who: 'swiftee', text: T('f2Remember') },
+    { who: 'swiftee', text: T('f2AnglesSameLeg'), cue: { word: 4, do: 'recall:angles' } },
+    { who: 'swiftee', text: T('f2AddUp180'), cue: { word: 3, do: 'recall:sum' } },
+    { who: 'swiftee', text: T('f2Detective'), cue: { word: 0, do: 'recall:cheer' } },
   ],
-  observe: [{ who: 'swiftee', text: 'Look at the marked *angles!*', cue: { word: 4, do: 'showAngles' } }],
+  observe: [{ who: 'swiftee', text: T('f2LookMarked'), cue: { word: 4, do: 'showAngles' } }],
   // after a right catch Popo says this
   right: [
-    { who: 'popo', text: '*Great* catch!', cue: { word: 0, do: 'hop' } },
+    { who: 'popo', text: T('popoGreatCatch'), cue: { word: 0, do: 'hop' } },
   ],
-  wrong: { who: 'popo', text: 'Whoopsie Doopsie!' },
+  wrong: { who: 'popo', text: T('popoWhoopsie') },
   wow: [
-    { who: 'popo', text: '*Wow!*', cue: { word: 0, do: 'exclaim' } },
-    { who: 'popo', text: 'What a *catch!*', cue: { word: 2, do: 'hop' } },
+    { who: 'popo', text: T('f2Wow'), cue: { word: 0, do: 'exclaim' } },
+    { who: 'popo', text: T('f2WhatACatch'), cue: { word: 2, do: 'hop' } },
   ],
-  done: { who: 'swiftee', text: 'You *did* it!', cue: { word: 1, do: 'twirl' }, stay: true },
+  done: { who: 'swiftee', text: T('f2YouDidIt'), cue: { word: 1, do: 'twirl' }, stay: true },
   // the big catch before the end: a giant shadow, a tug-of-war, and up comes an old boot
-  whoa: { who: 'popo', text: 'Whoa! A *giant* fish!', cue: { word: 0, do: 'exclaim' } },
-  heave: { who: 'popo', text: 'Come *on*, big fish!' },
-  eek: { who: 'swiftee', text: '*Eek!*' },
-  huh: { who: 'popo', text: 'Huh?!', cue: { word: 0, do: 'wonder' } },
-  goodCatch: { who: 'swiftee', text: 'Good catch, *Popo!*' },
-  laughs: [{ who: 'popo', text: 'Ha ha *ha!*' }, { who: 'swiftee', text: 'Hee hee *hee!*' }],
+  whoa: { who: 'popo', text: T('f2GiantFish'), cue: { word: 0, do: 'exclaim' } },
+  heave: { who: 'popo', text: T('f2ComeOn') },
+  eek: { who: 'swiftee', text: T('f2Eek') },
+  huh: { who: 'popo', text: T('f2Huh'), cue: { word: 0, do: 'wonder' } },
+  goodCatch: { who: 'swiftee', text: T('f2GoodCatch') },
+  laughs: [{ who: 'popo', text: T('f2PopoLaughs') }, { who: 'swiftee', text: T('f2SwifteeLaughs') }],
 };
 
 Object.assign(PopoGame, { SHAPES, PLACES, FISH, RECALL, LEVELS, STORY, getShape });

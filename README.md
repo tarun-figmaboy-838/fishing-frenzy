@@ -122,15 +122,102 @@ the front page instead.
   keys), and in the journey the lesson never falls back to the browser's speech voice: a line whose clip cannot play
   shows its words silently.
 
+## Languages
+
+Every word a player reads is looked up by key, so the whole journey can be read in another language.
+
+- **The words** are in `locales/locales.json`, one key per line, in the order the journey meets them (the journey's
+  page, fishing 1, the lesson and its summary, fishing 2). It holds English (`"en"`, the source) and Hindi, Marathi,
+  Telugu, Gujarati and Odia (`"hi"`, `"mr"`, `"te"`, `"gu"`, `"od"`), each with exactly English's keys in English's
+  order (the rules: `.claude/skills/translation_skill.md`). After editing it, run
+  `python3 tools/build-locales.py`: it writes `locales/locales.js`, the copy every page loads (a plain script, so the
+  words are there before any game script runs, served or opened from disk), and checks that every language has
+  every key, keeps its `{placeholders}`, `*stressed*` words and line breaks. `--check` only says whether the copy
+  is up to date.
+- **Choosing one:** `?lan=hi` (or `mr`, `te`, `gu`, `od`) on the journey's address (`?lang=hi` works too); without it
+  the journey is in English. The journey hands it on to every
+  part's frame, and a part opened on its own keeps it when it goes to the front page. A language the file doesn't
+  have yet plays in English (and says so in the console).
+- **In the code:** `T('key')` (or `T('key', { shape: name })` for a line with a placeholder), and in the markup
+  `data-i18n="key"` (an element's text) and `data-i18n-attr="aria-label:key"` (its attributes), filled by
+  `I18n.applyStatic()` straight after the markup. All of it is `shell/i18n.js`. A key the file doesn't have shows
+  as the key itself, on purpose, so it is seen and added.
+- **For a translator:** keep `{placeholders}` as they are (move them to where the language wants them), keep a
+  `*stressed*` word's asterisks round its translation (it is drawn in gold or orange and lands with a boing), keep
+  `\n` (a line break in Swiftee's bubble), and keep the mathematics as it is: numbers, `cm`, `°`, the corner
+  letters A B C D and lines like `AB ∥ CD` (those stay in the code: they read the same in every language). The
+  shared terms come from the team's quadrilaterals game (e.g. trapezium समलंब / समलंब चौकोन / ట్రెపీజియం /
+  સમલંબ ચતુષ્કોણ / ଟ୍ରାପିଜିୟମ୍); a trapezium's legs are its "non-parallel sides" (असमांतर भुजा ...), as the
+  textbooks name them.
+- **Longer words:** every lesson line was measured on the card's one-line plate in all five languages, and every
+  answer button, label and fishing instruction; they fit. The lesson's "Base" / "Leg" pills widen to fit their
+  name, and a docked summary name that would run off the card is set a little smaller (English is unchanged).
+- **Hindi has its own voice-over** (`assets/VO-HI/`, 324 clips made with ElevenLabs, kept as WebM Opus). Swiftee and the narrator
+  share one voice (Anjali, a Hindi teacher's voice) and Popo has his own (Amit, a young cartoon voice), both a little
+  slower and steadier than usual for grade 6-7. Every spoken line has a clip named by its key (`lsHi.webm`); a line
+  whose words vary has one per variant (`f1Catch.triangle.webm`, `lsDragAKeep.5_1.webm`), and screen 33's angle
+  feedback is two clips back to back, as in English. Digits, corner letters and symbols are said as Hindi words
+  (`180°` एक सौ अस्सी डिग्री, `∠A` कोण ए, `AB = 6 cm` ए बी बराबर छह सेंटीमीटर).
+- **Marathi has its own voice-over too** (`assets/VO-MR/`, the same 324 clips, played with `?lan=mr`). Swiftee and
+  the narrator are Sayali (a young Marathi voice: warm, clear, welcoming) and Popo is Vardaan (a young Marathi voice:
+  bright, upbeat), from the ElevenLabs voice library, recorded with `eleven_v4` (Hindi's `eleven_multilingual_v2`
+  doesn't speak Marathi). The mathematics is said as the Marathi textbooks say it (`180°` एकशे ऐंशी अंश, `∠A` कोन
+  ए, `AB = 6 cm` ए बी बरोबर सहा सेंटिमीटर, `5.1` पाच पूर्णांक एक, `+` अधिक).
+- **Gujarati has its own voice-over too** (`assets/VO-GU/`, the same 324 clips, played with `?lan=gu`). Swiftee and
+  the narrator are Hetalben (a young Gujarati voice: bright, warm) and Popo is Bhavesh Bhai (an expressive Gujarati
+  character voice), from the ElevenLabs voice library, recorded with `eleven_v4`. The mathematics is said in Gujarati
+  (`180°` એકસો એંસી અંશ, `∠A` ખૂણો એ, `AB = 6 cm` એ બી બરાબર છ સેન્ટિમીટર, `5.1` પાંચ દશાંશ એક, `+` વત્તા).
+  Everything below holds for all three.
+  - `locales/voices.js` indexes the clips by the line on screen and who says it: `I18n.voiceOf(line, who)` finds a
+    line's clip ("Try again!" is Swiftee's in the lesson and Popo's in fishing 2), `I18n.voice(key)` gives a clip's
+    address.
+  - The fishing games fetch their clips before they start (from disk they can't, and their lines show with the
+    game's own sounds). Fishing 1 also reads its wrong-catch hint aloud, as it does the instruction, when it has a
+    recording (Hindi, Marathi and Gujarati do; English doesn't).
+  - The lesson plays them in the shared `<audio>` and fetches them in the background (its drag feedback only as it
+    is said). Its word cues fire at their words' share of the line, since the English recordings' measured cue times
+    don't apply, and screen 3's corner letters fly in where the clip says them.
+  - Lines the game shows but doesn't say (shape names, the "Base" / "Leg" pills, type and summary labels, "The End",
+    fishing 2's card line) have clips too, for when it does. Page titles, buttons, loading and error messages and
+    screen-reader labels have none.
+  - **Re-recording** after a line changes: `ELEVENLABS_API_KEY=... python3 tools/voice-elevenlabs.py --lang hi` (or
+    `--lang mr`) records the clips that are new or whose words changed (`--dry` lists them, `--only key ...` records
+    just those, as a test) and rewrites `assets/VO-<LANG>/manifest.json` (each clip's key, voice, line and spoken
+    form; a run that stops part-way keeps what it recorded, so nothing is paid for twice). ElevenLabs sends MP3 and
+    the tool keeps each clip as WebM Opus (32 kbps, mono), so it needs ffmpeg (on the PATH, or `FFMPEG=...`); without
+    it nothing is recorded. Then
+    `python3 tools/build-locales.py` rewrites `locales/voices.js`, and flags any clip recorded from a line that has
+    changed since. A language with clips still missing is left out of `voices.js` (it keeps the English voice) until
+    they are all there.
+- **Telugu, Gujarati and Odia** say the English recordings (each found by its English line: `I18n.source`),
+  and the lesson's animations keep the English timings, until they are recorded too. The lines Swiftee says that
+  differ from her bubble (`s:` in `parts/lesson/js/lesson-data.js`) are the English recordings' wording; the
+  voice-only "A B is parallel to C D." is by key (`lsAbParallelCd`).
+- **Not in the file:** the "Fishing Frenzy" logo (it is painted into the banner), the page's share and search
+  details (`<meta>`, `manifest.webmanifest`), the no-JavaScript notice, and the `?dev=1` panel.
+
 ## Folder
 
 ```
 index.html              the journey's page: the front page, then the parts in frames
 manifest.webmanifest    installs as a full-screen landscape app
+locales/
+  locales.json          every word the player reads, by key: en, hi, mr, te, gu, od
+  locales.js            its copy for the pages, written by tools/build-locales.py
+  voices.js             each language's own voice-over by line (Hindi, Marathi, Gujarati), written by tools/build-locales.py
+assets/
+  VO-HI/                the Hindi voice-over: one WebM (Opus) per spoken line, and manifest.json (tools/voice-elevenlabs.py)
+  VO-MR/                the Marathi voice-over, the same way
+  VO-GU/                the Gujarati voice-over, the same way
+  VO-EN/                the English voice-over by key: the existing recordings (lesson .ogg, fishing .webm), and the
+                        lines that had none recorded with ElevenLabs in a clone of the same studio voice (.webm), with
+                        manifest.json (tools/collect-vo-en.py, --record); not played from here: English still plays
+                        its recordings from the parts
 shell/
   journey.js            the journey: parts, loading, sound, hand-overs, the ?dev=1 panel
   front-page.js         the Fishing Frenzy title, alive
   bridge.js             loaded by every part: begin, finish, shared sound, dev screens
+  i18n.js               loaded by every page: T('key'), the language (?lan=), each line's voice-over
   journey.css           the shell's styles (front page, dissolves, "Getting ready…")
   title/                water.js and effects.js, copied unchanged from fishing 2, for the front page
   images/               the banner, Play, icons, the share picture (source/: the masters, not deployed)
@@ -139,7 +226,8 @@ parts/
   lesson/               Swiftee's trapezium lesson (its README, GAME_DESIGN.md and docs/VOICEOVER.md)
   fishing-2/            Popo's trapezium fishing
 drafts/banners/         the two banners not in use: Trapezium Adventure (the lesson's), Shape Fish Adventure
-tools/                  the scarf bake, Swiftee's voice and its build
+tools/                  the scarf bake, Swiftee's voice and its build, the locales build (build-locales.py), the
+                        Hindi voice-over (voice-elevenlabs.py), the English one gathered and completed (collect-vo-en.py)
 tests/journey.py        the whole journey in real browsers
 ```
 
@@ -157,6 +245,7 @@ This repository ships the playable game.
 - `?start=fishing-2`: the first journey begins at fishing 2 (Popo rows in and the lesson's card rises);
   `?start=lesson`: straight at the lesson's open card.
 - `?debug`: exposes `window.popoDebug` in the fishing games and `window.lessonDebug` in the lesson.
+- `?lan=hi`: the journey in Hindi (`mr` Marathi, `te` Telugu, `gu` Gujarati, `od` Odia; see Languages).
 
 ## For a page that hosts the journey
 

@@ -4,36 +4,37 @@
 // Shape curriculum and the four fishing locations. Everything the challenges need lives here.
 
 // Curriculum names that differ between regions. Change the value, not the key.
+// (Every word the player reads is looked up by key in locales/locales.json: T, shell/i18n.js.)
 const TERMS = {
-  trapezium: 'Trapezium',
+  trapezium: T('shapeTrapezium'),
 };
 
 // atlas: sprite index in assets/sprites/fish.webp (row-major, see FISH_ATLAS)
 // categories: every shape family this body belongs to, so "a square is also a rectangle"
 // never produces wrong feedback. The taught name is `shape`.
 const SHAPES = {
-  triangle: { shape: 'triangle', name: 'Triangle', atlas: 'triangle', sides: 3, categories: ['triangle'] },
-  'triangle-right': { shape: 'triangle', name: 'Triangle', atlas: 'triangle-right', sides: 3, categories: ['triangle'] },
-  square: { shape: 'square', name: 'Square', atlas: 'square', sides: 4,
+  triangle: { shape: 'triangle', name: T('shapeTriangle'), atlas: 'triangle', sides: 3, categories: ['triangle'] },
+  'triangle-right': { shape: 'triangle', name: T('shapeTriangle'), atlas: 'triangle-right', sides: 3, categories: ['triangle'] },
+  square: { shape: 'square', name: T('shapeSquare'), atlas: 'square', sides: 4,
     categories: ['square', 'rectangle', 'rhombus', 'parallelogram', 'quadrilateral'] },
-  rectangle: { shape: 'rectangle', name: 'Rectangle', atlas: 'rectangle', sides: 4,
+  rectangle: { shape: 'rectangle', name: T('shapeRectangle'), atlas: 'rectangle', sides: 4,
     categories: ['rectangle', 'parallelogram', 'quadrilateral'] },
-  rhombus: { shape: 'rhombus', name: 'Rhombus', atlas: 'rhombus', sides: 4,
+  rhombus: { shape: 'rhombus', name: T('shapeRhombus'), atlas: 'rhombus', sides: 4,
     categories: ['rhombus', 'parallelogram', 'quadrilateral'] },
-  parallelogram: { shape: 'parallelogram', name: 'Parallelogram', atlas: 'parallelogram', sides: 4,
+  parallelogram: { shape: 'parallelogram', name: T('shapeParallelogram'), atlas: 'parallelogram', sides: 4,
     categories: ['parallelogram', 'quadrilateral'] },
   trapezium: { shape: 'trapezium', name: TERMS.trapezium, atlas: 'trapezium', sides: 4,
     categories: ['trapezium', 'quadrilateral'] },
-  pentagon: { shape: 'pentagon', name: 'Pentagon', atlas: 'pentagon', sides: 5, categories: ['pentagon'] },
-  hexagon: { shape: 'hexagon', name: 'Hexagon', atlas: 'hexagon', sides: 6, categories: ['hexagon'] },
-  octagon: { shape: 'octagon', name: 'Octagon', atlas: 'octagon', sides: 8, categories: ['octagon'] },
-  nonagon: { shape: 'nonagon', name: 'Nonagon', atlas: 'nonagon', sides: 9, categories: ['nonagon'] },
-  decagon: { shape: 'decagon', name: 'Decagon', atlas: 'decagon', sides: 10, categories: ['decagon'] },
-  circle: { shape: 'circle', name: 'Circle', atlas: 'circle', curved: true, categories: ['circle'] },
-  oval: { shape: 'oval', name: 'Oval', atlas: 'oval', curved: true, categories: ['oval'] },
-  semicircle: { shape: 'semicircle', name: 'Semicircle', atlas: 'semicircle', categories: ['semicircle'] },
+  pentagon: { shape: 'pentagon', name: T('shapePentagon'), atlas: 'pentagon', sides: 5, categories: ['pentagon'] },
+  hexagon: { shape: 'hexagon', name: T('shapeHexagon'), atlas: 'hexagon', sides: 6, categories: ['hexagon'] },
+  octagon: { shape: 'octagon', name: T('shapeOctagon'), atlas: 'octagon', sides: 8, categories: ['octagon'] },
+  nonagon: { shape: 'nonagon', name: T('shapeNonagon'), atlas: 'nonagon', sides: 9, categories: ['nonagon'] },
+  decagon: { shape: 'decagon', name: T('shapeDecagon'), atlas: 'decagon', sides: 10, categories: ['decagon'] },
+  circle: { shape: 'circle', name: T('shapeCircle'), atlas: 'circle', curved: true, categories: ['circle'] },
+  oval: { shape: 'oval', name: T('shapeOval'), atlas: 'oval', curved: true, categories: ['oval'] },
+  semicircle: { shape: 'semicircle', name: T('shapeSemicircle'), atlas: 'semicircle', categories: ['semicircle'] },
   // a shape family used as a challenge target; it has no fish of its own
-  quadrilateral: { shape: 'quadrilateral', name: 'Quadrilateral', sides: 4, categories: ['quadrilateral'] },
+  quadrilateral: { shape: 'quadrilateral', name: T('shapeQuadrilateral'), sides: 4, categories: ['quadrilateral'] },
 };
 
 // More fish of each shape, drawn in new colours and patterns (asset/fish-variants.png, cut and
@@ -54,6 +55,7 @@ const TARGET_POOLS = {
 // One challenge per level, and every level is "catch them all": each has several fish of
 // its shape among others, and the level ends once every matching fish is caught. Distractors
 // can never belong to the target's family (a square counts as a rectangle and a rhombus).
+// (A location's name labels the ?dev=1 panel only; the player never reads it, so it is not in locales.json.)
 const LOCATIONS = [
   { name: 'Triangle Bay', background: 0, waterline: 388,
     challenges: [{ target: 'triangle', all: true, tutorial: true, fishScale: 0.9,
@@ -121,25 +123,25 @@ function challengeFish(challenge) {
 // fires a moment in the scene when its word appears (see Game.storyCue).
 const STORY = {
   intro: [
-    { who: 'narrator', text: 'Popo *loves* fishing.', cue: { word: 1, do: 'hop' } },
-    { who: 'narrator', text: 'And today…' },
-    { who: 'narrator', text: 'he wants to catch *all* kinds of fish!', cue: { word: 4, do: 'fishIn' } },
+    { who: 'narrator', text: T('f1StoryLoves'), cue: { word: 1, do: 'hop' } },
+    { who: 'narrator', text: T('f1StoryToday') },
+    { who: 'narrator', text: T('f1StoryAllKinds'), cue: { word: 4, do: 'fishIn' } },
   ],
-  wrong: { who: 'popo', text: 'Whoopsie Doopsie!' },
-  catch: { who: 'popo', text: '*Great* catch!', cue: { word: 0, do: 'hop' } },
+  wrong: { who: 'popo', text: T('popoWhoopsie') },
+  catch: { who: 'popo', text: T('popoGreatCatch'), cue: { word: 0, do: 'hop' } },
   // after the last level, a fish Popo has never seen leaps out of the water; then Swiftee the
   // bird flies in with the answer to Popo's question and the Next button appears
   ending: {
     fish: ['trapezium', ...variantsOf('trapezium')], // one at random each journey
     woah: [
-      { who: 'popo', text: '*Woah!*', cue: { word: 0, do: 'exclaim' } },
-      { who: 'popo', text: "I haven't seen *that* one before!" },
+      { who: 'popo', text: T('f1Woah'), cue: { word: 0, do: 'exclaim' } },
+      { who: 'popo', text: T('f1NotSeen') },
     ],
     after: [
-      { who: 'popo', text: 'What *kind* of fish was that?', cue: { word: 1, do: 'wonder' } },
+      { who: 'popo', text: T('f1WhatKind'), cue: { word: 1, do: 'wonder' } },
     ],
     // stays up beside Swiftee until Next is pressed
-    swiftee: { who: 'swiftee', text: "Let's find *out!*", cue: { word: 2, do: 'twirl' }, stay: true },
+    swiftee: { who: 'swiftee', text: T('f1FindOut'), cue: { word: 2, do: 'twirl' }, stay: true },
   },
 };
 

@@ -271,8 +271,8 @@ async function wrongCatch(game, fish) {
       [3640, () => { sound('splashSmall'); fx.splash(edge - 20, game.waterline, false); }],
       [3720, () => { sound('boing'); fx.drips(popo.bodyLandmark('head')); }],
       [3920, () => { sound('drip'); fx.drips(popo.bodyLandmark('head')); }],
-      // the plate's "Look at the sides…" is said too, in the narrator's recorded voice (a line with no recording stays silent)
-      [4150, () => { const tip = game.wrongText(fish); ui.setInstruction(tip); if (!game.dialogue) audio.speak('narrator', tip); }],
+      // the plate shows the instruction again and the narrator says it in the recorded voice (a line with no recording stays silent)
+      [4150, () => { const tip = game.wrongText(fish); ui.setInstruction(tip); if (!game.dialogue) game.audio.speak('narrator', tip); }],
     ];
     await clock.tween(WRONG_DURATION, token, progress => {
       const ms = progress * WRONG_DURATION;
@@ -365,7 +365,7 @@ async function travelTo(game, nextIndex) {
   try {
     state.phase = PHASE.LEVEL_TRANSITION;
     ui.setHitsEnabled(false);
-    ui.setInstruction('Popo rows on…');
+    ui.setInstruction(T('f1RowsOn'));
     audio.play('complete');
     for (const f of state.fish) { f.frozen = false; f.escape(); }
     await clock.wait(900, token);

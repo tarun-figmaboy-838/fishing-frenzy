@@ -8,22 +8,23 @@ studio exactly as the lesson's were, and live in tools/swiftee-voice/studio/swNN
 script.json (each line as shown, as spoken, and the Devanagari the voice was given).
 
 This trims each clip's silence (as the fishing games' own voice tool does: keep from 2% of the peak, 40 ms either
-side), encodes it as the games' other clips are (MP3, 64 kbps, mono) and puts it in place of her old line in
+side), encodes it as the game's other clips are kept (WebM Opus, 32 kbps, mono: OPUS in tools/voice-elevenlabs.py)
+and puts it in place of her old line in
 parts/fishing-1/src/voice-data.js and parts/fishing-2/src/voice-data.js, under the same key (the speaker and the
 text on screen, as audio.js voiceKey() makes it). The game has only two voices, Popo's and Swiftee's, so the
 narrator's lines (the story's opening and the instructions and hints; "who": "narrator" in script.json) are read in
 her voice too, under their own keys. Popo's lines are left as they are.
-Needs macOS afconvert (to decode the studio's MP3) and lameenc (pip install lameenc).
+Needs macOS afconvert (to decode the studio's MP3) and ffmpeg (on the PATH, or FFMPEG=/path/to/ffmpeg).
 """
 import array
 import base64
+import importlib.util
 import json
 import re
 import subprocess
 import tempfile
 import wave
 from pathlib import Path
-import lameenc
 
 ROOT = Path(__file__).resolve().parents[1]
 VOICE = ROOT / 'tools' / 'swiftee-voice'
@@ -52,23 +53,36 @@ def trim(samples, rate, pad=0.04):
     return samples[max(0, loud[0] - p):min(len(samples), loud[-1] + p)]
 
 
-def mp3(rate, samples):
-    enc = lameenc.Encoder()
-    enc.set_bit_rate(64)
-    enc.set_in_sample_rate(rate)
-    enc.set_channels(1)
-    enc.set_quality(2)
-    return enc.encode(samples.tobytes()) + enc.flush()
+def voice_tool():
+    spec = importlib.util.spec_from_file_location('voice_elevenlabs', ROOT / 'tools' / 'voice-elevenlabs.py')
+    ve = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ve)
+    return ve
+
+
+def webm(rate, samples, ve):
+    """16-bit mono PCM -> WebM Opus, with the settings every clip of the game is kept in (ve.OPUS)"""
+    with tempfile.TemporaryDirectory() as tmp:
+        wav, out = Path(tmp) / 'clip.wav', Path(tmp) / 'clip.webm'
+        with wave.open(str(wav), 'wb') as w:
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(rate)
+            w.writeframes(samples.tobytes())
+        subprocess.run([ve.ffmpeg(), '-v', 'error', '-i', str(wav), *ve.OPUS, str(out)], check=True)
+        return out.read_bytes()
 
 
 def main():
     script = json.loads((VOICE / 'script.json').read_text())
+    ve = voice_tool()
+    ve.ffmpeg()  # (says so now if there is none)
     clips = {}
     for line in script:
         rate, samples = pcm(VOICE / 'studio' / (line['id'] + '.mp3'))
         samples = trim(samples, rate)
-        data = mp3(rate, samples)
-        clips.setdefault(line['game'], {})[voice_key(line.get('who', 'swiftee'), line['line'])] = 'data:audio/mpeg;base64,' + base64.b64encode(data).decode()
+        data = webm(rate, samples, ve)
+        clips.setdefault(line['game'], {})[voice_key(line.get('who', 'swiftee'), line['line'])] = 'data:audio/webm;base64,' + base64.b64encode(data).decode()
         print(f"  {len(samples) / rate:4.2f}s {len(data) // 1024:3d} KB  {line['game']}: {line['line']}")
     for game, new in clips.items():
         path = ROOT / 'parts' / game / 'src' / 'voice-data.js'

@@ -173,6 +173,7 @@
     const u = new URL(p.src, location.href);
     u.searchParams.set('embed', '1');
     ['dev', 'debug'].forEach((k) => { if (params.has(k)) u.searchParams.set(k, params.get(k) || '1'); });
+    ['lan', 'lang'].forEach((k) => { if (params.get(k)) u.searchParams.set(k, params.get(k)); }); // the language (shell/i18n.js)
     return u.href;
   }
   // start loading part `index` behind everything (once)
@@ -465,7 +466,7 @@
         el.hidden = !on;
         if (!on) return;
         const failed = f.status === 'failed';
-        el.querySelector('.status-text').textContent = failed ? 'Could not load the game.' : 'Getting ready…';
+        el.querySelector('.status-text').textContent = failed ? I18n.t('statusLoadFailed') : I18n.t('statusGettingReady'); // (I18n.t: T here is the timings)
         const bar = el.querySelector('.bar');
         bar.hidden = failed;
         bar.classList.toggle('unknown', !(f.progress > 0));

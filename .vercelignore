@@ -10,3 +10,7 @@ parts/lesson/tools/
 .env
 .env.*
 .claude/
+assets/VO-*/manifest.json
+# English voice-over by key: a source for the build tools (tools/collect-vo-en.py); the game plays parts/lesson/assets/vo and voice-data.js
+assets/VO-EN/
+.vscode/

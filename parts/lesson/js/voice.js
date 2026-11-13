@@ -1,15 +1,16 @@
 // =====================================================================
-// VOICE - Swiftee's recorded voice-over (assets/vo/, mapped in js/vo-lines.js; see docs/VOICEOVER.md).
+// VOICE - Swiftee's recorded voice-over (assets/vo/, mapped in js/vo-lines.js; see docs/VOICEOVER.md). A language with
+// its own voice-over (?lan=hi: assets/VO-HI/, shell/i18n.js) says every line in its own clips instead, found by the
+// words on screen.
 //   Voice.find(text)      the clip(s) for a line, by the exact text the bubble shows, or null
 //   Voice.play(c, h)      play them in the one shared <audio>; h.start(), h.progress(0..1), h.end()
 //   Voice.stop()          stop the current line (a new line, a screen change, a restart)
 //   Voice.unlock()        call on the first tap (Play): tablets only allow audio after a gesture
 //   Voice.prefetch()      after Play, fetch every clip quietly, one at a time
-// Every clip ships twice: Ogg Opus (small) and an MP3 twin for the browsers without Ogg Opus - every iPad before
-// iPadOS 18.4, Instagram's in-app browser on them included, which had no recorded voice at all. The format is chosen once
-// (canPlayType); an Ogg that still fails to play is retried as its MP3, and the rest of the lesson then uses MP3.
-// Off only with ?vo=0, with no clips, or in a browser that plays neither (the engine then shows the words silently, or
-// falls back to the device voice only when no clip can ever play). A clip that can't play (missing, refused, too slow)
+// Every clip ships as Opus (English .ogg, a translated voice-over's .webm) and as an MP3 twin beside it, for the browsers
+// without Opus - every iPad before iPadOS 18.4, Instagram's in-app browser on them included. pick() sends the MP3 where
+// canPlayType says no to the clip's own type, and after any Opus clip fails to play (the rest of the lesson then uses MP3).
+// Off with ?vo=0, with no clips, or in a browser that plays neither. A clip that can't play (missing, refused, too slow)
 // ends without h.start(); the engine then shows that line's words with no voice - Swiftee keeps one voice.
 // ?vorate=2 plays the clips faster for testing (0.5-4).
 // =====================================================================
@@ -20,14 +21,22 @@ window.Voice = (function () {
   const DIR = new URL('assets/vo/', location.href).href;
   const q = (k) => { try { return new URLSearchParams(location.search).get(k); } catch (e) { return null; } };
   const LINES = typeof VO_LINES !== 'undefined' ? VO_LINES : {};
-  let el = null, ok = false, ext = 'ogg';
+  // the language's own voice-over: the lesson's lines (its keys: ls..., sum...)
+  const OWN = typeof I18n !== 'undefined' && I18n.ownVoice;
+  const ownClips = OWN ? I18n.voiceClips((k) => /^(ls|sum)/.test(k)) : [];
+  // a clip's type, by its extension (locales/voices.js "ext")
+  const TYPE = { webm: 'audio/webm; codecs="opus"', mp3: 'audio/mpeg', ogg: 'audio/ogg; codecs="opus"' };
+  const typeOf = (url) => TYPE[String(url).split(/[?#]/)[0].split('.').pop()] || '';
+  let el = null, ok = false, mp3 = false;
+  const can = (t) => { try { return !!(t && el.canPlayType(t)); } catch (e) { return false; } };
+  // a clip's address as this browser plays it: its own Opus file, or its MP3 twin
+  const pick = (url) => (/\.(ogg|webm)$/.test(String(url)) && (mp3 || !can(typeOf(url))) ? String(url).replace(/\.(ogg|webm)$/, '.mp3') : url);
   try {
     el = shared || new Audio();
-    const can = (t) => { try { return !!el.canPlayType(t); } catch (e) { return false; } };
-    ext = can('audio/ogg; codecs="opus"') ? 'ogg' : can('audio/mpeg') ? 'mp3' : '';
-    ok = !!ext && q('vo') !== '0' && Object.keys(LINES).length > 0;
+    const plays = (url) => can(typeOf(url)) || can('audio/mpeg');
+    ok = q('vo') !== '0' && (OWN ? ownClips.length > 0 && plays(ownClips[0].url)
+      : Object.keys(LINES).length > 0 && plays('x.ogg'));
   } catch (e) { ok = false; }
-  const clipUrl = (id) => DIR + id + '.' + ext;
   const rate = Math.min(4, Math.max(0.5, +q('vorate') || 1));
   const norm = (t) => String(t || '').replace(/\s+/g, ' ').trim();
   // lines said in two clips: the corner, then the angle (screen 33)
@@ -35,13 +44,29 @@ window.Voice = (function () {
   let cur = null; // the line playing: { tok, timer }
   let tokN = 0;
 
+  // a clip: { id, dur (s), url }; a translated voice-over's clip is `own` (the English recording's measured cue times
+  // don't apply to it) and knows where each corner letter is said (letters: shares of the line)
+  const english = (id, dur) => ({ id: id, dur: dur, url: DIR + id + '.ogg' });
+  const ownClip = (v) => ({ id: v.key, dur: v.dur, url: v.url, own: true, letters: v.letters });
+  // (a translated line, ?lan=, in a language without its own voice-over: its English recording - shell/i18n.js)
   function find(text) {
     if (!ok) return null;
-    const t = norm(text);
-    if (LINES[t]) return [{ id: LINES[t][0], dur: LINES[t][1] }];
+    if (OWN) {
+      const v = I18n.voiceOf(text, 'swiftee');
+      if (v) return [ownClip(v)];
+      // a line said in two clips (screen 33: the corner, then the angle): split where both halves have a clip
+      const t = norm(String(text).replace(/\*/g, ''));
+      for (let i = t.indexOf(' '); i > 0; i = t.indexOf(' ', i + 1)) {
+        const a = I18n.voiceOf(t.slice(0, i), 'swiftee'), b = a && I18n.voiceOf(t.slice(i + 1), 'swiftee');
+        if (a && b) return [ownClip(a), ownClip(b)];
+      }
+      return null;
+    }
+    const t = norm(typeof I18n !== 'undefined' ? I18n.source(text) : text);
+    if (LINES[t]) return [english(LINES[t][0], LINES[t][1])];
     for (const re of JOINS) {
       const m = re.exec(t);
-      if (m && m.slice(1).every((p) => LINES[p])) return m.slice(1).map((p) => ({ id: LINES[p][0], dur: LINES[p][1] }));
+      if (m && m.slice(1).every((p) => LINES[p])) return m.slice(1).map((p) => english(LINES[p][0], LINES[p][1]));
     }
     return null;
   }
@@ -68,19 +93,20 @@ window.Voice = (function () {
     const next = () => {
       if (!live()) return;
       if (k >= clips.length) { finish(); return; }
-      const c = clips[k], attempt = ++tries;
+      const c = clips[k];
+      const attempt = ++tries, src = pick(c.url);
       const mine = () => live() && attempt === tries; // (a retry makes the attempt before it stale)
-      // an Ogg this browser said it could play but can't (an error event, or play() rejecting it as unsupported):
+      // an Opus clip this browser said it could play but can't (an error event, or play() rejecting it as unsupported):
       // its MP3 twin, and MP3 from now on. Anything else: the line types silently
       const failed = (e) => {
         if (!mine()) return;
-        if (ext === 'ogg' && !started && (!e || e.name !== 'NotAllowedError')) { ext = 'mp3'; next(); return; }
+        if (!started && !/\.mp3$/.test(src) && (!e || e.name !== 'NotAllowedError')) { mp3 = true; next(); return; }
         finish();
       };
       el.onplaying = () => { if (!live()) return; if (!started) { started = true; h.start(); } };
       el.onended = () => { if (!mine()) return; before += c.dur; k++; next(); };
       el.onerror = () => failed(null);
-      el.src = clipUrl(c.id);
+      el.src = src;
       el.playbackRate = rate;
       el.muted = false;
       const p = el.play();
@@ -112,7 +138,7 @@ window.Voice = (function () {
     if (cur) return; // a line is already playing, so audio is allowed
     try {
       el.muted = true;
-      el.src = clipUrl(LINES[Object.keys(LINES)[0]][0]);
+      el.src = pick(OWN ? ownClips[0].url : DIR + LINES[Object.keys(LINES)[0]][0] + '.ogg');
       const p = el.play();
       const off = () => { try { if (!cur) el.pause(); } catch (e) {} el.muted = false; };
       // only a refusal means "try again on the next tap"; an abort (a line started meanwhile) means audio is allowed
@@ -122,8 +148,11 @@ window.Voice = (function () {
   function prefetch() {
     if (!ok || prefetch.done || typeof fetch === 'undefined' || location.protocol === 'file:') return;
     prefetch.done = true;
-    const ids = Object.keys(LINES).map((k) => LINES[k][0]);
-    const one = (i) => { if (i < ids.length) fetch(clipUrl(ids[i])).then((r) => r.blob()).catch(() => {}).then(() => one(i + 1)); };
+    // (a translated voice-over's drag feedback - "AD is 5.3 cm...", "∠A 84°..." - is two thirds of its clips and a
+    // learner hears one or two: each loads as it is said)
+    const urls = OWN ? ownClips.filter((c) => !/^lsDrag(90|AKeep|ABack)\./.test(c.key)).map((c) => c.url)
+      : Object.keys(LINES).map((k) => DIR + LINES[k][0] + '.ogg');
+    const one = (i) => { if (i < urls.length) fetch(pick(urls[i])).then((r) => r.blob()).catch(() => {}).then(() => one(i + 1)); };
     one(0);
   }
   // rough spoken length of a word, for spreading the words over the clip: numbers count as their words
@@ -143,7 +172,7 @@ window.Voice = (function () {
   const warmed = {};
   function warm(texts) {
     if (!ok || typeof fetch === 'undefined' || location.protocol === 'file:') return;
-    (texts || []).forEach((t) => (find(t) || []).forEach((c) => { if (!warmed[c.id]) { warmed[c.id] = 1; fetch(clipUrl(c.id)).catch(() => { warmed[c.id] = 0; }); } }));
+    (texts || []).forEach((t) => (find(t) || []).forEach((c) => { if (!warmed[c.url]) { warmed[c.url] = 1; fetch(pick(c.url)).catch(() => { warmed[c.url] = 0; }); } }));
   }
-  return { find: find, play: play, stop: stop, unlock: unlock, prefetch: prefetch, warm: warm, weight: weight, get on() { return ok; }, get format() { return ext; } };
+  return { find: find, play: play, stop: stop, unlock: unlock, prefetch: prefetch, warm: warm, weight: weight, get on() { return ok; }, get format() { return pick('x.ogg').split('.').pop(); } };
 })();

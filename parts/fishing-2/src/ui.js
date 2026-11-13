@@ -137,7 +137,7 @@ class UI {
   // Play was pressed before everything arrived.
   waitForLoad() {
     this.el.loading.classList.add('waiting');
-    this.el.loadingText.textContent = 'Get ready…';
+    this.el.loadingText.textContent = T('f2GetReady');
   }
 
   loaded() {
@@ -146,7 +146,7 @@ class UI {
 
   loadFailed() {
     this.el.loading.classList.add('failed');
-    this.el.loadingText.textContent = 'Could not load the game.';
+    this.el.loadingText.textContent = T('statusLoadFailed');
     this.el.retry.hidden = false;
     this.el.play.disabled = true;
   }
@@ -200,7 +200,7 @@ class UI {
 
   setSound(muted) {
     this.el.sound.setAttribute('aria-pressed', String(!muted));
-    this.el.sound.setAttribute('aria-label', muted ? 'Sound off' : 'Sound on');
+    this.el.sound.setAttribute('aria-label', muted ? T('soundOff') : T('soundOn'));
     this.el.sound.classList.toggle('muted', muted);
   }
 

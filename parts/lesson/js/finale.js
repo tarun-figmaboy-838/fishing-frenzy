@@ -12,7 +12,7 @@
   const CLOSE = { x: 640, y: 445, r: 255 }, END = { x: 405, y: 385 };
   // inside the circle she grows a little: her move (stage px) and scale
   const SW_TO = { x: -235, y: -42 }, ZOOM = 1.4;
-  const TITLE = 'The End';
+  const TITLE = T('theEnd'), SAID = T('lsTheEndSaid'); // (by key: shell/i18n.js)
   const SPARKS = [[1090, 200, 1], [1015, 530, 0.7], [740, 160, 0.6], [1215, 420, 0.8], [880, 245, 0.5]];
 
   const el = (tag, cls, parent, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; if (parent) parent.appendChild(e); return e; };
@@ -35,28 +35,30 @@
       const ring = el('div', 'fin-ring', root);
       const title = el('div', 'fin-title', root);
       title.setAttribute('role', 'heading'); title.setAttribute('aria-label', TITLE);
-      const letters = TITLE.split('').map((ch) => {
+      const letters = I18n.pieces(TITLE).map((ch) => { // letter by letter (a script whose letters join up: word by word)
         const s = el('span', 'fin-ch' + (ch === ' ' ? ' sp' : ''), title);
         if (ch !== ' ') { el('b', 'o', s, ch); el('b', 'f', s, ch); }
         return s;
       }).filter((s) => !s.classList.contains('sp'));
       const sparks = SPARKS.map(([x, y, k]) => { const s = el('i', 'fin-spark', root); s.style.left = x + 'px'; s.style.top = y + 'px'; s.dataset.k = k; return s; });
       const again = el('button', 'fin-again', root, '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9"></path><path d="M20 4v5h-5"></path></svg>');
-      again.type = 'button'; again.setAttribute('aria-label', 'Play again');
-      const againLab = el('div', 'fin-again-lab', root, 'Play again');
+      again.type = 'button'; again.setAttribute('aria-label', T('lsPlayAgain'));
+      const againLab = el('div', 'fin-again-lab', root);
+      againLab.textContent = T('lsPlayAgain');
       again.addEventListener('click', () => { eng.sfx('tap'); setTimeout(() => location.reload(), 150); });
       document.documentElement.classList.add('finale-on'); // css/game.css hides the bubble and top buttons under it
 
       const sw = document.querySelector('.stage .swiftee');
-      // "The End!" in Swiftee's voice as the title lands
+      // "The End!" in Swiftee's voice as the title lands (her English recording, or the English device voice, until the
+      // voice-over is translated: I18n.source)
       const sayEnd = () => {
         // the recorded voice-over (js/voice.js); the device's voice only when there are no clips at all (one voice for Swiftee)
         const speak = () => {
           const s = eng.synth && eng.synth();
           if (!s || eng.state.muted || typeof SpeechSynthesisUtterance === 'undefined' || (window.Voice && Voice.on)) return;
-          try { eng.cancelSpeech(); const u = new SpeechSynthesisUtterance('The End!'); if (eng.voice) u.voice = eng.voice; u.lang = (eng.voice && eng.voice.lang) || 'en-GB'; u.pitch = 1.15; s.speak(u); } catch (e) {}
+          try { eng.cancelSpeech(); const u = new SpeechSynthesisUtterance(I18n.source(SAID)); if (eng.voice) u.voice = eng.voice; u.lang = (eng.voice && eng.voice.lang) || 'en-GB'; u.pitch = 1.15; s.speak(u); } catch (e) {}
         };
-        const clip = window.Voice && !eng.state.muted ? Voice.find('The End!') : null;
+        const clip = window.Voice && !eng.state.muted ? Voice.find(SAID) : null;
         if (!clip) { speak(); return; }
         // a clip that can't play (missing, refused, too slow) ends without starting: the device's voice says it instead
         let heard = false;

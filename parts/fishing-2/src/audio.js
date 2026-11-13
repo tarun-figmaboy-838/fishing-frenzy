@@ -13,6 +13,9 @@ const CHORDS = [
   [196.0, 246.94, 293.66, 392.0],    // G
 ];
 
+// This game's lines in a language with its own voice-over (?lan=hi: assets/VO-HI/, shell/i18n.js), by key.
+const OWN_VOICE_KEYS = /^(f2|popo)/;
+
 // Must match voice_key() in tools/build-voice.py.
 function voiceKey(who, text) {
   return `${who}:${text.replace(/\*/g, '').replace(/…/g, '...').replace(/’/g, "'").split(/\s+/).filter(Boolean).join(' ')}`.toLowerCase();
@@ -34,7 +37,9 @@ class AudioEngine {
 
   // Recorded voice lines (tools/build-voice.py), decoded up front with an offline context so
   // they are ready before the first tap. Decoded buffers play in the live context later.
+  // A language with its own voice-over says every line in it: this game's clips are fetched and decoded instead.
   prepareVoices(data) {
+    if (I18n.ownVoice) return this.prepareOwnVoices();
     const entries = Object.entries(data || {});
     const OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
     if (!entries.length || !OAC) return Promise.resolve();
@@ -48,10 +53,32 @@ class AudioEngine {
     }));
   }
 
+  // (a clip that can't load - the game opened from disk, where pages can't fetch - leaves its line to the game's own
+  // sounds, as a line with no recording)
+  prepareOwnVoices() {
+    const OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    if (!OAC || typeof fetch === 'undefined') return Promise.resolve();
+    const decoder = new OAC(1, 1, 24000);
+    // each clip as WebM Opus, or (a browser that can't decode it: iPads before 18.4) its MP3 twin beside it
+    const load = (url) => fetch(url)
+      .then((r) => (r.ok ? r.arrayBuffer() : null))
+      .then((bytes) => bytes && new Promise((resolve) => decoder.decodeAudioData(bytes, resolve, () => resolve(null))))
+      .catch(() => null);
+    const twin = (url) => String(url).replace(/\.(webm|ogg)$/, '.mp3');
+    return Promise.all(I18n.voiceClips((key) => OWN_VOICE_KEYS.test(key)).map((clip) => load(clip.url)
+      .then((buf) => buf || (twin(clip.url) !== clip.url ? load(twin(clip.url)) : null))
+      .then((buf) => { if (buf) this.voiceBuffers.set(`own:${clip.key}`, buf); })
+      .catch(() => {})));
+  }
+
   // Plays a recorded line and returns its length in seconds (0 when there is no recording,
   // so the caller falls back to the synthesized voice). The music ducks under the voice.
+  // A translated line (?lan=, shell/i18n.js) is said by its own recording, found by its words and who says them, in a
+  // language with its own voice-over; in one without, by its English recording.
   speak(who, text) {
-    const buf = this.voiceBuffers.get(voiceKey(who, text));
+    const own = I18n.ownVoice ? I18n.voiceOf(text, who) : null;
+    const buf = I18n.ownVoice ? own && this.voiceBuffers.get(`own:${own.key}`)
+      : this.voiceBuffers.get(voiceKey(who, I18n.source(text)));
     if (!this.ctx || !buf) return 0;
     this.stopVoice();
     const src = this.ctx.createBufferSource();

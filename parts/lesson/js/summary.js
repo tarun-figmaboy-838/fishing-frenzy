@@ -26,6 +26,7 @@
     mini: { w: 132, x: [[80, 224], [776, 920]], y: [200, 378], zoom: 1.12, plate: { w: 118, h: 27, size: 15.5, rim: 2 } },
     enterMs: 420, collectMs: 580, pauseMs: 200
   };
+  const EDGE = 8; // how far a docked name's plate may reach past the card's edge (English's longest already goes 6)
   // the card's frame: the ice card (the lesson on its own). In the journey's underwater card each idea is a glassy
   // bubble instead (bubble()): an ice card on the card looked odd, and a bubble belongs in the water. BUB: its centre
   // and radius, the zoom of the idea drawn inside it, the idea's centre in its own units (the shape plus the sum line
@@ -69,23 +70,23 @@
   //           count per length, 'legs' = the equal legs); right (right-angle marks); wedges (angles with their values)
   //   cue:    spoken word -> what it highlights (see cue() below)
   const IDEAS = [
-    { id: 'trapezium', label: 'Trapezium', t: 'A trapezium is a quadrilateral with at least one pair of parallel sides.',
+    { id: 'trapezium', label: T('shapeTrapezium'), t: T('sumTrapezium'),
       visual: { shape: 'gen', draw: true, chev: true }, cue: { quadrilateral: 'outline', parallel: 'pair' } },
-    { id: 'bases', label: 'Bases', t: 'The parallel sides are called the bases.',
+    { id: 'bases', label: T('sumBasesLabel'), t: T('sumBases'),
       visual: { shape: 'gen', chev: true, lit: ['AB', 'DC'] }, cue: { parallel: 'chev', bases: 'lit' } },
-    { id: 'legs', label: 'Legs', t: 'The other two sides are called the legs.',
+    { id: 'legs', label: T('sumLegsLabel'), t: T('sumLegs'),
       visual: { shape: 'gen', lit: ['DA', 'BC'] }, cue: { legs: 'lit' } },
-    { id: 'scalene', label: 'Scalene', tone: 'irregular', t: 'A scalene trapezium has sides of different lengths.',
+    { id: 'scalene', label: T('lsScalene'), tone: 'irregular', t: T('sumScalene'),
       visual: { shape: 'scal', ticks: 'all' }, cue: { scalene: 'tag', sides: 'outline', different: 'ticks' } },
-    { id: 'isosceles', label: 'Isosceles', tone: 'convex', t: 'An isosceles trapezium has legs of the same length.',
+    { id: 'isosceles', label: T('lsIsosceles'), tone: 'convex', t: T('sumIsosceles'),
       visual: { shape: 'iso', ticks: 'legs' }, cue: { isosceles: 'tag', legs: 'legs', same: 'ticks' } },
     // the third type straight after the other two (scalene, isosceles, right angled), then the angle ideas
-    { id: 'right', label: 'Right angled', tone: 'regular', t: 'A right trapezium has two adjacent right angles.',
+    { id: 'right', label: T('sumRightLabel'), tone: 'regular', t: T('sumRight'),
       visual: { shape: 'right', right: ['A', 'D'] }, cue: { right: 'tag', adjacent: 'side', angles: 'right' } },
-    { id: 'angleSum', label: 'Angle sum', tone: 'concave', t: 'Angles on the same leg add up to 180°.',
+    { id: 'angleSum', label: T('sumAngleSumLabel'), tone: 'concave', t: T('lsSameLeg180'),
       visual: { shape: 'ang', lit: ['DA'], wedges: ['A', 'D'] }, cue: { angles: 'wedges', leg: 'lit', add: 'add', 180: 'sum' },
       times: { add: 1.84, '180°': 2.36 } }, // measured in the recording (vo182): "add" 1.84 s, "one hundred eighty" 2.36 s
-    { id: 'supplementary', label: 'Supplementary', tone: 'concave', t: 'Two angles that add up to 180° are supplementary.',
+    { id: 'supplementary', label: T('sumSupplementaryLabel'), tone: 'concave', t: T('sumSupplementary'),
       visual: { shape: 'ang', lit: ['BC'], wedges: ['B', 'C'] }, cue: { angles: 'wedges', add: 'add', 180: 'sum', supplementary: 'tag' },
       times: { add: 1.16, '180°': 1.76, supplementary: 3.44 } } // (vo183): "add" 1.16 s, "one hundred eighty" 1.76 s, "supplementary" 3.44 s
   ];
@@ -118,7 +119,7 @@
       this.ctx = G ? G.context(() => {}) : null;
       this.timers = [];
       root.innerHTML = '';
-      const svg = mk('svg', { viewBox: '0 0 ' + W + ' ' + H, width: 1280, height: 720, 'aria-label': 'Summary', role: 'img' }, root);
+      const svg = mk('svg', { viewBox: '0 0 ' + W + ' ' + H, width: 1280, height: 720, 'aria-label': T('sumAria'), role: 'img' }, root);
       this.svg = svg;
       this.defs = mk('defs', {}, svg);
       this.layer = mk('g', {}, svg);
@@ -296,7 +297,13 @@
         'font-family': "'Baloo 2', Nunito, system-ui, sans-serif", fill: navy ? '#ffd166' : c ? c.ink : '#123b63', text: text }, g);
       let w = 0; try { w = t.getComputedTextLength(); } catch (e) {}
       if (!w) w = text.length * fs * 0.54; // could not measure the text: estimate
-      const bw = (o && o.w) ? Math.max(o.w * k, w + 16 * k) : (w + 60 * k);
+      let bw = (o && o.w) ? Math.max(o.w * k, w + 16 * k) : (w + 60 * k);
+      // a docked name that runs longer than any English one (a translation, ?lan=) is set a little smaller, so its plate
+      // reaches no further past the card's edge than English's longest ("Supplementary") already does (EDGE)
+      if (o && o.w) {
+        const room = 2 * Math.min(x + EDGE, W + EDGE - x);
+        if (bw > room && w > 0) { const f = fs * (room - 16 * k) / w; t.setAttribute('font-size', f); t.setAttribute('y', y + f * 0.36); bw = room; }
+      }
       // the plate (as in the lesson): a flat pill with a rim - a label, not a button
       g.insertBefore(mk('rect', { x: x - bw / 2, y: y - H0 / 2, width: bw, height: H0, rx: H0 / 2, fill: navy ? 'url(#sumNavy)' : c ? c.wash : '#ffffff',
         stroke: deep, 'stroke-width': navy ? Math.max(2, rim * 0.75) : rim, style: navy ? 'filter: drop-shadow(0 3px 5px rgba(0, 20, 60, 0.35))' : null }), t);

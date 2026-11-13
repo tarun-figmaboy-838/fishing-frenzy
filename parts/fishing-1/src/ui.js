@@ -177,7 +177,7 @@ class UI {
 
   setSound(muted) {
     this.el.sound.setAttribute('aria-pressed', String(!muted));
-    this.el.sound.setAttribute('aria-label', muted ? 'Sound off' : 'Sound on');
+    this.el.sound.setAttribute('aria-label', muted ? T('soundOff') : T('soundOn'));
     this.el.sound.classList.toggle('muted', muted);
   }
 
@@ -202,7 +202,7 @@ class UI {
         btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'fish-hit';
-        btn.setAttribute('aria-label', `${fish.shape.name} fish`);
+        btn.setAttribute('aria-label', T('fishAria', { shape: fish.shape.name }));
         btn.addEventListener('pointerdown', (e) => { e.preventDefault(); this.emit('fishTap', fish, this.toStage(e.clientX, e.clientY)); });
         btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.emit('fishTap', fish, null); } });
         this.el.hits.appendChild(btn);

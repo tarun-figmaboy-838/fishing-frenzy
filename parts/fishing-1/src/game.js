@@ -214,7 +214,7 @@ class Game {
   challengeText() {
     const ch = this.currentChallenge();
     const name = getShape(ch.target).name.toLowerCase();
-    return ch.all ? `Catch all the *${name}* fish!` : `Catch the *${name}* fish!`;
+    return T(ch.all ? 'f1CatchAll' : 'f1Catch', { shape: name }); // "Catch all the *triangle* fish!"
   }
 
 
@@ -222,8 +222,10 @@ class Game {
   // ("Look at the sides. A pentagon has 5 sides." stood here, but it has no recording yet, and every line on screen is a
   // voiced one; record it with tools/build-swiftee-voice.py and it can come back.) Otherwise, naming the fish tapped.
   wrongText(fish) {
-    if (this.embedded) return this.challengeText();
-    return `${this.challengeText().replace(/!$/, '')}, not the ${fish.shape.name.toLowerCase()} one!`;
+    if (this.embedded) return this.challengeText(); // the journey: the instruction again, in the narrator's recorded voice
+    const target = getShape(this.currentChallenge().target);
+    // "Catch all the *triangle* fish, not the circle one!"
+    return T(this.currentChallenge().all ? 'f1WrongNotAll' : 'f1WrongNot', { shape: target.name.toLowerCase(), other: fish.shape.name.toLowerCase() });
   }
 
 
@@ -630,8 +632,11 @@ class Game {
       if (this.dialogue) this.endLine();
       const words = line.text.split(' ').map((raw) => ({ text: raw.replace(/\*/g, ''), em: raw.includes('*') }));
       const narrator = line.who === 'narrator';
+      // a translated line (?lan=, shell/i18n.js): its cue moves to the word that plays its part (in English it stays put)
+      const en = I18n.source(line.text);
+      const cue = line.cue && en !== line.text ? { ...line.cue, word: I18n.mapWord(line.cue.word, en, line.text) } : line.cue;
       this.dialogue = {
-        words, who: line.who, cue: line.cue, cueDone: false, token, resolve, reject, stay: !!line.stay, settled: false,
+        words, who: line.who, cue, cueDone: false, token, resolve, reject, stay: !!line.stay, settled: false,
         next: 0, wait: 0, held: 0,
         pace: narrator ? 0.21 : 0.17,
         hold: (narrator ? 1000 : 700) + line.text.length * (narrator ? 26 : 22),
@@ -644,10 +649,10 @@ class Game {
     });
   }
 
-  // Spreads the words over the recording by length, with a beat after punctuation, so each
+  // Spreads the words over the recording by length (letters of any script), with a beat after punctuation, so each
   // word appears as it's spoken. The bubble stays up a moment after the voice finishes.
   paceToVoice(d, seconds) {
-    const weight = (w) => Math.max(2, w.text.replace(/[^a-z0-9']/gi, '').length)
+    const weight = (w) => Math.max(2, w.text.replace(/[^\p{L}\p{M}\p{N}']/gu, '').length)
       + (w.text.endsWith('…') ? 5 : /[.!?]$/.test(w.text) ? 3 : w.text.endsWith(',') ? 2 : 0);
     const total = d.words.reduce((sum, w) => sum + weight(w), 0);
     let at = 0;

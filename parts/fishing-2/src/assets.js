@@ -15,7 +15,7 @@ const SOURCES = {
   play: () => PopoGame.PLAY_DATA || `assets/sprites/play.webp${V}`,
   background: (i) => (PopoGame.BACKGROUND_DATA || [])[i] || `assets/backgrounds/location-${i + 1}.webp${V}`,
   // each background comes with a water mask (white where the surface waves may move it)
-  mask: (i) => (PopoGame.WATER_MASKS || [])[i] || `assets/backgrounds/water-${i + 1}.png${V}`,
+  mask: (i) => (PopoGame.WATER_MASKS || [])[i] || `assets/backgrounds/water-${i + 1}.webp${V}`,
 };
 
 // The art behind Play, with rough sizes in KB that keep the loading bar moving evenly.

@@ -483,7 +483,7 @@
       return (keys.length - 1) * gap + 0.65;
     },
     // the sides take their own colours (CSS svg[data-lencol]); an attribute, so a redraw keeps it, and clear() removes it
-    sideColours() { $('svg[aria-label="Trapezium ABCD"]').forEach((s) => s.setAttribute('data-lencol', '1')); },
+    sideColours() { $('svg[data-board]').forEach((s) => s.setAttribute('data-lencol', '1')); }, // (the lesson's board: its aria-label is translated)
     // screen 16, on "sides": the same rhythm as lensSeq - each side glows in turn while its length pops and
     // takes the side's own colour
     lenColors() {

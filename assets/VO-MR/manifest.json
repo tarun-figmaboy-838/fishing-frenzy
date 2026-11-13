@@ -1,0 +1,3519 @@
+{
+ "language": "mr",
+ "source": "locales/locales.json -> mr",
+ "tool": "tools/voice-elevenlabs.py",
+ "model": "eleven_v4",
+ "format": "mp3_44100_128",
+ "stored": "WebM Opus, 32 kbps, mono (ffmpeg, from the MP3)",
+ "seed": 7,
+ "voices": {
+  "swiftee": {
+   "name": "Sayali - Marathi User Onboarding Agent",
+   "voice_id": "ObcUVfo3RbQv9i2RBbAe",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "speed": 0.95
+   }
+  },
+  "popo": {
+   "name": "Vardaan - Expressive Marathi Care Agent",
+   "voice_id": "ritE7mWIE55SDe0J11Kk",
+   "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75,
+    "speed": 0.95
+   }
+  },
+  "narrator": "same voice as swiftee"
+ },
+ "clips": [
+  {
+   "file": "theEnd.webm",
+   "key": "theEnd",
+   "speaker": "narrator",
+   "text": "समाप्त",
+   "spoken": "समाप्त",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeTriangle.webm",
+   "key": "shapeTriangle",
+   "speaker": "narrator",
+   "text": "त्रिकोण",
+   "spoken": "त्रिकोण",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.862
+  },
+  {
+   "file": "shapeSquare.webm",
+   "key": "shapeSquare",
+   "speaker": "narrator",
+   "text": "चौरस",
+   "spoken": "चौरस",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeRectangle.webm",
+   "key": "shapeRectangle",
+   "speaker": "narrator",
+   "text": "आयत",
+   "spoken": "आयत",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.784
+  },
+  {
+   "file": "shapeRhombus.webm",
+   "key": "shapeRhombus",
+   "speaker": "narrator",
+   "text": "समभुज चौकोन",
+   "spoken": "समभुज चौकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.593
+  },
+  {
+   "file": "shapeParallelogram.webm",
+   "key": "shapeParallelogram",
+   "speaker": "narrator",
+   "text": "समांतरभुज चौकोन",
+   "spoken": "समांतरभुज चौकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.829
+  },
+  {
+   "file": "shapeTrapezium.webm",
+   "key": "shapeTrapezium",
+   "speaker": "narrator",
+   "text": "समलंब चौकोन",
+   "spoken": "समलंब चौकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.593
+  },
+  {
+   "file": "shapePentagon.webm",
+   "key": "shapePentagon",
+   "speaker": "narrator",
+   "text": "पंचकोन",
+   "spoken": "पंचकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeHexagon.webm",
+   "key": "shapeHexagon",
+   "speaker": "narrator",
+   "text": "षट्कोन",
+   "spoken": "षट्कोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeOctagon.webm",
+   "key": "shapeOctagon",
+   "speaker": "narrator",
+   "text": "अष्टकोन",
+   "spoken": "अष्टकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeNonagon.webm",
+   "key": "shapeNonagon",
+   "speaker": "narrator",
+   "text": "नवकोन",
+   "spoken": "नवकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.019
+  },
+  {
+   "file": "shapeDecagon.webm",
+   "key": "shapeDecagon",
+   "speaker": "narrator",
+   "text": "दशकोन",
+   "spoken": "दशकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeCircle.webm",
+   "key": "shapeCircle",
+   "speaker": "narrator",
+   "text": "वर्तुळ",
+   "spoken": "वर्तुळ",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.94
+  },
+  {
+   "file": "shapeOval.webm",
+   "key": "shapeOval",
+   "speaker": "narrator",
+   "text": "अंडाकृती",
+   "spoken": "अंडाकृती",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.097
+  },
+  {
+   "file": "shapeSemicircle.webm",
+   "key": "shapeSemicircle",
+   "speaker": "narrator",
+   "text": "अर्धवर्तुळ",
+   "spoken": "अर्धवर्तुळ",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.097
+  },
+  {
+   "file": "shapeQuadrilateral.webm",
+   "key": "shapeQuadrilateral",
+   "speaker": "narrator",
+   "text": "चौकोन",
+   "spoken": "चौकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.94
+  },
+  {
+   "file": "popoWhoopsie.webm",
+   "key": "popoWhoopsie",
+   "speaker": "popo",
+   "text": "अरे बापरे, धपाक!",
+   "spoken": "अरे बापरे, धपाक!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 2.22
+  },
+  {
+   "file": "popoGreatCatch.webm",
+   "key": "popoGreatCatch",
+   "speaker": "popo",
+   "text": "*मस्त* पकडला!",
+   "spoken": "मस्त पकडला!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 1.254
+  },
+  {
+   "file": "f1StoryLoves.webm",
+   "key": "f1StoryLoves",
+   "speaker": "narrator",
+   "text": "पोपोला मासेमारी *खूप* आवडते.",
+   "spoken": "पोपोला मासेमारी खूप आवडते.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.456
+  },
+  {
+   "file": "f1StoryToday.webm",
+   "key": "f1StoryToday",
+   "speaker": "narrator",
+   "text": "आणि आज…",
+   "spoken": "आणि आज...",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.097
+  },
+  {
+   "file": "f1StoryAllKinds.webm",
+   "key": "f1StoryAllKinds",
+   "speaker": "narrator",
+   "text": "त्याला *सगळ्या* प्रकारचे मासे पकडायचे आहेत!",
+   "spoken": "त्याला सगळ्या प्रकारचे मासे पकडायचे आहेत!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.795
+  },
+  {
+   "file": "f1CatchAll.triangle.webm",
+   "key": "f1CatchAll",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "*त्रिकोण* आकाराचे सगळे मासे पकडा!",
+   "spoken": "त्रिकोण आकाराचे सगळे मासे पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.612
+  },
+  {
+   "file": "f1CatchAll.pentagon.webm",
+   "key": "f1CatchAll",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "*पंचकोन* आकाराचे सगळे मासे पकडा!",
+   "spoken": "पंचकोन आकाराचे सगळे मासे पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.795
+  },
+  {
+   "file": "f1CatchAll.hexagon.webm",
+   "key": "f1CatchAll",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "*षट्कोन* आकाराचे सगळे मासे पकडा!",
+   "spoken": "षट्कोन आकाराचे सगळे मासे पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.612
+  },
+  {
+   "file": "f1CatchAll.quadrilateral.webm",
+   "key": "f1CatchAll",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "*चौकोन* आकाराचे सगळे मासे पकडा!",
+   "spoken": "चौकोन आकाराचे सगळे मासे पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.612
+  },
+  {
+   "file": "f1Catch.triangle.webm",
+   "key": "f1Catch",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "*त्रिकोण* आकाराचा मासा पकडा!",
+   "spoken": "त्रिकोण आकाराचा मासा पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.142
+  },
+  {
+   "file": "f1Catch.pentagon.webm",
+   "key": "f1Catch",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "*पंचकोन* आकाराचा मासा पकडा!",
+   "spoken": "पंचकोन आकाराचा मासा पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.142
+  },
+  {
+   "file": "f1Catch.hexagon.webm",
+   "key": "f1Catch",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "*षट्कोन* आकाराचा मासा पकडा!",
+   "spoken": "षट्कोन आकाराचा मासा पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.142
+  },
+  {
+   "file": "f1Catch.quadrilateral.webm",
+   "key": "f1Catch",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "*चौकोन* आकाराचा मासा पकडा!",
+   "spoken": "चौकोन आकाराचा मासा पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.299
+  },
+  {
+   "file": "f1WrongSides.triangle.webm",
+   "key": "f1WrongSides",
+   "variant": "triangle",
+   "speaker": "narrator",
+   "text": "बाजू पाहा. *त्रिकोण* या आकाराला 3 बाजू असतात.",
+   "spoken": "बाजू पाहा. त्रिकोण या आकाराला तीन बाजू असतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.31
+  },
+  {
+   "file": "f1WrongSides.pentagon.webm",
+   "key": "f1WrongSides",
+   "variant": "pentagon",
+   "speaker": "narrator",
+   "text": "बाजू पाहा. *पंचकोन* या आकाराला 5 बाजू असतात.",
+   "spoken": "बाजू पाहा. पंचकोन या आकाराला पाच बाजू असतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.545
+  },
+  {
+   "file": "f1WrongSides.hexagon.webm",
+   "key": "f1WrongSides",
+   "variant": "hexagon",
+   "speaker": "narrator",
+   "text": "बाजू पाहा. *षट्कोन* या आकाराला 6 बाजू असतात.",
+   "spoken": "बाजू पाहा. षट्कोन या आकाराला सहा बाजू असतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.545
+  },
+  {
+   "file": "f1WrongSides.quadrilateral.webm",
+   "key": "f1WrongSides",
+   "variant": "quadrilateral",
+   "speaker": "narrator",
+   "text": "बाजू पाहा. *चौकोन* या आकाराला 4 बाजू असतात.",
+   "spoken": "बाजू पाहा. चौकोन या आकाराला चार बाजू असतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.545
+  },
+  {
+   "file": "f1RowsOn.webm",
+   "key": "f1RowsOn",
+   "speaker": "narrator",
+   "text": "पोपो वल्हवत पुढे निघाला…",
+   "spoken": "पोपो वल्हवत पुढे निघाला...",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.907
+  },
+  {
+   "file": "f1Woah.webm",
+   "key": "f1Woah",
+   "speaker": "popo",
+   "text": "*अबब!*",
+   "spoken": "अबब!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 0.784
+  },
+  {
+   "file": "f1NotSeen.webm",
+   "key": "f1NotSeen",
+   "speaker": "popo",
+   "text": "*असा* मासा मी आधी कधीच पाहिला नाही!",
+   "spoken": "असा मासा मी आधी कधीच पाहिला नाही!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 2.377
+  },
+  {
+   "file": "f1WhatKind.webm",
+   "key": "f1WhatKind",
+   "speaker": "popo",
+   "text": "तो कोणत्या *प्रकारचा* मासा होता?",
+   "spoken": "तो कोणत्या प्रकारचा मासा होता?",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 2.064
+  },
+  {
+   "file": "f1FindOut.webm",
+   "key": "f1FindOut",
+   "speaker": "swiftee",
+   "text": "चला, *शोधूया!*",
+   "spoken": "चला, शोधूया!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.437
+  },
+  {
+   "file": "lsHi.webm",
+   "key": "lsHi",
+   "speaker": "swiftee",
+   "text": "नमस्कार! माझ्यासोबत एक नवीन आकार शोधायला तयार आहात?",
+   "spoken": "नमस्कार! माझ्यासोबत एक नवीन आकार शोधायला तयार आहात?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.31
+  },
+  {
+   "file": "lsRemember.webm",
+   "key": "lsRemember",
+   "speaker": "swiftee",
+   "text": "आठवते ना, आपण आधी\nचौकोनांविषयी शिकलो होतो.",
+   "spoken": "आठवते ना, आपण आधी चौकोनांविषयी शिकलो होतो.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.579
+  },
+  {
+   "file": "lsAnyPolygon.webm",
+   "key": "lsAnyPolygon",
+   "speaker": "swiftee",
+   "text": "4 बाजू असलेल्या कोणत्याही\nबहुभुजाकृतीला चौकोन म्हणतात.",
+   "spoken": "चार बाजू असलेल्या कोणत्याही बहुभुजाकृतीला चौकोन म्हणतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.467
+  },
+  {
+   "file": "lsCallIt.webm",
+   "key": "lsCallIt",
+   "speaker": "swiftee",
+   "text": "याला आपण चौकोन\nABCD म्हणू शकतो.",
+   "spoken": "याला आपण चौकोन ए बी सी डी म्हणू शकतो.",
+   "letters": [
+    0.405,
+    0.459,
+    0.541,
+    0.622
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.736
+  },
+  {
+   "file": "lsSpecialType.webm",
+   "key": "lsSpecialType",
+   "speaker": "swiftee",
+   "text": "हा चौकोनाचा एक\nखास प्रकार आहे.",
+   "spoken": "हा चौकोनाचा एक खास प्रकार आहे.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.612
+  },
+  {
+   "file": "lsSeeSpecial.webm",
+   "key": "lsSeeSpecial",
+   "speaker": "swiftee",
+   "text": "हा खास का आहे,\nचला पाहूया.",
+   "spoken": "हा खास का आहे, चला पाहूया.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsLookMeet.webm",
+   "key": "lsLookMeet",
+   "speaker": "swiftee",
+   "text": "या दोन बाजू एकमेकींना मिळतील असे दिसते.",
+   "spoken": "या दोन बाजू एकमेकींना मिळतील असे दिसते.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.344
+  },
+  {
+   "file": "lsExtendThem.webm",
+   "key": "lsExtendThem",
+   "speaker": "swiftee",
+   "text": "चला, त्या वाढवूया.",
+   "spoken": "चला, त्या वाढवूया.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.672
+  },
+  {
+   "file": "lsSidesMeet.webm",
+   "key": "lsSidesMeet",
+   "speaker": "swiftee",
+   "text": "अरेच्चा! बाजू एकमेकींना मिळाल्या.",
+   "spoken": "अरेच्चा! बाजू एकमेकींना मिळाल्या.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsCheckOther.webm",
+   "key": "lsCheckOther",
+   "speaker": "swiftee",
+   "text": "चला, बाजूंची दुसरी\nजोडी तपासूया.",
+   "spoken": "चला, बाजूंची दुसरी जोडी तपासूया.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsPairNotMeet.webm",
+   "key": "lsPairNotMeet",
+   "speaker": "swiftee",
+   "text": "बाजूंची ही जोडी\nएकमेकींना मिळत नाही.",
+   "spoken": "बाजूंची ही जोडी एकमेकींना मिळत नाही.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.873
+  },
+  {
+   "file": "lsMeansParallel.webm",
+   "key": "lsMeansParallel",
+   "speaker": "swiftee",
+   "text": "म्हणजेच या बाजू एकमेकींना समांतर आहेत.",
+   "spoken": "म्हणजेच या बाजू एकमेकींना समांतर आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsAbParallelCd.webm",
+   "key": "lsAbParallelCd",
+   "speaker": "swiftee",
+   "text": "AB ही CD ला समांतर आहे.",
+   "spoken": "ए बी ही सी डी ला समांतर आहे.",
+   "letters": [
+    0.0,
+    0.071,
+    0.286,
+    0.393
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsBigSecret.webm",
+   "key": "lsBigSecret",
+   "speaker": "swiftee",
+   "text": "हे आहे मोठे गुपित!",
+   "spoken": "हे आहे मोठे गुपित!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.142
+  },
+  {
+   "file": "lsOnePairEnough.webm",
+   "key": "lsOnePairEnough",
+   "speaker": "swiftee",
+   "text": "समांतर बाजूंची\nएक जोडी पुरेशी आहे.",
+   "spoken": "समांतर बाजूंची एक जोडी पुरेशी आहे.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.187
+  },
+  {
+   "file": "lsThenTrapezium.webm",
+   "key": "lsThenTrapezium",
+   "speaker": "swiftee",
+   "text": "मग तो चौकोन\nसमलंब चौकोन ठरतो!",
+   "spoken": "मग तो चौकोन समलंब चौकोन ठरतो!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsWhichTrapezium.webm",
+   "key": "lsWhichTrapezium",
+   "speaker": "swiftee",
+   "text": "यांपैकी कोणता चौकोन समलंब चौकोन आहे?",
+   "spoken": "यांपैकी कोणता चौकोन समलंब चौकोन आहे?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.736
+  },
+  {
+   "file": "lsCorrect.webm",
+   "key": "lsCorrect",
+   "speaker": "swiftee",
+   "text": "बरोबर!",
+   "spoken": "बरोबर!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.254
+  },
+  {
+   "file": "lsHasOnePair.webm",
+   "key": "lsHasOnePair",
+   "speaker": "swiftee",
+   "text": "त्याला समांतर बाजूंची एक जोडी आहे.",
+   "spoken": "त्याला समांतर बाजूंची एक जोडी आहे.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsSoTrapezium.webm",
+   "key": "lsSoTrapezium",
+   "speaker": "swiftee",
+   "text": "म्हणून तो समलंब चौकोन आहे!",
+   "spoken": "म्हणून तो समलंब चौकोन आहे!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.456
+  },
+  {
+   "file": "lsOopsNoParallel.webm",
+   "key": "lsOopsNoParallel",
+   "speaker": "swiftee",
+   "text": "अरेरे! इथे कोणत्याही दोन बाजू समांतर नाहीत.",
+   "spoken": "अरेरे! इथे कोणत्याही दोन बाजू समांतर नाहीत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.579
+  },
+  {
+   "file": "lsNotTrapezium.webm",
+   "key": "lsNotTrapezium",
+   "speaker": "swiftee",
+   "text": "म्हणून तो समलंब चौकोन नाही.",
+   "spoken": "म्हणून तो समलंब चौकोन नाही.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.534
+  },
+  {
+   "file": "lsNoParallelAtAll.webm",
+   "key": "lsNoParallelAtAll",
+   "speaker": "swiftee",
+   "text": "या आकारात समांतर बाजू अजिबात नाहीत.",
+   "spoken": "या आकारात समांतर बाजू अजिबात नाहीत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsCalledBases.webm",
+   "key": "lsCalledBases",
+   "speaker": "swiftee",
+   "text": "समांतर बाजूंना\nपाये म्हणतात.",
+   "spoken": "समांतर बाजूंना पाये म्हणतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.377
+  },
+  {
+   "file": "lsCalledLegs.webm",
+   "key": "lsCalledLegs",
+   "speaker": "swiftee",
+   "text": "उरलेल्या दोन बाजूंना\nअसमांतर बाजू म्हणतात.",
+   "spoken": "उरलेल्या दोन बाजूंना असमांतर बाजू म्हणतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsMeasureSides.webm",
+   "key": "lsMeasureSides",
+   "speaker": "swiftee",
+   "text": "या समलंब चौकोनाच्या\nबाजू आता मोजूया.",
+   "spoken": "या समलंब चौकोनाच्या बाजू आता मोजूया.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.187
+  },
+  {
+   "file": "lsAllDifferent.webm",
+   "key": "lsAllDifferent",
+   "speaker": "swiftee",
+   "text": "अबब! या समलंब चौकोनाच्या\nसगळ्या बाजू वेगवेगळ्या\nलांबीच्या आहेत.",
+   "spoken": "अबब! या समलंब चौकोनाच्या सगळ्या बाजू वेगवेगळ्या लांबीच्या आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.512
+  },
+  {
+   "file": "lsLookTrapezium.webm",
+   "key": "lsLookTrapezium",
+   "speaker": "swiftee",
+   "text": "हा समलंब चौकोन पाहा!",
+   "spoken": "हा समलंब चौकोन पाहा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.985
+  },
+  {
+   "file": "lsAllSidesDiff.webm",
+   "key": "lsAllSidesDiff",
+   "speaker": "swiftee",
+   "text": "त्याच्या सगळ्या बाजू\nवेगवेगळ्या लांबीच्या आहेत.",
+   "spoken": "त्याच्या सगळ्या बाजू वेगवेगळ्या लांबीच्या आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsScaleneIs.webm",
+   "key": "lsScaleneIs",
+   "speaker": "swiftee",
+   "text": "हा आहे विषमभुज समलंब चौकोन!",
+   "spoken": "हा आहे विषमभुज समलंब चौकोन!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.344
+  },
+  {
+   "file": "lsScaleneTrapezium.webm",
+   "key": "lsScaleneTrapezium",
+   "speaker": "swiftee",
+   "text": "विषमभुज समलंब चौकोन",
+   "spoken": "विषमभुज समलंब चौकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.377
+  },
+  {
+   "file": "lsLegsDiffToo.webm",
+   "key": "lsLegsDiffToo",
+   "speaker": "swiftee",
+   "text": "पाहा! त्याच्या असमांतर बाजूही\nवेगवेगळ्या लांबीच्या आहेत.",
+   "spoken": "पाहा! त्याच्या असमांतर बाजूही वेगवेगळ्या लांबीच्या आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.232
+  },
+  {
+   "file": "lsWhatIfSame.webm",
+   "key": "lsWhatIfSame",
+   "speaker": "swiftee",
+   "text": "असमांतर बाजू समान\nलांबीच्या असत्या तर?",
+   "spoken": "असमांतर बाजू समान लांबीच्या असत्या तर?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsFindOut.webm",
+   "key": "lsFindOut",
+   "speaker": "swiftee",
+   "text": "चला, शोधून काढूया.",
+   "spoken": "चला, शोधून काढूया.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.75
+  },
+  {
+   "file": "lsDragVertexA.webm",
+   "key": "lsDragVertexA",
+   "speaker": "swiftee",
+   "text": "शिरोबिंदू A ड्रॅग करा.",
+   "spoken": "शिरोबिंदू ए ड्रॅग करा.",
+   "letters": [
+    0.455
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.985
+  },
+  {
+   "file": "lsMakeLegsSame.webm",
+   "key": "lsMakeLegsSame",
+   "speaker": "swiftee",
+   "text": "दोन्ही असमांतर बाजू\nसमान लांबीच्या करा!",
+   "spoken": "दोन्ही असमांतर बाजू समान लांबीच्या करा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsPerfectEqual.webm",
+   "key": "lsPerfectEqual",
+   "speaker": "swiftee",
+   "text": "एकदम छान! दोन्ही असमांतर बाजू समान आहेत.",
+   "spoken": "एकदम छान! दोन्ही असमांतर बाजू समान आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.075
+  },
+  {
+   "file": "lsWatch.webm",
+   "key": "lsWatch",
+   "speaker": "swiftee",
+   "text": "नीट पाहा!",
+   "spoken": "नीट पाहा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.097
+  },
+  {
+   "file": "lsAdBecomes.webm",
+   "key": "lsAdBecomes",
+   "speaker": "swiftee",
+   "text": "BC प्रमाणेच AD ही 5 cm होते.",
+   "spoken": "बी सी प्रमाणेच ए डी ही पाच सेंटिमीटर होते.",
+   "letters": [
+    0.0,
+    0.071,
+    0.357,
+    0.405
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsNowLegsEqual.webm",
+   "key": "lsNowLegsEqual",
+   "speaker": "swiftee",
+   "text": "आता दोन्ही असमांतर बाजू समान आहेत!",
+   "spoken": "आता दोन्ही असमांतर बाजू समान आहेत!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsDragAKeep.5_1.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_1",
+   "speaker": "swiftee",
+   "text": "AD 5.1 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक एक सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.809
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.654
+  },
+  {
+   "file": "lsDragAKeep.5_2.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_2",
+   "speaker": "swiftee",
+   "text": "AD 5.2 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक दोन सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.419
+  },
+  {
+   "file": "lsDragAKeep.5_3.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_3",
+   "speaker": "swiftee",
+   "text": "AD 5.3 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक तीन सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.262
+  },
+  {
+   "file": "lsDragAKeep.5_4.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_4",
+   "speaker": "swiftee",
+   "text": "AD 5.4 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक चार सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.34
+  },
+  {
+   "file": "lsDragAKeep.5_5.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_5",
+   "speaker": "swiftee",
+   "text": "AD 5.5 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक पाच सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.915
+  },
+  {
+   "file": "lsDragAKeep.5_6.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_6",
+   "speaker": "swiftee",
+   "text": "AD 5.6 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक सहा सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.419
+  },
+  {
+   "file": "lsDragAKeep.5_7.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_7",
+   "speaker": "swiftee",
+   "text": "AD 5.7 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक सात सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.419
+  },
+  {
+   "file": "lsDragAKeep.5_8.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_8",
+   "speaker": "swiftee",
+   "text": "AD 5.8 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक आठ सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.809
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.419
+  },
+  {
+   "file": "lsDragAKeep.5_9.webm",
+   "key": "lsDragAKeep",
+   "variant": "5_9",
+   "speaker": "swiftee",
+   "text": "AD 5.9 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी पाच पूर्णांक नऊ सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.809
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.654
+  },
+  {
+   "file": "lsDragAKeep.6.webm",
+   "key": "lsDragAKeep",
+   "variant": "6",
+   "speaker": "swiftee",
+   "text": "AD 6 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.026,
+    0.779
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 6.374
+  },
+  {
+   "file": "lsDragAKeep.6_1.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_1",
+   "speaker": "swiftee",
+   "text": "AD 6.1 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक एक सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.809
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.262
+  },
+  {
+   "file": "lsDragAKeep.6_2.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_2",
+   "speaker": "swiftee",
+   "text": "AD 6.2 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक दोन सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.419
+  },
+  {
+   "file": "lsDragAKeep.6_3.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_3",
+   "speaker": "swiftee",
+   "text": "AD 6.3 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक तीन सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.105
+  },
+  {
+   "file": "lsDragAKeep.6_4.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_4",
+   "speaker": "swiftee",
+   "text": "AD 6.4 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक चार सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.34
+  },
+  {
+   "file": "lsDragAKeep.6_5.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_5",
+   "speaker": "swiftee",
+   "text": "AD 6.5 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक पाच सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.105
+  },
+  {
+   "file": "lsDragAKeep.6_6.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_6",
+   "speaker": "swiftee",
+   "text": "AD 6.6 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक सहा सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.262
+  },
+  {
+   "file": "lsDragAKeep.6_7.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_7",
+   "speaker": "swiftee",
+   "text": "AD 6.7 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक सात सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.184
+  },
+  {
+   "file": "lsDragAKeep.6_8.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_8",
+   "speaker": "swiftee",
+   "text": "AD 6.8 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक आठ सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.809
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.105
+  },
+  {
+   "file": "lsDragAKeep.6_9.webm",
+   "key": "lsDragAKeep",
+   "variant": "6_9",
+   "speaker": "swiftee",
+   "text": "AD 6.9 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सहा पूर्णांक नऊ सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.809
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.105
+  },
+  {
+   "file": "lsDragAKeep.7.webm",
+   "key": "lsDragAKeep",
+   "variant": "7",
+   "speaker": "swiftee",
+   "text": "AD 7 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सात सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.026,
+    0.779
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 6.296
+  },
+  {
+   "file": "lsDragAKeep.7_1.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_1",
+   "speaker": "swiftee",
+   "text": "AD 7.1 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सात पूर्णांक एक सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.809
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.576
+  },
+  {
+   "file": "lsDragAKeep.7_2.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_2",
+   "speaker": "swiftee",
+   "text": "AD 7.2 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सात पूर्णांक दोन सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.262
+  },
+  {
+   "file": "lsDragAKeep.7_3.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_3",
+   "speaker": "swiftee",
+   "text": "AD 7.3 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सात पूर्णांक तीन सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.576
+  },
+  {
+   "file": "lsDragAKeep.7_4.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_4",
+   "speaker": "swiftee",
+   "text": "AD 7.4 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सात पूर्णांक चार सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.262
+  },
+  {
+   "file": "lsDragAKeep.7_5.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_5",
+   "speaker": "swiftee",
+   "text": "AD 7.5 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सात पूर्णांक पाच सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.497
+  },
+  {
+   "file": "lsDragAKeep.7_6.webm",
+   "key": "lsDragAKeep",
+   "variant": "7_6",
+   "speaker": "swiftee",
+   "text": "AD 7.6 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A ड्रॅग करत राहा.",
+   "spoken": "ए डी सात पूर्णांक सहा सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए ड्रॅग करत राहा.",
+   "letters": [
+    0.0,
+    0.022,
+    0.811
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.262
+  },
+  {
+   "file": "lsDragABack.4_9.webm",
+   "key": "lsDragABack",
+   "variant": "4_9",
+   "speaker": "swiftee",
+   "text": "AD 4.9 cm आहे. लांबी अगदी 5 cm दिसेपर्यंत A थोडा मागे ड्रॅग करा.",
+   "spoken": "ए डी चार पूर्णांक नऊ सेंटिमीटर आहे. लांबी अगदी पाच सेंटिमीटर दिसेपर्यंत ए थोडा मागे ड्रॅग करा.",
+   "letters": [
+    0.0,
+    0.021,
+    0.766
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 7.837
+  },
+  {
+   "file": "lsNowLookTrapezium.webm",
+   "key": "lsNowLookTrapezium",
+   "speaker": "swiftee",
+   "text": "आता हा समलंब चौकोन पाहा!",
+   "spoken": "आता हा समलंब चौकोन पाहा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.22
+  },
+  {
+   "file": "lsLegsSame.webm",
+   "key": "lsLegsSame",
+   "speaker": "swiftee",
+   "text": "त्याच्या असमांतर बाजूंची लांबी सारखीच आहे!",
+   "spoken": "त्याच्या असमांतर बाजूंची लांबी सारखीच आहे!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsIsoIs.webm",
+   "key": "lsIsoIs",
+   "speaker": "swiftee",
+   "text": "हा आहे समद्विभुज समलंब चौकोन!",
+   "spoken": "हा आहे समद्विभुज समलंब चौकोन!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsIsoTrapezium.webm",
+   "key": "lsIsoTrapezium",
+   "speaker": "swiftee",
+   "text": "समद्विभुज समलंब चौकोन",
+   "spoken": "समद्विभुज समलंब चौकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.534
+  },
+  {
+   "file": "lsKnowSides.webm",
+   "key": "lsKnowSides",
+   "speaker": "swiftee",
+   "text": "समलंब चौकोनाच्या बाजूंबद्दल\nआपल्याला सगळे माहीत आहे.",
+   "spoken": "समलंब चौकोनाच्या बाजूंबद्दल आपल्याला सगळे माहीत आहे.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.892
+  },
+  {
+   "file": "lsThisIso.webm",
+   "key": "lsThisIso",
+   "speaker": "swiftee",
+   "text": "हा एक समद्विभुज समलंब चौकोन आहे.",
+   "spoken": "हा एक समद्विभुज समलंब चौकोन आहे.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsAbCd.webm",
+   "key": "lsAbCd",
+   "speaker": "swiftee",
+   "text": "AB = 6 cm आणि CD = 10 cm.",
+   "spoken": "ए बी बरोबर सहा सेंटिमीटर आणि सी डी बरोबर दहा सेंटिमीटर.",
+   "letters": [
+    0.0,
+    0.036,
+    0.527,
+    0.582
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsAd5.webm",
+   "key": "lsAd5",
+   "speaker": "swiftee",
+   "text": "AD = 5 cm.",
+   "spoken": "ए डी बरोबर पाच सेंटिमीटर.",
+   "letters": [
+    0.0,
+    0.08
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.377
+  },
+  {
+   "file": "lsHowLongBc.webm",
+   "key": "lsHowLongBc",
+   "speaker": "swiftee",
+   "text": "मग BC किती लांब आहे?",
+   "spoken": "मग बी सी किती लांब आहे?",
+   "letters": [
+    0.13,
+    0.261
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.142
+  },
+  {
+   "file": "lsYesLegsEqual.webm",
+   "key": "lsYesLegsEqual",
+   "speaker": "swiftee",
+   "text": "हो! असमांतर बाजू समान आहेत.",
+   "spoken": "हो! असमांतर बाजू समान आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.952
+  },
+  {
+   "file": "lsSoBc5.webm",
+   "key": "lsSoBc5",
+   "speaker": "swiftee",
+   "text": "म्हणून BC = 5 cm!",
+   "spoken": "म्हणून बी सी बरोबर पाच सेंटिमीटर!",
+   "letters": [
+    0.212,
+    0.303
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.187
+  },
+  {
+   "file": "lsBcIsLeg.webm",
+   "key": "lsBcIsLeg",
+   "speaker": "swiftee",
+   "text": "हं, BC ही असमांतर बाजू आहे.",
+   "spoken": "हं, बी सी ही असमांतर बाजू आहे.",
+   "letters": [
+    0.133,
+    0.233
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsBothLegsEqual.webm",
+   "key": "lsBothLegsEqual",
+   "speaker": "swiftee",
+   "text": "आणि दोन्ही असमांतर बाजू समान आहेत!",
+   "spoken": "आणि दोन्ही असमांतर बाजू समान आहेत!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsOops6Top.webm",
+   "key": "lsOops6Top",
+   "speaker": "swiftee",
+   "text": "अरेरे! 6 cm हा वरचा पाया AB आहे.",
+   "spoken": "अरेरे! सहा सेंटिमीटर हा वरचा पाया ए बी आहे.",
+   "letters": [
+    0.791,
+    0.837
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.389
+  },
+  {
+   "file": "lsBcLikeAd.webm",
+   "key": "lsBcLikeAd",
+   "speaker": "swiftee",
+   "text": "AD प्रमाणेच BC ही असमांतर बाजू आहे.",
+   "spoken": "ए डी प्रमाणेच बी सी ही असमांतर बाजू आहे.",
+   "letters": [
+    0.0,
+    0.05,
+    0.35,
+    0.425
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.5
+  },
+  {
+   "file": "lsMeasureAngles.webm",
+   "key": "lsMeasureAngles",
+   "speaker": "swiftee",
+   "text": "चला, याचे कोन मोजूया.",
+   "spoken": "चला, याचे कोन मोजूया.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.142
+  },
+  {
+   "file": "lsNotice.webm",
+   "key": "lsNotice",
+   "speaker": "swiftee",
+   "text": "तुमच्या काही लक्षात आले का?",
+   "spoken": "तुमच्या काही लक्षात आले का?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.75
+  },
+  {
+   "file": "lsAdSum180.webm",
+   "key": "lsAdSum180",
+   "speaker": "swiftee",
+   "text": "∠A आणि ∠D यांची बेरीज 180° होते.",
+   "spoken": "कोन ए आणि कोन डी यांची बेरीज एकशे ऐंशी अंश होते.",
+   "letters": [
+    0.083,
+    0.292
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsSupplementary.webm",
+   "key": "lsSupplementary",
+   "speaker": "swiftee",
+   "text": "म्हणजेच हे दोन\nपूरक कोन आहेत.",
+   "spoken": "म्हणजेच हे दोन पूरक कोन आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsWhatAboutBc.webm",
+   "key": "lsWhatAboutBc",
+   "speaker": "swiftee",
+   "text": "आणि ∠B व ∠C चे काय?",
+   "spoken": "आणि कोन बी व कोन सी चे काय?",
+   "letters": [
+    0.296,
+    0.63
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.299
+  },
+  {
+   "file": "lsCorrectBcSupp.webm",
+   "key": "lsCorrectBcSupp",
+   "speaker": "swiftee",
+   "text": "बरोबर! ∠B आणि ∠C\nहेसुद्धा पूरक कोन आहेत.",
+   "spoken": "बरोबर! कोन बी आणि कोन सी हेसुद्धा पूरक कोन आहेत.",
+   "letters": [
+    0.229,
+    0.458
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsIts180.webm",
+   "key": "lsIts180",
+   "speaker": "swiftee",
+   "text": "बेरीज 180° आहे!",
+   "spoken": "बेरीज एकशे ऐंशी अंश आहे!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.456
+  },
+  {
+   "file": "lsBcSum180.webm",
+   "key": "lsBcSum180",
+   "speaker": "swiftee",
+   "text": "∠B आणि ∠C यांची बेरीजसुद्धा 180° होते.",
+   "spoken": "कोन बी आणि कोन सी यांची बेरीजसुद्धा एकशे ऐंशी अंश होते.",
+   "letters": [
+    0.073,
+    0.273
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsNotQuite.webm",
+   "key": "lsNotQuite",
+   "speaker": "swiftee",
+   "text": "अगदी बरोबर नाही. पुन्हा प्रयत्न करा.",
+   "spoken": "अगदी बरोबर नाही. पुन्हा प्रयत्न करा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.952
+  },
+  {
+   "file": "lsOops360.webm",
+   "key": "lsOops360",
+   "speaker": "swiftee",
+   "text": "अरेरे! 360° ही चारही कोनांची बेरीज आहे.",
+   "spoken": "अरेरे! तीनशे साठ अंश ही चारही कोनांची बेरीज आहे.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.467
+  },
+  {
+   "file": "lsTryAgain.webm",
+   "key": "lsTryAgain",
+   "speaker": "swiftee",
+   "text": "पुन्हा प्रयत्न करा!",
+   "spoken": "पुन्हा प्रयत्न करा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.332
+  },
+  {
+   "file": "lsWhatIfChange.webm",
+   "key": "lsWhatIfChange",
+   "speaker": "swiftee",
+   "text": "या समलंब चौकोनाचा आकार\nआपण बदलला तर?",
+   "spoken": "या समलंब चौकोनाचा आकार आपण बदलला तर?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsDragAnyVertex.webm",
+   "key": "lsDragAnyVertex",
+   "speaker": "swiftee",
+   "text": "कोणताही शिरोबिंदू ड्रॅग करा.",
+   "spoken": "कोणताही शिरोबिंदू ड्रॅग करा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.22
+  },
+  {
+   "file": "lsWatchAngles.webm",
+   "key": "lsWatchAngles",
+   "speaker": "swiftee",
+   "text": "कोन कसे बदलतात ते पाहा!",
+   "spoken": "कोन कसे बदलतात ते पाहा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.22
+  },
+  {
+   "file": "lsLookSums.webm",
+   "key": "lsLookSums",
+   "speaker": "swiftee",
+   "text": "आता बेरजा पाहा!",
+   "spoken": "आता बेरजा पाहा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.437
+  },
+  {
+   "file": "lsChangeAll.webm",
+   "key": "lsChangeAll",
+   "speaker": "swiftee",
+   "text": "आकार हवा तसा बदला!",
+   "spoken": "आकार हवा तसा बदला!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.064
+  },
+  {
+   "file": "lsStill180.webm",
+   "key": "lsStill180",
+   "speaker": "swiftee",
+   "text": "तरीही त्यांची बेरीज 180° होते!",
+   "spoken": "तरीही त्यांची बेरीज एकशे ऐंशी अंश होते!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.344
+  },
+  {
+   "file": "lsRuleEvery.webm",
+   "key": "lsRuleEvery",
+   "speaker": "swiftee",
+   "text": "हा नियम प्रत्येक समलंब चौकोनाला लागू होतो!",
+   "spoken": "हा नियम प्रत्येक समलंब चौकोनाला लागू होतो!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.422
+  },
+  {
+   "file": "lsTakeTwo.webm",
+   "key": "lsTakeTwo",
+   "speaker": "swiftee",
+   "text": "एका असमांतर बाजूवरचे दोन कोन घ्या.",
+   "spoken": "एका असमांतर बाजूवरचे दोन कोन घ्या.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsAlways180.webm",
+   "key": "lsAlways180",
+   "speaker": "swiftee",
+   "text": "त्यांची बेरीज नेहमी 180° असते!",
+   "spoken": "त्यांची बेरीज नेहमी एकशे ऐंशी अंश असते!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.344
+  },
+  {
+   "file": "lsLookA120.webm",
+   "key": "lsLookA120",
+   "speaker": "swiftee",
+   "text": "पाहा! ∠A = 120°.",
+   "spoken": "पाहा! कोन ए बरोबर एकशे वीस अंश.",
+   "letters": [
+    0.323
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsWhatIsD.webm",
+   "key": "lsWhatIsD",
+   "speaker": "swiftee",
+   "text": "मग ∠D किती आहे?",
+   "spoken": "मग कोन डी किती आहे?",
+   "letters": [
+    0.368
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.829
+  },
+  {
+   "file": "lsCorrect180.webm",
+   "key": "lsCorrect180",
+   "speaker": "swiftee",
+   "text": "बरोबर! 120° + 60° = 180°.",
+   "spoken": "बरोबर! एकशे वीस अंश अधिक साठ अंश बरोबर एकशे ऐंशी अंश.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 6.06
+  },
+  {
+   "file": "lsSameLeg180.webm",
+   "key": "lsSameLeg180",
+   "speaker": "swiftee",
+   "text": "एकाच असमांतर बाजूवरच्या कोनांची बेरीज 180° असते.",
+   "spoken": "एकाच असमांतर बाजूवरच्या कोनांची बेरीज एकशे ऐंशी अंश असते.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsWhatIf90.webm",
+   "key": "lsWhatIf90",
+   "speaker": "swiftee",
+   "text": "आपण एखादा कोन\n90° केला तर?",
+   "spoken": "आपण एखादा कोन नव्वद अंश केला तर?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.717
+  },
+  {
+   "file": "lsDragTo90.webm",
+   "key": "lsDragTo90",
+   "speaker": "swiftee",
+   "text": "कोणताही शिरोबिंदू ड्रॅग करून एखादा कोन 90° करा.",
+   "spoken": "कोणताही शिरोबिंदू ड्रॅग करून एखादा कोन नव्वद अंश करा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.545
+  },
+  {
+   "file": "lsDrag90.A.webm",
+   "key": "lsDrag90",
+   "variant": "A",
+   "part": "lead",
+   "next_text": "साठ अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "speaker": "swiftee",
+   "text": "आता ∠A हा",
+   "spoken": "आता कोन ए हा",
+   "letters": [
+    0.667
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.176
+  },
+  {
+   "file": "lsDrag90.B.webm",
+   "key": "lsDrag90",
+   "variant": "B",
+   "part": "lead",
+   "next_text": "साठ अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "speaker": "swiftee",
+   "text": "आता ∠B हा",
+   "spoken": "आता कोन बी हा",
+   "letters": [
+    0.615
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.254
+  },
+  {
+   "file": "lsDrag90.C.webm",
+   "key": "lsDrag90",
+   "variant": "C",
+   "part": "lead",
+   "next_text": "साठ अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "speaker": "swiftee",
+   "text": "आता ∠C हा",
+   "spoken": "आता कोन सी हा",
+   "letters": [
+    0.615
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.437
+  },
+  {
+   "file": "lsDrag90.D.webm",
+   "key": "lsDrag90",
+   "variant": "D",
+   "part": "lead",
+   "next_text": "साठ अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "speaker": "swiftee",
+   "text": "आता ∠D हा",
+   "spoken": "आता कोन डी हा",
+   "letters": [
+    0.615
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.254
+  },
+  {
+   "file": "lsDrag90.39.webm",
+   "key": "lsDrag90",
+   "variant": "39",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "39° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकोणचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.40.webm",
+   "key": "lsDrag90",
+   "variant": "40",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "40° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "चाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.41.webm",
+   "key": "lsDrag90",
+   "variant": "41",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "41° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एक्केचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.42.webm",
+   "key": "lsDrag90",
+   "variant": "42",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "42° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "बेचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.43.webm",
+   "key": "lsDrag90",
+   "variant": "43",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "43° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "त्रेचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.545
+  },
+  {
+   "file": "lsDrag90.44.webm",
+   "key": "lsDrag90",
+   "variant": "44",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "44° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "चव्वेचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.45.webm",
+   "key": "lsDrag90",
+   "variant": "45",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "45° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "पंचेचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.46.webm",
+   "key": "lsDrag90",
+   "variant": "46",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "46° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "सेहेचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.47.webm",
+   "key": "lsDrag90",
+   "variant": "47",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "47° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "सत्तेचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.48.webm",
+   "key": "lsDrag90",
+   "variant": "48",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "48° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "अठ्ठेचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.49.webm",
+   "key": "lsDrag90",
+   "variant": "49",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "49° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकोणपन्नास अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.50.webm",
+   "key": "lsDrag90",
+   "variant": "50",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "50° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "पन्नास अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.389
+  },
+  {
+   "file": "lsDrag90.51.webm",
+   "key": "lsDrag90",
+   "variant": "51",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "51° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एक्कावन्न अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.52.webm",
+   "key": "lsDrag90",
+   "variant": "52",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "52° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "बावन्न अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.53.webm",
+   "key": "lsDrag90",
+   "variant": "53",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "53° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "त्रेपन्न अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.54.webm",
+   "key": "lsDrag90",
+   "variant": "54",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "54° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "चोपन्न अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.55.webm",
+   "key": "lsDrag90",
+   "variant": "55",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "55° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "पंचावन्न अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.56.webm",
+   "key": "lsDrag90",
+   "variant": "56",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "56° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "छप्पन्न अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.545
+  },
+  {
+   "file": "lsDrag90.57.webm",
+   "key": "lsDrag90",
+   "variant": "57",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "57° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "सत्तावन्न अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.58.webm",
+   "key": "lsDrag90",
+   "variant": "58",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "58° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "अठ्ठावन्न अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.59.webm",
+   "key": "lsDrag90",
+   "variant": "59",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "59° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकोणसाठ अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.60.webm",
+   "key": "lsDrag90",
+   "variant": "60",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "60° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "साठ अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.61.webm",
+   "key": "lsDrag90",
+   "variant": "61",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "61° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकसष्ट अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.62.webm",
+   "key": "lsDrag90",
+   "variant": "62",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "62° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "बासष्ट अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.63.webm",
+   "key": "lsDrag90",
+   "variant": "63",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "63° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "त्रेसष्ट अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.64.webm",
+   "key": "lsDrag90",
+   "variant": "64",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "64° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "चौसष्ट अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.65.webm",
+   "key": "lsDrag90",
+   "variant": "65",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "65° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "पासष्ट अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.66.webm",
+   "key": "lsDrag90",
+   "variant": "66",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "66° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "सहासष्ट अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.67.webm",
+   "key": "lsDrag90",
+   "variant": "67",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "67° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "सदुसष्ट अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.68.webm",
+   "key": "lsDrag90",
+   "variant": "68",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "68° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "अडुसष्ट अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.69.webm",
+   "key": "lsDrag90",
+   "variant": "69",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "69° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकोणसत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.70.webm",
+   "key": "lsDrag90",
+   "variant": "70",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "70° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "सत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.71.webm",
+   "key": "lsDrag90",
+   "variant": "71",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "71° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकाहत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.72.webm",
+   "key": "lsDrag90",
+   "variant": "72",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "72° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "बाहत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.467
+  },
+  {
+   "file": "lsDrag90.73.webm",
+   "key": "lsDrag90",
+   "variant": "73",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "73° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "त्र्याहत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.467
+  },
+  {
+   "file": "lsDrag90.74.webm",
+   "key": "lsDrag90",
+   "variant": "74",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "74° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "चौऱ्याहत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.75.webm",
+   "key": "lsDrag90",
+   "variant": "75",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "75° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "पंच्याहत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.76.webm",
+   "key": "lsDrag90",
+   "variant": "76",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "76° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "शहात्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.77.webm",
+   "key": "lsDrag90",
+   "variant": "77",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "77° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "सत्याहत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.78.webm",
+   "key": "lsDrag90",
+   "variant": "78",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "78° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "अठ्ठ्याहत्तर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.79.webm",
+   "key": "lsDrag90",
+   "variant": "79",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "79° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकोणऐंशी अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.80.webm",
+   "key": "lsDrag90",
+   "variant": "80",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "80° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "ऐंशी अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.389
+  },
+  {
+   "file": "lsDrag90.81.webm",
+   "key": "lsDrag90",
+   "variant": "81",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "81° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एक्याऐंशी अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.82.webm",
+   "key": "lsDrag90",
+   "variant": "82",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "82° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "ब्याऐंशी अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.545
+  },
+  {
+   "file": "lsDrag90.83.webm",
+   "key": "lsDrag90",
+   "variant": "83",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "83° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "त्र्याऐंशी अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.84.webm",
+   "key": "lsDrag90",
+   "variant": "84",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "84° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "चौऱ्याऐंशी अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.702
+  },
+  {
+   "file": "lsDrag90.85.webm",
+   "key": "lsDrag90",
+   "variant": "85",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "85° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "पंच्याऐंशी अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.95.webm",
+   "key": "lsDrag90",
+   "variant": "95",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "95° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "पंच्याण्णव अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.96.webm",
+   "key": "lsDrag90",
+   "variant": "96",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "96° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "शहाण्णव अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.97.webm",
+   "key": "lsDrag90",
+   "variant": "97",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "97° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "सत्त्याण्णव अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.98.webm",
+   "key": "lsDrag90",
+   "variant": "98",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "98° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "अठ्ठ्याण्णव अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "lsDrag90.99.webm",
+   "key": "lsDrag90",
+   "variant": "99",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "99° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "नव्याण्णव अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.100.webm",
+   "key": "lsDrag90",
+   "variant": "100",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "100° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "शंभर अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.467
+  },
+  {
+   "file": "lsDrag90.101.webm",
+   "key": "lsDrag90",
+   "variant": "101",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "101° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे एक अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.102.webm",
+   "key": "lsDrag90",
+   "variant": "102",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "102° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे दोन अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.103.webm",
+   "key": "lsDrag90",
+   "variant": "103",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "103° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे तीन अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.104.webm",
+   "key": "lsDrag90",
+   "variant": "104",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "104° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे चार अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsDrag90.105.webm",
+   "key": "lsDrag90",
+   "variant": "105",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "105° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे पाच अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.106.webm",
+   "key": "lsDrag90",
+   "variant": "106",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "106° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे सहा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.107.webm",
+   "key": "lsDrag90",
+   "variant": "107",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "107° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे सात अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.108.webm",
+   "key": "lsDrag90",
+   "variant": "108",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "108° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे आठ अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.109.webm",
+   "key": "lsDrag90",
+   "variant": "109",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "109° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे नऊ अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.110.webm",
+   "key": "lsDrag90",
+   "variant": "110",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "110° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे दहा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.111.webm",
+   "key": "lsDrag90",
+   "variant": "111",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "111° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे अकरा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsDrag90.112.webm",
+   "key": "lsDrag90",
+   "variant": "112",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "112° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे बारा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.113.webm",
+   "key": "lsDrag90",
+   "variant": "113",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "113° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे तेरा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.114.webm",
+   "key": "lsDrag90",
+   "variant": "114",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "114° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे चौदा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.115.webm",
+   "key": "lsDrag90",
+   "variant": "115",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "115° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे पंधरा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.116.webm",
+   "key": "lsDrag90",
+   "variant": "116",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "116° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे सोळा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.117.webm",
+   "key": "lsDrag90",
+   "variant": "117",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "117° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे सतरा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsDrag90.118.webm",
+   "key": "lsDrag90",
+   "variant": "118",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "118° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे अठरा अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.119.webm",
+   "key": "lsDrag90",
+   "variant": "119",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "119° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे एकोणीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.120.webm",
+   "key": "lsDrag90",
+   "variant": "120",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "120° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे वीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.121.webm",
+   "key": "lsDrag90",
+   "variant": "121",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "121° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे एकवीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.122.webm",
+   "key": "lsDrag90",
+   "variant": "122",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "122° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे बावीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.123.webm",
+   "key": "lsDrag90",
+   "variant": "123",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "123° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे तेवीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.124.webm",
+   "key": "lsDrag90",
+   "variant": "124",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "124° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे चोवीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.125.webm",
+   "key": "lsDrag90",
+   "variant": "125",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "125° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे पंचवीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.126.webm",
+   "key": "lsDrag90",
+   "variant": "126",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "126° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे सव्वीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.127.webm",
+   "key": "lsDrag90",
+   "variant": "127",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "127° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे सत्तावीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.128.webm",
+   "key": "lsDrag90",
+   "variant": "128",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "128° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे अठ्ठावीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsDrag90.129.webm",
+   "key": "lsDrag90",
+   "variant": "129",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "129° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे एकोणतीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsDrag90.130.webm",
+   "key": "lsDrag90",
+   "variant": "130",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "130° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे तीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.131.webm",
+   "key": "lsDrag90",
+   "variant": "131",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "131° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे एकतीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.132.webm",
+   "key": "lsDrag90",
+   "variant": "132",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "132° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे बत्तीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.133.webm",
+   "key": "lsDrag90",
+   "variant": "133",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "133° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे तेहेतीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.134.webm",
+   "key": "lsDrag90",
+   "variant": "134",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "134° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे चौतीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsDrag90.135.webm",
+   "key": "lsDrag90",
+   "variant": "135",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "135° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे पस्तीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.937
+  },
+  {
+   "file": "lsDrag90.136.webm",
+   "key": "lsDrag90",
+   "variant": "136",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "136° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे छत्तीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.137.webm",
+   "key": "lsDrag90",
+   "variant": "137",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "137° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे सदतीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsDrag90.138.webm",
+   "key": "lsDrag90",
+   "variant": "138",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "138° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे अडतीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.016
+  },
+  {
+   "file": "lsDrag90.139.webm",
+   "key": "lsDrag90",
+   "variant": "139",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "139° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे एकोणचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsDrag90.140.webm",
+   "key": "lsDrag90",
+   "variant": "140",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "140° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे चाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.78
+  },
+  {
+   "file": "lsDrag90.141.webm",
+   "key": "lsDrag90",
+   "variant": "141",
+   "part": "tail",
+   "previous_text": "आता कोन ए हा",
+   "speaker": "swiftee",
+   "text": "141° आहे. 90° दिसेपर्यंत ड्रॅग करत राहा.",
+   "spoken": "एकशे एक्केचाळीस अंश आहे. नव्वद अंश दिसेपर्यंत ड्रॅग करत राहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "lsGreatJob.webm",
+   "key": "lsGreatJob",
+   "speaker": "swiftee",
+   "text": "खूप छान!",
+   "spoken": "खूप छान!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.176
+  },
+  {
+   "file": "lsWatch90.A.webm",
+   "key": "lsWatch90",
+   "variant": "A",
+   "speaker": "swiftee",
+   "text": "नीट पाहा! आता ∠A हा 90° आहे. हा काटकोन आहे.",
+   "spoken": "नीट पाहा! आता कोन ए हा नव्वद अंश आहे. हा काटकोन आहे.",
+   "letters": [
+    0.346
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsWatch90.B.webm",
+   "key": "lsWatch90",
+   "variant": "B",
+   "speaker": "swiftee",
+   "text": "नीट पाहा! आता ∠B हा 90° आहे. हा काटकोन आहे.",
+   "spoken": "नीट पाहा! आता कोन बी हा नव्वद अंश आहे. हा काटकोन आहे.",
+   "letters": [
+    0.34
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.172
+  },
+  {
+   "file": "lsWatch90.C.webm",
+   "key": "lsWatch90",
+   "variant": "C",
+   "speaker": "swiftee",
+   "text": "नीट पाहा! आता ∠C हा 90° आहे. हा काटकोन आहे.",
+   "spoken": "नीट पाहा! आता कोन सी हा नव्वद अंश आहे. हा काटकोन आहे.",
+   "letters": [
+    0.34
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsWatch90.D.webm",
+   "key": "lsWatch90",
+   "variant": "D",
+   "speaker": "swiftee",
+   "text": "नीट पाहा! आता ∠D हा 90° आहे. हा काटकोन आहे.",
+   "spoken": "नीट पाहा! आता कोन डी हा नव्वद अंश आहे. हा काटकोन आहे.",
+   "letters": [
+    0.34
+   ],
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.277
+  },
+  {
+   "file": "lsAnotherRight.webm",
+   "key": "lsAnotherRight",
+   "speaker": "swiftee",
+   "text": "अबब! आपल्याला आणखी एक\nकाटकोन मिळाला.",
+   "spoken": "अबब! आपल्याला आणखी एक काटकोन मिळाला.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.187
+  },
+  {
+   "file": "lsTwoRight.webm",
+   "key": "lsTwoRight",
+   "speaker": "swiftee",
+   "text": "शेजारी शेजारी दोन काटकोन!",
+   "spoken": "शेजारी शेजारी दोन काटकोन!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.377
+  },
+  {
+   "file": "lsRightIs.webm",
+   "key": "lsRightIs",
+   "speaker": "swiftee",
+   "text": "हा आहे काटकोन समलंब चौकोन!",
+   "spoken": "हा आहे काटकोन समलंब चौकोन!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.265
+  },
+  {
+   "file": "lsRightTrapezium.webm",
+   "key": "lsRightTrapezium",
+   "speaker": "swiftee",
+   "text": "काटकोन समलंब चौकोन",
+   "spoken": "काटकोन समलंब चौकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.299
+  },
+  {
+   "file": "lsWhichType.webm",
+   "key": "lsWhichType",
+   "speaker": "swiftee",
+   "text": "हा कोणत्या प्रकारचा समलंब चौकोन आहे?",
+   "spoken": "हा कोणत्या प्रकारचा समलंब चौकोन आहे?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.795
+  },
+  {
+   "file": "lsRightLegsEqual.webm",
+   "key": "lsRightLegsEqual",
+   "speaker": "swiftee",
+   "text": "बरोबर! त्याच्या असमांतर बाजू समान आहेत.",
+   "spoken": "बरोबर! त्याच्या असमांतर बाजू समान आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.736
+  },
+  {
+   "file": "lsSoIso.webm",
+   "key": "lsSoIso",
+   "speaker": "swiftee",
+   "text": "म्हणून तो समद्विभुज समलंब चौकोन आहे!",
+   "spoken": "म्हणून तो समद्विभुज समलंब चौकोन आहे!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.344
+  },
+  {
+   "file": "lsScalene.webm",
+   "key": "lsScalene",
+   "speaker": "swiftee",
+   "text": "विषमभुज",
+   "spoken": "विषमभुज",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.097
+  },
+  {
+   "file": "lsIsosceles.webm",
+   "key": "lsIsosceles",
+   "speaker": "swiftee",
+   "text": "समद्विभुज",
+   "spoken": "समद्विभुज",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.254
+  },
+  {
+   "file": "lsRight.webm",
+   "key": "lsRight",
+   "speaker": "swiftee",
+   "text": "काटकोन",
+   "spoken": "काटकोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.862
+  },
+  {
+   "file": "lsLookMarks.webm",
+   "key": "lsLookMarks",
+   "speaker": "swiftee",
+   "text": "या छोट्या खुणा पाहा!",
+   "spoken": "या छोट्या खुणा पाहा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.593
+  },
+  {
+   "file": "lsMarksEqual.webm",
+   "key": "lsMarksEqual",
+   "speaker": "swiftee",
+   "text": "त्या सांगतात की असमांतर बाजू समान आहेत.",
+   "spoken": "त्या सांगतात की असमांतर बाजू समान आहेत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.422
+  },
+  {
+   "file": "lsNoRight.webm",
+   "key": "lsNoRight",
+   "speaker": "swiftee",
+   "text": "इथे एकही काटकोन नाही!",
+   "spoken": "इथे एकही काटकोन नाही!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.142
+  },
+  {
+   "file": "lsLookLegs.webm",
+   "key": "lsLookLegs",
+   "speaker": "swiftee",
+   "text": "त्याऐवजी असमांतर बाजू पाहा.",
+   "spoken": "त्याऐवजी असमांतर बाजू पाहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.534
+  },
+  {
+   "file": "lsDragLabels.webm",
+   "key": "lsDragLabels",
+   "speaker": "swiftee",
+   "text": "प्रत्येक नाव त्याच्या\nयोग्य जागी ड्रॅग करा.",
+   "spoken": "प्रत्येक नाव त्याच्या योग्य जागी ड्रॅग करा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "lsQ4Clue.webm",
+   "key": "lsQ4Clue",
+   "speaker": "swiftee",
+   "text": "चमकणारी खूण पाहा. ती खूण कोणत्या आकारावर आहे?",
+   "spoken": "चमकणारी खूण पाहा. ती खूण कोणत्या आकारावर आहे?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.153
+  },
+  {
+   "file": "lsQ4TryAgain.webm",
+   "key": "lsQ4TryAgain",
+   "speaker": "swiftee",
+   "text": "पुन्हा प्रयत्न करा! आकार नीट पाहा.",
+   "spoken": "पुन्हा प्रयत्न करा! आकार नीट पाहा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.952
+  },
+  {
+   "file": "lsQ4WentBack.webm",
+   "key": "lsQ4WentBack",
+   "speaker": "swiftee",
+   "text": "काही नावे परत गेली. खुणा शोधा: समान असमांतर बाजू, काटकोन, किंवा यापैकी काहीच नाही.",
+   "spoken": "काही नावे परत गेली. खुणा शोधा: समान असमांतर बाजू, काटकोन, किंवा यापैकी काहीच नाही.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 8.542
+  },
+  {
+   "file": "lsBrilliant.webm",
+   "key": "lsBrilliant",
+   "speaker": "swiftee",
+   "text": "अप्रतिम! तुम्ही तिन्ही समलंब चौकोनांना नावे दिलीत.",
+   "spoken": "अप्रतिम! तुम्ही तिन्ही समलंब चौकोनांना नावे दिलीत.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.31
+  },
+  {
+   "file": "lsRecall.webm",
+   "key": "lsRecall",
+   "speaker": "swiftee",
+   "text": "चला, आज आपण काय\nशिकलो ते आठवूया.",
+   "spoken": "चला, आज आपण काय शिकलो ते आठवूया.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.03
+  },
+  {
+   "file": "lsAmazing.webm",
+   "key": "lsAmazing",
+   "speaker": "swiftee",
+   "text": "जबरदस्त! आता तुम्हाला समलंब चौकोनांबद्दल सगळे माहीत आहे.",
+   "spoken": "जबरदस्त! आता तुम्हाला समलंब चौकोनांबद्दल सगळे माहीत आहे.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.859
+  },
+  {
+   "file": "lsBye.webm",
+   "key": "lsBye",
+   "speaker": "swiftee",
+   "text": "आत्तापुरता टाटा! पुढच्या\nबर्फाळ सफरीत भेटूया!",
+   "spoken": "आत्तापुरता टाटा! पुढच्या बर्फाळ सफरीत भेटूया!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.814
+  },
+  {
+   "file": "lsTheEndSaid.webm",
+   "key": "lsTheEndSaid",
+   "speaker": "swiftee",
+   "text": "समाप्त!",
+   "spoken": "समाप्त!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.94
+  },
+  {
+   "file": "lsBase.webm",
+   "key": "lsBase",
+   "speaker": "swiftee",
+   "text": "पाया",
+   "spoken": "पाया",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.705
+  },
+  {
+   "file": "lsLeg.webm",
+   "key": "lsLeg",
+   "speaker": "swiftee",
+   "text": "असमांतर बाजू",
+   "spoken": "असमांतर बाजू",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.332
+  },
+  {
+   "file": "sumTrapezium.webm",
+   "key": "sumTrapezium",
+   "speaker": "swiftee",
+   "text": "ज्या चौकोनाच्या समांतर बाजूंची किमान एक जोडी असते, त्याला समलंब चौकोन म्हणतात.",
+   "spoken": "ज्या चौकोनाच्या समांतर बाजूंची किमान एक जोडी असते, त्याला समलंब चौकोन म्हणतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 6.217
+  },
+  {
+   "file": "sumBasesLabel.webm",
+   "key": "sumBasesLabel",
+   "speaker": "swiftee",
+   "text": "पाये",
+   "spoken": "पाये",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.784
+  },
+  {
+   "file": "sumBases.webm",
+   "key": "sumBases",
+   "speaker": "swiftee",
+   "text": "समांतर बाजूंना पाये म्हणतात.",
+   "spoken": "समांतर बाजूंना पाये म्हणतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.377
+  },
+  {
+   "file": "sumLegsLabel.webm",
+   "key": "sumLegsLabel",
+   "speaker": "swiftee",
+   "text": "दोन असमांतर बाजू",
+   "spoken": "दोन असमांतर बाजू",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.829
+  },
+  {
+   "file": "sumLegs.webm",
+   "key": "sumLegs",
+   "speaker": "swiftee",
+   "text": "उरलेल्या दोन बाजूंना असमांतर बाजू म्हणतात.",
+   "spoken": "उरलेल्या दोन बाजूंना असमांतर बाजू म्हणतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.5
+  },
+  {
+   "file": "sumScalene.webm",
+   "key": "sumScalene",
+   "speaker": "swiftee",
+   "text": "विषमभुज समलंब चौकोनाच्या बाजू वेगवेगळ्या लांबीच्या असतात.",
+   "spoken": "विषमभुज समलंब चौकोनाच्या बाजू वेगवेगळ्या लांबीच्या असतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.624
+  },
+  {
+   "file": "sumIsosceles.webm",
+   "key": "sumIsosceles",
+   "speaker": "swiftee",
+   "text": "समद्विभुज समलंब चौकोनाच्या असमांतर बाजू समान लांबीच्या असतात.",
+   "spoken": "समद्विभुज समलंब चौकोनाच्या असमांतर बाजू समान लांबीच्या असतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.172
+  },
+  {
+   "file": "sumRightLabel.webm",
+   "key": "sumRightLabel",
+   "speaker": "swiftee",
+   "text": "काटकोनी",
+   "spoken": "काटकोनी",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 0.94
+  },
+  {
+   "file": "sumRight.webm",
+   "key": "sumRight",
+   "speaker": "swiftee",
+   "text": "काटकोन समलंब चौकोनात दोन लगतचे काटकोन असतात.",
+   "spoken": "काटकोन समलंब चौकोनात दोन लगतचे काटकोन असतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.075
+  },
+  {
+   "file": "sumAngleSumLabel.webm",
+   "key": "sumAngleSumLabel",
+   "speaker": "swiftee",
+   "text": "कोनांची बेरीज",
+   "spoken": "कोनांची बेरीज",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.437
+  },
+  {
+   "file": "sumSupplementaryLabel.webm",
+   "key": "sumSupplementaryLabel",
+   "speaker": "swiftee",
+   "text": "पूरक कोन",
+   "spoken": "पूरक कोन",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.176
+  },
+  {
+   "file": "sumSupplementary.webm",
+   "key": "sumSupplementary",
+   "speaker": "swiftee",
+   "text": "ज्या दोन कोनांची बेरीज 180° असते, ते पूरक कोन असतात.",
+   "spoken": "ज्या दोन कोनांची बेरीज एकशे ऐंशी अंश असते, ते पूरक कोन असतात.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 5.094
+  },
+  {
+   "file": "f2GreatJob.webm",
+   "key": "f2GreatJob",
+   "speaker": "swiftee",
+   "text": "*खूप* छान!",
+   "spoken": "खूप छान!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.176
+  },
+  {
+   "file": "f2KnowTrapeziums.webm",
+   "key": "f2KnowTrapeziums",
+   "speaker": "swiftee",
+   "text": "तुम्हाला *समलंब चौकोनांबद्दल* सगळे माहीत आहे!",
+   "spoken": "तुम्हाला समलंब चौकोनांबद्दल सगळे माहीत आहे!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.5
+  },
+  {
+   "file": "f2HelpPopo.webm",
+   "key": "f2HelpPopo",
+   "speaker": "swiftee",
+   "text": "चला, आता पोपोला *मासे* पकडायला मदत करूया!",
+   "spoken": "चला, आता पोपोला मासे पकडायला मदत करूया!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.265
+  },
+  {
+   "file": "f2UseRod.webm",
+   "key": "f2UseRod",
+   "speaker": "swiftee",
+   "text": "गळ वापरून *नेम* धरा…",
+   "spoken": "गळ वापरून नेम धरा...",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.907
+  },
+  {
+   "file": "f2DropHook.webm",
+   "key": "f2DropHook",
+   "speaker": "swiftee",
+   "text": "…आणि गळ *योग्य* माशावर सोडा.",
+   "spoken": "आणि गळ योग्य माशावर सोडा.",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2CatchAllTrapeziums.webm",
+   "key": "f2CatchAllTrapeziums",
+   "speaker": "narrator",
+   "text": "सगळे *समलंब चौकोन* पकडा!",
+   "spoken": "सगळे समलंब चौकोन पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.299
+  },
+  {
+   "file": "f2HintParallel.webm",
+   "key": "f2HintParallel",
+   "speaker": "narrator",
+   "text": "*समांतर* बाजू शोधा!",
+   "spoken": "समांतर बाजू शोधा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.672
+  },
+  {
+   "file": "f2WhyNoParallel.webm",
+   "key": "f2WhyNoParallel",
+   "speaker": "popo",
+   "text": "*समांतर* बाजू नाहीत!",
+   "spoken": "समांतर बाजू नाहीत!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 1.829
+  },
+  {
+   "file": "f2CatchScalene.webm",
+   "key": "f2CatchScalene",
+   "speaker": "narrator",
+   "text": "*विषमभुज* समलंब चौकोन पकडा!",
+   "spoken": "विषमभुज समलंब चौकोन पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.717
+  },
+  {
+   "file": "f2HintLegLengths.webm",
+   "key": "f2HintLegLengths",
+   "speaker": "narrator",
+   "text": "*असमांतर बाजूंची* लांबी तपासा!",
+   "spoken": "असमांतर बाजूंची लांबी तपासा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.612
+  },
+  {
+   "file": "f2WhyLegsEqual.webm",
+   "key": "f2WhyLegsEqual",
+   "speaker": "popo",
+   "text": "याच्या असमांतर बाजू *समान* आहेत!",
+   "spoken": "याच्या असमांतर बाजू समान आहेत!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 2.534
+  },
+  {
+   "file": "f2CatchIsosceles.webm",
+   "key": "f2CatchIsosceles",
+   "speaker": "narrator",
+   "text": "*समद्विभुज* समलंब चौकोन पकडा!",
+   "spoken": "समद्विभुज समलंब चौकोन पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.109
+  },
+  {
+   "file": "f2HintLegsEqual.webm",
+   "key": "f2HintLegsEqual",
+   "speaker": "narrator",
+   "text": "असमांतर बाजू *समान* आहेत का?",
+   "spoken": "असमांतर बाजू समान आहेत का?",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.299
+  },
+  {
+   "file": "f2WhyLegsDifferent.webm",
+   "key": "f2WhyLegsDifferent",
+   "speaker": "popo",
+   "text": "याच्या असमांतर बाजू *वेगवेगळ्या* आहेत!",
+   "spoken": "याच्या असमांतर बाजू वेगवेगळ्या आहेत!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 2.717
+  },
+  {
+   "file": "f2CatchRightAngled.webm",
+   "key": "f2CatchRightAngled",
+   "speaker": "narrator",
+   "text": "काटकोन *समलंब चौकोन* पकडा!",
+   "spoken": "काटकोन समलंब चौकोन पकडा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.377
+  },
+  {
+   "file": "f2HintTwoRight.webm",
+   "key": "f2HintTwoRight",
+   "speaker": "narrator",
+   "text": "दोन *काटकोन* शोधा!",
+   "spoken": "दोन काटकोन शोधा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.593
+  },
+  {
+   "file": "f2WhyNoRight.webm",
+   "key": "f2WhyNoRight",
+   "speaker": "popo",
+   "text": "एकही *काटकोन* नाही!",
+   "spoken": "एकही काटकोन नाही!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 1.829
+  },
+  {
+   "file": "f2RecallParallel.webm",
+   "key": "f2RecallParallel",
+   "speaker": "swiftee",
+   "text": "पाहा! या दोन बाजू *समांतर* आहेत!",
+   "spoken": "पाहा! या दोन बाजू समांतर आहेत!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.795
+  },
+  {
+   "file": "f2Remember.webm",
+   "key": "f2Remember",
+   "speaker": "swiftee",
+   "text": "*लक्षात ठेवा,*",
+   "spoken": "लक्षात ठेवा,",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.176
+  },
+  {
+   "file": "f2AnglesSameLeg.webm",
+   "key": "f2AnglesSameLeg",
+   "speaker": "swiftee",
+   "text": "समलंब चौकोनाच्या एकाच *असमांतर बाजूवरच्या* कोनांची…",
+   "spoken": "समलंब चौकोनाच्या एकाच असमांतर बाजूवरच्या कोनांची...",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 4.545
+  },
+  {
+   "file": "f2AddUp180.webm",
+   "key": "f2AddUp180",
+   "speaker": "swiftee",
+   "text": "बेरीज नेहमी *180°* असते!",
+   "spoken": "बेरीज नेहमी एकशे ऐंशी अंश असते!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.873
+  },
+  {
+   "file": "f2Detective.webm",
+   "key": "f2Detective",
+   "speaker": "swiftee",
+   "text": "हुर्रे! आकारांचे *गुप्तहेर!*",
+   "spoken": "हुर्रे! आकारांचे गुप्तहेर!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 3.03
+  },
+  {
+   "file": "f2LookMarked.webm",
+   "key": "f2LookMarked",
+   "speaker": "swiftee",
+   "text": "खूण केलेले *कोन* पाहा!",
+   "spoken": "खूण केलेले कोन पाहा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.907
+  },
+  {
+   "file": "f2HintAddAngles.webm",
+   "key": "f2HintAddAngles",
+   "speaker": "narrator",
+   "text": "खूण केलेल्या *कोनांची* बेरीज करा!",
+   "spoken": "खूण केलेल्या कोनांची बेरीज करा!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.534
+  },
+  {
+   "file": "f2WhyNot180.webm",
+   "key": "f2WhyNot180",
+   "speaker": "popo",
+   "text": "या कोनांची बेरीज *180°* होत नाही!",
+   "spoken": "या कोनांची बेरीज एकशे ऐंशी अंश होत नाही!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 3.344
+  },
+  {
+   "file": "f2OopsNotTrapezium.webm",
+   "key": "f2OopsNotTrapezium",
+   "speaker": "popo",
+   "text": "हा *समलंब चौकोन* नाही.",
+   "spoken": "हा समलंब चौकोन नाही.",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 1.907
+  },
+  {
+   "file": "f2OopsTryAgain.webm",
+   "key": "f2OopsTryAgain",
+   "speaker": "popo",
+   "text": "*पुन्हा* प्रयत्न करा!",
+   "spoken": "पुन्हा प्रयत्न करा!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 1.176
+  },
+  {
+   "file": "f2NotTrapeziumCard.webm",
+   "key": "f2NotTrapeziumCard",
+   "speaker": "narrator",
+   "text": "तो *समलंब चौकोन* नाही!",
+   "spoken": "तो समलंब चौकोन नाही!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 2.142
+  },
+  {
+   "file": "f2Wow.webm",
+   "key": "f2Wow",
+   "speaker": "popo",
+   "text": "*व्वा!*",
+   "spoken": "व्वा!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 1.019
+  },
+  {
+   "file": "f2WhatACatch.webm",
+   "key": "f2WhatACatch",
+   "speaker": "popo",
+   "text": "काय *झकास* मासा मिळाला!",
+   "spoken": "काय झकास मासा मिळाला!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 2.064
+  },
+  {
+   "file": "f2GiantFish.webm",
+   "key": "f2GiantFish",
+   "speaker": "popo",
+   "text": "अबब! केवढा *मोठ्ठा* मासा!",
+   "spoken": "अबब! केवढा मोठ्ठा मासा!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 2.534
+  },
+  {
+   "file": "f2ComeOn.webm",
+   "key": "f2ComeOn",
+   "speaker": "popo",
+   "text": "ये *ना*, मोठ्या माशा!",
+   "spoken": "ये ना, मोठ्या माशा!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 1.907
+  },
+  {
+   "file": "f2Eek.webm",
+   "key": "f2Eek",
+   "speaker": "swiftee",
+   "text": "*आई गं!*",
+   "spoken": "आई गं!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.515
+  },
+  {
+   "file": "f2Huh.webm",
+   "key": "f2Huh",
+   "speaker": "popo",
+   "text": "अँ?!",
+   "spoken": "अँ?!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 0.784
+  },
+  {
+   "file": "f2GoodCatch.webm",
+   "key": "f2GoodCatch",
+   "speaker": "swiftee",
+   "text": "छान पकडलास, *पोपो!*",
+   "spoken": "छान पकडलास, पोपो!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.75
+  },
+  {
+   "file": "f2PopoLaughs.webm",
+   "key": "f2PopoLaughs",
+   "speaker": "popo",
+   "text": "हा हा *हा!*",
+   "spoken": "हा हा हा!",
+   "voice": "Vardaan - Expressive Marathi Care Agent",
+   "seconds": 1.332
+  },
+  {
+   "file": "f2SwifteeLaughs.webm",
+   "key": "f2SwifteeLaughs",
+   "speaker": "swiftee",
+   "text": "ही ही *ही!*",
+   "spoken": "ही ही ही!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.176
+  },
+  {
+   "file": "f2YouDidIt.webm",
+   "key": "f2YouDidIt",
+   "speaker": "swiftee",
+   "text": "तुम्ही *करून* दाखवलेत!",
+   "spoken": "तुम्ही करून दाखवलेत!",
+   "voice": "Sayali - Marathi User Onboarding Agent",
+   "seconds": 1.593
+  }
+ ]
+}

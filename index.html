@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <meta name="theme-color" content="#0b4fb8">
-<title>Fishing Frenzy</title>
+<title data-i18n="pageTitle">Fishing Frenzy</title>
 <meta name="description" content="Fish for shapes with Popo the polar bear, learn all about trapeziums with Swiftee the bird, then catch trapezium fish across a frozen lake. A voiced maths adventure for young learners.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fishing Frenzy">
@@ -38,22 +38,26 @@
      their stage, so it fades into fishing 1 lake into lake -->
 <section id="cover" class="front booting" aria-labelledby="journey-title">
 <div id="cover-stage" class="front-stage">
-<h1 id="journey-title" class="sr-only">Fishing Frenzy</h1>
+<h1 id="journey-title" class="sr-only" data-i18n="pageTitle">Fishing Frenzy</h1>
 <canvas id="cover-water" class="layer" aria-hidden="true"></canvas>
 <canvas id="cover-world" class="layer" aria-hidden="true"></canvas>
-<button id="play" class="play-hit" data-qa="play" type="button" aria-label="Play"></button>
-<div id="cover-rotate" class="rotate-hint" hidden>Rotate your device for the best experience</div>
-<div id="cover-status" class="cover-status status" role="status" aria-live="polite" hidden><span class="status-text">Getting ready…</span><span class="bar unknown"><i></i></span><button class="retry" type="button" hidden>Try again</button></div>
+<button id="play" class="play-hit" data-qa="play" type="button" aria-label="Play" data-i18n-attr="aria-label:btnPlay"></button>
+<div id="cover-rotate" class="rotate-hint" hidden data-i18n="rotateHint">Rotate your device for the best experience</div>
+<div id="cover-status" class="cover-status status" role="status" aria-live="polite" hidden><span class="status-text" data-i18n="statusGettingReady">Getting ready…</span><span class="bar unknown"><i></i></span><button class="retry" type="button" hidden data-i18n="btnTryAgain">Try again</button></div>
 </div>
 </section>
 
 <!-- between two parts: snow blowing across as one scene dissolves into the next; and, only while the next part is
      still loading, a frosted veil that says so -->
 <div id="veil" class="veil" aria-hidden="true">
-<div id="veil-status" class="veil-status status" role="status" aria-live="polite" hidden><span class="status-text">Getting ready…</span><span class="bar unknown"><i></i></span><button class="retry" type="button" hidden>Try again</button></div>
+<div id="veil-status" class="veil-status status" role="status" aria-live="polite" hidden><span class="status-text" data-i18n="statusGettingReady">Getting ready…</span><span class="bar unknown"><i></i></span><button class="retry" type="button" hidden data-i18n="btnTryAgain">Try again</button></div>
 </div>
 
 <noscript><p style="position:fixed;inset:auto 0 24px;text-align:center;font:700 20px system-ui;color:#fff">Fishing Frenzy needs JavaScript to play.</p></noscript>
+<!-- every word on the page, by key (?lan=xx picks the language; shell/i18n.js), filled in before anything runs -->
+<script src="locales/locales.js"></script>
+<script src="shell/i18n.js"></script>
+<script>I18n.applyStatic();</script>
 <!-- the front page's water and effects: the fishing games' own (copied unchanged from parts/fishing-2/src) -->
 <script>window.PopoGame = { STAGE_W: 1672, STAGE_H: 941, SEABED_Y: 805 };</script>
 <script src="shell/title/water.js"></script>

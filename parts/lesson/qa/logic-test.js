@@ -4,7 +4,8 @@
 const fs=require('fs');
 const path=require('path'), rd=f=>fs.readFileSync(path.join(__dirname,'..',f),'utf8');
 const html=rd('index.html');
-const js=rd('js/config.js')+'\n'+rd('js/lesson-data.js')+'\n'+rd('js/game-engine.js').replace('window.TrapeziumGame = class TrapeziumGame','const Component = class Component');
+// (the words first, as index.html loads them: locales/locales.js, then shell/i18n.js's T)
+const js=rd('../../locales/locales.js')+'\n'+rd('../../shell/i18n.js')+'\n'+rd('js/config.js')+'\n'+rd('js/lesson-data.js')+'\n'+rd('js/game-engine.js').replace('window.TrapeziumGame = class TrapeziumGame','const Component = class Component');
 const tpl=html.match(/<x-dc>([\s\S]*?)<\/x-dc>/)[1];
 class DCLogic{constructor(p){this.props=p||{}} setState(u,cb){const v=typeof u==='function'?u(this.state):u; this.state=Object.assign({},this.state,v); if(cb) cb();} }
 // js/motion.js (GSAP) needs a browser: a stand-in that does no animation but finishes waits and value/morph tweens at once
