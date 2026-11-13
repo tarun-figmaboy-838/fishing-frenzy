@@ -1179,11 +1179,15 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     if (!this.state.sumNext || !window.Summary || !Summary.canLeave()) return;
     Summary.leave();
     this.sfx('tap');
-    // a tapped Next always moves on: any line she is saying stops, and the move waits for nothing it can't outlast
+    // a tapped Next moves on AT ONCE: any line she is saying stops and the lesson leaves on the tap, Swiftee taking off
+    // as the button goes (as in Fishing Frenzy 2). It used to go through maybeAdvance: advanceMs (2.5 s) of nothing
+    // after the button had gone, and up to busyMaxMs (8 s) more for anything still moving - which read as a dead button
     this.nextTapped = this.stepTok;
     this.cancelSpeech();
     this.setState({ sumNext: false });
-    this.maybeAdvance(false);
+    const i = this.state.step, last = i >= this.steps().length - 1;
+    if (!last) { this.goTo(i + 1, true); return; }
+    if (JOURNEY) this.handOff(); else this.maybeAdvance(false);
   }
   // screen 29 (explore): Done is the only way to finish; repeat taps do nothing
   doneExplore() {
