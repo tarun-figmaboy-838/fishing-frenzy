@@ -271,7 +271,8 @@ async function wrongCatch(game, fish) {
       [3640, () => { sound('splashSmall'); fx.splash(edge - 20, game.waterline, false); }],
       [3720, () => { sound('boing'); fx.drips(popo.bodyLandmark('head')); }],
       [3920, () => { sound('drip'); fx.drips(popo.bodyLandmark('head')); }],
-      [4150, () => { ui.setInstruction(game.wrongText(fish)); }],
+      // the plate's "Look at the sides…" is said too, in the narrator's recorded voice (a line with no recording stays silent)
+      [4150, () => { const tip = game.wrongText(fish); ui.setInstruction(tip); if (!game.dialogue) audio.speak('narrator', tip); }],
     ];
     await clock.tween(WRONG_DURATION, token, progress => {
       const ms = progress * WRONG_DURATION;

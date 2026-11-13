@@ -218,11 +218,11 @@ class Game {
   }
 
 
-  // A wrong catch teaches what to look for: in the journey, the target's number of sides; otherwise the instruction
-  // again, naming the fish that was tapped.
+  // A wrong catch: in the journey, the instruction again, in the narrator's recorded voice ("Catch the *pentagon* fish!").
+  // ("Look at the sides. A pentagon has 5 sides." stood here, but it has no recording yet, and every line on screen is a
+  // voiced one; record it with tools/build-swiftee-voice.py and it can come back.) Otherwise, naming the fish tapped.
   wrongText(fish) {
-    const target = getShape(this.currentChallenge().target);
-    if (this.embedded) return `Look at the sides. A *${target.name.toLowerCase()}* has ${target.sides} sides.`;
+    if (this.embedded) return this.challengeText();
     return `${this.challengeText().replace(/!$/, '')}, not the ${fish.shape.name.toLowerCase()} one!`;
   }
 
