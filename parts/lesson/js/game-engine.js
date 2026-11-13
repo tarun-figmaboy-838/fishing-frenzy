@@ -1167,6 +1167,9 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     if (!this.state.sumNext || !window.Summary || !Summary.canLeave()) return;
     Summary.leave();
     this.sfx('tap');
+    // a tapped Next always moves on: any line she is saying stops, and the move waits for nothing it can't outlast
+    this.nextTapped = this.stepTok;
+    this.cancelSpeech();
     this.setState({ sumNext: false });
     this.maybeAdvance(false);
   }
@@ -1213,8 +1216,13 @@ window.TrapeziumGame = class TrapeziumGame extends DCLogic {
     const t0 = Date.now();
     const go = () => {
       this.advId = null;
-      // if Swiftee is talking again (a hint, feedback), that line's end schedules the move afresh
-      if (tok !== this.stepTok || this.state.talking || this.drag || this.ld) return;
+      // if Swiftee is talking again (a hint, feedback), that line's end schedules the move afresh - unless the learner
+      // tapped Next: then the move keeps trying, and goes after 3 s whatever is still under way (the button is gone)
+      if (tok !== this.stepTok) return;
+      if (this.state.talking || this.drag || this.ld) {
+        if (this.nextTapped !== tok) return;
+        if (Date.now() - t0 < 3000) { this.advId = this.tm(go, 250); return; }
+      }
       const bd = this.state.build; // a building shape (screen 1) finishes its outline glow and fill fade first
       if (st.build && !(bd && bd.done && !bd.settle)) { this.maybeAdvance(false); return; }
       // a sequence still playing on the board (the angle sums, a straight angle forming) finishes first
