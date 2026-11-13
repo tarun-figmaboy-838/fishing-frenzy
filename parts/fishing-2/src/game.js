@@ -2188,6 +2188,36 @@ class Game {
     this.audio.play('nope');
   }
 
+  // the card's rectangle for a placement: above (below) its fish, shifted sideways by dx of its width
+  whySpot(f, W, H, half, place) {
+    const top = Math.min(STAGE_H - H - 12, place.below ? f.y + half + 34 : f.y - half - 36 - H);
+    const left = Math.max(16, Math.min(STAGE_W - W - 16, f.x - W / 2 + place.dx * W));
+    return { below: place.below, top, left };
+  }
+
+  // above its fish when there is room under the waterline, else below; and, of those, the spot that covers the least
+  // of the other fish swimming nearby (a card over a neighbour read as that fish's reason)
+  whyPlace(f, W, H, half) {
+    let best = null;
+    for (const below of [false, true]) {
+      if (!below && f.y - half - 36 - H < this.waterline + 14) continue;
+      for (const dx of [0, -0.3, 0.3, -0.45, 0.45]) {
+        const { top, left } = this.whySpot(f, W, H, half, { below, dx });
+        let cover = 0;
+        for (const o of state.fish) {
+          if (o === f || o.gone || o.offstage) continue;
+          const k = o.scale * (o.zoom || 1), ow = (o.w * k) / 2 + 10, oh = (o.h * k) / 2 + 10;
+          const ix = Math.min(left + W, o.x + ow) - Math.max(left, o.x - ow);
+          const iy = Math.min(top + H, o.y + oh) - Math.max(top, o.y - oh);
+          if (ix > 0 && iy > 0) cover += ix * iy;
+        }
+        const cost = cover + Math.abs(dx) * 1500 + (below ? 600 : 0);
+        if (!best || cost < best.cost) best = { below, dx, cost };
+      }
+    }
+    return best;
+  }
+
   hideWhy() {
     if (!this.why || this.why.out) return;
     this.why.out = 0.001;
@@ -2261,14 +2291,10 @@ class Game {
     const W = Math.max(tw, dw) + 52;
     const H = w.detail ? 100 : 72;
     const half = (f.h * f.scale * (f.zoom || 1)) / 2;
-    let below = false;
-    let top = f.y - half - 36 - H;
-    if (top < this.waterline + 14) {
-      below = true;
-      top = f.y + half + 34;
-    }
-    top = Math.min(STAGE_H - H - 12, top);
-    const left = Math.max(16, Math.min(STAGE_W - W - 16, f.x - W / 2));
+    // where it sits (above or below its fish, and how far to the side) is chosen once, as it appears, to cover as little
+    // of the other fish as it can; it then rides with its fish
+    if (!w.place) w.place = this.whyPlace(f, W, H, half);
+    const { below, top, left } = this.whySpot(f, W, H, half, w.place);
     const pop = still ? 1 : ease.outBack(Math.min(1, w.t / 0.4));
     const wobble = still ? 0 : Math.sin(w.t * 9) * 0.05 * Math.max(0, 1 - w.t / 0.8);
     const bob = still ? 0 : Math.sin(w.t * 2.4) * 3;
