@@ -240,8 +240,12 @@ class Game {
   keepTargetsInView() {
     if (state.phase !== PHASE.READY && state.phase !== PHASE.TUTORIAL) return;
     const left = this.remainingTargets();
-    if (left.length && !left.some((f) => !f.offstage)) {
-      const soonest = left.reduce((a, b) => (a.away <= b.away ? a : b));
+    // in sight means on the stage itself: a fish swimming in or out past the edge (not yet offstage) is out of view,
+    // and a round whose fish were all out there showed only wrong fish while its caption said what to catch
+    const inSight = (f) => !f.offstage && !f.escaping && f.x > 0 && f.x < PopoGame.STAGE_W;
+    const away = left.filter((f) => f.offstage);
+    if (left.length && !left.some(inSight) && away.length) {
+      const soonest = away.reduce((a, b) => (a.away <= b.away ? a : b));
       soonest.away = Math.min(soonest.away, 0);
     }
     if (this.handFish && (this.handFish.gone || this.handFish.offstage)) {
