@@ -18,6 +18,11 @@ const SOURCES = {
   mask: (i) => (PopoGame.WATER_MASKS || [])[i] || `assets/backgrounds/water-${i + 1}.webp${V}`,
 };
 
+// Sheets identical to part 1's are loaded from part 1's folder, at the address part 1 uses (same tag), so a
+// player who plays both parts downloads each once; the others are part 2's own.
+const SHARED = new Set(['popo-fishing.webp', 'popo-rowing.webp', 'fish.webp', 'popo-props.webp', 'popo-mishap.webp', 'popo-row-cycle.webp', 'swiftee.webp']);
+const sheetUrl = (file) => (SHARED.has(file) ? `../fishing-1/assets/sprites/${file}${V}` : `assets/sprites/${file}${V}`);
+
 // The art behind Play, with rough sizes in KB that keep the loading bar moving evenly.
 const SHEETS = [
   ['fishing', 'popo-fishing.webp', 210],
@@ -146,7 +151,7 @@ async function loadCoreAssets(progress = () => {}) {
   const loaded = await Promise.all([
     ...SHEETS.map(([, file], i) => retry(() => {
       parts[i].got = 0;
-      return fetchImage(`assets/sprites/${file}${V}`, track(parts[i]));
+      return fetchImage(sheetUrl(file), track(parts[i]));
     }).then(done(parts[i]))),
     retry(() => loadScript(VOICES[0])).then(done(parts[SHEETS.length])),
     preloadBackground(PLACES[0].background).then(done(parts[SHEETS.length + 1])),

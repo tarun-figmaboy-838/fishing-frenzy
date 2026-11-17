@@ -49,16 +49,20 @@ function preloadBackground(index) {
   return pending.get(index);
 }
 
+// These sheets are shared with part 2 (parts/fishing-2/src/assets.js loads them from here), with the same
+// version tag, so a player who plays both parts downloads each once.
+const SHARED_V = '?v=2';
+
 async function loadCoreAssets() {
   const [fishing, rowing, fish, bg0, props, mishapPoses, rowCycle, swiftee, fishVariants] = await Promise.all([
-    loadImage('assets/sprites/popo-fishing.webp'),
-    loadImage('assets/sprites/popo-rowing.webp'),
-    loadImage('assets/sprites/fish.webp'),
+    loadImage(`assets/sprites/popo-fishing.webp${SHARED_V}`),
+    loadImage(`assets/sprites/popo-rowing.webp${SHARED_V}`),
+    loadImage(`assets/sprites/fish.webp${SHARED_V}`),
     preloadBackground(0),
-    loadImage('assets/sprites/popo-props.webp'),
-    loadImage('assets/sprites/popo-mishap.webp'), // a lossless copy of popo-mishap.png, half the size
-    loadImage('assets/sprites/popo-row-cycle.webp'),
-    loadImage('assets/sprites/swiftee.webp'),
+    loadImage(`assets/sprites/popo-props.webp${SHARED_V}`),
+    loadImage(`assets/sprites/popo-mishap.webp${SHARED_V}`), // a lossless copy of popo-mishap.png, half the size
+    loadImage(`assets/sprites/popo-row-cycle.webp${SHARED_V}`),
+    loadImage(`assets/sprites/swiftee.webp${SHARED_V}`),
     loadImage('assets/sprites/fish-variants.webp'),
   ]);
   assets.rowCycle = rowCycle;

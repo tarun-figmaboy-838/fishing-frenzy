@@ -19,7 +19,7 @@ their own sheets, so this bakes the very same scarf into those sheets, with the 
 
 Reads the unscarfed art in tools/scarf/originals/ (so it can run again) and writes:
   parts/fishing-1/assets/sprites/swiftee.webp                  the flight cycle (4 wing beats)
-  parts/fishing-2/assets/sprites/swiftee.webp                  the same flight cycle
+                                                               (part 2 loads part 1's copy)
   parts/fishing-2/assets/sprites/swiftee-personality.webp      her 16 talking / blinking / laughing poses
   parts/fishing-2/assets/sprites/swiftee-front-personality.webp  her 12 front-facing flight poses
   shell/images/banner.webp                                     the Fishing Frenzy banner (Swiftee on the raft)
@@ -102,7 +102,7 @@ def personality(sheet, key):
 
 JOBS = [
     # name, original, outputs, frames [(x, y, w, h)], save options
-    ('flight', 'fishing-1-swiftee.webp', ['parts/fishing-1/assets/sprites/swiftee.webp', 'parts/fishing-2/assets/sprites/swiftee.webp'],
+    ('flight', 'fishing-1-swiftee.webp', ['parts/fishing-1/assets/sprites/swiftee.webp'],
      [(i * 280, 0, 280, 285) for i in range(4)], {'quality': 92, 'alpha_quality': 100}),
     ('personality', 'fishing-2-swiftee-personality.webp', ['parts/fishing-2/assets/sprites/swiftee-personality.webp'],
      personality('swiftee-personality', 'swiftee'), {'lossless': True}),
